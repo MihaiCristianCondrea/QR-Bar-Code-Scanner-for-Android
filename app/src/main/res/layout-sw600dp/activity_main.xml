@@ -46,7 +46,8 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:nativeAdLayout="@layout/ad_bottom_app_bar" />
+        app:nativeAdLayout="@layout/ad_bottom_app_bar"
+        app:nativeAdUnitId="@string/native_ad_bottom_bar_unit_id" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
