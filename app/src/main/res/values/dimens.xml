@@ -15,4 +15,6 @@
     <dimen name="icon_button_icon_padding">9dp</dimen>
     <dimen name="icon_button_vertical_padding">12dp</dimen>
     <dimen name="icon_button_with_delimiter_vertical_padding">12dp</dimen>
+    <dimen name="preference_item_spacing">2dp</dimen>
+    <dimen name="preference_list_vertical_padding">16dp</dimen>
 </resources>

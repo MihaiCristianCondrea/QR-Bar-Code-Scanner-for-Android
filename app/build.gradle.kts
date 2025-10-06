@@ -19,7 +19,7 @@ android {
     namespace = "com.d4rk.qrcodescanner.plus"
     defaultConfig {
         applicationId = "com.d4rk.qrcodescanner.plus"
-        minSdk = 26
+        minSdk = 23
         targetSdk = 36
         versionCode = 31
         versionName = "3.1.1"
