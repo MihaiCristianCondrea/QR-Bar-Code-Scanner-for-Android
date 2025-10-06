@@ -2,9 +2,9 @@ package com.d4rk.qrcodescanner.plus.ui.components.views
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.Color
 import android.graphics.Matrix
+import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import com.d4rk.qrcodescanner.plus.R
 import com.google.zxing.Result
 import kotlin.math.max
+
 class ResultPointsView : View {
     private val pointsPaint = Paint().apply {
         style = Paint.Style.STROKE

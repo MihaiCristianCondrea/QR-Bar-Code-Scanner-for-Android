@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_none"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/none"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_ask_every_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/ask_every_time"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_bing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_bing"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_duck_duck_go"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_duck_duck_go"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_google"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_qwant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_qwant"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_startpage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_startpage"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_yahoo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:text="@string/activity_choose_search_engine_yahoo"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.SettingsRadioButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_yandex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

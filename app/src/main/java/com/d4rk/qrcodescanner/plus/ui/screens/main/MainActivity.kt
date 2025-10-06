@@ -31,10 +31,6 @@ import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
-import com.d4rk.qrcodescanner.plus.notifications.AppUpdateNotificationsManager
-import com.d4rk.qrcodescanner.plus.notifications.AppUsageNotificationsManager
-import com.d4rk.qrcodescanner.plus.ui.screens.main.MainUiState
-import com.d4rk.qrcodescanner.plus.ui.screens.main.MainViewModel
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.SettingsActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
@@ -43,7 +39,6 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.ActivityResult
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
@@ -61,7 +56,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var appUpdateManager: AppUpdateManager
-    private lateinit var appUpdateNotificationsManager: AppUpdateNotificationsManager
 
     private val mainViewModel: MainViewModel by viewModels()
     private val navOrder = SparseIntArray()
@@ -93,9 +87,6 @@ class MainActivity : AppCompatActivity() {
         configureToolbarNavigation()
 
         MobileAds.initialize(this)
-        appUpdateManager = AppUpdateManagerFactory.create(this)
-        appUpdateNotificationsManager = AppUpdateNotificationsManager(this)
-
         initNavigationController()
         observeViewModel()
 
@@ -135,9 +126,6 @@ class MainActivity : AppCompatActivity() {
         FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(analyticsEnabled)
         FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = analyticsEnabled
 
-        val appUsageNotificationsManager = AppUsageNotificationsManager(this)
-        appUsageNotificationsManager.checkAndSendAppUsageNotification()
-        appUpdateNotificationsManager.checkAndSendUpdateNotification()
         appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
             if (
                 appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&

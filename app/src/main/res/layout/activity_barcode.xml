@@ -31,7 +31,7 @@
                 android:layout_marginHorizontal="@dimen/default_margin"
                 android:padding="12dp"
                 android:visibility="gone">
-                <com.d4rk.qrcodescanner.plus.ui.view.SquareImageView
+                <com.d4rk.qrcodescanner.plus.ui.components.views.SquareImageView
                     android:id="@+id/image_view_barcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_search_on_web"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                 app:text="@string/search_on_the_web"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_add_to_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                 app:text="@string/add_to_calendar"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_add_to_contacts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                 app:text="@string/add_to_contacts"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_call_phone_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                 app:text="@string/call"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_call_phone_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 app:text="@string/call"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_call_phone_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
                 app:text="@string/call"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_send_sms_or_mms_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                 app:text="@string/send_sms_mms_to"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_send_sms_or_mms_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                 app:text="@string/send_sms_mms_to"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_send_sms_or_mms_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                 app:text="@string/send_sms_mms_to"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_send_email_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                 app:text="@string/email_to"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_send_email_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                 app:text="@string/email_to"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_send_email_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
                 app:text="@string/email_to"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_show_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
                 app:text="@string/show_location"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_connect_to_wifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                 app:text="@string/connect_to_wifi"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_wifi_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -229,7 +229,7 @@
                 app:text="@string/open_wifi_settings"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_copy_network_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -238,7 +238,7 @@
                 app:text="@string/copy_network_name"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_copy_network_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -247,7 +247,7 @@
                 app:text="@string/copy_network_password"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_app"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -256,7 +256,7 @@
                 app:text="@string/open_app"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_in_app_market"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -265,7 +265,7 @@
                 app:text="@string/open_in_market"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_in_youtube"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -274,7 +274,7 @@
                 app:text="@string/open_in_youtube"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_show_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -283,7 +283,7 @@
                 app:text="@string/show_password"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -292,7 +292,7 @@
                 app:text="@string/open_in_other_app"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_bitcoin_uri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -301,7 +301,7 @@
                 app:text="@string/open_in_other_app"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_open_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -310,7 +310,7 @@
                 app:text="@string/open_link"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_save_bookmark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -319,49 +319,49 @@
                 app:text="@string/save_to_bookmark"
                 android:visibility="gone"
                 tools:visibility="visible"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_share_as_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:iconBackground="?attr/colorPrimary"
                 app:icon="@drawable/ic_share_white"
                 app:text="@string/share_as_text"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_copy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_copy"
                 app:iconBackground="?attr/colorPrimary"
                 app:text="@string/copy_to_clipboard"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_search"
                 app:iconBackground="?attr/colorPrimary"
                 app:text="@string/search_on_the_web"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_save_as_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_download"
                 app:iconBackground="?attr/colorPrimary"
                 app:text="@string/tooltip_save_as_text"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_share_as_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_share_white"
                 app:iconBackground="?attr/colorPrimary"
                 app:text="@string/share_as_image"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_save_as_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/ic_download"
                 app:iconBackground="?attr/colorPrimary"
                 app:text="@string/tooltip_save_as_image"/>
-            <com.d4rk.qrcodescanner.plus.ui.view.IconButton
+            <com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
                 android:id="@+id/button_print"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

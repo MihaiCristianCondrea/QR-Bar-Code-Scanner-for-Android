@@ -53,14 +53,14 @@
             android:imeOptions="actionDone"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <com.d4rk.qrcodescanner.plus.ui.view.DateTimePickerButton
+    <com.d4rk.qrcodescanner.plus.ui.components.views.DateTimePickerButton
         android:id="@+id/button_date_time_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingHorizontal="4dp"
         app:hint="@string/start_date"/>
-    <com.d4rk.qrcodescanner.plus.ui.view.DateTimePickerButton
+    <com.d4rk.qrcodescanner.plus.ui.components.views.DateTimePickerButton
         android:id="@+id/button_date_time_end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

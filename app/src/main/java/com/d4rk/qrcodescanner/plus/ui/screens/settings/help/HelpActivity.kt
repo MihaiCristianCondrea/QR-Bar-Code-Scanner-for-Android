@@ -1,11 +1,12 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.settings.help
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.d4rk.qrcodescanner.plus.R
@@ -13,12 +14,12 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityHelpBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
-import androidx.core.net.toUri
 
 class HelpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHelpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction().replace(R.id.frame_layout_faq, FaqFragment()).commit()

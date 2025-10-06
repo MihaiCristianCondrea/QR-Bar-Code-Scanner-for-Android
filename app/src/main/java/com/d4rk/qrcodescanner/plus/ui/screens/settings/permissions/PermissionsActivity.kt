@@ -1,5 +1,6 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import com.d4rk.qrcodescanner.plus.R
@@ -9,6 +10,7 @@ class PermissionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPermissionsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityPermissionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction().replace(R.id.permissions, SettingsFragment()).commit()

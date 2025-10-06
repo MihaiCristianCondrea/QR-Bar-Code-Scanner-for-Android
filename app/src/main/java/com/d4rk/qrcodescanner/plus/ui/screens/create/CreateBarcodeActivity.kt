@@ -7,34 +7,62 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
+import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateBarcodeBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.di.barcodeParser
 import com.d4rk.qrcodescanner.plus.di.contactHelper
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
+import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.history.save
 import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.extension.showError
 import com.d4rk.qrcodescanner.plus.extension.toStringId
 import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
-import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
-import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
-import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.*
-import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.*
-import com.d4rk.qrcodescanner.plus.domain.history.save
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateAztecFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateCodabarFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateCode128Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateCode39Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateCode93Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateDataMatrixFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateEan13Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateEan8Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateItf14Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreatePdf417Fragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateUpcAFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateUpcEFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.AppAdapter
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeAppFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeBookmarkFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeCryptocurrencyFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeEmailFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeEventFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeLocationFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeMeCardFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeMmsFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeOtpFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodePhoneFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeSmsFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeTextFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeUrlFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeVCardFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeWifiFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.BarcodeFormat
-import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+
 class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
     private lateinit var binding: ActivityCreateBarcodeBinding
     companion object {
@@ -83,6 +111,7 @@ class CreateBarcodeActivity : BaseActivity(), AppAdapter.Listener {
         if (createBarcodeImmediatelyIfNeeded()) {
             return
         }
+        enableEdgeToEdge()
         binding = ActivityCreateBarcodeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportEdgeToEdge()

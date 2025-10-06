@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseSearchEngineBinding
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
@@ -24,6 +25,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityChooseSearchEngineBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportEdgeToEdge()

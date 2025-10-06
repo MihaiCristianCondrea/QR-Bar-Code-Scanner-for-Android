@@ -5,15 +5,16 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.fragment.app.FragmentActivity
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.LayoutDateTimePickerButtonBinding
 import com.d4rk.qrcodescanner.plus.extension.formatOrNull
-import androidx.fragment.app.FragmentActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
+
 class DateTimePickerButton : FrameLayout {
     private lateinit var binding : LayoutDateTimePickerButtonBinding
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)

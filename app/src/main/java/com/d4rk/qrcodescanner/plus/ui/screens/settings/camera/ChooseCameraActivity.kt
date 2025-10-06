@@ -2,6 +2,7 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings.camera
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseCameraBinding
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
@@ -24,6 +25,7 @@ class ChooseCameraActivity : BaseActivity() {
     }
     override fun onResume() {
         super.onResume()
+        enableEdgeToEdge()
         showSelectedCamera()
         handleBackCameraButtonChecked()
         handleFrontCameraButtonChecked()
