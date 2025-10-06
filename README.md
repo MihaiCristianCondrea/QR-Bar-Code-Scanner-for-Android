@@ -1,4 +1,4 @@
-![QR & Bar Code Scanner for Android](/app/src/main/play/listings/en-US/graphics/ic_launcher-playstore.png "QR & Bar Code Scanner for Android")
+![QR & Bar Code Scanner for Android](/app/src/main/play/listings/en-US/graphics/feature-graphic/play_store_feature_graphic.png "QR & Bar Code Scanner for Android")
 
 <a href="https://play.google.com/store/apps/details?id=com.d4rk.qrcodescanner.plus"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="70"></a>
 
