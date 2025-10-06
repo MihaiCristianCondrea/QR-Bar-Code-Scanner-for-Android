@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="native_ad_help_unit_id" translatable="false">ca-app-pub-5294151573817700/3496454191</string>
-    <string name="native_ad_support_unit_id" translatable="false">ca-app-pub-5294151573817700/7143877553</string>
-    <string name="ad_banner_unit_id" translatable="false">ca-app-pub-5294151573817700/3821250346</string>
-    <string name="app_open_ad_unit_id" translatable="false">ca-app-pub-5294151573817700/9123330876</string>
+    <string name="native_ad_help_unit_id" translatable="false">ca-app-pub-5294151573817700/3212155804</string>
+    <string name="native_ad_support_unit_id" translatable="false">ca-app-pub-5294151573817700/3247938535</string>
+    <string name="native_ad_bottom_bar_unit_id" translatable="false">ca-app-pub-5294151573817700/4054464188</string>
+    <string name="native_ad_fallback_unit_id" translatable="false">ca-app-pub-5294151573817700/3247938535</string>
+    <string name="ad_banner_unit_id" translatable="false">ca-app-pub-5294151573817700/5823012328</string>
+    <string name="app_open_ad_unit_id" translatable="false">ca-app-pub-5294151573817700/8044468099</string>
 </resources>

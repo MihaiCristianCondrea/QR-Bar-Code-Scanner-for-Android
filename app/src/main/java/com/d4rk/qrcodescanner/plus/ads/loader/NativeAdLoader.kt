@@ -62,13 +62,14 @@ object NativeAdLoader {
     }
 
     private fun populateNativeAdView(nativeAd: NativeAd, adView: NativeAdView) {
-        val mediaView = adView.findViewById<MediaView?>(R.id.ad_media) // FIXME: Unresolved reference 'ad_media'.
+        val mediaCard = adView.findViewById<View?>(R.id.media_card)
+        val mediaView = adView.findViewById<MediaView?>(R.id.ad_media)
         val headlineView = adView.findViewById<TextView?>(R.id.ad_headline)
         val bodyView = adView.findViewById<TextView?>(R.id.ad_body)
         val callToActionView = adView.findViewById<Button?>(R.id.ad_call_to_action)
         val iconView = adView.findViewById<ImageView?>(R.id.ad_app_icon)
         val attributionView = adView.findViewById<TextView?>(R.id.ad_attribution)
-        val adChoicesView = adView.findViewById<AdChoicesView?>(R.id.ad_choices) // FIXME: Unresolved reference 'ad_choices'.
+        val adChoicesView = adView.findViewById<AdChoicesView?>(R.id.ad_choices)
 
         mediaView?.let { adView.mediaView = it }
         headlineView?.let {
@@ -118,16 +119,19 @@ object NativeAdLoader {
             adView.advertiserView = it
         }
 
-        adChoicesView?.let { adView.adChoicesView = it }
+        adChoicesView?.let {
+            it.visibility = View.VISIBLE
+            adView.adChoicesView = it
+        }
 
-        mediaView?.let {
-            val mediaContent = nativeAd.mediaContent
-            if (mediaContent == null) {
-                it.visibility = View.GONE
-            } else {
-                it.visibility = View.VISIBLE
-                it.mediaContent = mediaContent
-            }
+        val mediaContent = nativeAd.mediaContent
+        if (mediaView != null && mediaContent != null) {
+            mediaView.visibility = View.VISIBLE
+            mediaView.mediaContent = mediaContent
+            mediaCard?.visibility = View.VISIBLE
+        } else {
+            mediaView?.visibility = View.GONE
+            mediaCard?.visibility = View.GONE
         }
 
         adView.setNativeAd(nativeAd)

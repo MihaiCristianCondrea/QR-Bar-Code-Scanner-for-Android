@@ -380,7 +380,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     ads:adSize="FULL_BANNER"
-                    ads:adUnitId="ca-app-pub-5294151573817700/5823012328"/>
+                    ads:adUnitId="@string/ad_banner_unit_id"/>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
