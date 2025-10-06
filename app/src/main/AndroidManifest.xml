@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"
+        tools:ignore="AdvertisingIdPolicy" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -13,12 +14,12 @@
         android:name="android.permission.CAMERA"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
     <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"
+        tools:ignore="ForegroundServicesPolicy" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -49,10 +50,10 @@
         android:theme="@style/AppTheme"
         tools:targetApi="33">
         <activity
-            android:name=".ui.startup.StartupActivity"
+            android:name=".ui.screens.startup.StartupActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.screens.main.MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:theme="@style/SplashScreenTheme">
@@ -68,25 +69,25 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".ui.settings.help.HelpActivity"
+            android:name=".ui.screens.settings.help.HelpActivity"
             android:exported="false"
             android:label="@string/help"
-            android:parentActivityName=".ui.settings.help.HelpActivity" />
+            android:parentActivityName=".ui.screens.settings.help.HelpActivity" />
         <activity
-            android:name=".ui.settings.SettingsActivity"
+            android:name=".ui.screens.settings.SettingsActivity"
             android:exported="false"
             android:label="@string/settings"
-            android:parentActivityName=".ui.settings.SettingsActivity">
+            android:parentActivityName=".ui.screens.settings.SettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.scan.file.ScanBarcodeFromFileActivity"
+            android:name=".ui.screens.scan.file.ScanBarcodeFromFileActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:label="@string/scan_image"
-            android:parentActivityName=".ui.scan.file.ScanBarcodeFromFileActivity"
+            android:parentActivityName=".ui.screens.scan.file.ScanBarcodeFromFileActivity"
             tools:ignore="AppLinkUrlError">
             <intent-filter android:label="@string/scan_image">
                 <action android:name="android.intent.action.SEND" />
@@ -100,7 +101,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.create.CreateBarcodeActivity"
+            android:name=".ui.screens.create.CreateBarcodeActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:theme="@style/AppTheme"
@@ -117,66 +118,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.create.qr.CreateQrCodeAllActivity"
+            android:name=".ui.screens.create.qr.CreateQrCodeAllActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/create_qr_code"
-            android:parentActivityName=".ui.create.qr.CreateQrCodeAllActivity" />
+            android:label="@string/create_qr_code" />
         <activity
-            android:name=".ui.create.barcode.CreateBarcodeAllActivity"
+            android:name=".ui.screens.create.barcode.CreateBarcodeAllActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/create_barcode"
-            android:parentActivityName=".ui.create.barcode.CreateBarcodeAllActivity" />
+            android:label="@string/create_barcode" />
         <activity
-            android:name=".feature.barcode.BarcodeActivity"
+            android:name=".ui.screens.barcode.BarcodeActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".feature.barcode.BarcodeImageActivity"
+            android:name=".ui.screens.barcode.BarcodeImageActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".feature.barcode.otp.OtpActivity"
+            android:name=".ui.screens.barcode.otp.OtpActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/otp"
-            android:parentActivityName=".feature.barcode.otp.OtpActivity" />
+            android:label="@string/otp" />
         <activity
-            android:name=".feature.barcode.save.SaveBarcodeAsTextActivity"
+            android:name=".ui.screens.barcode.save.SaveBarcodeAsTextActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/save"
-            android:parentActivityName=".feature.barcode.save.SaveBarcodeAsTextActivity" />
+            android:label="@string/save" />
         <activity
-            android:name=".feature.barcode.save.SaveBarcodeAsImageActivity"
+            android:name=".ui.screens.barcode.save.SaveBarcodeAsImageActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/save"
-            android:parentActivityName=".feature.barcode.save.SaveBarcodeAsImageActivity" />
+            android:label="@string/save" />
         <activity
-            android:name=".ui.history.export.ExportHistoryActivity"
+            android:name=".ui.screens.history.export.ExportHistoryActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/export_history"
-            android:parentActivityName=".ui.history.export.ExportHistoryActivity" />
+            android:label="@string/export_history" />
         <activity
-            android:name=".ui.settings.camera.ChooseCameraActivity"
+            android:name=".ui.screens.settings.camera.ChooseCameraActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/camera"
-            android:parentActivityName=".ui.settings.camera.ChooseCameraActivity" />
+            android:label="@string/camera" />
         <activity
-            android:name=".ui.settings.formats.SupportedFormatsActivity"
+            android:name=".ui.screens.settings.formats.SupportedFormatsActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/supported_formats"
-            android:parentActivityName=".ui.settings.formats.SupportedFormatsActivity" />
+            android:label="@string/supported_formats" />
         <activity
-            android:name=".ui.settings.search.ChooseSearchEngineActivity"
+            android:name=".ui.screens.settings.search.ChooseSearchEngineActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/search_engines"
-            android:parentActivityName=".ui.settings.search.ChooseSearchEngineActivity" />
+            android:label="@string/search_engines" />
         <activity
-            android:name=".ui.settings.permissions.PermissionsActivity"
+            android:name=".ui.screens.settings.permissions.PermissionsActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/permissions"
-            android:parentActivityName=".ui.settings.permissions.PermissionsActivity" />
+            android:label="@string/permissions" />
 
         <service
-            android:name=".feature.tile.QuickSettingsTileService"
+            android:name=".ui.components.tiles.QuickSettingsTileService"
             android:exported="true"
             android:icon="@drawable/ic_scan"
             android:label="@string/app_name"

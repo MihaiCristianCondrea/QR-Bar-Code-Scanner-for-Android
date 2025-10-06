@@ -6,9 +6,5 @@ import com.google.android.material.navigation.NavigationBarView
  * Represents the state required to configure the navigation chrome of [MainActivity].
  */
 data class MainUiState(
-    @NavigationBarView.LabelVisibility val bottomNavVisibility: Int,
-    val defaultNavDestination: Int,
-    val themeMode: Int,
-    val languageTag: String?,
-    val themeChanged: Boolean
+    @NavigationBarView.LabelVisibility val bottomNavVisibility : Int , val defaultNavDestination : Int , val themeMode : Int , val languageTag : String? , val themeChanged : Boolean
 )

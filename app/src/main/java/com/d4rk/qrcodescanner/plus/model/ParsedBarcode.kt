@@ -1,17 +1,19 @@
 package com.d4rk.qrcodescanner.plus.model
+
+import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.model.schema.Bookmark
 import com.d4rk.qrcodescanner.plus.model.schema.Email
-import com.d4rk.qrcodescanner.plus.model.schema.App
-import com.d4rk.qrcodescanner.plus.model.schema.VEvent
-import com.d4rk.qrcodescanner.plus.model.schema.Sms
 import com.d4rk.qrcodescanner.plus.model.schema.MeCard
-import com.d4rk.qrcodescanner.plus.model.schema.Phone
-import com.d4rk.qrcodescanner.plus.model.schema.VCard
-import com.d4rk.qrcodescanner.plus.model.schema.Wifi
 import com.d4rk.qrcodescanner.plus.model.schema.NZCovidTracer
+import com.d4rk.qrcodescanner.plus.model.schema.Phone
+import com.d4rk.qrcodescanner.plus.model.schema.Sms
+import com.d4rk.qrcodescanner.plus.model.schema.VCard
+import com.d4rk.qrcodescanner.plus.model.schema.VEvent
+import com.d4rk.qrcodescanner.plus.model.schema.Wifi
 import com.google.zxing.BarcodeFormat
-class ParsedBarcode(barcode: Barcode) {
+
+class ParsedBarcode(barcode : Barcode) {
     var id = barcode.id
     var name = barcode.name
     val text = barcode.text
@@ -21,67 +23,66 @@ class ParsedBarcode(barcode: Barcode) {
     val date = barcode.date
     var isFavorite = barcode.isFavorite
     val country = barcode.country
-    var firstName: String? = null
-    var lastName: String? = null
-    var organization: String? = null
-    var jobTitle: String? = null
-    private var address: String? = null
-    var email: String? = null
-    var emailSubject: String? = null
-    var emailBody: String? = null
-    var emailType: String? = null
-    var secondaryEmail: String? = null
-    var secondaryEmailType: String? = null
-    var tertiaryEmail: String? = null
-    var tertiaryEmailType: String? = null
-    var note: String? = null
-    var phone: String? = null
-    var phoneType: String? = null
-    var secondaryPhone: String? = null
-    var secondaryPhoneType: String? = null
-    var tertiaryPhone: String? = null
-    var tertiaryPhoneType: String? = null
-    var smsBody: String? = null
-    var networkAuthType: String? = null
-    var networkName: String? = null
-    var networkPassword: String? = null
-    var isHidden: Boolean? = null
-    var anonymousIdentity: String? = null
-    var identity: String? = null
-    var eapMethod: String? = null
-    var phase2Method: String? = null
-    var bookmarkTitle: String? = null
-    var url: String? = null
-    var youtubeUrl: String? = null
-    var bitcoinUri: String? = null
-    var otpUrl: String? = null
-    var geoUri: String? = null
-    private var eventUid: String? = null
-    private var eventStamp: String? = null
-    private var eventOrganizer: String? = null
-    var eventDescription: String? = null
-    var eventLocation: String? = null
-    var eventSummary: String? = null
-    var eventStartDate: Long? = null
-    var eventEndDate: Long? = null
-    var appMarketUrl: String? = null
-    var appPackage: String? = null
-    val isInDb: Boolean get() = id != 0L
-    val isProductBarcode: Boolean
+    var firstName : String? = null
+    var lastName : String? = null
+    var organization : String? = null
+    var jobTitle : String? = null
+    private var address : String? = null
+    var email : String? = null
+    var emailSubject : String? = null
+    var emailBody : String? = null
+    var emailType : String? = null
+    var secondaryEmail : String? = null
+    var secondaryEmailType : String? = null
+    var tertiaryEmail : String? = null
+    var tertiaryEmailType : String? = null
+    var note : String? = null
+    var phone : String? = null
+    var phoneType : String? = null
+    var secondaryPhone : String? = null
+    var secondaryPhoneType : String? = null
+    var tertiaryPhone : String? = null
+    var tertiaryPhoneType : String? = null
+    var smsBody : String? = null
+    var networkAuthType : String? = null
+    var networkName : String? = null
+    var networkPassword : String? = null
+    var isHidden : Boolean? = null
+    var anonymousIdentity : String? = null
+    var identity : String? = null
+    var eapMethod : String? = null
+    var phase2Method : String? = null
+    var bookmarkTitle : String? = null
+    var url : String? = null
+    var youtubeUrl : String? = null
+    var bitcoinUri : String? = null
+    var otpUrl : String? = null
+    var geoUri : String? = null
+    private var eventUid : String? = null
+    private var eventStamp : String? = null
+    private var eventOrganizer : String? = null
+    var eventDescription : String? = null
+    var eventLocation : String? = null
+    var eventSummary : String? = null
+    var eventStartDate : Long? = null
+    var eventEndDate : Long? = null
+    var appMarketUrl : String? = null
+    var appPackage : String? = null
+    val isInDb : Boolean get() = id != 0L
+    val isProductBarcode : Boolean
         get() = when (format) {
-            BarcodeFormat.EAN_8, BarcodeFormat.EAN_13, BarcodeFormat.UPC_A, BarcodeFormat.UPC_E -> true
+            BarcodeFormat.EAN_8 , BarcodeFormat.EAN_13 , BarcodeFormat.UPC_A , BarcodeFormat.UPC_E -> true
             else -> false
         }
+
     init {
         when (schema) {
             BarcodeSchema.BOOKMARK -> parseBookmark()
             BarcodeSchema.EMAIL -> parseEmail()
-            BarcodeSchema.GEO,
-            BarcodeSchema.GOOGLE_MAPS -> parseGeoInfo()
+            BarcodeSchema.GEO , BarcodeSchema.GOOGLE_MAPS -> parseGeoInfo()
             BarcodeSchema.APP -> parseApp()
             BarcodeSchema.VEVENT -> parseCalendar()
-            BarcodeSchema.MMS,
-            BarcodeSchema.SMS -> parseSms()
+            BarcodeSchema.MMS , BarcodeSchema.SMS -> parseSms()
             BarcodeSchema.MECARD -> parseMeCard()
             BarcodeSchema.PHONE -> parsePhone()
             BarcodeSchema.VCARD -> parseVCard()
@@ -90,29 +91,33 @@ class ParsedBarcode(barcode: Barcode) {
             BarcodeSchema.CRYPTOCURRENCY -> parseBitcoin()
             BarcodeSchema.OTP_AUTH -> parseOtp()
             BarcodeSchema.NZCOVIDTRACER -> parseNZCovidTracer()
-            BarcodeSchema.BOARDINGPASS,
-            BarcodeSchema.URL -> parseUrl()
+            BarcodeSchema.BOARDINGPASS , BarcodeSchema.URL -> parseUrl()
             else -> {}
         }
     }
+
     private fun parseBookmark() {
         val bookmark = Bookmark.parse(text) ?: return
         bookmarkTitle = bookmark.title
         url = bookmark.url
     }
+
     private fun parseEmail() {
         val email = Email.parse(text) ?: return
         this.email = email.email
         emailSubject = email.subject
         emailBody = email.body
     }
+
     private fun parseGeoInfo() {
         geoUri = text
     }
+
     private fun parseApp() {
         appMarketUrl = text
         appPackage = App.parse(text)?.appPackage
     }
+
     private fun parseCalendar() {
         val calendar = VEvent.parse(text) ?: return
         eventUid = calendar.uid
@@ -124,14 +129,17 @@ class ParsedBarcode(barcode: Barcode) {
         eventStartDate = calendar.startDate
         eventEndDate = calendar.endDate
     }
+
     private fun parseSms() {
         val sms = Sms.parse(text) ?: return
         phone = sms.phone
         smsBody = sms.message
     }
+
     private fun parsePhone() {
         phone = Phone.parse(text)?.phone
     }
+
     private fun parseMeCard() {
         val meCard = MeCard.parse(text) ?: return
         firstName = meCard.firstName
@@ -141,6 +149,7 @@ class ParsedBarcode(barcode: Barcode) {
         email = meCard.email
         note = meCard.note
     }
+
     private fun parseVCard() {
         val vCard = VCard.parse(text) ?: return
         firstName = vCard.firstName
@@ -162,6 +171,7 @@ class ParsedBarcode(barcode: Barcode) {
         tertiaryEmail = vCard.tertiaryEmail
         tertiaryEmailType = vCard.tertiaryEmailType
     }
+
     private fun parseWifi() {
         val wifi = Wifi.parse(text) ?: return
         networkAuthType = wifi.encryption
@@ -173,21 +183,26 @@ class ParsedBarcode(barcode: Barcode) {
         eapMethod = wifi.eapMethod
         phase2Method = wifi.phase2Method
     }
+
     private fun parseYoutube() {
         youtubeUrl = text
     }
+
     private fun parseBitcoin() {
         bitcoinUri = text
     }
+
     private fun parseOtp() {
         otpUrl = text
     }
+
     private fun parseUrl() {
         url = text
     }
+
     private fun parseNZCovidTracer() {
         val objNZCovidTracer = NZCovidTracer.parse(text) ?: return
         address = objNZCovidTracer.addr
-        url = "http://maps.google.com/maps?q=" + (objNZCovidTracer.addr)?.replace("\n", ", ")
+        url = "http://maps.google.com/maps?q=" + (objNZCovidTracer.addr)?.replace("\n" , ", ")
     }
 }

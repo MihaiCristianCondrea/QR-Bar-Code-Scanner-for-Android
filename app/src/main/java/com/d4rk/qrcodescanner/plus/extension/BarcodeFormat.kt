@@ -1,7 +1,9 @@
 package com.d4rk.qrcodescanner.plus.extension
+
 import com.d4rk.qrcodescanner.plus.R
 import com.google.zxing.BarcodeFormat
-fun BarcodeFormat.toStringId(): Int {
+
+fun BarcodeFormat.toStringId() : Int {
     return when (this) {
         BarcodeFormat.AZTEC -> R.string.aztec
         BarcodeFormat.CODABAR -> R.string.codabar
@@ -19,7 +21,8 @@ fun BarcodeFormat.toStringId(): Int {
         else -> R.string.qr_code
     }
 }
-fun BarcodeFormat.toImageId(): Int {
+
+fun BarcodeFormat.toImageId() : Int {
     return when (this) {
         BarcodeFormat.QR_CODE -> R.drawable.ic_qr_code_white
         BarcodeFormat.DATA_MATRIX -> R.drawable.ic_data_matrix

@@ -17,7 +17,7 @@
         <intent
             android:action=".SCAN_FROM_FILE"
             android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.scan.file.ScanBarcodeFromFileActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.scan.file.ScanBarcodeFromFileActivity"/>
     </shortcut>
     <shortcut
         android:shortcutId="createBarcode"
@@ -27,7 +27,7 @@
         <intent
             android:action=".CREATE_BARCODE"
             android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.MainActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"/>
     </shortcut>
     <shortcut
         android:shortcutId="history"
@@ -37,6 +37,6 @@
         <intent
             android:action=".HISTORY"
             android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.MainActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"/>
     </shortcut>
 </shortcuts>

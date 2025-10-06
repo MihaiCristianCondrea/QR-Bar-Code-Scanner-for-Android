@@ -6,17 +6,17 @@
     app:startDestination="@+id/navigation_scan">
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.d4rk.qrcodescanner.plus.ui.scan.ScanBarcodeFromCameraFragment"
+        android:name="com.d4rk.qrcodescanner.plus.ui.screens.scan.ScanBarcodeFromCameraFragment"
         android:label="@string/scan"
         tools:layout="@layout/fragment_scan_barcode_from_camera"/>
     <fragment
         android:id="@+id/navigation_create"
-        android:name="com.d4rk.qrcodescanner.plus.ui.create.CreateBarcodeFragment"
+        android:name="com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeFragment"
         android:label="@string/create"
         tools:layout="@layout/fragment_create_barcode"/>
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.d4rk.qrcodescanner.plus.ui.history.BarcodeHistoryFragment"
+        android:name="com.d4rk.qrcodescanner.plus.ui.screens.history.BarcodeHistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_barcode_history"/>
 </navigation>

@@ -1,7 +1,9 @@
 package com.d4rk.qrcodescanner.plus.extension
+
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
-fun BarcodeSchema.toImageId(): Int? {
+
+fun BarcodeSchema.toImageId() : Int? {
     return when (this) {
         BarcodeSchema.BOOKMARK -> R.drawable.ic_bookmark
         BarcodeSchema.CRYPTOCURRENCY -> R.drawable.ic_bitcoin
@@ -22,7 +24,8 @@ fun BarcodeSchema.toImageId(): Int? {
         else -> null
     }
 }
-fun BarcodeSchema.toStringId(): Int? {
+
+fun BarcodeSchema.toStringId() : Int? {
     return when (this) {
         BarcodeSchema.BOOKMARK -> R.string.bookmark
         BarcodeSchema.CRYPTOCURRENCY -> R.string.bitcoin

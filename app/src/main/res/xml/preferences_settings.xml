@@ -93,14 +93,14 @@
             app:icon="@drawable/ic_camera_switch">
             <intent
                 android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.settings.camera.ChooseCameraActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.camera.ChooseCameraActivity"/>
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:title="@string/supported_formats"
             app:icon="@drawable/ic_camera">
             <intent
                 android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.settings.formats.SupportedFormatsActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.formats.SupportedFormatsActivity"/>
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
@@ -150,7 +150,7 @@
             app:summary="@string/summary_preference_settings_search_engines">
             <intent
                 android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.settings.search.ChooseSearchEngineActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.search.ChooseSearchEngineActivity"/>
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
@@ -204,7 +204,7 @@
             app:title="@string/permissions">
             <intent
                 android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.settings.permissions.PermissionsActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"/>
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:key="open_source_licenses"
@@ -215,7 +215,7 @@
             app:title="@string/help_and_feedback">
             <intent
                 android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.settings.help.HelpActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.help.HelpActivity"/>
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:icon="@drawable/ic_license"
@@ -239,14 +239,6 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://play.google.com/store/apps/dev?id=5390214922640123642"/>
-        </androidx.preference.Preference>
-        <androidx.preference.Preference
-            app:icon="@drawable/ic_support"
-            app:title="@string/support_the_developer"
-            app:summary="@string/summary_preference_settings_support_developer">
-            <intent
-                android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.android.libs.apptoolkit.app.support.ui.SupportActivity"/>
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory

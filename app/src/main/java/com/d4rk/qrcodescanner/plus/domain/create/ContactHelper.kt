@@ -1,4 +1,5 @@
 package com.d4rk.qrcodescanner.plus.domain.create
+
 import android.annotation.SuppressLint
 import android.content.ContentResolver
 import android.content.Context
@@ -7,13 +8,14 @@ import android.database.Cursor
 import android.provider.ContactsContract
 import com.d4rk.qrcodescanner.plus.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.Contact
+
 object ContactHelper {
     private val PHONE_PROJECTION = arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER)
     private val CONTACT_PROJECTION = arrayOf(ContactsContract.Data.LOOKUP_KEY)
-    fun getPhone(context: Context, result: Intent?): String? {
+    fun getPhone(context : Context , result : Intent?) : String? {
         val uri = result?.data ?: return null
         val contentResolver = context.contentResolver
-        val cursor = contentResolver.query(uri, PHONE_PROJECTION, null, null, null) ?: return null
+        val cursor = contentResolver.query(uri , PHONE_PROJECTION , null , null , null) ?: return null
         if (cursor.moveToNext().not()) {
             cursor.close()
             return null
@@ -22,10 +24,11 @@ object ContactHelper {
         cursor.close()
         return phone
     }
-    fun getContact(context: Context, result: Intent?): Contact? {
+
+    fun getContact(context : Context , result : Intent?) : Contact? {
         val uri = result?.data ?: return null
         val contentResolver = context.contentResolver
-        val cursor = contentResolver.query(uri, CONTACT_PROJECTION, null, null, null) ?: return null
+        val cursor = contentResolver.query(uri , CONTACT_PROJECTION , null , null , null) ?: return null
         if (cursor.moveToNext().not()) {
             cursor.close()
             return null
@@ -36,21 +39,18 @@ object ContactHelper {
             return null
         }
         return Contact().also { contact ->
-            buildContactPhoneDetails(contentResolver, lookupKey, contact)
-            buildEmailDetails(contentResolver, lookupKey, contact)
-            buildAddressDetails(contentResolver, lookupKey, contact)
+            buildContactPhoneDetails(contentResolver , lookupKey , contact)
+            buildEmailDetails(contentResolver , lookupKey , contact)
+            buildAddressDetails(contentResolver , lookupKey , contact)
             cursor.close()
         }
     }
-    private fun buildContactPhoneDetails(contentResolver: ContentResolver, lookupKey: String, contact: Contact) {
+
+    private fun buildContactPhoneDetails(contentResolver : ContentResolver , lookupKey : String , contact : Contact) {
         val contactWhere = ContactsContract.Data.LOOKUP_KEY + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?"
-        val contactWhereParams = arrayOf(lookupKey, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+        val contactWhereParams = arrayOf(lookupKey , ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
         val cursor = contentResolver.query(
-            ContactsContract.Data.CONTENT_URI,
-            null,
-            contactWhere,
-            contactWhereParams,
-            null
+            ContactsContract.Data.CONTENT_URI , null , contactWhere , contactWhereParams , null
         ) ?: return
         if (cursor.count <= 0) {
             cursor.close()
@@ -71,15 +71,12 @@ object ContactHelper {
         contact.contactType = cursor.getIntOrNull(ContactsContract.CommonDataKinds.Phone.TYPE)
         cursor.close()
     }
-    private fun buildEmailDetails(contentResolver: ContentResolver, lookupKey: String, contact: Contact) {
+
+    private fun buildEmailDetails(contentResolver : ContentResolver , lookupKey : String , contact : Contact) {
         val emailWhere = ContactsContract.Data.LOOKUP_KEY + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?"
-        val emailWhereParams = arrayOf(lookupKey, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
+        val emailWhereParams = arrayOf(lookupKey , ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
         val cursor = contentResolver.query(
-            ContactsContract.Data.CONTENT_URI,
-            null,
-            emailWhere,
-            emailWhereParams,
-            null
+            ContactsContract.Data.CONTENT_URI , null , emailWhere , emailWhereParams , null
         ) ?: return
         if (cursor.moveToNext().not()) {
             cursor.close()
@@ -88,15 +85,12 @@ object ContactHelper {
         contact.email = cursor.getStringOrNull(ContactsContract.CommonDataKinds.Email.DATA)
         cursor.close()
     }
-    private fun buildAddressDetails(contentResolver: ContentResolver, lookupKey: String, contact: Contact) {
+
+    private fun buildAddressDetails(contentResolver : ContentResolver , lookupKey : String , contact : Contact) {
         val addressWhere = ContactsContract.Data.LOOKUP_KEY + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?"
-        val addressWhereParams = arrayOf(lookupKey, ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE)
+        val addressWhereParams = arrayOf(lookupKey , ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE)
         val cursor = contentResolver.query(
-            ContactsContract.Data.CONTENT_URI,
-            null,
-            addressWhere,
-            addressWhereParams,
-            null
+            ContactsContract.Data.CONTENT_URI , null , addressWhere , addressWhereParams , null
         ) ?: return
         if (cursor.moveToNext().not()) {
             cursor.close()
@@ -110,22 +104,25 @@ object ContactHelper {
         contact.country = cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY)
         contact.street = cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.STREET)
         contact.neighborhood = cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.NEIGHBORHOOD)
-        contact.formattedAddress =  cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.FORMATTED_ADDRESS)
+        contact.formattedAddress = cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.FORMATTED_ADDRESS)
         cursor.close()
     }
+
     @SuppressLint("Range")
-    private fun Cursor.getStringOrNull(columnName: String): String? {
+    private fun Cursor.getStringOrNull(columnName : String) : String? {
         return try {
             getString(getColumnIndex(columnName))
-        } catch (_: Exception) {
+        } catch (_ : Exception) {
             null
         }
     }
-    private fun Cursor.getIntOrNull(columnName: String): Int? {
+
+    private fun Cursor.getIntOrNull(columnName : String) : Int? {
         val columnIndex = getColumnIndex(columnName)
         return if (columnIndex >= 0) {
             getInt(columnIndex)
-        } else {
+        }
+        else {
             null
         }
     }

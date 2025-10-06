@@ -1,4 +1,5 @@
 package com.d4rk.qrcodescanner.plus.di
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.d4rk.qrcodescanner.plus.QrCodeScanner
@@ -15,6 +16,7 @@ import com.d4rk.qrcodescanner.plus.domain.scan.ScannerCameraHelper
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.utils.PermissionsHelper
 import com.d4rk.qrcodescanner.plus.utils.RotationHelper
+
 val QrCodeScanner.settings get() = Settings.getInstance(applicationContext)
 val barcodeParser get() = BarcodeParser
 val barcodeImageScanner get() = BarcodeImageScanner
@@ -23,11 +25,11 @@ val barcodeSaver get() = BarcodeSaver
 val barcodeImageSaver get() = BarcodeImageSaver
 val wifiConnector get() = WifiConnector
 val otpGenerator get() = OTPGenerator
-val AppCompatActivity.barcodeDatabase get() = BarcodeDatabaseFactory.getInstance(this) // FIXME: Unresolved reference 'getInstance'.
+val AppCompatActivity.barcodeDatabase get() = BarcodeDatabaseFactory.getInstance(this)
 val AppCompatActivity.settings get() = Settings.getInstance(this)
 val contactHelper get() = ContactHelper
 val permissionsHelper get() = PermissionsHelper
 val rotationHelper get() = RotationHelper
 val scannerCameraHelper get() = ScannerCameraHelper
-val Fragment.barcodeDatabase get() = BarcodeDatabaseFactory.getInstance(requireContext()) // FIXME: Unresolved reference 'getInstance'.
+val Fragment.barcodeDatabase get() = BarcodeDatabaseFactory.getInstance(requireContext())
 val Fragment.settings get() = Settings.getInstance(requireContext())
