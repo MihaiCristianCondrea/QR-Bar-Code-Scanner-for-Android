@@ -1,11 +1,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_preferences"
-        android:title="@string/preferences"
-        android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom"/>
-    <item
         android:id="@+id/support"
         android:title="@string/support_the_developer"
         android:icon="@drawable/ic_support"

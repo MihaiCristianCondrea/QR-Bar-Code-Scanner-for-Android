@@ -113,11 +113,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menu_preferences -> {
-                showPreferencesBottomSheet()
-                true
-            }
-
             R.id.support -> {
                 true
             }
@@ -159,7 +154,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (binding.adView.isVisible) {
-            binding.adView.loadBannerAd(adRequest)
+            binding.adView.loadAd(adRequest)
         }
 
         startupScreen()
@@ -194,6 +189,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             currentNavIndex = navOrder.get(destination.id, currentNavIndex)
+            configureToolbarNavigation()
         }
 
         appBarConfiguration = AppBarConfiguration(
@@ -243,7 +239,7 @@ class MainActivity : AppCompatActivity() {
             navigationBar.isVisible = true
             adBanner.isVisible = true
             applyBottomBarInsets(navigationBar)
-            adBanner.loadBannerAd(adRequest)
+            adBanner.loadAd(adRequest)
         }
 
         navigationRail.setupWithNavController(navController)
