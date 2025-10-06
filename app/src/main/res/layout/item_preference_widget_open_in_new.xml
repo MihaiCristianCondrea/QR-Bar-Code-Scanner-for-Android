@@ -10,8 +10,6 @@
     android:focusable="false"
     android:focusableInTouchMode="false"
     android:importantForAccessibility="no"
-    android:tooltipText="@string/lesson_open_in_browser"
-    android:contentDescription="@string/lesson_open_in_browser"
     android:duplicateParentState="true"
     app:icon="@drawable/ic_open_in_new"
     tools:targetApi="26" />

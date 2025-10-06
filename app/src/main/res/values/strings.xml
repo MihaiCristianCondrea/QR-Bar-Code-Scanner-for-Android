@@ -103,6 +103,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="more_apps">More apps…</string>
     <string name="support_the_developer">Support the developer</string>
+    <string name="preferences">Preferences</string>
     <string name="support_us">Support Us</string>
     <string name="paid_support">Paid Support</string>
     <string name="non_paid_support">Non-Paid Support</string>

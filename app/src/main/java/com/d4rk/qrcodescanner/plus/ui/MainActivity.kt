@@ -20,6 +20,7 @@ import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
+import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
 import com.d4rk.qrcodescanner.plus.notifications.AppUpdateNotificationsManager
 import com.d4rk.qrcodescanner.plus.notifications.AppUsageNotificationsManager
 import com.d4rk.qrcodescanner.plus.ui.settings.SettingsActivity
@@ -27,6 +28,7 @@ import com.d4rk.qrcodescanner.plus.ui.settings.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.startup.StartupActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -60,39 +62,6 @@ class MainActivity : AppCompatActivity() {
         appUpdateManager = AppUpdateManagerFactory.create(this)
         appUpdateNotificationsManager = AppUpdateNotificationsManager(this)
 
-        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-            val handled = when (menuItem.itemId) {
-                R.id.drawer_settings -> {
-                    startActivity(Intent(this, SettingsActivity::class.java))
-                    true
-                }
-                R.id.drawer_help -> {
-                    startActivity(Intent(this, HelpActivity::class.java))
-                    true
-                }
-                R.id.drawer_updates -> {
-                    startActivity(Intent(Intent.ACTION_VIEW, changelogUrl.toUri()))
-                    true
-                }
-                R.id.drawer_share -> {
-                    val sharingIntent = Intent(Intent.ACTION_SEND).apply {
-                        type = "text/plain"
-                        putExtra(
-                            Intent.EXTRA_TEXT,
-                            "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
-                        )
-                        putExtra(Intent.EXTRA_SUBJECT, R.string.share_subject)
-                    }
-                    startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_using)))
-                    true
-                }
-                else -> false
-            }
-            if (handled) {
-                binding.drawerLayout.closeDrawers()
-            }
-            handled
-        }
         applyAppSettings()
     }
 
@@ -137,8 +106,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_scan, R.id.navigation_create, R.id.navigation_history),
-            binding.drawerLayout
+            setOf(R.id.navigation_scan, R.id.navigation_create, R.id.navigation_history)
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -151,8 +119,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
+            R.id.menu_preferences -> {
+                showPreferencesBottomSheet()
                 true
             }
             R.id.support -> {
@@ -186,6 +154,42 @@ class MainActivity : AppCompatActivity() {
             }
         }
         startupScreen()
+    }
+
+    private fun showPreferencesBottomSheet() {
+        val bottomSheetBinding = LayoutPreferencesBottomSheetBinding.inflate(layoutInflater)
+        val bottomSheetDialog = BottomSheetDialog(this)
+        bottomSheetDialog.setContentView(bottomSheetBinding.root)
+
+        bottomSheetBinding.buttonSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetBinding.buttonHelp.setOnClickListener {
+            startActivity(Intent(this, HelpActivity::class.java))
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetBinding.buttonUpdates.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, changelogUrl.toUri()))
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetBinding.buttonShare.setOnClickListener {
+            val sharingIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
+                )
+                putExtra(Intent.EXTRA_SUBJECT, R.string.share_subject)
+            }
+            startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_using)))
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.show()
     }
 
     private fun startupScreen() {
