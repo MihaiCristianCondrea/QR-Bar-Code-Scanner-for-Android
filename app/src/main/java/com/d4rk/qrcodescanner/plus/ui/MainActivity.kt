@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
@@ -18,7 +17,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
-import com.d4rk.android.libs.apptoolkit.app.support.ui.SupportActivity
 import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
@@ -158,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.support -> {
-                startActivity(Intent(this, SupportActivity::class.java))
+              //  startActivity(Intent(this, SupportActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
