@@ -1,1 +1,0 @@
-package com.d4rk.qrcodescanner.plus.ui.history

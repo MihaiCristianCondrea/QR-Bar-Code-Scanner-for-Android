@@ -3,7 +3,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
-import com.d4rk.qrcodescanner.plus.usecase.BarcodeDatabaseTypeConverter
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabaseTypeConverter
 import com.google.zxing.BarcodeFormat
 import java.io.Serializable
 @Entity(tableName = "codes")

@@ -1,6 +1,6 @@
 package com.d4rk.qrcodescanner.plus.model
 import androidx.room.TypeConverters
-import com.d4rk.qrcodescanner.plus.usecase.BarcodeDatabaseTypeConverter
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabaseTypeConverter
 import com.google.zxing.BarcodeFormat
 @TypeConverters(BarcodeDatabaseTypeConverter::class)
 data class ExportBarcode(
