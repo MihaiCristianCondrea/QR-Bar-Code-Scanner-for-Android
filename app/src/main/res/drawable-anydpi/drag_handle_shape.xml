@@ -1,0 +1,6 @@
+<!-- drag_handle_shape.xml in res/drawable -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="?attr/colorSurfaceInverse" />
+    <corners android:radius="100dp" />
+</shape>
