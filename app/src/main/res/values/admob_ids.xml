@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="native_ad_help_unit_id" translatable="false">ca-app-pub-5294151573817700/3496454191</string>
+    <string name="native_ad_support_unit_id" translatable="false">ca-app-pub-5294151573817700/7143877553</string>
+    <string name="ad_banner_unit_id" translatable="false">ca-app-pub-5294151573817700/3821250346</string>
+    <string name="app_open_ad_unit_id" translatable="false">ca-app-pub-5294151573817700/9123330876</string>
+</resources>

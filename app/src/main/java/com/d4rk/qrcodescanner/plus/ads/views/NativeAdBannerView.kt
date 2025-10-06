@@ -45,11 +45,17 @@ class NativeAdBannerView @JvmOverloads constructor(
 
     fun loadAd(request : AdRequest , listener : AdListener?) {
         NativeAdLoader.load(
-            context = context , container = this , layoutRes = layoutRes , adUnitId = adUnitId , adRequest = request , listener = listener
-        ) { loadedAd ->
-            nativeAd?.destroy()
-            nativeAd = loadedAd
-        }
+            context = context,
+            container = this,
+            layoutRes = layoutRes,
+            adRequest = request,
+            listener = listener,
+            adUnitId = adUnitId,
+            onNativeAdLoaded = { loadedAd ->
+                nativeAd?.destroy()
+                nativeAd = loadedAd
+            }
+        )
     }
 
     fun setNativeAdLayout(@LayoutRes layoutRes : Int) {
