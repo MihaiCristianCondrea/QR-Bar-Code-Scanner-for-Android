@@ -2,12 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ad_card"
-    style="@style/Widget.App.CardView.Clover"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/default_margin"
-    android:layout_marginEnd="@dimen/default_margin"
-    android:layout_marginBottom="@dimen/default_margin"
     app:cardElevation="0dp"
     app:strokeWidth="0dp">
 
