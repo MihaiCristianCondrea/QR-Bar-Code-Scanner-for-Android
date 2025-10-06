@@ -45,12 +45,23 @@ class PreferenceListAdapter<T : Any>(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder) {
-            is CategoryViewHolder -> holder.bind(getItem(position) as PreferenceListItem.Category)
-            is ActionViewHolder -> holder.bind( // FIXME: One type argument expected. Use class 'ActionViewHolder' if you do not intend to pass type arguments. && Unresolved reference 'bind'.
-                getItem(position) as PreferenceListItem.Action<T>,
-                isFirstItemInSection(position),
-                isLastItemInSection(position)
+        val item = getItem(position)
+        when {
+            holder is CategoryViewHolder && item is PreferenceListItem.Category -> {
+                holder.bind(item)
+            }
+
+            holder is PreferenceListAdapter<*>.ActionViewHolder && item is PreferenceListItem.Action<*> -> {
+                @Suppress("UNCHECKED_CAST")
+                holder.bind(
+                    item as PreferenceListItem.Action<T> as PreferenceListItem.Action<out Any>,
+                    isFirstItemInSection(position),
+                    isLastItemInSection(position)
+                )
+            }
+
+            else -> error(
+                "Unsupported combination: ${holder::class.java.simpleName} cannot bind ${item::class.java.simpleName}"
             )
         }
     }
@@ -78,8 +89,8 @@ class PreferenceListAdapter<T : Any>(
         private val onActionClicked: (T) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: PreferenceListItem.Action<T>, first: Boolean, last: Boolean) {
-            binding.lessonCard.setOnClickListener { onActionClicked(item.action) }
+        fun bind(item: PreferenceListItem.Action<out Any>, first: Boolean, last: Boolean) {
+            binding.lessonCard.setOnClickListener { onActionClicked(item.action as T) }
             if (item.iconRes != 0) {
                 binding.icon.setImageResource(item.iconRes)
                 binding.icon.isVisible = true
