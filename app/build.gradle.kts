@@ -144,11 +144,6 @@ android {
     }
 }
 dependencies {
-    // App Core
-    implementation(dependencyNotation = "com.github.D4rK7355608:AppToolkit:1.0.38") {
-        isTransitive = true
-    }
-
     // KSP TODO: Make them bundle
     ksp(dependencyNotation = libs.androidx.room.compiler)
     implementation(dependencyNotation = libs.androidx.room.ktx)
