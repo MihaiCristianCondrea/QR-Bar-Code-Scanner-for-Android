@@ -6,9 +6,9 @@
 
 **The perfect QR code scanner for anyone who wants a fast and versatile app.**
 
-Scan and Generate QR/Bar Codes with Ease! Introducing D4rK QR & Bar Code Scanner for Android, the
+Scan and Generate QR/Bar Codes with Ease! Introducing QR & Bar Code Scanner for Android, the
 reliable and user-friendly app that streamlines QR code scanning and generation on Android devices.
-Powered by the trusted ZXing scanning library, our app offers a secure and seamless experience.
+Powered by the trusted [ZXing scanning library](https://github.com/zxing/zxing), our app offers a secure and seamless experience.
 
 Our app is designed to be easy to use and lightweight. Plus, it's free and open‑source!
 
