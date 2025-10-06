@@ -161,22 +161,22 @@ class MainActivity : AppCompatActivity() {
         val bottomSheetDialog = BottomSheetDialog(this)
         bottomSheetDialog.setContentView(bottomSheetBinding.root)
 
-        bottomSheetBinding.buttonSettings.setOnClickListener {
+        bottomSheetBinding.menuSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
             bottomSheetDialog.dismiss()
         }
 
-        bottomSheetBinding.buttonHelp.setOnClickListener {
+        bottomSheetBinding.menuHelpFeedback.setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
             bottomSheetDialog.dismiss()
         }
 
-        bottomSheetBinding.buttonUpdates.setOnClickListener {
+        bottomSheetBinding.menuUpdates.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, changelogUrl.toUri()))
             bottomSheetDialog.dismiss()
         }
 
-        bottomSheetBinding.buttonShare.setOnClickListener {
+        bottomSheetBinding.menuShare.setOnClickListener {
             val sharingIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(
