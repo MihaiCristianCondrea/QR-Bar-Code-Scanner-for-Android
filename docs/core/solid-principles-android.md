@@ -1,15 +1,21 @@
 # SOLID Principles in Android Development with Kotlin
 
 ## Introduction
-SOLID is an acronym for five design principles that help create maintainable and scalable codebases. Applying these ideas in Android projects keeps features isolated, encourages extension without breaking existing behavior and makes code easier to test.
+
+SOLID is an acronym for five design principles that help create maintainable and scalable codebases.
+Applying these ideas in Android projects keeps features isolated, encourages extension without
+breaking existing behavior and makes code easier to test.
 
 ## Single Responsibility Principle
-Each class should have one reason to change. Splitting responsibilities into distinct components improves clarity and testability.
+
+Each class should have one reason to change. Splitting responsibilities into distinct components
+improves clarity and testability.
 
 ### Violation
+
 ```kotlin
 class ItemManager(private val context: Context) {
-    private val items = mutableListOf<Item>()
+    private val items: MutableList<Item> = mutableListOf()
 
     fun retrieveAndDisplayItems() {
         val items = retrieveItemsFromServer()
@@ -18,7 +24,9 @@ class ItemManager(private val context: Context) {
         recyclerView.adapter = adapter
     }
 
-    fun retrieveItemsFromServer(): List<Item> = emptyList()
+    fun retrieveItemsFromServer(): List<Item> {
+        return emptyList()
+    }
 
     fun storeItemsLocally(items: List<Item>) {
         // Save items to the local database
@@ -27,10 +35,12 @@ class ItemManager(private val context: Context) {
 ```
 
 ### Adherence
+
 ```kotlin
 class ItemRepository {
     fun fetchItems(): List<Item> {
         // Fetch items from a server or database
+        return emptyList()
     }
 
     fun saveItems(items: List<Item>) {
@@ -40,16 +50,16 @@ class ItemRepository {
 ```
 
 ## Open-Closed Principle
-Software entities should be open for extension and closed for modification. Favor abstraction so new behavior can be added without altering existing code.
+
+Software entities should be open for extension and closed for modification. Favor abstraction so new
+behavior can be added without altering existing code.
 
 ### Violation
+
 ```kotlin
 class ItemService {
     fun calculateTotalPrice(cart: List<Item>, discount: Double): Double {
-        var totalPrice = 0.0
-        for (item in cart) {
-            totalPrice += item.price
-        }
+        var totalPrice = cart.sumOf { it.price }
         totalPrice *= (1.0 - discount)
         return totalPrice
     }
@@ -57,6 +67,7 @@ class ItemService {
 ```
 
 ### Adherence
+
 ```kotlin
 interface PriceCalculator {
     fun calculateTotalPrice(cart: List<Product>): Double
@@ -64,11 +75,7 @@ interface PriceCalculator {
 
 class BasicPriceCalculator : PriceCalculator {
     override fun calculateTotalPrice(cart: List<Product>): Double {
-        var totalPrice = 0.0
-        for (product in cart) {
-            totalPrice += product.price
-        }
-        return totalPrice
+        return cart.sumOf { it.price }
     }
 }
 
@@ -82,9 +89,11 @@ class DiscountedPriceCalculator(private val discount: Double) : PriceCalculator 
 ```
 
 ## Liskov Substitution Principle
+
 Subclasses must be replaceable for their base types without altering the correctness of the program.
 
 ### Violation
+
 ```kotlin
 open class Bird {
     open fun fly() {
@@ -100,6 +109,7 @@ class Dog : Bird() {
 ```
 
 ### Adherence
+
 ```kotlin
 open class Bird {
     open fun move() {
@@ -115,9 +125,12 @@ class Ostrich : Bird() {
 ```
 
 ## Interface Segregation Principle
-Clients should not be forced to implement methods they do not use. Split broad interfaces into focused ones.
+
+Clients should not be forced to implement methods they do not use. Split broad interfaces into
+focused ones.
 
 ### Violation
+
 ```kotlin
 interface Worker {
     fun work()
@@ -136,6 +149,7 @@ class SuperWorker : Worker {
 ```
 
 ### Adherence
+
 ```kotlin
 interface Workable {
     fun work()
@@ -150,6 +164,7 @@ class SuperWorker : Workable, Eatable {
         // Working behavior
     }
 
+
     override fun eat() {
         // Eating behavior
     }
@@ -157,9 +172,11 @@ class SuperWorker : Workable, Eatable {
 ```
 
 ## Dependency Inversion Principle
+
 High-level modules should depend on abstractions rather than concrete implementations.
 
 ### Violation
+
 ```kotlin
 class LightBulb {
     fun turnOn() {
@@ -177,6 +194,7 @@ class Switch {
 ```
 
 ### Adherence
+
 ```kotlin
 interface Switchable {
     fun turnOn()
@@ -196,4 +214,7 @@ class Switch(private val device: Switchable) {
 ```
 
 ## Conclusion
-Applying the SOLID principles in Android projects encourages separation of concerns, extensibility and decoupling. These guidelines lead to code that is easier to understand, test and evolve over time.
+
+Applying the SOLID principles in Android projects encourages separation of concerns, extensibility
+and decoupling. These guidelines lead to code that is easier to understand, test and evolve over
+time.

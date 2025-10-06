@@ -1,92 +1,82 @@
 # UI Components
 
-This page groups common Jetpack Compose components available in AppToolkit.
+This page groups common Android View components used in AppToolkit.
 
 ## Buttons
 
-Use buttons to trigger actions. Compose offers `Button`, `OutlinedButton`, and `IconButton`.
+Use buttons to trigger actions.
 
-AppToolkit wraps `IconButton`, `FilledIconButton`, `FilledTonalIconButton`, and `OutlinedIconButton` with
-Material 3's expressive shape morphing via `IconButtonDefaults.shapes()`, providing round-to-square
-transitions in response to interaction states.
+**XML**
 
-```kotlin
-Button(onClick = { /* handle action */ }) {
-    Text("Submit")
-}
+```xml
+
+<Button android:id="@+id/button_submit" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:text="Submit" />
 ```
 
-- **Theming:** Colors and typography derive from `MaterialTheme`.
-- **State management:** Enable or disable via a `Boolean` state and update the `onClick` action.
+**Kotlin**
+
+```kotlin
+val button = findViewById<Button>(R.id.button_submit)
+button.setOnClickListener {
+    // handle action
+}
+```
 
 ## Dialogs
 
 Dialogs display critical information or request decisions.
 
 ```kotlin
-var open by remember { mutableStateOf(true) }
-
-if (open) {
-    AlertDialog(
-        onDismissRequest = { open = false },
-        confirmButton = {
-            TextButton(onClick = { open = false }) { Text("OK") }
-        },
-        title = { Text("Title") },
-        text = { Text("Message") }
-    )
-}
+AlertDialog.Builder(context)
+    .setTitle("Title")
+    .setMessage("Message")
+    .setPositiveButton("OK") { _, _ -> }
+    .show()
 ```
-
-- **Theming:** Dialog shapes and colors follow `MaterialTheme` values.
-- **State management:** Track visibility with a mutable state variable.
 
 ## Form Fields
 
-Collect user input with fields like `TextField` or `OutlinedTextField`.
+Collect user input with `EditText`.
 
-```kotlin
-var name by remember { mutableStateOf("") }
+**XML**
 
-TextField(
-    value = name,
-    onValueChange = { name = it },
-    label = { Text("Name") }
-)
+```xml
+
+<EditText android:id="@+id/edit_name" android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 ```
 
-- **Theming:** Uses `MaterialTheme` for colors, shapes, and typography.
-- **State management:** Manage field values with `remember` and `mutableStateOf` or a view-model.
+**Kotlin**
+
+```kotlin
+val nameField = findViewById<EditText>(R.id.edit_name)
+val name = nameField.text.toString()
+```
 
 ## Layouts
 
-Arrange UI elements with layout composables such as `Column`, `Row`, and `Box`.
+Arrange UI elements with containers like `LinearLayout`.
 
-```kotlin
-Column(
-    modifier = Modifier.padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp)
-) {
-    Text("Header", style = MaterialTheme.typography.titleLarge)
-    Button(onClick = { /* action */ }) { Text("Tap") }
-}
+**XML**
+
+```xml
+
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp">
+    <TextView android:id="@+id/header" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="Header" />
+    <Button android:id="@+id/button_tap" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="Tap" />
+</LinearLayout>
 ```
-
-- **Theming:** Spacing and typography should reference `MaterialTheme` dimensions and text styles.
-- **State management:** Layouts themselves hold no state but position stateful children.
 
 ## Feedback
 
-Provide feedback with components like `Snackbar` or `CircularProgressIndicator`.
+Provide feedback with components like `Snackbar` or progress indicators.
 
 ```kotlin
-Scaffold { innerPadding ->
-    SnackbarHost(hostState = remember { SnackbarHostState() })
-    // content
-}
+Snackbar.make(view, "Message", Snackbar.LENGTH_SHORT).show()
 ```
-
-- **Theming:** Adapts to `MaterialTheme` for colors and elevation.
-- **State management:** `SnackbarHostState` controls message queue.
 
 Return to [[Home]].

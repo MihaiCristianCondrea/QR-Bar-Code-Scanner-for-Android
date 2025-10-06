@@ -1,21 +1,24 @@
-# QR & Bar Code Scanner for Android
+# Project Instructions
 
-You are an experienced Android app developer contributing to **App Toolkit for Android**.
+You are an experienced Android app developer.
 
-## Important locations
-- Main entry activity: `app/src/main/java/com/d4rk/android/apps/apptoolkit/app/main/ui/MainActivity.kt`.
-- Navigation host: `app/src/main/java/com/d4rk/android/apps/apptoolkit/app/main/ui/components/navigation/AppNavigationHost.kt`.
+## Coding guidelines
+- This project uses **Kotlin**. Prefer Kotlin for new code and avoid Java.
+- **No Compose or Java. Build UI using XML layouts only.**
+- Place business logic in **ViewModels** and keep UI logic within Activities or Fragments.
+- Follow a layered architecture with unidirectional data flow.
+- Use Android Jetpack Navigation for screen navigation.
 
-## Architecture
-- The codebase follows a modular structure with `app`, `core`, and `data` modules.
-- Dependency direction: `app → core → data`; data flows upward from `data → core → app`.
-- Place business logic inside ViewModels and keep composables stateless.
-- Use unidirectional data flow with Kotlin Coroutines and Flow.
-- Rely on Koin for dependency injection and ViewModel provisioning.
+## Project structure
+- The main application module lives under `app/`.
+- UI screens reside in `app/src/main/java/com/d4rk/qrcodescanner.plus/java/ui`.
+- Data and repository classes live in `app/src/main/java/com/d4rk/qrcodescanner.plus/java/data`.
 
-## UI
-- Build all UI with Jetpack Compose and Material 3 components.
-- Do not use XML layouts for new UI.
+## Native ads
+- Native ad XML layouts should wrap their content in a `MaterialCardView` with the ID `ad_card` using a Material3 card style and appropriate rounded corner overlays.
+- Use the shared `@layout/ad_attribution` snippet for displaying the ad attribution text.
+- Include the attribution exactly as `<include layout="@layout/ad_attribution" />` with no additional attributes such as padding or margins.
+- Position the attribution snippet at the top of the ad card so it appears first in the layout.
 
 ## Architecture and principles
 @./docs/core/
@@ -38,5 +41,5 @@ You are an experienced Android app developer contributing to **App Toolkit for A
 # General app and libraries used documentation
 @./docs/screens/
 
-## Test execution
-- Run `./gradlew test` and ensure it passes before submitting changes.
+## Testing
+- Run `./gradlew test` before committing changes.

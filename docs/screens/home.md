@@ -1,6 +1,6 @@
-# AppToolkit Wiki
+# QR * Bar Code Scanner for Android Wiki
 
-Welcome to the **AppToolkit** wiki! This section provides extended documentation beyond the [README](/README.md).
+Welcome to the **QR * Bar Code Scanner for Android** wiki! This section provides extended documentation beyond the [README](../README.md).
 
 ## Available Pages
 
@@ -12,21 +12,16 @@ Welcome to the **AppToolkit** wiki! This section provides extended documentation
 - [[UI-Components]]
 
 ## Features
-- [[About]]
-- [[Ads]]
-- [[Advanced]]
-- [[Diagnostics]]
-- [[Display]]
-- [[Help]]
-- [[IssueReporter]]
-- [[Licenses]]
-- [[Main]]
-- [[Onboarding]]
-- [[Permissions]]
-- [[Privacy]]
-- [[Settings]]
-- [[Startup]]
+- [[Scan]]
+- [[Create]]
+- [[History]]
 - [[Support]]
-- [[Theme]]
+- [[Startup]]
+- [[Ads]]
+- [[App Updates]]
+- [[In-App Reviews]]
+- [[Themes]]
+- [[Notifications]]
+- [[Consent Management]]
 
 Use the sidebar to navigate between pages.

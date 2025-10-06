@@ -1,15 +1,24 @@
 # Settings
 
-## Layers
-- **General**: Contains `data`, `domain`, and `ui` packages for common preferences.
-- **Settings**: Provides `domain` and `ui` implementations for the main settings screen.
-- **Utils**: Shared helpers across settings modules.
+## Overview
 
-## Primary Screens
-- `SettingsScreen` – entry point for all configuration sections.
-- `GeneralSettingsScreen` – displays basic preferences.
+The settings screen allows users to configure application preferences. The main entry point is
+`SettingsActivity.kt`, which hosts `SettingsFragment.kt` for displaying the preference items. A
+`SettingsViewModel.kt` handles the business logic and data persistence for the settings.
+
+## Key Components
+
+- **`SettingsActivity.kt`**: The main activity for settings. It sets up the fragment and handles
+  theme changes based on preferences.
+- **`SettingsFragment.kt`**: Displays the actual settings UI using AndroidX Preference components.
+- **`SettingsViewModel.kt`**: Manages settings data, listens for preference changes, and applies
+  them (e.g., dark mode).
 
 ## Integration
+
+To launch the settings screen:
+
 ```kotlin
-startActivity(Intent(context, SettingsActivity::class.java))
+val intent = Intent(context, SettingsActivity::class.java)
+startActivity(intent)
 ```

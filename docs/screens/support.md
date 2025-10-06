@@ -1,15 +1,24 @@
 # Support
 
 ## Layers
-- **Domain**: Defines interactions for contacting support and managing purchases.
-- **UI**: `SupportScreen` composable hosted by `SupportActivity`.
-- **Billing**: Integrates in‑app billing helpers.
-- **Utils**: Shared support utilities.
+
+- **Domain**: `SupportRepository` for managing product details and purchases. Handles donation
+  logic.
+- **UI**: `SupportActivity` (using `ActivitySupportBinding` and `SupportViewModel`) displays
+  donation options, advertisements, and external links.
+- **Billing**: Integrates `com.android.billingclient.api.BillingClient` for in-app purchases.
+- **Ads**: `AdUtils` for loading banner advertisements.
 
 ## Primary Screens
-- `SupportScreen` – provides links to contact or rate the app.
+
+- `SupportActivity` – allows users to make donations at different tiers, view advertisements, and
+  visit an external support website.
 
 ## Integration
+
+To open the support screen:
+
 ```kotlin
-startActivity(Intent(context, SupportActivity::class.java))
+val intent = Intent(context, SupportActivity::class.java)
+startActivity(intent)
 ```
