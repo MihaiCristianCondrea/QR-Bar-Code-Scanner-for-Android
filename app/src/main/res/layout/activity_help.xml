@@ -50,7 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="2dp"
-                app:nativeAdLayout="@layout/ad_help" />
+                app:nativeAdLayout="@layout/ad_help"
+                app:nativeAdUnitId="@string/native_ad_help_unit_id" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/contact_support_card"
