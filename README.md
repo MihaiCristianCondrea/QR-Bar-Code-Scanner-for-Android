@@ -59,9 +59,7 @@ Thank you for using QR & Bar Code Scanner for Android!
 
 # License
 
-__Privacy Policy
-__ [here](https://mihaicristiancondrea.github.io/profile/#privacy-policy-end-user-software).
-__Terms of Service
-__ [here](https://mihaicristiancondrea.github.io/profile/#terms-of-service-end-user-software).
+__Privacy Policy__ [here](https://mihaicristiancondrea.github.io/profile/#privacy-policy-end-user-software).
+__Terms of Service__ [here](https://mihaicristiancondrea.github.io/profile/#terms-of-service-end-user-software).
 
 ![license](https://imgur.com/QQlcEVT.png)
