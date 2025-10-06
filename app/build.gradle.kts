@@ -11,6 +11,7 @@ plugins {
     alias(notation = libs.plugins.compose.compiler)
     alias(notation = libs.plugins.devToolsKsp)
     alias(notation = libs.plugins.about.libraries)
+    alias(notation = libs.plugins.mannodermaus)
     id("com.google.android.gms.oss-licenses-plugin")
 }
 android {
@@ -148,25 +149,57 @@ dependencies {
         isTransitive = true
     }
 
-    // KSP
+    // KSP TODO: Make them bundle
     ksp(dependencyNotation = libs.androidx.room.compiler)
     implementation(dependencyNotation = libs.androidx.room.ktx)
     implementation(dependencyNotation = libs.androidx.room.runtime)
     implementation(dependencyNotation = libs.androidx.room.paging)
 
+
+    // AndroidX
+    api(dependencyNotation = libs.bundles.androidx.core)
+
+    // Lifecycle
+    api(dependencyNotation = libs.bundles.androidx.lifecycle)
+
+    // Firebase
+    api(dependencyNotation = platform(libs.firebase.bom))
+    api(dependencyNotation = libs.bundles.firebase)
+
+    // Google Play services & Play Store APIs
+    api(dependencyNotation = libs.bundles.google.play)
+
+    // Image loading
+    api(dependencyNotation = libs.bundles.coil)
+
+    // Kotlin Coroutines & Serialization
+    api(dependencyNotation = libs.bundles.kotlinx)
+
+    // Networking (Ktor)
+    api(dependencyNotation = platform(libs.ktor.bom))
+    api(dependencyNotation = libs.bundles.ktor)
+
+    // Unit Tests
+    testImplementation(dependencyNotation = libs.bundles.unitTest)
+    testRuntimeOnly(dependencyNotation = libs.bundles.unitTestRuntime)
+
+    // Instrumentation Tests
+    androidTestImplementation(dependencyNotation = libs.bundles.instrumentationTest)
+    debugImplementation(dependencyNotation = libs.androidx.ui.test.manifest)
+
     // TODO: Delete soon
     implementation("androidx.paging:paging-runtime-ktx:3.3.6")
     implementation("com.googlecode.ez-vcard:ez-vcard:0.12.1")
-    implementation("com.google.android.gms:play-services-oss-licenses:17.2.1")
+    implementation("com.google.android.gms:play-services-oss-licenses:17.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.5")
     implementation("androidx.gridlayout:gridlayout:1.1.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
-    implementation("com.airbnb.android:lottie:6.6.7")
+    implementation("com.airbnb.android:lottie:6.6.10")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-    implementation("commons-codec:commons-codec:1.18.0")
+    implementation("commons-codec:commons-codec:1.19.0")
     implementation("dev.turingcomplete:kotlin-onetimepassword:2.4.1")
     implementation("me.zhanghai.android.fastscroll:library:1.3.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")

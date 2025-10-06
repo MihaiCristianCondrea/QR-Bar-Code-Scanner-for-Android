@@ -9,5 +9,6 @@ plugins {
     alias(notation = libs.plugins.googleFirebase) apply false
     alias(notation = libs.plugins.devToolsKsp) apply false
     alias(notation = libs.plugins.about.libraries) apply true
-    id("com.google.android.gms.oss-licenses-plugin") version "0.10.6" apply false
+    alias(notation = libs.plugins.mannodermaus) apply false
+    id("com.google.android.gms.oss-licenses-plugin") version "0.10.9" apply false
 }

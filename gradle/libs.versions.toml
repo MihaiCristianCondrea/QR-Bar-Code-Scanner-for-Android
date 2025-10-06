@@ -1,17 +1,118 @@
 [versions]
-agp = "8.11.1"
+agp = "8.13.0"
 aboutlibraries = "12.2.4"
-kotlin = "2.2.0"
+kotlin = "2.2.20"
 google-services = "4.4.3"
-google-firebase-crashlytics = "3.0.4"
-google-devtools-ksp = "2.2.0-2.0.2"
-roomKtx = "2.7.2"
+google-firebase-crashlytics = "3.0.6"
+google-devtools-ksp = "2.2.20-2.0.3"
+roomKtx = "2.8.1"
+appcompat = "1.7.1"
+coil = "3.3.0"
+datastorePreferences = "1.1.7"
+firebaseBom = "34.3.0"
+integrity = "1.5.0"
+lifecycle = "2.9.4"
+kotlinxSerializationJson = "1.9.0"
+kotlinxCoroutinesAndroid = "1.10.2"
+ktorBom = "3.3.0"
+coreSplashscreen = "1.0.1"
+koin = "4.1.1"
+appUpdateKtx = "2.1.0"
+coreKtx = "1.17.0"
+reviewKtx = "2.0.2"
+billing = "8.0.0"
+material = "1.13.0"
+playServicesAds = "24.6.0"
+multidex = "2.0.1"
+userMessagingPlatform = "3.2.0"
+workRuntimeKtx = "2.10.5"
+junittest = "3.7.0"
+mannodermaus = "1.13.4.0"
+mockk = "1.14.6"
+jupiter = "6.0.0"
+testCorutines = "1.10.2"
+testTurbine = "1.2.1"
+truth = "1.7.0"
+testManifestTestJunit4Android = "1.9.2"
+slf4j = "2.0.17"
+ktor = "3.3.0"
+robolectric = "4.16"
+junit4 = "4.13.2"
 
 [libraries]
+# AndroidX & Material
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+
+# Lifecycle
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+
+# Firebase & Play Services
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-perf = { module = "com.google.firebase:firebase-perf" }
+firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity" }
+integrity = { module = "com.google.android.play:integrity", version.ref = "integrity" }
+app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdateKtx" }
+review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "reviewKtx" }
+billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
+play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
+user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
+
+# Networking (Ktor)
+ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktorBom" }
+ktor-client-android = { module = "io.ktor:ktor-client-android" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json" }
+ktor-client-serialization = { module = "io.ktor:ktor-client-serialization" }
+
+# Room
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomKtx" }
+
+# Utility
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-gif = { module = "io.coil-kt.coil3:coil-gif", version.ref = "coil" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutinesAndroid" }
+
+# --- TESTING ---
+# Unit Tests (test folder)
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+test-koin-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin" }
+jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
+jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
+jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter" }
+mockk-api = { module = "io.mockk:mockk", version.ref = "mockk" }
+test-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "testCorutines" }
+test-turbine = { module = "app.cash.turbine:turbine", version.ref = "testTurbine" }
+androidx-truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+junit4 = { module = "junit:junit", version.ref = "junit4" }
+
+# Instrumentation Tests (androidTest folder)
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "junittest" }
+instrumentation-koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "testManifestTestJunit4Android" }
+androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "testManifestTestJunit4Android" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -24,3 +125,90 @@ googleFirebase = { id = "com.google.firebase.crashlytics", version.ref = "google
 devToolsKsp = { id = "com.google.devtools.ksp", version.ref = "google-devtools-ksp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 about-libraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries" }
+mannodermaus = { id = "de.mannodermaus.android-junit5", version.ref = "mannodermaus" }
+
+[bundles]
+androidx-core = [
+    "androidx-core-ktx",
+    "androidx-appcompat",
+    "androidx-core-splashscreen",
+    "androidx-work-runtime-ktx",
+    "androidx-multidex",
+    "androidx-datastore-preferences",
+]
+
+androidx-lifecycle = [
+    "androidx-lifecycle-runtime-ktx",
+    "androidx-lifecycle-livedata-ktx",
+    "androidx-lifecycle-process",
+    "androidx-lifecycle-viewmodel-ktx",
+    "androidx-lifecycle-viewmodel-compose",
+    "androidx-lifecycle-runtime-compose",
+]
+
+firebase = [
+    "firebase-analytics",
+    "firebase-crashlytics",
+    "firebase-perf",
+    "firebase-appcheck-playintegrity",
+]
+
+google-play = [
+    "play-services-ads",
+    "user-messaging-platform",
+    "material",
+    "app-update-ktx",
+    "billing",
+    "review-ktx",
+    "integrity",
+]
+
+coil = [
+    "coil-compose",
+    "coil-gif",
+    "coil-network-okhttp",
+]
+
+kotlinx = [
+    "kotlinx-coroutines-android",
+    "kotlinx-coroutines-play-services",
+    "kotlinx-serialization-json",
+]
+
+ktor = [
+    "ktor-client-android",
+    "ktor-client-serialization",
+    "ktor-client-logging",
+    "ktor-client-content-negotiation",
+    "ktor-serialization-kotlinx-json",
+]
+
+# For local tests on the JVM (test sourceSet)
+unitTest = [
+    "jupiter-api",
+    "jupiter-params",
+    "mockk-api",
+    "test-kotlin-coroutines",
+    "test-turbine",
+    "test-koin-junit5",
+    "androidx-truth",
+    "ktor-client-mock",
+    "robolectric",
+    "junit4",
+    "slf4j-simple",
+]
+
+unitTestRuntime = ["jupiter-engine"]
+
+# For instrumentation tests on an Android device (androidTest sourceSet)
+instrumentationTest = [
+    "jupiter-api",
+    "jupiter-params",
+    "mockk-android",
+    "test-kotlin-coroutines",
+    "test-turbine",
+    "instrumentation-koin-compose",
+    "androidx-espresso-core",
+    "androidx-ui-test-junit4-android",
+    "androidx-truth",
+]
