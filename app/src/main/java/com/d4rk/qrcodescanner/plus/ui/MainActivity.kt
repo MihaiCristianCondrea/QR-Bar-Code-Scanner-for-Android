@@ -189,14 +189,14 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             currentNavIndex = navOrder.get(destination.id, currentNavIndex)
-            configureToolbarNavigation()
+            binding.toolbar.post { configureToolbarNavigation() }
         }
 
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.navigation_scan, R.id.navigation_create, R.id.navigation_history)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        configureToolbarNavigation()
+        binding.toolbar.post { configureToolbarNavigation() }
     }
 
     private fun observeViewModel() {
