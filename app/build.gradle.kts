@@ -104,13 +104,9 @@ android {
 
     buildTypes.forEach { buildType ->
         with(receiver = buildType) {
-            multiDexEnabled = true
-            isMinifyEnabled = false
-            isShrinkResources = false
-            proguardFiles(
-                getDefaultProguardFile(name = "proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile(name = "proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -127,7 +123,6 @@ android {
 
     buildFeatures {
         buildConfig = true
-        compose = true
         viewBinding = true
     }
 

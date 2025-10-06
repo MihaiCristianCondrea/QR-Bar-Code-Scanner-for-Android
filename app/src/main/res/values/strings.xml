@@ -99,6 +99,11 @@
     <string name="help">Help</string>
     <string name="faq">FAQs</string>
     <string name="send_feedback">Send feedback</string>
+    <string name="contact_support_title">Contact support</string>
+    <string name="contact_support_description">Share details to get help reaching your goal</string>
+    <string name="contact_support_email" translatable="false">contact.mihaicristiancondrea@gmail.com</string>
+    <string name="contact_support_email_subject">Support request for %1$s</string>
+    <string name="send_feedback">Send feedback</string>
     <string name="license">License</string>
     <string name="more">More</string>
     <string name="share">Share</string>
