@@ -1,5 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppBarLayoutStyle" parent="BaseAppBarLayoutStyle">
-        <item name="liftOnScroll">false</item>
+
+    <style name="AppThemeActionBar" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="actionBarStyle">@style/actionBarStyle</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="dialogCornerRadius">28dp</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.Material3.MaterialAlertDialog</item>
+        <item name="switchPreferenceCompatStyle">@style/switchPreferenceCompatStyle</item>
     </style>
 </resources>

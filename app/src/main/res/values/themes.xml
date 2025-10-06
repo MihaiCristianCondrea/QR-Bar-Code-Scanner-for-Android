@@ -26,59 +26,143 @@
         <item name="dialogCornerRadius">28dp</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.Material3.MaterialAlertDialog</item>
         <item name="switchPreferenceCompatStyle">@style/switchPreferenceCompatStyle</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.TitleLargeEmphasized</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.BodyLargeEmphasized</item>
+        <item name="toolbarStyle">@style/Widget.App.Toolbar.Clover</item>
+        <item name="materialCardViewStyle">@style/Widget.App.CardView.Clover</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button.Clover</item>
+        <item name="actionOverflowMenuStyle">@style/actionOverflowMenuStyle</item>
     </style>
 
-    <style name="actionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@android:color/transparent</item>
+    <style name="FitSystemWindowsTheme" parent="AppThemeActionBar">
+        <item name="android:fitsSystemWindows">true</item>
     </style>
+
+    <style name="TextAppearance.TitleLargeEmphasized" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.BodyLargeEmphasized" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.App.Toolbar.Clover" parent="@style/Widget.Material3.Toolbar">
+        <item name="shapeAppearanceOverlay">@style/ShapeTokens.Clover</item>
+    </style>
+
+    <style name="Widget.App.CardView.Clover" parent="@style/Widget.Material3.CardView.Outlined">
+        <item name="shapeAppearanceOverlay">@style/ShapeTokens.Clover</item>
+    </style>
+
+    <style name="Widget.App.Button.Clover" parent="@style/Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeTokens.Clover</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CardView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CardViewTopRoundedOutlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeBottomRight">4dp</item>
+        <item name="cornerSizeBottomLeft">4dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CardViewBottomRoundedOutlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">4dp</item>
+        <item name="cornerSizeTopLeft">4dp</item>
+        <item name="cornerSizeBottomRight">24dp</item>
+        <item name="cornerSizeBottomLeft">24dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CardViewTopRoundedFilled" parent="Widget.Material3.CardView.Filled">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeBottomRight">4dp</item>
+        <item name="cornerSizeBottomLeft">4dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CardViewBottomRoundedFilled" parent="Widget.Material3.CardView.Filled">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">4dp</item>
+        <item name="cornerSizeTopLeft">4dp</item>
+        <item name="cornerSizeBottomRight">24dp</item>
+        <item name="cornerSizeBottomLeft">24dp</item>
+    </style>
+
+    <style name="actionBarStyle" parent="@style/Widget.Material3.ActionBar.Solid">
+        <item name="background">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
     <style name="actionOverflowMenuStyle" parent="@style/Widget.Material3.PopupMenu.Overflow">
         <item name="android:popupBackground">@drawable/bg_overflow</item>
     </style>
+
     <style name="switchPreferenceCompatStyle" parent="@style/Preference.SwitchPreferenceCompat.Material">
-        <item name="widgetLayout">@layout/preference_switch_widget_layout</item>
+        <item name="widgetLayout">@layout/widget_preference_switch</item>
     </style>
+
     <style name="FontTheme" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/font_poppins</item>
         <item name="android:fontFamily">@font/font_poppins</item>
     </style>
+
     <style name="ScrollStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="layout_behavior">@string/appbar_scrolling_view_behavior</item>
     </style>
+
     <style name="ActionBarTheme" parent="Widget.Material3.ActionBar.Solid">
         <item name="background">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
     </style>
+
     <style name="ClickableBackground">
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
+
     <style name="ToolbarWithBackButtonStyle" parent="ActionBarTheme">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
     </style>
+
     <style name="DefaultTextViewStyle">
         <item name="android:textSize">@dimen/default_text_size</item>
     </style>
+
     <style name="SecondaryTextViewStyle">
         <item name="android:textSize">@dimen/default_text_size_very_small</item>
     </style>
+
     <style name="GroupTitleTextViewStyle">
         <item name="android:textColor">?attr/colorSecondary</item>
         <item name="android:textSize">@dimen/default_text_size_small2</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="CreateBarcodeFragmentAlternativeTextViewStyle">
         <item name="android:textSize">@dimen/default_text_size</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
+
     <style name="BaseAppBarLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="liftOnScroll">false</item>
         <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
     </style>
+
     <style name="AppBarLayoutStyle" parent="BaseAppBarLayoutStyle">
         <item name="liftOnScroll">false</item>
         <item name="liftOnScrollTargetViewId">@id/scroll_view</item>

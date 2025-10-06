@@ -33,4 +33,7 @@
     <declare-styleable name="DateTimePickerButton">
         <attr name="hint"/>
     </declare-styleable>
+    <declare-styleable name="NativeAdBannerView">
+        <attr name="nativeAdLayout" format="reference"/>
+    </declare-styleable>
 </resources>
