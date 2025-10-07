@@ -169,9 +169,9 @@ dependencies {
     // Dependency injection
     implementation(dependencyNotation = libs.hilt.android)
 
-    // Annotation processors
-    annotationProcessor(dependencyNotation = libs.hilt.compiler)
-    annotationProcessor(dependencyNotation = libs.androidx.room.compiler)
+    // Annotation processors (handled via KSP)
+    ksp(dependencyNotation = libs.hilt.compiler)
+    ksp(dependencyNotation = libs.androidx.room.compiler)
 
     // Unit Tests
     testImplementation(dependencyNotation = libs.bundles.unitTest)
