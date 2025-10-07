@@ -1,45 +1,51 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
         android:id="@+id/scroll_view"
-        style="@style/ScrollStyle">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="@dimen/default_margin_big"
+                android:layout_marginTop="8dp"
                 android:text="@string/save_as"
                 android:textColor="?attr/colorSecondary"
-                android:textSize="@dimen/default_text_size_extra_small"/>
+                android:textSize="@dimen/default_text_size_extra_small" />
+
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_save_as"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="14dp"/>
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="8dp" />
+
             <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:id="@+id/button_save"
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_very_big"
                 android:layout_marginHorizontal="@dimen/default_margin_big"
+                android:layout_marginTop="@dimen/default_margin_very_big"
                 android:text="@string/save"
-                android:tooltipText="@string/tooltip_save_as_image"/>
+                android:tooltipText="@string/tooltip_save_as_image" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
+
     <ProgressBar
         android:id="@+id/progress_bar_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:indeterminate="true"
+        android:visibility="gone" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

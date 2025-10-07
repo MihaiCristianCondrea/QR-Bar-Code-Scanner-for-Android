@@ -1,56 +1,61 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/default_margin"
-    android:paddingBottom="@dimen/default_margin"
-    android:orientation="vertical">
+    android:paddingTop="8dp"
+    android:paddingBottom="@dimen/default_margin">
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_latitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="-.01234567890"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_latitude"
             android:imeOptions="actionNext"
             android:inputType="numberSigned"
-            android:digits="-.01234567890"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_longitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="-.01234567890"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_longitude"
             android:imeOptions="actionNext"
             android:inputType="numberSigned"
-            android:digits="-.01234567890"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_altitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="-.01234567890"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_altitude"
             android:imeOptions="actionDone"
             android:inputType="numberSigned"
-            android:digits="-.01234567890"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

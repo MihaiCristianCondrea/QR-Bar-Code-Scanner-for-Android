@@ -1,54 +1,56 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/default_margin"
-    android:paddingTop="@dimen/icon_button_with_delimiter_vertical_padding"
-    style="@style/ClickableBackground">
+    android:paddingTop="@dimen/icon_button_with_delimiter_vertical_padding">
+
     <FrameLayout
         android:id="@+id/layout_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_circle"
         android:padding="@dimen/icon_button_icon_padding"
-        android:background="@drawable/bg_circle">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_schema"
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
-            tools:src="@drawable/ic_copy"/>
+            tools:src="@drawable/ic_copy" />
     </FrameLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margin"
-        app:layout_constraintTop_toTopOf="@id/layout_image"
         app:layout_constraintBottom_toBottomOf="@id/layout_image"
-        app:layout_constraintStart_toEndOf="@id/layout_image"
         app:layout_constraintEnd_toStartOf="@id/image_view_arrow"
-        tools:text="Copy"
-        style="@style/DefaultTextViewStyle"/>
+        app:layout_constraintStart_toEndOf="@id/layout_image"
+        app:layout_constraintTop_toTopOf="@id/layout_image"
+        tools:text="Copy" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/layout_image"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/layout_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_arrow_right"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toTopOf="@id/layout_image"
+        app:srcCompat="@drawable/ic_arrow_right" />
+
     <View
         android:id="@+id/delimiter"
         android:layout_width="0dp"
         android:layout_height="0.2dp"
         android:layout_marginTop="@dimen/icon_button_with_delimiter_vertical_padding"
-        app:layout_constraintStart_toStartOf="@id/text_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_image"/>
+        app:layout_constraintStart_toStartOf="@id/text_view"
+        app:layout_constraintTop_toBottomOf="@id/layout_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>

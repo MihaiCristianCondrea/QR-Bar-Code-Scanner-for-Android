@@ -1,10 +1,8 @@
-<CheckedTextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
-    android:singleLine="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:ellipsize="marquee"
     android:paddingHorizontal="8dp"
     android:paddingVertical="12dp"
-    android:ellipsize="marquee"
-    style="@style/DefaultTextViewStyle"/>
+    android:singleLine="true" />

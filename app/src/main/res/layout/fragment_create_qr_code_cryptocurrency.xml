@@ -1,85 +1,94 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="@dimen/default_margin_big"
+        android:layout_marginTop="8dp"
         android:text="@string/cryptocurrency"
         android:textColor="?attr/colorSecondary"
-        android:textSize="@dimen/default_text_size_extra_small"/>
+        android:textSize="@dimen/default_text_size_extra_small" />
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner_cryptocurrency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="14dp"/>
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="8dp" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/receiver_address"
+            android:imeOptions="actionNext"
             android:inputType="text"
-            android:imeOptions="actionNext"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="01234567890."
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/amount"
-            android:inputType="numberDecimal"
             android:imeOptions="actionNext"
-            android:digits="01234567890."/>
+            android:inputType="numberDecimal"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/label"
+            android:imeOptions="actionNext"
             android:inputType="text"
-            android:imeOptions="actionNext"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_message"
+            android:imeOptions="actionDone"
             android:inputType="text"
-            android:imeOptions="actionDone"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

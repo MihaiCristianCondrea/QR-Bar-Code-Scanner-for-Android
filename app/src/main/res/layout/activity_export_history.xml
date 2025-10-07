@@ -1,63 +1,71 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
         android:id="@+id/scroll_view"
-        style="@style/ScrollStyle">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="@dimen/default_margin_big"
+                android:layout_marginTop="8dp"
                 android:text="@string/export_as"
                 android:textColor="?attr/colorSecondary"
-                android:textSize="@dimen/default_text_size_extra_small"/>
+                android:textSize="@dimen/default_text_size_extra_small" />
+
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_export_as"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="14dp"/>
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="8dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginHorizontal="@dimen/default_margin">
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="14dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_file_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="Add whatever u want"
                     android:gravity="start|top"
+                    android:hint="@string/hint_file_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:lines="1"
                     android:maxLines="1"
-                    android:hint="@string/hint_file_name"
-                    android:inputType="text"
-                    android:imeOptions="actionNext"
-                    android:text="@string/activity_export_history_file_name_default"
-                    android:autofillHints="Add whatever u want"/>
+                    android:text="@string/activity_export_history_file_name_default" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:id="@+id/button_export"
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_big"
                 android:layout_marginHorizontal="@dimen/default_margin_big"
+                android:layout_marginTop="@dimen/default_margin_big"
                 android:text="@string/export"
-                android:tooltipText="@string/tooltip_export"/>
+                android:tooltipText="@string/tooltip_export" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
+
     <ProgressBar
         android:id="@+id/progress_bar_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:indeterminate="true"
+        android:visibility="gone" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

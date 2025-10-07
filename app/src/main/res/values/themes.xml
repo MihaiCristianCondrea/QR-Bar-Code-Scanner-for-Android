@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="SplashScreenTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">?attr/colorSurface</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
@@ -26,12 +28,13 @@
         <item name="dialogCornerRadius">28dp</item>
         <item name="alertDialogTheme">@style/ThemeOverlay.Material3.MaterialAlertDialog</item>
         <item name="switchPreferenceCompatStyle">@style/switchPreferenceCompatStyle</item>
+        <!-- Apply emphasized text appearances -->
         <item name="textAppearanceTitleLarge">@style/TextAppearance.TitleLargeEmphasized</item>
         <item name="textAppearanceBodyLarge">@style/TextAppearance.BodyLargeEmphasized</item>
+        <!-- Map custom widget styles using Material 3 shape tokens -->
         <item name="toolbarStyle">@style/Widget.App.Toolbar.Clover</item>
         <item name="materialCardViewStyle">@style/Widget.App.CardView.Clover</item>
         <item name="materialButtonStyle">@style/Widget.App.Button.Clover</item>
-        <item name="actionOverflowMenuStyle">@style/actionOverflowMenuStyle</item>
     </style>
 
     <style name="FitSystemWindowsTheme" parent="AppThemeActionBar">

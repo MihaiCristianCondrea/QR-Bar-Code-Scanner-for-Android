@@ -1,59 +1,64 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.google.android.material.appbar.AppBarLayout
-        android:background="@android:color/transparent"
         android:id="@+id/app_bar_layout"
-        style="@style/AppBarLayoutStyle">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            app:title="@string/otp"
-            style="@style/ToolbarWithBackButtonStyle"/>
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
     </com.google.android.material.appbar.AppBarLayout>
+
     <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
         android:id="@+id/scroll_view"
-        style="@style/ScrollStyle">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_margin"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin">
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/default_text_size_very_large"
-                app:autoSizeTextType="uniform"
-                style="@style/DefaultTextViewStyle"/>
+                app:autoSizeTextType="uniform" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_counter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:gravity="center"
-                android:visibility="gone"
-                style="@style/DefaultTextViewStyle"/>
+                android:visibility="gone" />
+
             <com.google.android.material.button.MaterialButton
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:id="@+id/button_refresh"
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
-                android:visibility="gone"
                 android:text="@string/refresh"
-                android:tooltipText="@string/tooltip_generate_new_secret"/>
+                android:tooltipText="@string/tooltip_generate_new_secret"
+                android:visibility="gone" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_timer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
                 android:gravity="center"
-                android:visibility="gone"
-                style="@style/DefaultTextViewStyle"/>
+                android:visibility="gone" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

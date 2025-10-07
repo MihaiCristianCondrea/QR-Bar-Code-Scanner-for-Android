@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Emphasized text appearances -->
     <style name="TextAppearance.TitleLargeEmphasized" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textStyle">bold</item>
     </style>
@@ -8,6 +10,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Widget styles using Material 3 shape tokens -->
     <style name="Widget.App.Toolbar.Clover" parent="@style/Widget.Material3.Toolbar">
         <item name="shapeAppearanceOverlay">@style/ShapeTokens.Clover</item>
     </style>
@@ -62,71 +65,10 @@
 
     <style name="actionBarStyle" parent="@style/Widget.Material3.ActionBar.Solid">
         <item name="background">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
-    </style>
-
-    <style name="actionOverflowMenuStyle" parent="@style/Widget.Material3.PopupMenu.Overflow">
-        <item name="android:popupBackground">@drawable/bg_overflow</item>
     </style>
 
     <style name="switchPreferenceCompatStyle" parent="@style/Preference.SwitchPreferenceCompat.Material">
         <item name="widgetLayout">@layout/widget_preference_switch</item>
     </style>
 
-    <style name="FontTheme" parent="TextAppearance.AppCompat">
-        <item name="fontFamily">@font/font_poppins</item>
-        <item name="android:fontFamily">@font/font_poppins</item>
-    </style>
-
-    <style name="ScrollStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="layout_behavior">@string/appbar_scrolling_view_behavior</item>
-    </style>
-
-    <style name="ActionBarTheme" parent="Widget.Material3.ActionBar.Solid">
-        <item name="background">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-    </style>
-
-    <style name="ClickableBackground">
-        <item name="android:background">?attr/selectableItemBackground</item>
-    </style>
-
-    <style name="ToolbarWithBackButtonStyle" parent="ActionBarTheme">
-        <item name="navigationIcon">@drawable/ic_arrow_back</item>
-    </style>
-
-    <style name="DefaultTextViewStyle">
-        <item name="android:textSize">@dimen/default_text_size</item>
-    </style>
-
-    <style name="SecondaryTextViewStyle">
-        <item name="android:textSize">@dimen/default_text_size_very_small</item>
-    </style>
-
-    <style name="GroupTitleTextViewStyle">
-        <item name="android:textColor">?attr/colorSecondary</item>
-        <item name="android:textSize">@dimen/default_text_size_small2</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="CreateBarcodeFragmentAlternativeTextViewStyle">
-        <item name="android:textSize">@dimen/default_text_size</item>
-        <item name="android:lineSpacingMultiplier">1.4</item>
-    </style>
-
-    <style name="BaseAppBarLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="liftOnScroll">false</item>
-        <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
-    </style>
-
-    <style name="AppBarLayoutStyle" parent="BaseAppBarLayoutStyle">
-        <item name="liftOnScroll">false</item>
-        <item name="liftOnScrollTargetViewId">@id/scroll_view</item>
-    </style>
 </resources>

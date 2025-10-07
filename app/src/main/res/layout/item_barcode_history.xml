@@ -1,78 +1,80 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/ClickableBackground">
+    android:layout_height="wrap_content">
+
     <FrameLayout
         android:id="@+id/layout_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/default_margin"
+        android:background="@drawable/bg_circle"
+        android:padding="@dimen/icon_button_icon_padding"
         app:layout_constraintBottom_toBottomOf="@id/delimiter"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/default_margin"
-        android:padding="@dimen/icon_button_icon_padding"
-        android:background="@drawable/bg_circle">
+        app:layout_constraintTop_toTopOf="parent">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_schema"
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
-            tools:src="@drawable/ic_copy"/>
+            tools:src="@drawable/ic_copy" />
     </FrameLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/layout_image"
-        android:layout_marginTop="14dp"
         android:layout_marginStart="@dimen/default_margin"
-        tools:text="01.09.1993 12:00"
-        style="@style/SecondaryTextViewStyle"/>
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toEndOf="@id/layout_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="01.09.1993 12:00" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@id/text_view_date"
-        app:layout_constraintStart_toStartOf="@id/text_view_date"
-        app:layout_constraintEnd_toStartOf="@id/image_view_favorite"
-        android:maxLines="1"
-        tools:text="Hello World!"
-        android:includeFontPadding="false"
         android:ellipsize="end"
-        style="@style/DefaultTextViewStyle"/>
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@id/image_view_favorite"
+        app:layout_constraintStart_toStartOf="@id/text_view_date"
+        app:layout_constraintTop_toBottomOf="@id/text_view_date"
+        tools:text="Hello World!" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view_format"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/text_view_text"
         app:layout_constraintStart_toStartOf="@id/text_view_text"
-        tools:text="Data matrix"
-        style="@style/SecondaryTextViewStyle"/>
+        app:layout_constraintTop_toBottomOf="@id/text_view_text"
+        tools:text="Data matrix" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/default_margin"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/delimiter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_favorite_checked"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_favorite_checked" />
+
     <View
         android:id="@+id/delimiter"
         android:layout_width="0dp"
         android:layout_height="0.2dp"
-        android:layout_marginTop="14dp"
         android:layout_marginHorizontal="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/text_view_format"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="14dp"
+        android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="?attr/colorPrimary"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_format" />
 </androidx.constraintlayout.widget.ConstraintLayout>

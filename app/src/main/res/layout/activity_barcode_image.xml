@@ -1,54 +1,63 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/root_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.google.android.material.appbar.AppBarLayout
-        android:background="@android:color/transparent"
-        style="@style/AppBarLayoutStyle">
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            style="@style/ToolbarWithBackButtonStyle"/>
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
     </com.google.android.material.appbar.AppBarLayout>
+
     <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
         android:id="@+id/scroll_view"
-        style="@style/ScrollStyle">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/default_margin"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/default_margin">
+
             <FrameLayout
                 android:id="@+id/layout_barcode_image_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginHorizontal="@dimen/default_margin"
                 android:padding="12dp">
+
                 <com.d4rk.qrcodescanner.plus.ui.components.views.SquareImageView
                     android:id="@+id/image_view_barcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="centerInside"/>
+                    android:scaleType="centerInside" />
             </FrameLayout>
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="@dimen/default_margin"
-                tools:text="01.09.1993 12:00"
-                style="@style/SecondaryTextViewStyle"/>
+                android:layout_marginTop="8dp"
+                tools:text="01.09.1993 12:00" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_barcode_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:layout_marginHorizontal="@dimen/default_margin"
-                tools:text="Hello World!"/>
+                tools:text="Hello World!" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

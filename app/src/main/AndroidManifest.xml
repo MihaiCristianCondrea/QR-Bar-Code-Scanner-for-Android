@@ -47,7 +47,7 @@
         android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppThemeActionBar"
         tools:targetApi="33">
         <activity
             android:name=".ui.screens.startup.StartupActivity"

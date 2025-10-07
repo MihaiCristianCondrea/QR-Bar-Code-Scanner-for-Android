@@ -1,25 +1,26 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/default_margin"
-    android:paddingVertical="@dimen/icon_button_vertical_padding"
-    style="@style/ClickableBackground">
+    android:paddingVertical="@dimen/icon_button_vertical_padding">
+
     <FrameLayout
         android:id="@+id/layout_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/icon_button_icon_padding"
-        android:background="@drawable/bg_circle">
+        android:background="@drawable/bg_circle"
+        android:padding="@dimen/icon_button_icon_padding">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_schema"
             android:layout_width="@dimen/icon_button_icon_size"
             android:layout_height="@dimen/icon_button_icon_size"
             android:layout_gravity="center_vertical"
-            tools:src="@drawable/ic_copy"/>
+            tools:src="@drawable/ic_copy" />
     </FrameLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_view"
         android:layout_width="match_parent"
@@ -27,6 +28,5 @@
         android:layout_gravity="center_vertical"
         android:layout_marginStart="@dimen/default_margin"
         android:ellipsize="end"
-        tools:text="Copy"
-        style="@style/DefaultTextViewStyle"/>
+        tools:text="Copy" />
 </LinearLayout>

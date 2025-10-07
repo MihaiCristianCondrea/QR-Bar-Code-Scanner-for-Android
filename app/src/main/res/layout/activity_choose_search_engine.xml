@@ -1,89 +1,100 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/root_view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
         android:id="@+id/scroll_view"
-        style="@style/ScrollStyle">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_none"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/none"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:text="@string/none" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_ask_every_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/ask_every_time"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/ask_every_time" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_bing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_bing"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_bing" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_duck_duck_go"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_duck_duck_go"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_duck_duck_go" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_google"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_google" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_qwant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_qwant"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_qwant" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_startpage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_startpage"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_startpage" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_yahoo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_yahoo"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_yahoo" />
+
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_yandex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
-                app:layout_constraintStart_toStartOf="parent"
+                app:isDelimiterVisible="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:text="@string/activity_choose_search_engine_yandex"
-                app:isDelimiterVisible="false"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
+                app:text="@string/activity_choose_search_engine_yandex" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

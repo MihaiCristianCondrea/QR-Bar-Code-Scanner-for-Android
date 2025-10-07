@@ -1,136 +1,152 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="@dimen/default_margin_big"
-        android:text="@string/type"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/type" />
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner_opt_types"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="14dp"/>
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="8dp" />
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         android:layout_marginHorizontal="@dimen/default_margin_big"
-        android:text="@string/algorithm"/>
+        android:layout_marginTop="14dp"
+        android:text="@string/algorithm" />
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner_algorithms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="14dp"/>
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="8dp" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_issuer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_issuer"
+            android:imeOptions="actionNext"
             android:inputType="text"
-            android:imeOptions="actionNext"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_account"
+            android:imeOptions="actionNext"
             android:inputType="text"
-            android:imeOptions="actionNext"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_digits"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
-            android:hint="@string/hint_digits"
-            android:inputType="numberDecimal"
             android:digits="0123456789"
-            android:imeOptions="actionNext"/>
+            android:gravity="start|top"
+            android:hint="@string/hint_digits"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_period"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
-            android:hint="@string/hint_period"
-            android:inputType="numberDecimal"
             android:digits="0123456789"
-            android:imeOptions="actionNext"/>
+            android:gravity="start|top"
+            android:hint="@string/hint_period"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_counter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_counter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
-            android:hint="@string/hint_counter"
-            android:inputType="numberDecimal"
             android:digits="0123456789"
-            android:imeOptions="actionNext"/>
+            android:gravity="start|top"
+            android:hint="@string/hint_counter"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="14dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_secret"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
             android:hint="@string/hint_secret"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionDone" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/button_generate_random_secret"
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margin"
         android:layout_marginTop="14dp"
         android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginHorizontal="@dimen/default_margin"
-        android:text="@string/random_secret"/>
+        android:text="@string/random_secret" />
 </LinearLayout>

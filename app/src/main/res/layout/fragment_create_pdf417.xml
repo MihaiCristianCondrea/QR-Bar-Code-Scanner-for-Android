@@ -1,13 +1,13 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="8dp"
     android:paddingHorizontal="@dimen/default_margin"
+    android:paddingTop="8dp"
     android:paddingBottom="@dimen/default_margin">
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="start|top"/>
+        android:gravity="start|top" />
 </FrameLayout>

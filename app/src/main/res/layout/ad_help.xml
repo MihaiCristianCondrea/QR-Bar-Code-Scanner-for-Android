@@ -67,8 +67,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:minHeight="40dp"
-                        android:minWidth="88dp" />
+                        android:minWidth="88dp"
+                        android:minHeight="40dp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <com.google.android.material.card.MaterialCardView

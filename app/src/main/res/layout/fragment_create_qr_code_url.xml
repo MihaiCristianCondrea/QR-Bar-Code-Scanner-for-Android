@@ -1,31 +1,31 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/default_margin"
-    android:paddingBottom="@dimen/default_margin"
-    android:orientation="vertical">
+    android:paddingTop="8dp"
+    android:paddingBottom="@dimen/default_margin">
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start|top"
-        android:lines="1"
-        android:maxLines="1"
         android:hint="@string/url"
+        android:imeOptions="actionDone"
         android:inputType="textUri"
-        android:imeOptions="actionDone"/>
+        android:lines="1"
+        android:maxLines="1" />
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin_big"
-        android:text="@string/alternatively"
-        style="@style/GroupTitleTextViewStyle"/>
+        android:text="@string/alternatively" />
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/summary_alternatively_url"
-        style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"/>
+        android:text="@string/summary_alternatively_url" />
 </LinearLayout>

@@ -1,150 +1,166 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingTop="8dp"
-    android:paddingBottom="@dimen/default_margin"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/default_margin">
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margin">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_first_name"
             android:imeOptions="actionNext"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_last_name"
             android:imeOptions="actionNext"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_organization"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_organization"
             android:imeOptions="actionNext"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_job"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_job"
             android:imeOptions="actionNext"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_email"
             android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="+0123456789"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_phone"
             android:imeOptions="actionNext"
             android:inputType="phone"
-            android:digits="+0123456789"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_fax"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="+0123456789"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_fax"
             android:imeOptions="actionNext"
             android:inputType="phone"
-            android:digits="+0123456789"/>
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="@dimen/default_margin">
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="8dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_website"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:lines="1"
-            android:maxLines="1"
             android:hint="@string/hint_website"
             android:imeOptions="actionDone"
-            android:inputType="textUri"/>
+            android:inputType="textUri"
+            android:lines="1"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin_big"
         android:layout_marginHorizontal="@dimen/default_margin"
-        android:text="@string/alternatively"
-        style="@style/GroupTitleTextViewStyle"/>
+        android:layout_marginTop="@dimen/default_margin_big"
+        android:text="@string/alternatively" />
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="@dimen/default_margin"
-        android:text="@string/summary_alternatively_contact"
-        style="@style/CreateBarcodeFragmentAlternativeTextViewStyle"/>
+        android:layout_marginTop="8dp"
+        android:text="@string/summary_alternatively_contact" />
 </LinearLayout>
