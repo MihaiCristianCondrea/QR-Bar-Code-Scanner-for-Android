@@ -1,10 +1,10 @@
 package com.d4rk.qrcodescanner.plus
 
-import androidx.multidex.MultiDexApplication
+import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class QrCodeScanner : MultiDexApplication() {
+class QrCodeScanner : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this

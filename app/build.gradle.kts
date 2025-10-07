@@ -8,7 +8,6 @@ plugins {
     alias(notation = libs.plugins.kotlin.serialization)
     alias(notation = libs.plugins.googlePlayServices)
     alias(notation = libs.plugins.googleFirebase)
-    alias(notation = libs.plugins.compose.compiler)
     alias(notation = libs.plugins.devToolsKsp)
     alias(notation = libs.plugins.about.libraries)
     alias(notation = libs.plugins.mannodermaus)
@@ -141,42 +140,38 @@ android {
 }
 
 dependencies {
-    implementation(dependencyNotation = libs.androidx.room.ktx)
-    implementation(dependencyNotation = libs.androidx.room.runtime)
-    implementation(dependencyNotation = libs.androidx.room.paging)
-
-    // AndroidX
+    // Core AndroidX building blocks
     implementation(dependencyNotation = libs.bundles.androidx.core)
 
-    // Lifecycle
+    // Lifecycle-aware AndroidX components
     implementation(dependencyNotation = libs.bundles.androidx.lifecycle)
 
-    // Firebase
+    // Firebase services
     implementation(dependencyNotation = platform(libs.firebase.bom))
-    implementation(dependencyNotation = libs.bundles.firebase)
+    implementation(dependencyNotation = libs.bundles.firebase.services)
 
     // Google Play services & Play Store APIs
-    implementation(dependencyNotation = libs.bundles.google.play)
+    implementation(dependencyNotation = libs.bundles.google.core)
 
-    // Image loading
-    implementation(dependencyNotation = libs.bundles.coil)
-
-    // Kotlin Coroutines & Serialization
+    // Kotlin Coroutines & Serialization helpers
     implementation(dependencyNotation = libs.bundles.kotlinx)
+
+    // Networking (Ktor)
+    implementation(dependencyNotation = platform(libs.ktor.bom))
+    implementation(dependencyNotation = libs.bundles.networking)
+
+    // Shared UI tooling and visuals
+    implementation(dependencyNotation = libs.bundles.ui.toolkit)
+
+    // Barcode & QR feature utilities
+    implementation(dependencyNotation = libs.bundles.barcode.stack)
 
     // Dependency injection
     implementation(dependencyNotation = libs.hilt.android)
 
-    // Dependency Injection
-    implementation(dependencyNotation = libs.bundles.hilt)
-
-    // Networking (Ktor)
-    implementation(dependencyNotation = platform(libs.ktor.bom))
-    implementation(dependencyNotation = libs.bundles.ktor)
-
     // Annotation processors
-    annotationProcessor(dependencyNotation =  libs.hilt.compiler )
-    annotationProcessor(dependencyNotation =  libs.androidx.room.compiler)
+    annotationProcessor(dependencyNotation = libs.hilt.compiler)
+    annotationProcessor(dependencyNotation = libs.androidx.room.compiler)
 
     // Unit Tests
     testImplementation(dependencyNotation = libs.bundles.unitTest)
@@ -184,26 +179,6 @@ dependencies {
 
     // Instrumentation Tests
     androidTestImplementation(dependencyNotation = libs.bundles.instrumentationTest)
-    debugImplementation(dependencyNotation = libs.androidx.ui.test.manifest)
 
-    // TODO: Delete soon
-    implementation("androidx.paging:paging-runtime-ktx:3.3.6")
-    implementation("com.googlecode.ez-vcard:ez-vcard:0.12.1")
-    implementation("com.google.android.gms:play-services-oss-licenses:17.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.9.5")
-    implementation("androidx.gridlayout:gridlayout:1.1.0")
-    implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
-    implementation("com.airbnb.android:lottie:6.6.10")
-    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-    implementation("commons-codec:commons-codec:1.19.0")
-    implementation("dev.turingcomplete:kotlin-onetimepassword:2.4.1")
-    implementation("me.zhanghai.android.fastscroll:library:1.3.0")
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
-}
-
-kapt {
-    correctErrorTypes = true
+    coreLibraryDesugaring(libs.android.desugarJdkLibs)
 }
