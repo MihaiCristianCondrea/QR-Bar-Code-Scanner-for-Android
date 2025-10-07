@@ -11,6 +11,8 @@ import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateBarcodeBinding
 import com.d4rk.qrcodescanner.plus.extension.clipboardManager
 import com.d4rk.qrcodescanner.plus.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
 import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateBarcodeAllActivity
@@ -56,40 +58,34 @@ class CreateBarcodeFragment : Fragment() {
     }
 
     private fun buildItems(): List<PreferenceListItem<PreferenceAction>> {
-        return listOf(
-            PreferenceListItem.Category(R.string.qr_code), PreferenceListItem.Action(
-                action = PreferenceAction.Clipboard,
-                titleRes = R.string.content_from_clipboard,
-                iconRes = R.drawable.ic_copy
-            ), PreferenceListItem.Action(
-                action = PreferenceAction.Text,
-                titleRes = R.string.text,
-                iconRes = R.drawable.ic_text
-            ), PreferenceListItem.Action(
-                action = PreferenceAction.Url, titleRes = R.string.url, iconRes = R.drawable.ic_link
-            ), PreferenceListItem.Action(
-                action = PreferenceAction.Wifi,
-                titleRes = R.string.wifi,
-                iconRes = R.drawable.ic_wifi
-            ), PreferenceListItem.Action(
-                action = PreferenceAction.Location,
-                titleRes = R.string.location,
-                iconRes = R.drawable.ic_location
-            ), PreferenceListItem.Action(
-                action = PreferenceAction.Contact,
-                titleRes = R.string.contact_v_card,
-                iconRes = R.drawable.ic_contact_white
-            ), PreferenceListItem.Action(
-                action = PreferenceAction.MoreQrCodes,
-                titleRes = R.string.more_qr_codes,
-                iconRes = R.drawable.ic_qr_code_white,
-                widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ), PreferenceListItem.Category(R.string.barcode), PreferenceListItem.Action(
-                action = PreferenceAction.AllBarcodes,
-                titleRes = R.string.all_barcodes_codes,
-                iconRes = R.drawable.ic_barcode,
-                widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            )
+        val entries = PreferenceLayoutParser.parse(requireContext(), R.xml.preferences_create_barcode)
+        return entries.mapNotNull { entry ->
+            when (entry) {
+                is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)
+                is PreferenceLayoutEntry.Action -> mapActionEntry(entry)
+            }
+        }
+    }
+
+    private fun mapActionEntry(entry: PreferenceLayoutEntry.Action): PreferenceListItem.Action<PreferenceAction>? {
+        val action = when (entry.key) {
+            "clipboard" -> PreferenceAction.Clipboard
+            "text" -> PreferenceAction.Text
+            "url" -> PreferenceAction.Url
+            "wifi" -> PreferenceAction.Wifi
+            "location" -> PreferenceAction.Location
+            "contact" -> PreferenceAction.Contact
+            "more_qr_codes" -> PreferenceAction.MoreQrCodes
+            "all_barcodes" -> PreferenceAction.AllBarcodes
+            else -> null
+        } ?: return null
+
+        return PreferenceListItem.Action(
+            action = action,
+            titleRes = entry.titleRes,
+            summaryRes = entry.summaryRes,
+            iconRes = entry.iconRes,
+            widgetLayoutRes = entry.widgetLayoutRes
         )
     }
 

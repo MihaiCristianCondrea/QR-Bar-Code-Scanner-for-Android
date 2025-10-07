@@ -1,0 +1,86 @@
+<androidx.preference.PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/barcodes_2d">
+
+        <androidx.preference.Preference
+            app:key="data_matrix"
+            app:title="@string/data_matrix"
+            app:icon="@drawable/ic_data_matrix"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="aztec"
+            app:title="@string/aztec"
+            app:icon="@drawable/ic_aztec"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="pdf417"
+            app:title="@string/pdf_417"
+            app:icon="@drawable/ic_pdf417"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/barcodes_1d">
+
+        <androidx.preference.Preference
+            app:key="ean_13"
+            app:title="@string/ean_13"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="ean_8"
+            app:title="@string/ean_8"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="upc_e"
+            app:title="@string/upc_e"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="upc_a"
+            app:title="@string/upc_a"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="code_128"
+            app:title="@string/code_128"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="code_93"
+            app:title="@string/code_93"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="code_39"
+            app:title="@string/code_39"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="codabar"
+            app:title="@string/codabar"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+        <androidx.preference.Preference
+            app:key="itf"
+            app:title="@string/itf"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+    </androidx.preference.PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

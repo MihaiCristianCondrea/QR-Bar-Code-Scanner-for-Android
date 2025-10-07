@@ -9,6 +9,8 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateQrCodeAllBinding
 import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
 import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeActivity
@@ -46,39 +48,42 @@ class CreateQrCodeAllActivity : BaseActivity() {
         adapter.submitList(buildItems())
     }
 
-    private fun buildItems() : List<PreferenceListItem<QrAction>> {
-        return listOf(
-            PreferenceListItem.Action(
-                action = QrAction.Text , titleRes = R.string.text , iconRes = R.drawable.ic_text , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Url , titleRes = R.string.url , iconRes = R.drawable.ic_link , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Wifi , titleRes = R.string.wifi , iconRes = R.drawable.ic_wifi , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Location , titleRes = R.string.location , iconRes = R.drawable.ic_location , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Otp , titleRes = R.string.otp , iconRes = R.drawable.ic_otp , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.ContactVcard , titleRes = R.string.contact_v_card , iconRes = R.drawable.ic_contact_white , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.ContactMecard , titleRes = R.string.contact_me_card , iconRes = R.drawable.ic_contact_white , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Event , titleRes = R.string.event , iconRes = R.drawable.ic_calendar , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Phone , titleRes = R.string.phone , iconRes = R.drawable.ic_phone , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Email , titleRes = R.string.email , iconRes = R.drawable.ic_email , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Sms , titleRes = R.string.sms , iconRes = R.drawable.ic_sms , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Mms , titleRes = R.string.mms , iconRes = R.drawable.ic_mms , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Cryptocurrency , titleRes = R.string.bitcoin , iconRes = R.drawable.ic_bitcoin , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.Bookmark , titleRes = R.string.bookmark , iconRes = R.drawable.ic_bookmark , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = QrAction.App , titleRes = R.string.app , iconRes = R.drawable.ic_app , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            )
+    private fun buildItems(): List<PreferenceListItem<QrAction>> {
+        val entries = PreferenceLayoutParser.parse(this, R.xml.preferences_create_qr_all)
+        return entries.mapNotNull { entry ->
+            when (entry) {
+                is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)
+                is PreferenceLayoutEntry.Action -> mapActionEntry(entry)
+            }
+        }
+    }
+
+    private fun mapActionEntry(entry: PreferenceLayoutEntry.Action): PreferenceListItem.Action<QrAction>? {
+        val action = when (entry.key) {
+            "text" -> QrAction.Text
+            "url" -> QrAction.Url
+            "wifi" -> QrAction.Wifi
+            "location" -> QrAction.Location
+            "otp" -> QrAction.Otp
+            "contact_vcard" -> QrAction.ContactVcard
+            "contact_mecard" -> QrAction.ContactMecard
+            "event" -> QrAction.Event
+            "phone" -> QrAction.Phone
+            "email" -> QrAction.Email
+            "sms" -> QrAction.Sms
+            "mms" -> QrAction.Mms
+            "cryptocurrency" -> QrAction.Cryptocurrency
+            "bookmark" -> QrAction.Bookmark
+            "app" -> QrAction.App
+            else -> null
+        } ?: return null
+
+        return PreferenceListItem.Action(
+            action = action,
+            titleRes = entry.titleRes,
+            summaryRes = entry.summaryRes,
+            iconRes = entry.iconRes,
+            widgetLayoutRes = entry.widgetLayoutRes
         )
     }
 

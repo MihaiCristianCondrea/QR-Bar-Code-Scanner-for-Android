@@ -22,47 +22,44 @@ class PreferenceListAdapter<T : Any>(
     private val onActionClicked: (T) -> Unit
 ) : ListAdapter<PreferenceListItem<T>, RecyclerView.ViewHolder>(PreferenceDiffCallback()) {
 
-    override fun getItemViewType(position: Int): Int {
-        return when (getItem(position)) {
-            is PreferenceListItem.Category -> TYPE_CATEGORY
-            is PreferenceListItem.Action -> TYPE_ACTION
-        }
+    override fun getItemViewType(position: Int): Int = when (getItem(position)) {
+        is PreferenceListItem.Category -> TYPE_CATEGORY
+        is PreferenceListItem.Action<*> -> TYPE_ACTION
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            TYPE_CATEGORY -> {
-                val binding = ItemPreferenceCategoryBinding.inflate(inflater, parent, false)
-                CategoryViewHolder(binding)
-            }
-
-            else -> {
-                val binding = ItemPreferenceBinding.inflate(inflater, parent, false)
-                ActionViewHolder(binding, onActionClicked)
-            }
+            TYPE_CATEGORY -> CategoryViewHolder(
+                ItemPreferenceCategoryBinding.inflate(inflater, parent, false)
+            )
+            else -> ActionViewHolder(
+                ItemPreferenceBinding.inflate(inflater, parent, false),
+                onActionClicked
+            )
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = getItem(position)
-        when {
-            holder is CategoryViewHolder && item is PreferenceListItem.Category -> {
-                holder.bind(item)
+        when (val item = getItem(position)) {
+            is PreferenceListItem.Category -> {
+                val vh = holder as? CategoryViewHolder
+                    ?: error("CategoryViewHolder expected but was ${holder::class.java.simpleName}")
+                vh.bind(item)
             }
-
-            holder is PreferenceListAdapter<*>.ActionViewHolder && item is PreferenceListItem.Action<*> -> {
-                @Suppress("UNCHECKED_CAST")
-                holder.bind(
-                    item as PreferenceListItem.Action<T> as PreferenceListItem.Action<out Any>,
-                    isFirstItemInSection(position),
-                    isLastItemInSection(position)
-                )
+            is PreferenceListItem.Action<*> -> {
+                // Use nested, generic VH + a single localized cast
+                if (holder is ActionViewHolder<*>) {
+                    @Suppress("UNCHECKED_CAST")
+                    (holder as ActionViewHolder<T>).bind(
+                        item as PreferenceListItem.Action<T>,
+                        isFirstItemInSection(position),
+                        isLastItemInSection(position)
+                    )
+                } else {
+                    error("ActionViewHolder expected but was ${holder::class.java.simpleName}")
+                }
             }
-
-            else -> error(
-                "Unsupported combination: ${holder::class.java.simpleName} cannot bind ${item::class.java.simpleName}"
-            )
         }
     }
 
@@ -84,26 +81,31 @@ class PreferenceListAdapter<T : Any>(
         }
     }
 
-    private inner class ActionViewHolder(
+    // NOTE: nested (not inner) and explicitly generic to avoid inner+T capture quirks
+    private class ActionViewHolder<T : Any>(
         private val binding: ItemPreferenceBinding,
         private val onActionClicked: (T) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: PreferenceListItem.Action<out Any>, first: Boolean, last: Boolean) {
-            binding.lessonCard.setOnClickListener { onActionClicked(item.action as T) }
+        fun bind(item: PreferenceListItem.Action<T>, first: Boolean, last: Boolean) {
+            binding.lessonCard.setOnClickListener { onActionClicked(item.action) }
+
             if (item.iconRes != 0) {
                 binding.icon.setImageResource(item.iconRes)
                 binding.icon.isVisible = true
             } else {
                 binding.icon.isVisible = false
             }
+
             binding.title.setText(item.titleRes)
+
             if (item.summaryRes != null) {
                 binding.summary.setText(item.summaryRes)
                 binding.summary.isVisible = true
             } else {
                 binding.summary.isVisible = false
             }
+
             val widgetLayout = item.widgetLayoutRes
             if (widgetLayout != null) {
                 if (binding.widgetFrame.tag != widgetLayout) {
@@ -113,12 +115,8 @@ class PreferenceListAdapter<T : Any>(
                     binding.widgetFrame.tag = widgetLayout
                 }
                 binding.widgetFrame.isVisible = true
-                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_in_new)?.apply {
-                    isEnabled = false
-                }
-                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_notifications)?.apply {
-                    isEnabled = false
-                }
+                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_in_new)?.isEnabled = false
+                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_notifications)?.isEnabled = false
             } else {
                 binding.widgetFrame.isVisible = false
                 if (!binding.widgetFrame.isEmpty()) {
@@ -126,6 +124,7 @@ class PreferenceListAdapter<T : Any>(
                     binding.widgetFrame.tag = null
                 }
             }
+
             applySpacing(binding.lessonCard, last)
             applyCorners(binding.lessonCard, first, last)
         }
@@ -160,18 +159,21 @@ class PreferenceListAdapter<T : Any>(
             newItem: PreferenceListItem<T>
         ): Boolean {
             if (oldItem::class != newItem::class) return false
-            return when (oldItem) {
-                is PreferenceListItem.Category -> oldItem.titleRes == (newItem as PreferenceListItem.Category).titleRes
-                is PreferenceListItem.Action -> oldItem.action == (newItem as PreferenceListItem.Action<T>).action
+            return when {
+                oldItem is PreferenceListItem.Category && newItem is PreferenceListItem.Category ->
+                    oldItem.titleRes == newItem.titleRes
+
+                oldItem is PreferenceListItem.Action<*> && newItem is PreferenceListItem.Action<*> ->
+                    oldItem.action == newItem.action
+
+                else -> false
             }
         }
 
         override fun areContentsTheSame(
             oldItem: PreferenceListItem<T>,
             newItem: PreferenceListItem<T>
-        ): Boolean {
-            return oldItem == newItem
-        }
+        ): Boolean = oldItem == newItem
     }
 
     companion object {

@@ -8,6 +8,8 @@ import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateBarcodeAllBinding
 import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
 import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeActivity
@@ -46,32 +48,38 @@ class CreateBarcodeAllActivity : BaseActivity() {
     }
 
     private fun buildItems() : List<PreferenceListItem<BarcodeAction>> {
-        return listOf(
-            PreferenceListItem.Category(R.string.barcodes_2d) , PreferenceListItem.Action(
-                action = BarcodeAction.DataMatrix , titleRes = R.string.data_matrix , iconRes = R.drawable.ic_data_matrix , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Aztec , titleRes = R.string.aztec , iconRes = R.drawable.ic_aztec , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Pdf417 , titleRes = R.string.pdf_417 , iconRes = R.drawable.ic_pdf417 , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Category(R.string.barcodes_1d) , PreferenceListItem.Action(
-                action = BarcodeAction.Ean13 , titleRes = R.string.ean_13 , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Ean8 , titleRes = R.string.ean_8 , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.UpcE , titleRes = R.string.upc_e , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.UpcA , titleRes = R.string.upc_a , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Code128 , titleRes = R.string.code_128 , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Code93 , titleRes = R.string.code_93 , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Code39 , titleRes = R.string.code_39 , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Codabar , titleRes = R.string.codabar , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            ) , PreferenceListItem.Action(
-                action = BarcodeAction.Itf , titleRes = R.string.itf , iconRes = R.drawable.ic_barcode , widgetLayoutRes = R.layout.item_preference_widget_open_internal
-            )
+        val entries = PreferenceLayoutParser.parse(this , R.xml.preferences_create_barcode_all)
+        return entries.mapNotNull { entry ->
+            when (entry) {
+                is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)
+                is PreferenceLayoutEntry.Action -> mapActionEntry(entry)
+            }
+        }
+    }
+
+    private fun mapActionEntry(entry : PreferenceLayoutEntry.Action) : PreferenceListItem.Action<BarcodeAction>? {
+        val action = when (entry.key) {
+            "data_matrix" -> BarcodeAction.DataMatrix
+            "aztec" -> BarcodeAction.Aztec
+            "pdf417" -> BarcodeAction.Pdf417
+            "ean_13" -> BarcodeAction.Ean13
+            "ean_8" -> BarcodeAction.Ean8
+            "upc_e" -> BarcodeAction.UpcE
+            "upc_a" -> BarcodeAction.UpcA
+            "code_128" -> BarcodeAction.Code128
+            "code_93" -> BarcodeAction.Code93
+            "code_39" -> BarcodeAction.Code39
+            "codabar" -> BarcodeAction.Codabar
+            "itf" -> BarcodeAction.Itf
+            else -> null
+        } ?: return null
+
+        return PreferenceListItem.Action(
+            action = action,
+            titleRes = entry.titleRes,
+            summaryRes = entry.summaryRes,
+            iconRes = entry.iconRes,
+            widgetLayoutRes = entry.widgetLayoutRes
         )
     }
 

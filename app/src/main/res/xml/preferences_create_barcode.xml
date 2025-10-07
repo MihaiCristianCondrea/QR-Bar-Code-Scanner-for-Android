@@ -1,0 +1,56 @@
+<androidx.preference.PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/qr_code">
+
+        <androidx.preference.Preference
+            app:key="clipboard"
+            app:title="@string/content_from_clipboard"
+            app:icon="@drawable/ic_copy" />
+
+        <androidx.preference.Preference
+            app:key="text"
+            app:title="@string/text"
+            app:icon="@drawable/ic_text" />
+
+        <androidx.preference.Preference
+            app:key="url"
+            app:title="@string/url"
+            app:icon="@drawable/ic_link" />
+
+        <androidx.preference.Preference
+            app:key="wifi"
+            app:title="@string/wifi"
+            app:icon="@drawable/ic_wifi" />
+
+        <androidx.preference.Preference
+            app:key="location"
+            app:title="@string/location"
+            app:icon="@drawable/ic_location" />
+
+        <androidx.preference.Preference
+            app:key="contact"
+            app:title="@string/contact_v_card"
+            app:icon="@drawable/ic_contact_white" />
+
+        <androidx.preference.Preference
+            app:key="more_qr_codes"
+            app:title="@string/more_qr_codes"
+            app:icon="@drawable/ic_qr_code_white"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/barcode">
+
+        <androidx.preference.Preference
+            app:key="all_barcodes"
+            app:title="@string/all_barcodes_codes"
+            app:icon="@drawable/ic_barcode"
+            app:widgetLayout="@layout/item_preference_widget_open_internal" />
+
+    </androidx.preference.PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>
