@@ -46,7 +46,7 @@ class BarcodeDatabaseTypeConverter {
     }
 }
 
-@Database(entities = [Barcode::class] , version = 2, exportSchema = false)
+@Database(entities = [Barcode::class] , version = 2, exportSchema = true)
 abstract class BarcodeDatabaseFactory : RoomDatabase() {
     abstract fun getBarcodeDatabase() : BarcodeDatabase
 }

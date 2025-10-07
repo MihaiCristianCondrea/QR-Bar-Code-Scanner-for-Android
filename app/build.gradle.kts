@@ -5,7 +5,6 @@ plugins {
     alias(notation = libs.plugins.androidApplication)
     alias(notation = libs.plugins.jetbrainsKotlinAndroid)
     alias(notation = libs.plugins.jetbrainsKotlinParcelize)
-    id("org.jetbrains.kotlin.kapt")
     alias(notation = libs.plugins.kotlin.serialization)
     alias(notation = libs.plugins.googlePlayServices)
     alias(notation = libs.plugins.googleFirebase)
@@ -140,40 +139,44 @@ android {
         }
     }
 }
+
 dependencies {
-    // KSP TODO: Make them bundle
-    ksp(dependencyNotation = libs.androidx.room.compiler)
-    kapt(dependencyNotation = libs.hilt.compiler)
     implementation(dependencyNotation = libs.androidx.room.ktx)
     implementation(dependencyNotation = libs.androidx.room.runtime)
     implementation(dependencyNotation = libs.androidx.room.paging)
 
-
     // AndroidX
-    api(dependencyNotation = libs.bundles.androidx.core)
+    implementation(dependencyNotation = libs.bundles.androidx.core)
 
     // Lifecycle
-    api(dependencyNotation = libs.bundles.androidx.lifecycle)
+    implementation(dependencyNotation = libs.bundles.androidx.lifecycle)
 
     // Firebase
-    api(dependencyNotation = platform(libs.firebase.bom))
-    api(dependencyNotation = libs.bundles.firebase)
+    implementation(dependencyNotation = platform(libs.firebase.bom))
+    implementation(dependencyNotation = libs.bundles.firebase)
 
     // Google Play services & Play Store APIs
-    api(dependencyNotation = libs.bundles.google.play)
+    implementation(dependencyNotation = libs.bundles.google.play)
 
     // Image loading
-    api(dependencyNotation = libs.bundles.coil)
+    implementation(dependencyNotation = libs.bundles.coil)
 
     // Kotlin Coroutines & Serialization
-    api(dependencyNotation = libs.bundles.kotlinx)
+    implementation(dependencyNotation = libs.bundles.kotlinx)
+
+    // Dependency injection
+    implementation(dependencyNotation = libs.hilt.android)
 
     // Dependency Injection
     implementation(dependencyNotation = libs.bundles.hilt)
 
     // Networking (Ktor)
-    api(dependencyNotation = platform(libs.ktor.bom))
-    api(dependencyNotation = libs.bundles.ktor)
+    implementation(dependencyNotation = platform(libs.ktor.bom))
+    implementation(dependencyNotation = libs.bundles.ktor)
+
+    // Annotation processors
+    annotationProcessor(dependencyNotation =  libs.hilt.compiler )
+    annotationProcessor(dependencyNotation =  libs.androidx.room.compiler)
 
     // Unit Tests
     testImplementation(dependencyNotation = libs.bundles.unitTest)
@@ -204,4 +207,3 @@ dependencies {
 kapt {
     correctErrorTypes = true
 }
-
