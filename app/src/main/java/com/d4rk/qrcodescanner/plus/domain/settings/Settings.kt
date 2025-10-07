@@ -7,14 +7,14 @@ import androidx.core.content.edit
 import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
 import com.google.zxing.BarcodeFormat
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class Settings(private val context : Context) {
+@Singleton
+class Settings @Inject constructor(@ApplicationContext private val context : Context) {
     companion object {
         private const val SHARED_PREFERENCES_NAME = "SHARED_PREFERENCES_NAME"
-        private var INSTANCE : Settings? = null
-        fun getInstance(context : Context) : Settings {
-            return INSTANCE ?: Settings(context.applicationContext).apply { INSTANCE = this }
-        }
     }
 
     private enum class Key {

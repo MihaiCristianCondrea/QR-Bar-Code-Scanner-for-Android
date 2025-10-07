@@ -5,6 +5,7 @@ plugins {
     alias(notation = libs.plugins.androidApplication)
     alias(notation = libs.plugins.jetbrainsKotlinAndroid)
     alias(notation = libs.plugins.jetbrainsKotlinParcelize)
+    id("org.jetbrains.kotlin.kapt")
     alias(notation = libs.plugins.kotlin.serialization)
     alias(notation = libs.plugins.googlePlayServices)
     alias(notation = libs.plugins.googleFirebase)
@@ -12,6 +13,7 @@ plugins {
     alias(notation = libs.plugins.devToolsKsp)
     alias(notation = libs.plugins.about.libraries)
     alias(notation = libs.plugins.mannodermaus)
+    alias(notation = libs.plugins.hilt.android)
     id("com.google.android.gms.oss-licenses-plugin")
 }
 android {
@@ -141,6 +143,7 @@ android {
 dependencies {
     // KSP TODO: Make them bundle
     ksp(dependencyNotation = libs.androidx.room.compiler)
+    kapt(dependencyNotation = libs.hilt.compiler)
     implementation(dependencyNotation = libs.androidx.room.ktx)
     implementation(dependencyNotation = libs.androidx.room.runtime)
     implementation(dependencyNotation = libs.androidx.room.paging)
@@ -164,6 +167,9 @@ dependencies {
 
     // Kotlin Coroutines & Serialization
     api(dependencyNotation = libs.bundles.kotlinx)
+
+    // Dependency Injection
+    implementation(dependencyNotation = libs.bundles.hilt)
 
     // Networking (Ktor)
     api(dependencyNotation = platform(libs.ktor.bom))
@@ -194,3 +200,8 @@ dependencies {
     implementation("me.zhanghai.android.fastscroll:library:1.3.0")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
+
+kapt {
+    correctErrorTypes = true
+}
+

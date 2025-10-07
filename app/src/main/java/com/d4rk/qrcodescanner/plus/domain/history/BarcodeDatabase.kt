@@ -1,13 +1,11 @@
 package com.d4rk.qrcodescanner.plus.domain.history
 
-import android.content.Context
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.migration.Migration
@@ -19,6 +17,12 @@ import com.google.zxing.BarcodeFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+
+val BARCODE_DATABASE_MIGRATION_1_2 = object : Migration(1 , 2) {
+    override fun migrate(db : SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE codes ADD COLUMN name TEXT")
+    }
+}
 
 class BarcodeDatabaseTypeConverter {
     @TypeConverter
@@ -42,28 +46,9 @@ class BarcodeDatabaseTypeConverter {
     }
 }
 
-@Database(entities = [Barcode::class] , version = 2)
+@Database(entities = [Barcode::class] , version = 2, exportSchema = false)
 abstract class BarcodeDatabaseFactory : RoomDatabase() {
     abstract fun getBarcodeDatabase() : BarcodeDatabase
-
-    companion object {
-        @Volatile
-        private var INSTANCE : BarcodeDatabase? = null
-
-        fun getInstance(context : Context) : BarcodeDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext , BarcodeDatabaseFactory::class.java , "db"
-                ).addMigrations(object : Migration(1 , 2) {
-                            override fun migrate(db : SupportSQLiteDatabase) {
-                                db.execSQL("ALTER TABLE codes ADD COLUMN name TEXT")
-                            }
-                        }).build().getBarcodeDatabase()
-                INSTANCE = instance
-                instance
-            }
-        }
-    }
 }
 
 @Dao

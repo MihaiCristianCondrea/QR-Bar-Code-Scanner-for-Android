@@ -38,6 +38,7 @@ slf4j = "2.0.17"
 ktor = "3.3.0"
 robolectric = "4.16"
 junit4 = "4.13.2"
+hilt = "2.57.2"
 
 [libraries]
 # AndroidX & Material
@@ -91,6 +92,8 @@ coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutinesAndroid" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
 # --- TESTING ---
 # Unit Tests (test folder)
@@ -126,6 +129,7 @@ devToolsKsp = { id = "com.google.devtools.ksp", version.ref = "google-devtools-k
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 about-libraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries" }
 mannodermaus = { id = "de.mannodermaus.android-junit5", version.ref = "mannodermaus" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 [bundles]
 androidx-core = [
@@ -181,6 +185,10 @@ ktor = [
     "ktor-client-logging",
     "ktor-client-content-negotiation",
     "ktor-serialization-kotlinx-json",
+]
+
+hilt = [
+    "hilt-android",
 ]
 
 # For local tests on the JVM (test sourceSet)

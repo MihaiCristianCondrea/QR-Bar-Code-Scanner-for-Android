@@ -1,6 +1,17 @@
 package com.d4rk.qrcodescanner.plus
 
-import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.multidex.MultiDexApplication
+import dagger.hilt.android.HiltAndroidApp
 
-class QrCodeScanner : MultiDexApplication() , DefaultLifecycleObserver
+@HiltAndroidApp
+class QrCodeScanner : MultiDexApplication() {
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+    }
+
+    companion object {
+        lateinit var instance: QrCodeScanner
+            private set
+    }
+}
