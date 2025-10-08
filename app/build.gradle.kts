@@ -137,6 +137,11 @@ android {
             enable = true
         }
     }
+
+    // TODO: Remove once hilt issues are fixed
+    hilt {
+        enableAggregatingTask = false
+    }
 }
 
 dependencies {
@@ -172,6 +177,8 @@ dependencies {
     // Annotation processors (handled via KSP)
     ksp(dependencyNotation = libs.hilt.compiler)
     ksp(dependencyNotation = libs.androidx.room.compiler)
+    kspTest(dependencyNotation = libs.hilt.compiler)
+    kspAndroidTest(dependencyNotation = libs.hilt.compiler)
 
     // Unit Tests
     testImplementation(dependencyNotation = libs.bundles.unitTest)

@@ -8,6 +8,7 @@ plugins {
     alias(notation = libs.plugins.googlePlayServices) apply false
     alias(notation = libs.plugins.googleFirebase) apply false
     alias(notation = libs.plugins.devToolsKsp) apply false
+    alias(notation = libs.plugins.hilt.android) apply false
     alias(notation = libs.plugins.about.libraries) apply true
     alias(notation = libs.plugins.mannodermaus) apply false
     id("com.google.android.gms.oss-licenses-plugin") version "0.10.9" apply false
