@@ -99,7 +99,6 @@
     <string name="send_feedback">Send feedback</string>
     <string name="contact_support_title">Contact support</string>
     <string name="contact_support_description">Share details to get help reaching your goal</string>
-    <string name="contact_support_email" translatable="false">contact.mihaicristiancondrea@gmail.com</string>
     <string name="contact_support_email_subject">Support request for %1$s</string>
     <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
     <string name="support_link_unavailable">No email apps are available to handle this request.</string>
