@@ -11,7 +11,6 @@ plugins {
     alias(notation = libs.plugins.devToolsKsp)
     alias(notation = libs.plugins.about.libraries)
     alias(notation = libs.plugins.mannodermaus)
-    alias(notation = libs.plugins.hilt.android)
     id("com.google.android.gms.oss-licenses-plugin")
 }
 android {
@@ -137,11 +136,6 @@ android {
             enable = true
         }
     }
-
-    // TODO: Remove once hilt issues are fixed
-    hilt {
-        enableAggregatingTask = false
-    }
 }
 
 dependencies {
@@ -172,13 +166,10 @@ dependencies {
     implementation(dependencyNotation = libs.bundles.barcode.stack)
 
     // Dependency injection
-    implementation(dependencyNotation = libs.hilt.android)
+    implementation(dependencyNotation = libs.koin.android)
 
     // Annotation processors (handled via KSP)
-    ksp(dependencyNotation = libs.hilt.compiler)
     ksp(dependencyNotation = libs.androidx.room.compiler)
-    kspTest(dependencyNotation = libs.hilt.compiler)
-    kspAndroidTest(dependencyNotation = libs.hilt.compiler)
 
     // Unit Tests
     testImplementation(dependencyNotation = libs.bundles.unitTest)

@@ -5,7 +5,7 @@ kotlin = "2.2.20"
 googleServices = "4.4.3"
 firebaseCrashlyticsPlugin = "3.0.6"
 googleDevtoolsKsp = "2.2.20-2.0.3"
-hilt = "2.57.2"
+koin = "4.1.1"
 room = "2.8.2"
 appcompat = "1.7.1"
 constraintlayout = "2.2.1"
@@ -113,8 +113,8 @@ kotlin-otp = { module = "dev.turingcomplete:kotlin-onetimepassword", version.ref
 ez-vcard = { module = "com.googlecode.ez-vcard:ez-vcard", version.ref = "ezVcard" }
 
 # Dependency injection
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 
 # Utility
 android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
@@ -147,7 +147,6 @@ googleFirebase = { id = "com.google.firebase.crashlytics", version.ref = "fireba
 devToolsKsp = { id = "com.google.devtools.ksp", version.ref = "googleDevtoolsKsp" }
 about-libraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 mannodermaus = { id = "de.mannodermaus.android-junit5", version.ref = "mannodermaus" }
-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 [bundles]
 # Google Play services and related UI components

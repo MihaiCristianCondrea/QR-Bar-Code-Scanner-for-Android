@@ -1,17 +1,16 @@
 package com.d4rk.qrcodescanner.plus
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.d4rk.qrcodescanner.plus.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-@HiltAndroidApp
 class QrCodeScanner : Application() {
     override fun onCreate() {
         super.onCreate()
-        instance = this
-    }
-
-    companion object {
-        lateinit var instance: QrCodeScanner
-            private set
+        startKoin {
+            androidContext(this@QrCodeScanner)
+            modules(appModule)
+        }
     }
 }

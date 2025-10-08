@@ -1,9 +1,7 @@
 package com.d4rk.qrcodescanner.plus.di
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.d4rk.qrcodescanner.plus.QrCodeScanner
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
 import com.d4rk.qrcodescanner.plus.domain.barcode.WifiConnector
@@ -17,83 +15,52 @@ import com.d4rk.qrcodescanner.plus.domain.scan.ScannerCameraHelper
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.utils.PermissionsHelper
 import com.d4rk.qrcodescanner.plus.utils.RotationHelper
-import dagger.hilt.EntryPoint
-import dagger.hilt.InstallIn
-import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.components.SingletonComponent
+import org.koin.core.context.GlobalContext
 
-@EntryPoint
-@InstallIn(SingletonComponent::class)
-internal interface AppEntryPoint {
-    fun settings() : Settings
-    fun barcodeParser() : BarcodeParser
-    fun barcodeImageScanner() : BarcodeImageScanner
-    fun barcodeImageGenerator() : BarcodeImageGenerator
-    fun barcodeSaver() : BarcodeSaver
-    fun barcodeImageSaver() : BarcodeImageSaver
-    fun wifiConnector() : WifiConnector
-    fun otpGenerator() : OTPGenerator
-    fun barcodeDatabase() : BarcodeDatabase
-    fun contactHelper() : ContactHelper
-    fun permissionsHelper() : PermissionsHelper
-    fun rotationHelper() : RotationHelper
-    fun scannerCameraHelper() : ScannerCameraHelper
-}
+private val koin get() = GlobalContext.get()
 
-private fun Context.appEntryPoint() : AppEntryPoint {
-    return EntryPointAccessors.fromApplication(
-        applicationContext ,
-        AppEntryPoint::class.java
-    )
-}
+val barcodeParser: BarcodeParser
+    get() = koin.get()
 
-private val applicationEntryPoint : AppEntryPoint
-    get() = QrCodeScanner.instance.appEntryPoint()
+val barcodeImageScanner: BarcodeImageScanner
+    get() = koin.get()
 
-val QrCodeScanner.settings : Settings
-    get() = appEntryPoint().settings()
+val barcodeImageGenerator: BarcodeImageGenerator
+    get() = koin.get()
 
-val barcodeParser : BarcodeParser
-    get() = applicationEntryPoint.barcodeParser()
+val barcodeSaver: BarcodeSaver
+    get() = koin.get()
 
-val barcodeImageScanner : BarcodeImageScanner
-    get() = applicationEntryPoint.barcodeImageScanner()
+val barcodeImageSaver: BarcodeImageSaver
+    get() = koin.get()
 
-val barcodeImageGenerator : BarcodeImageGenerator
-    get() = applicationEntryPoint.barcodeImageGenerator()
+val wifiConnector: WifiConnector
+    get() = koin.get()
 
-val barcodeSaver : BarcodeSaver
-    get() = applicationEntryPoint.barcodeSaver()
+val otpGenerator: OTPGenerator
+    get() = koin.get()
 
-val barcodeImageSaver : BarcodeImageSaver
-    get() = applicationEntryPoint.barcodeImageSaver()
+val contactHelper: ContactHelper
+    get() = koin.get()
 
-val wifiConnector : WifiConnector
-    get() = applicationEntryPoint.wifiConnector()
+val permissionsHelper: PermissionsHelper
+    get() = koin.get()
 
-val otpGenerator : OTPGenerator
-    get() = applicationEntryPoint.otpGenerator()
+val rotationHelper: RotationHelper
+    get() = koin.get()
 
-val AppCompatActivity.barcodeDatabase : BarcodeDatabase
-    get() = appEntryPoint().barcodeDatabase()
+val scannerCameraHelper: ScannerCameraHelper
+    get() = koin.get()
 
-val AppCompatActivity.settings : Settings
-    get() = appEntryPoint().settings()
+val AppCompatActivity.barcodeDatabase: BarcodeDatabase
+    get() = koin.get()
 
-val contactHelper : ContactHelper
-    get() = applicationEntryPoint.contactHelper()
+val AppCompatActivity.settings: Settings
+    get() = koin.get()
 
-val permissionsHelper : PermissionsHelper
-    get() = applicationEntryPoint.permissionsHelper()
+val Fragment.barcodeDatabase: BarcodeDatabase
+    get() = koin.get()
 
-val rotationHelper : RotationHelper
-    get() = applicationEntryPoint.rotationHelper()
+val Fragment.settings: Settings
+    get() = koin.get()
 
-val scannerCameraHelper : ScannerCameraHelper
-    get() = applicationEntryPoint.scannerCameraHelper()
-
-val Fragment.barcodeDatabase : BarcodeDatabase
-    get() = requireContext().appEntryPoint().barcodeDatabase()
-
-val Fragment.settings : Settings
-    get() = requireContext().appEntryPoint().settings()
