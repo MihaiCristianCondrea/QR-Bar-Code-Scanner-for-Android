@@ -101,7 +101,7 @@
     <string name="contact_support_email_subject">%1$s için destek talebi</string>
     <string name="contact_support_email_body">Merhaba,\n\nQR &amp; Bar Code Scanner Plus için yardıma ihtiyacım var.\n\nTeşekkürler!</string>
     <string name="support_link_unavailable">Bu isteği karşılayabilecek bir e-posta uygulaması yok.</string>
-    <string name="menu_view_in_google_play">Google Play'de görüntüle</string>
+    <string name="menu_view_in_google_play">Google Play\'de görüntüle</string>
     <string name="menu_version_info">Sürüm bilgisi</string>
     <string name="menu_beta_program">Beta programına katıl</string>
     <string name="menu_open_source_licenses">Açık kaynak lisansları</string>
