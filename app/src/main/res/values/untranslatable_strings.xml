@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">QR &amp; Barcode Scanner Plus</string>
+    <string name="app_name" translatable="false">QR &amp; Barcode Scanner</string>
     <string name="data_matrix" translatable="false">Data Matrix</string>
     <string name="aztec" translatable="false">Aztec</string>
     <string name="pdf_417" translatable="false">PDF417</string>

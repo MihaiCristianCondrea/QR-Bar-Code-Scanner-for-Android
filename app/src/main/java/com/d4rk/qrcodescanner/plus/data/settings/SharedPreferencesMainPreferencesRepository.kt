@@ -1,6 +1,7 @@
 package com.d4rk.qrcodescanner.plus.data.settings
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.domain.main.BottomNavigationLabelsPreference
@@ -8,6 +9,11 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferences
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.main.StartDestinationPreference
 import com.d4rk.qrcodescanner.plus.domain.main.ThemePreference
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 class SharedPreferencesMainPreferencesRepository(context : Context) : MainPreferencesRepository {
 
@@ -24,7 +30,22 @@ class SharedPreferencesMainPreferencesRepository(context : Context) : MainPrefer
     private val defaultBottomNavigationLabelsValue = resources.getString(R.string.default_value_bottom_navigation_bar_labels)
     private val defaultStartDestinationValue = resources.getString(R.string.default_value_tab)
 
-    override fun getMainPreferences() : MainPreferences {
+    private val trackedKeys = setOf(themeKey , languageKey , bottomNavigationLabelsKey , defaultTabKey)
+
+    override val mainPreferences : Flow<MainPreferences> = callbackFlow {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _ , key ->
+            if (key == null || trackedKeys.contains(key)) {
+                trySend(readMainPreferences())
+            }
+        }
+
+        trySend(readMainPreferences())
+
+        preferences.registerOnSharedPreferenceChangeListener(listener)
+        awaitClose { preferences.unregisterOnSharedPreferenceChangeListener(listener) }
+    }.conflate().distinctUntilChanged()
+
+    private fun readMainPreferences() : MainPreferences {
         val themePreference = preferences.getString(themeKey , defaultThemeValue)
         val languageTag = preferences.getString(languageKey , defaultLanguageValue) ?: defaultLanguageValue
         val labelsPreference = preferences.getString(bottomNavigationLabelsKey , defaultBottomNavigationLabelsValue)

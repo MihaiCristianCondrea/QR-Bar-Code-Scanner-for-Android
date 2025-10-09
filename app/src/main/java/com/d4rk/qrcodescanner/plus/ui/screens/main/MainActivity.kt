@@ -121,11 +121,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 startupScreen()
-                mainViewModel.refreshSettings()
             }
         })
 
-        mainViewModel.refreshSettings()
     }
 
     override fun onCreateOptionsMenu(menu : Menu) : Boolean {

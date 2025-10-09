@@ -1,5 +1,7 @@
 package com.d4rk.qrcodescanner.plus.domain.main
 
+import kotlinx.coroutines.flow.Flow
+
 data class MainPreferences(
     val theme : ThemePreference ,
     val languageTag : String ,
@@ -27,5 +29,5 @@ enum class StartDestinationPreference {
 }
 
 interface MainPreferencesRepository {
-    fun getMainPreferences() : MainPreferences
+    val mainPreferences : Flow<MainPreferences>
 }

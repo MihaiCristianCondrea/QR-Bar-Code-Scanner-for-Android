@@ -2,8 +2,10 @@ package com.d4rk.qrcodescanner.plus.ui.screens.main
 
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.domain.main.BottomNavigationLabelsPreference
+import com.d4rk.qrcodescanner.plus.domain.main.MainPreferences
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.main.StartDestinationPreference
 import com.d4rk.qrcodescanner.plus.domain.main.ThemePreference
@@ -11,6 +13,7 @@ import com.google.android.material.navigation.NavigationBarView
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val preferencesRepository : MainPreferencesRepository
@@ -22,9 +25,15 @@ class MainViewModel(
     private var lastThemeMode : Int? = null
     private var lastLanguageTag : String? = null
 
-    fun refreshSettings() {
-        val preferences = preferencesRepository.getMainPreferences()
+    init {
+        viewModelScope.launch {
+            preferencesRepository.mainPreferences.collect { preferences ->
+                updateUiState(preferences)
+            }
+        }
+    }
 
+    private fun updateUiState(preferences : MainPreferences) {
         val themeMode = preferences.theme.toThemeMode()
         val languageTag = preferences.languageTag
         val labelVisibility = preferences.bottomNavigationLabels.toLabelVisibility()
