@@ -40,6 +40,7 @@
     <string name="barcodes_1d">Barcode 1D</string>
     <string name="history">Riwayat</string>
     <string name="export_history">Ekspor riwayat</string>
+    <string name="history_empty_message">Anda belum memiliki pemindaian yang disimpan. Pindai atau buat kode untuk menampilkannya di sini.</string>
     <string name="export_as">Ekspor sebagai</string>
     <string name="export">Ekspor</string>
     <string name="about">Tentang</string>

@@ -176,34 +176,32 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun bindCameraUseCases() {
-        val provider = cameraProvider ?: return
         if (!areAllPermissionsGranted()) {
             return
         }
-        val executor = cameraExecutor ?: return
-        val preview = Preview.Builder().build().apply {
-            surfaceProvider = binding.previewView.surfaceProvider
-        }
-        val analysis = ImageAnalysis.Builder()
-            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-            .build()
-        val scanner = createBarcodeScanner()
-        analysis.setAnalyzer(executor) { imageProxy ->
-            processImage(scanner, imageProxy)
-        }
-        val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
-        try {
+        runCatching {
+            val provider = cameraProvider ?: return@runCatching
+            val executor = cameraExecutor ?: return@runCatching
+            val preview = Preview.Builder().build().apply {
+                surfaceProvider = binding.previewView.surfaceProvider
+            }
+            val analysis = ImageAnalysis.Builder()
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                .build()
+            val scanner = createBarcodeScanner()
+            analysis.setAnalyzer(executor) { imageProxy -> processImage(scanner, imageProxy) }
+            val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
             provider.unbindAll()
             barcodeScanner?.close()
             barcodeScanner = scanner
             camera = provider.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview, analysis)
-            observeTorchState()
-            observeZoomState()
-            updateFlashAvailability()
-            applyInitialTorchState()
-        } catch (throwable: Exception) {
-            showError(throwable)
-        }
+            camera?.let {
+                observeTorchState()
+                observeZoomState()
+                updateFlashAvailability()
+                applyInitialTorchState()
+            }
+        }.onFailure(::showError)
     }
 
     private fun pauseCamera() {

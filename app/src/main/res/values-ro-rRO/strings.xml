@@ -40,6 +40,7 @@
     <string name="barcodes_1d">Coduri de bare 1D</string>
     <string name="history">Istoric</string>
     <string name="export_history">Exportă istoricul</string>
+    <string name="history_empty_message">Nu aveți încă scanări salvate. Scanați sau creați un cod pentru a-l vedea aici.</string>
     <string name="export_as">Exportă ca</string>
     <string name="export">Exportă</string>
     <string name="about">Despre</string>

@@ -60,6 +60,9 @@ interface BarcodeDatabase {
     @Query("SELECT * FROM codes WHERE isFavorite = 1 ORDER BY date DESC")
     fun getFavorites() : PagingSource<Int , Barcode> // Or Flow<List<Barcode>> if not using Paging
 
+    @Query("SELECT COUNT(*) FROM codes")
+    fun observeCount() : Flow<Int>
+
     // Use Flow for observable queries
     @Query("SELECT date, format, text FROM codes ORDER BY date DESC")
     fun getAllForExport() : Flow<List<ExportBarcode>>

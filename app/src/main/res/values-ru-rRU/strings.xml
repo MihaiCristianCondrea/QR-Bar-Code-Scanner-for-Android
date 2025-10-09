@@ -40,6 +40,7 @@
     <string name="barcodes_1d">1D-штрих-коды</string>
     <string name="history">История</string>
     <string name="export_history">Экспорт истории</string>
+    <string name="history_empty_message">У вас пока нет сохранённых сканов. Отсканируйте или создайте код, чтобы увидеть его здесь.</string>
     <string name="export_as">Экспортировать как</string>
     <string name="export">Экспорт</string>
     <string name="about">О приложении</string>

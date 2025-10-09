@@ -39,6 +39,7 @@
     <string name="barcodes_1d">1D-streckkoder</string>
     <string name="history">Historik</string>
     <string name="export_history">Exportera historik</string>
+    <string name="history_empty_message">Du har inga sparade skanningar ännu. Skanna eller skapa en kod så visas den här.</string>
     <string name="export_as">Exportera som</string>
     <string name="export">Exportera</string>
     <string name="about">Om</string>

@@ -39,6 +39,7 @@
     <string name="barcodes_1d">1D-штрих-коди</string>
     <string name="history">Історія</string>
     <string name="export_history">Експортувати історію</string>
+    <string name="history_empty_message">У вас ще немає збережених сканів. Відскануйте або створіть код, щоб побачити його тут.</string>
     <string name="export_as">Експортувати як</string>
     <string name="export">Експорт</string>
     <string name="about">Про додаток</string>

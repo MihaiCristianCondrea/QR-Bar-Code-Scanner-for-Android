@@ -39,6 +39,7 @@
     <string name="barcodes_1d">1D-Barcodes</string>
     <string name="history">Verlauf</string>
     <string name="export_history">Verlauf exportieren</string>
+    <string name="history_empty_message">Du hast noch keine gespeicherten Scans. Scanne oder erstelle einen Code, um ihn hier anzuzeigen.</string>
     <string name="export_as">Exportieren als</string>
     <string name="export">Exportieren</string>
     <string name="about">Über</string>

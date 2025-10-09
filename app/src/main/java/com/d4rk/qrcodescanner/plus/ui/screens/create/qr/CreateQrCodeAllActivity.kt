@@ -14,6 +14,7 @@ import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutPar
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
 import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.zxing.BarcodeFormat
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
@@ -31,6 +32,7 @@ class CreateQrCodeAllActivity : BaseActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateQrCodeAllBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         supportEdgeToEdge()
         setupList()

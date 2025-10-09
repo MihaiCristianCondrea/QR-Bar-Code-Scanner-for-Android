@@ -36,7 +36,6 @@ lifecycle = "2.9.4"
 lottie = "6.6.10"
 fastscroll = "1.3.0"
 paging = "3.3.6"
-zxingEmbedded = "4.3.0"
 commonsCodec = "1.19.0"
 otp = "2.4.1"
 ezVcard = "0.12.1"
@@ -110,7 +109,6 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 # UI & Feature toolkits
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 fastscroll = { module = "me.zhanghai.android.fastscroll:library", version.ref = "fastscroll" }
-zxing-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingEmbedded" }
 commons-codec = { module = "commons-codec:commons-codec", version.ref = "commonsCodec" }
 kotlin-otp = { module = "dev.turingcomplete:kotlin-onetimepassword", version.ref = "otp" }
 ez-vcard = { module = "com.googlecode.ez-vcard:ez-vcard", version.ref = "ezVcard" }
@@ -227,7 +225,6 @@ kotlinx = [
 
 # Barcode and QR feature utilities
 barcode-stack = [
-    "zxing-embedded",
     "play-services-mlkit-barcode-scanning",
     "mlkit-barcode-scanning",
     "zxing-core",

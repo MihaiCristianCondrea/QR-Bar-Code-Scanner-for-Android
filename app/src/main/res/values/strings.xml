@@ -39,6 +39,7 @@
     <string name="barcodes_1d">1D barcodes</string>
     <string name="history">History</string>
     <string name="export_history">Export history</string>
+    <string name="history_empty_message">You have no saved scans yet. Scan or create a code to see it here.</string>
     <string name="export_as">Export as</string>
     <string name="export">Export</string>
     <string name="about">About</string>

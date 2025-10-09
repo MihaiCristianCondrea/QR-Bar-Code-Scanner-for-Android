@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadState
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
@@ -21,6 +25,7 @@ import kotlinx.coroutines.launch
 class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
     private lateinit var _binding : FragmentBarcodeHistoryListBinding
     private val binding get() = _binding
+    private var hasLoadedEmptyStateAd = false
 
     companion object {
         private const val PAGE_SIZE = 20
@@ -54,6 +59,7 @@ class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
         super.onViewCreated(view , savedInstanceState)
         initRecyclerView()
         loadHistory()
+        observeHistoryLoadState()
     }
 
     override fun onBarcodeClicked(barcode : Barcode) {
@@ -81,6 +87,25 @@ class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
         viewLifecycleOwner.lifecycleScope.launch {
             pager.collectLatest { pagingData ->
                 scanHistoryAdapter.submitData(pagingData)
+            }
+        }
+    }
+
+    private fun observeHistoryLoadState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                scanHistoryAdapter.loadStateFlow.collectLatest { loadStates ->
+                    val isEmpty = loadStates.refresh is LoadState.NotLoading && scanHistoryAdapter.itemCount == 0
+                    binding.recyclerViewHistory.isVisible = ! isEmpty
+                    binding.emptyHistoryAdView.isVisible = isEmpty
+                    if (isEmpty && ! hasLoadedEmptyStateAd) {
+                        binding.emptyHistoryAdView.loadAd()
+                        hasLoadedEmptyStateAd = true
+                    }
+                    if (! isEmpty) {
+                        hasLoadedEmptyStateAd = false
+                    }
+                }
             }
         }
     }

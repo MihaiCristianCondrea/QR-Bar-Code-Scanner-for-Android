@@ -39,6 +39,7 @@
     <string name="barcodes_1d">1D vonalkódok</string>
     <string name="history">Előzmények</string>
     <string name="export_history">Előzmények exportálása</string>
+    <string name="history_empty_message">Még nincsenek elmentett beolvasásaid. Olvass be vagy hozz létre egy kódot, hogy itt megjelenjen.</string>
     <string name="export_as">Exportálás mint</string>
     <string name="export">Exportálás</string>
     <string name="about">Névjegy</string>

@@ -40,6 +40,7 @@
     <string name="barcodes_1d">1B barkodlar</string>
     <string name="history">Geçmiş</string>
     <string name="export_history">Geçmişi Dışa Aktar</string>
+    <string name="history_empty_message">Henüz kaydedilmiş taramanız yok. Burada görmek için bir kod tarayın veya oluşturun.</string>
     <string name="export_as">Olarak Dışa Aktar</string>
     <string name="export">Dışa Aktar</string>
     <string name="about">Hakkında</string>

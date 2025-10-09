@@ -47,11 +47,12 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     private fun loadApps() {
         showLoading(true)
         viewLifecycleOwner.lifecycleScope.launch {
-            try {
-                val apps = withContext(Dispatchers.IO) { getApps() }
+            runCatching {
+                withContext(Dispatchers.IO) { getApps() }
+            }.onSuccess { apps ->
                 showLoading(false)
                 showApps(apps)
-            } catch (error : Exception) {
+            }.onFailure { error ->
                 showLoading(false)
                 showError(error)
             }

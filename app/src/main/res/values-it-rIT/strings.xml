@@ -40,6 +40,7 @@
     <string name="barcodes_1d">Codici a barre 1D</string>
     <string name="history">Cronologia</string>
     <string name="export_history">Esporta cronologia</string>
+    <string name="history_empty_message">Non hai ancora scansioni salvate. Scansiona o crea un codice per vederlo qui.</string>
     <string name="export_as">Esporta come</string>
     <string name="export">Esporta</string>
     <string name="about">Informazioni</string>

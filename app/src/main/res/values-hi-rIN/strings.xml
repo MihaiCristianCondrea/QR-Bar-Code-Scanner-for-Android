@@ -40,6 +40,7 @@
     <string name="barcodes_1d">1D बारकोड</string>
     <string name="history">इतिहास</string>
     <string name="export_history">इतिहास निर्यात करें</string>
+    <string name="history_empty_message">आपने अभी तक कोई स्कैन सहेजा नहीं है। इसे यहाँ देखने के लिए किसी कोड को स्कैन करें या बनाएँ।</string>
     <string name="export_as">इस रूप में निर्यात करें</string>
     <string name="export">निर्यात करें</string>
     <string name="about">के बारे में</string>

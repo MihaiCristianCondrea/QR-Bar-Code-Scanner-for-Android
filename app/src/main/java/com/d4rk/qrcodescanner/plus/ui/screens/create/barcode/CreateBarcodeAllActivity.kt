@@ -6,13 +6,13 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateBarcodeAllBinding
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
 import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.zxing.BarcodeFormat
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
@@ -30,13 +30,9 @@ class CreateBarcodeAllActivity : BaseActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateBarcodeAllBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        supportEdgeToEdge()
         setupList()
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun setupList() {

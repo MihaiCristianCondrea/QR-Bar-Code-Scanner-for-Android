@@ -39,6 +39,7 @@
     <string name="barcodes_1d">1Dバーコード</string>
     <string name="history">履歴</string>
     <string name="export_history">履歴をエクスポート</string>
+    <string name="history_empty_message">保存されたスキャンはまだありません。ここに表示するにはコードをスキャンするか作成してください。</string>
     <string name="export_as">としてエクスポート</string>
     <string name="export">エクスポート</string>
     <string name="about">について</string>

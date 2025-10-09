@@ -84,28 +84,25 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     private fun saveBarcode() {
         showLoading(true)
         lifecycleScope.launch {
-            try {
+            runCatching {
                 when (binding.spinnerSaveAs.selectedItemPosition) {
                     0 -> {
-                        val bitmap = barcodeImageGenerator.generateBitmap(barcode , 640 , 640 , 2) // Assuming this can be a suspend function or you adapt it
-                        barcodeImageSaver.savePngImageToPublicDirectory(this@SaveBarcodeAsImageActivity , bitmap , barcode) // Assuming this can be a suspend function
+                        barcodeImageGenerator.generateBitmap(barcode, 640, 640, 2)?.let {
+                            barcodeImageSaver.savePngImageToPublicDirectory(this@SaveBarcodeAsImageActivity, it, barcode)
+                        }
                     }
-
                     1 -> {
-                        val svg = barcodeImageGenerator.generateSvg(barcode , 640 , 640 , 2) // Assuming this can be a suspend function or you adapt it
-                        barcodeImageSaver.saveSvgImageToPublicDirectory(this@SaveBarcodeAsImageActivity , svg , barcode) // Assuming this can be a suspend function
+                        val svg = barcodeImageGenerator.generateSvg(barcode , 640 , 640 , 2)
+                        barcodeImageSaver.saveSvgImageToPublicDirectory(this@SaveBarcodeAsImageActivity , svg , barcode)
                     }
-
-                    else -> {
-                        showLoading(false)
-                        return@launch
-                    }
+                    else -> Unit
                 }
+            }.onSuccess {
                 showBarcodeSaved()
-            } catch (e : Exception) {
+            }.onFailure { e ->
                 showLoading(false)
                 showError(e)
-            }
+            }.let { showLoading(false) }
         }
     }
 

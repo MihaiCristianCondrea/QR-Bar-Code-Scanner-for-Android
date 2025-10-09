@@ -15,17 +15,14 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 
 object BarcodeImageSaver {
-    fun saveImageToCache(context : Context , image : Bitmap , barcode : ParsedBarcode) : Uri? {
-        val imagesFolder = File(context.cacheDir , "images")
-        imagesFolder.mkdirs()
-        val imageFileName = "${barcode.format}_${barcode.schema}_${barcode.date}.png"
-        val imageFile = File(imagesFolder , imageFileName)
-        FileOutputStream(imageFile).apply {
-            image.compress(Bitmap.CompressFormat.PNG , 100 , this)
-            flush()
-            close()
-        }
-        return FileProvider.getUriForFile(context , "com.d4rk.qrcodescanner.fileprovider" , imageFile)
+    fun saveImageToCache(context : Context , image : Bitmap? , barcode : ParsedBarcode) : Uri? {
+        return runCatching {
+            val imagesFolder = File(context.cacheDir, "images").apply { mkdirs() }
+            val imageFileName = "${barcode.format}_${barcode.schema}_${barcode.date}.png"
+            val imageFile = File(imagesFolder, imageFileName)
+            FileOutputStream(imageFile).use { out -> image?.compress(Bitmap.CompressFormat.PNG, 100, out) }
+            FileProvider.getUriForFile(context, "com.d4rk.qrcodescanner.fileprovider", imageFile)
+        }.getOrNull()
     }
 
     suspend fun savePngImageToPublicDirectory(context : Context , image : Bitmap , barcode : Barcode) {

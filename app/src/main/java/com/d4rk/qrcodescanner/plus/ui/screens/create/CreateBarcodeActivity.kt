@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
-import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
@@ -18,10 +17,6 @@ import com.d4rk.qrcodescanner.plus.di.contactHelper
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.domain.history.save
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.utils.extension.showError
-import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
-import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
@@ -56,6 +51,10 @@ import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeTextFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeUrlFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeVCardFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeWifiFragment
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.BarcodeFormat
 import kotlinx.coroutines.Dispatchers
@@ -113,10 +112,9 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
         if (createBarcodeImmediatelyIfNeeded()) {
             return
         }
-        enableEdgeToEdge()
         binding = ActivityCreateBarcodeBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        supportEdgeToEdge()
         handleToolbarBackClicked()
         handleToolbarMenuItemClicked()
         showToolbarTitle()
@@ -148,10 +146,6 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
 
     override fun onAppClicked(packageName : String) {
         createBarcode(App.fromPackage(packageName))
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun createBarcodeImmediatelyIfNeeded() : Boolean {
@@ -319,17 +313,15 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
             return
         }
         lifecycleScope.launch {
-            try {
-                val id = withContext(Dispatchers.IO) {
+            runCatching {
+                withContext(Dispatchers.IO) {
                     barcodeDatabase.save(barcode , settings.doNotSaveDuplicates)
                 }
-                navigateToBarcodeScreen(barcode.copy(id = id) , finish)
-            } catch (e : Exception) {
-                showError(e)
-            }
+            }.onSuccess { id ->
+                navigateToBarcodeScreen(barcode.copy(id = id), finish)
+            }.onFailure(::showError)
         }
     }
-
     private fun getCurrentFragment() : BaseCreateBarcodeFragment {
         return supportFragmentManager.findFragmentById(R.id.container) as BaseCreateBarcodeFragment
     }
