@@ -23,9 +23,9 @@ import com.d4rk.qrcodescanner.plus.di.barcodeImageScanner
 import com.d4rk.qrcodescanner.plus.di.barcodeParser
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.domain.history.save
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.orZero
-import com.d4rk.qrcodescanner.plus.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity

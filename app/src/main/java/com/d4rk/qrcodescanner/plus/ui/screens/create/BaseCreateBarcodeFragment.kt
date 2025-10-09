@@ -1,7 +1,7 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.create
 
 import androidx.fragment.app.Fragment
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.Contact
 import com.d4rk.qrcodescanner.plus.model.schema.Other
 import com.d4rk.qrcodescanner.plus.model.schema.Schema

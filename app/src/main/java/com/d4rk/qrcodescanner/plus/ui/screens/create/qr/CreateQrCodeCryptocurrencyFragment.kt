@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeCryptocurrencyBinding
-import com.d4rk.qrcodescanner.plus.extension.isNotBlank
-import com.d4rk.qrcodescanner.plus.extension.textString
+import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Cryptocurrency
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment

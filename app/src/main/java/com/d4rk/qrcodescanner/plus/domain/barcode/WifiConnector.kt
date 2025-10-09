@@ -8,8 +8,8 @@ import android.net.wifi.WifiEnterpriseConfig
 import android.net.wifi.WifiNetworkSuggestion
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.d4rk.qrcodescanner.plus.extension.toCaps
-import com.d4rk.qrcodescanner.plus.extension.wifiManager
+import com.d4rk.qrcodescanner.plus.utils.extension.toCaps
+import com.d4rk.qrcodescanner.plus.utils.extension.wifiManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,9 +1,9 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.appendIfNotNullOrBlank
-import com.d4rk.qrcodescanner.plus.extension.joinToStringNotNullOrBlankWithLineSeparator
-import com.d4rk.qrcodescanner.plus.extension.startsWithIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.unescape
+import com.d4rk.qrcodescanner.plus.utils.extension.appendIfNotNullOrBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.joinToStringNotNullOrBlankWithLineSeparator
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.unescape
 import java.util.Locale
 
 class Wifi(

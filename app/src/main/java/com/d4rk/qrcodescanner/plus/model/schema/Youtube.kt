@@ -1,6 +1,6 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.startsWithAnyIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithAnyIgnoreCase
 
 class Youtube(val url : String) : Schema {
     companion object {

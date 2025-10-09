@@ -1,7 +1,7 @@
 package com.d4rk.qrcodescanner.plus.domain.scan
 
 import android.graphics.Bitmap
-import com.d4rk.qrcodescanner.plus.extension.toZxingFormat
+import com.d4rk.qrcodescanner.plus.utils.extension.toZxingFormat
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage

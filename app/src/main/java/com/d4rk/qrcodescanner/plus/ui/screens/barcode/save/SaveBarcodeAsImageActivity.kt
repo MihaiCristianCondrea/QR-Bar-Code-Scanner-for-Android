@@ -12,9 +12,9 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivitySaveBarcodeAsImageBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.di.barcodeImageSaver
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.showError
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.google.android.material.snackbar.Snackbar

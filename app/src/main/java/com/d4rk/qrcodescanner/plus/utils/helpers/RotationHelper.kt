@@ -1,7 +1,8 @@
-package com.d4rk.qrcodescanner.plus.utils
+package com.d4rk.qrcodescanner.plus.utils.helpers
 
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 
 object RotationHelper {
@@ -12,8 +13,8 @@ object RotationHelper {
     }
 
     private fun isAutoRotateOptionDisabled(context : Context) : Boolean {
-        val result = android.provider.Settings.System.getInt(
-            context.contentResolver , android.provider.Settings.System.ACCELEROMETER_ROTATION , 0
+        val result = Settings.System.getInt(
+            context.contentResolver , Settings.System.ACCELEROMETER_ROTATION , 0
         )
         return result == 0
     }

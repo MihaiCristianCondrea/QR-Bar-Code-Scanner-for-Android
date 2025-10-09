@@ -1,4 +1,4 @@
-package com.d4rk.qrcodescanner.plus.extension
+package com.d4rk.qrcodescanner.plus.utils.extension
 
 import android.content.ClipboardManager
 import android.content.Context

@@ -5,7 +5,7 @@ import android.content.res.Configuration
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
 import com.google.zxing.BarcodeFormat
 class Settings(private val context : Context) {

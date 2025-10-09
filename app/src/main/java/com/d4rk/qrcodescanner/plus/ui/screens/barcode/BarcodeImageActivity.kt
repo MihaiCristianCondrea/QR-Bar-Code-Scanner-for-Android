@@ -9,9 +9,9 @@ import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeImageBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.toStringId
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import me.zhanghai.android.fastscroll.FastScrollerBuilder

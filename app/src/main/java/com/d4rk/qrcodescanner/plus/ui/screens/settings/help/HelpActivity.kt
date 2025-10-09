@@ -22,7 +22,7 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityHelpBinding
 import com.d4rk.qrcodescanner.plus.databinding.DialogVersionInfoBinding
 import com.d4rk.qrcodescanner.plus.databinding.ItemHelpFaqBinding
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
-import com.d4rk.qrcodescanner.plus.utils.OpenSourceLicensesUtils
+import com.d4rk.qrcodescanner.plus.utils.helpers.OpenSourceLicensesHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -92,7 +92,7 @@ class HelpActivity : BaseActivity() {
             }
 
             R.id.oss -> {
-                OpenSourceLicensesUtils.openLicensesScreen(this)
+                OpenSourceLicensesHelper.openLicensesScreen(this)
                 true
             }
 

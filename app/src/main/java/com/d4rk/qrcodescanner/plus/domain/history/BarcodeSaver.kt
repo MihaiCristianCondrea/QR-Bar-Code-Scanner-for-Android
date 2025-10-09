@@ -6,9 +6,9 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
-import com.d4rk.qrcodescanner.plus.extension.endsWithIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.formatOrNull
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.endsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.formatOrNull
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.ExportBarcode
 import com.google.zxing.BarcodeFormat

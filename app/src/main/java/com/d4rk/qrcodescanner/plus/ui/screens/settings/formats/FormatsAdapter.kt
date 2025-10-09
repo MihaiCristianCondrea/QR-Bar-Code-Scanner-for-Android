@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.databinding.ItemBarcodeFormatBinding
-import com.d4rk.qrcodescanner.plus.extension.toStringId
+import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
 import com.google.zxing.BarcodeFormat
 
 class FormatsAdapter(private val listener : Listener , private val formats : List<BarcodeFormat> , private val formatSelection : List<Boolean>) : RecyclerView.Adapter<FormatsAdapter.ViewHolder>() {

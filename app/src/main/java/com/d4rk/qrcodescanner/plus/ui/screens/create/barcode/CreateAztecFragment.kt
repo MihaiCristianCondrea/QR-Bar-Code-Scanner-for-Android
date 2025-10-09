@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateAztecBinding
-import com.d4rk.qrcodescanner.plus.extension.textString
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Other
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment

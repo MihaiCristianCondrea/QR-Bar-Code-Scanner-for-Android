@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import androidx.fragment.app.FragmentActivity
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.LayoutDateTimePickerButtonBinding
-import com.d4rk.qrcodescanner.plus.extension.formatOrNull
+import com.d4rk.qrcodescanner.plus.utils.extension.formatOrNull
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat

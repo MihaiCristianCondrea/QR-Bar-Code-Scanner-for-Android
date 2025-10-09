@@ -1,4 +1,4 @@
-package com.d4rk.qrcodescanner.plus.extension
+package com.d4rk.qrcodescanner.plus.utils.extension
 
 import com.d4rk.qrcodescanner.plus.R
 import com.google.zxing.BarcodeFormat

@@ -1,6 +1,6 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.startsWithAnyIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithAnyIgnoreCase
 
 data class GoogleMaps(val url : String) : Schema {
     companion object {

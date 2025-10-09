@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.provider.ContactsContract
-import com.d4rk.qrcodescanner.plus.extension.orZero
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.Contact
 
 object ContactHelper {

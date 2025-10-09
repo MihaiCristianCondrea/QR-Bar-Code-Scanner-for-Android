@@ -1,10 +1,10 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
 import android.net.MailTo
-import com.d4rk.qrcodescanner.plus.extension.appendIfNotNullOrBlank
-import com.d4rk.qrcodescanner.plus.extension.joinToStringNotNullOrBlankWithLineSeparator
-import com.d4rk.qrcodescanner.plus.extension.removePrefixIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.startsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.appendIfNotNullOrBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.joinToStringNotNullOrBlankWithLineSeparator
+import com.d4rk.qrcodescanner.plus.utils.extension.removePrefixIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
 
 data class Email(
     val email : String? = null , val subject : String? = null , val body : String? = null

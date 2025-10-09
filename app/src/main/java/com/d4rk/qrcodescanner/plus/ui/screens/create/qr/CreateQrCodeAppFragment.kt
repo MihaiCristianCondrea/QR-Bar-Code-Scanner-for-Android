@@ -10,8 +10,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeAppBinding
-import com.d4rk.qrcodescanner.plus.extension.showError
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment

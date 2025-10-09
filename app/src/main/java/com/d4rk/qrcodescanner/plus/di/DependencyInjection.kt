@@ -13,8 +13,8 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
-import com.d4rk.qrcodescanner.plus.utils.PermissionsHelper
-import com.d4rk.qrcodescanner.plus.utils.RotationHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.RotationHelper
 import org.koin.core.context.GlobalContext
 
 private val koin get() = GlobalContext.get()

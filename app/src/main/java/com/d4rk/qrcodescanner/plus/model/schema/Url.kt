@@ -1,7 +1,7 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.startsWithAnyIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.startsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithAnyIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
 
 class Url(val url : String) : Schema {
     companion object {

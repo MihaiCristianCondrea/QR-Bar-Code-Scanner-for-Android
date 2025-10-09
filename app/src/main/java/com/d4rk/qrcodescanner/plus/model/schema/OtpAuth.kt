@@ -2,7 +2,7 @@ package com.d4rk.qrcodescanner.plus.model.schema
 
 import android.net.Uri
 import androidx.core.net.toUri
-import com.d4rk.qrcodescanner.plus.extension.appendQueryParameterIfNotNullOrBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.appendQueryParameterIfNotNullOrBlank
 import java.io.Serializable
 
 data class OtpAuth(

@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateQrCodeAllBinding
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry

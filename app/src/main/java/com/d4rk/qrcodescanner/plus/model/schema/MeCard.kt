@@ -1,13 +1,13 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.appendIfNotNullOrBlank
-import com.d4rk.qrcodescanner.plus.extension.formatOrNull
-import com.d4rk.qrcodescanner.plus.extension.joinToStringNotNullOrBlankWithLineSeparator
-import com.d4rk.qrcodescanner.plus.extension.parseOrNull
-import com.d4rk.qrcodescanner.plus.extension.removePrefixIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.removeStartAll
-import com.d4rk.qrcodescanner.plus.extension.startsWithIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.appendIfNotNullOrBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.formatOrNull
+import com.d4rk.qrcodescanner.plus.utils.extension.joinToStringNotNullOrBlankWithLineSeparator
+import com.d4rk.qrcodescanner.plus.utils.extension.parseOrNull
+import com.d4rk.qrcodescanner.plus.utils.extension.removePrefixIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.removeStartAll
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import java.text.SimpleDateFormat
 import java.util.Locale
 

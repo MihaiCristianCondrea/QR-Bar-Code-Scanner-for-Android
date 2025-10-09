@@ -7,8 +7,8 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseSearchEngineBinding
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton

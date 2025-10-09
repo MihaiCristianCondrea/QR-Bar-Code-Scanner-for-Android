@@ -12,7 +12,7 @@ import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryListBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.extension.orZero
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import kotlinx.coroutines.flow.collectLatest

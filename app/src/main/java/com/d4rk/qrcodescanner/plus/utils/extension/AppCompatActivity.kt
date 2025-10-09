@@ -1,4 +1,4 @@
-package com.d4rk.qrcodescanner.plus.extension
+package com.d4rk.qrcodescanner.plus.utils.extension
 
 import androidx.appcompat.app.AppCompatActivity
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.ErrorDialogFragment

@@ -9,8 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeOtpBinding
 import com.d4rk.qrcodescanner.plus.di.otpGenerator
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.orZero
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import kotlinx.coroutines.Job

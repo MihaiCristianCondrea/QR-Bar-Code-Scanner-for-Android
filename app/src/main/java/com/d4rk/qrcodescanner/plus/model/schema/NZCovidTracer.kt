@@ -1,8 +1,8 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.joinToStringNotNullOrBlankWithLineSeparator
-import com.d4rk.qrcodescanner.plus.extension.removePrefixIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.startsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.joinToStringNotNullOrBlankWithLineSeparator
+import com.d4rk.qrcodescanner.plus.utils.extension.removePrefixIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
 import org.apache.commons.codec.binary.Base64
 import org.json.JSONException
 import org.json.JSONObject

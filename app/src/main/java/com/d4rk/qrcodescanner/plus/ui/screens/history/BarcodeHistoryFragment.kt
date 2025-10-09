@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.history.export.ExportHistoryActivity
 import kotlinx.coroutines.Dispatchers

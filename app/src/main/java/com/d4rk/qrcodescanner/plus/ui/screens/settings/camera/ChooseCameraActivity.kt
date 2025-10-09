@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseCameraBinding
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 

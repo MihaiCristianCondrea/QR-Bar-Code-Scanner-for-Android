@@ -1,9 +1,9 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import com.d4rk.qrcodescanner.plus.extension.equalsAnyIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.joinToStringNotNullOrBlankWithLineSeparator
-import com.d4rk.qrcodescanner.plus.extension.removePrefixIgnoreCase
-import com.d4rk.qrcodescanner.plus.extension.startsWithIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.equalsAnyIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.joinToStringNotNullOrBlankWithLineSeparator
+import com.d4rk.qrcodescanner.plus.utils.extension.removePrefixIgnoreCase
+import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
 
 class Cryptocurrency(
     val cryptocurrency : String , val address : String? = null , val amount : String? = null , val label : String? = null , val message : String? = null

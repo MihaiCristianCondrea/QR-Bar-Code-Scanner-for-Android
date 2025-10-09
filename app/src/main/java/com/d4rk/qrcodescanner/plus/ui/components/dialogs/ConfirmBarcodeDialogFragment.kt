@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.d4rk.qrcodescanner.plus.R
-import com.d4rk.qrcodescanner.plus.extension.toStringId
+import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 

@@ -13,10 +13,10 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityExportHistoryBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
 import com.d4rk.qrcodescanner.plus.di.barcodeSaver
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
-import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.isNotBlank
-import com.d4rk.qrcodescanner.plus.extension.showError
-import com.d4rk.qrcodescanner.plus.extension.textString
+import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
+import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
