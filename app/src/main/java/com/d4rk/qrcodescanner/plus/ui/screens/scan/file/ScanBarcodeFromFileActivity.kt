@@ -30,7 +30,7 @@ import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.google.zxing.NotFoundException
-import com.google.zxing.Result
+import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -56,7 +56,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
-    private var lastScanResult : Result? = null
+    private var lastScanResult : MlKitBarcode? = null
     private var scanJob : Job? = null
     private var currentImageUri : Uri? = null
     override fun onCreate(savedInstanceState : Bundle?) {
@@ -235,7 +235,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private fun saveScanResult() {
-        val barcode = lastScanResult?.let(barcodeParser::parseResult) ?: return
+        val barcode = lastScanResult?.let(barcodeParser::parse) ?: return
         if (settings.saveScannedBarcodesToHistory.not()) {
             navigateToBarcodeScreen(barcode)
             return

@@ -22,6 +22,7 @@ integrity = "1.5.0"
 material = "1.14.0-alpha05"
 playServicesAds = "24.6.0"
 playServicesOssLicenses = "17.3.0"
+playServicesMlkitBarcode = "18.3.1"
 review = "2.0.2"
 userMessagingPlatform = "3.2.0"
 firebaseBom = "34.3.0"
@@ -84,6 +85,7 @@ firebase-perf = { module = "com.google.firebase:firebase-perf" }
 firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity" }
 play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
 play-services-oss-licenses = { module = "com.google.android.gms:play-services-oss-licenses", version.ref = "playServicesOssLicenses" }
+play-services-mlkit-barcode-scanning = { module = "com.google.android.gms:play-services-mlkit-barcode-scanning", version.ref = "playServicesMlkitBarcode" }
 app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdate" }
 billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
 integrity = { module = "com.google.android.play:integrity", version.ref = "integrity" }
@@ -221,6 +223,7 @@ kotlinx = [
 barcode-stack = [
     "code-scanner",
     "zxing-embedded",
+    "play-services-mlkit-barcode-scanning",
     "commons-codec",
     "kotlin-otp",
     "ez-vcard",

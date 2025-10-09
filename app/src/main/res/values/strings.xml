@@ -231,7 +231,7 @@
     <string name="summary_preference_permissions_access_network_state">Allows the app to check network connectivity and retrieve information about Wi-Fi, including enabled status and connected Wi-Fi device names.</string>
     <string name="summary_preference_permissions_access_notification_policy">Allows the app to access and modify the device\'s notification policy, controlling how and when notifications are displayed to the user and providing custom notification management features.</string>
     <string name="summary_preference_permissions_billing">Allows the app to use the Google Play Billing Library to handle in-app purchases and donations.</string>
-    <string name="summary_preference_permissions_camera">Allows the app to scan QR codes and barcodes from the camera.</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner handles QR and barcode capture without sharing the camera feed with the app.</string>
     <string name="summary_preference_permissions_check_license">Allows the app to verify its compliance with the license agreement and enforce licensing terms to protect intellectual property.</string>
     <string name="summary_preference_permissions_foreground_service">Allows the app to create and use services that run in the foreground, giving them priority over other background processes and improving performance and reliability.</string>
     <string name="summary_preference_permissions_read_contacts">Allows the app to create a QR code from a contact in your contact list.</string>

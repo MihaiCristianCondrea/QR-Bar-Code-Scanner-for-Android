@@ -21,21 +21,45 @@ import com.d4rk.qrcodescanner.plus.model.schema.VCard
 import com.d4rk.qrcodescanner.plus.model.schema.VEvent
 import com.d4rk.qrcodescanner.plus.model.schema.Wifi
 import com.d4rk.qrcodescanner.plus.model.schema.Youtube
+import com.d4rk.qrcodescanner.plus.extension.toZxingFormat
+import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 
 object BarcodeParser {
     fun parseResult(result : Result) : Barcode {
-        val schema = parseSchema(result.barcodeFormat , result.text)
-        return Barcode(
-            text = result.text ,
-            formattedText = schema.toFormattedText() ,
+        return parse(
             format = result.barcodeFormat ,
-            schema = schema.schema ,
-            date = result.timestamp ,
+            text = result.text ,
+            timestamp = result.timestamp ,
             errorCorrectionLevel = result.resultMetadata?.get(ResultMetadataType.ERROR_CORRECTION_LEVEL) as? String ,
             country = result.resultMetadata?.get(ResultMetadataType.POSSIBLE_COUNTRY) as? String
+        )
+    }
+
+    fun parse(barcode : MlKitBarcode) : Barcode? {
+        val rawValue = barcode.rawValue ?: return null
+        val format = barcode.format.toZxingFormat() ?: return null
+        return parse(format = format , text = rawValue)
+    }
+
+    fun parse(
+        format : BarcodeFormat ,
+        text : String ,
+        timestamp : Long = System.currentTimeMillis() ,
+        errorCorrectionLevel : String? = null ,
+        country : String? = null ,
+    ) : Barcode {
+        val schema = parseSchema(format , text)
+        return Barcode(
+            text = text ,
+            formattedText = schema.toFormattedText() ,
+            format = format ,
+            schema = schema.schema ,
+            date = timestamp ,
+            errorCorrectionLevel = errorCorrectionLevel ,
+            country = country
         )
     }
 

@@ -1,34 +1,24 @@
 package com.d4rk.qrcodescanner.plus.domain.scan
 
 import android.graphics.Bitmap
-import com.d4rk.qrcodescanner.plus.extension.orZero
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.RGBLuminanceSource
-import com.google.zxing.Result
-import com.google.zxing.common.HybridBinarizer
+import com.d4rk.qrcodescanner.plus.extension.toZxingFormat
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.barcode.common.Barcode
+import com.google.mlkit.vision.common.InputImage
+import com.google.zxing.NotFoundException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.tasks.await
 
 object BarcodeImageScanner {
-    private var bitmapBuffer : IntArray? = null
-    suspend fun parse(image : Bitmap) : Result {
-        return withContext(Dispatchers.Default) {
-            tryParse(image)
-        }
-    }
+    private val scanner by lazy { BarcodeScanning.getClient() }
 
-    private fun tryParse(image : Bitmap) : Result {
-        val width = image.width
-        val height = image.height
-        val size = width * height
-        if (size > bitmapBuffer?.size.orZero()) {
-            bitmapBuffer = IntArray(size)
+    suspend fun parse(image : Bitmap) : Barcode {
+        return withContext(Dispatchers.Default) {
+            val inputImage = InputImage.fromBitmap(image , 0)
+            val barcodes = scanner.process(inputImage).await()
+            barcodes.firstOrNull()?.takeIf { it.rawValue != null && it.format.toZxingFormat() != null }
+                ?: throw NotFoundException.getNotFoundInstance()
         }
-        bitmapBuffer?.let { image.getPixels(it , 0 , width , 0 , 0 , width , height) }
-        val source = RGBLuminanceSource(width , height , bitmapBuffer)
-        val bitmap = BinaryBitmap(HybridBinarizer(source))
-        val reader = MultiFormatReader()
-        return reader.decode(bitmap)
     }
 }
