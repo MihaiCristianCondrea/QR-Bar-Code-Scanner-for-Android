@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID"
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
         tools:ignore="AdvertisingIdPolicy" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -14,7 +15,8 @@
         android:name="android.permission.CAMERA"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
     <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE"
         tools:ignore="ForegroundServicesPolicy" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission
@@ -45,7 +47,7 @@
         android:logo="@drawable/ic_launcher_foreground"
         android:requestLegacyExternalStorage="true"
         android:resizeableActivity="true"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeActionBar"
         tools:targetApi="33">
@@ -225,7 +227,8 @@
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
 
-        <meta-data android:name="google_analytics_automatic_screen_reporting_enabled"
+        <meta-data
+            android:name="google_analytics_automatic_screen_reporting_enabled"
             android:value="true" />
 
         <meta-data
