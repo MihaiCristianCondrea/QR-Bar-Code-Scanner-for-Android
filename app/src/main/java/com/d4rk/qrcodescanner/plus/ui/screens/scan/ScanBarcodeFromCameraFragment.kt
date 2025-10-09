@@ -4,16 +4,20 @@ package com.d4rk.qrcodescanner.plus.ui.screens.scan
 
 // Removed: import io.reactivex.disposables.CompositeDisposable
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.core.view.isVisible
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
@@ -42,6 +46,9 @@ import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.reflect.Constructor
+import java.lang.reflect.Method
+import kotlin.LazyThreadSafetyMode
 
 class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.Listener {
     private lateinit var binding : FragmentScanBarcodeFromCameraBinding
@@ -59,6 +66,23 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
     private val zoomStep = 5
     private lateinit var codeScanner : CodeScanner
     private var lastResult : Barcode? = null
+    private val touchFocusReflection by lazy(LazyThreadSafetyMode.NONE) {
+        runCatching {
+            val rectClass = Class.forName("com.budiyev.android.codescanner.Rect")
+            val constructor = rectClass.getDeclaredConstructor(
+                Int::class.javaPrimitiveType ,
+                Int::class.javaPrimitiveType ,
+                Int::class.javaPrimitiveType ,
+                Int::class.javaPrimitiveType
+            ).apply {
+                isAccessible = true
+            }
+            val method = CodeScanner::class.java.getDeclaredMethod("performTouchFocus" , rectClass).apply {
+                isAccessible = true
+            }
+            TouchFocusReflection(method , constructor)
+        }.getOrNull()
+    }
     override fun onCreateView(
         inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?
     ) : View {
@@ -72,6 +96,7 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
         initScanner()
         initFlashButton()
         handleScanFromFileClicked()
+        setupManualFocus()
         handleZoomChanged()
         handleDecreaseZoomClicked()
         handleIncreaseZoomClicked()
@@ -115,6 +140,10 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
     }
 
     private fun initScanner() {
+        val flashAvailable = isFlashAvailable()
+        if (settings.flash && flashAvailable.not()) {
+            settings.flash = false
+        }
         codeScanner = CodeScanner(requireActivity() , binding.scannerView).apply {
             camera = if (settings.isBackCamera) {
                 CodeScanner.CAMERA_BACK
@@ -131,7 +160,7 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
             formats = SupportedBarcodeFormats.FORMATS.filter(settings::isFormatSelected)
             scanMode = ScanMode.SINGLE
             isAutoFocusEnabled = true
-            isFlashEnabled = settings.flash
+            isFlashEnabled = settings.flash && flashAvailable
             isTouchFocusEnabled = true
             decodeCallback = DecodeCallback(::handleScannedBarcode)
             errorCallback = ErrorCallback(::showError)
@@ -147,10 +176,17 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
     }
 
     private fun initFlashButton() {
+        val flashAvailable = isFlashAvailable()
+        binding.imageViewFlash.isVisible = flashAvailable
+        binding.textViewFlash.isVisible = flashAvailable
+        binding.layoutFlashContainer.isVisible = flashAvailable
+        if (flashAvailable.not()) {
+            return
+        }
         binding.layoutFlashContainer.setOnClickListener {
             toggleFlash()
         }
-        binding.imageViewFlash.isActivated = settings.flash
+        binding.imageViewFlash.isActivated = codeScanner.isFlashEnabled
     }
 
     private fun handleScanFromFileClicked() {
@@ -288,8 +324,22 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
     }
 
     private fun toggleFlash() {
-        binding.imageViewFlash.isActivated = binding.imageViewFlash.isActivated.not()
-        codeScanner.isFlashEnabled = codeScanner.isFlashEnabled.not()
+        if (isFlashAvailable().not()) {
+            return
+        }
+        val newState = codeScanner.isFlashEnabled.not()
+        runCatching {
+            if (codeScanner.isPreviewActive.not()) {
+                codeScanner.startPreview()
+            }
+            codeScanner.isFlashEnabled = newState
+        }.onSuccess {
+            settings.flash = newState
+            binding.imageViewFlash.isActivated = newState
+        }.onFailure { throwable ->
+            binding.imageViewFlash.isActivated = !newState
+            showError(throwable)
+        }
     }
 
     private fun requestPermissions() {
@@ -340,4 +390,58 @@ class ScanBarcodeFromCameraFragment : Fragment() , ConfirmBarcodeDialogFragment.
             finish()
         }
     }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupManualFocus() {
+        val reflection = touchFocusReflection ?: return
+        binding.scannerView.setOnTouchListener { view , event ->
+            if (event.action != MotionEvent.ACTION_DOWN) {
+                return@setOnTouchListener false
+            }
+            val handled = focusOnCoordinates(reflection , event.x , event.y)
+            if (handled) {
+                view.performClick()
+            }
+            handled
+        }
+    }
+
+    private fun focusOnCoordinates(reflection : TouchFocusReflection , x : Float , y : Float) : Boolean {
+        if (codeScanner.isPreviewActive.not()) {
+            return false
+        }
+        val viewWidth = binding.scannerView.width
+        val viewHeight = binding.scannerView.height
+        if (viewWidth <= 0 || viewHeight <= 0) {
+            return false
+        }
+        val radius = resources.getDimensionPixelSize(R.dimen.manual_focus_area_radius)
+        val left = (x.toInt() - radius).coerceAtLeast(0)
+        val top = (y.toInt() - radius).coerceAtLeast(0)
+        val right = (x.toInt() + radius).coerceAtMost(viewWidth)
+        val bottom = (y.toInt() + radius).coerceAtMost(viewHeight)
+        if (left >= right || top >= bottom) {
+            return false
+        }
+        val rect = runCatching {
+            reflection.rectConstructor.newInstance(left , top , right , bottom)
+        }.getOrElse {
+            return false
+        }
+        return runCatching {
+            reflection.method.invoke(codeScanner , rect)
+        }.isSuccess
+    }
+
+    private fun isFlashAvailable() : Boolean {
+        val context = context ?: return false
+        val packageManager = context.packageManager
+        val hasFlash = packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH) == true
+        return hasFlash && settings.isBackCamera
+    }
+
+    private data class TouchFocusReflection(
+        val method : Method ,
+        val rectConstructor : Constructor<*>
+    )
 }

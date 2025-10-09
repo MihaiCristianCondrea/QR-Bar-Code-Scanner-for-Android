@@ -1,6 +1,7 @@
 package com.d4rk.qrcodescanner.plus.domain.settings
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
@@ -24,14 +25,14 @@ class Settings(private val context : Context) {
         set(value) = set(Key.INVERSE_BARCODE_COLORS , value)
     val barcodeContentColor : Int
         get() = when {
-            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES && areBarcodeColorsInversed -> Color.WHITE
+            isNightModeEnabled() && areBarcodeColorsInversed -> Color.WHITE
             else -> Color.BLACK
         }
 
     val barcodeBackgroundColor : Int
         get() = when {
-            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES && areBarcodeColorsInversed -> Color.BLACK
-            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES && areBarcodeColorsInversed.not() -> Color.WHITE
+            isNightModeEnabled() && areBarcodeColorsInversed -> Color.BLACK
+            isNightModeEnabled() -> Color.WHITE
             else -> Color.TRANSPARENT
         }
     var openLinksAutomatically : Boolean
@@ -94,5 +95,16 @@ class Settings(private val context : Context) {
 
     private fun set(key : Key , value : SearchEngine) {
         sharedPreferences.edit { putString(key.name , value.name) }
+    }
+
+    private fun isNightModeEnabled() : Boolean {
+        return when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_YES -> true
+            AppCompatDelegate.MODE_NIGHT_NO -> false
+            else -> {
+                val nightModeMask = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                nightModeMask == Configuration.UI_MODE_NIGHT_YES
+            }
+        }
     }
 }
