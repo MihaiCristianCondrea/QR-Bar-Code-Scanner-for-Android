@@ -14,19 +14,14 @@
         app:cardCornerRadius="24dp"
         app:layout_constraintBottom_toTopOf="@id/button_scan"
         app:layout_constraintTop_toTopOf="parent">
-        <!--        <com.mayank.simplecropview.CropImageView
-                    android:id="@+id/crop_image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    custom:scv_crop_mode="free"
-                    custom:scv_frame_stroke_weight="1dp"
-                    custom:scv_guide_show_mode="show_always"
-                    custom:scv_guide_stroke_weight="1dp"
-                    custom:scv_handle_show_mode="show_always"
-                    custom:scv_handle_size="14dp"
-                    custom:scv_min_frame_size="50dp"
-                    custom:scv_touch_padding="8dp"
-                    tools:ignore="ImageContrastCheck"/>-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_view_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@drawable/ic_launcher_foreground" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
