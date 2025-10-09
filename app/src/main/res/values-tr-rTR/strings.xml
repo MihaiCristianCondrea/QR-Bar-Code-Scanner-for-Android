@@ -44,7 +44,7 @@
     <string name="export_as">Olarak Dışa Aktar</string>
     <string name="export">Dışa Aktar</string>
     <string name="about">Hakkında</string>
-    <string name="copyright">Telif Hakkı %1s D4rK tarafından hazırlandı!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">Ayarlar</string>
     <string name="appearance">Görünüm</string>
     <string name="theme">Tema</string>
@@ -233,7 +233,7 @@
     <string name="summary_preference_permissions_access_network_state">Uygulamanın ağ bağlantısını kontrol etmesine ve etkin durumunu ve bağlı Wi-Fi cihazı adlarını içeren Wi-Fi hakkında bilgi almasına izin verir.</string>
     <string name="summary_preference_permissions_access_notification_policy">Uygulamanın cihazın bildirim politikasına erişmesine ve değiştirmesine izin verir, bildirimlerin nasıl ve ne zaman kullanıcıya gösterildiğini kontrol eder ve özel bildirim yönetimi özellikleri sağlar.</string>
     <string name="summary_preference_permissions_billing">Uygulamanın Google Play Billing Kütüphanesini kullanarak uygulama içi satın alımları ve bağışları işlemesine izin verir.</string>
-    <string name="summary_preference_permissions_camera">Uygulamanın kamera aracılığıyla QR kodlarını ve barkodlarını taramasına izin verir.</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner, QR kodu ve barkod yakalamayı yönetir ve kamera akışını uygulamayla paylaşmaz.</string>
     <string name="summary_preference_permissions_check_license">Uygulamanın lisans sözleşmesine uygunluğunu doğrulamasına ve fikri mülkiyeti korumak için lisanslama koşullarını uygulamasına izin verir.</string>
     <string name="summary_preference_permissions_foreground_service">Uygulamanın arka plandaki diğer işlemlerin üstünde önceliğe sahip olacak şekilde çalışan hizmetler oluşturmasına ve kullanmasına izin verir, performansı ve güvenilirliği artırır.</string>
     <string name="summary_preference_permissions_read_contacts">Uygulamanın iletişim listenizdeki bir kişiden QR kodu oluşturmasına izin verir.</string>
@@ -250,7 +250,7 @@
     <string name="snack_copied_to_clipboard">Panoya kopyalandı! 📋</string>
     <string name="snack_saved_to_downloads">İndirmeler klasörüne kaydedildi!</string>
     <string name="snack_saved_to_gallery">Galeriye kaydedildi</string>
-    <string name="snack_no_app_found">Bu eylem için uygulama bulunamadı</string>
+    <string name="snack_no_app_found">Bu eylem için uygulama bulunamadı. Lütfen uyumlu bir uygulama yükleyin.</string>
     <string name="snack_feedback">Bize puan verdiğiniz için teşekkür ederiz! ❤️</string>
     <string name="snack_support">Uygulamamızı desteklemek ister misiniz? ❤️</string>
     <string name="tooltip_agree">Şartları ve koşulları kabul edin.</string>

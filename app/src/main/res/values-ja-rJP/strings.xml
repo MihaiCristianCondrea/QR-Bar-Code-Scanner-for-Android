@@ -43,7 +43,7 @@
     <string name="export_as">としてエクスポート</string>
     <string name="export">エクスポート</string>
     <string name="about">について</string>
-    <string name="copyright">© %1s 作成：D4rK!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">設定</string>
     <string name="appearance">外観</string>
     <string name="theme">テーマ</string>
@@ -232,7 +232,7 @@
     <string name="summary_preference_permissions_access_network_state">ネットワーク接続の可用性とWi-Fiに関する情報（有効な状態と接続されているWi-Fiデバイス名など）を取得できるようにします</string>
     <string name="summary_preference_permissions_access_notification_policy">端末の通知ポリシーにアクセスして変更できるようにします。これにより、通知の表示方法と表示タイミングを制御し、カスタム通知管理機能を提供できます。</string>
     <string name="summary_preference_permissions_billing">アプリ内の購入や寄付を処理するために Google Play Billing Library を使用する許可です。</string>
-    <string name="summary_preference_permissions_camera">QRコードとバーコードをカメラからスキャンできるようにします</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner が QR コードやバーコードの読み取りを処理し、カメラの映像をアプリと共有しません。</string>
     <string name="summary_preference_permissions_check_license">ライセンス契約に準拠していることを検証し、知的財産を保護するためにライセンス条件を適用できるようにします</string>
     <string name="summary_preference_permissions_foreground_service">端末で常に動作するサービスを作成および使用できるようにします。これにより、他のバックグラウンドプロセスよりも優先され、パフォーマンスと信頼性が向上します。</string>
     <string name="summary_preference_permissions_read_contacts">連絡先リストから連絡先に基づいてQRコードを作成できるようにします</string>
@@ -249,7 +249,7 @@
     <string name="snack_copied_to_clipboard">クリップボードにコピーされました！ 📋</string>
     <string name="snack_saved_to_downloads">ダウンロードに保存されました！</string>
     <string name="snack_saved_to_gallery">ギャラリーに保存されました</string>
-    <string name="snack_no_app_found">この操作に適したアプリが見つかりません</string>
+    <string name="snack_no_app_found">この操作に適したアプリが見つかりませんでした。対応アプリをインストールしてください。</string>
     <string name="snack_feedback">評価ありがとうございます！ ❤️</string>
     <string name="snack_support">アプリをサポートしていただけますか？ ❤️</string>
     <string name="tooltip_agree">利用規約に同意します。</string>

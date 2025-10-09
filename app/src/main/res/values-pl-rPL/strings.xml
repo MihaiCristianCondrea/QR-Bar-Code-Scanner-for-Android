@@ -43,7 +43,7 @@
     <string name="export_as">Eksportuj jako</string>
     <string name="export">Eksportuj</string>
     <string name="about">O aplikacji</string>
-    <string name="copyright">© Prawa autorskie %1s wykonane przez D4rK!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">Ustawienia</string>
     <string name="appearance">Wygląd</string>
     <string name="theme">Motyw</string>
@@ -232,7 +232,7 @@
     <string name="summary_preference_permissions_access_network_state">Umożliwia aplikacji sprawdzanie połączenia z siecią i pobieranie informacji o sieci Wi-Fi, w tym o jej statusie i podłączonych urządzeniach Wi-Fi.</string>
     <string name="summary_preference_permissions_access_notification_policy">Umożliwia aplikacji dostęp i modyfikację polityki powiadomień urządzenia, kontrolowanie sposobu i czasu wyświetlania powiadomień użytkownikowi oraz dostarczanie funkcji niestandardowego zarządzania powiadomieniami.</string>
     <string name="summary_preference_permissions_billing">Pozwala aplikacji korzystać z biblioteki Google Play Billing do obsługi zakupów w aplikacji i darowizn.</string>
-    <string name="summary_preference_permissions_camera">Umożliwia aplikacji skanowanie kodów QR i kodów kreskowych za pomocą aparatu.</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner obsługuje przechwytywanie kodów QR i kreskowych bez udostępniania strumienia z aparatu aplikacji.</string>
     <string name="summary_preference_permissions_check_license">Umożliwia aplikacji sprawdzenie zgodności z umową licencyjną i egzekwowanie warunków licencjonowania w celu ochrony praw własności intelektualnej.</string>
     <string name="summary_preference_permissions_foreground_service">Umożliwia aplikacji tworzenie i korzystanie z usług działających w trybie pierwszego planu, dając im pierwszeństwo przed innymi procesami w tle, co poprawia wydajność i niezawodność.</string>
     <string name="summary_preference_permissions_read_contacts">Umożliwia aplikacji utworzenie kodu QR na podstawie kontaktu w Twojej liście kontaktów.</string>
@@ -249,7 +249,7 @@
     <string name="snack_copied_to_clipboard">Skopiowano do schowka! 📋</string>
     <string name="snack_saved_to_downloads">Zapisano w folderze Pobrane!</string>
     <string name="snack_saved_to_gallery">Zapisano w galerii</string>
-    <string name="snack_no_app_found">Nie znaleziono aplikacji dla tej akcji</string>
+    <string name="snack_no_app_found">Nie znaleziono aplikacji dla tej akcji. Zainstaluj zgodną aplikację.</string>
     <string name="snack_feedback">Dziękujemy za ocenę! ❤️</string>
     <string name="snack_support">Czy chciałbyś wesprzeć naszą aplikację? ❤️</string>
     <string name="tooltip_agree">Zaakceptuj warunki i zasady.</string>

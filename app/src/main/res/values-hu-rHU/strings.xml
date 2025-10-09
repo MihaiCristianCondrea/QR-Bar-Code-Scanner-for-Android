@@ -43,7 +43,7 @@
     <string name="export_as">Exportálás mint</string>
     <string name="export">Exportálás</string>
     <string name="about">Névjegy</string>
-    <string name="copyright">© Szerzői jog %1s, készítette: D4rK!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">Beállítások</string>
     <string name="appearance">Megjelenés</string>
     <string name="theme">Téma</string>
@@ -232,7 +232,7 @@
     <string name="summary_preference_permissions_access_network_state">Engedélyezi az alkalmazás számára a hálózati kapcsolat ellenőrzését és a Wi-Fi-hálózat információinak lekérését, ideértve az engedélyezett állapotot és a csatlakoztatott Wi-Fi-készülék nevét.</string>
     <string name="summary_preference_permissions_access_notification_policy">Engedélyezi az alkalmazás számára a készülék értesítési irányelveinek elérését és módosítását, a felhasználó számára történő testreszabott értesítéskezelési funkciók biztosítását és az értesítések megjelenítésének és időzítésének irányítását.</string>
     <string name="summary_preference_permissions_billing">Engedélyezi az alkalmazás számára a Google Play Billing könyvtár használatát a vásárlások és adományok kezeléséhez.</string>
-    <string name="summary_preference_permissions_camera">Engedélyezi az alkalmazás számára a QR-kódok és vonalkódok beolvasását a kamera segítségével.</string>
+    <string name="summary_preference_permissions_camera">A Google Code Scanner kezeli a QR- és vonalkódok rögzítését, és nem osztja meg a kamera képét az alkalmazással.</string>
     <string name="summary_preference_permissions_check_license">Engedélyezi az alkalmazás számára, hogy ellenőrizze a licencszerződés betartását és az intellektuális tulajdon védelme érdekében a licencfeltételek érvényesítését.</string>
     <string name="summary_preference_permissions_foreground_service">Engedélyezi az alkalmazás számára a háttérben futó folyamatoknál prioritást élvező szolgáltatások létrehozását és használatát, ezzel javítva a teljesítményt és a megbízhatóságot.</string>
     <string name="summary_preference_permissions_read_contacts">Engedélyezi az alkalmazás számára, hogy QR-kódot hozzon létre a kapcsolati listában található egyik névjegyből.</string>
@@ -249,7 +249,7 @@
     <string name="snack_copied_to_clipboard">Vágólapra másolva! 📋</string>
     <string name="snack_saved_to_downloads">Elmentve a Letöltések mappába!</string>
     <string name="snack_saved_to_gallery">Elmentve a Galériába</string>
-    <string name="snack_no_app_found">Nincs alkalmazás ehhez a művelethez</string>
+    <string name="snack_no_app_found">Nincs alkalmazás ehhez a művelethez. Telepíts egy kompatibilis alkalmazást.</string>
     <string name="snack_feedback">Köszönjük az értékelést! ❤️</string>
     <string name="snack_support">Szeretnéd támogatni az alkalmazásunkat? ❤️</string>
     <string name="tooltip_agree">Elfogadom a feltételeket és az adatvédelmi szabályzatot.</string>

@@ -44,7 +44,7 @@
     <string name="export_as">Ekspor sebagai</string>
     <string name="export">Ekspor</string>
     <string name="about">Tentang</string>
-    <string name="copyright">© Hak Cipta %1s oleh D4rK!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">Pengaturan</string>
     <string name="appearance">Tampilan</string>
     <string name="theme">Tema</string>
@@ -233,7 +233,7 @@
     <string name="summary_preference_permissions_access_network_state">Memungkinkan aplikasi untuk memeriksa konektivitas jaringan dan mengambil informasi tentang Wi-Fi, termasuk status diaktifkan dan nama perangkat Wi-Fi yang terhubung.</string>
     <string name="summary_preference_permissions_access_notification_policy">Memungkinkan aplikasi untuk mengakses dan memodifikasi kebijakan notifikasi perangkat, mengontrol bagaimana dan kapan notifikasi ditampilkan kepada pengguna, dan menyediakan fitur pengelolaan notifikasi kustom.</string>
     <string name="summary_preference_permissions_billing">Memungkinkan aplikasi untuk menggunakan Pustaka Penagihan Google Play untuk menangani pembelian dalam aplikasi dan sumbangan.</string>
-    <string name="summary_preference_permissions_camera">Memungkinkan aplikasi untuk memindai kode QR dan kode batang dari kamera.</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner menangani pengambilan kode QR dan kode batang tanpa membagikan umpan kamera ke aplikasi.</string>
     <string name="summary_preference_permissions_check_license">Memungkinkan aplikasi untuk memverifikasi kepatuhannya dengan perjanjian lisensi dan menegakkan syarat-syarat lisensi untuk melindungi kekayaan intelektual.</string>
     <string name="summary_preference_permissions_foreground_service">Memungkinkan aplikasi untuk membuat dan menggunakan layanan yang berjalan di latar depan, memberi mereka prioritas di atas proses latar belakang lainnya, serta meningkatkan kinerja dan keandalan.</string>
     <string name="summary_preference_permissions_read_contacts">Memungkinkan aplikasi untuk membuat kode QR dari kontak dalam daftar kontak Anda.</string>
@@ -250,7 +250,7 @@
     <string name="snack_copied_to_clipboard">Tersalin ke papan klip! 📋</string>
     <string name="snack_saved_to_downloads">Disimpan ke Unduhan!</string>
     <string name="snack_saved_to_gallery">Disimpan ke Galeri</string>
-    <string name="snack_no_app_found">Tidak ada aplikasi yang ditemukan untuk tindakan ini</string>
+    <string name="snack_no_app_found">Tidak ada aplikasi yang ditemukan untuk tindakan ini. Instal aplikasi yang kompatibel.</string>
     <string name="snack_feedback">Terima kasih atas penilaian Anda! ❤️</string>
     <string name="snack_support">Apakah Anda ingin mendukung aplikasi kami? ❤️</string>
     <string name="tooltip_agree">Setujui syarat dan ketentuan.</string>

@@ -43,7 +43,7 @@
     <string name="export_as">Exportera som</string>
     <string name="export">Exportera</string>
     <string name="about">Om</string>
-    <string name="copyright">Upphovsrätt %1s skapad av D4rK!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">Inställningar</string>
     <string name="appearance">Utseende</string>
     <string name="theme">Tema</string>
@@ -232,7 +232,7 @@
     <string name="summary_preference_permissions_access_network_state">Tillåter appen att kontrollera nätverksanslutning och hämta information om Wi-Fi, inklusive aktiveringsstatus och anslutna Wi-Fi-enhetsnamn.</string>
     <string name="summary_preference_permissions_access_notification_policy">Tillåter appen att få åtkomst till och ändra enhetens meddelandepolicy, kontrollera hur och när meddelanden visas för användaren och tillhandahålla anpassade funktioner för hantering av meddelanden.</string>
     <string name="summary_preference_permissions_billing">Tillåter appen att använda Google Play Billing Library för att hantera in-app-köp och donationer.</string>
-    <string name="summary_preference_permissions_camera">Tillåter appen att skanna QR-koder och streckkoder från kameran.</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner hanterar fångst av QR-koder och streckkoder utan att dela kameraflödet med appen.</string>
     <string name="summary_preference_permissions_check_license">Tillåter appen att verifiera sin överensstämmelse med licensavtalet och verkställa licensvillkor för att skydda immateriell egendom.</string>
     <string name="summary_preference_permissions_foreground_service">Tillåter appen att skapa och använda tjänster som körs i förgrunden och ger dem företräde framför andra bakgrundsprocesser samt förbättrar prestanda och tillförlitlighet.</string>
     <string name="summary_preference_permissions_read_contacts">Tillåter appen att skapa en QR-kod från en kontakt i din kontaktlista.</string>
@@ -249,7 +249,7 @@
     <string name="snack_copied_to_clipboard">Kopierat till urklipp! 📋</string>
     <string name="snack_saved_to_downloads">Sparat i Nedladdningar!</string>
     <string name="snack_saved_to_gallery">Sparat i Galleri</string>
-    <string name="snack_no_app_found">Ingen app hittades för denna åtgärd</string>
+    <string name="snack_no_app_found">Ingen app hittades för denna åtgärd. Installera en kompatibel app.</string>
     <string name="snack_feedback">Tack för att du betygsätter oss! ❤️</string>
     <string name="snack_support">Vill du stödja vår app? ❤️</string>
     <string name="tooltip_agree">Acceptera villkor och bestämmelser.</string>

@@ -44,7 +44,7 @@
     <string name="export_as">Exportă ca</string>
     <string name="export">Exportă</string>
     <string name="about">Despre</string>
-    <string name="copyright">© Drepturi de autor %1s realizat de D4rK!</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="settings">Setări</string>
     <string name="appearance">Aspect</string>
     <string name="theme">Temă</string>
@@ -233,7 +233,7 @@
     <string name="summary_preference_permissions_access_network_state">Permite aplicației să verifice conectivitatea la rețea și să preia informații despre Wi-Fi, inclusiv starea activată și numele dispozitivelor Wi-Fi conectate.</string>
     <string name="summary_preference_permissions_access_notification_policy">Permite aplicației să acceseze și să modifice politica de notificare a dispozitivului, controlând modul și momentul în care notificările sunt afișate utilizatorului și oferind funcții personalizate de gestionare a notificărilor.</string>
     <string name="summary_preference_permissions_billing">Permite aplicației să utilizeze Biblioteca Google Play Billing pentru a gestiona achizițiile în aplicație și donațiile.</string>
-    <string name="summary_preference_permissions_camera">Permite aplicației să scaneze coduri QR și coduri de bare de la camera foto.</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner gestionează capturarea codurilor QR și de bare fără să partajeze fluxul camerei cu aplicația.</string>
     <string name="summary_preference_permissions_check_license">Permite aplicației să verifice conformitatea cu acordul de licență și să impună termenii de licențiere pentru a proteja proprietatea intelectuală.</string>
     <string name="summary_preference_permissions_foreground_service">Permite aplicației să creeze și să utilizeze servicii care rulează în prim-plan, oferindu-le prioritate față de alte procese în fundal și îmbunătățind performanța și fiabilitatea.</string>
     <string name="summary_preference_permissions_read_contacts">Permite aplicației să creeze un cod QR dintr-un contact din lista dvs. de contacte.</string>
@@ -250,7 +250,7 @@
     <string name="snack_copied_to_clipboard">Copiat în clipboard! 📋</string>
     <string name="snack_saved_to_downloads">Salvat în Descărcări!</string>
     <string name="snack_saved_to_gallery">Salvat în Galerie</string>
-    <string name="snack_no_app_found">Nu s-a găsit nicio aplicație pentru această acțiune</string>
+    <string name="snack_no_app_found">Nu s-a găsit nicio aplicație pentru această acțiune. Instalează o aplicație compatibilă.</string>
     <string name="snack_feedback">Mulțumim pentru evaluarea noastră! ❤️</string>
     <string name="snack_support">Dorești să susții aplicația noastră? ❤️</string>
     <string name="tooltip_agree">Acceptați termenii și condițiile.</string>
