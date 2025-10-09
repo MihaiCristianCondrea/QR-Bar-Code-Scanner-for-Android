@@ -3,11 +3,10 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings.camera
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseCameraBinding
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class ChooseCameraActivity : BaseActivity() {
@@ -23,14 +22,13 @@ class ChooseCameraActivity : BaseActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseCameraBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
-        supportEdgeToEdge()
     }
 
     override fun onResume() {
         super.onResume()
-        enableEdgeToEdge()
         showSelectedCamera()
         handleBackCameraButtonChecked()
         handleFrontCameraButtonChecked()
@@ -40,10 +38,6 @@ class ChooseCameraActivity : BaseActivity() {
         val isBackCamera = settings.isBackCamera
         binding.buttonBackCamera.isChecked = isBackCamera
         binding.buttonFrontCamera.isChecked = isBackCamera.not()
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun handleBackCameraButtonChecked() {

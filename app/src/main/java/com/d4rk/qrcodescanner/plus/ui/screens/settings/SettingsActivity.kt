@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
@@ -34,6 +33,7 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivitySettingsBinding
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.RequireRestartDialog
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -45,8 +45,8 @@ class SettingsActivity : AppCompatActivity() , SharedPreferences.OnSharedPrefere
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivitySettingsBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         supportFragmentManager.beginTransaction().replace(R.id.settings , SettingsFragment()).commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

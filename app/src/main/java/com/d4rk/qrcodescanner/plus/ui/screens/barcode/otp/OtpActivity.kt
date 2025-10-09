@@ -9,10 +9,10 @@ import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeOtpBinding
 import com.d4rk.qrcodescanner.plus.di.otpGenerator
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -36,9 +36,9 @@ class OtpActivity : BaseActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeOtpBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         enableSecurity()
-        supportEdgeToEdge()
         parseOtp()
         handleToolbarBackClicked()
         handleRefreshOtpClicked()
@@ -55,12 +55,9 @@ class OtpActivity : BaseActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_SECURE , WindowManager.LayoutParams.FLAG_SECURE)
     }
 
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
-    }
-
+    @Suppress("DEPRECATION")
     private fun parseOtp() {
-        @Suppress("DEPRECATION") otp = intent?.getSerializableExtra(OTP_KEY) as OtpAuth
+        otp = intent?.getSerializableExtra(OTP_KEY) as OtpAuth
     }
 
     private fun handleToolbarBackClicked() {

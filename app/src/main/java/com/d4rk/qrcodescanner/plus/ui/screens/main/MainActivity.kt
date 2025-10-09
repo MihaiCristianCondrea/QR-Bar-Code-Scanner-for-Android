@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -42,6 +41,7 @@ import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.SettingsActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -84,12 +84,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         navGraphInitialized = savedInstanceState?.getBoolean(STATE_NAV_GRAPH_INITIALIZED , false) ?: false
         lastPreferredStartDestination = savedInstanceState?.getInt(STATE_LAST_PREFERRED_DESTINATION , 0) ?: 0
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
 
         setupEdgeToEdge()

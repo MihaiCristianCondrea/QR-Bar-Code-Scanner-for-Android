@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateQrCodeAllBinding
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry
@@ -34,12 +33,7 @@ class CreateQrCodeAllActivity : BaseActivity() {
         binding = ActivityCreateQrCodeAllBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        supportEdgeToEdge()
         setupList()
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun setupList() {

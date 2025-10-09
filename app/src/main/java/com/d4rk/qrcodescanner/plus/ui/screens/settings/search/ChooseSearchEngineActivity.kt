@@ -4,14 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseSearchEngineBinding
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class ChooseSearchEngineActivity : BaseActivity() {
@@ -30,17 +29,12 @@ class ChooseSearchEngineActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityChooseSearchEngineBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        supportEdgeToEdge()
         showInitialValue()
         handleSettingsChanged()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun showInitialValue() {

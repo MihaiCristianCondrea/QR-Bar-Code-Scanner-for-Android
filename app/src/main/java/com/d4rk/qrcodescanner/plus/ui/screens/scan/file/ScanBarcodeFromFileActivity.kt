@@ -23,18 +23,18 @@ import com.d4rk.qrcodescanner.plus.di.barcodeImageScanner
 import com.d4rk.qrcodescanner.plus.di.barcodeParser
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.domain.history.save
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.utils.extension.orZero
-import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.zxing.NotFoundException
-import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
     private lateinit var binding : ActivityScanBarcodeFromFileBinding
@@ -62,6 +62,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanBarcodeFromFileBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         binding.buttonScan.isEnabled = false
         val restored = savedInstanceState?.getString(STATE_CURRENT_IMAGE_URI)?.let {
@@ -71,7 +72,6 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         if (!restored && !handleIncomingIntent(intent)) {
             selectImage()
         }
-        supportEdgeToEdge()
         handleImageCropAreaChanged()
         handleScanButtonClicked()
     }
@@ -94,10 +94,6 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         scanJob?.cancel()
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun selectImage() {

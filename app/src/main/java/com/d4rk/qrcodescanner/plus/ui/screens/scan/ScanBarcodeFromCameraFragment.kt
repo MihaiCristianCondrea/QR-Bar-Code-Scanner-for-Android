@@ -33,16 +33,15 @@ import com.d4rk.qrcodescanner.plus.di.permissionsHelper
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.domain.history.save
 import com.d4rk.qrcodescanner.plus.domain.scan.SupportedBarcodeFormats
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.utils.extension.showError
-import com.d4rk.qrcodescanner.plus.utils.extension.toGmsFormat
-import com.d4rk.qrcodescanner.plus.utils.extension.vibrateOnce
-import com.d4rk.qrcodescanner.plus.utils.extension.vibrator
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.ConfirmBarcodeDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.views.BarcodeOverlayView
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.scan.file.ScanBarcodeFromFileActivity
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.toGmsFormat
+import com.d4rk.qrcodescanner.plus.utils.extension.vibrateOnce
+import com.d4rk.qrcodescanner.plus.utils.extension.vibrator
 import com.google.android.material.snackbar.Snackbar
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -95,7 +94,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             CameraSelector.LENS_FACING_FRONT
         }
         cameraExecutor = Executors.newSingleThreadExecutor()
-        supportEdgeToEdge()
         initUi()
         setupCameraProvider()
         requestPermissions()
@@ -158,11 +156,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         handleDecreaseZoomClicked()
         handleIncreaseZoomClicked()
         setupTapToFocus()
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.imageViewFlash.applySystemWindowInsets(applyTop = true)
-        binding.imageViewScanFromFile.applySystemWindowInsets(applyTop = true)
     }
 
     private fun setupCameraProvider() {

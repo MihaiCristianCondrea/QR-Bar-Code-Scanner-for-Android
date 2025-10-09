@@ -12,11 +12,11 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivitySaveBarcodeAsImageBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.di.barcodeImageSaver
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
-import com.d4rk.qrcodescanner.plus.utils.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.utils.extension.showError
-import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
@@ -45,8 +45,8 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySaveBarcodeAsImageBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        supportEdgeToEdge()
         initFormatSpinner()
         initSaveButton()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
@@ -57,10 +57,6 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         if (requestCode == REQUEST_PERMISSIONS_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcode()
         }
-    }
-
-    private fun supportEdgeToEdge() {
-        binding.rootView.applySystemWindowInsets(applyTop = true , applyBottom = true)
     }
 
     private fun initFormatSpinner() {
