@@ -92,8 +92,6 @@ class MainActivity : AppCompatActivity() {
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
 
-        setupEdgeToEdge()
-
         setSupportActionBar(binding.toolbar)
         configureToolbarNavigation()
 
@@ -304,20 +302,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         ViewCompat.requestApplyInsets(bottomBar)
-    }
-
-    private fun setupEdgeToEdge() {
-        ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { view , insets ->
-            val statusBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
-            view.updatePadding(top = statusBars.top)
-            insets
-        }
-        ViewCompat.setOnApplyWindowInsetsListener(binding.navHostFragmentActivityMain) { view , insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.updatePadding(left = systemBars.left , right = systemBars.right)
-            insets
-        }
-        ViewCompat.requestApplyInsets(binding.root)
     }
 
     private fun shouldUseNavigationRail() : Boolean {
