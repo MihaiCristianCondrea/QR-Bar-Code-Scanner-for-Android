@@ -23,6 +23,9 @@ material = "1.14.0-alpha05"
 playServicesAds = "24.6.0"
 playServicesOssLicenses = "17.3.0"
 playServicesMlkitBarcode = "18.3.1"
+camerax = "1.5.1"
+mlkitBarcode = "17.3.0"
+zxingCore = "3.5.3"
 review = "2.0.2"
 userMessagingPlatform = "3.2.0"
 firebaseBom = "34.3.0"
@@ -113,10 +116,15 @@ zxing-embedded = { module = "com.journeyapps:zxing-android-embedded", version.re
 commons-codec = { module = "commons-codec:commons-codec", version.ref = "commonsCodec" }
 kotlin-otp = { module = "dev.turingcomplete:kotlin-onetimepassword", version.ref = "otp" }
 ez-vcard = { module = "com.googlecode.ez-vcard:ez-vcard", version.ref = "ezVcard" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camerax" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camerax" }
+mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "mlkitBarcode" }
+zxing-core = { module = "com.google.zxing:core", version.ref = "zxingCore" }
 
 # Dependency injection
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 
 # Utility
 android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
@@ -221,12 +229,20 @@ kotlinx = [
 
 # Barcode and QR feature utilities
 barcode-stack = [
-    "code-scanner",
     "zxing-embedded",
     "play-services-mlkit-barcode-scanning",
+    "mlkit-barcode-scanning",
+    "zxing-core",
     "commons-codec",
     "kotlin-otp",
     "ez-vcard",
+]
+
+androidx-camera = [
+    "androidx-camera-core",
+    "androidx-camera-camera2",
+    "androidx-camera-lifecycle",
+    "androidx-camera-view",
 ]
 
 # For local tests on the JVM (test sourceSet)

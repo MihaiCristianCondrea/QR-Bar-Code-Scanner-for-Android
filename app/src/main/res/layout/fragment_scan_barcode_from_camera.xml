@@ -1,124 +1,127 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/camera_card"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false"
+    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CardViewScanner"
+    app:strokeWidth="0dp">
 
-    <com.google.android.material.card.MaterialCardView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="?attr/colorSurface"
-        app:cardCornerRadius="24dp"
-        app:strokeWidth="0dp">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.camera.view.PreviewView
+            android:id="@+id/preview_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:keepScreenOn="true"
+            app:implementationMode="compatible" />
 
-            <com.budiyev.android.codescanner.CodeScannerView
-                android:id="@+id/scanner_view"
+        <com.d4rk.qrcodescanner.plus.ui.components.views.BarcodeOverlayView
+            android:id="@+id/barcode_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/top_actions_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/default_margin"
+            android:paddingTop="@dimen/default_margin"
+            android:paddingEnd="@dimen/default_margin">
+
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:autoFocusButtonVisible="false"
-                app:flashButtonVisible="false"
-                app:frameAspectRatioHeight="1"
-                app:frameAspectRatioWidth="1"
-                app:frameColor="?android:textColorPrimary"
-                app:frameCornersRadius="24dp"
-                app:frameSize="0.6"
-                app:frameThickness="2.5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:maskColor="@android:color/transparent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image_view_flash"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_big"
-                app:layout_constraintEnd_toStartOf="@id/image_view_scan_from_file"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_flash" />
+                android:layout_weight="1">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_view_flash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/flash"
-                android:textColor="@android:color/white"
-                app:layout_constraintEnd_toEndOf="@id/image_view_flash"
-                app:layout_constraintStart_toStartOf="@id/image_view_flash"
-                app:layout_constraintTop_toBottomOf="@id/image_view_flash" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/image_view_flash"
+                    style="@style/Widget.Material3Expressive.Button.TextButton.Snackbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:text="@string/flash"
+                    app:icon="@drawable/ic_flash"
+                    app:iconGravity="top" />
+
+                <FrameLayout
+                    android:id="@+id/layout_flash_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </FrameLayout>
 
             <FrameLayout
-                android:id="@+id/layout_flash_container"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/text_view_flash"
-                app:layout_constraintEnd_toEndOf="@id/text_view_flash"
-                app:layout_constraintStart_toStartOf="@id/text_view_flash"
-                app:layout_constraintTop_toTopOf="@id/image_view_flash" />
+                android:layout_weight="1">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image_view_scan_from_file"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/image_view_flash"
-                app:layout_constraintTop_toTopOf="@id/image_view_flash"
-                app:srcCompat="@drawable/ic_image_white" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/image_view_scan_from_file"
+                    style="@style/Widget.Material3Expressive.Button.TextButton.Snackbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:text="@string/scan_image"
+                    app:icon="@drawable/ic_image"
+                    app:iconGravity="top" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_view_scan_from_file"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/scan_image"
-                android:textColor="@android:color/white"
-                app:layout_constraintEnd_toEndOf="@id/image_view_scan_from_file"
-                app:layout_constraintStart_toStartOf="@id/image_view_scan_from_file"
-                app:layout_constraintTop_toBottomOf="@id/image_view_scan_from_file" />
+                <FrameLayout
+                    android:id="@+id/layout_scan_from_file_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:focusable="false" />
+            </FrameLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <FrameLayout
-                android:id="@+id/layout_scan_from_file_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/text_view_scan_from_file"
-                app:layout_constraintEnd_toEndOf="@id/text_view_scan_from_file"
-                app:layout_constraintStart_toStartOf="@id/text_view_scan_from_file"
-                app:layout_constraintTop_toTopOf="@id/image_view_scan_from_file" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/zoom_controls_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/default_margin"
+            android:paddingEnd="@dimen/default_margin"
+            android:paddingBottom="@dimen/default_margin_large">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_decrease_zoom"
-                android:layout_width="@dimen/button_zoom_size"
-                android:layout_height="@dimen/button_zoom_size"
-                android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin_large"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_minus" />
+                style="@style/Widget.Material3Expressive.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:icon="@drawable/ic_minus" />
 
-            <androidx.appcompat.widget.AppCompatSeekBar
+            <com.google.android.material.slider.Slider
                 android:id="@+id/seek_bar_zoom"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/zoom_seek_bar_height"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"
-                app:layout_constraintEnd_toStartOf="@id/button_increase_zoom"
-                app:layout_constraintStart_toEndOf="@id/button_decrease_zoom"
-                app:layout_constraintTop_toTopOf="@id/button_decrease_zoom" />
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_increase_zoom"
-                android:layout_width="@dimen/button_zoom_size"
-                android:layout_height="@dimen/button_zoom_size"
-                android:layout_marginEnd="@dimen/default_margin"
-                app:layout_constraintBottom_toBottomOf="@id/button_decrease_zoom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/button_decrease_zoom"
-                app:srcCompat="@drawable/ic_plus" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                style="@style/Widget.Material3Expressive.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:icon="@drawable/ic_plus" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>

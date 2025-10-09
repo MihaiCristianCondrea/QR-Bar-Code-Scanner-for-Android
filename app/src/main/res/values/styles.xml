@@ -23,6 +23,14 @@
         <item name="shapeAppearance">@style/ShapeTokens.Clover</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.CardViewScanner" parent="Widget.Material3.CardView.Elevated">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
     <style name="ShapeAppearanceOverlay.CardViewTopRoundedOutlined" parent="Widget.Material3.CardView.Outlined">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">24dp</item>

@@ -7,19 +7,10 @@ import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 object BarcodeImageGenerator {
     private val encoder = BarcodeEncoder()
     private val writer = MultiFormatWriter()
-    suspend fun generateBitmapAsync(
-        barcode : Barcode , width : Int , height : Int , margin : Int = 0 , codeColor : Int = Color.BLACK , backgroundColor : Int = Color.WHITE
-    ) : Bitmap {
-        return withContext(Dispatchers.Default) {
-            generateBitmap(barcode , width , height , margin , codeColor , backgroundColor)
-        }
-    }
 
     fun generateBitmap(
         barcode : Barcode , width : Int , height : Int , margin : Int = 0 , codeColor : Int = Color.BLACK , backgroundColor : Int = Color.WHITE
@@ -31,12 +22,6 @@ object BarcodeImageGenerator {
             return createBitmap(matrix , codeColor , backgroundColor)
         } catch (ex : Exception) {
             throw Exception("Unable to generate barcode image, ${barcode.format}, ${barcode.text}" , ex)
-        }
-    }
-
-    suspend fun generateSvgAsync(barcode : Barcode , width : Int , height : Int , margin : Int = 0) : String {
-        return withContext(Dispatchers.Default) {
-            generateSvg(barcode , width , height , margin)
         }
     }
 

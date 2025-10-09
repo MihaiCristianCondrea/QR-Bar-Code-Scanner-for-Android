@@ -162,6 +162,9 @@ dependencies {
     // Shared UI tooling and visuals
     implementation(dependencyNotation = libs.bundles.ui.toolkit)
 
+    // CameraX
+    implementation(dependencyNotation = libs.bundles.androidx.camera)
+
     // Barcode & QR feature utilities
     implementation(dependencyNotation = libs.bundles.barcode.stack)
 

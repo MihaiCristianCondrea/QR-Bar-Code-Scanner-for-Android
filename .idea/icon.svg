@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="vector" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 432 432" style="enable-background:new 0 0 432 432;" xml:space="preserve">
 <style type="text/css">
@@ -7,20 +6,21 @@
 	.st1{fill:#F4B400;}
 	.st2{fill:#0F9D58;}
 	.st3{fill:#DB4437;}
+	.st4{fill:#000000;}
 </style>
 <path class="st0" d="M0,108V0h108v43.2H43.2V108H0z"/>
 <path class="st1" d="M0,432V324h43.2v64.8H108V432H0z"/>
 <path class="st2" d="M324,432v-43.2h64.8V324H432v108H324z"/>
 <path class="st3" d="M388.8,108V43.2H324V0h108v108H388.8z"/>
-<path d="M334.8,334.8h32.4v32.4h-32.4V334.8z"/>
-<path d="M334.8,270h32.4v32.4h-32.4V270z"/>
-<path d="M302.4,302.4h32.4v32.4h-32.4V302.4z"/>
-<path d="M270,334.8h32.4v32.4H270V334.8z"/>
-<path d="M237.6,302.4H270v32.4h-32.4V302.4z"/>
-<path d="M302.4,237.6h32.4V270h-32.4V237.6z"/>
-<path d="M270,270h32.4v32.4H270V270z"/>
-<path d="M237.6,237.6H270V270h-32.4V237.6z"/>
-<path d="M64.8,237.6v129.6h129.6V237.6H64.8z M162,334.8H97.2V270H162V334.8z"/>
-<path d="M64.8,64.8v129.6h129.6V64.8H64.8z M162,162H97.2V97.2H162V162z"/>
-<path d="M237.6,64.8v129.6h129.6V64.8H237.6z M334.8,162H270V97.2h64.8V162z"/>
+<path class="st4" d="M334.8,334.8h32.4v32.4h-32.4V334.8z"/>
+<path class="st4" d="M334.8,270h32.4v32.4h-32.4V270z"/>
+<path class="st4" d="M302.4,302.4h32.4v32.4h-32.4V302.4z"/>
+<path class="st4" d="M270,334.8h32.4v32.4H270V334.8z"/>
+<path class="st4" d="M237.6,302.4H270v32.4h-32.4V302.4z"/>
+<path class="st4" d="M302.4,237.6h32.4V270h-32.4V237.6z"/>
+<path class="st4" d="M270,270h32.4v32.4H270V270z"/>
+<path class="st4" d="M237.6,237.6H270V270h-32.4V237.6z"/>
+<path class="st4" d="M64.8,237.6v129.6h129.6V237.6H64.8z M162,334.8H97.2V270H162V334.8z"/>
+<path class="st4" d="M64.8,64.8v129.6h129.6V64.8H64.8z M162,162H97.2V97.2H162V162z"/>
+<path class="st4" d="M237.6,64.8v129.6h129.6V64.8H237.6z M334.8,162H270V97.2h64.8V162z"/>
 </svg>

@@ -18,4 +18,5 @@
     <dimen name="preference_item_spacing">2dp</dimen>
     <dimen name="preference_list_vertical_padding">16dp</dimen>
     <dimen name="manual_focus_area_radius">96dp</dimen>
+    <dimen name="barcode_overlay_stroke_width">3dp</dimen>
 </resources>

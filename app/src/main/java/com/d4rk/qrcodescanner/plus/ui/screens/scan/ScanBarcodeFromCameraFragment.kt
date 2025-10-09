@@ -1,87 +1,82 @@
-@file:Suppress("DEPRECATION")
-
 package com.d4rk.qrcodescanner.plus.ui.screens.scan
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.graphics.PointF
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SeekBar
+import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.Camera
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ExperimentalGetImage
+import androidx.camera.core.FocusMeteringAction
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageProxy
+import androidx.camera.core.Preview
+import androidx.camera.core.TorchState
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentScanBarcodeFromCameraBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
 import com.d4rk.qrcodescanner.plus.di.barcodeParser
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
-import com.d4rk.qrcodescanner.plus.di.scannerCameraHelper
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.domain.history.save
 import com.d4rk.qrcodescanner.plus.domain.scan.SupportedBarcodeFormats
 import com.d4rk.qrcodescanner.plus.extension.applySystemWindowInsets
-import com.d4rk.qrcodescanner.plus.extension.equalTo
 import com.d4rk.qrcodescanner.plus.extension.showError
+import com.d4rk.qrcodescanner.plus.extension.toGmsFormat
 import com.d4rk.qrcodescanner.plus.extension.vibrateOnce
 import com.d4rk.qrcodescanner.plus.extension.vibrator
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.ConfirmBarcodeDialogFragment
+import com.d4rk.qrcodescanner.plus.ui.components.views.BarcodeOverlayView
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.scan.file.ScanBarcodeFromFileActivity
 import com.google.android.material.snackbar.Snackbar
-import com.google.zxing.Result
-import com.google.zxing.ResultMetadataType
+import com.google.mlkit.vision.barcode.BarcodeScanner
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.common.InputImage
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.lang.reflect.Constructor
-import java.lang.reflect.Method
-import kotlin.LazyThreadSafetyMode
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
-    private lateinit var binding: FragmentScanBarcodeFromCameraBinding
 
     companion object {
         private val PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val PERMISSION_REQUEST_CODE = 101
         private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
         private const val CONTINUOUS_SCANNING_PREVIEW_DELAY = 500L
+        private const val ZOOM_MAX_PROGRESS = 100
     }
+
+    private lateinit var binding: FragmentScanBarcodeFromCameraBinding
 
     private val vibrationPattern = longArrayOf(0, 350)
-
-    private var maxZoom: Int = 0
     private val zoomStep = 5
-    private lateinit var codeScanner: CodeScanner
+
+    private var cameraProvider: ProcessCameraProvider? = null
+    private var cameraExecutor: ExecutorService? = null
+    private var camera: Camera? = null
+    private var barcodeScanner: BarcodeScanner? = null
+    private var isHandlingResult = false
     private var lastResult: Barcode? = null
-    private val touchFocusReflection by lazy(LazyThreadSafetyMode.NONE) {
-        runCatching {
-            val rectClass = Class.forName("com.budiyev.android.codescanner.Rect")
-            val constructor = rectClass.getDeclaredConstructor(
-                Int::class.javaPrimitiveType,
-                Int::class.javaPrimitiveType,
-                Int::class.javaPrimitiveType,
-                Int::class.javaPrimitiveType,
-            ).apply {
-                isAccessible = true
-            }
-            val method = CodeScanner::class.java.getDeclaredMethod("performTouchFocus", rectClass).apply {
-                isAccessible = true
-            }
-            TouchFocusReflection(method, constructor)
-        }.getOrNull()
-    }
+    private var pendingBarcode: Barcode? = null
+    private var currentZoomProgress: Int = 0
+    private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,48 +89,75 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        lensFacing = if (settings.isBackCamera) {
+            CameraSelector.LENS_FACING_BACK
+        } else {
+            CameraSelector.LENS_FACING_FRONT
+        }
+        cameraExecutor = Executors.newSingleThreadExecutor()
         supportEdgeToEdge()
-        initScanner()
-        initFlashButton()
-        handleScanFromFileClicked()
-        setupManualFocus()
-        handleZoomChanged()
-        handleDecreaseZoomClicked()
-        handleIncreaseZoomClicked()
+        initUi()
+        setupCameraProvider()
         requestPermissions()
     }
 
     override fun onResume() {
         super.onResume()
         if (areAllPermissionsGranted()) {
-            initZoomSeekBar()
-            codeScanner.startPreview()
+            bindCameraUseCases()
         }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onRequestPermissionsResult(
+    override fun onPause() {
+        pauseCamera()
+        super.onPause()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        pauseCamera()
+        cameraExecutor?.shutdown()
+        cameraExecutor = null
+        barcodeScanner?.close()
+        barcodeScanner = null
+        cameraProvider = null
+    }
+
+    override fun onRequestPermissionsResult( // FIXME: This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray,
     ) {
         if (requestCode == PERMISSION_REQUEST_CODE && areAllPermissionsGranted(grantResults)) {
-            initZoomSeekBar()
-            codeScanner.startPreview()
+            bindCameraUseCases()
         }
     }
 
-    override fun onPause() {
-        codeScanner.releaseResources()
-        super.onPause()
-    }
-
     override fun onBarcodeConfirmed(barcode: Barcode) {
-        handleConfirmedBarcode(barcode)
+        pendingBarcode = null
+        when {
+            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
+            else -> {
+                lastResult = barcode
+                navigateToBarcodeScreen(barcode)
+            }
+        }
     }
 
     override fun onBarcodeDeclined() {
-        restartPreview()
+        pendingBarcode = null
+        binding.barcodeOverlay.clear()
+        isHandlingResult = false
+    }
+
+    private fun initUi() {
+        binding.seekBarZoom.valueTo = ZOOM_MAX_PROGRESS.toFloat()
+        initFlashButton()
+        handleScanFromFileClicked()
+        handleZoomChanged()
+        handleDecreaseZoomClicked()
+        handleIncreaseZoomClicked()
+        setupTapToFocus()
     }
 
     private fun supportEdgeToEdge() {
@@ -143,132 +165,170 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         binding.imageViewScanFromFile.applySystemWindowInsets(applyTop = true)
     }
 
-    private fun initScanner() {
-        val flashAvailable = isFlashAvailable()
-        if (settings.flash && flashAvailable.not()) {
-            settings.flash = false
-        }
-        codeScanner = CodeScanner(requireActivity(), binding.scannerView).apply {
-            camera = if (settings.isBackCamera) {
-                CodeScanner.CAMERA_BACK
-            } else {
-                CodeScanner.CAMERA_FRONT
+    private fun setupCameraProvider() {
+        val providerFuture = ProcessCameraProvider.getInstance(requireContext())
+        providerFuture.addListener({
+            cameraProvider = providerFuture.get()
+            if (areAllPermissionsGranted()) {
+                bindCameraUseCases()
             }
-            autoFocusMode = if (settings.simpleAutoFocus) {
-                AutoFocusMode.SAFE
-            } else {
-                AutoFocusMode.CONTINUOUS
-            }
-            formats = SupportedBarcodeFormats.FORMATS.filter(settings::isFormatSelected)
-            scanMode = ScanMode.SINGLE
-            isAutoFocusEnabled = true
-            isFlashEnabled = settings.flash && flashAvailable
-            isTouchFocusEnabled = true
-            decodeCallback = DecodeCallback(::handleScannedBarcode)
-            errorCallback = ErrorCallback(::showError)
-        }
+        }, ContextCompat.getMainExecutor(requireContext()))
     }
 
-    private fun initZoomSeekBar() {
-        scannerCameraHelper.getCameraParameters(settings.isBackCamera)?.apply {
-            this@ScanBarcodeFromCameraFragment.maxZoom = maxZoom
-            binding.seekBarZoom.max = maxZoom
-            binding.seekBarZoom.progress = zoom
-        }
-    }
-
-    private fun initFlashButton() {
-        val flashAvailable = isFlashAvailable()
-        binding.imageViewFlash.isVisible = flashAvailable
-        binding.textViewFlash.isVisible = flashAvailable
-        binding.layoutFlashContainer.isVisible = flashAvailable
-        if (flashAvailable.not()) {
+    private fun bindCameraUseCases() {
+        val provider = cameraProvider ?: return
+        if (!areAllPermissionsGranted()) {
             return
         }
-        binding.layoutFlashContainer.setOnClickListener {
-            toggleFlash()
+        val executor = cameraExecutor ?: return
+        val preview = Preview.Builder().build().apply {
+            surfaceProvider = binding.previewView.surfaceProvider
         }
-        binding.imageViewFlash.isActivated = codeScanner.isFlashEnabled
+        val analysis = ImageAnalysis.Builder()
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .build()
+        val scanner = createBarcodeScanner()
+        analysis.setAnalyzer(executor) { imageProxy ->
+            processImage(scanner, imageProxy)
+        }
+        val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
+        try {
+            provider.unbindAll()
+            barcodeScanner?.close()
+            barcodeScanner = scanner
+            camera = provider.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview, analysis)
+            observeTorchState()
+            observeZoomState()
+            updateFlashAvailability()
+            applyInitialTorchState()
+        } catch (throwable: Exception) {
+            showError(throwable)
+        }
     }
 
-    private fun handleScanFromFileClicked() {
-        binding.layoutScanFromFileContainer.setOnClickListener {
-            navigateToScanFromFileScreen()
-        }
+    private fun pauseCamera() {
+        cameraProvider?.unbindAll()
+        camera = null
+        binding.barcodeOverlay.clear()
+        isHandlingResult = false
+        pendingBarcode = null
     }
 
-    private fun handleZoomChanged() {
-        binding.seekBarZoom.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) = Unit
-
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                if (fromUser) {
-                    codeScanner.zoom = progress
-                }
+    @OptIn(ExperimentalGetImage::class)
+    private fun processImage(scanner: BarcodeScanner, imageProxy: ImageProxy) {
+        val mediaImage = imageProxy.image ?: run {
+            imageProxy.close()
+            return
+        }
+        binding.barcodeOverlay.post {
+            binding.barcodeOverlay.setImageSourceInfo(
+                imageProxy.width,
+                imageProxy.height,
+                imageProxy.imageInfo.rotationDegrees,
+                lensFacing == CameraSelector.LENS_FACING_FRONT,
+            )
+        }
+        val inputImage = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+        scanner.process(inputImage)
+            .addOnSuccessListener { barcodes ->
+                handleDetectedBarcodes(barcodes)
             }
-        })
-    }
-
-    private fun handleDecreaseZoomClicked() {
-        binding.buttonDecreaseZoom.setOnClickListener {
-            decreaseZoom()
-        }
-    }
-
-    private fun handleIncreaseZoomClicked() {
-        binding.buttonIncreaseZoom.setOnClickListener {
-            increaseZoom()
-        }
-    }
-
-    private fun decreaseZoom() {
-        codeScanner.apply {
-            zoom = if (zoom > zoomStep) {
-                zoom - zoomStep
-            } else {
-                0
+            .addOnFailureListener { throwable ->
+                showError(throwable)
             }
-            binding.seekBarZoom.progress = zoom
-        }
-    }
-
-    private fun increaseZoom() {
-        codeScanner.apply {
-            zoom = if (zoom < maxZoom - zoomStep) {
-                zoom + zoomStep
-            } else {
-                maxZoom
+            .addOnCompleteListener {
+                imageProxy.close()
             }
-            binding.seekBarZoom.progress = zoom
-        }
     }
 
-    private fun handleScannedBarcode(result: Result) {
+    private fun handleDetectedBarcodes(barcodes: List<MlKitBarcode>) {
+        if (!isAdded) {
+            return
+        }
+        if (barcodes.isEmpty()) {
+            binding.barcodeOverlay.clear()
+            return
+        }
+        val shapes = barcodes.mapNotNull { barcode ->
+            val boundingBox = barcode.boundingBox ?: return@mapNotNull null
+            val cornerPoints = barcode.cornerPoints?.map { point ->
+                PointF(point.x.toFloat(), point.y.toFloat())
+            } ?: emptyList()
+            BarcodeOverlayView.BarcodeShape(boundingBox, cornerPoints)
+        }
+        binding.barcodeOverlay.update(shapes)
+        val parsedBarcode = barcodes.firstNotNullOfOrNull(barcodeParser::parse) ?: return
+        if (settings.continuousScanning && parsedBarcode == lastResult) {
+            scheduleResumeScanning(showMessage = false)
+            return
+        }
+        if (isHandlingResult) {
+            return
+        }
+        isHandlingResult = true
+        pendingBarcode = parsedBarcode
+        handleScannedBarcode(parsedBarcode)
+    }
+
+    private fun handleScannedBarcode(barcode: Barcode) {
         if (requireActivity().intent?.action == ZXING_SCAN_INTENT_ACTION) {
             vibrateIfNeeded()
-            finishWithResult(result)
-            return
-        }
-        if (settings.continuousScanning && result.equalTo(lastResult)) {
-            restartPreviewWithDelay(false)
+            finishWithResult(barcode)
             return
         }
         vibrateIfNeeded()
-        val barcode = barcodeParser.parseResult(result)
         when {
             settings.confirmScansManually -> showScanConfirmationDialog(barcode)
             settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
-            else -> navigateToBarcodeScreen(barcode)
+            else -> {
+                lastResult = barcode
+                pendingBarcode = null
+                navigateToBarcodeScreen(barcode)
+            }
         }
     }
 
-    private fun handleConfirmedBarcode(barcode: Barcode) {
-        when {
-            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
-            else -> navigateToBarcodeScreen(barcode)
+    private fun saveScannedBarcode(barcode: Barcode) {
+        lifecycleScope.launchWhenStarted { // FIXME: 'fun launchWhenStarted(block: suspend CoroutineScope.() -> Unit): Job' is deprecated. launchWhenStarted is deprecated as it can lead to wasted resources in some cases. Replace with suspending repeatOnLifecycle to run the block whenever the Lifecycle state is at least Lifecycle.State.STARTED.
+            try {
+                val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
+                val savedBarcode = barcode.copy(id = id)
+                lastResult = barcode
+                pendingBarcode = null
+                if (settings.continuousScanning) {
+                    scheduleResumeScanning(showMessage = true)
+                } else {
+                    navigateToBarcodeScreen(savedBarcode)
+                }
+            } catch (throwable: Exception) {
+                isHandlingResult = false
+                pendingBarcode = null
+                showError(throwable)
+            }
         }
+    }
+
+    private fun scheduleResumeScanning(showMessage: Boolean) {
+        lifecycleScope.launchWhenStarted { // FIXME: 'fun launchWhenStarted(block: suspend CoroutineScope.() -> Unit): Job' is deprecated. launchWhenStarted is deprecated as it can lead to wasted resources in some cases. Replace with suspending repeatOnLifecycle to run the block whenever the Lifecycle state is at least Lifecycle.State.STARTED.
+            if (!isAdded) {
+                return@launchWhenStarted
+            }
+            delay(CONTINUOUS_SCANNING_PREVIEW_DELAY)
+            if (!isAdded) {
+                return@launchWhenStarted
+            }
+            if (showMessage) {
+                view?.let { Snackbar.make(it, R.string.saved, Snackbar.LENGTH_LONG).show() }
+            }
+            binding.barcodeOverlay.clear()
+            pendingBarcode = null
+            isHandlingResult = false
+        }
+    }
+
+    private fun showScanConfirmationDialog(barcode: Barcode) {
+        val dialog = ConfirmBarcodeDialogFragment.newInstance(barcode)
+        dialog.show(childFragmentManager, "")
     }
 
     private fun vibrateIfNeeded() {
@@ -279,63 +339,134 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         }
     }
 
-    private fun showScanConfirmationDialog(barcode: Barcode) {
-        val dialog = ConfirmBarcodeDialogFragment.newInstance(barcode)
-        dialog.show(childFragmentManager, "")
+    private fun finishWithResult(barcode: Barcode) {
+        pendingBarcode = null
+        val intent = Intent()
+            .putExtra("SCAN_RESULT", barcode.text)
+            .putExtra("SCAN_RESULT_FORMAT", barcode.format.toString())
+        requireActivity().setResult(Activity.RESULT_OK, intent)
+        requireActivity().finish()
     }
 
-    private fun saveScannedBarcode(barcode: Barcode) {
-        lifecycleScope.launch {
-            try {
-                val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
-                lastResult = barcode
-                if (settings.continuousScanning) {
-                    restartPreviewWithDelay(true)
-                } else {
-                    navigateToBarcodeScreen(barcode.copy(id = id))
-                }
-            } catch (throwable: Exception) {
-                showError(throwable)
-            }
+    private fun navigateToBarcodeScreen(barcode: Barcode) {
+        BarcodeActivity.start(requireActivity(), barcode)
+    }
+
+    private fun handleScanFromFileClicked() {
+        binding.layoutScanFromFileContainer.setOnClickListener {
+            ScanBarcodeFromFileActivity.start(requireActivity())
         }
     }
 
-    private fun restartPreviewWithDelay(showMessage: Boolean) {
-        lifecycleScope.launch {
-            delay(CONTINUOUS_SCANNING_PREVIEW_DELAY)
-            if (!isAdded) {
-                return@launch
-            }
-            if (showMessage) {
-                view?.let { Snackbar.make(it, R.string.saved, Snackbar.LENGTH_LONG).show() }
-            }
-            restartPreview()
-        }
-    }
-
-    private fun restartPreview() {
-        requireActivity().runOnUiThread {
-            codeScanner.startPreview()
+    private fun initFlashButton() {
+        binding.layoutFlashContainer.setOnClickListener {
+            toggleFlash()
         }
     }
 
     private fun toggleFlash() {
-        if (isFlashAvailable().not()) {
+        val camera = camera ?: return
+        val flashAvailable = camera.cameraInfo.hasFlashUnit() && lensFacing == CameraSelector.LENS_FACING_BACK
+        if (flashAvailable.not()) {
             return
         }
-        val newState = codeScanner.isFlashEnabled.not()
-        runCatching {
-            if (codeScanner.isPreviewActive.not()) {
-                codeScanner.startPreview()
-            }
-            codeScanner.isFlashEnabled = newState
-        }.onSuccess {
-            settings.flash = newState
-            binding.imageViewFlash.isActivated = newState
-        }.onFailure { throwable ->
-            binding.imageViewFlash.isActivated = !newState
-            showError(throwable)
+        val enableTorch = binding.imageViewFlash.isActivated.not()
+        camera.cameraControl.enableTorch(enableTorch)
+        settings.flash = enableTorch
+    }
+
+    private fun updateFlashAvailability() {
+        val camera = camera
+        val flashAvailable = camera?.cameraInfo?.hasFlashUnit() == true && lensFacing == CameraSelector.LENS_FACING_BACK
+        binding.imageViewFlash.isVisible = flashAvailable
+        binding.imageViewFlash.isVisible = flashAvailable
+        binding.layoutFlashContainer.isVisible = flashAvailable
+        if (flashAvailable.not()) {
+            settings.flash = false
         }
+    }
+
+    private fun applyInitialTorchState() {
+        val camera = camera ?: return
+        val flashAvailable = camera.cameraInfo.hasFlashUnit() && lensFacing == CameraSelector.LENS_FACING_BACK
+        if (flashAvailable) {
+            camera.cameraControl.enableTorch(settings.flash)
+        } else {
+            settings.flash = false
+        }
+    }
+
+    private fun observeTorchState() {
+        val camera = camera ?: return
+        camera.cameraInfo.torchState.observe(viewLifecycleOwner) { state ->
+            binding.imageViewFlash.isActivated = state == TorchState.ON
+        }
+    }
+
+    private fun observeZoomState() {
+        val camera = camera ?: return
+        camera.cameraInfo.zoomState.observe(viewLifecycleOwner) { zoomState ->
+            val progress = (zoomState.linearZoom * ZOOM_MAX_PROGRESS).toInt().coerceIn(0, ZOOM_MAX_PROGRESS)
+            currentZoomProgress = progress.also { binding.seekBarZoom.value = it.toFloat() }
+        }
+    }
+
+    private fun handleZoomChanged() {
+        binding.seekBarZoom.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) {
+                setLinearZoom(value.toInt())
+            }
+        }
+    }
+
+    private fun handleDecreaseZoomClicked() {
+        binding.buttonDecreaseZoom.setOnClickListener {
+            val newProgress = (currentZoomProgress - zoomStep).coerceAtLeast(0)
+            binding.seekBarZoom.value = newProgress.toFloat()
+            setLinearZoom(newProgress)
+        }
+    }
+
+    private fun handleIncreaseZoomClicked() {
+        binding.buttonIncreaseZoom.setOnClickListener {
+            val newProgress = (currentZoomProgress + zoomStep).coerceAtMost(ZOOM_MAX_PROGRESS)
+            binding.seekBarZoom.value = newProgress.toFloat()
+            setLinearZoom(newProgress)
+        }
+    }
+
+    private fun setLinearZoom(progress: Int) {
+        currentZoomProgress = progress
+        camera?.cameraControl?.setLinearZoom(progress.toFloat() / ZOOM_MAX_PROGRESS)
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupTapToFocus() {
+        binding.previewView.setOnTouchListener { view, event ->
+            if (event.action != MotionEvent.ACTION_DOWN) {
+                return@setOnTouchListener false
+            }
+            val camera = camera ?: return@setOnTouchListener false
+            val meteringPoint = binding.previewView.meteringPointFactory.createPoint(event.x, event.y)
+            val focusAction = FocusMeteringAction.Builder(meteringPoint).build()
+            camera.cameraControl.startFocusAndMetering(focusAction)
+            view.performClick()
+            true
+        }
+    }
+
+    private fun createBarcodeScanner(): BarcodeScanner {
+        val selectedFormats = SupportedBarcodeFormats.FORMATS
+            .filter(settings::isFormatSelected)
+            .mapNotNull { it.toGmsFormat() }
+        val options = BarcodeScannerOptions.Builder().apply {
+            if (selectedFormats.isNotEmpty()) {
+                val first = selectedFormats.first()
+                val others = selectedFormats.drop(1).toIntArray()
+                setBarcodeFormats(first, *others)
+            }
+        }.build()
+        return BarcodeScanning.getClient(options)
     }
 
     private fun requestPermissions() {
@@ -353,96 +484,4 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
         return permissionsHelper.areAllPermissionsGranted(grantResults)
     }
-
-    private fun navigateToScanFromFileScreen() {
-        ScanBarcodeFromFileActivity.start(requireActivity())
-    }
-
-    private fun navigateToBarcodeScreen(barcode: Barcode) {
-        BarcodeActivity.start(requireActivity(), barcode)
-    }
-
-    private fun finishWithResult(result: Result) {
-        val intent = Intent()
-            .putExtra("SCAN_RESULT", result.text)
-            .putExtra("SCAN_RESULT_FORMAT", result.barcodeFormat.toString())
-        if (result.rawBytes?.isNotEmpty() == true) {
-            intent.putExtra("SCAN_RESULT_BYTES", result.rawBytes)
-        }
-        result.resultMetadata?.let { metadata ->
-            metadata[ResultMetadataType.UPC_EAN_EXTENSION]?.let {
-                intent.putExtra("SCAN_RESULT_ORIENTATION", it.toString())
-            }
-            metadata[ResultMetadataType.ERROR_CORRECTION_LEVEL]?.let {
-                intent.putExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL", it.toString())
-            }
-            metadata[ResultMetadataType.UPC_EAN_EXTENSION]?.let {
-                intent.putExtra("SCAN_RESULT_UPC_EAN_EXTENSION", it.toString())
-            }
-            metadata[ResultMetadataType.BYTE_SEGMENTS]?.let {
-                @Suppress("UNCHECKED_CAST")
-                for ((index, segment) in (it as Iterable<ByteArray>).withIndex()) {
-                    intent.putExtra("SCAN_RESULT_BYTE_SEGMENTS_$index", segment)
-                }
-            }
-        }
-        requireActivity().apply {
-            setResult(Activity.RESULT_OK, intent)
-            finish()
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setupManualFocus() {
-        val reflection = touchFocusReflection ?: return
-        binding.scannerView.setOnTouchListener { view, event ->
-            if (event.action != MotionEvent.ACTION_DOWN) {
-                return@setOnTouchListener false
-            }
-            val handled = focusOnCoordinates(reflection, event.x, event.y)
-            if (handled) {
-                view.performClick()
-            }
-            handled
-        }
-    }
-
-    private fun focusOnCoordinates(reflection: TouchFocusReflection, x: Float, y: Float): Boolean {
-        if (codeScanner.isPreviewActive.not()) {
-            return false
-        }
-        val viewWidth = binding.scannerView.width
-        val viewHeight = binding.scannerView.height
-        if (viewWidth <= 0 || viewHeight <= 0) {
-            return false
-        }
-        val radius = resources.getDimensionPixelSize(R.dimen.manual_focus_area_radius)
-        val left = (x.toInt() - radius).coerceAtLeast(0)
-        val top = (y.toInt() - radius).coerceAtLeast(0)
-        val right = (x.toInt() + radius).coerceAtMost(viewWidth)
-        val bottom = (y.toInt() + radius).coerceAtMost(viewHeight)
-        if (left >= right || top >= bottom) {
-            return false
-        }
-        val rect = runCatching {
-            reflection.rectConstructor.newInstance(left, top, right, bottom)
-        }.getOrElse {
-            return false
-        }
-        return runCatching {
-            reflection.method.invoke(codeScanner, rect)
-        }.isSuccess
-    }
-
-    private fun isFlashAvailable(): Boolean {
-        val context = context ?: return false
-        val packageManager = context.packageManager
-        val hasFlash = packageManager?.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH) == true
-        return hasFlash && settings.isBackCamera
-    }
-
-    private data class TouchFocusReflection(
-        val method: Method,
-        val rectConstructor: Constructor<*>,
-    )
 }
