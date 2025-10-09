@@ -154,28 +154,6 @@
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/app_updates"
-        app:icon="@drawable/ic_play_store_tinted">
-        <androidx.preference.Preference
-            app:icon="@drawable/ic_update"
-            app:title="@string/check_for_updates">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://play.google.com/store/apps/details?id=com.d4rk.qrcodescanner.plus"/>
-        </androidx.preference.Preference>
-        <androidx.preference.Preference
-            app:icon="@drawable/ic_experimental"
-            app:title="@string/subscribe_to_beta">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://play.google.com/apps/testing/com.d4rk.androidtutorials.qrcodescanner.plus"/>
-        </androidx.preference.Preference>
-        <androidx.preference.Preference
-            app:key="@string/key_changelog"
-            app:icon="@drawable/ic_changelog"
-            app:title="@string/changelog"/>
-    </androidx.preference.PreferenceCategory>
-    <androidx.preference.PreferenceCategory
         app:title="@string/privacy_and_security"
         app:icon="@drawable/ic_safety_check_tinted">
         <androidx.preference.Preference
