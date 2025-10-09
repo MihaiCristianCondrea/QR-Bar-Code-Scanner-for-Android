@@ -18,6 +18,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavOptions
@@ -31,6 +36,7 @@ import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
+import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.SettingsActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
@@ -45,6 +51,7 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,7 +65,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration : AppBarConfiguration
     private lateinit var appUpdateManager : AppUpdateManager
 
-    private val mainViewModel : MainViewModel by viewModels()
+    private val preferencesRepository by lazy { mainPreferencesRepository }
+    private val mainViewModel : MainViewModel by viewModels {
+        MainViewModelFactory(preferencesRepository)
+    }
     private val navOrder = SparseIntArray()
     private val requestUpdateCode = 1
     private val adRequest by lazy { AdRequest.Builder().build() }
@@ -90,10 +100,32 @@ class MainActivity : AppCompatActivity() {
         initNavigationController()
         observeViewModel()
 
-        val themeValues = resources.getStringArray(R.array.preference_theme_values)
-        val bottomNavBarLabelsValues = resources.getStringArray(R.array.preference_bottom_navigation_bar_labels_values)
-        val defaultTabValues = resources.getStringArray(R.array.preference_default_tab_values)
-        mainViewModel.applySettings(themeValues , bottomNavBarLabelsValues , defaultTabValues)
+        lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onResume(owner : LifecycleOwner) {
+                val analyticsEnabled = PreferenceManager.getDefaultSharedPreferences(this@MainActivity).getBoolean(
+                    getString(R.string.key_firebase) , true
+                )
+                FirebaseAnalytics.getInstance(this@MainActivity).setAnalyticsCollectionEnabled(analyticsEnabled)
+                FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = analyticsEnabled
+
+                appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
+                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                        @Suppress("DEPRECATION") appUpdateManager.startUpdateFlowForResult(
+                            appUpdateInfo , AppUpdateType.FLEXIBLE , this@MainActivity , requestUpdateCode
+                        )
+                    }
+                }
+
+                if (binding.adView.isVisible) {
+                    binding.adView.loadAd(adRequest)
+                }
+
+                startupScreen()
+                mainViewModel.refreshSettings()
+            }
+        })
+
+        mainViewModel.refreshSettings()
     }
 
     override fun onCreateOptionsMenu(menu : Menu) : Boolean {
@@ -113,29 +145,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp() : Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val analyticsEnabled = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
-            getString(R.string.key_firebase) , true
-        )
-        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(analyticsEnabled)
-        FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = analyticsEnabled
-
-        appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                @Suppress("DEPRECATION") appUpdateManager.startUpdateFlowForResult(
-                    appUpdateInfo , AppUpdateType.FLEXIBLE , this , requestUpdateCode
-                )
-            }
-        }
-
-        if (binding.adView.isVisible) {
-            binding.adView.loadAd(adRequest)
-        }
-
-        startupScreen()
     }
 
     override fun onSaveInstanceState(outState : Bundle) {
@@ -177,10 +186,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        mainViewModel.uiState.observe(this) { uiState ->
-            if (uiState != null) {
-                applyThemeAndLanguage(uiState)
-                configureNavigation(uiState)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mainViewModel.uiState.collect { uiState ->
+                    applyThemeAndLanguage(uiState)
+                    configureNavigation(uiState)
+                }
             }
         }
     }
