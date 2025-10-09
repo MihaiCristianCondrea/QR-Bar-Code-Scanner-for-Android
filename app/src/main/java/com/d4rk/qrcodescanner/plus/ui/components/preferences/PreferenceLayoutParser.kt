@@ -85,11 +85,8 @@ object PreferenceLayoutParser {
         }
     }
 
-    private inline fun <T> android.content.res.XmlResourceParser.use(block: (android.content.res.XmlResourceParser) -> T): T {
-        try {
-            return block(this)
-        } finally {
-            close()
-        }
-    }
+    private inline fun <T> android.content.res.XmlResourceParser.use(block: (android.content.res.XmlResourceParser) -> T): T =
+        runCatching { block(this) }
+            .also { close() }
+            .getOrThrow()
 }

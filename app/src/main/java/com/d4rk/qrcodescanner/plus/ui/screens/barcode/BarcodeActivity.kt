@@ -447,15 +447,11 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun connectToWifi() {
         showConnectToWifiButtonEnabled(false)
-        // Launch a coroutine in the lifecycleScope
         lifecycleScope.launch {
-            try {
-                // Assuming wifiConnector.connect(...) can be made a suspend function
-                // or adapted to work with coroutines (e.g., using suspendCancellableCoroutine).
-                // For this example, let's assume it's adapted to be a suspend function.
-                withContext(Dispatchers.IO) { // Perform network operation on IO dispatcher
+            runCatching {
+                withContext(Dispatchers.IO) {
                     wifiConnector.connect(
-                        this@BarcodeActivity, // Use qualified this for activity context
+                        this@BarcodeActivity,
                         barcode.networkAuthType.orEmpty(),
                         barcode.networkName.orEmpty(),
                         barcode.networkPassword.orEmpty(),
@@ -464,17 +460,15 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
                         barcode.identity.orEmpty(),
                         barcode.eapMethod.orEmpty(),
                         barcode.phase2Method.orEmpty()
-                    ) // This call would be to a suspend function or a Flow collected here
+                    )
                 }
-                // Update UI on the main thread after successful connection
-                showConnectToWifiButtonEnabled(true)
+            }.onSuccess {
                 snackBar(R.string.connecting)
-            } catch (error: Exception) {
-                // Handle errors on the main thread
-                showConnectToWifiButtonEnabled(true)
+            }.onFailure { error ->
                 showError(error)
+            }.let {
+                showConnectToWifiButtonEnabled(true)
             }
-            // No need to call .addTo(disposable) as lifecycleScope handles cancellation.
         }
     }
 
@@ -567,19 +561,19 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun shareBarcodeAsImage() {
-        val imageUri = try {
+        runCatching {
             val image = barcodeImageGenerator.generateBitmap(originalBarcode, 200, 200, 1)
             barcodeImageSaver.saveImageToCache(context = this, image = image, barcode = barcode)
-        } catch (ex: Exception) {
-            showError(ex)
-            return
-        }
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "image/png"
-            putExtra(Intent.EXTRA_STREAM, imageUri)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        }
-        startActivityIfExists(intent)
+        }.onSuccess { imageUri ->
+            imageUri?.let {
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "image/png"
+                    putExtra(Intent.EXTRA_STREAM, it)
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+                startActivityIfExists(intent)
+            }
+        }.onFailure(::showError)
     }
 
     private fun printBarcode() {
@@ -650,8 +644,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun showBarcodeImage() {
-        try {
-            val bitmap = barcodeImageGenerator.generateBitmap(
+        runCatching {
+            barcodeImageGenerator.generateBitmap(
                 originalBarcode,
                 2000,
                 2000,
@@ -659,15 +653,18 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
                 settings.barcodeContentColor,
                 settings.barcodeBackgroundColor
             )
-            binding.layoutBarcodeImageBackground.isVisible = true
-            binding.imageViewBarcode.isVisible = true
-            binding.imageViewBarcode.setImageBitmap(bitmap)
-            binding.imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
-            binding.layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
-            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || settings.areBarcodeColorsInversed) {
-                binding.layoutBarcodeImageBackground.setPadding(0, 0, 0, 0)
+        }.onSuccess { bitmap ->
+            bitmap?.let {
+                binding.layoutBarcodeImageBackground.isVisible = true
+                binding.imageViewBarcode.isVisible = true
+                binding.imageViewBarcode.setImageBitmap(it)
+                binding.imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
+                binding.layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || settings.areBarcodeColorsInversed) {
+                    binding.layoutBarcodeImageBackground.setPadding(0, 0, 0, 0)
+                }
             }
-        } catch (_: Exception) {
+        }.onFailure {
             binding.imageViewBarcode.isVisible = false
         }
     }

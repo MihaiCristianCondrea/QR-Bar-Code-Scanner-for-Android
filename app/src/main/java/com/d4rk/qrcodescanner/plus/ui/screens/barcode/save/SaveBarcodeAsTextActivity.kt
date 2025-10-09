@@ -82,13 +82,15 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
             else -> return
         }
         showLoading(true)
+
         lifecycleScope.launch {
-            try {
+            runCatching {
                 withContext(Dispatchers.IO) {
                     saveFunc(this@SaveBarcodeAsTextActivity , barcode)
                 }
+            }.onSuccess {
                 showBarcodeSaved()
-            } catch (error : Exception) {
+            }.onFailure { error ->
                 showLoading(false)
                 showError(error)
             }

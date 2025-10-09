@@ -148,42 +148,37 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         scanJob?.cancel()
         binding.buttonScan.isEnabled = false
         scanJob = lifecycleScope.launch {
-            try {
-                val bitmap = loadBitmapFromUri(uri)
-                val result = withContext(Dispatchers.Default) { barcodeImageScanner.parse(bitmap) }
+            runCatching {
+                withContext(Dispatchers.Default) {
+                    val bitmap = loadBitmapFromUri(uri)
+                    barcodeImageScanner.parse(bitmap)
+                }
+            }.onSuccess { result ->
                 lastScanResult = result
                 saveScanResult()
-            } catch (_ : NotFoundException) {
+            }.onFailure { error ->
                 lastScanResult = null
-            } catch (_ : SecurityException) {
-                lastScanResult = null
-            } catch (error : Exception) {
-                showError(error)
-            } finally {
-                if (lastScanResult == null) {
+                if (error !is NotFoundException) showError(error)
                     binding.buttonScan.isEnabled = true
-                }
             }
         }
     }
 
     private suspend fun loadBitmapFromUri(uri : Uri) : Bitmap {
-        return withContext(Dispatchers.IO) {
-            try {
+        return run {
+            withContext(Dispatchers.IO) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    val source = ImageDecoder.createSource(contentResolver , uri)
-                    ImageDecoder.decodeBitmap(source)
-                }
-                else {
+                    ImageDecoder.createSource(contentResolver, uri).let { source ->
+                        ImageDecoder.decodeBitmap(source)
+                    }
+                } else {
+
                     contentResolver.openInputStream(uri)?.use { inputStream ->
                         BitmapFactory.decodeStream(inputStream)
-                            ?: throw IllegalStateException("Unable to decode image")
-                    } ?: throw IllegalStateException("Unable to decode image")
+                    }
                 }
-            } catch (securityException : SecurityException) {
-                throw securityException
             }
-        }
+        } ?: throw IllegalStateException("Unable to decode image")
     }
 
     private fun handlePickedImage(uri : Uri?) {
@@ -231,19 +226,17 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private fun saveScanResult() {
-        val barcode = lastScanResult?.let(barcodeParser::parse) ?: return
-        if (settings.saveScannedBarcodesToHistory.not()) {
-            navigateToBarcodeScreen(barcode)
-            return
-        }
-        lifecycleScope.launch {
-            try {
-                val id = withContext(Dispatchers.IO) {
-                    barcodeDatabase.save(barcode , settings.doNotSaveDuplicates)
-                }
-                navigateToBarcodeScreen(barcode.copy(id = id))
-            } catch (error : Exception) {
-                showError(error)
+        lastScanResult?.let(barcodeParser::parse)?.let { barcode ->
+            if (settings.saveScannedBarcodesToHistory.not()) {
+                navigateToBarcodeScreen(barcode)
+                return
+            }
+            lifecycleScope.launch {
+                runCatching {
+                    withContext(Dispatchers.IO) { barcodeDatabase.save(barcode, settings.doNotSaveDuplicates) }
+                }.onSuccess { id ->
+                    navigateToBarcodeScreen(barcode.copy(id = id))
+                }.onFailure(::showError)
             }
         }
     }

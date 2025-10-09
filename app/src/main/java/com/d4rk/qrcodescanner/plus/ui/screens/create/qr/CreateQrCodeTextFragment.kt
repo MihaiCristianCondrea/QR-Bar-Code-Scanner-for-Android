@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeTextBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeParser
-import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
-import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.google.zxing.BarcodeFormat
 
 class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {

@@ -281,20 +281,22 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun saveScannedBarcode(barcode: Barcode) {
         lifecycleScope.launchWhenStarted { // FIXME: 'fun launchWhenStarted(block: suspend CoroutineScope.() -> Unit): Job' is deprecated. launchWhenStarted is deprecated as it can lead to wasted resources in some cases. Replace with suspending repeatOnLifecycle to run the block whenever the Lifecycle state is at least Lifecycle.State.STARTED.
-            try {
-                val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
-                val savedBarcode = barcode.copy(id = id)
+            runCatching {
+                barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
+            }.onSuccess { id ->
+                barcode.copy(id = id).let { savedBarcode ->
+                    lastResult = barcode
+                    pendingBarcode = null
+                    if (settings.continuousScanning) {
+                        scheduleResumeScanning(showMessage = true)
+                    } else {
+                        navigateToBarcodeScreen(savedBarcode)
+                    }
+                }
+            }.onFailure {
                 lastResult = barcode
                 pendingBarcode = null
-                if (settings.continuousScanning) {
-                    scheduleResumeScanning(showMessage = true)
-                } else {
-                    navigateToBarcodeScreen(savedBarcode)
-                }
-            } catch (throwable: Exception) {
-                isHandlingResult = false
-                pendingBarcode = null
-                showError(throwable)
+                showError(it)
             }
         }
     }

@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeSmsBinding
-import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
-import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.model.schema.Sms
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding : FragmentCreateQrCodeSmsBinding

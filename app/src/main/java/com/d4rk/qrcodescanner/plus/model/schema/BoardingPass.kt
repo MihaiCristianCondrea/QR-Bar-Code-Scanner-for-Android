@@ -28,68 +28,55 @@ class BoardingPass(
 ) : Schema {
     companion object {
         private val DATE_FORMATTER by unsafeLazy { SimpleDateFormat("d MMMM" , Locale.ENGLISH) }
-        fun parse(text : String) : BoardingPass? {
-            try {
-                if (text.length < 60) {
-                    return null
-                }
-                if (text.startsWithIgnoreCase("M1").not()) {
-                    return null
-                }
-                if (text[22] != 'E') {
-                    return null
-                }
-                val fieldSize : Int = text.slice(58..59).toInt(16)
-                if (fieldSize != 0 && text[60] != '>') {
-                    return null
-                }
-                if (text.length > 60 + fieldSize && text[60 + fieldSize] != '^') {
-                    return null
-                }
-                val name = text.slice(2..21).trim()
-                val pnr = text.slice(23..29).trim()
-                val from = text.slice(30..32)
-                val to = text.slice(33..35)
-                val carrier = text.slice(36..38).trim()
-                val flight = text.slice(39..43).trim()
-                val dateJ = text.slice(44..46).toInt()
-                val cabin = text.slice(47..47)
-                val seat = text.slice(48..51).trim()
-                val seq = text.slice(52..56)
-                val today = Calendar.getInstance()
-                today.set(Calendar.DAY_OF_YEAR , dateJ)
-                val date : String = DATE_FORMATTER.format(today.time)
-                var selectee : String? = null
-                var ticket : String? = null
-                var ffAirline : String? = null
-                var ffNo : String? = null
-                var fasttrack : String? = null
-                if (fieldSize != 0) {
-                    @Suppress("UNUSED_VARIABLE") val version : Int = text.slice(61..61).toInt()
-                    val size : Int = text.slice(62..63).toInt(16)
-                    if (size != 0 && size < 11) {
-                        return null
-                    }
-                    val size1 : Int = text.slice(64 + size..65 + size).toInt(16)
-                    if (size1 != 0 && (size1 < 37 || size1 > 42)) {
-                        return null
-                    }
-                    else {
-                        ticket = text.slice(66 + size..78 + size).trim()
-                        selectee = text.slice(79 + size..79 + size)
-                        ffAirline = text.slice(84 + size..86 + size).trim()
-                        ffNo = text.slice(87 + size..102 + size).trim()
+        fun parse(text: String): BoardingPass? {
+            return runCatching {
+                text.let {
+                    if (it.length < 60) return@let null
+                    if (it.startsWithIgnoreCase("M1").not()) return@let null
+                    if (it[22] != 'E') return@let null
+
+                    val fieldSize: Int = it.slice(58..59).toInt(16)
+                    if (fieldSize != 0 && it[60] != '>') return@let null
+                    if (it.length > 60 + fieldSize && it[60 + fieldSize] != '^') return@let null
+
+                    val name = it.slice(2..21).trim()
+                    val pnr = it.slice(23..29).trim()
+                    val from = it.slice(30..32)
+                    val to = it.slice(33..35)
+                    val carrier = it.slice(36..38).trim()
+                    val flight = it.slice(39..43).trim()
+                    val dateJ = it.slice(44..46).toInt()
+                    val cabin = it.slice(47..47)
+                    val seat = it.slice(48..51).trim()
+                    val seq = it.slice(52..56)
+                    val today = Calendar.getInstance()
+                    today.set(Calendar.DAY_OF_YEAR, dateJ)
+                    val date: String = DATE_FORMATTER.format(today.time)
+
+                    var selectee: String? = null
+                    var ticket: String? = null
+                    var ffAirline: String? = null
+                    var ffNo: String? = null
+                    var fasttrack: String? = null
+
+                    if (fieldSize != 0) {
+                        val size: Int = it.slice(62..63).toInt(16)
+                        if (size != 0 && size < 11) return@let null
+
+                        val size1: Int = it.slice(64 + size..65 + size).toInt(16)
+                        if (size1 != 0 && (size1 < 37 || size1 > 42)) return@let null
+
+                        ticket = it.slice(66 + size..78 + size).trim()
+                        selectee = it.slice(79 + size..79 + size)
+                        ffAirline = it.slice(84 + size..86 + size).trim()
+                        ffNo = it.slice(87 + size..102 + size).trim()
                         if (size1 == 42) {
-                            fasttrack = text.slice(107 + size..107 + size)
+                            fasttrack = it.slice(107 + size..107 + size)
                         }
                     }
+                    BoardingPass(name, pnr, from, to, carrier, flight, date, dateJ, cabin, seat, seq, ticket, selectee, ffAirline, ffNo, fasttrack, it)
                 }
-                return BoardingPass(
-                    name , pnr , from , to , carrier , flight , date , dateJ , cabin , seat , seq , ticket , selectee , ffAirline , ffNo , fasttrack , text
-                )
-            } catch (_ : Exception) {
-                return null
-            }
+            }.getOrNull()
         }
     }
 

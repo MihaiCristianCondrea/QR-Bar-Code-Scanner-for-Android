@@ -88,17 +88,17 @@ class ExportHistoryActivity : BaseActivity() {
         }
         showLoading(true)
         lifecycleScope.launch {
-            try {
+            runCatching {
                 val barcodes = withContext(Dispatchers.IO) { barcodeDatabase.getAllForExport().first() }
                 withContext(Dispatchers.IO) { saveFunc(this@ExportHistoryActivity , fileName , barcodes) }
+            }.onSuccess {
                 showHistoryExported()
-            } catch (error : Exception) {
+            }.onFailure { error ->
                 showLoading(false)
                 showError(error)
             }
         }
     }
-
     private fun showLoading(isLoading : Boolean) {
         binding.progressBarLoading.isVisible = isLoading
         binding.scrollView.isVisible = isLoading.not()

@@ -94,15 +94,18 @@ class BarcodeImageActivity : BaseActivity() {
     }
 
     private fun showBarcodeImage() {
-        try {
-            val bitmap = barcodeImageGenerator.generateBitmap(barcode , 2000 , 2000 , 0 , settings.barcodeContentColor , settings.barcodeBackgroundColor)
-            binding.imageViewBarcode.setImageBitmap(bitmap)
-            binding.imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
-            binding.layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
-            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || settings.areBarcodeColorsInversed) {
-                binding.layoutBarcodeImageBackground.setPadding(0 , 0 , 0 , 0)
+        runCatching {
+            barcodeImageGenerator.generateBitmap(barcode , 2000 , 2000 , 0 , settings.barcodeContentColor , settings.barcodeBackgroundColor)
+        }.onSuccess { bitmap ->
+            binding.let {
+                it.imageViewBarcode.setImageBitmap(bitmap)
+                it.imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
+                it.layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || settings.areBarcodeColorsInversed) {
+                    it.layoutBarcodeImageBackground.setPadding(0 , 0 , 0 , 0)
+                }
             }
-        } catch (_ : Exception) {
+        }.onFailure {
             binding.imageViewBarcode.isVisible = false
         }
     }

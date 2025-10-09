@@ -75,11 +75,9 @@ class BarcodeHistoryFragment : Fragment() , DeleteConfirmationDialogFragment.Lis
 
     private fun clearHistory() {
         viewLifecycleOwner.lifecycleScope.launch {
-            try {
+            runCatching {
                 withContext(Dispatchers.IO) { barcodeDatabase.deleteAll() }
-            } catch (e : Exception) {
-                showError(e)
-            }
+            }.onFailure(::showError)
         }
     }
 }

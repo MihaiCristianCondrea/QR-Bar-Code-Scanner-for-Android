@@ -10,11 +10,11 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeWifiBinding
-import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
-import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.model.schema.Wifi
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding : FragmentCreateQrCodeWifiBinding
