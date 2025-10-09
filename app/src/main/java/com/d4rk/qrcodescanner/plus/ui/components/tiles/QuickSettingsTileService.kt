@@ -22,29 +22,19 @@ class QuickSettingsTileService : TileService() {
             this , 0 , intent , pendingIntentFlags
         )
 
-        try {
-            when {
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> {
-                    // API 34+ (Android 14+): Proper and recommended way
-                    startActivityAndCollapse(pendingIntent)
-                }
-
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-                    // API 31–33: No support for PendingIntent version, fallback
-                    unlockAndRun {
-                        startActivity(intent)
-                    }
-                }
-
-                else -> {
-                    // Pre-Android 12: Safe to use legacy approach
+        runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                startActivityAndCollapse(pendingIntent)
+            } else {
+                throw SecurityException("Fallback for older APIs")
+            }
+        }.onFailure {
+            unlockAndRun {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    startActivity(intent)
+                } else {
                     startActivity(intent)
                 }
-            }
-        } catch (e : SecurityException) {
-            // Edge case: fallback when security restrictions block launching the activity
-            unlockAndRun {
-                startActivity(intent)
             }
         }
     }

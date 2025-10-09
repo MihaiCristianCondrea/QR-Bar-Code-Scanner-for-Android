@@ -19,13 +19,10 @@ object WifiConnector {
     suspend fun connect(
         context : Context , authType : String , name : String , password : String , isHidden : Boolean , anonymousIdentity : String , identity : String , eapMethod : String , phase2Method : String
     ) : Result<Unit> = withContext(Dispatchers.IO) {
-        try {
+        runCatching {
             tryToConnect(
                 context , authType , name , password , isHidden , anonymousIdentity , identity , eapMethod.toEapMethod() , phase2Method.toPhase2Method()
             )
-            Result.success(Unit)
-        } catch (ex : Exception) {
-            Result.failure(ex)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.main
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.SparseIntArray
@@ -10,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
@@ -139,6 +141,15 @@ class MainActivity : AppCompatActivity() {
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    @SuppressLint("RestrictedApi")
+    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+        if (menu is MenuBuilder) {
+            @Suppress("UsePropertyAccessSyntax")
+            menu.setOptionalIconsVisible(true)
+        }
+        return super.onMenuOpened(featureId, menu)
     }
 
     override fun onSupportNavigateUp() : Boolean {

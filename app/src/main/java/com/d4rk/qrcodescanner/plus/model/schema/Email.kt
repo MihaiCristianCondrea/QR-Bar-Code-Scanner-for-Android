@@ -46,12 +46,8 @@ data class Email(
         }
 
         private fun parseAsMailTo(text : String) : Email? {
-            return try {
-                val mailto = MailTo.parse(text)
-                Email(mailto.to , mailto.subject , mailto.body)
-            } catch (ex : Exception) {
-                null
-            }
+            return runCatching { MailTo.parse(text) }.getOrNull()
+                ?.let { mailto -> Email(mailto.to, mailto.subject, mailto.body) }
         }
     }
 

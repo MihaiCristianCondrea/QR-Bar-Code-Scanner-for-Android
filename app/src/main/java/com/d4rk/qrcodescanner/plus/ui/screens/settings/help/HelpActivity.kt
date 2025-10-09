@@ -1,6 +1,6 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.settings.help
 
-import android.content.ActivityNotFoundException
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +12,8 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import com.d4rk.qrcodescanner.plus.BuildConfig
@@ -27,7 +29,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManagerFactory
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
-import androidx.core.net.toUri
 
 class HelpActivity : BaseActivity() {
 
@@ -100,6 +101,15 @@ class HelpActivity : BaseActivity() {
         }
     }
 
+    @SuppressLint("RestrictedApi")
+    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+        if (menu is MenuBuilder) {
+            @Suppress("UsePropertyAccessSyntax")
+            menu.setOptionalIconsVisible(true)
+        }
+        return super.onMenuOpened(featureId, menu)
+    }
+
     private fun showVersionInfoDialog() {
         val dialogBinding = DialogVersionInfoBinding.inflate(LayoutInflater.from(this))
         dialogBinding.appIcon.setImageResource(R.mipmap.ic_launcher)
@@ -115,13 +125,12 @@ class HelpActivity : BaseActivity() {
 
     private fun openGooglePlayListing() {
         val appPackageName = packageName
-        try {
+        runCatching {
             startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$appPackageName".toUri()))
-        } catch (e: ActivityNotFoundException) {
+        }.onFailure {
             startActivity(
                 Intent(
-                    Intent.ACTION_VIEW,
-                    "https://play.google.com/store/apps/details?id=$appPackageName".toUri()
+                    Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$appPackageName".toUri()
                 )
             )
         }
@@ -187,9 +196,9 @@ class HelpActivity : BaseActivity() {
         val intent = Intent(Intent.ACTION_VIEW, uri).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-        try {
+        runCatching {
             startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
+        }.onFailure {
             Snackbar.make(
                 binding.root,
                 R.string.snack_unable_to_open_google_play_store,

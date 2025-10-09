@@ -11,14 +11,14 @@ import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 
 sealed interface PreferenceLayoutEntry {
-    data class Category(@StringRes val titleRes: Int) : PreferenceLayoutEntry
+    data class Category(@param:StringRes val titleRes: Int) : PreferenceLayoutEntry
 
     data class Action(
         val key: String,
-        @StringRes val titleRes: Int,
-        @StringRes val summaryRes: Int?,
-        @DrawableRes val iconRes: Int,
-        @LayoutRes val widgetLayoutRes: Int?
+        @param:StringRes val titleRes: Int,
+        @param:StringRes val summaryRes: Int?,
+        @param:DrawableRes val iconRes: Int,
+        @param:LayoutRes val widgetLayoutRes: Int?
     ) : PreferenceLayoutEntry
 }
 

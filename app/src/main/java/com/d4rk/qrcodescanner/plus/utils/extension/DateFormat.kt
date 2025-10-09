@@ -4,11 +4,7 @@ import java.text.DateFormat
 import java.util.Date
 
 fun DateFormat.parseOrNull(date : String?) : Date? {
-    return try {
-        parse(date.orEmpty())
-    } catch (_ : Exception) {
-        null
-    }
+    return runCatching { date?.let(::parse) }.getOrNull()
 }
 
 fun List<DateFormat>.parseOrNull(date : String?) : Date? {
@@ -22,9 +18,5 @@ fun List<DateFormat>.parseOrNull(date : String?) : Date? {
 }
 
 fun DateFormat.formatOrNull(time : Long?) : String? {
-    return try {
-        format(Date(time !!))
-    } catch (_ : Exception) {
-        null
-    }
+    return runCatching { time?.let { format(Date(it)) } }.getOrNull()
 }

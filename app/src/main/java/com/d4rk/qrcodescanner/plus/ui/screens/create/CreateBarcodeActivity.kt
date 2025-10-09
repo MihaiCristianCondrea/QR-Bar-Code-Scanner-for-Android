@@ -192,22 +192,11 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
     }
 
     private fun readDataFromVCardUri(uri : Uri) : String? {
-        val stream = try {
-            contentResolver.openInputStream(uri) ?: return null
-        } catch (_ : Exception) {
-            return null
-        }
-        val fileContent = StringBuilder("")
-        var ch : Int
-        try {
-            while (stream.read().also { ch = it } != - 1) {
-                fileContent.append(ch.toChar())
+        return runCatching {
+            contentResolver.openInputStream(uri)?.let { stream ->
+                stream.reader().use { it.readText() }
             }
-        } catch (e : Exception) {
-            e.printStackTrace()
-        }
-        stream.close()
-        return fileContent.toString()
+        }.getOrNull()
     }
 
     private fun handleToolbarBackClicked() {

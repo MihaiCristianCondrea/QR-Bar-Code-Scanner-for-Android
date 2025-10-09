@@ -182,6 +182,16 @@
             </intent-filter>
         </service>
 
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:exported="false"
+            android:theme="@style/FitSystemWindowsTheme" />
+
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:exported="false"
+            android:theme="@style/FitSystemWindowsTheme" />
+
 
         <provider
             android:name="androidx.core.content.FileProvider"

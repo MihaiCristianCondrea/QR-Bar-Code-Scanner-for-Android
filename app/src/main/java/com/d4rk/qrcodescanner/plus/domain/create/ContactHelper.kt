@@ -110,11 +110,7 @@ object ContactHelper {
 
     @SuppressLint("Range")
     private fun Cursor.getStringOrNull(columnName : String) : String? {
-        return try {
-            getString(getColumnIndex(columnName))
-        } catch (_ : Exception) {
-            null
-        }
+        return runCatching { getString(getColumnIndexOrThrow(columnName)) }.getOrNull()
     }
 
     private fun Cursor.getIntOrNull(columnName : String) : Int? {
