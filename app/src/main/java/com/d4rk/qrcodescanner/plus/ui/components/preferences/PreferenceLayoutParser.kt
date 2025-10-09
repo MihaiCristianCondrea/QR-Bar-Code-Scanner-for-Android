@@ -1,11 +1,11 @@
 package com.d4rk.qrcodescanner.plus.ui.components.preferences
 
 import android.content.Context
+import android.util.Xml
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.annotation.XmlRes
-import android.util.Xml
 import androidx.core.content.res.use
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException

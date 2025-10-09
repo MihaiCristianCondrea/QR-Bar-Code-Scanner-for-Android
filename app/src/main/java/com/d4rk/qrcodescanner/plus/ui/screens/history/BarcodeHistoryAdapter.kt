@@ -9,9 +9,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.databinding.ItemBarcodeHistoryBinding
+import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.utils.extension.toImageId
 import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
-import com.d4rk.qrcodescanner.plus.model.Barcode
 import java.text.SimpleDateFormat
 import java.util.Locale
 

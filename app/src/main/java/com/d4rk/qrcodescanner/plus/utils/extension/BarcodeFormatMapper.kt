@@ -1,7 +1,7 @@
 package com.d4rk.qrcodescanner.plus.utils.extension
 
-import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 import com.google.zxing.BarcodeFormat
+import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 fun BarcodeFormat.toGmsFormat() : Int? {
     return when (this) {

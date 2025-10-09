@@ -7,8 +7,8 @@ import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import com.google.zxing.NotFoundException
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 object BarcodeImageScanner {
     private val scanner by lazy { BarcodeScanning.getClient() }

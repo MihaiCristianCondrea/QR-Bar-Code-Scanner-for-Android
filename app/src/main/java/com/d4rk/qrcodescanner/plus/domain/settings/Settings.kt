@@ -5,9 +5,10 @@ import android.content.res.Configuration
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
-import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
+import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.google.zxing.BarcodeFormat
+
 class Settings(private val context : Context) {
     companion object {
         private const val SHARED_PREFERENCES_NAME = "SHARED_PREFERENCES_NAME"

@@ -22,10 +22,10 @@ import com.d4rk.qrcodescanner.plus.model.schema.VEvent
 import com.d4rk.qrcodescanner.plus.model.schema.Wifi
 import com.d4rk.qrcodescanner.plus.model.schema.Youtube
 import com.d4rk.qrcodescanner.plus.utils.extension.toZxingFormat
-import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.Result
 import com.google.zxing.ResultMetadataType
+import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 object BarcodeParser {
     fun parseResult(result : Result) : Barcode {

@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateBarcodeBinding
-import com.d4rk.qrcodescanner.plus.utils.extension.clipboardManager
-import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEntry
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
@@ -17,6 +15,8 @@ import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapt
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
 import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateBarcodeAllActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeAllActivity
+import com.d4rk.qrcodescanner.plus.utils.extension.clipboardManager
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.google.android.gms.ads.MobileAds
 import com.google.zxing.BarcodeFormat
 import me.zhanghai.android.fastscroll.FastScrollerBuilder

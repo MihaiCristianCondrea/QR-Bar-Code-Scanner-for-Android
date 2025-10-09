@@ -6,8 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.provider.ContactsContract
-import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.model.Contact
+import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 
 object ContactHelper {
     private val PHONE_PROJECTION = arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER)

@@ -1,8 +1,8 @@
 package com.d4rk.qrcodescanner.plus.domain.create
 
+import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
 import com.d4rk.qrcodescanner.plus.utils.extension.decodeBase32
 import com.d4rk.qrcodescanner.plus.utils.extension.toHmacAlgorithm
-import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
 import dev.turingcomplete.kotlinonetimepassword.HmacAlgorithm
 import dev.turingcomplete.kotlinonetimepassword.HmacOneTimePasswordConfig
 import dev.turingcomplete.kotlinonetimepassword.HmacOneTimePasswordGenerator

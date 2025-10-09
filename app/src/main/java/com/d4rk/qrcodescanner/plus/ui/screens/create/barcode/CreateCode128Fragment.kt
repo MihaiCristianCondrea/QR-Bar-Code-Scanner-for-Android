@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateCode128Binding
-import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
-import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Other
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
+import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateCode128Fragment : com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment() {
     private lateinit var binding : FragmentCreateCode128Binding

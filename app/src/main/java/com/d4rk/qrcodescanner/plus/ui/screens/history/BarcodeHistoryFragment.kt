@@ -11,9 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.history.export.ExportHistoryActivity
+import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

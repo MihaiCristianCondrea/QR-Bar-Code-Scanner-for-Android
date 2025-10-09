@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeVeventBinding
-import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.model.schema.VEvent
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeEventFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding : FragmentCreateQrCodeVeventBinding
