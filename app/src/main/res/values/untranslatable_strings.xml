@@ -12,11 +12,6 @@
     <string name="code_39" translatable="false">Code 39</string>
     <string name="codabar" translatable="false">Codabar</string>
     <string name="itf" translatable="false">ITF</string>
-    <string name="google_dev" translatable="false">Google Dev</string>
-    <string name="twitter" translatable="false">Twitter</string>
-    <string name="youtube" translatable="false">YouTube</string>
-    <string name="github" translatable="false">GitHub</string>
-    <string name="xda" translatable="false">XDA</string>
     <string name="bulgarian" translatable="false">Български</string>
     <string name="english" translatable="false">English</string>
     <string name="french" translatable="false">Français</string>

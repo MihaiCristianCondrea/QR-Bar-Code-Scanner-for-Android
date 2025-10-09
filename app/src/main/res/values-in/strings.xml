@@ -9,7 +9,6 @@
     <string name="scan">Pindai</string>
     <string name="flash">Flash</string>
     <string name="scan_image">Pindai gambar</string>
-    <string name="close">Tutup?</string>
     <string name="create">Buat</string>
     <string name="qr_code">Kode QR</string>
     <string name="content_from_clipboard">Konten dari papan klip</string>
@@ -44,10 +43,7 @@
     <string name="export_as">Ekspor sebagai</string>
     <string name="export">Ekspor</string>
     <string name="about">Tentang</string>
-    <string name="music">Musik</string>
-    <string name="app_version">Versi %1s</string>
     <string name="copyright">© Hak Cipta %1s oleh D4rK!</string>
-    <string name="made_in">Dibuat dengan ❤ di Rumania!</string>
     <string name="settings">Pengaturan</string>
     <string name="appearance">Tampilan</string>
     <string name="theme">Tema</string>
@@ -114,12 +110,8 @@
     <string name="license">Lisensi</string>
     <string name="more">Lainnya</string>
     <string name="share">Bagikan</string>
-    <string name="navigation_drawer_open">Buka laci navigasi</string>
-    <string name="navigation_drawer_close">Tutup laci navigasi</string>
     <string name="more_apps">Aplikasi lainnya…</string>
     <string name="support_the_developer">Dukung pengembang</string>
-    <string name="support_us">Dukung Kami</string>
-    <string name="preferences">Preferensi</string>
     <string name="paid_support">Dukungan Berbayar</string>
     <string name="non_paid_support">Dukungan Tanpa Bayaran</string>
     <string name="web_ad">Iklan Web</string>
@@ -131,10 +123,6 @@
     <string name="device_model">Model Perangkat:</string>
     <string name="android_version">Versi Android:</string>
     <string name="api_level">Level API:</string>
-    <string name="app_usage_notifications">Notifikasi Penggunaan Aplika</string>
-    <string name="update_notifications">Notifikasi Pembaruan</string>
-    <string name="notification_last_time_used_title">Sudah lama tidak digunakan!</string>
-    <string name="notification_update_title">Pembaruan baru tersedia!</string>
     <string name="create_barcode">Buat barcode</string>
     <string name="delete">Hapus</string>
     <string name="title">Judul</string>
@@ -236,7 +224,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Hindari duplikat dalam riwayat.</string>
     <string name="summary_preference_settings_firebase">Ini memungkinkan kami mengumpulkan informasi tentang kinerja aplikasi dan catatan crash.</string>
     <string name="summary_preference_settings_search_engines">Pilih mesin pencari untuk pencarian web.</string>
-    <string name="summary_preference_settings_support_developer">Donasikan dan dukung pengembangan aplikasi kami. Anda juga dapat mendukung kami secara gratis dengan mengunjungi situs web kami atau menonton iklan video.</string>
     <string name="summary_preference_permissions_ad_id">Memungkinkan aplikasi untuk mengambil dan menggunakan pengenal iklan yang terkait dengan perangkat pengguna, menyediakan iklan personalisasi, mengukur efektivitas iklan, dan menampilkan iklan di perangkat Android 13 atau yang lebih baru.</string>
     <string name="summary_preference_permissions_change_wifi_state">Memungkinkan aplikasi untuk terhubung ke jaringan Wi-Fi dengan memindai kode QR.</string>
     <string name="summary_preference_permissions_internet">Memungkinkan aplikasi untuk melakukan koneksi internet untuk mengirim laporan kesalahan atau memeriksa pembaruan.</string>
@@ -254,13 +241,10 @@
     <string name="summary_preference_permissions_write_storage">Memungkinkan aplikasi untuk menulis ke penyimpanan Anda sehingga Anda dapat menyimpan file, seperti foto, video, dan dokumen.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Baca dan setujui Ketentuan Layanan dan Kebijakan Privasi kami untuk melanjutkan.</string>
     <string name="summary_require_restart">Untuk berlaku, harap restart aplikasi!</string>
-    <string name="summary_close">Apakah Anda yakin ingin keluar?</string>
     <string name="summary_donations">Tidak peduli seberapa besar sumbangan Anda, Anda akan membantu kami menjalankan aplikasi kami dan meningkatkan fitur kami. Kami menghargai kedermawanan dan kebaikan Anda!</string>
     <string name="summary_delete_history">Hapus riwayat?</string>
     <string name="summary_alternatively_url">- Buka aplikasi browser Anda\n- Muat situs web\n- Klik "Bagikan" dari menu\n- Pilih aplikasi ini.</string>
     <string name="summary_alternatively_contact">- Buka aplikasi kontak Anda\n- Buka kontak yang ada atau buat yang baru\n- Klik "Bagikan" dari menu\n- Pilih aplikasi ini</string>
-    <string name="summary_notification_last_time_used">Jangan biarkan keterampilan pengembangan Android Anda menganggur! Kembali belajar dan meningkatkan diri dengan Tutorial Android Studio: Edisi Kotlin hari ini. Aplikasi kami memiliki sesuatu untuk semua orang, dari pemula hingga pengembang berpengalaman.</string>
-    <string name="summary_notification_update">Versi baru aplikasi tersedia. Klik untuk memperbarui!</string>
     <string name="snack_unable_to_open_google_play_store">Tidak dapat membuka Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Tersalin ke papan klip! 📋</string>
     <string name="snack_saved_to_downloads">Disimpan ke Unduhan!</string>
@@ -270,10 +254,8 @@
     <string name="snack_support">Apakah Anda ingin mendukung aplikasi kami? ❤️</string>
     <string name="tooltip_agree">Setujui syarat dan ketentuan.</string>
     <string name="tooltip_export">Ekspor riwayat Anda.</string>
-    <string name="tooltip_open_me">Buka saya 🌐</string>
     <string name="tooltip_add_to_favorites">Tambahkan ke favorit</string>
     <string name="tooltip_view_code">Lihat kode</string>
-    <string name="tooltip_mail_to_dev">Email pengembang 📧</string>
     <string name="tooltip_save_as_text">Simpan sebagai teks</string>
     <string name="tooltip_save_as_image">Simpan sebagai gambar</string>
     <string name="tooltip_generate_new_secret">Buat rahasia baru</string>

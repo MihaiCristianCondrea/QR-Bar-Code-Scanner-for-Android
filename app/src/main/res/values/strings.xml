@@ -8,7 +8,6 @@
     <string name="scan">Scan</string>
     <string name="flash">Flash</string>
     <string name="scan_image">Scan image</string>
-    <string name="close">Close?</string>
     <string name="create">Create</string>
     <string name="qr_code">QR Code</string>
     <string name="content_from_clipboard">Content from clipboard</string>
@@ -43,9 +42,6 @@
     <string name="export_as">Export as</string>
     <string name="export">Export</string>
     <string name="about">About</string>
-    <string name="music">Music</string>
-    <string name="app_version">Version %1s</string>
-    <string name="made_in">Made with ❤ in Romania!</string>
     <string name="settings">Settings</string>
     <string name="appearance">Appearance</string>
     <string name="theme">Theme</string>
@@ -113,12 +109,8 @@
     <string name="license">License</string>
     <string name="more">More</string>
     <string name="share">Share</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="more_apps">More apps…</string>
     <string name="support_the_developer">Support the developer</string>
-    <string name="preferences">Preferences</string>
-    <string name="support_us">Support Us</string>
     <string name="paid_support">Paid Support</string>
     <string name="non_paid_support">Non-Paid Support</string>
     <string name="web_ad">Web Ad</string>
@@ -130,10 +122,6 @@
     <string name="device_model">Device Model:</string>
     <string name="android_version">Android Version:</string>
     <string name="api_level">API Level:</string>
-    <string name="app_usage_notifications">App Usage Notifications</string>
-    <string name="update_notifications">Update Notifications</string>
-    <string name="notification_last_time_used_title">It\'s been a while!</string>
-    <string name="notification_update_title">A new update available!</string>
     <string name="create_barcode">Create barcode</string>
     <string name="delete">Delete</string>
     <string name="title">Title</string>
@@ -235,7 +223,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Avoid duplicates in history.</string>
     <string name="summary_preference_settings_firebase">This let us collect information about app performance and crash logs.</string>
     <string name="summary_preference_settings_search_engines">Choose a search engine for web searches.</string>
-    <string name="summary_preference_settings_support_developer">Donate and support our app development. You can also support us for free by visiting our website or watching a video ad.</string>
     <string name="summary_preference_permissions_ad_id">Allows the app to retrieve and use the advertising identifier associated with the user\'s device, providing personalized ads, measuring ad effectiveness, and showing ads on Android 13 or later devices.</string>
     <string name="summary_preference_permissions_change_wifi_state">Allows the app to connect to Wi-Fi networks by scanning QR codes.</string>
     <string name="summary_preference_permissions_internet">Allows the app to establish an internet connection to send error reports or check for updates.</string>
@@ -253,13 +240,10 @@
     <string name="summary_preference_permissions_write_storage">Allows the app to write to your storage so you can save files, such as photos, videos, and documents.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Read and agree to our Terms of Service and Privacy Policy to continue.</string>
     <string name="summary_require_restart">To take effect please restart the app!</string>
-    <string name="summary_close">Are you sure you want to exit?</string>
     <string name="summary_donations">No matter how much you donate, you will help us keep our app running and improve our features. We appreciate your generosity and kindness!</string>
     <string name="summary_delete_history">Delete history?</string>
     <string name="summary_alternatively_url">- Open your browser app\n- Load a website\n- Click \"Share\" from the menu\n- Select this app.</string>
     <string name="summary_alternatively_contact">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
-    <string name="summary_notification_last_time_used">Don\'t let your Android development skills gather dust! Get back to learning and improving with Android Studio Tutorials: Kotlin Edition today. Our app has something for everyone, from beginners to experienced developers.</string>
-    <string name="summary_notification_update">A new version of the app is available. Click to update!</string>
     <string name="snack_unable_to_open_google_play_store">Unable to open Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Copied to clipboard! 📋</string>
     <string name="snack_saved_to_downloads">Saved to Downloads!</string>
@@ -269,10 +253,8 @@
     <string name="snack_support">Would you like to support our app? ❤️</string>
     <string name="tooltip_agree">Accept the terms and conditions.</string>
     <string name="tooltip_export">Export your history.</string>
-    <string name="tooltip_open_me">Open me 🌐</string>
     <string name="tooltip_add_to_favorites">Add to favorites</string>
     <string name="tooltip_view_code">View code</string>
-    <string name="tooltip_mail_to_dev">Email developer 📧</string>
     <string name="tooltip_save_as_text">Save as text</string>
     <string name="tooltip_save_as_image">Save as image</string>
     <string name="tooltip_generate_new_secret">Generate a new secret</string>

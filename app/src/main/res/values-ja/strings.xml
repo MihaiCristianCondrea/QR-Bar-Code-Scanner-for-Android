@@ -8,7 +8,6 @@
     <string name="scan">スキャン</string>
     <string name="flash">フラッシュ</string>
     <string name="scan_image">画像をスキャン</string>
-    <string name="close">閉じる</string>
     <string name="create">作成する</string>
     <string name="qr_code">QRコード</string>
     <string name="content_from_clipboard">クリップボードのコンテンツ</string>
@@ -43,10 +42,7 @@
     <string name="export_as">としてエクスポート</string>
     <string name="export">エクスポート</string>
     <string name="about">について</string>
-    <string name="music">音楽</string>
-    <string name="app_version">バージョン %1s</string>
     <string name="copyright">© %1s 作成：D4rK!</string>
-    <string name="made_in">❤ ルーマニア製!</string>
     <string name="settings">設定</string>
     <string name="appearance">外観</string>
     <string name="theme">テーマ</string>
@@ -113,12 +109,8 @@
     <string name="license">ライセンス</string>
     <string name="more">その他</string>
     <string name="share">共有</string>
-    <string name="navigation_drawer_open">ナビゲーションドロワーを開く</string>
-    <string name="navigation_drawer_close">ナビゲーションドロワーを閉じる</string>
     <string name="more_apps">他のアプリ…</string>
     <string name="support_the_developer">開発者のサポート</string>
-    <string name="support_us">サポートする</string>
-    <string name="preferences">環境設定</string>
     <string name="paid_support">有料サポート</string>
     <string name="non_paid_support">無料サポート</string>
     <string name="web_ad">ウェブ広告</string>
@@ -130,10 +122,6 @@
     <string name="device_model">デバイスモデル:</string>
     <string name="android_version">Androidバージョン:</string>
     <string name="api_level">APIレベル:</string>
-    <string name="app_usage_notifications">アプリ使用通知</string>
-    <string name="update_notifications">アップデート通知</string>
-    <string name="notification_last_time_used_title">しばらく使っていません！</string>
-    <string name="notification_update_title">新しいアップデートが利用可能です！</string>
     <string name="create_barcode">バーコードを作成</string>
     <string name="delete">削除</string>
     <string name="title">タイトル</string>
@@ -235,7 +223,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">履歴に重複を保存しません</string>
     <string name="summary_preference_settings_firebase">アプリのパフォーマンスとクラッシュログに関する情報を収集できます</string>
     <string name="summary_preference_settings_search_engines">Web検索に使用する検索エンジンを選択します</string>
-    <string name="summary_preference_settings_support_developer">アプリの開発を寄付でサポートしてください。ウェブサイトの訪問やビデオ広告の視聴によって無償でサポートすることもできます。</string>
     <string name="summary_preference_permissions_ad_id">ユーザーの端末に関連付けられた広告識別子（IDFA）を取得して使用します。これにより、パーソナライズされた広告を表示したり、広告の効果を測定したり、Android 13以降を搭載した端末で広告を表示したりできます。</string>
     <string name="summary_preference_permissions_change_wifi_state">QRコードをスキャンしてWi-Fiネットワークに接続できるようにします</string>
     <string name="summary_preference_permissions_internet">エラーレポートを送信したり、更新をチェックしたりするために、インターネット接続を確立できるようにします</string>
@@ -253,13 +240,10 @@
     <string name="summary_preference_permissions_write_storage">QRコードやバーコードを画像やファイルとして保存できるように、端末のストレージに書き込みできるようにします</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">続行するには、利用規約とプライバシーポリシーを読み、同意してください</string>
     <string name="summary_require_restart">有効にするには、アプリを再起動してください！</string>
-    <string name="summary_close">終了してもよろしいですか？</string>
     <string name="summary_donations">寄付の額に関わらず、私たちのアプリの運営や機能の改善にご協力いただければ幸いです。ご好意に感謝申し上げます！</string>
     <string name="summary_delete_history">履歴を削除しますか？</string>
     <string name="summary_alternatively_url">- ブラウザアプリを開く\n- ウェブサイトを開く\n- メニューから「共有」をクリック\n- このアプリを選択してください。</string>
     <string name="summary_alternatively_contact">- 連絡先アプリを開く\n- 既存の連絡先を開くか、新しい連絡先を作成\n- メニューから「共有」をクリック\n- このアプリを選択してください。</string>
-    <string name="summary_notification_last_time_used">Android 開発のスキルを錆びさせないでください！ Android Studio チュートリアル：Kotlin エディションを今日から学習して向上させましょう。初心者から経験豊富な開発者まで、すべての人に何かがあります。</string>
-    <string name="summary_notification_update">新しいバージョンのアプリが利用可能です。クリックして更新してください！</string>
     <string name="snack_unable_to_open_google_play_store">Google Play ストアを開けませんでした。</string>
     <string name="snack_copied_to_clipboard">クリップボードにコピーされました！ 📋</string>
     <string name="snack_saved_to_downloads">ダウンロードに保存されました！</string>
@@ -269,10 +253,8 @@
     <string name="snack_support">アプリをサポートしていただけますか？ ❤️</string>
     <string name="tooltip_agree">利用規約に同意します。</string>
     <string name="tooltip_export">履歴をエクスポートします。</string>
-    <string name="tooltip_open_me">開きます 🌐</string>
     <string name="tooltip_add_to_favorites">お気に入りに追加</string>
     <string name="tooltip_view_code">コードを表示</string>
-    <string name="tooltip_mail_to_dev">開発者にメールを送信 📧</string>
     <string name="tooltip_save_as_text">テキストとして保存</string>
     <string name="tooltip_save_as_image">画像として保存</string>
     <string name="tooltip_generate_new_secret">新しいシークレットを生成</string>

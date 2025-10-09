@@ -207,38 +207,12 @@
                 android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"/>
         </androidx.preference.Preference>
         <androidx.preference.Preference
-            app:key="open_source_licenses"
-            app:title="@string/oss_license_title"
-            app:icon="@drawable/ic_libraries"/>
-        <androidx.preference.Preference
-            app:icon="@drawable/ic_help"
-            app:title="@string/help_and_feedback">
-            <intent
-                android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.help.HelpActivity"/>
-        </androidx.preference.Preference>
-        <androidx.preference.Preference
             app:icon="@drawable/ic_license"
             app:title="@string/license"
             app:summary="@string/summary_preference_settings_license">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://www.gnu.org/licenses/gpl-3.0"/>
-        </androidx.preference.Preference>
-    </androidx.preference.PreferenceCategory>
-    <androidx.preference.PreferenceCategory
-        app:title="@string/more"
-        app:icon="@drawable/ic_more">
-        <androidx.preference.Preference
-            app:key="@string/key_share"
-            app:icon="@drawable/ic_share"
-            app:title="@string/share"/>
-        <androidx.preference.Preference
-            app:icon="@drawable/ic_shop"
-            app:title="@string/more_apps">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://play.google.com/store/apps/dev?id=5390214922640123642"/>
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory

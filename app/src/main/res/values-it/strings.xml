@@ -9,7 +9,6 @@
     <string name="scan">Scansiona</string>
     <string name="flash">Flash</string>
     <string name="scan_image">Scansiona immagine</string>
-    <string name="close">Chiudi?</string>
     <string name="create">Crea</string>
     <string name="qr_code">Codice QR</string>
     <string name="content_from_clipboard">Contenuto dalla clipboard</string>
@@ -44,10 +43,7 @@
     <string name="export_as">Esporta come</string>
     <string name="export">Esporta</string>
     <string name="about">Informazioni</string>
-    <string name="music">Musica</string>
-    <string name="app_version">Versione %1s</string>
     <string name="copyright">© Copyright %1s realizzato da D4rK!</string>
-    <string name="made_in">Realizzato con ❤ in Romania!</string>
     <string name="settings">Impostazioni</string>
     <string name="appearance">Aspetto</string>
     <string name="theme">Tema</string>
@@ -114,12 +110,8 @@
     <string name="license">Licenza</string>
     <string name="more">Altro</string>
     <string name="share">Condividi</string>
-    <string name="navigation_drawer_open">Apri il pannello di navigazione</string>
-    <string name="navigation_drawer_close">Chiudi il pannello di navigazione</string>
     <string name="more_apps">Altre app…</string>
     <string name="support_the_developer">Supporta lo sviluppatore</string>
-    <string name="preferences">Preferenze</string>
-    <string name="support_us">Supportaci</string>
     <string name="paid_support">Supporto a pagamento</string>
     <string name="non_paid_support">Supporto gratuito</string>
     <string name="web_ad">Annuncio web</string>
@@ -131,10 +123,6 @@
     <string name="device_model">Modello dispositivo:</string>
     <string name="android_version">Versione Android:</string>
     <string name="api_level">Livello API:</string>
-    <string name="app_usage_notifications">Notifiche utilizzo app</string>
-    <string name="update_notifications">Notifiche aggiornamenti</string>
-    <string name="notification_last_time_used_title">È passato un po\'!</string>
-    <string name="notification_update_title">Nuovo aggiornamento disponibile!</string>
     <string name="create_barcode">Crea codice a barre</string>
     <string name="delete">Elimina</string>
     <string name="title">Titolo</string>
@@ -236,7 +224,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Evita duplicati nella cronologia.</string>
     <string name="summary_preference_settings_firebase">Ci permette di raccogliere informazioni sulle prestazioni dell\'app e i log degli errori.</string>
     <string name="summary_preference_settings_search_engines">Scegli un motore di ricerca per le ricerche web.</string>
-    <string name="summary_preference_settings_support_developer">Dona e supporta lo sviluppo della nostra app. Puoi anche supportarci gratuitamente visitando il nostro sito web o guardando un annuncio video.</string>
     <string name="summary_preference_permissions_ad_id">Consente all\'app di recuperare e utilizzare l\'ID pubblicitario associato al dispositivo dell\'utente, fornendo annunci personalizzati, misurando l\'efficacia degli annunci e mostrando annunci sui dispositivi Android 13 o successivi.</string>
     <string name="summary_preference_permissions_change_wifi_state">Consente all\'app di connettersi a reti Wi-Fi scansionando codici QR.</string>
     <string name="summary_preference_permissions_internet">Consente all\'app di stabilire una connessione Internet per inviare segnalazioni di errori o verificare gli aggiornamenti.</string>
@@ -254,13 +241,10 @@
     <string name="summary_preference_permissions_write_storage">Consente all\'app di scrivere nel tuo archivio in modo da poter salvare file, come foto, video e documenti.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Leggi e accetta i nostri Termini di servizio e Informativa sulla privacy per continuare.</string>
     <string name="summary_require_restart">Per rendere effettive le modifiche, riavvia l\'app!</string>
-    <string name="summary_close">Sei sicuro di voler uscire?</string>
     <string name="summary_donations">Non importa quanto doni, ci aiuterai a mantenere in funzione la nostra app e migliorare le nostre funzionalità. Apprezziamo la tua generosità e gentilezza!</string>
     <string name="summary_delete_history">Eliminare la cronologia?</string>
     <string name="summary_alternatively_url">- Apri l\'app del browser\n- Carica un sito web\n- Fai clic su "Condividi" dal menu\n- Seleziona questa app.</string>
     <string name="summary_alternatively_contact">- Apri l\'app dei contatti\n- Apri un contatto esistente o crea un nuovo contatto\n- Fai clic su "Condividi" dal menu\n- Seleziona questa app.</string>
-    <string name="summary_notification_last_time_used">Non lasciare che le tue competenze di sviluppo Android si accumulino polvere! Riprendi a imparare e migliorare con Android Studio Tutorials: Kotlin Edition oggi stesso. La nostra app ha qualcosa per tutti, dai principianti agli sviluppatori esperti.</string>
-    <string name="summary_notification_update">È disponibile una nuova versione dell\'app. Clicca per aggiornare!</string>
     <string name="snack_unable_to_open_google_play_store">Impossibile aprire Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Copiato negli appunti! 📋</string>
     <string name="snack_saved_to_downloads">Salvato in Download!</string>
@@ -270,10 +254,8 @@
     <string name="snack_support">Ti piacerebbe supportare la nostra app? ❤️</string>
     <string name="tooltip_agree">Accetta i termini e le condizioni.</string>
     <string name="tooltip_export">Esporta la tua cronologia.</string>
-    <string name="tooltip_open_me">Aprimi 🌐</string>
     <string name="tooltip_add_to_favorites">Aggiungi ai preferiti</string>
     <string name="tooltip_view_code">Visualizza il codice</string>
-    <string name="tooltip_mail_to_dev">Email sviluppatore 📧</string>
     <string name="tooltip_save_as_text">Salva come testo</string>
     <string name="tooltip_save_as_image">Salva come immagine</string>
     <string name="tooltip_generate_new_secret">Genera un nuovo segreto</string>

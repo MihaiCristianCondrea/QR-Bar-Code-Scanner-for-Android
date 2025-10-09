@@ -9,7 +9,6 @@
     <string name="scan">Scanează</string>
     <string name="flash">Blitz</string>
     <string name="scan_image">Scanează imaginea</string>
-    <string name="close">Închide?</string>
     <string name="create">Creează</string>
     <string name="qr_code">Cod QR</string>
     <string name="content_from_clipboard">Conținut din clipboard</string>
@@ -44,10 +43,7 @@
     <string name="export_as">Exportă ca</string>
     <string name="export">Exportă</string>
     <string name="about">Despre</string>
-    <string name="music">Muzică</string>
-    <string name="app_version">Versiune %1s</string>
     <string name="copyright">© Drepturi de autor %1s realizat de D4rK!</string>
-    <string name="made_in">Realizat cu ❤ în România!</string>
     <string name="settings">Setări</string>
     <string name="appearance">Aspect</string>
     <string name="theme">Temă</string>
@@ -114,12 +110,8 @@
     <string name="license">Licență</string>
     <string name="more">Mai mult</string>
     <string name="share">Partajează</string>
-    <string name="navigation_drawer_open">Deschide meniul de navigare</string>
-    <string name="navigation_drawer_close">Închide meniul de navigare</string>
     <string name="more_apps">Mai multe aplicații…</string>
     <string name="support_the_developer">Susține dezvoltatorul</string>
-    <string name="preferences">Preferințe</string>
-    <string name="support_us">Susține-ne</string>
     <string name="paid_support">Suport Plătit</string>
     <string name="non_paid_support">Suport Necalificat</string>
     <string name="web_ad">Reclamă Web</string>
@@ -131,10 +123,6 @@
     <string name="device_model">Modelul dispozitivului:</string>
     <string name="android_version">Versiunea Android:</string>
     <string name="api_level">Nivelul API:</string>
-    <string name="app_usage_notifications">Notificări privind utilizarea aplicației</string>
-    <string name="update_notifications">Notificări de actualizare</string>
-    <string name="notification_last_time_used_title">A trecut ceva timp!</string>
-    <string name="notification_update_title">O nouă actualizare disponibilă!</string>
     <string name="create_barcode">Creează cod de bare</string>
     <string name="delete">Șterge</string>
     <string name="title">Titlu</string>
@@ -236,7 +224,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Evită duplicatele în istoric.</string>
     <string name="summary_preference_settings_firebase">Acest lucru ne permite să colectăm informații despre performanța aplicației și jurnalele de erori.</string>
     <string name="summary_preference_settings_search_engines">Alegeți un motor de căutare pentru căutările pe web.</string>
-    <string name="summary_preference_settings_support_developer">Donează și susține dezvoltarea aplicației noastre. De asemenea, ne puteți susține gratuit vizitând site-ul nostru web sau vizionând un anunț video.</string>
     <string name="summary_preference_permissions_ad_id">Permite aplicației să preia și să utilizeze identificatorul de publicitate asociat dispozitivului utilizatorului, oferind anunțuri personalizate, măsurând eficacitatea anunțurilor și afișând anunțuri pe dispozitivele Android 13 sau mai noi.</string>
     <string name="summary_preference_permissions_change_wifi_state">Permite aplicației să se conecteze la rețele Wi-Fi prin scanarea codurilor QR.</string>
     <string name="summary_preference_permissions_internet">Permite aplicației să stabilească o conexiune la internet pentru a trimite rapoarte de erori sau a verifica actualizările.</string>
@@ -254,13 +241,10 @@
     <string name="summary_preference_permissions_write_storage">Permite aplicației să scrie în stocarea dvs. astfel încât să puteți salva fișiere, cum ar fi fotografii, videoclipuri și documente.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Citiți și acceptați Termenii și condițiile noastre de utilizare și Politica de confidențialitate pentru a continua.</string>
     <string name="summary_require_restart">Pentru a avea efect, vă rugăm să reporniți aplicația!</string>
-    <string name="summary_close">Sunteți sigur că doriți să închideți?</string>
     <string name="summary_donations">Indiferent cât de mult donezi, ne vei ajuta să menținem funcționarea aplicației noastre și să îmbunătățim funcționalitățile noastre. Apreciem generozitatea și amabilitatea ta!</string>
     <string name="summary_delete_history">Ștergeți istoricul?</string>
     <string name="summary_alternatively_url">- Deschideți aplicația dvs. de browser\n- Încărcați un site web\n- Faceți clic pe \"Partajează\" din meniu\n- Selectați această aplicație.</string>
     <string name="summary_alternatively_contact">- Deschideți aplicația dvs. de contacte\n- Deschideți un contact existent sau creați unul nou\n- Faceți clic pe \"Partajează\" din meniu\n- Selectați această aplicație</string>
-    <string name="summary_notification_last_time_used">Nu lăsați abilitățile dvs. de dezvoltare Android să se adune praf! Reveniți la învățare și îmbunătățire cu Tutorialele Android Studio: Ediția Kotlin astăzi. Aplicația noastră are ceva pentru toată lumea, de la începători până la dezvoltatori experimentați.</string>
-    <string name="summary_notification_update">O nouă versiune a aplicației este disponibilă. Faceți clic pentru a actualiza!</string>
     <string name="snack_unable_to_open_google_play_store">Nu se poate deschide Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Copiat în clipboard! 📋</string>
     <string name="snack_saved_to_downloads">Salvat în Descărcări!</string>
@@ -270,10 +254,8 @@
     <string name="snack_support">Dorești să susții aplicația noastră? ❤️</string>
     <string name="tooltip_agree">Acceptați termenii și condițiile.</string>
     <string name="tooltip_export">Exportați istoricul dvs.</string>
-    <string name="tooltip_open_me">Deschide-mă 🌐</string>
     <string name="tooltip_add_to_favorites">Adaugă la favorite</string>
     <string name="tooltip_view_code">Vizualizați codul</string>
-    <string name="tooltip_mail_to_dev">Email dezvoltator 📧</string>
     <string name="tooltip_save_as_text">Salvați ca text</string>
     <string name="tooltip_save_as_image">Salvați ca imagine</string>
     <string name="tooltip_generate_new_secret">Generează un secret nou</string>

@@ -8,7 +8,6 @@
     <string name="scan">Skanuj</string>
     <string name="flash">Lampa</string>
     <string name="scan_image">Skanuj obraz</string>
-    <string name="close">Zamknij</string>
     <string name="create">Utwórz</string>
     <string name="qr_code">Kod QR</string>
     <string name="content_from_clipboard">Treść ze schowka</string>
@@ -43,10 +42,7 @@
     <string name="export_as">Eksportuj jako</string>
     <string name="export">Eksportuj</string>
     <string name="about">O aplikacji</string>
-    <string name="music">Muzyka</string>
-    <string name="app_version">Wersja %1s</string>
     <string name="copyright">© Prawa autorskie %1s wykonane przez D4rK!</string>
-    <string name="made_in">Zrobione z ❤ w Rumunii!</string>
     <string name="settings">Ustawienia</string>
     <string name="appearance">Wygląd</string>
     <string name="theme">Motyw</string>
@@ -113,12 +109,8 @@
     <string name="license">Licencja</string>
     <string name="more">Więcej</string>
     <string name="share">Udostępnij</string>
-    <string name="navigation_drawer_open">Otwórz panel nawigacyjny</string>
-    <string name="navigation_drawer_close">Zamknij panel nawigacyjny</string>
     <string name="more_apps">Więcej aplikacji…</string>
     <string name="support_the_developer">Wsparcie dla dewelopera</string>
-    <string name="support_us">Wspieraj nas</string>
-    <string name="preferences">Preferencje</string>
     <string name="paid_support">Wsparcie płatne</string>
     <string name="non_paid_support">Wsparcie nieodpłatne</string>
     <string name="web_ad">Reklama internetowa</string>
@@ -130,10 +122,6 @@
     <string name="device_model">Model urządzenia:</string>
     <string name="android_version">Wersja systemu Android:</string>
     <string name="api_level">Poziom API:</string>
-    <string name="app_usage_notifications">Powiadomienia o użyciu aplikacji</string>
-    <string name="update_notifications">Powiadomienia o aktualizacjach</string>
-    <string name="notification_last_time_used_title">Minęło trochę czasu!</string>
-    <string name="notification_update_title">Dostępna jest nowa aktualizacja!</string>
     <string name="create_barcode">Utwórz kod kreskowy</string>
     <string name="delete">Usuń</string>
     <string name="title">Tytuł</string>
@@ -235,7 +223,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Unikaj duplikatów w historii.</string>
     <string name="summary_preference_settings_firebase">Pozwala na zbieranie informacji o wydajności aplikacji i dziennikach błędów.</string>
     <string name="summary_preference_settings_search_engines">Wybierz silnik wyszukiwania dla wyszukiwania w sieci.</string>
-    <string name="summary_preference_settings_support_developer">Wspomóż rozwój naszej aplikacji. Możesz nas również wesprzeć za darmo, odwiedzając naszą stronę internetową lub oglądając reklamy wideo.</string>
     <string name="summary_preference_permissions_ad_id">Umożliwia aplikacji pobieranie i korzystanie z identyfikatora reklamowego powiązanego z urządzeniem użytkownika, dostarczanie spersonalizowanych reklam, mierzenie skuteczności reklam i wyświetlanie reklam na urządzeniach z systemem Android 13 lub nowszym.</string>
     <string name="summary_preference_permissions_change_wifi_state">Umożliwia aplikacji łączenie się z sieciami Wi-Fi poprzez skanowanie kodów QR.</string>
     <string name="summary_preference_permissions_internet">Umożliwia aplikacji nawiązanie połączenia internetowego w celu wysyłania raportów o błędach lub sprawdzania aktualizacji.</string>
@@ -253,13 +240,10 @@
     <string name="summary_preference_permissions_write_storage">Umożliwia aplikacji zapis na Twoim nośniku, dzięki czemu możesz zapisywać pliki, takie jak zdjęcia, filmy i dokumenty.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Zapoznaj się i zaakceptuj nasze Warunki korzystania i Politykę prywatności, aby kontynuować.</string>
     <string name="summary_require_restart">Aby wprowadzić zmiany, zrestartuj aplikację!</string>
-    <string name="summary_close">Czy na pewno chcesz wyjść?</string>
     <string name="summary_donations">Nie ma znaczenia, ile darowizny przekażesz, pomożesz nam utrzymać działanie naszej aplikacji i ulepszyć nasze funkcje. Doceniamy twoją hojność i życzliwość!</string>
     <string name="summary_delete_history">Usunąć historię?</string>
     <string name="summary_alternatively_url">- Otwórz aplikację przeglądarki\n- Załaduj stronę internetową\n- Kliknij przycisk „Udostępnij” w menu\n- Wybierz tę aplikację.</string>
     <string name="summary_alternatively_contact">- Otwórz aplikację Kontakty\n- Otwórz istniejący kontakt lub utwórz nowy\n- Kliknij przycisk „Udostępnij” w menu\n- Wybierz tę aplikację.</string>
-    <string name="summary_notification_last_time_used">Nie pozwól, aby Twoje umiejętności w programowaniu na Androida zatrzymały się w miejscu! Wróć do nauki i doskonalenia z Android Studio Tutorials: Kotlin Edition już dziś. Nasza aplikacja ma coś dla wszystkich, od początkujących po doświadczonych programistów.</string>
-    <string name="summary_notification_update">Dostępna jest nowa wersja aplikacji. Kliknij, aby zaktualizować!</string>
     <string name="snack_unable_to_open_google_play_store">Nie można otworzyć Sklepu Play.</string>
     <string name="snack_copied_to_clipboard">Skopiowano do schowka! 📋</string>
     <string name="snack_saved_to_downloads">Zapisano w folderze Pobrane!</string>
@@ -269,10 +253,8 @@
     <string name="snack_support">Czy chciałbyś wesprzeć naszą aplikację? ❤️</string>
     <string name="tooltip_agree">Zaakceptuj warunki i zasady.</string>
     <string name="tooltip_export">Eksportuj historię.</string>
-    <string name="tooltip_open_me">Otwórz mnie 🌐</string>
     <string name="tooltip_add_to_favorites">Dodaj do ulubionych</string>
     <string name="tooltip_view_code">Wyświetl kod</string>
-    <string name="tooltip_mail_to_dev">Wyślij e-mail do dewelopera 📧</string>
     <string name="tooltip_save_as_text">Zapisz jako tekst</string>
     <string name="tooltip_save_as_image">Zapisz jako obraz</string>
     <string name="tooltip_generate_new_secret">Wygeneruj nowy klucz</string>

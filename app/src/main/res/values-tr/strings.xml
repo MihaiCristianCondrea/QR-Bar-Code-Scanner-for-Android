@@ -9,7 +9,6 @@
     <string name="scan">Tara</string>
     <string name="flash">Işık</string>
     <string name="scan_image">Resmi Tara</string>
-    <string name="close">Kapat?</string>
     <string name="create">Oluştur</string>
     <string name="qr_code">QR Kodu</string>
     <string name="content_from_clipboard">Pano İçeriği</string>
@@ -44,10 +43,7 @@
     <string name="export_as">Olarak Dışa Aktar</string>
     <string name="export">Dışa Aktar</string>
     <string name="about">Hakkında</string>
-    <string name="music">Müzik</string>
-    <string name="app_version">Sürüm %1s</string>
     <string name="copyright">Telif Hakkı %1s D4rK tarafından hazırlandı!</string>
-    <string name="made_in">Romanya\'da ❤ ile yapıldı!</string>
     <string name="settings">Ayarlar</string>
     <string name="appearance">Görünüm</string>
     <string name="theme">Tema</string>
@@ -114,12 +110,8 @@
     <string name="license">Lisans</string>
     <string name="more">Daha Fazla</string>
     <string name="share">Paylaş</string>
-    <string name="navigation_drawer_open">Gezinti çekmecesini aç</string>
-    <string name="navigation_drawer_close">Gezinti çekmecesini kapat</string>
     <string name="more_apps">Daha fazla uygulama…</string>
     <string name="support_the_developer">Geliştiriciyi Destekle</string>
-    <string name="support_us">Bize Destek Ol</string>
-    <string name="preferences">Tercihler</string>
     <string name="paid_support">Ücretli Destek</string>
     <string name="non_paid_support">Ücretsiz Destek</string>
     <string name="web_ad">Web Reklamı</string>
@@ -131,10 +123,6 @@
     <string name="device_model">Cihaz Modeli:</string>
     <string name="android_version">Android Sürümü:</string>
     <string name="api_level">API Sürümü:</string>
-    <string name="app_usage_notifications">Uygulama Kullanım Bildirimleri</string>
-    <string name="update_notifications">Güncelleme Bildirimleri</string>
-    <string name="notification_last_time_used_title">Bir süredir kullanılmıyor!</string>
-    <string name="notification_update_title">Yeni bir güncelleme mevcut!</string>
     <string name="create_barcode">Barkod Oluştur</string>
     <string name="delete">Sil</string>
     <string name="title">Başlık</string>
@@ -236,7 +224,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Geçmişte yinelenenleri önle.</string>
     <string name="summary_preference_settings_firebase">Bu, uygulama performansı ve çökme kayıtları hakkında bilgi toplamamızı sağlar.</string>
     <string name="summary_preference_settings_search_engines">Web aramaları için bir arama motoru seçin.</string>
-    <string name="summary_preference_settings_support_developer">Uygulama geliştiricilerimize bağış yaparak ve destek olarak uygulama gelişimimize katkıda bulunabilirsiniz. Ayrıca web sitemizi ziyaret edebilir veya bir video reklamı izleyerek bize ücretsiz destek sağlayabilirsiniz.</string>
     <string name="summary_preference_permissions_ad_id">Uygulamanın kullanıcının cihazıyla ilişkilendirilmiş reklam kimliğini almasına ve kullanmasına izin verir, kişiselleştirilmiş reklamlar sağlar, reklam etkinliğini ölçer ve Android 13 veya daha yeni cihazlarda reklamları gösterir.</string>
     <string name="summary_preference_permissions_change_wifi_state">Uygulamanın QR kodlarını tarayarak Wi-Fi ağlarına bağlanmasına izin verir.</string>
     <string name="summary_preference_permissions_internet">Uygulamanın hata raporları göndermek veya güncellemeleri kontrol etmek için bir internet bağlantısı kurmasına izin verir.</string>
@@ -254,13 +241,10 @@
     <string name="summary_preference_permissions_write_storage">Uygulamanın depolamanıza yazmasına izin verir, böylece fotoğraflar, videolar ve belgeler gibi dosyaları kaydedebilirsiniz.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Devam etmek için Hizmet Şartları ve Gizlilik Politikamızı okuyun ve kabul edin.</string>
     <string name="summary_require_restart">Yürürlüğe girmesi için lütfen uygulamayı yeniden başlatın!</string>
-    <string name="summary_close">Çıkmak istediğinizden emin misiniz?</string>
     <string name="summary_donations">Ne kadar bağış yaparsanız yapın, uygulamamızın çalışmasına ve özelliklerimizin geliştirilmesine yardımcı olacaksınız. Cömertliğinize ve nazikliğinize teşekkür ediyoruz!</string>
     <string name="summary_delete_history">Geçmişi silmek istiyor musunuz?</string>
     <string name="summary_alternatively_url">- Tarayıcı uygulamanızı açın\n- Bir web sitesi yükleyin\n- Menüden "Paylaş"ı tıklayın\n- Bu uygulamayı seçin.</string>
     <string name="summary_alternatively_contact">- İletişim uygulamanızı açın\n- Mevcut bir kişiyi açın veya yeni bir kişi oluşturun\n- Menüden "Paylaş"ı tıklayın\n- Bu uygulamayı seçin.</string>
-    <string name="summary_notification_last_time_used">Android geliştirme becerilerinizin tozlanmasına izin vermeyin! Bugün Android Studio Eğitimleri: Kotlin Sürümü ile öğrenmeye ve gelişmeye geri dönün. Uygulamamız, acemilerden deneyimli geliştiricilere kadar herkes için bir şeyler sunuyor.</string>
-    <string name="summary_notification_update">Uygulamanın yeni bir sürümü mevcut. Güncellemek için tıklayın!</string>
     <string name="snack_unable_to_open_google_play_store">Google Play Store açılamıyor.</string>
     <string name="snack_copied_to_clipboard">Panoya kopyalandı! 📋</string>
     <string name="snack_saved_to_downloads">İndirmeler klasörüne kaydedildi!</string>
@@ -270,10 +254,8 @@
     <string name="snack_support">Uygulamamızı desteklemek ister misiniz? ❤️</string>
     <string name="tooltip_agree">Şartları ve koşulları kabul edin.</string>
     <string name="tooltip_export">Geçmişinizi dışa aktarın.</string>
-    <string name="tooltip_open_me">Beni aç 🌐</string>
     <string name="tooltip_add_to_favorites">Favorilere ekle</string>
     <string name="tooltip_view_code">Kodu görüntüle</string>
-    <string name="tooltip_mail_to_dev">Geliştiriciye e-posta gönder 📧</string>
     <string name="tooltip_save_as_text">Metin olarak kaydet</string>
     <string name="tooltip_save_as_image">Resim olarak kaydet</string>
     <string name="tooltip_generate_new_secret">Yeni bir gizli bilgi oluştur</string>

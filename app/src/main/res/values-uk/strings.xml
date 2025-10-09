@@ -8,7 +8,6 @@
     <string name="scan">Сканувати</string>
     <string name="flash">Спалах</string>
     <string name="scan_image">Сканувати зображення</string>
-    <string name="close">Закрити?</string>
     <string name="create">Створити</string>
     <string name="qr_code">QR-код</string>
     <string name="content_from_clipboard">Вміст з буфера обміну</string>
@@ -43,10 +42,7 @@
     <string name="export_as">Експортувати як</string>
     <string name="export">Експорт</string>
     <string name="about">Про додаток</string>
-    <string name="music">Музика</string>
-    <string name="app_version">Версія %1s</string>
     <string name="copyright">Авторські права © %1s, створено D4rK!</string>
-    <string name="made_in">Створено з ❤ у Румунії!</string>
     <string name="settings">Налаштування</string>
     <string name="appearance">Зовнішній вигляд</string>
     <string name="theme">Тема</string>
@@ -113,12 +109,8 @@
     <string name="license">Ліцензія</string>
     <string name="more">Додатково</string>
     <string name="share">Поділитися</string>
-    <string name="navigation_drawer_open">Відкрити навігаційну панель</string>
-    <string name="navigation_drawer_close">Закрити навігаційну панель</string>
     <string name="more_apps">Більше додатків…</string>
     <string name="support_the_developer">Підтримайте розробника</string>
-    <string name="support_us">Підтримати нас</string>
-    <string name="preferences">Параметри</string>
     <string name="paid_support">Платна підтримка</string>
     <string name="non_paid_support">Безкоштовна підтримка</string>
     <string name="web_ad">Веб-реклама</string>
@@ -130,10 +122,6 @@
     <string name="device_model">Модель пристрою:</string>
     <string name="android_version">Версія Android:</string>
     <string name="api_level">Рівень API:</string>
-    <string name="app_usage_notifications">Сповіщення використання додатків</string>
-    <string name="update_notifications">Сповіщення оновлення</string>
-    <string name="notification_last_time_used_title">Пройшло трохи часу!</string>
-    <string name="notification_update_title">Доступне нове оновлення!</string>
     <string name="create_barcode">Створити штрих-код</string>
     <string name="delete">Видалити</string>
     <string name="title">Назва</string>
@@ -235,7 +223,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Уникнути дублікатів в історії.</string>
     <string name="summary_preference_settings_firebase">Дозволяє нам збирати інформацію про продуктивність додатка та журнали помилок.</string>
     <string name="summary_preference_settings_search_engines">Виберіть пошуковий двигун для веб-пошуку.</string>
-    <string name="summary_preference_settings_support_developer">Пожертвуйте та підтримайте розробку нашого додатку. Ви також можете підтримати нас безкоштовно, відвідавши наш вебсайт або переглянувши відеооголошення.</string>
     <string name="summary_preference_permissions_ad_id">Дозволяє додатку отримувати та використовувати ідентифікатор реклами, пов\'язаний з пристроєм користувача, для надання персоналізованої реклами, вимірювання ефективності реклами та відображення реклами на пристроях з Android 13 або новішою версією.</string>
     <string name="summary_preference_permissions_change_wifi_state">Дозволяє додатку підключатися до бездротових мереж за допомогою сканування QR-кодів.</string>
     <string name="summary_preference_permissions_internet">Дозволяє додатку встановлювати з\'єднання з Інтернетом для відправки звітів про помилки або перевірки наявності оновлень.</string>
@@ -253,13 +240,10 @@
     <string name="summary_preference_permissions_write_storage">Дозволяє додатку записувати до вашого сховища, щоб зберегти файли, такі як фотографії, відео та документи.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Ознайомтесь та погодьтеся з нашими Умовами надання послуг та Політикою конфіденційності, щоб продовжити.</string>
     <string name="summary_require_restart">Для вступу в силу, будь ласка, перезапустіть додаток!</string>
-    <string name="summary_close">Ви впевнені, що хочете вийти?</string>
     <string name="summary_donations">Без значення, скільки ви пожертвуєте, ви допоможете нам підтримувати роботу нашого додатка та покращувати його функціональність. Ми цінуємо вашу щедрість та доброту!</string>
     <string name="summary_delete_history">Видалити історію?</string>
     <string name="summary_alternatively_url">- Відкрийте свій веб-браузер\n- Завантажте веб-сайт\n- Натисніть "Поділитися" в меню\n- Виберіть цей додаток.</string>
     <string name="summary_alternatively_contact">- Відкрийте свій додаток з контактами\n- Відкрийте існуючий контакт або створіть новий\n- Натисніть "Поділитися" в меню\n- Виберіть цей додаток</string>
-    <string name="summary_notification_last_time_used">Не дозволяйте своїм навичкам розробки Android заростати пилом! Повертайтесь до вивчення та удосконалення з Android Studio Tutorials: Kotlin Edition вже сьогодні. Наш додаток має щось для кожного, від початківців до досвідчених розробників.</string>
-    <string name="summary_notification_update">Доступна нова версія додатку. Клацніть, щоб оновити!</string>
     <string name="snack_unable_to_open_google_play_store">Не вдалося відкрити Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Скопійовано в буфер обміну! 📋</string>
     <string name="snack_saved_to_downloads">Збережено в Завантаженнях!</string>
@@ -269,10 +253,8 @@
     <string name="snack_support">Чи бажаєте підтримати наше додаток? ❤️</string>
     <string name="tooltip_agree">Прийняти умови та положення.</string>
     <string name="tooltip_export">Експортувати вашу історію.</string>
-    <string name="tooltip_open_me">Відкрийте мене 🌐</string>
     <string name="tooltip_add_to_favorites">Додати до обраного</string>
     <string name="tooltip_view_code">Переглянути код</string>
-    <string name="tooltip_mail_to_dev">Написати розробнику 📧</string>
     <string name="tooltip_save_as_text">Зберегти як текст</string>
     <string name="tooltip_save_as_image">Зберегти як зображення</string>
     <string name="tooltip_generate_new_secret">Створити новий секрет</string>

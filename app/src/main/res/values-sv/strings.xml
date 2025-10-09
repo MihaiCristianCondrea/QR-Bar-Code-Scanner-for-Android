@@ -8,7 +8,6 @@
     <string name="scan">Skanna</string>
     <string name="flash">Blixt</string>
     <string name="scan_image">Skanna bild</string>
-    <string name="close">Stäng?</string>
     <string name="create">Skapa</string>
     <string name="qr_code">QR-kod</string>
     <string name="content_from_clipboard">Innehåll från Urklipp</string>
@@ -43,10 +42,7 @@
     <string name="export_as">Exportera som</string>
     <string name="export">Exportera</string>
     <string name="about">Om</string>
-    <string name="music">Musik</string>
-    <string name="app_version">Version %1s</string>
     <string name="copyright">Upphovsrätt %1s skapad av D4rK!</string>
-    <string name="made_in">Skapad med ❤ i Rumänien!</string>
     <string name="settings">Inställningar</string>
     <string name="appearance">Utseende</string>
     <string name="theme">Tema</string>
@@ -113,12 +109,8 @@
     <string name="license">Licens</string>
     <string name="more">Mer</string>
     <string name="share">Dela</string>
-    <string name="navigation_drawer_open">Öppna navigeringsmenyn</string>
-    <string name="navigation_drawer_close">Stäng navigeringsmenyn</string>
     <string name="more_apps">Fler appar…</string>
     <string name="support_the_developer">Stöd utvecklaren</string>
-    <string name="support_us">Stöd oss</string>
-    <string name="preferences">Preferenser</string>
     <string name="paid_support">Betalt stöd</string>
     <string name="non_paid_support">Icke-betalt stöd</string>
     <string name="web_ad">Webbad</string>
@@ -130,10 +122,6 @@
     <string name="device_model">Enhetens modell:</string>
     <string name="android_version">Android-version:</string>
     <string name="api_level">API-nivå:</string>
-    <string name="app_usage_notifications">Notifikationer om appanvändning</string>
-    <string name="update_notifications">Uppdateringsnotifikationer</string>
-    <string name="notification_last_time_used_title">Det var ett tag sedan!</string>
-    <string name="notification_update_title">En ny uppdatering finns tillgänglig!</string>
     <string name="create_barcode">Skapa streckkod</string>
     <string name="delete">Radera</string>
     <string name="title">Titel</string>
@@ -235,7 +223,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Undvik dupliceringar i historiken.</string>
     <string name="summary_preference_settings_firebase">Det här gör att vi kan samla information om appens prestanda och felloggar.</string>
     <string name="summary_preference_settings_search_engines">Välj en sökmotor för webbsökningar.</string>
-    <string name="summary_preference_settings_support_developer">Donera och stöd vår apputveckling. Du kan även stödja oss gratis genom att besöka vår webbplats eller titta på en videoannons.</string>
     <string name="summary_preference_permissions_ad_id">Tillåter appen att hämta och använda reklamidentifieraren associerad med användarens enhet, för att tillhandahålla anpassade annonser, mäta annonseffektivitet och visa annonser på Android 13 eller senare enheter.</string>
     <string name="summary_preference_permissions_change_wifi_state">Tillåter appen att ansluta till Wi-Fi-nätverk genom att skanna QR-koder.</string>
     <string name="summary_preference_permissions_internet">Tillåter appen att upprätta en internetanslutning för att skicka felrapporter eller kontrollera uppdateringar.</string>
@@ -253,13 +240,10 @@
     <string name="summary_preference_permissions_write_storage">Tillåter appen att skriva till din lagring så att du kan spara filer som foton, videor och dokument.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Läs och godkänn våra användarvillkor och integritetspolicy för att fortsätta.</string>
     <string name="summary_require_restart">För att ändringarna ska träda i kraft, starta om appen!</string>
-    <string name="summary_close">Är du säker på att du vill avsluta?</string>
     <string name="summary_donations">Oavsett hur mycket du donerar, kommer du att hjälpa oss hålla vår app igång och förbättra våra funktioner. Vi uppskattar din generositet och vänlighet!</string>
     <string name="summary_delete_history">Radera historiken?</string>
     <string name="summary_alternatively_url">- Öppna din webbläsarapp\n- Ladda en webbplats\n- Klicka på "Dela" i menyn\n- Välj den här appen.</string>
     <string name="summary_alternatively_contact">- Öppna din kontaktsapp\n- Öppna en befintlig kontakt eller skapa en ny\n- Klicka på "Dela" i menyn\n- Välj den här appen.</string>
-    <string name="summary_notification_last_time_used">Låt inte dina Android-utvecklingsfärdigheter samla damm! Kom tillbaka till att lära dig och förbättra med Android Studio-tutorials: Kotlin Edition idag. Vår app har något för alla, från nybörjare till erfarna utvecklare.</string>
-    <string name="summary_notification_update">En ny version av appen finns tillgänglig. Klicka för att uppdatera!</string>
     <string name="snack_unable_to_open_google_play_store">Kan inte öppna Google Play-butiken.</string>
     <string name="snack_copied_to_clipboard">Kopierat till urklipp! 📋</string>
     <string name="snack_saved_to_downloads">Sparat i Nedladdningar!</string>
@@ -269,10 +253,8 @@
     <string name="snack_support">Vill du stödja vår app? ❤️</string>
     <string name="tooltip_agree">Acceptera villkor och bestämmelser.</string>
     <string name="tooltip_export">Exportera din historik.</string>
-    <string name="tooltip_open_me">Öppna mig 🌐</string>
     <string name="tooltip_add_to_favorites">Lägg till i favoriter</string>
     <string name="tooltip_view_code">Visa kod</string>
-    <string name="tooltip_mail_to_dev">E-posta utvecklare 📧</string>
     <string name="tooltip_save_as_text">Spara som text</string>
     <string name="tooltip_save_as_image">Spara som bild</string>
     <string name="tooltip_generate_new_secret">Generera en ny hemlighet</string>

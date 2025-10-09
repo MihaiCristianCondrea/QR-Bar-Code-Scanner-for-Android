@@ -8,7 +8,6 @@
     <string name="scan">Szkennelés</string>
     <string name="flash">Vaku</string>
     <string name="scan_image">Kép szkennelése</string>
-    <string name="close">Bezárás?</string>
     <string name="create">Létrehozás</string>
     <string name="qr_code">QR-kód</string>
     <string name="content_from_clipboard">Tartalom a vágólapról</string>
@@ -43,10 +42,7 @@
     <string name="export_as">Exportálás mint</string>
     <string name="export">Exportálás</string>
     <string name="about">Névjegy</string>
-    <string name="music">Zene</string>
-    <string name="app_version">Verzió: %1s</string>
     <string name="copyright">© Szerzői jog %1s, készítette: D4rK!</string>
-    <string name="made_in">Készült szívvel Romániában!</string>
     <string name="settings">Beállítások</string>
     <string name="appearance">Megjelenés</string>
     <string name="theme">Téma</string>
@@ -113,12 +109,8 @@
     <string name="license">Licenc</string>
     <string name="more">Továbbiak</string>
     <string name="share">Megosztás</string>
-    <string name="navigation_drawer_open">Navigációs menü megnyitása</string>
-    <string name="navigation_drawer_close">Navigációs menü bezárása</string>
     <string name="more_apps">További alkalmazások…</string>
     <string name="support_the_developer">Támogasd a fejlesztőt</string>
-    <string name="support_us">Támogatás</string>
-    <string name="preferences">Preferenciák</string>
     <string name="paid_support">Fizetett támogatás</string>
     <string name="non_paid_support">Díjmentes támogatás</string>
     <string name="web_ad">Web hirdetés</string>
@@ -130,10 +122,6 @@
     <string name="device_model">Eszközmodell:</string>
     <string name="android_version">Android verzió:</string>
     <string name="api_level">API szint:</string>
-    <string name="app_usage_notifications">Alkalmazás használat értesítések</string>
-    <string name="update_notifications">Frissítési értesítések</string>
-    <string name="notification_last_time_used_title">Eltelt egy ideje!</string>
-    <string name="notification_update_title">Új frissítés elérhető!</string>
     <string name="create_barcode">Vonalkód létrehozása</string>
     <string name="delete">Törlés</string>
     <string name="title">Cím</string>
@@ -235,7 +223,6 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Kettőzött elemek elkerülése a történetben.</string>
     <string name="summary_preference_settings_firebase">Lehetővé teszi az alkalmazás teljesítményével és összeomlási naplóival kapcsolatos információk gyűjtését.</string>
     <string name="summary_preference_settings_search_engines">Válasszon keresőmotort a webes keresésekhez.</string>
-    <string name="summary_preference_settings_support_developer">Támogasd az alkalmazás fejlesztését adományozással. Ingyenesen is támogathatod minket weboldalunk látogatásával vagy egy videó hirdetés megtekintésével.</string>
     <string name="summary_preference_permissions_ad_id">Lehetővé teszi az alkalmazás számára a felhasználó eszközéhez társított reklámazonosító lekérését és használatát, személyre szabott hirdetések biztosítására, a hirdetések hatékonyságának mérésére és a 13-as vagy újabb verziójú Android eszközökön történő hirdetések megjelenítésére.</string>
     <string name="summary_preference_permissions_change_wifi_state">Lehetővé teszi az alkalmazás számára, hogy QR-kódok beolvasásával csatlakozzon Wi-Fi-hálózatokhoz.</string>
     <string name="summary_preference_permissions_internet">Lehetővé teszi az alkalmazás számára az internetkapcsolat létesítését hibajelentések küldéséhez vagy frissítések ellenőrzéséhez.</string>
@@ -253,13 +240,10 @@
     <string name="summary_preference_permissions_write_storage">Engedélyezi az alkalmazás számára, hogy írjon a tárhelyére, így menthet fájlokat, például fényképeket, videókat és dokumentumokat.</string>
     <string name="summary_browse_terms_of_service_and_privacy_policy">Az Általános Szerződési Feltételek és Adatvédelmi Szabályzatunk elolvasása és elfogadása szükséges a folytatáshoz.</string>
     <string name="summary_require_restart">Az érvényesítés érdekében indítsa újra az alkalmazást!</string>
-    <string name="summary_close">Biztosan kilép?</string>
     <string name="summary_donations">Nem számít, hogy mennyit adományozol, segítesz fenntartani az alkalmazásunkat és fejleszteni a funkcióinkat. Nagyrabecsüljük a nagylelkűséged és a kedvességed!</string>
     <string name="summary_delete_history">Törölje a előzményeket?</string>
     <string name="summary_alternatively_url">- Nyissa meg a böngészőalkalmazást\n- Töltse be a webhelyet\n- Kattintson az „Ossza meg” lehetőségre a menüben\n- Válassza ki ezt az alkalmazást.</string>
     <string name="summary_alternatively_contact">- Nyissa meg a kapcsolatai alkalmazást\n- Nyisson meg egy meglévő kapcsolatot, vagy hozzon létre egy újat\n- Kattintson az „Ossza meg” lehetőségre a menüben\n- Válassza ki ezt az alkalmazást.</string>
-    <string name="summary_notification_last_time_used">Ne hagyja porosodni az Android-fejlesztési készségeit! Térjen vissza a tanuláshoz és fejlesztéshez az Android Studio Tutorial: Kotlin Edition segítségével. Az alkalmazásunk mindenki számára kínál valamit, kezdőktől a tapasztalt fejlesztőkig.</string>
-    <string name="summary_notification_update">Elérhető az alkalmazás új verziója. Kattintson a frissítéshez!</string>
     <string name="snack_unable_to_open_google_play_store">Nem sikerült megnyitni a Google Play Áruházat.</string>
     <string name="snack_copied_to_clipboard">Vágólapra másolva! 📋</string>
     <string name="snack_saved_to_downloads">Elmentve a Letöltések mappába!</string>
@@ -269,10 +253,8 @@
     <string name="snack_support">Szeretnéd támogatni az alkalmazásunkat? ❤️</string>
     <string name="tooltip_agree">Elfogadom a feltételeket és az adatvédelmi szabályzatot.</string>
     <string name="tooltip_export">Előzmények exportálása.</string>
-    <string name="tooltip_open_me">Nyiss meg 🌐</string>
     <string name="tooltip_add_to_favorites">Hozzáadás a kedvencekhez</string>
     <string name="tooltip_view_code">Kód megtekintése</string>
-    <string name="tooltip_mail_to_dev">E-mail küldése a fejlesztőnek 📧</string>
     <string name="tooltip_save_as_text">Mentés szövegként</string>
     <string name="tooltip_save_as_image">Mentés képként</string>
     <string name="tooltip_generate_new_secret">Új titkos adat létrehozása</string>

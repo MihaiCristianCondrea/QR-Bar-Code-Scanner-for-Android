@@ -7,7 +7,7 @@
         <intent
             android:action=".SCAN_FROM_CAMERA"
             android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.MainActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"/>
     </shortcut>
     <shortcut
         android:shortcutId="scanFromFile"
