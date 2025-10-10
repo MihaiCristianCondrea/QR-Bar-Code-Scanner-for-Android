@@ -50,7 +50,7 @@ class BarcodeImageActivity : UpNavigationActivity() {
         binding = ActivityBarcodeImageBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        setupToolbarWithUpNavigation(binding.toolbar)
+        setupToolbarWithUpNavigation()
         saveOriginalBrightness()
         showBarcode()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()

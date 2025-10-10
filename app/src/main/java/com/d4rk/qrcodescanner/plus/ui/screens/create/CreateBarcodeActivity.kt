@@ -129,7 +129,7 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
         binding = ActivityCreateBarcodeBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        setupToolbarWithUpNavigation(binding.toolbar)
+        setupToolbarWithUpNavigation()
         showToolbarTitle()
         showFragment()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()

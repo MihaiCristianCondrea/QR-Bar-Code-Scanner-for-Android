@@ -105,7 +105,7 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
         binding = ActivityBarcodeBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        setupToolbarWithUpNavigation(binding.toolbar)
+        setupToolbarWithUpNavigation()
         val initialState = barcodeViewModel.uiState.value
         barcodeModel = initialState.barcode
         parsedBarcode = initialState.parsedBarcode
