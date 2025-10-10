@@ -10,48 +10,54 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.main.StartDestinationPreference
 import com.d4rk.qrcodescanner.plus.domain.main.ThemePreference
 import com.google.android.material.navigation.NavigationBarView
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.runningFold
+import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel(
-    private val preferencesRepository : MainPreferencesRepository
+    preferencesRepository : MainPreferencesRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(MainUiState())
-    val uiState : StateFlow<MainUiState> = _uiState.asStateFlow()
+    private data class UiAccumulator(
+        val lastThemeMode : Int? = null ,
+        val lastLanguageTag : String? = null ,
+        val uiState : MainUiState = MainUiState()
+    )
 
-    private var lastThemeMode : Int? = null
-    private var lastLanguageTag : String? = null
+    private data class PreferencesSnapshot(
+        val themeMode : Int ,
+        val languageTag : String? ,
+        val labelVisibility : Int ,
+        val startDestination : Int
+    )
 
-    init {
-        viewModelScope.launch {
-            preferencesRepository.mainPreferences.collect { preferences ->
-                updateUiState(preferences)
-            }
+    val uiState : StateFlow<MainUiState> = preferencesRepository.mainPreferences
+        .map { preferences ->
+            preferences.toSnapshot()
         }
-    }
+        .runningFold(UiAccumulator()) { accumulator , snapshot ->
+            val themeChanged = accumulator.lastThemeMode != null && (
+                accumulator.lastThemeMode != snapshot.themeMode || accumulator.lastLanguageTag != snapshot.languageTag
+            )
 
-    private fun updateUiState(preferences : MainPreferences) {
-        val themeMode = preferences.theme.toThemeMode()
-        val languageTag = preferences.languageTag
-        val labelVisibility = preferences.bottomNavigationLabels.toLabelVisibility()
-        val startDestination = preferences.startDestination.toStartDestinationId()
-
-        val themeChanged = (lastThemeMode != null && lastThemeMode != themeMode) || (lastLanguageTag != null && lastLanguageTag != languageTag)
-
-        lastThemeMode = themeMode
-        lastLanguageTag = languageTag
-
-        _uiState.value = MainUiState(
-            bottomNavVisibility = labelVisibility ,
-            defaultNavDestination = startDestination ,
-            themeMode = themeMode ,
-            languageTag = languageTag ,
-            themeChanged = themeChanged
-        )
-    }
+            UiAccumulator(
+                lastThemeMode = snapshot.themeMode ,
+                lastLanguageTag = snapshot.languageTag ,
+                uiState = MainUiState(
+                    bottomNavVisibility = snapshot.labelVisibility ,
+                    defaultNavDestination = snapshot.startDestination ,
+                    themeMode = snapshot.themeMode ,
+                    languageTag = snapshot.languageTag ,
+                    themeChanged = themeChanged
+                )
+            )
+        }
+        .drop(1)
+        .map { accumulator -> accumulator.uiState }
+        .stateIn(viewModelScope , SharingStarted.WhileSubscribed(5_000) , MainUiState())
 
     private fun ThemePreference.toThemeMode() : Int {
         return when (this) {
@@ -76,5 +82,14 @@ class MainViewModel(
             StartDestinationPreference.CREATE -> R.id.navigation_create
             StartDestinationPreference.HISTORY -> R.id.navigation_history
         }
+    }
+
+    private fun MainPreferences.toSnapshot() : PreferencesSnapshot {
+        return PreferencesSnapshot(
+            themeMode = theme.toThemeMode() ,
+            languageTag = languageTag ,
+            labelVisibility = bottomNavigationLabels.toLabelVisibility() ,
+            startDestination = startDestination.toStartDestinationId()
+        )
     }
 }
