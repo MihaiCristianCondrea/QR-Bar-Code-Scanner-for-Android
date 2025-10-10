@@ -3,7 +3,6 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -15,15 +14,18 @@ import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.core.view.isNotEmpty
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroup
-import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +33,7 @@ import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySettingsBinding
 import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.RequireRestartDialog
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
@@ -39,9 +42,14 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.textview.MaterialTextView
+import kotlinx.coroutines.launch
 
-class SettingsActivity : AppCompatActivity() , SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySettingsBinding
+    private val preferencesRepository by lazy { mainPreferencesRepository }
+    private val settingsViewModel : SettingsViewModel by viewModels {
+        SettingsViewModelFactory(preferencesRepository)
+    }
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,23 +58,19 @@ class SettingsActivity : AppCompatActivity() , SharedPreferences.OnSharedPrefere
         setContentView(binding.root)
         supportFragmentManager.beginTransaction().replace(R.id.settings , SettingsFragment()).commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this)
+        observeViewModel()
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences : SharedPreferences? , rootKey : String?) {
-        val themeValues = resources.getStringArray(R.array.preference_theme_values)
-        when (rootKey) {
-            getString(R.string.key_theme) -> sharedPreferences?.let { pref ->
-                when (pref.getString(getString(R.string.key_theme) , themeValues[0])) {
-                    themeValues[0] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                    themeValues[1] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    themeValues[2] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    themeValues[3] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                settingsViewModel.uiState.collect { uiState ->
+                    AppCompatDelegate.setDefaultNightMode(uiState.themeMode)
+                    val languageTag = uiState.languageTag ?: getString(R.string.default_value_language)
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
                 }
             }
         }
-        val languageCode = sharedPreferences?.getString(getString(R.string.key_language) , getString(R.string.default_value_language))
-        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageCode))
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
