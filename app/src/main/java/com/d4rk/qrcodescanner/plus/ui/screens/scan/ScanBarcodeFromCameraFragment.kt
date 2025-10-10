@@ -346,15 +346,17 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun handleScanFromFileClicked() {
-        binding.layoutScanFromFileContainer.setOnClickListener {
+        val clickListener = View.OnClickListener {
             ScanBarcodeFromFileActivity.start(requireActivity())
         }
+        binding.layoutScanFromFileContainer.setOnClickListener(clickListener)
+        binding.imageViewScanFromFile.setOnClickListener(clickListener)
     }
 
     private fun initFlashButton() {
-        binding.layoutFlashContainer.setOnClickListener {
-            toggleFlash()
-        }
+        val clickListener = View.OnClickListener { toggleFlash() }
+        binding.layoutFlashContainer.setOnClickListener(clickListener)
+        binding.imageViewFlash.setOnClickListener(clickListener)
     }
 
     private fun toggleFlash() {
