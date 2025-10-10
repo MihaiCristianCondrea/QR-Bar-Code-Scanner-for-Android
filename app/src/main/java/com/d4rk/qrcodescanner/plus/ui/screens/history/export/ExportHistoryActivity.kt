@@ -5,9 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityExportHistoryBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
@@ -19,14 +22,15 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class ExportHistoryActivity : BaseActivity() {
     private lateinit var binding : ActivityExportHistoryBinding
+    private val viewModel : ExportHistoryViewModel by viewModels {
+        ExportHistoryViewModelFactory(barcodeDatabase , barcodeSaver)
+    }
+    private var isExporting : Boolean = false
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
@@ -46,6 +50,8 @@ class ExportHistoryActivity : BaseActivity() {
         initFileNameEditText()
         initExportButton()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+        observeUiState()
+        updateExportButtonState()
     }
 
     override fun onRequestPermissionsResult(requestCode : Int , permissions : Array<out String> , grantResults : IntArray) {
@@ -65,7 +71,7 @@ class ExportHistoryActivity : BaseActivity() {
 
     private fun initFileNameEditText() {
         binding.editTextFileName.addTextChangedListener {
-            binding.buttonExport.isEnabled = binding.editTextFileName.isNotBlank()
+            updateExportButtonState()
         }
     }
 
@@ -81,24 +87,45 @@ class ExportHistoryActivity : BaseActivity() {
 
     private fun exportHistory() {
         val fileName = binding.editTextFileName.textString
-        val saveFunc = when (binding.spinnerExportAs.selectedItemPosition) {
-            0 -> barcodeSaver::saveBarcodeHistoryAsCsv
-            1 -> barcodeSaver::saveBarcodeHistoryAsJson
-            else -> return
-        }
-        showLoading(true)
+        val exportType = ExportType.fromSpinnerIndex(binding.spinnerExportAs.selectedItemPosition) ?: return
+        viewModel.exportHistory(applicationContext , fileName , exportType)
+    }
+
+    private fun observeUiState() {
         lifecycleScope.launch {
-            runCatching {
-                val barcodes = withContext(Dispatchers.IO) { barcodeDatabase.getAllForExport().first() }
-                withContext(Dispatchers.IO) { saveFunc(this@ExportHistoryActivity , fileName , barcodes) }
-            }.onSuccess {
-                showHistoryExported()
-            }.onFailure { error ->
-                showLoading(false)
-                showError(error)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    when (state) {
+                        ExportHistoryUiState.Idle -> {
+                            isExporting = false
+                            showLoading(false)
+                        }
+                        ExportHistoryUiState.Loading -> {
+                            isExporting = true
+                            showLoading(true)
+                        }
+                        ExportHistoryUiState.Success -> {
+                            isExporting = false
+                            showLoading(false)
+                            showHistoryExported()
+                        }
+                        is ExportHistoryUiState.Error -> {
+                            isExporting = false
+                            showLoading(false)
+                            showError(state.throwable)
+                        }
+                    }
+                    updateExportButtonState()
+                }
             }
         }
     }
+
+    private fun updateExportButtonState() {
+        val isFileNameValid = binding.editTextFileName.isNotBlank()
+        binding.buttonExport.isEnabled = isFileNameValid && isExporting.not()
+    }
+
     private fun showLoading(isLoading : Boolean) {
         binding.progressBarLoading.isVisible = isLoading
         binding.scrollView.isVisible = isLoading.not()
