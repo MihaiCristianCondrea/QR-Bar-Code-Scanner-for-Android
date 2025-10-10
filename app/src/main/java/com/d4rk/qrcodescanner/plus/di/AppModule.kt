@@ -2,6 +2,7 @@ package com.d4rk.qrcodescanner.plus.di
 
 import androidx.room.Room
 import com.d4rk.qrcodescanner.plus.data.settings.SharedPreferencesMainPreferencesRepository
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
 import com.d4rk.qrcodescanner.plus.domain.barcode.WifiConnector
@@ -20,6 +21,7 @@ import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.RotationHelper
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import kotlinx.coroutines.Dispatchers
 
 val appModule = module {
     single {
@@ -43,6 +45,7 @@ val appModule = module {
     single { BarcodeImageGenerator }
     single { BarcodeSaver }
     single { BarcodeImageSaver }
+    single { BarcodeDetailsRepository(get(), Dispatchers.IO) }
     single { WifiConnector }
     single { OTPGenerator }
     single { ContactHelper }

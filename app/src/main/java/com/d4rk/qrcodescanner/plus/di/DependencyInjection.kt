@@ -2,6 +2,7 @@ package com.d4rk.qrcodescanner.plus.di
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
 import com.d4rk.qrcodescanner.plus.domain.barcode.WifiConnector
@@ -33,6 +34,9 @@ val barcodeSaver: BarcodeSaver
     get() = koin.get()
 
 val barcodeImageSaver: BarcodeImageSaver
+    get() = koin.get()
+
+val AppCompatActivity.barcodeDetailsRepository: BarcodeDetailsRepository
     get() = koin.get()
 
 val wifiConnector: WifiConnector

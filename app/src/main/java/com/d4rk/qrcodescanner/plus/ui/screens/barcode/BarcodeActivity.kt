@@ -9,20 +9,22 @@ import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.provider.Settings
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.print.PrintHelper
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
+import com.d4rk.qrcodescanner.plus.di.barcodeDetailsRepository
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.di.barcodeImageSaver
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.di.wifiConnector
-import com.d4rk.qrcodescanner.plus.domain.history.save
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.ParsedBarcode
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
@@ -70,33 +72,43 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private lateinit var binding: ActivityBarcodeBinding
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
-    private val originalBarcode by unsafeLazy {
-        @Suppress("DEPRECATION") intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
+    @Suppress("DEPRECATION")
+    private val initialBarcode: Barcode by unsafeLazy {
+        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
             ?: throw IllegalArgumentException("No barcode passed")
     }
     private val isCreated by unsafeLazy {
         intent?.getBooleanExtra(IS_CREATED, false).orFalse()
     }
-    private val barcode by unsafeLazy {
-        ParsedBarcode(originalBarcode)
+    private val barcodeRepository by unsafeLazy { barcodeDetailsRepository }
+    private val barcodeViewModel: BarcodeViewModel by viewModels {
+        BarcodeViewModelFactory(initialBarcode, barcodeRepository)
     }
+    private lateinit var barcodeModel: Barcode
+    private lateinit var parsedBarcode: ParsedBarcode
+    private val barcode: ParsedBarcode
+        get() = parsedBarcode
     private val clipboardManager by unsafeLazy {
         getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
     }
     private var originalBrightness: Float = 0.5f
+    private var hasRenderedInitialState = false
+    private var lastIsInDatabase = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
+        val initialState = barcodeViewModel.uiState.value
+        barcodeModel = initialState.barcode
+        parsedBarcode = initialState.parsedBarcode
         saveOriginalBrightness()
         applySettings()
         handleToolbarBackPressed()
         handleToolbarMenuClicked()
         handleButtonsClicked()
-        showBarcode()
-        showOrHideButtons()
-        showButtonText()
+        renderInitialState(initialState)
+        observeViewModel()
         MobileAds.initialize(this)
         binding.adView.loadAd(AdRequest.Builder().build())
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
@@ -280,75 +292,72 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         }
     }
 
-    private fun toggleIsFavorite() {
-        val newBarcode = originalBarcode.copy(isFavorite = barcode.isFavorite.not())
-        // Launch a coroutine in the lifecycleScope
+    private fun renderInitialState(uiState: BarcodeUiState) {
+        hasRenderedInitialState = true
+        lastIsInDatabase = uiState.isInDatabase
+        showBarcodeMenu(uiState)
+        showBarcode()
+        showOrHideButtons()
+        showButtonText()
+    }
+
+    private fun observeViewModel() {
         lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.IO) {
-                    barcodeDatabase.save(newBarcode)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    barcodeViewModel.uiState.collect { uiState ->
+                        barcodeModel = uiState.barcode
+                        parsedBarcode = uiState.parsedBarcode
+                        renderUiState(uiState)
+                    }
                 }
-            }.onSuccess {
-                barcode.isFavorite = newBarcode.isFavorite
-                showBarcodeIsFavorite(newBarcode.isFavorite)
-            }.onFailure { error ->
-                showError(error)
+                launch {
+                    barcodeViewModel.events.collect { event ->
+                        handleEvent(event)
+                    }
+                }
             }
         }
+    }
+
+    private fun renderUiState(uiState: BarcodeUiState) {
+        showBarcodeMenu(uiState)
+        binding.buttonEditName.isVisible = uiState.isInDatabase
+        showLoading(uiState.isDeleting)
+        if (!hasRenderedInitialState) {
+            renderInitialState(uiState)
+            return
+        }
+        if (lastIsInDatabase != uiState.isInDatabase) {
+            showOrHideButtons()
+        }
+        lastIsInDatabase = uiState.isInDatabase
+    }
+
+    private fun handleEvent(event: BarcodeEvent) {
+        when (event) {
+            is BarcodeEvent.FavoriteToggled -> showBarcodeIsFavorite(event.isFavorite)
+            is BarcodeEvent.NameUpdated -> showBarcodeName(event.name)
+            is BarcodeEvent.BarcodeSaved -> showOrHideButtons()
+            BarcodeEvent.BarcodeDeleted -> finish()
+            is BarcodeEvent.Error -> showError(event.throwable)
+        }
+    }
+
+    private fun toggleIsFavorite() {
+        barcodeViewModel.toggleFavorite()
     }
 
     private fun updateBarcodeName(name: String) {
-        name.takeIf(String::isNotBlank)?.let { newName ->
-            val newBarcode = originalBarcode.copy(id = barcode.id, name = newName)
-            lifecycleScope.launch {
-                runCatching {
-                    withContext(Dispatchers.IO) {
-                        barcodeDatabase.save(newBarcode)
-                    }
-                }.onSuccess {
-                    barcode.name = newName
-                    showBarcodeName(newName)
-                }.onFailure { e ->
-                    showError(e)
-                }
-            }
-        }
+        barcodeViewModel.updateName(name)
     }
 
     private fun saveBarcode() {
-        binding.toolbar.menu?.findItem(R.id.item_save)?.isVisible = false
-        lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.IO) {
-                    barcodeDatabase.save(originalBarcode, settings.doNotSaveDuplicates)
-                }
-            }.onSuccess { id ->
-                id.let {
-                    barcode.id = it
-                    binding.buttonEditName.isVisible = true
-                    binding.toolbar.menu?.findItem(R.id.item_delete)?.isVisible = true
-                }
-            }.onFailure { error ->
-                binding.toolbar.menu?.findItem(R.id.item_save)?.isVisible = true
-                showError(error)
-            }
-        }
+        barcodeViewModel.saveBarcode(settings.doNotSaveDuplicates)
     }
 
     private fun deleteBarcode() {
-        showLoading(true)
-        lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.IO) {
-                    barcodeDatabase.delete(barcode.id)
-                }
-            }.onSuccess {
-                finish()
-            }.onFailure { error ->
-                showLoading(false)
-                showError(error)
-            }
-        }
+        barcodeViewModel.deleteBarcode()
     }
 
     private fun addToCalendar() {
@@ -562,7 +571,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun shareBarcodeAsImage() {
         runCatching {
-            val image = barcodeImageGenerator.generateBitmap(originalBarcode, 200, 200, 1)
+            val image = barcodeImageGenerator.generateBitmap(barcodeModel, 200, 200, 1)
             barcodeImageSaver.saveImageToCache(context = this, image = image, barcode = barcode)
         }.onSuccess { imageUri ->
             imageUri?.let {
@@ -578,7 +587,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun printBarcode() {
         runCatching {
-            barcodeImageGenerator.generateBitmap(originalBarcode, 1000, 1000, 3)
+            barcodeImageGenerator.generateBitmap(barcodeModel, 1000, 1000, 3)
         }.onSuccess { barcodeImage ->
             barcodeImage?.let {
                 PrintHelper(this).apply {
@@ -590,19 +599,18 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun navigateToBarcodeImageActivity() {
-        BarcodeImageActivity.start(this, originalBarcode)
+        BarcodeImageActivity.start(this, barcodeModel)
     }
 
     private fun navigateToSaveBarcodeAsTextActivity() {
-        SaveBarcodeAsTextActivity.start(this, originalBarcode)
+        SaveBarcodeAsTextActivity.start(this, barcodeModel)
     }
 
     private fun navigateToSaveBarcodeAsImageActivity() {
-        SaveBarcodeAsImageActivity.start(this, originalBarcode)
+        SaveBarcodeAsImageActivity.start(this, barcodeModel)
     }
 
     private fun showBarcode() {
-        showBarcodeMenuIfNeeded()
         showBarcodeIsFavorite()
         showBarcodeImageIfNeeded()
         showBarcodeDate()
@@ -612,14 +620,20 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showBarcodeCountry()
     }
 
-    private fun showBarcodeMenuIfNeeded() {
-        binding.toolbar.inflateMenu(R.menu.menu_barcode)
-        binding.toolbar.menu.apply {
+    private fun showBarcodeMenu(uiState: BarcodeUiState) {
+        val menu = binding.toolbar.menu
+        if (menu.size() == 0) {
+            binding.toolbar.inflateMenu(R.menu.menu_barcode)
+        }
+        menu.apply {
             findItem(R.id.item_increase_brightness).isVisible = isCreated
-            findItem(R.id.item_add_to_favorites)?.isVisible = barcode.isInDb
+            findItem(R.id.item_add_to_favorites)?.isVisible = uiState.isInDatabase
             findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
-            findItem(R.id.item_save)?.isVisible = barcode.isInDb.not()
-            findItem(R.id.item_delete)?.isVisible = barcode.isInDb
+            findItem(R.id.item_save)?.isVisible = uiState.isInDatabase.not()
+            findItem(R.id.item_delete)?.isVisible = uiState.isInDatabase
+            findItem(R.id.item_add_to_favorites)?.isEnabled = uiState.isProcessing.not()
+            findItem(R.id.item_save)?.isEnabled = uiState.isProcessing.not()
+            findItem(R.id.item_delete)?.isEnabled = uiState.isProcessing.not() && uiState.isDeleting.not()
         }
     }
 
@@ -646,7 +660,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private fun showBarcodeImage() {
         runCatching {
             barcodeImageGenerator.generateBitmap(
-                originalBarcode,
+                barcodeModel,
                 2000,
                 2000,
                 0,
