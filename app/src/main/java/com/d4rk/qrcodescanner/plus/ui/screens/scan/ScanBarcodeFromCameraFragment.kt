@@ -4,12 +4,16 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.PointF
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.Camera
@@ -22,6 +26,7 @@ import androidx.camera.core.Preview
 import androidx.camera.core.TorchState
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -50,6 +55,7 @@ import com.google.mlkit.vision.common.InputImage
 import kotlinx.coroutines.delay
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.jvm.Volatile
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
@@ -60,6 +66,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         private const val ZXING_SCAN_INTENT_ACTION = "com.google.zxing.client.android.SCAN"
         private const val CONTINUOUS_SCANNING_PREVIEW_DELAY = 500L
         private const val ZOOM_MAX_PROGRESS = 100
+        private const val PREVIEW_COLOR_UPDATE_INTERVAL_MS = 250L
+        private const val LUMA_SAMPLE_GRID = 24
+        private const val MIN_INVERTED_LUMA = 40
+        private const val MAX_INVERTED_LUMA = 220
     }
 
     private lateinit var binding: FragmentScanBarcodeFromCameraBinding
@@ -76,6 +86,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private var pendingBarcode: Barcode? = null
     private var currentZoomProgress: Int = 0
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
+    private var lastPreviewColorUpdateTimestamp: Long = 0L
+    @Volatile
+    @ColorInt
+    private var lastAppliedIconColor: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -149,6 +163,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun initUi() {
+        lastAppliedIconColor = null
+        lastPreviewColorUpdateTimestamp = 0L
         binding.seekBarZoom.valueTo = ZOOM_MAX_PROGRESS.toFloat()
         initFlashButton()
         handleScanFromFileClicked()
@@ -211,6 +227,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             imageProxy.close()
             return
         }
+        updateControlsColorFromPreview(imageProxy)
         binding.barcodeOverlay.post {
             binding.barcodeOverlay.setImageSourceInfo(
                 imageProxy.width,
@@ -230,6 +247,91 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
             .addOnCompleteListener {
                 imageProxy.close()
             }
+    }
+
+    private fun updateControlsColorFromPreview(imageProxy: ImageProxy) {
+        if (!isAdded) {
+            return
+        }
+        val now = SystemClock.elapsedRealtime()
+        if (now - lastPreviewColorUpdateTimestamp < PREVIEW_COLOR_UPDATE_INTERVAL_MS) {
+            return
+        }
+        val averageLuma = calculateAverageLuma(imageProxy) ?: return
+        val invertedLuma = (255 - averageLuma).coerceIn(MIN_INVERTED_LUMA, MAX_INVERTED_LUMA)
+        val color = Color.rgb(invertedLuma, invertedLuma, invertedLuma)
+        if (lastAppliedIconColor == color) {
+            lastPreviewColorUpdateTimestamp = now
+            return
+        }
+        lastPreviewColorUpdateTimestamp = now
+        binding.root.post {
+            if (!isAdded || view == null) {
+                return@post
+            }
+            if (lastAppliedIconColor == color) {
+                return@post
+            }
+            lastAppliedIconColor = color
+            applyActionButtonTint(color)
+        }
+    }
+
+    private fun calculateAverageLuma(imageProxy: ImageProxy): Int? {
+        val plane = imageProxy.planes.firstOrNull() ?: return null
+        val buffer = plane.buffer.duplicate().apply { rewind() }
+        val rowStride = plane.rowStride
+        val pixelStride = plane.pixelStride
+        val width = imageProxy.width
+        val height = imageProxy.height
+        if (width == 0 || height == 0) {
+            return null
+        }
+        var sum = 0L
+        var count = 0
+        val stepX = (width / LUMA_SAMPLE_GRID).coerceAtLeast(1)
+        val stepY = (height / LUMA_SAMPLE_GRID).coerceAtLeast(1)
+        val limit = buffer.limit()
+        var y = 0
+        while (y < height) {
+            val rowOffset = y * rowStride
+            var x = 0
+            while (x < width) {
+                val index = rowOffset + x * pixelStride
+                if (index < limit) {
+                    sum += buffer.get(index).toInt() and 0xFF
+                    count++
+                }
+                x += stepX
+            }
+            y += stepY
+        }
+        if (count == 0) {
+            return null
+        }
+        return (sum / count).toInt()
+    }
+
+    private fun applyActionButtonTint(@ColorInt color: Int) {
+        val activatedColor = ColorUtils.blendARGB(color, Color.WHITE, 0.25f)
+        val tint = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_activated),
+                intArrayOf()
+            ),
+            intArrayOf(activatedColor, color),
+        )
+        val rippleColor = ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 0x55))
+        binding.imageViewFlash.setTextColor(tint)
+        binding.imageViewFlash.iconTint = tint
+        binding.imageViewFlash.rippleColor = rippleColor
+        binding.imageViewScanFromFile.setTextColor(tint)
+        binding.imageViewScanFromFile.iconTint = tint
+        binding.imageViewScanFromFile.rippleColor = rippleColor
+        binding.buttonDecreaseZoom.iconTint = tint
+        binding.buttonDecreaseZoom.rippleColor = rippleColor
+        binding.buttonIncreaseZoom.iconTint = tint
+        binding.buttonIncreaseZoom.rippleColor = rippleColor
     }
 
     private fun handleDetectedBarcodes(barcodes: List<MlKitBarcode>) {
