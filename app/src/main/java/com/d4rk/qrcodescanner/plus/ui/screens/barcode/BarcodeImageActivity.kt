@@ -3,6 +3,8 @@ package com.d4rk.qrcodescanner.plus.ui.screens.barcode
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
@@ -11,7 +13,8 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeImageBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.di.settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
-import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
 import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
@@ -22,7 +25,7 @@ import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class BarcodeImageActivity : BaseActivity() {
+class BarcodeImageActivity : UpNavigationActivity() {
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
         fun start(context : Context , barcode : Barcode) {
@@ -40,54 +43,53 @@ class BarcodeImageActivity : BaseActivity() {
         intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
     }
     private var originalBrightness : Float = 0.5f
+    private var optionsMenu: Menu? = null
+    private var isBrightnessAtMax = false
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeImageBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
+        setupToolbarWithUpNavigation(binding.toolbar)
         saveOriginalBrightness()
-        handleToolbarBackPressed()
-        handleToolbarMenuItemClicked()
-        showMenu()
         showBarcode()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_barcode_image, menu)
+        optionsMenu = menu
+        updateOptionsMenu()
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        updateOptionsMenu()
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.item_increase_brightness -> {
+                increaseBrightnessToMax()
+                isBrightnessAtMax = true
+                updateOptionsMenu()
+                true
+            }
+
+            R.id.item_decrease_brightness -> {
+                restoreOriginalBrightness()
+                isBrightnessAtMax = false
+                updateOptionsMenu()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun saveOriginalBrightness() {
         originalBrightness = window.attributes.screenBrightness
-    }
-
-    private fun handleToolbarBackPressed() {
-        binding.toolbar.setNavigationOnClickListener {
-            finish()
-        }
-    }
-
-    private fun handleToolbarMenuItemClicked() {
-        binding.toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.item_increase_brightness -> {
-                    increaseBrightnessToMax()
-                    binding.toolbar.menu.apply {
-                        findItem(R.id.item_increase_brightness).isVisible = false
-                        findItem(R.id.item_decrease_brightness).isVisible = true
-                    }
-                }
-
-                R.id.item_decrease_brightness -> {
-                    restoreOriginalBrightness()
-                    binding.toolbar.menu.apply {
-                        findItem(R.id.item_decrease_brightness).isVisible = false
-                        findItem(R.id.item_increase_brightness).isVisible = true
-                    }
-                }
-            }
-            return@setOnMenuItemClickListener true
-        }
-    }
-
-    private fun showMenu() {
-        binding.toolbar.inflateMenu(R.menu.menu_barcode_image)
     }
 
     private fun showBarcode() {
@@ -136,11 +138,17 @@ class BarcodeImageActivity : BaseActivity() {
 
     private fun showBarcodeFormat() {
         val format = barcode.format.toStringId()
-        binding.toolbar.setTitle(format)
+        setTitle(format)
     }
 
     private fun showBarcodeText() {
         binding.textViewBarcodeText.text = barcode.text
+    }
+
+    private fun updateOptionsMenu() {
+        val menu = optionsMenu ?: return
+        menu.findItem(R.id.item_increase_brightness)?.isVisible = isBrightnessAtMax.not()
+        menu.findItem(R.id.item_decrease_brightness)?.isVisible = isBrightnessAtMax
     }
 
     private fun increaseBrightnessToMax() {

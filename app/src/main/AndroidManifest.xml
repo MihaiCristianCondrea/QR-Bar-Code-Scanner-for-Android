@@ -55,8 +55,7 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode" />
         <activity
-            android:name=".ui.screens.startup.StartupActivity"
-            android:theme="@style/AppTheme" />
+            android:name=".ui.screens.startup.StartupActivity" />
         <activity
             android:name=".ui.screens.main.MainActivity"
             android:configChanges="orientation|screenSize"
@@ -109,7 +108,6 @@
             android:name=".ui.screens.create.CreateBarcodeActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateVisible">
             <intent-filter android:label="@string/create_qr_code">
                 <action android:name="android.intent.action.SEND" />
@@ -132,12 +130,10 @@
             android:label="@string/create_barcode" />
         <activity
             android:name=".ui.screens.barcode.BarcodeActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme" />
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name=".ui.screens.barcode.BarcodeImageActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme" />
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name=".ui.screens.barcode.otp.OtpActivity"
             android:configChanges="orientation|screenSize"

@@ -13,14 +13,15 @@ import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeOtpBinding
 import com.d4rk.qrcodescanner.plus.di.otpGenerator
 import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
-import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
 import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import kotlin.LazyThreadSafetyMode
 
-class OtpActivity : BaseActivity() {
+class OtpActivity : UpNavigationActivity() {
     private lateinit var binding : ActivityBarcodeOtpBinding
 
     companion object {
@@ -47,8 +48,8 @@ class OtpActivity : BaseActivity() {
         binding = ActivityBarcodeOtpBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
+        setupToolbarWithUpNavigation(binding.toolbar)
         enableSecurity()
-        handleToolbarBackClicked()
         handleRefreshOtpClicked()
         collectUiState()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
@@ -56,12 +57,6 @@ class OtpActivity : BaseActivity() {
 
     private fun enableSecurity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_SECURE , WindowManager.LayoutParams.FLAG_SECURE)
-    }
-
-    private fun handleToolbarBackClicked() {
-        binding.toolbar.setNavigationOnClickListener {
-            finish()
-        }
     }
 
     private fun handleRefreshOtpClicked() {

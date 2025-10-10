@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
@@ -33,7 +35,8 @@ import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.ChooseSearchEngineDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.EditBarcodeNameDialogFragment
-import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.otp.OtpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.save.SaveBarcodeAsImageActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.save.SaveBarcodeAsTextActivity
@@ -56,7 +59,7 @@ import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listener,
+class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment.Listener,
     ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
@@ -94,18 +97,21 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     private var originalBrightness: Float = 0.5f
     private var hasRenderedInitialState = false
     private var lastIsInDatabase = false
+    private var optionsMenu: Menu? = null
+    private var latestUiState: BarcodeUiState? = null
+    private var isBrightnessAtMax = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
+        setupToolbarWithUpNavigation(binding.toolbar)
         val initialState = barcodeViewModel.uiState.value
         barcodeModel = initialState.barcode
         parsedBarcode = initialState.parsedBarcode
+        latestUiState = initialState
         saveOriginalBrightness()
         applySettings()
-        handleToolbarBackPressed()
-        handleToolbarMenuClicked()
         handleButtonsClicked()
         renderInitialState(initialState)
         observeViewModel()
@@ -124,6 +130,58 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     override fun onSearchEngineSelected(searchEngine: SearchEngine) {
         performWebSearchUsingSearchEngine(searchEngine)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_barcode, menu)
+        optionsMenu = menu
+        updateOptionsMenu(latestUiState ?: barcodeViewModel.uiState.value)
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        updateOptionsMenu(latestUiState)
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.item_increase_brightness -> {
+                increaseBrightnessToMax()
+                isBrightnessAtMax = true
+                updateOptionsMenu(latestUiState)
+                true
+            }
+
+            R.id.item_decrease_brightness -> {
+                restoreOriginalBrightness()
+                isBrightnessAtMax = false
+                updateOptionsMenu(latestUiState)
+                true
+            }
+
+            R.id.item_add_to_favorites -> {
+                toggleIsFavorite()
+                true
+            }
+
+            R.id.item_show_barcode_image -> {
+                navigateToBarcodeImageActivity()
+                true
+            }
+
+            R.id.item_save -> {
+                saveBarcode()
+                true
+            }
+
+            R.id.item_delete -> {
+                showDeleteBarcodeConfirmationDialog()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun saveOriginalBrightness() {
@@ -157,36 +215,6 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
             BarcodeSchema.NZCOVIDTRACER -> openLink()
             BarcodeSchema.BOARDINGPASS -> return
             else -> return
-        }
-    }
-
-    private fun handleToolbarBackPressed() {
-        binding.toolbar.setNavigationOnClickListener {
-            finish()
-        }
-    }
-
-    private fun handleToolbarMenuClicked() {
-        binding.toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.item_increase_brightness -> {
-                    increaseBrightnessToMax()
-                    binding.toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = false
-                    binding.toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = true
-                }
-
-                R.id.item_decrease_brightness -> {
-                    restoreOriginalBrightness()
-                    binding.toolbar.menu.findItem(R.id.item_increase_brightness).isVisible = true
-                    binding.toolbar.menu.findItem(R.id.item_decrease_brightness).isVisible = false
-                }
-
-                R.id.item_add_to_favorites -> toggleIsFavorite()
-                R.id.item_show_barcode_image -> navigateToBarcodeImageActivity()
-                R.id.item_save -> saveBarcode()
-                R.id.item_delete -> showDeleteBarcodeConfirmationDialog()
-            }
-            return@setOnMenuItemClickListener true
         }
     }
 
@@ -294,8 +322,9 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun renderInitialState(uiState: BarcodeUiState) {
         hasRenderedInitialState = true
+        latestUiState = uiState
         lastIsInDatabase = uiState.isInDatabase
-        showBarcodeMenu(uiState)
+        updateOptionsMenu(uiState)
         showBarcode()
         showOrHideButtons()
         showButtonText()
@@ -321,7 +350,8 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
     }
 
     private fun renderUiState(uiState: BarcodeUiState) {
-        showBarcodeMenu(uiState)
+        latestUiState = uiState
+        updateOptionsMenu(uiState)
         binding.buttonEditName.isVisible = uiState.isInDatabase
         showLoading(uiState.isDeleting)
         if (!hasRenderedInitialState) {
@@ -620,21 +650,27 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         showBarcodeCountry()
     }
 
-    private fun showBarcodeMenu(uiState: BarcodeUiState) {
-        val menu = binding.toolbar.menu
-        if (menu.size() == 0) {
-            binding.toolbar.inflateMenu(R.menu.menu_barcode)
+    private fun updateOptionsMenu(uiState: BarcodeUiState?) {
+        val menu = optionsMenu ?: return
+        if (uiState == null) {
+            return
         }
-        menu.apply {
-            findItem(R.id.item_increase_brightness).isVisible = isCreated
-            findItem(R.id.item_add_to_favorites)?.isVisible = uiState.isInDatabase
-            findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
-            findItem(R.id.item_save)?.isVisible = uiState.isInDatabase.not()
-            findItem(R.id.item_delete)?.isVisible = uiState.isInDatabase
-            findItem(R.id.item_add_to_favorites)?.isEnabled = uiState.isProcessing.not()
-            findItem(R.id.item_save)?.isEnabled = uiState.isProcessing.not()
-            findItem(R.id.item_delete)?.isEnabled = uiState.isProcessing.not() && uiState.isDeleting.not()
+        menu.findItem(R.id.item_increase_brightness)?.isVisible = isCreated && isBrightnessAtMax.not()
+        menu.findItem(R.id.item_decrease_brightness)?.isVisible = isCreated && isBrightnessAtMax
+        menu.findItem(R.id.item_add_to_favorites)?.apply {
+            isVisible = uiState.isInDatabase
+            isEnabled = uiState.isProcessing.not()
         }
+        menu.findItem(R.id.item_show_barcode_image)?.isVisible = isCreated.not()
+        menu.findItem(R.id.item_save)?.apply {
+            isVisible = uiState.isInDatabase.not()
+            isEnabled = uiState.isProcessing.not()
+        }
+        menu.findItem(R.id.item_delete)?.apply {
+            isVisible = uiState.isInDatabase
+            isEnabled = uiState.isProcessing.not() && uiState.isDeleting.not()
+        }
+        showBarcodeIsFavorite(uiState.barcode.isFavorite)
     }
 
     private fun showBarcodeIsFavorite() {
@@ -647,7 +683,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
         } else {
             R.drawable.ic_favorite_unchecked
         }
-        binding.toolbar.menu?.findItem(R.id.item_add_to_favorites)?.icon =
+        optionsMenu?.findItem(R.id.item_add_to_favorites)?.icon =
             ContextCompat.getDrawable(this, iconId)
     }
 
@@ -689,7 +725,7 @@ class BarcodeActivity : BaseActivity(), DeleteConfirmationDialogFragment.Listene
 
     private fun showBarcodeFormat() {
         val format = barcode.format.toStringId()
-        binding.toolbar.setTitle(format)
+        setTitle(format)
     }
 
     private fun showBarcodeName() {

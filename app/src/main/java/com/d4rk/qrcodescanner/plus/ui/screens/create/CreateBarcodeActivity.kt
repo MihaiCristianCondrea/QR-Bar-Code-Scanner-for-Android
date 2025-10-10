@@ -7,6 +7,8 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -21,7 +23,8 @@ import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
-import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateAztecFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateCodabarFragment
@@ -65,7 +68,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
-class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
+class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
     private lateinit var binding : ActivityCreateBarcodeBinding
     private val viewModel by viewModels<CreateBarcodeViewModel> {
         CreateBarcodeViewModelFactory(barcodeDatabase, settings)
@@ -98,20 +101,25 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
     private val defaultText by unsafeLazy {
         intent?.getStringExtra(DEFAULT_TEXT_KEY).orEmpty()
     }
+    private var optionsMenu: Menu? = null
+    private var isCreateButtonEnabled = false
     var isCreateBarcodeButtonEnabled : Boolean
-        get() = false
+        get() = isCreateButtonEnabled
         set(enabled) {
-            val iconId = if (enabled) {
-                R.drawable.ic_confirm_enabled
-            }
-            else {
-                R.drawable.ic_confirm_disabled
-            }
-            binding.toolbar.menu?.findItem(R.id.item_create_barcode)?.apply {
-                icon = ContextCompat.getDrawable(this@CreateBarcodeActivity , iconId)
-                isEnabled = enabled
-            }
+            isCreateButtonEnabled = enabled
+            updateCreateMenuState()
         }
+
+    private fun updateCreateMenuState() {
+        val menuItem = optionsMenu?.findItem(R.id.item_create_barcode) ?: return
+        val iconId = if (isCreateButtonEnabled) {
+            R.drawable.ic_confirm_enabled
+        } else {
+            R.drawable.ic_confirm_disabled
+        }
+        menuItem.icon = ContextCompat.getDrawable(this , iconId)
+        menuItem.isEnabled = isCreateButtonEnabled
+    }
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,12 +129,56 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
         binding = ActivityCreateBarcodeBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        handleToolbarBackClicked()
-        handleToolbarMenuItemClicked()
+        setupToolbarWithUpNavigation(binding.toolbar)
         showToolbarTitle()
-        showToolbarMenu()
         showFragment()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val menuId = resolveMenuId() ?: run {
+            optionsMenu = null
+            return false
+        }
+        menuInflater.inflate(menuId, menu)
+        optionsMenu = menu
+        updateCreateMenuState()
+        return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        updateCreateMenuState()
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.item_phone -> {
+                choosePhone()
+                true
+            }
+
+            R.id.item_contacts -> {
+                requestContactsPermissions()
+                true
+            }
+
+            R.id.item_create_barcode -> {
+                createBarcode()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun resolveMenuId(): Int? {
+        return when (barcodeSchema) {
+            BarcodeSchema.APP -> null
+            BarcodeSchema.PHONE , BarcodeSchema.SMS , BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
+            BarcodeSchema.VCARD , BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
+            else -> R.menu.menu_create_barcode
+        }
     }
 
     @Deprecated("Deprecated in Java")
@@ -195,36 +247,9 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
         }
     }
 
-    private fun handleToolbarBackClicked() {
-        binding.toolbar.setNavigationOnClickListener {
-            finish()
-        }
-    }
-
-    private fun handleToolbarMenuItemClicked() {
-        binding.toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.item_phone -> choosePhone()
-                R.id.item_contacts -> requestContactsPermissions()
-                R.id.item_create_barcode -> createBarcode()
-            }
-            return@setOnMenuItemClickListener true
-        }
-    }
-
     private fun showToolbarTitle() {
         val titleId = barcodeSchema?.toStringId() ?: barcodeFormat.toStringId()
-        binding.toolbar.setTitle(titleId)
-    }
-
-    private fun showToolbarMenu() {
-        val menuId = when (barcodeSchema) {
-            BarcodeSchema.APP -> return
-            BarcodeSchema.PHONE , BarcodeSchema.SMS , BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
-            BarcodeSchema.VCARD , BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
-            else -> R.menu.menu_create_barcode
-        }
-        binding.toolbar.inflateMenu(menuId)
+        setTitle(titleId)
     }
 
     private fun showFragment() {
