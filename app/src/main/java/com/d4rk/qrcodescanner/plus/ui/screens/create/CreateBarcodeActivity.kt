@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
@@ -16,7 +17,6 @@ import com.d4rk.qrcodescanner.plus.di.barcodeParser
 import com.d4rk.qrcodescanner.plus.di.contactHelper
 import com.d4rk.qrcodescanner.plus.di.permissionsHelper
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.domain.history.save
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
@@ -57,13 +57,19 @@ import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.BarcodeFormat
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
     private lateinit var binding : ActivityCreateBarcodeBinding
+    private val viewModel by viewModels<CreateBarcodeViewModel> {
+        CreateBarcodeViewModelFactory(barcodeDatabase, settings)
+    }
 
     companion object {
         private const val BARCODE_FORMAT_KEY = "BARCODE_FORMAT_KEY"
@@ -145,7 +151,7 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
     }
 
     override fun onAppClicked(packageName : String) {
-        createBarcode(App.fromPackage(packageName))
+        createBarcodeFromSchema(App.fromPackage(packageName))
     }
 
     private fun createBarcodeImmediatelyIfNeeded() : Boolean {
@@ -170,9 +176,10 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
     private fun createBarcodeForPlainText() {
         val text = intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty()
         val schema = barcodeParser.parseSchema(barcodeFormat , text)
-        createBarcode(schema , true)
+        createBarcodeFromSchema(schema , true)
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private fun createBarcodeForVCard() {
         val uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(Intent.EXTRA_STREAM , Uri::class.java) ?: return
@@ -181,19 +188,10 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
             @Suppress("DEPRECATION") intent?.extras?.get(Intent.EXTRA_STREAM) as? Uri ?: return
         }
         lifecycleScope.launch {
-            val text = readDataFromVCardUri(uri).orEmpty()
-            val schema = barcodeParser.parseSchema(barcodeFormat , text)
-            createBarcode(schema , true)
-        }
-    }
-
-    private suspend fun readDataFromVCardUri(uri : Uri) : String? {
-        return withContext(Dispatchers.IO) {
-            runCatching {
-                contentResolver.openInputStream(uri)?.let { stream ->
-                    stream.reader().use { it.readText() }
-                }
-            }.getOrNull()
+            val creationFlow = viewModel.readVCard(contentResolver , uri)
+                .map { text -> barcodeParser.parseSchema(barcodeFormat , text) }
+                .flatMapConcat { schema -> createBarcodeFlow(schema , true) }
+            collectCreationFlow(creationFlow)
         }
     }
 
@@ -306,27 +304,45 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
 
     private fun createBarcode() {
         val schema = getCurrentFragment().getBarcodeSchema()
-        createBarcode(schema)
+        createBarcodeFromSchema(schema)
     }
 
-    private fun createBarcode(schema : Schema , finish : Boolean = false) {
-        val barcode = Barcode(
-            text = schema.toBarcodeText() , formattedText = schema.toFormattedText() , format = barcodeFormat , schema = schema.schema , date = System.currentTimeMillis() , isGenerated = true
-        )
-        if (settings.saveCreatedBarcodesToHistory.not()) {
-            navigateToBarcodeScreen(barcode , finish)
-            return
-        }
+    private fun createBarcodeFromSchema(schema : Schema , finish : Boolean = false) {
         lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.IO) {
-                    barcodeDatabase.save(barcode , settings.doNotSaveDuplicates)
-                }
-            }.onSuccess { id ->
-                navigateToBarcodeScreen(barcode.copy(id = id), finish)
-            }.onFailure(::showError)
+            collectCreationFlow(createBarcodeFlow(schema , finish))
         }
     }
+
+    private fun createBarcodeFlow(schema : Schema , finish : Boolean) : Flow<CreateBarcodeNavigation> {
+        val barcode = buildBarcode(schema)
+        return viewModel.saveBarcode(barcode).map { savedBarcode ->
+            CreateBarcodeNavigation(savedBarcode , finish)
+        }
+    }
+
+    private suspend fun collectCreationFlow(flow : Flow<CreateBarcodeNavigation>) {
+        flow
+            .catch { showError(it) }
+            .collect { navigation ->
+                navigateToBarcodeScreen(navigation.barcode , navigation.finish)
+            }
+    }
+
+    private fun buildBarcode(schema : Schema) : Barcode {
+        return Barcode(
+            text = schema.toBarcodeText() ,
+            formattedText = schema.toFormattedText() ,
+            format = barcodeFormat ,
+            schema = schema.schema ,
+            date = System.currentTimeMillis() ,
+            isGenerated = true
+        )
+    }
+
+    private data class CreateBarcodeNavigation(
+        val barcode : Barcode ,
+        val finish : Boolean
+    )
     private fun getCurrentFragment() : BaseCreateBarcodeFragment {
         return supportFragmentManager.findFragmentById(R.id.container) as BaseCreateBarcodeFragment
     }

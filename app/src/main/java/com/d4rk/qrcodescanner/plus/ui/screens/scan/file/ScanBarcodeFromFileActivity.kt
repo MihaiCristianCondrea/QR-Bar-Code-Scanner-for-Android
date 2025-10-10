@@ -2,9 +2,6 @@ package com.d4rk.qrcodescanner.plus.ui.screens.scan.file
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -14,27 +11,25 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.net.toUri
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityScanBarcodeFromFileBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
 import com.d4rk.qrcodescanner.plus.di.barcodeImageScanner
 import com.d4rk.qrcodescanner.plus.di.barcodeParser
 import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.domain.history.save
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
-import com.google.zxing.NotFoundException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
+import kotlinx.coroutines.flow.collectLatest
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
     private lateinit var binding : ActivityScanBarcodeFromFileBinding
@@ -48,6 +43,16 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
             handlePickedImage(uri)
         }
 
+    private val viewModel : ScanBarcodeFromFileViewModel by viewModels {
+        ScanBarcodeFromFileViewModelFactory(
+            application = application ,
+            barcodeImageScanner = barcodeImageScanner ,
+            barcodeParser = barcodeParser ,
+            barcodeDatabase = barcodeDatabase ,
+            settings = settings
+        )
+    }
+
     companion object {
         private const val STATE_CURRENT_IMAGE_URI = "state_current_image_uri"
         fun start(context : Context) {
@@ -56,15 +61,14 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
-    private var lastScanResult : MlKitBarcode? = null
-    private var scanJob : Job? = null
-    private var currentImageUri : Uri? = null
+    private var displayedImageUri : Uri? = null
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanBarcodeFromFileBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         binding.buttonScan.isEnabled = false
+        observeViewModel()
         val restored = savedInstanceState?.getString(STATE_CURRENT_IMAGE_URI)?.let {
             handlePickedImage(it.toUri())
             true
@@ -78,7 +82,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     override fun onSaveInstanceState(outState : Bundle) {
         super.onSaveInstanceState(outState)
-        currentImageUri?.let { uri ->
+        viewModel.uiState.value.selectedImageUri?.let { uri ->
             outState.putString(STATE_CURRENT_IMAGE_URI , uri.toString())
         }
     }
@@ -93,7 +97,6 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        scanJob?.cancel()
     }
 
     private fun selectImage() {
@@ -137,48 +140,8 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     private fun handleScanButtonClicked() {
         binding.buttonScan.setOnClickListener {
-            val uri = currentImageUri
-            if (uri != null) {
-                scanSelectedImage(uri)
-            }
+            viewModel.scanSelectedImage()
         }
-    }
-
-    private fun scanSelectedImage(uri : Uri) {
-        scanJob?.cancel()
-        binding.buttonScan.isEnabled = false
-        scanJob = lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.Default) {
-                    val bitmap = loadBitmapFromUri(uri)
-                    barcodeImageScanner.parse(bitmap)
-                }
-            }.onSuccess { result ->
-                lastScanResult = result
-                saveScanResult()
-            }.onFailure { error ->
-                lastScanResult = null
-                if (error !is NotFoundException) showError(error)
-                    binding.buttonScan.isEnabled = true
-            }
-        }
-    }
-
-    private suspend fun loadBitmapFromUri(uri : Uri) : Bitmap {
-        return run {
-            withContext(Dispatchers.IO) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    ImageDecoder.createSource(contentResolver, uri).let { source ->
-                        ImageDecoder.decodeBitmap(source)
-                    }
-                } else {
-
-                    contentResolver.openInputStream(uri)?.use { inputStream ->
-                        BitmapFactory.decodeStream(inputStream)
-                    }
-                }
-            }
-        } ?: throw IllegalStateException("Unable to decode image")
     }
 
     private fun handlePickedImage(uri : Uri?) {
@@ -186,10 +149,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
             finish()
             return
         }
-        currentImageUri = uri
-        lastScanResult = null
-        binding.buttonScan.isEnabled = true
-        binding.imageViewPreview.setImageURI(uri)
+        viewModel.onImagePicked(uri)
     }
 
     private fun handleIncomingIntent(intent : Intent?) : Boolean {
@@ -225,24 +185,38 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
-    private fun saveScanResult() {
-        lastScanResult?.let(barcodeParser::parse)?.let { barcode ->
-            if (settings.saveScannedBarcodesToHistory.not()) {
-                navigateToBarcodeScreen(barcode)
-                return
-            }
-            lifecycleScope.launch {
-                runCatching {
-                    withContext(Dispatchers.IO) { barcodeDatabase.save(barcode, settings.doNotSaveDuplicates) }
-                }.onSuccess { id ->
-                    navigateToBarcodeScreen(barcode.copy(id = id))
-                }.onFailure(::showError)
-            }
-        }
-    }
-
     private fun navigateToBarcodeScreen(barcode : Barcode) {
         BarcodeActivity.start(this , barcode)
         finish()
+    }
+
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.uiState.collectLatest { uiState ->
+                        binding.buttonScan.isEnabled = uiState.isScanButtonEnabled
+                        val uri = uiState.selectedImageUri
+                        if (uri != displayedImageUri) {
+                            displayedImageUri = uri
+                            if (uri != null) {
+                                binding.imageViewPreview.setImageURI(uri)
+                            }
+                            else {
+                                binding.imageViewPreview.setImageDrawable(null)
+                            }
+                        }
+                    }
+                }
+                launch {
+                    viewModel.events.collect { event ->
+                        when (event) {
+                            is ScanBarcodeFromFileEvent.NavigateToBarcode -> navigateToBarcodeScreen(event.barcode)
+                            is ScanBarcodeFromFileEvent.ShowError -> showError(event.throwable)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

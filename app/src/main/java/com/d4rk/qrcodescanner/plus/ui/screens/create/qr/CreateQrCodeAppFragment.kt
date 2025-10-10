@@ -16,8 +16,11 @@ import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding : FragmentCreateQrCodeAppBinding
@@ -45,17 +48,18 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun loadApps() {
-        showLoading(true)
         viewLifecycleOwner.lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.IO) { getApps() }
-            }.onSuccess { apps ->
-                showLoading(false)
-                showApps(apps)
-            }.onFailure { error ->
-                showLoading(false)
-                showError(error)
-            }
+            flow { emit(getApps()) }
+                .flowOn(Dispatchers.IO)
+                .onStart { showLoading(true) }
+                .catch { error ->
+                    showLoading(false)
+                    showError(error)
+                }
+                .collect { apps ->
+                    showLoading(false)
+                    showApps(apps)
+                }
         }
     }
 
