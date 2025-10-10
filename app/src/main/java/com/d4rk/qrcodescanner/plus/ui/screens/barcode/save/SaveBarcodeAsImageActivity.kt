@@ -18,7 +18,9 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class SaveBarcodeAsImageActivity : BaseActivity() {
@@ -79,26 +81,45 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
 
     private fun saveBarcode() {
         showLoading(true)
+        val saveAs = binding.spinnerSaveAs.selectedItemPosition
         lifecycleScope.launch {
-            runCatching {
-                when (binding.spinnerSaveAs.selectedItemPosition) {
+            val result = runCatching {
+                when (saveAs) {
                     0 -> {
-                        barcodeImageGenerator.generateBitmap(barcode, 640, 640, 2)?.let {
-                            barcodeImageSaver.savePngImageToPublicDirectory(this@SaveBarcodeAsImageActivity, it, barcode)
+                        val bitmap = withContext(Dispatchers.Default) {
+                            barcodeImageGenerator.generateBitmap(barcode, 640, 640, 2)
+                        } ?: throw IllegalStateException("Unable to generate barcode bitmap")
+                        withContext(Dispatchers.IO) {
+                            barcodeImageSaver.savePngImageToPublicDirectory(
+                                this@SaveBarcodeAsImageActivity,
+                                bitmap,
+                                barcode
+                            )
                         }
                     }
+
                     1 -> {
-                        val svg = barcodeImageGenerator.generateSvg(barcode , 640 , 640 , 2)
-                        barcodeImageSaver.saveSvgImageToPublicDirectory(this@SaveBarcodeAsImageActivity , svg , barcode)
+                        val svg = withContext(Dispatchers.Default) {
+                            barcodeImageGenerator.generateSvg(barcode, 640, 640, 2)
+                        }
+                        withContext(Dispatchers.IO) {
+                            barcodeImageSaver.saveSvgImageToPublicDirectory(
+                                this@SaveBarcodeAsImageActivity,
+                                svg,
+                                barcode
+                            )
+                        }
                     }
+
                     else -> Unit
                 }
-            }.onSuccess {
+            }
+            showLoading(false)
+            result.onSuccess {
                 showBarcodeSaved()
-            }.onFailure { e ->
-                showLoading(false)
-                showError(e)
-            }.let { showLoading(false) }
+            }.onFailure { error ->
+                showError(error)
+            }
         }
     }
 

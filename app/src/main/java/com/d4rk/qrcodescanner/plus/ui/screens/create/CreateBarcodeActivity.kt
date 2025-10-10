@@ -180,17 +180,21 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
         else {
             @Suppress("DEPRECATION") intent?.extras?.get(Intent.EXTRA_STREAM) as? Uri ?: return
         }
-        val text = readDataFromVCardUri(uri).orEmpty()
-        val schema = barcodeParser.parseSchema(barcodeFormat , text)
-        createBarcode(schema , true)
+        lifecycleScope.launch {
+            val text = readDataFromVCardUri(uri).orEmpty()
+            val schema = barcodeParser.parseSchema(barcodeFormat , text)
+            createBarcode(schema , true)
+        }
     }
 
-    private fun readDataFromVCardUri(uri : Uri) : String? {
-        return runCatching {
-            contentResolver.openInputStream(uri)?.let { stream ->
-                stream.reader().use { it.readText() }
-            }
-        }.getOrNull()
+    private suspend fun readDataFromVCardUri(uri : Uri) : String? {
+        return withContext(Dispatchers.IO) {
+            runCatching {
+                contentResolver.openInputStream(uri)?.let { stream ->
+                    stream.reader().use { it.readText() }
+                }
+            }.getOrNull()
+        }
     }
 
     private fun handleToolbarBackClicked() {
@@ -292,7 +296,8 @@ class CreateBarcodeActivity : BaseActivity() , AppAdapter.Listener {
 
     private fun startActivityForResultIfExists(intent : Intent , requestCode : Int) {
         if (intent.resolveActivity(packageManager) != null) {
-            startActivityForResultIfExists(intent , requestCode)
+            @Suppress("DEPRECATION")
+            startActivityForResult(intent , requestCode)
         }
         else {
             Snackbar.make(binding.root , R.string.snack_no_app_found , Snackbar.LENGTH_LONG).show()

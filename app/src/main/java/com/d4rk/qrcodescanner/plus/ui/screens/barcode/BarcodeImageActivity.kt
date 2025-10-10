@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeImageBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
@@ -14,6 +15,9 @@ import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -94,19 +98,35 @@ class BarcodeImageActivity : BaseActivity() {
     }
 
     private fun showBarcodeImage() {
-        runCatching {
-            barcodeImageGenerator.generateBitmap(barcode , 2000 , 2000 , 0 , settings.barcodeContentColor , settings.barcodeBackgroundColor)
-        }.onSuccess { bitmap ->
-            binding.let {
-                it.imageViewBarcode.setImageBitmap(bitmap)
-                it.imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
-                it.layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
-                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || settings.areBarcodeColorsInversed) {
-                    it.layoutBarcodeImageBackground.setPadding(0 , 0 , 0 , 0)
+        lifecycleScope.launch {
+            val result = runCatching {
+                withContext(Dispatchers.Default) {
+                    barcodeImageGenerator.generateBitmap(
+                        barcode,
+                        2000,
+                        2000,
+                        0,
+                        settings.barcodeContentColor,
+                        settings.barcodeBackgroundColor
+                    )
                 }
             }
-        }.onFailure {
-            binding.imageViewBarcode.isVisible = false
+            result.onSuccess { bitmap ->
+                if (bitmap == null) {
+                    binding.imageViewBarcode.isVisible = false
+                    return@onSuccess
+                }
+                binding.let {
+                    it.imageViewBarcode.setImageBitmap(bitmap)
+                    it.imageViewBarcode.setBackgroundColor(settings.barcodeBackgroundColor)
+                    it.layoutBarcodeImageBackground.setBackgroundColor(settings.barcodeBackgroundColor)
+                    if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || settings.areBarcodeColorsInversed) {
+                        it.layoutBarcodeImageBackground.setPadding(0, 0, 0, 0)
+                    }
+                }
+            }.onFailure {
+                binding.imageViewBarcode.isVisible = false
+            }
         }
     }
 
