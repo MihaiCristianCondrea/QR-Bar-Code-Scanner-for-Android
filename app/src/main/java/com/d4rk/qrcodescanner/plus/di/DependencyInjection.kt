@@ -8,6 +8,7 @@ import com.d4rk.qrcodescanner.plus.domain.barcode.WifiConnector
 import com.d4rk.qrcodescanner.plus.domain.create.ContactHelper
 import com.d4rk.qrcodescanner.plus.domain.create.OTPGenerator
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
@@ -52,6 +53,9 @@ val rotationHelper: RotationHelper
 val AppCompatActivity.barcodeDatabase: BarcodeDatabase
     get() = koin.get()
 
+val AppCompatActivity.barcodeHistoryRepository: BarcodeHistoryRepository
+    get() = koin.get()
+
 val AppCompatActivity.settings: Settings
     get() = koin.get()
 
@@ -59,6 +63,9 @@ val AppCompatActivity.mainPreferencesRepository: MainPreferencesRepository
     get() = koin.get()
 
 val Fragment.barcodeDatabase: BarcodeDatabase
+    get() = koin.get()
+
+val Fragment.barcodeHistoryRepository: BarcodeHistoryRepository
     get() = koin.get()
 
 val Fragment.settings: Settings

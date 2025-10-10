@@ -29,7 +29,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentScanBarcodeFromCameraBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
@@ -52,7 +54,10 @@ import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.jvm.Volatile
@@ -382,42 +387,51 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun saveScannedBarcode(barcode: Barcode) {
-        lifecycleScope.launchWhenStarted { // FIXME: 'fun launchWhenStarted(block: suspend CoroutineScope.() -> Unit): Job' is deprecated. launchWhenStarted is deprecated as it can lead to wasted resources in some cases. Replace with suspending repeatOnLifecycle to run the block whenever the Lifecycle state is at least Lifecycle.State.STARTED.
-            runCatching {
-                barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
-            }.onSuccess { id ->
-                barcode.copy(id = id).let { savedBarcode ->
-                    lastResult = barcode
-                    pendingBarcode = null
-                    if (settings.continuousScanning) {
-                        scheduleResumeScanning(showMessage = true)
-                    } else {
-                        navigateToBarcodeScreen(savedBarcode)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                val result = runCatching {
+                    withContext(Dispatchers.IO) {
+                        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
                     }
                 }
-            }.onFailure {
-                lastResult = barcode
-                pendingBarcode = null
-                showError(it)
+                result.onSuccess { id ->
+                    barcode.copy(id = id).let { savedBarcode ->
+                        lastResult = barcode
+                        pendingBarcode = null
+                        if (settings.continuousScanning) {
+                            scheduleResumeScanning(showMessage = true)
+                        } else {
+                            navigateToBarcodeScreen(savedBarcode)
+                        }
+                    }
+                }.onFailure {
+                    lastResult = barcode
+                    pendingBarcode = null
+                    showError(it)
+                }
+                return@repeatOnLifecycle
             }
         }
     }
 
     private fun scheduleResumeScanning(showMessage: Boolean) {
-        lifecycleScope.launchWhenStarted { // FIXME: 'fun launchWhenStarted(block: suspend CoroutineScope.() -> Unit): Job' is deprecated. launchWhenStarted is deprecated as it can lead to wasted resources in some cases. Replace with suspending repeatOnLifecycle to run the block whenever the Lifecycle state is at least Lifecycle.State.STARTED.
-            if (!isAdded) {
-                return@launchWhenStarted
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                if (!isAdded) {
+                    return@repeatOnLifecycle
+                }
+                delay(CONTINUOUS_SCANNING_PREVIEW_DELAY)
+                if (!isAdded) {
+                    return@repeatOnLifecycle
+                }
+                if (showMessage) {
+                    view?.let { Snackbar.make(it, R.string.saved, Snackbar.LENGTH_LONG).show() }
+                }
+                binding.barcodeOverlay.clear()
+                pendingBarcode = null
+                isHandlingResult = false
+                return@repeatOnLifecycle
             }
-            delay(CONTINUOUS_SCANNING_PREVIEW_DELAY)
-            if (!isAdded) {
-                return@launchWhenStarted
-            }
-            if (showMessage) {
-                view?.let { Snackbar.make(it, R.string.saved, Snackbar.LENGTH_LONG).show() }
-            }
-            binding.barcodeOverlay.clear()
-            pendingBarcode = null
-            isHandlingResult = false
         }
     }
 

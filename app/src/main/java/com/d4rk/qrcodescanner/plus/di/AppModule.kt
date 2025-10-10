@@ -10,6 +10,7 @@ import com.d4rk.qrcodescanner.plus.domain.create.OTPGenerator
 import com.d4rk.qrcodescanner.plus.domain.history.BARCODE_DATABASE_MIGRATION_1_2
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabaseFactory
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
@@ -30,6 +31,8 @@ val appModule = module {
     }
 
     single<BarcodeDatabase> { get<BarcodeDatabaseFactory>().getBarcodeDatabase() }
+
+    single { BarcodeHistoryRepository(get()) }
 
     single { Settings(androidContext()) }
 

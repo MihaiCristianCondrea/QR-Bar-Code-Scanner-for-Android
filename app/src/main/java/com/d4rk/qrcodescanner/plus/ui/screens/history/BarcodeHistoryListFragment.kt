@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryListBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
+import com.d4rk.qrcodescanner.plus.di.barcodeHistoryRepository
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryFilter
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.orZero
@@ -26,9 +25,19 @@ class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
     private lateinit var _binding : FragmentBarcodeHistoryListBinding
     private val binding get() = _binding
     private var hasLoadedEmptyStateAd = false
+    private val historyRepository by lazy { barcodeHistoryRepository }
+    private val historyFilter : BarcodeHistoryFilter by lazy {
+        when (arguments?.getInt(TYPE_KEY).orZero()) {
+            TYPE_ALL -> BarcodeHistoryFilter.ALL
+            TYPE_FAVORITES -> BarcodeHistoryFilter.FAVORITES
+            else -> throw IllegalStateException("Unknown history filter")
+        }
+    }
+    private val viewModel : BarcodeHistoryListViewModel by viewModels {
+        BarcodeHistoryListViewModelFactory(historyRepository , historyFilter)
+    }
 
     companion object {
-        private const val PAGE_SIZE = 20
         private const val TYPE_ALL = 0
         private const val TYPE_FAVORITES = 1
         private const val TYPE_KEY = "TYPE_KEY"
@@ -58,7 +67,7 @@ class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
     override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
         super.onViewCreated(view , savedInstanceState)
         initRecyclerView()
-        loadHistory()
+        observeHistory()
         observeHistoryLoadState()
     }
 
@@ -73,20 +82,12 @@ class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
         }
     }
 
-    private fun loadHistory() {
-        val pager = Pager(
-            PagingConfig(pageSize = PAGE_SIZE , enablePlaceholders = false)
-        ) {
-            when (arguments?.getInt(TYPE_KEY).orZero()) {
-                TYPE_ALL -> barcodeDatabase.getAll()
-                TYPE_FAVORITES -> barcodeDatabase.getFavorites()
-                else -> throw IllegalStateException()
-            }
-        }.flow.cachedIn(viewLifecycleOwner.lifecycleScope)
-
+    private fun observeHistory() {
         viewLifecycleOwner.lifecycleScope.launch {
-            pager.collectLatest { pagingData ->
-                scanHistoryAdapter.submitData(pagingData)
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.history.collectLatest { pagingData ->
+                    scanHistoryAdapter.submitData(pagingData)
+                }
             }
         }
     }
