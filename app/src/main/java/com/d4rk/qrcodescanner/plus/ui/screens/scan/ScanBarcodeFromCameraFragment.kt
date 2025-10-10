@@ -30,8 +30,8 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentScanBarcodeFromCameraBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
@@ -55,9 +55,14 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.jvm.Volatile
@@ -92,6 +97,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private var currentZoomProgress: Int = 0
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var lastPreviewColorUpdateTimestamp: Long = 0L
+    private var resumeScanningJob: Job? = null
     @Volatile
     @ColorInt
     private var lastAppliedIconColor: Int? = null
@@ -224,6 +230,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         binding.barcodeOverlay.clear()
         isHandlingResult = false
         pendingBarcode = null
+        resumeScanningJob?.cancel()
+        resumeScanningJob = null
     }
 
     @OptIn(ExperimentalGetImage::class)
@@ -387,53 +395,54 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun saveScannedBarcode(barcode: Barcode) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val result = runCatching {
-                    withContext(Dispatchers.IO) {
-                        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
-                    }
+        persistBarcode(barcode)
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
+            .onEach { id ->
+                val savedBarcode = barcode.copy(id = id)
+                lastResult = barcode
+                pendingBarcode = null
+                if (settings.continuousScanning) {
+                    scheduleResumeScanning(showMessage = true)
+                } else {
+                    navigateToBarcodeScreen(savedBarcode)
                 }
-                result.onSuccess { id ->
-                    barcode.copy(id = id).let { savedBarcode ->
-                        lastResult = barcode
-                        pendingBarcode = null
-                        if (settings.continuousScanning) {
-                            scheduleResumeScanning(showMessage = true)
-                        } else {
-                            navigateToBarcodeScreen(savedBarcode)
-                        }
-                    }
-                }.onFailure {
-                    lastResult = barcode
-                    pendingBarcode = null
-                    showError(it)
-                }
-                return@repeatOnLifecycle
             }
-        }
+            .catch { throwable ->
+                lastResult = barcode
+                pendingBarcode = null
+                showError(throwable)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
+    private fun persistBarcode(barcode: Barcode) = flow {
+        val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
+        emit(id)
+    }.flowOn(Dispatchers.IO)
+
     private fun scheduleResumeScanning(showMessage: Boolean) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+        resumeScanningJob?.cancel()
+        resumeScanningJob = resumeScanningFlow(showMessage)
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
+            .onEach { shouldShowMessage ->
                 if (!isAdded) {
-                    return@repeatOnLifecycle
+                    return@onEach
                 }
-                delay(CONTINUOUS_SCANNING_PREVIEW_DELAY)
-                if (!isAdded) {
-                    return@repeatOnLifecycle
-                }
-                if (showMessage) {
+                if (shouldShowMessage) {
                     view?.let { Snackbar.make(it, R.string.saved, Snackbar.LENGTH_LONG).show() }
                 }
                 binding.barcodeOverlay.clear()
                 pendingBarcode = null
                 isHandlingResult = false
-                return@repeatOnLifecycle
             }
-        }
+            .onCompletion { resumeScanningJob = null }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
+
+    private fun resumeScanningFlow(showMessage: Boolean) = flow {
+        delay(CONTINUOUS_SCANNING_PREVIEW_DELAY)
+        emit(showMessage)
+    }.flowOn(Dispatchers.Default)
 
     private fun showScanConfirmationDialog(barcode: Barcode) {
         val dialog = ConfirmBarcodeDialogFragment.newInstance(barcode)
