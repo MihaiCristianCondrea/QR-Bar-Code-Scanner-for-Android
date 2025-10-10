@@ -10,15 +10,22 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.main.StartDestinationPreference
 import com.d4rk.qrcodescanner.plus.domain.main.ThemePreference
 import com.google.android.material.navigation.NavigationBarView
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.runningFold
 import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel(
-    preferencesRepository : MainPreferencesRepository
+    private val preferencesRepository : MainPreferencesRepository ,
+    private val computationDispatcher : CoroutineDispatcher = Dispatchers.Default
 ) : ViewModel() {
 
     private data class UiAccumulator(
@@ -57,6 +64,14 @@ class MainViewModel(
         }
         .drop(1)
         .map { accumulator -> accumulator.uiState }
+        .flowOn(computationDispatcher)
+        .catch { throwable ->
+            if (throwable is CancellationException) {
+                throw throwable
+            }
+            emit(MainUiState())
+        }
+        .distinctUntilChanged()
         .stateIn(viewModelScope , SharingStarted.WhileSubscribed(5_000) , MainUiState())
 
     private fun ThemePreference.toThemeMode() : Int {

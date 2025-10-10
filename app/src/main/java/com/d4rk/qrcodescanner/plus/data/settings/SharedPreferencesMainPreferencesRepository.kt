@@ -9,13 +9,19 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferences
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.main.StartDestinationPreference
 import com.d4rk.qrcodescanner.plus.domain.main.ThemePreference
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flowOn
 
-class SharedPreferencesMainPreferencesRepository(context : Context) : MainPreferencesRepository {
+class SharedPreferencesMainPreferencesRepository(
+    context : Context ,
+    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO
+) : MainPreferencesRepository {
 
     private val preferences = PreferenceManager.getDefaultSharedPreferences(context)
     private val resources = context.resources
@@ -43,7 +49,10 @@ class SharedPreferencesMainPreferencesRepository(context : Context) : MainPrefer
 
         preferences.registerOnSharedPreferenceChangeListener(listener)
         awaitClose { preferences.unregisterOnSharedPreferenceChangeListener(listener) }
-    }.conflate().distinctUntilChanged()
+    }
+        .flowOn(ioDispatcher)
+        .conflate()
+        .distinctUntilChanged()
 
     private fun readMainPreferences() : MainPreferences {
         val themePreference = preferences.getString(themeKey , defaultThemeValue)
