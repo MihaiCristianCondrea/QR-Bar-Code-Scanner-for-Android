@@ -4,51 +4,75 @@ import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.d4rk.qrcodescanner.plus.data.startup.StartupConsentRepository
 import com.d4rk.qrcodescanner.plus.databinding.ActivityStartupBinding
 import com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity
-import com.google.android.ump.ConsentForm
-import com.google.android.ump.ConsentInformation
-import com.google.android.ump.ConsentRequestParameters
-import com.google.android.ump.UserMessagingPlatform
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class StartupActivity : AppCompatActivity() {
     private lateinit var binding : ActivityStartupBinding
-    private lateinit var consentInformation : ConsentInformation
-    private lateinit var consentForm : ConsentForm
+
+    private val viewModel : StartupViewModel by viewModels {
+        StartupViewModelFactory(StartupConsentRepository(applicationContext))
+    }
+
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStartupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val params = ConsentRequestParameters.Builder().setTagForUnderAgeOfConsent(false).build()
-        consentInformation = UserMessagingPlatform.getConsentInformation(this)
-        consentInformation.requestConsentInfoUpdate(this , params , {
-            if (consentInformation.isConsentFormAvailable) {
-                loadForm()
-            }
-        } , {})
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+        observeViewModel()
+        viewModel.initialize(this)
         binding.buttonBrowsePrivacyPolicyAndTermsOfService.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW , "https://sites.google.com/view/d4rk7355608/more/apps/privacy-policy".toUri()))
         }
         binding.floatingButtonAgree.setOnClickListener {
-            startActivity(Intent(this , MainActivity::class.java))
+            viewModel.onAgreeClicked()
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS) , 1)
         }
     }
 
-    private fun loadForm() {
-        UserMessagingPlatform.loadConsentForm(this , { consentForm ->
-            this.consentForm = consentForm
-            if (consentInformation.consentStatus == ConsentInformation.ConsentStatus.REQUIRED) {
-                consentForm.show(this) {
-                    loadForm()
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.uiState.collectLatest { uiState ->
+                        binding.progressIndicator.isVisible = uiState.isLoading
+                        binding.floatingButtonAgree.isEnabled = uiState.isLoading.not()
+                        uiState.errorMessage?.let { message ->
+                            Toast.makeText(this@StartupActivity , message , Toast.LENGTH_LONG).show()
+                            viewModel.clearError()
+                        }
+                    }
+                }
+                launch {
+                    viewModel.events.collectLatest { event ->
+                        when (event) {
+                            StartupUiEvent.NavigateToMain -> {
+                                startActivity(Intent(this@StartupActivity , MainActivity::class.java))
+                                finish()
+                            }
+                            is StartupUiEvent.ShowConsentForm -> {
+                                event.consentForm.show(this@StartupActivity) {
+                                    viewModel.onConsentFormDismissed(this@StartupActivity)
+                                }
+                            }
+                        }
+                    }
                 }
             }
-        } , {})
+        }
     }
 }
