@@ -1,69 +1,70 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.create.qr
 
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.databinding.ItemAppBinding
 
-class AppAdapter(private val listener : Listener) : RecyclerView.Adapter<AppAdapter.ViewHolder>() {
-    private lateinit var binding : ItemAppBinding
+class AppAdapter(private val listener: Listener) :
+    ListAdapter<ResolveInfo, AppAdapter.ViewHolder>(DIFF) {
 
     interface Listener {
-        fun onAppClicked(packageName : String)
+        fun onAppClicked(packageName: String)
     }
 
-    var apps : List<ResolveInfo> = emptyList()
-        @SuppressLint("NotifyDataSetChanged") set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount() : Int {
-        return apps.size
+    init {
+        setHasStableIds(true)
     }
 
-    override fun onCreateViewHolder(parent : ViewGroup , viewType : Int) : ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        binding = ItemAppBinding.inflate(inflater , parent , false)
-        return ViewHolder(binding)
+    override fun getItemId(position: Int): Long {
+        val item = getItem(position)
+        val key = "${item.activityInfo?.packageName}:${item.activityInfo?.name}"
+        return key.hashCode().toLong()
     }
 
-    override fun onBindViewHolder(holder : ViewHolder , position : Int) {
-        val app = apps[position]
-        val isLastPosition = position == apps.lastIndex
-        holder.show(app , isLastPosition)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemAppBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding, listener)
     }
 
-    inner class ViewHolder(private val binding : ItemAppBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val packageManager : PackageManager
-            get() = itemView.context.applicationContext.packageManager
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val isLast = position == itemCount - 1
+        holder.bind(getItem(position), isLast)
+    }
 
-        fun show(app : ResolveInfo , isLastPosition : Boolean) {
-            showName(app)
-            showIcon(app)
-            showDelimiter(isLastPosition)
-            handleItemClicked(app)
-        }
+    class ViewHolder(private val binding: ItemAppBinding, private val listener: Listener) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        private fun showName(app : ResolveInfo) {
-            binding.textView.text = app.loadLabel(packageManager)
-        }
+        private val pm: PackageManager
+            get() = itemView.context.packageManager
 
-        private fun showIcon(app : ResolveInfo) {
-            binding.imageView.setImageDrawable(app.loadIcon(packageManager))
-        }
-
-        private fun showDelimiter(isLastPosition : Boolean) {
-            binding.delimiter.isInvisible = isLastPosition
-        }
-
-        private fun handleItemClicked(app : ResolveInfo) {
+        fun bind(app: ResolveInfo, isLast: Boolean) {
+            binding.textView.text = app.loadLabel(pm)
+            binding.imageView.setImageDrawable(app.loadIcon(pm))
+            binding.delimiter.isInvisible = isLast
             itemView.setOnClickListener {
                 listener.onAppClicked(app.activityInfo?.packageName.orEmpty())
+            }
+        }
+    }
+
+    private companion object {
+        val DIFF = object : DiffUtil.ItemCallback<ResolveInfo>() {
+            override fun areItemsTheSame(oldItem: ResolveInfo, newItem: ResolveInfo): Boolean {
+                val oldPackageName = oldItem.activityInfo?.packageName
+                val oldActivityName = oldItem.activityInfo?.name
+                val newPackageName = newItem.activityInfo?.packageName
+                val newActivityName = newItem.activityInfo?.name
+                return oldPackageName == newPackageName && oldActivityName == newActivityName
+            }
+
+            override fun areContentsTheSame(oldItem: ResolveInfo, newItem: ResolveInfo): Boolean {
+                return areItemsTheSame(oldItem, newItem)
             }
         }
     }

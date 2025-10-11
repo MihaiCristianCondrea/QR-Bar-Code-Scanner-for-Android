@@ -1,4 +1,4 @@
-package com.d4rk.qrcodescanner.plus.ui.screens.settings.help
+package com.d4rk.qrcodescanner.plus.ui.screens.help
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -26,27 +26,27 @@ import com.d4rk.qrcodescanner.plus.data.help.ReviewRequestResult
 import com.d4rk.qrcodescanner.plus.databinding.ActivityHelpBinding
 import com.d4rk.qrcodescanner.plus.databinding.DialogVersionInfoBinding
 import com.d4rk.qrcodescanner.plus.databinding.ItemHelpFaqBinding
-import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
+import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
 import com.d4rk.qrcodescanner.plus.utils.helpers.OpenSourceLicensesHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManagerFactory
-import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
-class HelpActivity : BaseActivity() {
+class HelpActivity : UpNavigationActivity() {
 
-    private lateinit var binding : ActivityHelpBinding
+    private lateinit var binding: ActivityHelpBinding
     private val handler = Handler(Looper.getMainLooper())
-    private var reviewRequestJob : Job? = null
+    private var reviewRequestJob: Job? = null
 
-    private val helpViewModel : HelpViewModel by viewModels {
+    private val helpViewModel: HelpViewModel by viewModels {
         val reviewManager = ReviewManagerFactory.create(this)
         HelpViewModelFactory(HelpRepository(reviewManager))
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -61,12 +61,12 @@ class HelpActivity : BaseActivity() {
         handler.postDelayed({ binding.fabContactSupport.shrink() }, FAB_AUTO_SHRINK_DELAY_MS)
     }
 
-    override fun onCreateOptionsMenu(menu : Menu) : Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_feedback, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 finish()
@@ -107,15 +107,6 @@ class HelpActivity : BaseActivity() {
         }
     }
 
-    @SuppressLint("RestrictedApi")
-    override fun onMenuOpened(featureId : Int, menu : Menu) : Boolean {
-        if (menu is MenuBuilder) {
-            @Suppress("UsePropertyAccessSyntax")
-            menu.setOptionalIconsVisible(true)
-        }
-        return super.onMenuOpened(featureId, menu)
-    }
-
     private fun showVersionInfoDialog() {
         val dialogBinding = DialogVersionInfoBinding.inflate(LayoutInflater.from(this))
         dialogBinding.appIcon.setImageResource(R.mipmap.ic_launcher)
@@ -136,13 +127,14 @@ class HelpActivity : BaseActivity() {
         }.onFailure {
             startActivity(
                 Intent(
-                    Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$appPackageName".toUri()
+                    Intent.ACTION_VIEW,
+                    "https://play.google.com/store/apps/details?id=$appPackageName".toUri()
                 )
             )
         }
     }
 
-    private fun openLink(url : String) {
+    private fun openLink(url: String) {
         val browserIntent = Intent(Intent.ACTION_VIEW, url.toUri())
         startActivity(browserIntent)
     }
@@ -194,12 +186,13 @@ class HelpActivity : BaseActivity() {
         reviewRequestJob?.invokeOnCompletion { reviewRequestJob = null }
     }
 
-    private suspend fun handleInAppReview(reviewInfo : ReviewInfo) {
+    private suspend fun handleInAppReview(reviewInfo: ReviewInfo) {
         helpViewModel.launchReviewFlow(this, reviewInfo).collect { launchResult ->
             binding.fabContactSupport.isEnabled = true
             when (launchResult) {
                 ReviewLaunchResult.Success -> {
-                    Snackbar.make(binding.root, R.string.snack_feedback, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.snack_feedback, Snackbar.LENGTH_SHORT)
+                        .show()
                 }
 
                 is ReviewLaunchResult.Error -> launchGooglePlayReviews()

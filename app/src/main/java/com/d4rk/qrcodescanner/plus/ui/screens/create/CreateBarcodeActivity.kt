@@ -68,8 +68,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
-class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
-    private lateinit var binding : ActivityCreateBarcodeBinding
+class CreateBarcodeActivity : UpNavigationActivity(), AppAdapter.Listener {
+    private lateinit var binding: ActivityCreateBarcodeBinding
     private val viewModel by viewModels<CreateBarcodeViewModel> {
         CreateBarcodeViewModelFactory(barcodeDatabase, settings)
     }
@@ -82,28 +82,34 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
         private const val CHOOSE_CONTACT_REQUEST_CODE = 2
         private const val CONTACTS_PERMISSION_REQUEST_CODE = 101
         private val CONTACTS_PERMISSIONS = arrayOf(Manifest.permission.READ_CONTACTS)
-        fun start(context : Context , barcodeFormat : BarcodeFormat , barcodeSchema : BarcodeSchema? = null , defaultText : String? = null) {
-            val intent = Intent(context , CreateBarcodeActivity::class.java).apply {
-                putExtra(BARCODE_FORMAT_KEY , barcodeFormat.ordinal)
-                putExtra(BARCODE_SCHEMA_KEY , barcodeSchema?.ordinal ?: - 1)
-                putExtra(DEFAULT_TEXT_KEY , defaultText)
+        fun start(
+            context: Context,
+            barcodeFormat: BarcodeFormat,
+            barcodeSchema: BarcodeSchema? = null,
+            defaultText: String? = null
+        ) {
+            val intent = Intent(context, CreateBarcodeActivity::class.java).apply {
+                putExtra(BARCODE_FORMAT_KEY, barcodeFormat.ordinal)
+                putExtra(BARCODE_SCHEMA_KEY, barcodeSchema?.ordinal ?: -1)
+                putExtra(DEFAULT_TEXT_KEY, defaultText)
             }
             context.startActivity(intent)
         }
     }
 
     private val barcodeFormat by unsafeLazy {
-        BarcodeFormat.entries.getOrNull(intent?.getIntExtra(BARCODE_FORMAT_KEY , - 1) ?: - 1) ?: BarcodeFormat.QR_CODE
+        BarcodeFormat.entries.getOrNull(intent?.getIntExtra(BARCODE_FORMAT_KEY, -1) ?: -1)
+            ?: BarcodeFormat.QR_CODE
     }
     private val barcodeSchema by unsafeLazy {
-        BarcodeSchema.entries.getOrNull(intent?.getIntExtra(BARCODE_SCHEMA_KEY , - 1) ?: - 1)
+        BarcodeSchema.entries.getOrNull(intent?.getIntExtra(BARCODE_SCHEMA_KEY, -1) ?: -1)
     }
     private val defaultText by unsafeLazy {
         intent?.getStringExtra(DEFAULT_TEXT_KEY).orEmpty()
     }
     private var optionsMenu: Menu? = null
     private var isCreateButtonEnabled = false
-    var isCreateBarcodeButtonEnabled : Boolean
+    var isCreateBarcodeButtonEnabled: Boolean
         get() = isCreateButtonEnabled
         set(enabled) {
             isCreateButtonEnabled = enabled
@@ -117,11 +123,11 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
         } else {
             R.drawable.ic_confirm_disabled
         }
-        menuItem.icon = ContextCompat.getDrawable(this , iconId)
+        menuItem.icon = ContextCompat.getDrawable(this, iconId)
         menuItem.isEnabled = isCreateButtonEnabled
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (createBarcodeImmediatelyIfNeeded()) {
             return
@@ -175,15 +181,15 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
     private fun resolveMenuId(): Int? {
         return when (barcodeSchema) {
             BarcodeSchema.APP -> null
-            BarcodeSchema.PHONE , BarcodeSchema.SMS , BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
-            BarcodeSchema.VCARD , BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
+            BarcodeSchema.PHONE, BarcodeSchema.SMS, BarcodeSchema.MMS -> R.menu.menu_create_qr_code_phone
+            BarcodeSchema.VCARD, BarcodeSchema.MECARD -> R.menu.menu_create_qr_code_contacts
             else -> R.menu.menu_create_barcode
         }
     }
 
     @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode : Int , resultCode : Int , data : Intent?) {
-        super.onActivityResult(requestCode , resultCode , data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != RESULT_OK) {
             return
         }
@@ -194,19 +200,22 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode : Int , permissions : Array<out String> , grantResults : IntArray
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
-        super.onRequestPermissionsResult(requestCode , permissions , grantResults)
-        if (requestCode == CONTACTS_PERMISSION_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(grantResults)) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CONTACTS_PERMISSION_REQUEST_CODE && permissionsHelper.areAllPermissionsGranted(
+                grantResults
+            )
+        ) {
             chooseContact()
         }
     }
 
-    override fun onAppClicked(packageName : String) {
+    override fun onAppClicked(packageName: String) {
         createBarcodeFromSchema(App.fromPackage(packageName))
     }
 
-    private fun createBarcodeImmediatelyIfNeeded() : Boolean {
+    private fun createBarcodeImmediatelyIfNeeded(): Boolean {
         if (intent?.action != Intent.ACTION_SEND) {
             return false
         }
@@ -227,22 +236,21 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
 
     private fun createBarcodeForPlainText() {
         val text = intent?.getStringExtra(Intent.EXTRA_TEXT).orEmpty()
-        val schema = barcodeParser.parseSchema(barcodeFormat , text)
-        createBarcodeFromSchema(schema , true)
+        val schema = barcodeParser.parseSchema(barcodeFormat, text)
+        createBarcodeFromSchema(schema, true)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun createBarcodeForVCard() {
         val uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(Intent.EXTRA_STREAM , Uri::class.java) ?: return
-        }
-        else {
+            intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java) ?: return
+        } else {
             @Suppress("DEPRECATION") intent?.extras?.get(Intent.EXTRA_STREAM) as? Uri ?: return
         }
         lifecycleScope.launch {
-            val creationFlow = viewModel.readVCard(contentResolver , uri)
-                .map { text -> barcodeParser.parseSchema(barcodeFormat , text) }
-                .flatMapConcat { schema -> createBarcodeFlow(schema , true) }
+            val creationFlow = viewModel.readVCard(contentResolver, uri)
+                .map { text -> barcodeParser.parseSchema(barcodeFormat, text) }
+                .flatMapConcat { schema -> createBarcodeFlow(schema, true) }
             collectCreationFlow(creationFlow)
         }
     }
@@ -254,7 +262,10 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
 
     private fun showFragment() {
         val fragment = when {
-            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTHER -> CreateQrCodeTextFragment.newInstance(defaultText)
+            barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.OTHER -> CreateQrCodeTextFragment.newInstance(
+                defaultText
+            )
+
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.URL -> CreateQrCodeUrlFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.BOOKMARK -> CreateQrCodeBookmarkFragment()
             barcodeFormat == BarcodeFormat.QR_CODE && barcodeSchema == BarcodeSchema.PHONE -> CreateQrCodePhoneFragment()
@@ -283,7 +294,7 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
             barcodeFormat == BarcodeFormat.UPC_E -> CreateUpcEFragment()
             else -> return
         }
-        supportFragmentManager.beginTransaction().replace(R.id.container , fragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
     }
 
     private fun choosePhone() {
@@ -291,39 +302,42 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
             type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
         }
         startActivityForResultIfExists(
-            intent , CHOOSE_PHONE_REQUEST_CODE
+            intent, CHOOSE_PHONE_REQUEST_CODE
         )
     }
 
-    private fun showChosenPhone(data : Intent?) {
-        val phone = contactHelper.getPhone(this , data) ?: return
+    private fun showChosenPhone(data: Intent?) {
+        val phone = contactHelper.getPhone(this, data) ?: return
         getCurrentFragment().showPhone(phone)
     }
 
     private fun requestContactsPermissions() {
-        permissionsHelper.requestPermissions(this , CONTACTS_PERMISSIONS , CONTACTS_PERMISSION_REQUEST_CODE)
+        permissionsHelper.requestPermissions(
+            this,
+            CONTACTS_PERMISSIONS,
+            CONTACTS_PERMISSION_REQUEST_CODE
+        )
 
     }
 
     private fun chooseContact() {
-        val intent = Intent(Intent.ACTION_PICK , ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
+        val intent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
         startActivityForResultIfExists(
-            intent , CHOOSE_CONTACT_REQUEST_CODE
+            intent, CHOOSE_CONTACT_REQUEST_CODE
         )
     }
 
-    private fun showChosenContact(data : Intent?) {
-        val contact = contactHelper.getContact(this , data) ?: return
+    private fun showChosenContact(data: Intent?) {
+        val contact = contactHelper.getContact(this, data) ?: return
         getCurrentFragment().showContact(contact)
     }
 
-    private fun startActivityForResultIfExists(intent : Intent , requestCode : Int) {
+    private fun startActivityForResultIfExists(intent: Intent, requestCode: Int) {
         if (intent.resolveActivity(packageManager) != null) {
             @Suppress("DEPRECATION")
-            startActivityForResult(intent , requestCode)
-        }
-        else {
-            Snackbar.make(binding.root , R.string.snack_no_app_found , Snackbar.LENGTH_LONG).show()
+            startActivityForResult(intent, requestCode)
+        } else {
+            Snackbar.make(binding.root, R.string.snack_no_app_found, Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -332,48 +346,49 @@ class CreateBarcodeActivity : UpNavigationActivity() , AppAdapter.Listener {
         createBarcodeFromSchema(schema)
     }
 
-    private fun createBarcodeFromSchema(schema : Schema , finish : Boolean = false) {
+    private fun createBarcodeFromSchema(schema: Schema, finish: Boolean = false) {
         lifecycleScope.launch {
-            collectCreationFlow(createBarcodeFlow(schema , finish))
+            collectCreationFlow(createBarcodeFlow(schema, finish))
         }
     }
 
-    private fun createBarcodeFlow(schema : Schema , finish : Boolean) : Flow<CreateBarcodeNavigation> {
+    private fun createBarcodeFlow(schema: Schema, finish: Boolean): Flow<CreateBarcodeNavigation> {
         val barcode = buildBarcode(schema)
         return viewModel.saveBarcode(barcode).map { savedBarcode ->
-            CreateBarcodeNavigation(savedBarcode , finish)
+            CreateBarcodeNavigation(savedBarcode, finish)
         }
     }
 
-    private suspend fun collectCreationFlow(flow : Flow<CreateBarcodeNavigation>) {
+    private suspend fun collectCreationFlow(flow: Flow<CreateBarcodeNavigation>) {
         flow
             .catch { showError(it) }
             .collect { navigation ->
-                navigateToBarcodeScreen(navigation.barcode , navigation.finish)
+                navigateToBarcodeScreen(navigation.barcode, navigation.finish)
             }
     }
 
-    private fun buildBarcode(schema : Schema) : Barcode {
+    private fun buildBarcode(schema: Schema): Barcode {
         return Barcode(
-            text = schema.toBarcodeText() ,
-            formattedText = schema.toFormattedText() ,
-            format = barcodeFormat ,
-            schema = schema.schema ,
-            date = System.currentTimeMillis() ,
+            text = schema.toBarcodeText(),
+            formattedText = schema.toFormattedText(),
+            format = barcodeFormat,
+            schema = schema.schema,
+            date = System.currentTimeMillis(),
             isGenerated = true
         )
     }
 
     private data class CreateBarcodeNavigation(
-        val barcode : Barcode ,
-        val finish : Boolean
+        val barcode: Barcode,
+        val finish: Boolean
     )
-    private fun getCurrentFragment() : BaseCreateBarcodeFragment {
+
+    private fun getCurrentFragment(): BaseCreateBarcodeFragment {
         return supportFragmentManager.findFragmentById(R.id.container) as BaseCreateBarcodeFragment
     }
 
-    private fun navigateToBarcodeScreen(barcode : Barcode , finish : Boolean) {
-        BarcodeActivity.start(this , barcode , true)
+    private fun navigateToBarcodeScreen(barcode: Barcode, finish: Boolean) {
+        BarcodeActivity.start(this, barcode, true)
         if (finish) {
             finish()
         }

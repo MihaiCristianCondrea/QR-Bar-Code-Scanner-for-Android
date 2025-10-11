@@ -12,24 +12,22 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 
 class HelpRepository(
-    private val reviewManager : ReviewManager ,
-    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO ,
-    private val mainDispatcher : CoroutineDispatcher = Dispatchers.Main
+    private val reviewManager: ReviewManager,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main
 ) {
 
-    fun requestReviewFlow() : Flow<ReviewRequestResult> = callbackFlow {
+    fun requestReviewFlow(): Flow<ReviewRequestResult> = callbackFlow {
         val requestTask = reviewManager.requestReviewFlow()
         requestTask.addOnCompleteListener { task ->
             val result = if (task.isSuccessful) {
                 val reviewInfo = task.result
                 if (reviewInfo != null) {
                     ReviewRequestResult.Success(reviewInfo)
-                }
-                else {
+                } else {
                     ReviewRequestResult.Error(IllegalStateException("ReviewInfo is null"))
                 }
-            }
-            else {
+            } else {
                 val exception = task.exception ?: Exception("Failed to request review flow")
                 ReviewRequestResult.Error(exception)
             }
@@ -42,32 +40,32 @@ class HelpRepository(
         .flowOn(ioDispatcher)
         .conflate()
 
-    fun launchReviewFlow(activity : Activity , reviewInfo : ReviewInfo) : Flow<ReviewLaunchResult> = callbackFlow {
-        val launchTask = reviewManager.launchReviewFlow(activity , reviewInfo)
-        launchTask.addOnCompleteListener { task ->
-            val result = if (task.isSuccessful) {
-                ReviewLaunchResult.Success
+    fun launchReviewFlow(activity: Activity, reviewInfo: ReviewInfo): Flow<ReviewLaunchResult> =
+        callbackFlow {
+            val launchTask = reviewManager.launchReviewFlow(activity, reviewInfo)
+            launchTask.addOnCompleteListener { task ->
+                val result = if (task.isSuccessful) {
+                    ReviewLaunchResult.Success
+                } else {
+                    val exception = task.exception ?: Exception("Failed to launch review flow")
+                    ReviewLaunchResult.Error(exception)
+                }
+                trySend(result).isSuccess
+                close()
             }
-            else {
-                val exception = task.exception ?: Exception("Failed to launch review flow")
-                ReviewLaunchResult.Error(exception)
-            }
-            trySend(result).isSuccess
-            close()
-        }
 
-        awaitClose { }
-    }
-        .flowOn(mainDispatcher)
-        .conflate()
+            awaitClose { }
+        }
+            .flowOn(mainDispatcher)
+            .conflate()
 }
 
 sealed interface ReviewRequestResult {
-    data class Success(val reviewInfo : ReviewInfo) : ReviewRequestResult
-    data class Error(val throwable : Throwable) : ReviewRequestResult
+    data class Success(val reviewInfo: ReviewInfo) : ReviewRequestResult
+    data class Error(val throwable: Throwable) : ReviewRequestResult
 }
 
 sealed interface ReviewLaunchResult {
     data object Success : ReviewLaunchResult
-    data class Error(val throwable : Throwable) : ReviewLaunchResult
+    data class Error(val throwable: Throwable) : ReviewLaunchResult
 }

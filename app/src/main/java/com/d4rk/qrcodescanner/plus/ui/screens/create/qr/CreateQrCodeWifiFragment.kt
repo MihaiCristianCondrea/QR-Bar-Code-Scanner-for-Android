@@ -17,20 +17,24 @@ import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateQrCodeWifiBinding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateQrCodeWifiBinding.inflate(inflater , container , false)
+    private lateinit var binding: FragmentCreateQrCodeWifiBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateQrCodeWifiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initEncryptionTypesSpinner()
         initNetworkNameEditText()
         handleTextChanged()
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         val encryption = when (binding.spinnerEncryption.selectedItemPosition) {
             0 -> "WPA"
             1 -> "WEP"
@@ -38,24 +42,35 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
             else -> "nopass"
         }
         return Wifi(
-            encryption = encryption , name = binding.editTextNetworkName.textString , password = binding.editTextPassword.textString , isHidden = binding.checkBoxIsHidden.isChecked
+            encryption = encryption,
+            name = binding.editTextNetworkName.textString,
+            password = binding.editTextPassword.textString,
+            isHidden = binding.checkBoxIsHidden.isChecked
         )
     }
 
     private fun initEncryptionTypesSpinner() {
         binding.spinnerEncryption.adapter = ArrayAdapter.createFromResource(
-            requireContext() , R.array.fragment_create_qr_code_wifi_encryption_types , R.layout.item_spinner
+            requireContext(),
+            R.array.fragment_create_qr_code_wifi_encryption_types,
+            R.layout.item_spinner
         ).apply {
             setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
-        binding.spinnerEncryption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent : AdapterView<*>? , view : View? , position : Int , id : Long) {
-                binding.textInputLayoutPassword.isVisible = position != 2
-            }
+        binding.spinnerEncryption.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    binding.textInputLayoutPassword.isVisible = position != 2
+                }
 
-            override fun onNothingSelected(parent : AdapterView<*>?) {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
             }
-        }
     }
 
     private fun initNetworkNameEditText() {

@@ -58,7 +58,8 @@ class CreateBarcodeFragment : Fragment() {
     }
 
     private fun buildItems(): List<PreferenceListItem<PreferenceAction>> {
-        val entries = PreferenceLayoutParser.parse(requireContext(), R.xml.preferences_create_barcode)
+        val entries =
+            PreferenceLayoutParser.parse(requireContext(), R.xml.preferences_create_barcode)
         return entries.mapNotNull { entry ->
             when (entry) {
                 is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)

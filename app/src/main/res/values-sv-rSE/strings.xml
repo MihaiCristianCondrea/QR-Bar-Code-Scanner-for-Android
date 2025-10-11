@@ -81,8 +81,6 @@
     <string name="none">Ingen</string>
     <string name="ask_every_time">Fråga varje gång</string>
     <string name="app_updates">App-uppdateringar</string>
-    <string name="check_for_updates">Sök efter uppdateringar…</string>
-    <string name="subscribe_to_beta">Prenumerera på betaversioner</string>
     <string name="changelog">Ändringslogg</string>
     <string name="privacy_and_security">Sekretess och säkerhet</string>
     <string name="privacy_policy">Integritetspolicy</string>
@@ -108,9 +106,7 @@
     <string name="faq">Vanliga frågor</string>
     <string name="send_feedback">Skicka feedback</string>
     <string name="license">Licens</string>
-    <string name="more">Mer</string>
     <string name="share">Dela</string>
-    <string name="more_apps">Fler appar…</string>
     <string name="support_the_developer">Stöd utvecklaren</string>
     <string name="paid_support">Betalt stöd</string>
     <string name="non_paid_support">Icke-betalt stöd</string>

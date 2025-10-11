@@ -19,16 +19,16 @@ import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class CreateQrCodeAllActivity : BaseActivity() {
     companion object {
-        fun start(context : Context) {
-            val intent = Intent(context , CreateQrCodeAllActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, CreateQrCodeAllActivity::class.java)
             context.startActivity(intent)
         }
     }
 
-    private lateinit var binding : ActivityCreateQrCodeAllBinding
-    private lateinit var adapter : PreferenceListAdapter<QrAction>
+    private lateinit var binding: ActivityCreateQrCodeAllBinding
+    private lateinit var adapter: PreferenceListAdapter<QrAction>
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateQrCodeAllBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -83,27 +83,101 @@ class CreateQrCodeAllActivity : BaseActivity() {
         )
     }
 
-    private fun handleAction(action : QrAction) {
+    private fun handleAction(action: QrAction) {
         when (action) {
-            QrAction.Text -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.OTHER)
-            QrAction.Url -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.URL)
-            QrAction.Wifi -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.WIFI)
-            QrAction.Location -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.GEO)
-            QrAction.Otp -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.OTP_AUTH)
-            QrAction.ContactVcard -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.VCARD)
-            QrAction.ContactMecard -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.MECARD)
-            QrAction.Event -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.VEVENT)
-            QrAction.Phone -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.PHONE)
-            QrAction.Email -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.EMAIL)
-            QrAction.Sms -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.SMS)
-            QrAction.Mms -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.MMS)
-            QrAction.Cryptocurrency -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.CRYPTOCURRENCY)
-            QrAction.Bookmark -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.BOOKMARK)
-            QrAction.App -> CreateBarcodeActivity.start(this , BarcodeFormat.QR_CODE , BarcodeSchema.APP)
+            QrAction.Text -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.OTHER
+            )
+
+            QrAction.Url -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.URL
+            )
+
+            QrAction.Wifi -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.WIFI
+            )
+
+            QrAction.Location -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.GEO
+            )
+
+            QrAction.Otp -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.OTP_AUTH
+            )
+
+            QrAction.ContactVcard -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.VCARD
+            )
+
+            QrAction.ContactMecard -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.MECARD
+            )
+
+            QrAction.Event -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.VEVENT
+            )
+
+            QrAction.Phone -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.PHONE
+            )
+
+            QrAction.Email -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.EMAIL
+            )
+
+            QrAction.Sms -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.SMS
+            )
+
+            QrAction.Mms -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.MMS
+            )
+
+            QrAction.Cryptocurrency -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.CRYPTOCURRENCY
+            )
+
+            QrAction.Bookmark -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.BOOKMARK
+            )
+
+            QrAction.App -> CreateBarcodeActivity.start(
+                this,
+                BarcodeFormat.QR_CODE,
+                BarcodeSchema.APP
+            )
         }
     }
 
     private enum class QrAction {
-        Text , Url , Wifi , Location , Otp , ContactVcard , ContactMecard , Event , Phone , Email , Sms , Mms , Cryptocurrency , Bookmark , App
+        Text, Url, Wifi, Location, Otp, ContactVcard, ContactMecard, Event, Phone, Email, Sms, Mms, Cryptocurrency, Bookmark, App
     }
 }

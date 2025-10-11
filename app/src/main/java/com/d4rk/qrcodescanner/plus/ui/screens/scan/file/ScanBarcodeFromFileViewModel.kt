@@ -35,41 +35,41 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 
 data class ScanBarcodeFromFileUiState(
-    val selectedImageUri : Uri? = null ,
-    val isScanning : Boolean = false ,
+    val selectedImageUri: Uri? = null,
+    val isScanning: Boolean = false,
 ) {
-    val isScanButtonEnabled : Boolean get() = selectedImageUri != null && !isScanning
+    val isScanButtonEnabled: Boolean get() = selectedImageUri != null && !isScanning
 }
 
 sealed interface ScanBarcodeFromFileEvent {
-    data class NavigateToBarcode(val barcode : Barcode) : ScanBarcodeFromFileEvent
-    data class ShowError(val throwable : Throwable) : ScanBarcodeFromFileEvent
+    data class NavigateToBarcode(val barcode: Barcode) : ScanBarcodeFromFileEvent
+    data class ShowError(val throwable: Throwable) : ScanBarcodeFromFileEvent
 }
 
 class ScanBarcodeFromFileViewModel(
-    application : Application ,
-    private val barcodeImageScanner : BarcodeImageScanner ,
-    private val barcodeParser : BarcodeParser ,
-    private val barcodeDatabase : BarcodeDatabase ,
-    private val settings : Settings ,
-    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO ,
+    application: Application,
+    private val barcodeImageScanner: BarcodeImageScanner,
+    private val barcodeParser: BarcodeParser,
+    private val barcodeDatabase: BarcodeDatabase,
+    private val settings: Settings,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : AndroidViewModel(application) {
 
     private val contentResolver get() = getApplication<Application>().contentResolver
 
     private val _uiState = MutableStateFlow(ScanBarcodeFromFileUiState())
-    val uiState : StateFlow<ScanBarcodeFromFileUiState> = _uiState.asStateFlow()
+    val uiState: StateFlow<ScanBarcodeFromFileUiState> = _uiState.asStateFlow()
 
     private val _events = MutableSharedFlow<ScanBarcodeFromFileEvent>()
-    val events : SharedFlow<ScanBarcodeFromFileEvent> = _events.asSharedFlow()
+    val events: SharedFlow<ScanBarcodeFromFileEvent> = _events.asSharedFlow()
 
-    private var scanJob : Job? = null
+    private var scanJob: Job? = null
 
-    fun onImagePicked(uri : Uri) {
+    fun onImagePicked(uri: Uri) {
         scanJob?.cancel()
         scanJob = null
         _uiState.update { current ->
-            current.copy(selectedImageUri = uri , isScanning = false)
+            current.copy(selectedImageUri = uri, isScanning = false)
         }
     }
 
@@ -85,7 +85,7 @@ class ScanBarcodeFromFileViewModel(
             .launchIn(viewModelScope)
     }
 
-    private fun scanBarcodeFromUri(uri : Uri) = flow {
+    private fun scanBarcodeFromUri(uri: Uri) = flow {
         val bitmap = decodeBitmap(uri)
         val mlKitBarcode = barcodeImageScanner.parse(bitmap)
         val barcode = barcodeParser.parse(mlKitBarcode)
@@ -93,7 +93,7 @@ class ScanBarcodeFromFileViewModel(
         emit(barcode)
     }.flowOn(ioDispatcher)
 
-    private suspend fun handleScanSuccess(barcode : Barcode) {
+    private suspend fun handleScanSuccess(barcode: Barcode) {
         if (settings.saveScannedBarcodesToHistory.not()) {
             completeScan()
             _events.emit(ScanBarcodeFromFileEvent.NavigateToBarcode(barcode))
@@ -112,15 +112,15 @@ class ScanBarcodeFromFileViewModel(
             .launchIn(viewModelScope)
     }
 
-    private suspend fun handleScanFailure(throwable : Throwable) {
+    private suspend fun handleScanFailure(throwable: Throwable) {
         completeScan()
         if (throwable !is NotFoundException) {
             _events.emit(ScanBarcodeFromFileEvent.ShowError(throwable))
         }
     }
 
-    private fun persistBarcode(barcode : Barcode) = flow {
-        val id = barcodeDatabase.save(barcode , settings.doNotSaveDuplicates)
+    private fun persistBarcode(barcode: Barcode) = flow {
+        val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
         emit(id)
     }.flowOn(ioDispatcher)
 
@@ -131,12 +131,11 @@ class ScanBarcodeFromFileViewModel(
         scanJob = null
     }
 
-    private fun decodeBitmap(uri : Uri) : Bitmap {
+    private fun decodeBitmap(uri: Uri): Bitmap {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            val source = ImageDecoder.createSource(contentResolver , uri)
+            val source = ImageDecoder.createSource(contentResolver, uri)
             ImageDecoder.decodeBitmap(source)
-        }
-        else {
+        } else {
             contentResolver.openInputStream(uri)?.use { inputStream ->
                 BitmapFactory.decodeStream(inputStream)
             }
@@ -145,22 +144,22 @@ class ScanBarcodeFromFileViewModel(
 }
 
 class ScanBarcodeFromFileViewModelFactory(
-    private val application : Application ,
-    private val barcodeImageScanner : BarcodeImageScanner ,
-    private val barcodeParser : BarcodeParser ,
-    private val barcodeDatabase : BarcodeDatabase ,
-    private val settings : Settings ,
-    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO ,
+    private val application: Application,
+    private val barcodeImageScanner: BarcodeImageScanner,
+    private val barcodeParser: BarcodeParser,
+    private val barcodeDatabase: BarcodeDatabase,
+    private val settings: Settings,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass : Class<T>) : T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ScanBarcodeFromFileViewModel::class.java)) {
             return ScanBarcodeFromFileViewModel(
-                application = application ,
-                barcodeImageScanner = barcodeImageScanner ,
-                barcodeParser = barcodeParser ,
-                barcodeDatabase = barcodeDatabase ,
-                settings = settings ,
+                application = application,
+                barcodeImageScanner = barcodeImageScanner,
+                barcodeParser = barcodeParser,
+                barcodeDatabase = barcodeDatabase,
+                settings = settings,
                 ioDispatcher = ioDispatcher
             ) as T
         }

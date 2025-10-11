@@ -19,16 +19,16 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 data class SettingsUiState(
-    val themeMode : Int = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM ,
-    val languageTag : String? = null
+    val themeMode: Int = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
+    val languageTag: String? = null
 )
 
 class SettingsViewModel(
-    mainPreferencesRepository : MainPreferencesRepository ,
-    computationDispatcher : CoroutineDispatcher = Dispatchers.Default
+    mainPreferencesRepository: MainPreferencesRepository,
+    computationDispatcher: CoroutineDispatcher = Dispatchers.Default
 ) : ViewModel() {
 
-    val uiState : StateFlow<SettingsUiState> = mainPreferencesRepository.mainPreferences
+    val uiState: StateFlow<SettingsUiState> = mainPreferencesRepository.mainPreferences
         .map { preferences -> preferences.toUiState() }
         .flowOn(computationDispatcher)
         .catch { throwable ->
@@ -39,19 +39,19 @@ class SettingsViewModel(
         }
         .distinctUntilChanged()
         .stateIn(
-            scope = viewModelScope ,
-            started = SharingStarted.WhileSubscribed(5_000) ,
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
             initialValue = SettingsUiState()
         )
 
-    private fun MainPreferences.toUiState() : SettingsUiState {
+    private fun MainPreferences.toUiState(): SettingsUiState {
         return SettingsUiState(
-            themeMode = theme.toThemeMode() ,
+            themeMode = theme.toThemeMode(),
             languageTag = languageTag
         )
     }
 
-    private fun ThemePreference.toThemeMode() : Int {
+    private fun ThemePreference.toThemeMode(): Int {
         return when (this) {
             ThemePreference.FOLLOW_SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             ThemePreference.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
@@ -62,9 +62,9 @@ class SettingsViewModel(
 }
 
 class SettingsViewModelFactory(
-    private val mainPreferencesRepository : MainPreferencesRepository
+    private val mainPreferencesRepository: MainPreferencesRepository
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass : Class<T>) : T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return SettingsViewModel(mainPreferencesRepository) as T

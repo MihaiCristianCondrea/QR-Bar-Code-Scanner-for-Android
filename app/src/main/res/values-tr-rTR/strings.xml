@@ -1,5 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_description">Kolaylıkla tüm türde QR kodları ve barkodları tarayın. 📷</string>
     <string name="welcome">Hoş geldiniz</string>
     <string name="menu">Menü</string>
@@ -82,8 +81,6 @@
     <string name="none">Hiçbiri</string>
     <string name="ask_every_time">Her zaman sorma</string>
     <string name="app_updates">Uygulama güncellemeleri</string>
-    <string name="check_for_updates">Güncellemeleri kontrol et…</string>
-    <string name="subscribe_to_beta">Beta güncellemelerine abone ol</string>
     <string name="changelog">Değişiklik Günlüğü</string>
     <string name="privacy_and_security">Gizlilik ve Güvenlik</string>
     <string name="privacy_policy">Gizlilik Politikası</string>
@@ -109,9 +106,7 @@
     <string name="faq">SSS</string>
     <string name="send_feedback">Geri Bildirim Gönder</string>
     <string name="license">Lisans</string>
-    <string name="more">Daha Fazla</string>
     <string name="share">Paylaş</string>
-    <string name="more_apps">Daha fazla uygulama…</string>
     <string name="support_the_developer">Geliştiriciyi Destekle</string>
     <string name="paid_support">Ücretli Destek</string>
     <string name="non_paid_support">Ücretsiz Destek</string>

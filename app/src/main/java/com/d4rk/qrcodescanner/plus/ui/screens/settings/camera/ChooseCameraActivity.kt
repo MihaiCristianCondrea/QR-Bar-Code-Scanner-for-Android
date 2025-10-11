@@ -10,16 +10,16 @@ import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class ChooseCameraActivity : BaseActivity() {
-    private lateinit var binding : ActivityChooseCameraBinding
+    private lateinit var binding: ActivityChooseCameraBinding
 
     companion object {
-        fun start(context : Context) {
-            val intent = Intent(context , ChooseCameraActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, ChooseCameraActivity::class.java)
             context.startActivity(intent)
         }
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseCameraBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)

@@ -21,58 +21,62 @@ import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
-    private lateinit var _binding : FragmentBarcodeHistoryListBinding
+class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
+    private lateinit var _binding: FragmentBarcodeHistoryListBinding
     private val binding get() = _binding
     private var hasLoadedEmptyStateAd = false
     private val historyRepository by lazy { barcodeHistoryRepository }
-    private val historyFilter : BarcodeHistoryFilter by lazy {
+    private val historyFilter: BarcodeHistoryFilter by lazy {
         when (arguments?.getInt(TYPE_KEY).orZero()) {
             TYPE_ALL -> BarcodeHistoryFilter.ALL
             TYPE_FAVORITES -> BarcodeHistoryFilter.FAVORITES
             else -> throw IllegalStateException("Unknown history filter")
         }
     }
-    private val viewModel : BarcodeHistoryListViewModel by viewModels {
-        BarcodeHistoryListViewModelFactory(historyRepository , historyFilter)
+    private val viewModel: BarcodeHistoryListViewModel by viewModels {
+        BarcodeHistoryListViewModelFactory(historyRepository, historyFilter)
     }
 
     companion object {
         private const val TYPE_ALL = 0
         private const val TYPE_FAVORITES = 1
         private const val TYPE_KEY = "TYPE_KEY"
-        fun newInstanceAll() : BarcodeHistoryListFragment {
+        fun newInstanceAll(): BarcodeHistoryListFragment {
             return BarcodeHistoryListFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(TYPE_KEY , TYPE_ALL)
+                    putInt(TYPE_KEY, TYPE_ALL)
                 }
             }
         }
 
-        fun newInstanceFavorites() : BarcodeHistoryListFragment {
+        fun newInstanceFavorites(): BarcodeHistoryListFragment {
             return BarcodeHistoryListFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(TYPE_KEY , TYPE_FAVORITES)
+                    putInt(TYPE_KEY, TYPE_FAVORITES)
                 }
             }
         }
     }
 
     private val scanHistoryAdapter = BarcodeHistoryAdapter(this)
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        _binding = FragmentBarcodeHistoryListBinding.inflate(inflater , container , false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentBarcodeHistoryListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         observeHistory()
         observeHistoryLoadState()
     }
 
-    override fun onBarcodeClicked(barcode : Barcode) {
-        BarcodeActivity.start(requireActivity() , barcode)
+    override fun onBarcodeClicked(barcode: Barcode) {
+        BarcodeActivity.start(requireActivity(), barcode)
     }
 
     private fun initRecyclerView() {
@@ -96,14 +100,15 @@ class BarcodeHistoryListFragment : Fragment() , BarcodeHistoryAdapter.Listener {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 scanHistoryAdapter.loadStateFlow.collectLatest { loadStates ->
-                    val isEmpty = loadStates.refresh is LoadState.NotLoading && scanHistoryAdapter.itemCount == 0
-                    binding.recyclerViewHistory.isVisible = ! isEmpty
+                    val isEmpty =
+                        loadStates.refresh is LoadState.NotLoading && scanHistoryAdapter.itemCount == 0
+                    binding.recyclerViewHistory.isVisible = !isEmpty
                     binding.emptyHistoryAdView.isVisible = isEmpty
-                    if (isEmpty && ! hasLoadedEmptyStateAd) {
+                    if (isEmpty && !hasLoadedEmptyStateAd) {
                         binding.emptyHistoryAdView.loadAd()
                         hasLoadedEmptyStateAd = true
                     }
-                    if (! isEmpty) {
+                    if (!isEmpty) {
                         hasLoadedEmptyStateAd = false
                     }
                 }

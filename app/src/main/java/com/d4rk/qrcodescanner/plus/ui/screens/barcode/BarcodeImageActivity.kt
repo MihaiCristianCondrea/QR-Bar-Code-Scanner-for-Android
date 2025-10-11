@@ -28,24 +28,25 @@ import java.util.Locale
 class BarcodeImageActivity : UpNavigationActivity() {
     companion object {
         private const val BARCODE_KEY = "BARCODE_KEY"
-        fun start(context : Context , barcode : Barcode) {
-            val intent = Intent(context , BarcodeImageActivity::class.java)
-            intent.putExtra(BARCODE_KEY , barcode)
+        fun start(context: Context, barcode: Barcode) {
+            val intent = Intent(context, BarcodeImageActivity::class.java)
+            intent.putExtra(BARCODE_KEY, barcode)
             context.startActivity(intent)
         }
     }
 
-    private lateinit var binding : ActivityBarcodeImageBinding
-    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm" , Locale.ENGLISH)
+    private lateinit var binding: ActivityBarcodeImageBinding
+    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
     @Suppress("DEPRECATION")
     private val barcode by unsafeLazy {
-        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
+            ?: throw IllegalArgumentException("No barcode passed")
     }
-    private var originalBrightness : Float = 0.5f
+    private var originalBrightness: Float = 0.5f
     private var optionsMenu: Menu? = null
     private var isBrightnessAtMax = false
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeImageBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -159,7 +160,7 @@ class BarcodeImageActivity : UpNavigationActivity() {
         setBrightness(originalBrightness)
     }
 
-    private fun setBrightness(brightness : Float) {
+    private fun setBrightness(brightness: Float) {
         window.attributes = window.attributes.apply {
             screenBrightness = brightness
         }

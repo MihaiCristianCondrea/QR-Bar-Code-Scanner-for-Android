@@ -14,31 +14,31 @@ import ezvcard.property.Title
 import ezvcard.property.Url
 
 data class VCard(
-    val firstName : String? = null ,
-    val lastName : String? = null ,
-    val nickname : String? = null ,
-    val organization : String? = null ,
-    val title : String? = null ,
-    val email : String? = null ,
-    val emailType : String? = null ,
-    val secondaryEmail : String? = null ,
-    val secondaryEmailType : String? = null ,
-    val tertiaryEmail : String? = null ,
-    val tertiaryEmailType : String? = null ,
-    val phone : String? = null ,
-    val phoneType : String? = null ,
-    val secondaryPhone : String? = null ,
-    val secondaryPhoneType : String? = null ,
-    val tertiaryPhone : String? = null ,
-    val tertiaryPhoneType : String? = null ,
-    val address : String? = null ,
-    val geoUri : String? = null ,
-    val url : String? = null
+    val firstName: String? = null,
+    val lastName: String? = null,
+    val nickname: String? = null,
+    val organization: String? = null,
+    val title: String? = null,
+    val email: String? = null,
+    val emailType: String? = null,
+    val secondaryEmail: String? = null,
+    val secondaryEmailType: String? = null,
+    val tertiaryEmail: String? = null,
+    val tertiaryEmailType: String? = null,
+    val phone: String? = null,
+    val phoneType: String? = null,
+    val secondaryPhone: String? = null,
+    val secondaryPhoneType: String? = null,
+    val tertiaryPhone: String? = null,
+    val tertiaryPhoneType: String? = null,
+    val address: String? = null,
+    val geoUri: String? = null,
+    val url: String? = null
 ) : Schema {
     companion object {
         private const val SCHEMA_PREFIX = "BEGIN:VCARD"
         private const val ADDRESS_SEPARATOR = ","
-        fun parse(text : String) : VCard? {
+        fun parse(text: String): VCard? {
             if (text.startsWithIgnoreCase(SCHEMA_PREFIX).not()) {
                 return null
             }
@@ -50,19 +50,19 @@ data class VCard(
             val title = vCard.titles?.firstOrNull()?.value
             val url = vCard.urls?.firstOrNull()?.value
             val geoUri = vCard.addresses?.firstOrNull()?.geo?.toString()
-            var email : String? = null
-            var emailType : String? = null
-            var secondaryEmail : String? = null
-            var secondaryEmailType : String? = null
-            var tertiaryEmail : String? = null
-            var tertiaryEmailType : String? = null
-            var phone : String? = null
-            var phoneType : String? = null
-            var secondaryPhone : String? = null
-            var secondaryPhoneType : String? = null
-            var tertiaryPhone : String? = null
-            var tertiaryPhoneType : String? = null
-            var address : String? = null
+            var email: String? = null
+            var emailType: String? = null
+            var secondaryEmail: String? = null
+            var secondaryEmailType: String? = null
+            var tertiaryEmail: String? = null
+            var tertiaryEmailType: String? = null
+            var phone: String? = null
+            var phoneType: String? = null
+            var secondaryPhone: String? = null
+            var secondaryPhoneType: String? = null
+            var tertiaryPhone: String? = null
+            var tertiaryPhoneType: String? = null
+            var address: String? = null
             vCard.emails?.getOrNull(0)?.apply {
                 email = value
                 emailType = types.getOrNull(0)?.value
@@ -89,35 +89,54 @@ data class VCard(
             }
             vCard.addresses.firstOrNull()?.apply {
                 address = listOf(
-                    country , postalCode , region , locality , streetAddress
+                    country, postalCode, region, locality, streetAddress
                 ).joinToStringNotNullOrBlank(ADDRESS_SEPARATOR)
             }
             return VCard(
-                firstName , lastName , nickname , organization , title , email , emailType , secondaryEmail , secondaryEmailType , tertiaryEmail , tertiaryEmailType , phone , phoneType , secondaryPhone , secondaryPhoneType , tertiaryPhone , tertiaryPhoneType , address , geoUri , url
+                firstName,
+                lastName,
+                nickname,
+                organization,
+                title,
+                email,
+                emailType,
+                secondaryEmail,
+                secondaryEmailType,
+                tertiaryEmail,
+                tertiaryEmailType,
+                phone,
+                phoneType,
+                secondaryPhone,
+                secondaryPhoneType,
+                tertiaryPhone,
+                tertiaryPhoneType,
+                address,
+                geoUri,
+                url
             )
         }
     }
 
     override val schema = BarcodeSchema.VCARD
-    override fun toFormattedText() : String {
+    override fun toFormattedText(): String {
         return listOf(
-            "${firstName.orEmpty()} ${lastName.orEmpty()}" ,
-            nickname ,
-            organization ,
-            title ,
-            "${phone.orEmpty()} ${phoneType.orEmpty()}" ,
-            "${secondaryPhone.orEmpty()} ${secondaryPhoneType.orEmpty()}" ,
-            "${tertiaryPhone.orEmpty()} ${tertiaryPhoneType.orEmpty()}" ,
-            "${email.orEmpty()} ${emailType.orEmpty()}" ,
-            "${secondaryEmail.orEmpty()} ${secondaryEmailType.orEmpty()}" ,
-            "${tertiaryEmail.orEmpty()} ${tertiaryEmailType.orEmpty()}" ,
-            address ,
-            geoUri ,
+            "${firstName.orEmpty()} ${lastName.orEmpty()}",
+            nickname,
+            organization,
+            title,
+            "${phone.orEmpty()} ${phoneType.orEmpty()}",
+            "${secondaryPhone.orEmpty()} ${secondaryPhoneType.orEmpty()}",
+            "${tertiaryPhone.orEmpty()} ${tertiaryPhoneType.orEmpty()}",
+            "${email.orEmpty()} ${emailType.orEmpty()}",
+            "${secondaryEmail.orEmpty()} ${secondaryEmailType.orEmpty()}",
+            "${tertiaryEmail.orEmpty()} ${tertiaryEmailType.orEmpty()}",
+            address,
+            geoUri,
             url
         ).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
-    override fun toBarcodeText() : String {
+    override fun toBarcodeText(): String {
         val vCard = ezvcard.VCard()
         vCard.structuredName = StructuredName().apply {
             given = firstName
@@ -153,6 +172,7 @@ data class VCard(
         if (url.isNullOrBlank().not()) {
             vCard.addUrl(Url(url))
         }
-        return Ezvcard.write(vCard).version(VCardVersion.V4_0).prodId(false).go().trimEnd('\n' , '\r' , ' ')
+        return Ezvcard.write(vCard).version(VCardVersion.V4_0).prodId(false).go()
+            .trimEnd('\n', '\r', ' ')
     }
 }

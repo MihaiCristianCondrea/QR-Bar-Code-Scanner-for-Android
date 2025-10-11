@@ -11,23 +11,23 @@ import com.d4rk.qrcodescanner.plus.model.Barcode
 import kotlinx.coroutines.flow.Flow
 
 class BarcodeHistoryListViewModel(
-    repository : BarcodeHistoryRepository,
-    historyFilter : BarcodeHistoryFilter
+    repository: BarcodeHistoryRepository,
+    historyFilter: BarcodeHistoryFilter
 ) : ViewModel() {
 
-    val history : Flow<PagingData<Barcode>> = repository.observeHistory(historyFilter)
+    val history: Flow<PagingData<Barcode>> = repository.observeHistory(historyFilter)
         .cachedIn(viewModelScope)
 }
 
 class BarcodeHistoryListViewModelFactory(
-    private val repository : BarcodeHistoryRepository,
-    private val historyFilter : BarcodeHistoryFilter
+    private val repository: BarcodeHistoryRepository,
+    private val historyFilter: BarcodeHistoryFilter
 ) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel> create(modelClass : Class<T>) : T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(BarcodeHistoryListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return BarcodeHistoryListViewModel(repository , historyFilter) as T
+            return BarcodeHistoryListViewModel(repository, historyFilter) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${'$'}modelClass")
     }

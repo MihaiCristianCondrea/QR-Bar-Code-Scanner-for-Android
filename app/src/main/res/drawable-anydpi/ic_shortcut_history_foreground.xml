@@ -1,3 +1,11 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:width="432dp" android:height="432dp" android:viewportWidth="432" android:viewportHeight="432" tools:ignore="VectorRaster">
-    <path android:fillColor="@color/colorShortcutForeground" android:pathData="M288.4 260.9l7.9-7-7-12.1-10.2 3.4c-2.2-1.9-4.7-3.4-7.6-4.4l-2.1-10.5h-14l-2.1 10.4c-2.8 1.1-5.4 2.5-7.6 4.4l-10.2-3.4-7 12.1 7.9 7c-0.5 3.5-0.5 5.4 0 8.8l-7.9 7 7 12.1 10.2-3.4c2.2 1.9 4.7 3.4 7.6 4.4l2.1 10.5h14l2.1-10.4c2.8-1.1 5.4-2.5 7.6-4.4l10.2 3.4 7-12.1-7.9-7c0.5-3.6 0.5-5.4 0-8.8zm-25.8 18.3c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14c-0.1 7.7-6.3 14-14 14zm-55.9-97.8v37.8l16.5 16.5 7.2-12.5-9.8-9.7v-32.1h-13.9zm69.8 35c0-34.7-28.2-62.9-62.9-62.9-19.8 0-37.4 9.2-48.9 23.5v-16.5h-14v41.9h41.9v-14h-19.2c8.9-12.7 23.5-21 40.1-21 26.9 0 48.9 21.9 48.9 48.9l14.1 0.1zm-70.8 48.2c-20.9-3.4-37.4-20.2-40.4-41.3h-14.1c3.5 31.5 30.1 55.9 62.4 55.9h0.4l-8.3-14.6z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="432dp"
+    android:height="432dp"
+    android:viewportWidth="432"
+    android:viewportHeight="432"
+    tools:ignore="VectorRaster">
+    <path
+        android:fillColor="@color/colorShortcutForeground"
+        android:pathData="M288.4 260.9l7.9-7-7-12.1-10.2 3.4c-2.2-1.9-4.7-3.4-7.6-4.4l-2.1-10.5h-14l-2.1 10.4c-2.8 1.1-5.4 2.5-7.6 4.4l-10.2-3.4-7 12.1 7.9 7c-0.5 3.5-0.5 5.4 0 8.8l-7.9 7 7 12.1 10.2-3.4c2.2 1.9 4.7 3.4 7.6 4.4l2.1 10.5h14l2.1-10.4c2.8-1.1 5.4-2.5 7.6-4.4l10.2 3.4 7-12.1-7.9-7c0.5-3.6 0.5-5.4 0-8.8zm-25.8 18.3c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14c-0.1 7.7-6.3 14-14 14zm-55.9-97.8v37.8l16.5 16.5 7.2-12.5-9.8-9.7v-32.1h-13.9zm69.8 35c0-34.7-28.2-62.9-62.9-62.9-19.8 0-37.4 9.2-48.9 23.5v-16.5h-14v41.9h41.9v-14h-19.2c8.9-12.7 23.5-21 40.1-21 26.9 0 48.9 21.9 48.9 48.9l14.1 0.1zm-70.8 48.2c-20.9-3.4-37.4-20.2-40.4-41.3h-14.1c3.5 31.5 30.1 55.9 62.4 55.9h0.4l-8.3-14.6z" />
 </vector>

@@ -1,4 +1,4 @@
-package com.d4rk.qrcodescanner.plus.ui.screens.settings.help
+package com.d4rk.qrcodescanner.plus.ui.screens.help
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel
@@ -11,9 +11,9 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 
-class HelpViewModel(private val repository : HelpRepository) : ViewModel() {
+class HelpViewModel(private val repository: HelpRepository) : ViewModel() {
 
-    fun requestReviewFlow() : Flow<ReviewRequestResult> {
+    fun requestReviewFlow(): Flow<ReviewRequestResult> {
         return repository.requestReviewFlow().catch { throwable ->
             if (throwable is CancellationException) {
                 throw throwable
@@ -22,8 +22,8 @@ class HelpViewModel(private val repository : HelpRepository) : ViewModel() {
         }
     }
 
-    fun launchReviewFlow(activity : Activity , reviewInfo : ReviewInfo) : Flow<ReviewLaunchResult> {
-        return repository.launchReviewFlow(activity , reviewInfo).catch { throwable ->
+    fun launchReviewFlow(activity: Activity, reviewInfo: ReviewInfo): Flow<ReviewLaunchResult> {
+        return repository.launchReviewFlow(activity, reviewInfo).catch { throwable ->
             if (throwable is CancellationException) {
                 throw throwable
             }
@@ -32,8 +32,8 @@ class HelpViewModel(private val repository : HelpRepository) : ViewModel() {
     }
 }
 
-class HelpViewModelFactory(private val repository : HelpRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass : Class<T>) : T {
+class HelpViewModelFactory(private val repository: HelpRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HelpViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return HelpViewModel(repository) as T

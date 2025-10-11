@@ -6,13 +6,13 @@ import org.apache.commons.codec.binary.Base32
 import java.util.Locale
 
 private val escapedRegex = """\\([\\;,":])""".toRegex()
-fun String.unescape() : String {
+fun String.unescape(): String {
     return replace(escapedRegex) { escaped ->
         escaped.groupValues[1]
     }
 }
 
-fun String?.toHmacAlgorithm() : HmacAlgorithm {
+fun String?.toHmacAlgorithm(): HmacAlgorithm {
     return when (this) {
         "SHA1" -> HmacAlgorithm.SHA1
         "SHA256" -> HmacAlgorithm.SHA256
@@ -21,91 +21,89 @@ fun String?.toHmacAlgorithm() : HmacAlgorithm {
     }
 }
 
-fun String?.decodeBase32() : ByteArray? {
+fun String?.decodeBase32(): ByteArray? {
     if (isNullOrBlank()) {
         return null
     }
     return Base32().decode(this)
 }
 
-fun String.toCaps() : String {
+fun String.toCaps(): String {
     return uppercase(Locale.ROOT)
 }
 
-fun String.removeStartAll(symbol : Char) : String {
+fun String.removeStartAll(symbol: Char): String {
     var newStart = 0
     run loop@{
-        forEachIndexed { index , c ->
+        forEachIndexed { index, c ->
             if (c == symbol) {
                 newStart = index + 1
-            }
-            else {
+            } else {
                 return@loop
             }
         }
     }
     return if (newStart >= length) {
         ""
-    }
-    else {
+    } else {
         substring(newStart)
     }
 }
 
-fun String.removePrefixIgnoreCase(prefix : String) : String {
+fun String.removePrefixIgnoreCase(prefix: String): String {
     return substring(prefix.length)
 }
 
-fun String.startsWithIgnoreCase(prefix : String) : Boolean {
-    return startsWith(prefix , true)
+fun String.startsWithIgnoreCase(prefix: String): Boolean {
+    return startsWith(prefix, true)
 }
 
-fun String.startsWithAnyIgnoreCase(prefixes : List<String>) : Boolean {
+fun String.startsWithAnyIgnoreCase(prefixes: List<String>): Boolean {
     var startsWith = false
     prefixes.forEach { prefix ->
-        if (startsWith(prefix , true)) {
+        if (startsWith(prefix, true)) {
             startsWith = true
         }
     }
     return startsWith
 }
 
-fun String.equalsAnyIgnoreCase(others : List<String>) : Boolean {
+fun String.equalsAnyIgnoreCase(others: List<String>): Boolean {
     var equals = false
     others.forEach { other ->
-        if (equals(other , true)) {
+        if (equals(other, true)) {
             equals = true
         }
     }
     return equals
 }
 
-fun String.endsWithIgnoreCase(prefix : String) : Boolean {
-    return endsWith(prefix , true)
+fun String.endsWithIgnoreCase(prefix: String): Boolean {
+    return endsWith(prefix, true)
 }
 
-fun List<String?>.joinToStringNotNullOrBlankWithLineSeparator() : String {
+fun List<String?>.joinToStringNotNullOrBlankWithLineSeparator(): String {
     return joinToStringNotNullOrBlank("\n")
 }
 
-fun List<String?>.joinToStringNotNullOrBlank(separator : String) : String {
+fun List<String?>.joinToStringNotNullOrBlank(separator: String): String {
     return filter { it.isNullOrBlank().not() }.joinToString(separator)
 }
 
-fun String.toCountryEmoji() : String {
+fun String.toCountryEmoji(): String {
     if (this.length != 2) {
         return ""
     }
     val countryCodeCaps = uppercase(Locale.US)
-    val firstLetter = Character.codePointAt(countryCodeCaps , 0) - 0x41 + 0x1F1E6
-    val secondLetter = Character.codePointAt(countryCodeCaps , 1) - 0x41 + 0x1F1E6
-    if (! countryCodeCaps[0].isLetter() || ! countryCodeCaps[1].isLetter()) {
+    val firstLetter = Character.codePointAt(countryCodeCaps, 0) - 0x41 + 0x1F1E6
+    val secondLetter = Character.codePointAt(countryCodeCaps, 1) - 0x41 + 0x1F1E6
+    if (!countryCodeCaps[0].isLetter() || !countryCodeCaps[1].isLetter()) {
         return this
     }
     return String(Character.toChars(firstLetter)) + String(Character.toChars(secondLetter))
 }
 
-fun String.toEmailType() : Int? {
+fun String.toEmailType(): Int? {
     return when (uppercase(Locale.US)) {
         "HOME" -> ContactsContract.CommonDataKinds.Email.TYPE_HOME
         "WORK" -> ContactsContract.CommonDataKinds.Email.TYPE_WORK
@@ -115,10 +113,10 @@ fun String.toEmailType() : Int? {
     }
 }
 
-fun String.toPhoneType() : Int? {
+fun String.toPhoneType(): Int? {
     return when (uppercase(Locale.US)) {
         "HOME" -> ContactsContract.CommonDataKinds.Phone.TYPE_HOME
-        "MOBILE" , "CELL" -> ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE
+        "MOBILE", "CELL" -> ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE
         "WORK" -> ContactsContract.CommonDataKinds.Phone.TYPE_WORK
         "FAX_WORK" -> ContactsContract.CommonDataKinds.Phone.TYPE_FAX_WORK
         "FAX_HOME" -> ContactsContract.CommonDataKinds.Phone.TYPE_FAX_HOME
@@ -141,7 +139,7 @@ fun String.toPhoneType() : Int? {
     }
 }
 
-fun String.toAddressType() : Int? {
+fun String.toAddressType(): Int? { // FIXME: Function "toAddressType" is never used
     return when (uppercase(Locale.US)) {
         "HOME" -> ContactsContract.CommonDataKinds.StructuredPostal.TYPE_HOME
         "WORK" -> ContactsContract.CommonDataKinds.StructuredPostal.TYPE_WORK

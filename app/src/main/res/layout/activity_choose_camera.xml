@@ -7,20 +7,17 @@
     <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_back_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:text="@string/back" />
 
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
@@ -28,10 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:isDelimiterVisible="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_back_camera"
                 app:text="@string/front" />
+
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,28 +13,32 @@ import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateQrCodeSmsBinding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateQrCodeSmsBinding.inflate(inflater , container , false)
+    private lateinit var binding: FragmentCreateQrCodeSmsBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateQrCodeSmsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initTitleEditText()
         handleTextChanged()
     }
 
-    override fun showPhone(phone : String) {
+    override fun showPhone(phone: String) {
         binding.editTextPhone.apply {
             setText(phone)
             setSelection(phone.length)
         }
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return Sms(
-            phone = binding.editTextPhone.textString , message = binding.editTextMessage.textString
+            phone = binding.editTextPhone.textString, message = binding.editTextMessage.textString
         )
     }
 
@@ -48,6 +52,7 @@ class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = binding.editTextPhone.isNotBlank() || binding.editTextMessage.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled =
+            binding.editTextPhone.isNotBlank() || binding.editTextMessage.isNotBlank()
     }
 }

@@ -14,31 +14,44 @@ object OTPGenerator {
     private const val DEFAULT_DIGITS = 6
     private const val HOTP_INITIAL_COUNTER = 0L
     private const val TOTP_DEFAULT_PERIOD = 30L
-    fun generateOTP(otp : OtpAuth) : String? {
+    fun generateOTP(otp: OtpAuth): String? {
         val secret = otp.secret.decodeBase32() ?: return null
         val algorithm = otp.algorithm.toHmacAlgorithm()
         val digits = otp.digits ?: DEFAULT_DIGITS
         val counter = otp.counter ?: HOTP_INITIAL_COUNTER
         val period = otp.period ?: TOTP_DEFAULT_PERIOD
         return when (otp.type) {
-            OtpAuth.TOTP_TYPE -> generateTOTP(secret , period , digits , algorithm).toString()
-            OtpAuth.HOTP_TYPE -> generateHOTP(secret , counter , digits , algorithm)
+            OtpAuth.TOTP_TYPE -> generateTOTP(secret, period, digits, algorithm).toString()
+            OtpAuth.HOTP_TYPE -> generateHOTP(secret, counter, digits, algorithm)
             else -> null
         }
     }
 
-    private fun generateTOTP(secret : ByteArray , period : Long , digits : Int , algorithm : HmacAlgorithm) {
+    private fun generateTOTP(
+        secret: ByteArray,
+        period: Long,
+        digits: Int,
+        algorithm: HmacAlgorithm
+    ) {
         val config = TimeBasedOneTimePasswordConfig(
-            timeStep = period , timeStepUnit = TimeUnit.SECONDS , codeDigits = digits , hmacAlgorithm = algorithm
+            timeStep = period,
+            timeStepUnit = TimeUnit.SECONDS,
+            codeDigits = digits,
+            hmacAlgorithm = algorithm
         )
-        TimeBasedOneTimePasswordGenerator(secret , config)
+        TimeBasedOneTimePasswordGenerator(secret, config)
     }
 
-    private fun generateHOTP(secret : ByteArray , counter : Long , digits : Int , algorithm : HmacAlgorithm) : String {
+    private fun generateHOTP(
+        secret: ByteArray,
+        counter: Long,
+        digits: Int,
+        algorithm: HmacAlgorithm
+    ): String {
         val config = HmacOneTimePasswordConfig(
-            codeDigits = digits , hmacAlgorithm = algorithm
+            codeDigits = digits, hmacAlgorithm = algorithm
         )
-        val generator = HmacOneTimePasswordGenerator(secret , config)
+        val generator = HmacOneTimePasswordGenerator(secret, config)
         return generator.generate(counter)
     }
 }

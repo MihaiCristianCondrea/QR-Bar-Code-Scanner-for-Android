@@ -1,5 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_description">आसानी से सभी प्रकार के क्यूआर कोड और बारकोड स्कैन करें। 📷</string>
     <string name="welcome">स्वागत हे</string>
     <string name="menu">मेनू</string>
@@ -82,8 +81,6 @@
     <string name="none">कोई नहीं</string>
     <string name="ask_every_time">हर बार पूछें</string>
     <string name="app_updates">एप्लिकेशन अपडेट</string>
-    <string name="check_for_updates">अपडेट के लिए जांचें…</string>
-    <string name="subscribe_to_beta">बीटा अपडेट के लिए सदस्यता लें</string>
     <string name="changelog">परिवर्तन लेख</string>
     <string name="privacy_and_security">गोपनीयता और सुरक्षा</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
@@ -109,9 +106,7 @@
     <string name="faq">अकसर पूछे जाने वाले प्रश्न</string>
     <string name="send_feedback">प्रतिक्रिया भेजें</string>
     <string name="license">लाइसेंस</string>
-    <string name="more">अधिक</string>
     <string name="share">साझा करें</string>
-    <string name="more_apps">और ऐप्स…</string>
     <string name="support_the_developer">डेवलपर का समर्थन करें</string>
     <string name="paid_support">पैड समर्थन</string>
     <string name="non_paid_support">नॉन-पैड समर्थन</string>

@@ -8,26 +8,26 @@ import java.util.Calendar
 import java.util.Locale
 
 class BoardingPass(
-    val name : String? = null ,
-    private val pnr : String? = null ,
-    val from : String? = null ,
-    private val to : String? = null ,
-    private val carrier : String? = null ,
-    private val flight : String? = null ,
-    val date : String? = null ,
-    @Suppress("unused") val dateJ : Int = 0 ,
-    private val cabin : String? = null ,
-    private val seat : String? = null ,
-    private val seq : String? = null ,
-    private val ticket : String? = null ,
-    private val selectee : String? = null ,
-    private val ffAirline : String? = null ,
-    private val ffNo : String? = null ,
-    private val fasttrack : String? = null ,
-    private val blob : String? = null ,
+    val name: String? = null,
+    private val pnr: String? = null,
+    val from: String? = null,
+    private val to: String? = null,
+    private val carrier: String? = null,
+    private val flight: String? = null,
+    val date: String? = null,
+    @Suppress("unused") val dateJ: Int = 0,
+    private val cabin: String? = null,
+    private val seat: String? = null,
+    private val seq: String? = null,
+    private val ticket: String? = null,
+    private val selectee: String? = null,
+    private val ffAirline: String? = null,
+    private val ffNo: String? = null,
+    private val fasttrack: String? = null,
+    private val blob: String? = null,
 ) : Schema {
     companion object {
-        private val DATE_FORMATTER by unsafeLazy { SimpleDateFormat("d MMMM" , Locale.ENGLISH) }
+        private val DATE_FORMATTER by unsafeLazy { SimpleDateFormat("d MMMM", Locale.ENGLISH) }
         fun parse(text: String): BoardingPass? {
             return runCatching {
                 text.let {
@@ -74,15 +74,47 @@ class BoardingPass(
                             fasttrack = it.slice(107 + size..107 + size)
                         }
                     }
-                    BoardingPass(name, pnr, from, to, carrier, flight, date, dateJ, cabin, seat, seq, ticket, selectee, ffAirline, ffNo, fasttrack, it)
+                    BoardingPass(
+                        name,
+                        pnr,
+                        from,
+                        to,
+                        carrier,
+                        flight,
+                        date,
+                        dateJ,
+                        cabin,
+                        seat,
+                        seq,
+                        ticket,
+                        selectee,
+                        ffAirline,
+                        ffNo,
+                        fasttrack,
+                        it
+                    )
                 }
             }.getOrNull()
         }
     }
 
     override val schema = BarcodeSchema.BOARDINGPASS
-    override fun toFormattedText() : String = listOf(name , pnr , "$from->$to" , "$carrier$flight" , date , cabin , seat , seq , ticket , selectee , "$ffAirline$ffNo" , fasttrack).joinToStringNotNullOrBlankWithLineSeparator()
-    override fun toBarcodeText() : String {
+    override fun toFormattedText(): String = listOf(
+        name,
+        pnr,
+        "$from->$to",
+        "$carrier$flight",
+        date,
+        cabin,
+        seat,
+        seq,
+        ticket,
+        selectee,
+        "$ffAirline$ffNo",
+        fasttrack
+    ).joinToStringNotNullOrBlankWithLineSeparator()
+
+    override fun toBarcodeText(): String {
         return blob ?: ""
     }
 }

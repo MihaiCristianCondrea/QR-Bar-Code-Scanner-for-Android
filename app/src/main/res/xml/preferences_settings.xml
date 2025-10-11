@@ -1,9 +1,8 @@
-<androidx.preference.PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.preference.PreferenceCategory
-        app:title="@string/appearance"
-        app:icon="@drawable/ic_appearance_tinted">
+        app:icon="@drawable/ic_appearance_tinted"
+        app:title="@string/appearance">
         <androidx.preference.ListPreference
             app:defaultValue="@string/default_value_theme"
             app:entries="@array/preference_theme_entries"
@@ -11,7 +10,7 @@
             app:icon="@drawable/ic_theme"
             app:key="@string/key_theme"
             app:title="@string/theme"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
         <androidx.preference.ListPreference
             android:defaultValue="@string/default_value_tab"
             android:entries="@array/preference_default_tab_entries"
@@ -19,7 +18,7 @@
             android:icon="@drawable/ic_home"
             app:key="@string/key_default_tab"
             app:title="@string/default_tab"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
         <androidx.preference.ListPreference
             app:defaultValue="@string/default_value_bottom_navigation_bar_labels"
             app:entries="@array/preference_bottom_navigation_bar_labels_entries"
@@ -27,179 +26,179 @@
             app:icon="@drawable/ic_label"
             app:key="@string/key_bottom_navigation_bar_labels"
             app:title="@string/bottom_navigation_bar_labels"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
         <androidx.preference.SwitchPreferenceCompat
-            app:key="@string/key_invert_bar_code_colors_in_dark_theme"
-            app:title="@string/inverse_colors"
-            app:summary="@string/summary_preference_settings_inverse_colors"
             app:defaultValue="false"
-            app:icon="@drawable/ic_invert_colors"/>
+            app:icon="@drawable/ic_invert_colors"
+            app:key="@string/key_invert_bar_code_colors_in_dark_theme"
+            app:summary="@string/summary_preference_settings_inverse_colors"
+            app:title="@string/inverse_colors" />
         <androidx.preference.ListPreference
-            app:title="@string/language"
-            app:summary="@string/summary_preference_settings_language"
-            app:key="@string/key_language"
-            app:icon="@drawable/ic_language"
+            app:defaultValue="@string/default_value_language"
             app:entries="@array/preference_language_entries"
             app:entryValues="@array/preference_language_values"
-            app:defaultValue="@string/default_value_language"/>
+            app:icon="@drawable/ic_language"
+            app:key="@string/key_language"
+            app:summary="@string/summary_preference_settings_language"
+            app:title="@string/language" />
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/scanner"
-        app:icon="@drawable/ic_qr_code_scanner_tinted">
+        app:icon="@drawable/ic_qr_code_scanner_tinted"
+        app:title="@string/scanner">
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:icon="@drawable/ic_open_in_new"
             app:key="@string/key_open_links_automatically"
-            app:title="@string/open_content_automatically"
             app:summary="@string/summary_preference_settings_open_content_automatically"
-            app:defaultValue="false"
-            app:icon="@drawable/ic_open_in_new"/>
+            app:title="@string/open_content_automatically" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:icon="@drawable/ic_content_paste"
             app:key="@string/key_copy_to_clipboard"
-            app:title="@string/copy_to_clipboard"
             app:summary="@string/summary_preference_settings_copy_to_clipboard"
-            app:defaultValue="false"
-            app:icon="@drawable/ic_content_paste"/>
+            app:title="@string/copy_to_clipboard" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:icon="@drawable/ic_center_focus_weak"
             app:key="@string/key_simple_auto_focus"
-            app:title="@string/simple_auto_focus"
             app:summary="@string/summary_preference_settings_simple_auto_focus"
-            app:defaultValue="false"
-            app:icon="@drawable/ic_center_focus_weak"/>
+            app:title="@string/simple_auto_focus" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:icon="@drawable/ic_flashlight"
             app:key="@string/key_flashlight"
-            app:title="@string/flash"
             app:summary="@string/summary_preference_settings_enable_flash_on_start"
-            app:defaultValue="false"
-            app:icon="@drawable/ic_flashlight"/>
+            app:title="@string/flash" />
         <androidx.preference.SwitchPreferenceCompat
-            app:key="@string/key_vibrate"
-            app:title="@string/vibrate"
-            app:summary="@string/summary_preference_settings_vibrate"
             app:defaultValue="true"
-            app:icon='@drawable/ic_vibration'/>
+            app:icon='@drawable/ic_vibration'
+            app:key="@string/key_vibrate"
+            app:summary="@string/summary_preference_settings_vibrate"
+            app:title="@string/vibrate" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
             app:icon="@drawable/ic_qr_code_scanner"
             app:key="@string/key_continuous_scanning"
-            app:title="@string/continuous_scanning"
             app:summary="@string/summary_preference_settings_continuous_scanning"
-            app:defaultValue="false"/>
+            app:title="@string/continuous_scanning" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
             app:icon="@drawable/ic_check"
             app:key="@string/key_confirm_scans_manually"
-            app:title="@string/confirm_scans_manually"
             app:summary="@string/summary_preference_settings_confirm_scans_manually"
-            app:defaultValue="false"/>
+            app:title="@string/confirm_scans_manually" />
         <androidx.preference.Preference
-            app:title="@string/camera"
-            app:icon="@drawable/ic_camera_switch">
+            app:icon="@drawable/ic_camera_switch"
+            app:title="@string/camera">
             <intent
-                android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.camera.ChooseCameraActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.camera.ChooseCameraActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
         </androidx.preference.Preference>
         <androidx.preference.Preference
-            app:title="@string/supported_formats"
-            app:icon="@drawable/ic_camera">
+            app:icon="@drawable/ic_camera"
+            app:title="@string/supported_formats">
             <intent
-                android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.formats.SupportedFormatsActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.formats.SupportedFormatsActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/history"
-        app:icon="@drawable/ic_history_tinted">
+        app:icon="@drawable/ic_history_tinted"
+        app:title="@string/history">
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:icon="@drawable/ic_history_edu"
             app:key="@string/key_save_scanned_barcodes"
-            app:title="@string/save_scanned_barcodes_to_history"
-            app:defaultValue="true"
-            app:icon="@drawable/ic_history_edu"/>
+            app:title="@string/save_scanned_barcodes_to_history" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:icon="@drawable/ic_history_edu"
             app:key="@string/key_save_created_barcodes"
-            app:title="@string/save_created_barcodes_to_history"
-            app:defaultValue="true"
-            app:icon="@drawable/ic_history_edu"/>
+            app:title="@string/save_created_barcodes_to_history" />
         <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
             app:icon="@drawable/ic_content_copy"
             app:key="@string/key_do_not_save_duplicates"
-            app:title="@string/do_not_save_duplicates"
             app:summary="@string/summary_preference_settings_do_not_save_duplicates"
-            app:defaultValue="false"/>
+            app:title="@string/do_not_save_duplicates" />
         <androidx.preference.Preference
             app:icon="@drawable/ic_delete_forever"
             app:key="@string/key_clean_history"
-            app:title="@string/clear_history"/>
+            app:title="@string/clear_history" />
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/notifications"
-        app:icon="@drawable/ic_notifications_tinted">
+        app:icon="@drawable/ic_notifications_tinted"
+        app:title="@string/notifications">
         <androidx.preference.Preference
-            app:key="@string/key_notifications_settings"
             app:icon="@drawable/ic_edit_notifications"
-            app:title="@string/notification_settings"/>
+            app:key="@string/key_notifications_settings"
+            app:title="@string/notification_settings" />
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/advanced"
-        app:icon="@drawable/ic_build_tinted">
+        app:icon="@drawable/ic_build_tinted"
+        app:title="@string/advanced">
         <androidx.preference.SwitchPreferenceCompat
-            app:title="@string/firebase"
-            app:key="@string/key_firebase"
             app:defaultValue="true"
+            app:icon="@drawable/ic_firebase"
+            app:key="@string/key_firebase"
             app:summary="@string/summary_preference_settings_firebase"
-            app:icon="@drawable/ic_firebase"/>
+            app:title="@string/firebase" />
         <androidx.preference.Preference
-            app:title="@string/search_engines"
             app:icon="@drawable/ic_travel_explore"
-            app:summary="@string/summary_preference_settings_search_engines">
+            app:summary="@string/summary_preference_settings_search_engines"
+            app:title="@string/search_engines">
             <intent
-                android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.search.ChooseSearchEngineActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.search.ChooseSearchEngineActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/privacy_and_security"
-        app:icon="@drawable/ic_safety_check_tinted">
+        app:icon="@drawable/ic_safety_check_tinted"
+        app:title="@string/privacy_and_security">
         <androidx.preference.Preference
             app:icon="@drawable/ic_privacy_policy"
             app:title="@string/privacy_policy">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://sites.google.com/view/d4rk7355608/more/apps/privacy-policy"/>
+                android:data="https://sites.google.com/view/d4rk7355608/more/apps/privacy-policy" />
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:icon="@drawable/ic_terms_of_service"
             app:title="@string/terms_of_service">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://sites.google.com/view/d4rk7355608/more/apps/terms-of-service"/>
+                android:data="https://sites.google.com/view/d4rk7355608/more/apps/terms-of-service" />
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:icon="@drawable/ic_code_of_conduct"
             app:title="@string/code_of_conduct">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://sites.google.com/view/d4rk7355608/more/code-of-conduct"/>
+                android:data="https://sites.google.com/view/d4rk7355608/more/code-of-conduct" />
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:icon="@drawable/ic_permissions"
             app:title="@string/permissions">
             <intent
-                android:targetPackage="com.d4rk.qrcodescanner.plus"
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"/>
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
         </androidx.preference.Preference>
         <androidx.preference.Preference
             app:icon="@drawable/ic_license"
-            app:title="@string/license"
-            app:summary="@string/summary_preference_settings_license">
+            app:summary="@string/summary_preference_settings_license"
+            app:title="@string/license">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.gnu.org/licenses/gpl-3.0"/>
+                android:data="https://www.gnu.org/licenses/gpl-3.0" />
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
-        app:title="@string/info"
-        app:icon="@drawable/ic_about">
+        app:icon="@drawable/ic_about"
+        app:title="@string/info">
         <androidx.preference.Preference
             app:icon="@drawable/ic_perm_device_information"
             app:key="@string/key_device_info"
-            app:title="@string/device_info"
-            app:summary="%1$s"/>
+            app:summary="%1$s"
+            app:title="@string/device_info" />
     </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>

@@ -1,5 +1,7 @@
 <resources>
     <paths>
-        <cache-path name="shared_images" path="images/"/>
+        <cache-path
+            name="shared_images"
+            path="images/" />
     </paths>
 </resources>

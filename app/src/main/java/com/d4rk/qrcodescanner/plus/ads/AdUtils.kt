@@ -6,8 +6,8 @@ import com.google.android.gms.ads.AdRequest
 
 object AdUtils {
 
-    fun loadBanner(nativeAdView : NativeAdBannerView , listener : AdListener? = null) {
+    fun loadBanner(nativeAdView: NativeAdBannerView, listener: AdListener? = null) {
         val request = AdRequest.Builder().build()
-        nativeAdView.loadAd(request , listener)
+        nativeAdView.loadAd(request, listener)
     }
 }

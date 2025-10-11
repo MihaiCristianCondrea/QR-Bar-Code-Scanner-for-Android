@@ -1,40 +1,39 @@
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item_increase_brightness"
-        android:title="@string/increase_brightness"
         android:icon="@drawable/ic_brightness_high"
+        android:title="@string/increase_brightness"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_decrease_brightness"
-        android:title="@string/decrease_brightness"
         android:icon="@drawable/ic_brightness_low"
+        android:title="@string/decrease_brightness"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_add_to_favorites"
-        android:title="@string/tooltip_add_to_favorites"
         android:icon="@drawable/ic_favorite_unchecked"
+        android:title="@string/tooltip_add_to_favorites"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_show_barcode_image"
-        android:title="@string/tooltip_view_code"
         android:icon="@drawable/ic_qr_code"
+        android:title="@string/tooltip_view_code"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_save"
-        android:title="@string/delete"
         android:icon="@drawable/ic_save"
+        android:title="@string/delete"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_delete"
-        android:title="@string/delete"
         android:icon="@drawable/ic_delete"
+        android:title="@string/delete"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

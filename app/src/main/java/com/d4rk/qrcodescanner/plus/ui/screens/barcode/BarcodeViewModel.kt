@@ -35,10 +35,13 @@ class BarcodeViewModel(
         if (!currentState.isInDatabase) {
             return
         }
-        val updatedBarcode = currentState.barcode.copy(isFavorite = currentState.barcode.isFavorite.not())
+        val updatedBarcode =
+            currentState.barcode.copy(isFavorite = currentState.barcode.isFavorite.not())
         repository.saveBarcode(updatedBarcode, avoidDuplicates = false)
             .onStart { setProcessing(true) }
-            .map { rowId -> updatedBarcode.copy(id = updatedBarcode.id.takeIf { it != 0L } ?: rowId) }
+            .map { rowId ->
+                updatedBarcode.copy(id = updatedBarcode.id.takeIf { it != 0L } ?: rowId)
+            }
             .onEach { savedBarcode ->
                 setProcessing(false, savedBarcode)
                 _events.emit(BarcodeEvent.FavoriteToggled(savedBarcode.isFavorite))
@@ -62,7 +65,9 @@ class BarcodeViewModel(
         val updatedBarcode = currentState.barcode.copy(name = trimmedName)
         repository.saveBarcode(updatedBarcode, avoidDuplicates = false)
             .onStart { setProcessing(true) }
-            .map { rowId -> updatedBarcode.copy(id = updatedBarcode.id.takeIf { it != 0L } ?: rowId) }
+            .map { rowId ->
+                updatedBarcode.copy(id = updatedBarcode.id.takeIf { it != 0L } ?: rowId)
+            }
             .onEach { savedBarcode ->
                 setProcessing(false, savedBarcode)
                 _events.emit(BarcodeEvent.NameUpdated(trimmedName))

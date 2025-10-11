@@ -27,7 +27,8 @@ object EdgeToEdgeHelper {
     }
 
     fun applySystemBarsColor(window: Window) {
-        val isLightMode = (window.context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO
+        val isLightMode =
+            (window.context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO
         val controller = WindowCompat.getInsetsController(window, window.decorView)
         controller.isAppearanceLightNavigationBars = isLightMode
         controller.isAppearanceLightStatusBars = isLightMode

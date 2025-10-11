@@ -19,31 +19,31 @@ import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
-import kotlin.LazyThreadSafetyMode
 
 class OtpActivity : UpNavigationActivity() {
-    private lateinit var binding : ActivityBarcodeOtpBinding
+    private lateinit var binding: ActivityBarcodeOtpBinding
 
     companion object {
         private const val OTP_KEY = "OTP_KEY"
-        fun start(context : Context , opt : OtpAuth) {
-            val intent = Intent(context , OtpActivity::class.java).apply {
-                putExtra(OTP_KEY , opt)
+        fun start(context: Context, opt: OtpAuth) {
+            val intent = Intent(context, OtpActivity::class.java).apply {
+                putExtra(OTP_KEY, opt)
             }
             context.startActivity(intent)
         }
     }
 
     @Suppress("DEPRECATION")
-    private val otpArgs : OtpAuth by lazy(LazyThreadSafetyMode.NONE) {
+    private val otpArgs: OtpAuth by lazy(LazyThreadSafetyMode.NONE) {
         val otp = intent?.getSerializableExtra(OTP_KEY) as? OtpAuth
         requireNotNull(otp) { "OtpActivity requires an OtpAuth argument" }
     }
 
-    private val viewModel : OtpViewModel by viewModels {
-        OtpViewModelFactory(otpArgs , otpGenerator)
+    private val viewModel: OtpViewModel by viewModels {
+        OtpViewModelFactory(otpArgs, otpGenerator)
     }
-    override fun onCreate(savedInstanceState : Bundle?) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeOtpBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -56,7 +56,10 @@ class OtpActivity : UpNavigationActivity() {
     }
 
     private fun enableSecurity() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE , WindowManager.LayoutParams.FLAG_SECURE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
     }
 
     private fun handleRefreshOtpClicked() {
@@ -75,11 +78,12 @@ class OtpActivity : UpNavigationActivity() {
         }
     }
 
-    private fun renderUiState(uiState : OtpUiState) {
+    private fun renderUiState(uiState: OtpUiState) {
         binding.buttonRefresh.isVisible = uiState.isHotp
         binding.textViewCounter.isVisible = uiState.isHotp
         if (uiState.isHotp) {
-            binding.textViewCounter.text = getString(R.string.counter , uiState.counter.orZero().toString())
+            binding.textViewCounter.text =
+                getString(R.string.counter, uiState.counter.orZero().toString())
         }
 
         val timerVisible = uiState.isTotp && uiState.timerState is TimerUiState.Visible
@@ -87,8 +91,8 @@ class OtpActivity : UpNavigationActivity() {
         if (timerVisible) {
             val timerState = uiState.timerState
             binding.textViewTimer.text = getString(
-                R.string.timer_left ,
-                timerState.minutes.toTimeComponent() ,
+                R.string.timer_left,
+                timerState.minutes.toTimeComponent(),
                 timerState.seconds.toTimeComponent()
             )
         }
@@ -97,11 +101,10 @@ class OtpActivity : UpNavigationActivity() {
             uiState.password ?: getString(R.string.unable_to_generate_password)
     }
 
-    private fun Long.toTimeComponent() : String {
+    private fun Long.toTimeComponent(): String {
         return if (this >= 10) {
             toString()
-        }
-        else {
+        } else {
             "0$this"
         }
     }

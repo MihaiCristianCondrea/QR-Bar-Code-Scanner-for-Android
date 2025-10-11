@@ -13,21 +13,25 @@ import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateEan8Fragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateEan8Binding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateEan8Binding.inflate(inflater , container , false)
+    private lateinit var binding: FragmentCreateEan8Binding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateEan8Binding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.editText.requestFocus()
         binding.editText.addTextChangedListener {
             parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
         }
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return Other(binding.editText.textString)
     }
 }

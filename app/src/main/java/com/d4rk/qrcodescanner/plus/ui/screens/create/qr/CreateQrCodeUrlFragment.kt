@@ -13,19 +13,23 @@ import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateQrCodeUrlBinding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateQrCodeUrlBinding.inflate(inflater , container , false)
+    private lateinit var binding: FragmentCreateQrCodeUrlBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateQrCodeUrlBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         showUrlPrefix()
         handleTextChanged()
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return Url(binding.editText.textString)
     }
 

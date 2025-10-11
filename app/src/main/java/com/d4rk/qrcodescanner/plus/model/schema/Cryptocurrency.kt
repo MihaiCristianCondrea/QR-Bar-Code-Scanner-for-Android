@@ -6,7 +6,11 @@ import com.d4rk.qrcodescanner.plus.utils.extension.removePrefixIgnoreCase
 import com.d4rk.qrcodescanner.plus.utils.extension.startsWithIgnoreCase
 
 class Cryptocurrency(
-    val cryptocurrency : String , val address : String? = null , val amount : String? = null , val label : String? = null , val message : String? = null
+    val cryptocurrency: String,
+    val address: String? = null,
+    val amount: String? = null,
+    val label: String? = null,
+    val message: String? = null
 ) : Schema {
     companion object {
         private const val BITCOIN_PREFIX = "bitcoin"
@@ -20,8 +24,15 @@ class Cryptocurrency(
         private const val PREFIX_END_SYMBOL = ":"
         private const val ADDRESS_SEPARATOR = "?"
         private const val PARAMETERS_SEPARATOR = "&"
-        private val PREFIXES = listOf(BITCOIN_PREFIX , BITCOIN_CASH_PREFIX , ETHEREUM_PREFIX , LITECOIN_PREFIX , DASH_PREFIX)
-        fun parse(text : String) : Cryptocurrency? {
+        private val PREFIXES = listOf(
+            BITCOIN_PREFIX,
+            BITCOIN_CASH_PREFIX,
+            ETHEREUM_PREFIX,
+            LITECOIN_PREFIX,
+            DASH_PREFIX
+        )
+
+        fun parse(text: String): Cryptocurrency? {
             val prefixAndSuffix = text.split(PREFIX_END_SYMBOL)
             val cryptocurrency = prefixAndSuffix.getOrNull(0).orEmpty()
             if (cryptocurrency.equalsAnyIgnoreCase(PREFIXES).not()) {
@@ -31,9 +42,9 @@ class Cryptocurrency(
                 ADDRESS_SEPARATOR
             )
             val address = addressAndParameters.getOrNull(0)
-            var label : String? = null
-            var amount : String? = null
-            var message : String? = null
+            var label: String? = null
+            var amount: String? = null
+            var message: String? = null
             val parameters = addressAndParameters.getOrNull(1).orEmpty().split(PARAMETERS_SEPARATOR)
             parameters.forEach { parameter ->
                 if (parameter.startsWithIgnoreCase(LABEL_PREFIX)) {
@@ -49,16 +60,22 @@ class Cryptocurrency(
                     return@forEach
                 }
             }
-            return Cryptocurrency(cryptocurrency , address , label , amount , message)
+            return Cryptocurrency(cryptocurrency, address, label, amount, message)
         }
     }
 
     override val schema = BarcodeSchema.CRYPTOCURRENCY
-    override fun toFormattedText() : String {
-        return listOf(cryptocurrency , address , label , amount , message).joinToStringNotNullOrBlankWithLineSeparator()
+    override fun toFormattedText(): String {
+        return listOf(
+            cryptocurrency,
+            address,
+            label,
+            amount,
+            message
+        ).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
-    override fun toBarcodeText() : String {
+    override fun toBarcodeText(): String {
         val result = StringBuilder().append("$cryptocurrency$PREFIX_END_SYMBOL").append(address)
         if (amount.isNullOrBlank() && label.isNullOrBlank() && message.isNullOrBlank()) {
             return result.toString()

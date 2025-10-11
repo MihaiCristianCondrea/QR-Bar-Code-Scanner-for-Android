@@ -81,8 +81,6 @@
     <string name="none">なし</string>
     <string name="ask_every_time">毎回確認する</string>
     <string name="app_updates">アプリの更新</string>
-    <string name="check_for_updates">更新を確認する…</string>
-    <string name="subscribe_to_beta">ベータ版の更新を購読する</string>
     <string name="changelog">変更履歴</string>
     <string name="privacy_and_security">プライバシーとセキュリティ</string>
     <string name="privacy_policy">プライバシーポリシー</string>
@@ -108,9 +106,7 @@
     <string name="faq">よくある質問</string>
     <string name="send_feedback">フィードバックを送信</string>
     <string name="license">ライセンス</string>
-    <string name="more">その他</string>
     <string name="share">共有</string>
-    <string name="more_apps">他のアプリ…</string>
     <string name="support_the_developer">開発者のサポート</string>
     <string name="paid_support">有料サポート</string>
     <string name="non_paid_support">無料サポート</string>

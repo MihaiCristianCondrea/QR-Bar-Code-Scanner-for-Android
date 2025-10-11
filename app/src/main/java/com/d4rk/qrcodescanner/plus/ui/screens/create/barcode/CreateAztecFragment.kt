@@ -11,18 +11,22 @@ import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateAztecFragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateAztecBinding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateAztecBinding.inflate(inflater , container , false)
+    private lateinit var binding: FragmentCreateAztecBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateAztecBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.editText.requestFocus()
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return Other(binding.editText.textString)
     }
 }

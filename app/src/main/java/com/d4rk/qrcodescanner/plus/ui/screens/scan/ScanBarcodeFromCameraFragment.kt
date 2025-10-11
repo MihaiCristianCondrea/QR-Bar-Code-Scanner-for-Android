@@ -65,7 +65,6 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.jvm.Volatile
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
@@ -98,6 +97,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var lastPreviewColorUpdateTimestamp: Long = 0L
     private var resumeScanningJob: Job? = null
+
     @Volatile
     @ColorInt
     private var lastAppliedIconColor: Int? = null
@@ -126,6 +126,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     override fun onResume() {
         super.onResume()
+        syncStateFromSettings()
         if (areAllPermissionsGranted()) {
             bindCameraUseCases()
         }
@@ -146,7 +147,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         cameraProvider = null
     }
 
-    override fun onRequestPermissionsResult( // FIXME: This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+    override fun onRequestPermissionsResult(
+        // FIXME: This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray,
@@ -159,7 +161,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     override fun onBarcodeConfirmed(barcode: Barcode) {
         pendingBarcode = null
         when {
-            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
+            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(
+                barcode
+            )
+
             else -> {
                 lastResult = barcode
                 navigateToBarcodeScreen(barcode)
@@ -232,6 +237,24 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         pendingBarcode = null
         resumeScanningJob?.cancel()
         resumeScanningJob = null
+    }
+
+    private fun syncStateFromSettings() {
+        val desiredLensFacing = if (settings.isBackCamera) {
+            CameraSelector.LENS_FACING_BACK
+        } else {
+            CameraSelector.LENS_FACING_FRONT
+        }
+        if (lensFacing != desiredLensFacing) {
+            lensFacing = desiredLensFacing
+        }
+        resumeScanningJob?.cancel()
+        resumeScanningJob = null
+        pendingBarcode = null
+        isHandlingResult = false
+        if (this::binding.isInitialized) {
+            binding.barcodeOverlay.clear()
+        }
     }
 
     @OptIn(ExperimentalGetImage::class)
@@ -385,7 +408,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         vibrateIfNeeded()
         when {
             settings.confirmScansManually -> showScanConfirmationDialog(barcode)
-            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(barcode)
+            settings.saveScannedBarcodesToHistory || settings.continuousScanning -> saveScannedBarcode(
+                barcode
+            )
+
             else -> {
                 lastResult = barcode
                 pendingBarcode = null
@@ -486,7 +512,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun toggleFlash() {
         val camera = camera ?: return
-        val flashAvailable = camera.cameraInfo.hasFlashUnit() && lensFacing == CameraSelector.LENS_FACING_BACK
+        val flashAvailable =
+            camera.cameraInfo.hasFlashUnit() && lensFacing == CameraSelector.LENS_FACING_BACK
         if (flashAvailable.not()) {
             return
         }
@@ -497,7 +524,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun updateFlashAvailability() {
         val camera = camera
-        val flashAvailable = camera?.cameraInfo?.hasFlashUnit() == true && lensFacing == CameraSelector.LENS_FACING_BACK
+        val flashAvailable =
+            camera?.cameraInfo?.hasFlashUnit() == true && lensFacing == CameraSelector.LENS_FACING_BACK
         binding.imageViewFlash.isVisible = flashAvailable
         binding.imageViewFlash.isVisible = flashAvailable
         binding.layoutFlashContainer.isVisible = flashAvailable
@@ -508,7 +536,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
 
     private fun applyInitialTorchState() {
         val camera = camera ?: return
-        val flashAvailable = camera.cameraInfo.hasFlashUnit() && lensFacing == CameraSelector.LENS_FACING_BACK
+        val flashAvailable =
+            camera.cameraInfo.hasFlashUnit() && lensFacing == CameraSelector.LENS_FACING_BACK
         if (flashAvailable) {
             camera.cameraControl.enableTorch(settings.flash)
         } else {
@@ -526,7 +555,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     private fun observeZoomState() {
         val camera = camera ?: return
         camera.cameraInfo.zoomState.observe(viewLifecycleOwner) { zoomState ->
-            val progress = (zoomState.linearZoom * ZOOM_MAX_PROGRESS).toInt().coerceIn(0, ZOOM_MAX_PROGRESS)
+            val progress =
+                (zoomState.linearZoom * ZOOM_MAX_PROGRESS).toInt().coerceIn(0, ZOOM_MAX_PROGRESS)
             currentZoomProgress = progress.also { binding.seekBarZoom.value = it.toFloat() }
         }
     }
@@ -567,7 +597,8 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
                 return@setOnTouchListener false
             }
             val camera = camera ?: return@setOnTouchListener false
-            val meteringPoint = binding.previewView.meteringPointFactory.createPoint(event.x, event.y)
+            val meteringPoint =
+                binding.previewView.meteringPointFactory.createPoint(event.x, event.y)
             val focusAction = FocusMeteringAction.Builder(meteringPoint).build()
             camera.cameraControl.startFocusAndMetering(focusAction)
             view.performClick()

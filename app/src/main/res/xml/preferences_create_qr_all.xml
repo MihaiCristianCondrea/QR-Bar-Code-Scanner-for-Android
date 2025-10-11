@@ -1,94 +1,93 @@
-<androidx.preference.PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_text"
         app:key="text"
         app:title="@string/text"
-        app:icon="@drawable/ic_text"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_link"
         app:key="url"
         app:title="@string/url"
-        app:icon="@drawable/ic_link"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_wifi"
         app:key="wifi"
         app:title="@string/wifi"
-        app:icon="@drawable/ic_wifi"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_location"
         app:key="location"
         app:title="@string/location"
-        app:icon="@drawable/ic_location"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_otp"
         app:key="otp"
         app:title="@string/otp"
-        app:icon="@drawable/ic_otp"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_contact_white"
         app:key="contact_vcard"
         app:title="@string/contact_v_card"
-        app:icon="@drawable/ic_contact_white"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_contact_white"
         app:key="contact_mecard"
         app:title="@string/contact_me_card"
-        app:icon="@drawable/ic_contact_white"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_calendar"
         app:key="event"
         app:title="@string/event"
-        app:icon="@drawable/ic_calendar"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_phone"
         app:key="phone"
         app:title="@string/phone"
-        app:icon="@drawable/ic_phone"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_email"
         app:key="email"
         app:title="@string/email"
-        app:icon="@drawable/ic_email"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_sms"
         app:key="sms"
         app:title="@string/sms"
-        app:icon="@drawable/ic_sms"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_mms"
         app:key="mms"
         app:title="@string/mms"
-        app:icon="@drawable/ic_mms"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_bitcoin"
         app:key="cryptocurrency"
         app:title="@string/bitcoin"
-        app:icon="@drawable/ic_bitcoin"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_bookmark"
         app:key="bookmark"
         app:title="@string/bookmark"
-        app:icon="@drawable/ic_bookmark"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     <androidx.preference.Preference
+        app:icon="@drawable/ic_app"
         app:key="app"
         app:title="@string/app"
-        app:icon="@drawable/ic_app"
         app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
 </androidx.preference.PreferenceScreen>

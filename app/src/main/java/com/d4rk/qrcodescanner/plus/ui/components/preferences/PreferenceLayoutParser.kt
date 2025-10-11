@@ -50,10 +50,17 @@ object PreferenceLayoutParser {
         return entries
     }
 
-    private fun parseCategory(context: Context, parser: XmlPullParser): PreferenceLayoutEntry.Category? {
+    private fun parseCategory(
+        context: Context,
+        parser: XmlPullParser
+    ): PreferenceLayoutEntry.Category? {
         val attributeSet = Xml.asAttributeSet(parser)
-        return context.obtainStyledAttributes(attributeSet, androidx.preference.R.styleable.Preference).use { typedArray ->
-            val titleRes = typedArray.getResourceId(androidx.preference.R.styleable.Preference_title, 0)
+        return context.obtainStyledAttributes(
+            attributeSet,
+            androidx.preference.R.styleable.Preference
+        ).use { typedArray ->
+            val titleRes =
+                typedArray.getResourceId(androidx.preference.R.styleable.Preference_title, 0)
             if (titleRes == 0) {
                 null
             } else {
@@ -62,14 +69,26 @@ object PreferenceLayoutParser {
         }
     }
 
-    private fun parseAction(context: Context, parser: XmlPullParser): PreferenceLayoutEntry.Action? {
+    private fun parseAction(
+        context: Context,
+        parser: XmlPullParser
+    ): PreferenceLayoutEntry.Action? {
         val attributeSet = Xml.asAttributeSet(parser)
-        return context.obtainStyledAttributes(attributeSet, androidx.preference.R.styleable.Preference).use { typedArray ->
+        return context.obtainStyledAttributes(
+            attributeSet,
+            androidx.preference.R.styleable.Preference
+        ).use { typedArray ->
             val key = typedArray.getString(androidx.preference.R.styleable.Preference_key)
-            val titleRes = typedArray.getResourceId(androidx.preference.R.styleable.Preference_title, 0)
-            val summaryRes = typedArray.getResourceId(androidx.preference.R.styleable.Preference_summary, 0).takeIf { it != 0 }
-            val iconRes = typedArray.getResourceId(androidx.preference.R.styleable.Preference_icon, 0)
-            val widgetLayoutRes = typedArray.getResourceId(androidx.preference.R.styleable.Preference_widgetLayout, 0).takeIf { it != 0 }
+            val titleRes =
+                typedArray.getResourceId(androidx.preference.R.styleable.Preference_title, 0)
+            val summaryRes =
+                typedArray.getResourceId(androidx.preference.R.styleable.Preference_summary, 0)
+                    .takeIf { it != 0 }
+            val iconRes =
+                typedArray.getResourceId(androidx.preference.R.styleable.Preference_icon, 0)
+            val widgetLayoutRes =
+                typedArray.getResourceId(androidx.preference.R.styleable.Preference_widgetLayout, 0)
+                    .takeIf { it != 0 }
 
             if (key.isNullOrEmpty() || titleRes == 0 || iconRes == 0) {
                 null

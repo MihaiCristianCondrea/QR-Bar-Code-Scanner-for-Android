@@ -8,11 +8,6 @@
         <item name="postSplashScreenTheme">@style/MainTheme</item>
     </style>
 
-    <style name="AppTheme" parent="@style/AppThemeActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="MainTheme" parent="@style/AppThemeActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

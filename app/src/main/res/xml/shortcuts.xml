@@ -1,42 +1,42 @@
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
-        android:shortcutId="scanFromCamera"
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_scan_from_camera"
+        android:shortcutId="scanFromCamera"
         android:shortcutShortLabel="@string/scan">
         <intent
             android:action=".SCAN_FROM_CAMERA"
-            android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"
+            android:targetPackage="com.d4rk.qrcodescanner.plus" />
     </shortcut>
     <shortcut
-        android:shortcutId="scanFromFile"
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_scan_from_file"
+        android:shortcutId="scanFromFile"
         android:shortcutShortLabel="@string/scan_image">
         <intent
             android:action=".SCAN_FROM_FILE"
-            android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.scan.file.ScanBarcodeFromFileActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.scan.file.ScanBarcodeFromFileActivity"
+            android:targetPackage="com.d4rk.qrcodescanner.plus" />
     </shortcut>
     <shortcut
-        android:shortcutId="createBarcode"
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_create_barcode"
+        android:shortcutId="createBarcode"
         android:shortcutShortLabel="@string/create_barcode">
         <intent
             android:action=".CREATE_BARCODE"
-            android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"
+            android:targetPackage="com.d4rk.qrcodescanner.plus" />
     </shortcut>
     <shortcut
-        android:shortcutId="history"
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_history"
+        android:shortcutId="history"
         android:shortcutShortLabel="@string/history">
         <intent
             android:action=".HISTORY"
-            android:targetPackage="com.d4rk.qrcodescanner.plus"
-            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"/>
+            android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"
+            android:targetPackage="com.d4rk.qrcodescanner.plus" />
     </shortcut>
 </shortcuts>

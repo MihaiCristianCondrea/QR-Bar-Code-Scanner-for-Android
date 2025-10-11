@@ -13,11 +13,12 @@ import kotlinx.coroutines.withContext
 object BarcodeImageScanner {
     private val scanner by lazy { BarcodeScanning.getClient() }
 
-    suspend fun parse(image : Bitmap) : Barcode {
+    suspend fun parse(image: Bitmap): Barcode {
         return withContext(Dispatchers.Default) {
-            val inputImage = InputImage.fromBitmap(image , 0)
+            val inputImage = InputImage.fromBitmap(image, 0)
             val barcodes = scanner.process(inputImage).await()
-            barcodes.firstOrNull()?.takeIf { it.rawValue != null && it.format.toZxingFormat() != null }
+            barcodes.firstOrNull()
+                ?.takeIf { it.rawValue != null && it.format.toZxingFormat() != null }
                 ?: throw NotFoundException.getNotFoundInstance()
         }
     }

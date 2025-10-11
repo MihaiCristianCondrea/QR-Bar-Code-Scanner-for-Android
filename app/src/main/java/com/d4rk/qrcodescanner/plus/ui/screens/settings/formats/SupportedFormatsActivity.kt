@@ -12,20 +12,20 @@ import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.zxing.BarcodeFormat
 
-class SupportedFormatsActivity : BaseActivity() , FormatsAdapter.Listener {
-    private lateinit var binding : ActivitySupportedFormatsBinding
+class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
+    private lateinit var binding: ActivitySupportedFormatsBinding
 
     companion object {
-        fun start(context : Context) {
-            val intent = Intent(context , SupportedFormatsActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, SupportedFormatsActivity::class.java)
             context.startActivity(intent)
         }
     }
 
     private val formats by unsafeLazy { SupportedBarcodeFormats.FORMATS }
     private val formatSelection by unsafeLazy { formats.map(settings::isFormatSelected) }
-    private val formatsAdapter by unsafeLazy { FormatsAdapter(this , formats , formatSelection) }
-    override fun onCreate(savedInstanceState : Bundle?) {
+    private val formatsAdapter by unsafeLazy { FormatsAdapter(this, formats, formatSelection) }
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySupportedFormatsBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -33,8 +33,8 @@ class SupportedFormatsActivity : BaseActivity() , FormatsAdapter.Listener {
         initRecyclerView()
     }
 
-    override fun onFormatChecked(format : BarcodeFormat , isChecked : Boolean) {
-        settings.setFormatSelected(format , isChecked)
+    override fun onFormatChecked(format: BarcodeFormat, isChecked: Boolean) {
+        settings.setFormatSelected(format, isChecked)
     }
 
     private fun initRecyclerView() {

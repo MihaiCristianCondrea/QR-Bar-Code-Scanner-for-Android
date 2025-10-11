@@ -1,5 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_description">Сканирайте всички видове QR кодове и баркодове с лекота. 📷</string>
     <string name="welcome">Добре дошли</string>
     <string name="menu">Меню</string>
@@ -82,8 +81,6 @@
     <string name="none">Няма</string>
     <string name="ask_every_time">Питай всеки път</string>
     <string name="app_updates">Актуализации на приложението</string>
-    <string name="check_for_updates">Проверка за актуализации…</string>
-    <string name="subscribe_to_beta">Абониране за бета актуализации</string>
     <string name="changelog">Промени</string>
     <string name="privacy_and_security">Поверителност и сигурност</string>
     <string name="privacy_policy">Политика за поверителност</string>
@@ -109,9 +106,7 @@
     <string name="faq">ЧЗВ</string>
     <string name="send_feedback">Изпрати обратна връзка</string>
     <string name="license">Лиценз</string>
-    <string name="more">Още</string>
     <string name="share">Сподели</string>
-    <string name="more_apps">Още приложения…</string>
     <string name="support_the_developer">Подкрепете разработчика</string>
     <string name="paid_support">Платена поддръжка</string>
     <string name="non_paid_support">Безплатна поддръжка</string>

@@ -81,8 +81,6 @@
     <string name="none">Brak</string>
     <string name="ask_every_time">Zawsze pytaj</string>
     <string name="app_updates">Aktualizacje aplikacji</string>
-    <string name="check_for_updates">Sprawdź aktualizacje…</string>
-    <string name="subscribe_to_beta">Zapisz się na aktualizacje beta</string>
     <string name="changelog">Historia zmian</string>
     <string name="privacy_and_security">Prywatność i bezpieczeństwo</string>
     <string name="privacy_policy">Polityka prywatności</string>
@@ -108,9 +106,7 @@
     <string name="faq">FAQ</string>
     <string name="send_feedback">Wyślij opinię</string>
     <string name="license">Licencja</string>
-    <string name="more">Więcej</string>
     <string name="share">Udostępnij</string>
-    <string name="more_apps">Więcej aplikacji…</string>
     <string name="support_the_developer">Wsparcie dla dewelopera</string>
     <string name="paid_support">Wsparcie płatne</string>
     <string name="non_paid_support">Wsparcie nieodpłatne</string>

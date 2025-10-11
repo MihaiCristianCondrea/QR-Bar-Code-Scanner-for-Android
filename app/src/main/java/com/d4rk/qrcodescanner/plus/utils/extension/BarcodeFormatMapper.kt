@@ -3,7 +3,7 @@ package com.d4rk.qrcodescanner.plus.utils.extension
 import com.google.zxing.BarcodeFormat
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
-fun BarcodeFormat.toGmsFormat() : Int? {
+fun BarcodeFormat.toGmsFormat(): Int? {
     return when (this) {
         BarcodeFormat.AZTEC -> MlKitBarcode.FORMAT_AZTEC
         BarcodeFormat.CODABAR -> MlKitBarcode.FORMAT_CODABAR
@@ -22,7 +22,7 @@ fun BarcodeFormat.toGmsFormat() : Int? {
     }
 }
 
-fun Int.toZxingFormat() : BarcodeFormat? {
+fun Int.toZxingFormat(): BarcodeFormat? {
     return when (this) {
         MlKitBarcode.FORMAT_AZTEC -> BarcodeFormat.AZTEC
         MlKitBarcode.FORMAT_CODABAR -> BarcodeFormat.CODABAR

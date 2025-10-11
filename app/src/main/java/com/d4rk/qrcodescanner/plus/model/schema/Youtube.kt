@@ -2,11 +2,12 @@ package com.d4rk.qrcodescanner.plus.model.schema
 
 import com.d4rk.qrcodescanner.plus.utils.extension.startsWithAnyIgnoreCase
 
-class Youtube(val url : String) : Schema {
+class Youtube(val url: String) : Schema {
     companion object {
-        private val PREFIXES = listOf("vnd.youtube://" , "http://www.youtube.com" , "https://www.youtube.com")
+        private val PREFIXES =
+            listOf("vnd.youtube://", "http://www.youtube.com", "https://www.youtube.com")
 
-        fun parse(text : String) : Youtube? {
+        fun parse(text: String): Youtube? {
             if (text.startsWithAnyIgnoreCase(PREFIXES).not()) {
                 return null
             }
@@ -15,6 +16,6 @@ class Youtube(val url : String) : Schema {
     }
 
     override val schema = BarcodeSchema.YOUTUBE
-    override fun toFormattedText() : String = url
-    override fun toBarcodeText() : String = url
+    override fun toFormattedText(): String = url
+    override fun toBarcodeText(): String = url
 }

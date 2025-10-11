@@ -11,22 +11,27 @@ import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
-class CreateCodabarFragment : com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateCodabarBinding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateCodabarBinding.inflate(inflater , container , false)
+class CreateCodabarFragment :
+    com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment() {
+    private lateinit var binding: FragmentCreateCodabarBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateCodabarBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.editText.requestFocus()
         binding.editText.addTextChangedListener {
             parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
         }
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return Other(binding.editText.textString)
     }
 }

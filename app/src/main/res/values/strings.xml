@@ -80,8 +80,6 @@
     <string name="none">None</string>
     <string name="ask_every_time">Ask every time</string>
     <string name="app_updates">App updates</string>
-    <string name="check_for_updates">Check for updates…</string>
-    <string name="subscribe_to_beta">Subscribe to beta updates</string>
     <string name="changelog">Changelog</string>
     <string name="privacy_and_security">Privacy and security</string>
     <string name="privacy_policy">Privacy Policy</string>
@@ -108,9 +106,7 @@
     <string name="version">Version %1$s</string>
     <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="license">License</string>
-    <string name="more">More</string>
     <string name="share">Share</string>
-    <string name="more_apps">More apps…</string>
     <string name="support_the_developer">Support the developer</string>
     <string name="paid_support">Paid Support</string>
     <string name="non_paid_support">Non-Paid Support</string>

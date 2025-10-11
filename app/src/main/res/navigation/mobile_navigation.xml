@@ -1,5 +1,4 @@
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -8,15 +7,15 @@
         android:id="@+id/navigation_scan"
         android:name="com.d4rk.qrcodescanner.plus.ui.screens.scan.ScanBarcodeFromCameraFragment"
         android:label="@string/scan"
-        tools:layout="@layout/fragment_scan_barcode_from_camera"/>
+        tools:layout="@layout/fragment_scan_barcode_from_camera" />
     <fragment
         android:id="@+id/navigation_create"
         android:name="com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeFragment"
         android:label="@string/create"
-        tools:layout="@layout/fragment_create_barcode"/>
+        tools:layout="@layout/fragment_create_barcode" />
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.d4rk.qrcodescanner.plus.ui.screens.history.BarcodeHistoryFragment"
         android:label="@string/history"
-        tools:layout="@layout/fragment_barcode_history"/>
+        tools:layout="@layout/fragment_barcode_history" />
 </navigation>

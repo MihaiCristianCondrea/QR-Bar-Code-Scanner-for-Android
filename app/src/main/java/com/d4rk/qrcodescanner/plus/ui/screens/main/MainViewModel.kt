@@ -24,40 +24,40 @@ import kotlinx.coroutines.flow.runningFold
 import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel(
-    private val preferencesRepository : MainPreferencesRepository ,
-    private val computationDispatcher : CoroutineDispatcher = Dispatchers.Default
+    preferencesRepository: MainPreferencesRepository,
+    computationDispatcher: CoroutineDispatcher = Dispatchers.Default
 ) : ViewModel() {
 
     private data class UiAccumulator(
-        val lastThemeMode : Int? = null ,
-        val lastLanguageTag : String? = null ,
-        val uiState : MainUiState = MainUiState()
+        val lastThemeMode: Int? = null,
+        val lastLanguageTag: String? = null,
+        val uiState: MainUiState = MainUiState()
     )
 
     private data class PreferencesSnapshot(
-        val themeMode : Int ,
-        val languageTag : String? ,
-        val labelVisibility : Int ,
-        val startDestination : Int
+        val themeMode: Int,
+        val languageTag: String?,
+        val labelVisibility: Int,
+        val startDestination: Int
     )
 
-    val uiState : StateFlow<MainUiState> = preferencesRepository.mainPreferences
+    val uiState: StateFlow<MainUiState> = preferencesRepository.mainPreferences
         .map { preferences ->
             preferences.toSnapshot()
         }
-        .runningFold(UiAccumulator()) { accumulator , snapshot ->
+        .runningFold(UiAccumulator()) { accumulator, snapshot ->
             val themeChanged = accumulator.lastThemeMode != null && (
-                accumulator.lastThemeMode != snapshot.themeMode || accumulator.lastLanguageTag != snapshot.languageTag
-            )
+                    accumulator.lastThemeMode != snapshot.themeMode || accumulator.lastLanguageTag != snapshot.languageTag
+                    )
 
             UiAccumulator(
-                lastThemeMode = snapshot.themeMode ,
-                lastLanguageTag = snapshot.languageTag ,
+                lastThemeMode = snapshot.themeMode,
+                lastLanguageTag = snapshot.languageTag,
                 uiState = MainUiState(
-                    bottomNavVisibility = snapshot.labelVisibility ,
-                    defaultNavDestination = snapshot.startDestination ,
-                    themeMode = snapshot.themeMode ,
-                    languageTag = snapshot.languageTag ,
+                    bottomNavVisibility = snapshot.labelVisibility,
+                    defaultNavDestination = snapshot.startDestination,
+                    themeMode = snapshot.themeMode,
+                    languageTag = snapshot.languageTag,
                     themeChanged = themeChanged
                 )
             )
@@ -72,9 +72,9 @@ class MainViewModel(
             emit(MainUiState())
         }
         .distinctUntilChanged()
-        .stateIn(viewModelScope , SharingStarted.WhileSubscribed(5_000) , MainUiState())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), MainUiState())
 
-    private fun ThemePreference.toThemeMode() : Int {
+    private fun ThemePreference.toThemeMode(): Int {
         return when (this) {
             ThemePreference.FOLLOW_SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             ThemePreference.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
@@ -83,7 +83,7 @@ class MainViewModel(
         }
     }
 
-    private fun BottomNavigationLabelsPreference.toLabelVisibility() : Int {
+    private fun BottomNavigationLabelsPreference.toLabelVisibility(): Int {
         return when (this) {
             BottomNavigationLabelsPreference.LABELED -> NavigationBarView.LABEL_VISIBILITY_LABELED
             BottomNavigationLabelsPreference.SELECTED -> NavigationBarView.LABEL_VISIBILITY_SELECTED
@@ -91,7 +91,7 @@ class MainViewModel(
         }
     }
 
-    private fun StartDestinationPreference.toStartDestinationId() : Int {
+    private fun StartDestinationPreference.toStartDestinationId(): Int {
         return when (this) {
             StartDestinationPreference.SCAN -> R.id.navigation_scan
             StartDestinationPreference.CREATE -> R.id.navigation_create
@@ -99,11 +99,11 @@ class MainViewModel(
         }
     }
 
-    private fun MainPreferences.toSnapshot() : PreferencesSnapshot {
+    private fun MainPreferences.toSnapshot(): PreferencesSnapshot {
         return PreferencesSnapshot(
-            themeMode = theme.toThemeMode() ,
-            languageTag = languageTag ,
-            labelVisibility = bottomNavigationLabels.toLabelVisibility() ,
+            themeMode = theme.toThemeMode(),
+            languageTag = languageTag,
+            labelVisibility = bottomNavigationLabels.toLabelVisibility(),
             startDestination = startDestination.toStartDestinationId()
         )
     }

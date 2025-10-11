@@ -1,15 +1,14 @@
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item_increase_brightness"
-        android:title="@string/increase_brightness"
         android:icon="@drawable/ic_brightness_high"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/increase_brightness"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_decrease_brightness"
-        android:title="@string/decrease_brightness"
         android:icon="@drawable/ic_brightness_low"
+        android:title="@string/decrease_brightness"
         android:visible="false"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

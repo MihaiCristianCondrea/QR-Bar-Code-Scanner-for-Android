@@ -2,13 +2,13 @@
     <item
         android:id="@+id/navigation_scan"
         android:icon="@drawable/ic_scan"
-        android:title="@string/scan"/>
+        android:title="@string/scan" />
     <item
         android:id="@+id/navigation_create"
         android:icon="@drawable/nav_create"
-        android:title="@string/create"/>
+        android:title="@string/create" />
     <item
         android:id="@+id/navigation_history"
         android:icon="@drawable/ic_history"
-        android:title="@string/history"/>
+        android:title="@string/history" />
 </menu>

@@ -26,22 +26,22 @@ import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class ExportHistoryActivity : BaseActivity() {
-    private lateinit var binding : ActivityExportHistoryBinding
-    private val viewModel : ExportHistoryViewModel by viewModels {
-        ExportHistoryViewModelFactory(barcodeDatabase , barcodeSaver)
+    private lateinit var binding: ActivityExportHistoryBinding
+    private val viewModel: ExportHistoryViewModel by viewModels {
+        ExportHistoryViewModelFactory(barcodeDatabase, barcodeSaver)
     }
-    private var isExporting : Boolean = false
+    private var isExporting: Boolean = false
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        fun start(context : Context) {
-            val intent = Intent(context , ExportHistoryActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, ExportHistoryActivity::class.java)
             context.startActivity(intent)
         }
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExportHistoryBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -54,8 +54,12 @@ class ExportHistoryActivity : BaseActivity() {
         updateExportButtonState()
     }
 
-    override fun onRequestPermissionsResult(requestCode : Int , permissions : Array<out String> , grantResults : IntArray) {
-        super.onRequestPermissionsResult(requestCode , permissions , grantResults)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             exportHistory()
         }
@@ -63,7 +67,7 @@ class ExportHistoryActivity : BaseActivity() {
 
     private fun initExportTypeSpinner() {
         binding.spinnerExportAs.adapter = ArrayAdapter.createFromResource(
-            this , R.array.activity_export_history_types , R.layout.item_spinner
+            this, R.array.activity_export_history_types, R.layout.item_spinner
         ).apply {
             setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
@@ -82,13 +86,14 @@ class ExportHistoryActivity : BaseActivity() {
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestPermissions(this , PERMISSIONS , REQUEST_PERMISSIONS_CODE)
+        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
     }
 
     private fun exportHistory() {
         val fileName = binding.editTextFileName.textString
-        val exportType = ExportType.fromSpinnerIndex(binding.spinnerExportAs.selectedItemPosition) ?: return
-        viewModel.exportHistory(applicationContext , fileName , exportType)
+        val exportType =
+            ExportType.fromSpinnerIndex(binding.spinnerExportAs.selectedItemPosition) ?: return
+        viewModel.exportHistory(applicationContext, fileName, exportType)
     }
 
     private fun observeUiState() {
@@ -100,15 +105,18 @@ class ExportHistoryActivity : BaseActivity() {
                             isExporting = false
                             showLoading(false)
                         }
+
                         ExportHistoryUiState.Loading -> {
                             isExporting = true
                             showLoading(true)
                         }
+
                         ExportHistoryUiState.Success -> {
                             isExporting = false
                             showLoading(false)
                             showHistoryExported()
                         }
+
                         is ExportHistoryUiState.Error -> {
                             isExporting = false
                             showLoading(false)
@@ -126,13 +134,13 @@ class ExportHistoryActivity : BaseActivity() {
         binding.buttonExport.isEnabled = isFileNameValid && isExporting.not()
     }
 
-    private fun showLoading(isLoading : Boolean) {
+    private fun showLoading(isLoading: Boolean) {
         binding.progressBarLoading.isVisible = isLoading
         binding.scrollView.isVisible = isLoading.not()
     }
 
     private fun showHistoryExported() {
-        Snackbar.make(binding.root , R.string.snack_saved_to_downloads , Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, R.string.snack_saved_to_downloads, Snackbar.LENGTH_LONG).show()
         finish()
     }
 }

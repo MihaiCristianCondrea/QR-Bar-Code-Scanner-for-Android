@@ -17,82 +17,126 @@ object WifiConnector {
     private val hexRegex = """^[\da-f]+$""".toRegex(RegexOption.IGNORE_CASE)
 
     suspend fun connect(
-        context : Context , authType : String , name : String , password : String , isHidden : Boolean , anonymousIdentity : String , identity : String , eapMethod : String , phase2Method : String
-    ) : Result<Unit> = withContext(Dispatchers.IO) {
+        context: Context,
+        authType: String,
+        name: String,
+        password: String,
+        isHidden: Boolean,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: String,
+        phase2Method: String
+    ): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
             tryToConnect(
-                context , authType , name , password , isHidden , anonymousIdentity , identity , eapMethod.toEapMethod() , phase2Method.toPhase2Method()
+                context,
+                authType,
+                name,
+                password,
+                isHidden,
+                anonymousIdentity,
+                identity,
+                eapMethod.toEapMethod(),
+                phase2Method.toPhase2Method()
             )
         }
     }
 
     private fun tryToConnect(
-        context : Context , authType : String , name : String , password : String , isHidden : Boolean , anonymousIdentity : String , identity : String , eapMethod : Int? , phase2Method : Int?
+        context: Context,
+        authType: String,
+        name: String,
+        password: String,
+        isHidden: Boolean,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: Int?,
+        phase2Method: Int?
     ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            tryToConnectNewApi(context , authType , name , password , anonymousIdentity , identity , eapMethod , phase2Method)
-        }
-        else {
-            tryToConnectOldApi(context , authType , name , password , isHidden , anonymousIdentity , identity , eapMethod , phase2Method)
+            tryToConnectNewApi(
+                context,
+                authType,
+                name,
+                password,
+                anonymousIdentity,
+                identity,
+                eapMethod,
+                phase2Method
+            )
+        } else {
+            tryToConnectOldApi(
+                context,
+                authType,
+                name,
+                password,
+                isHidden,
+                anonymousIdentity,
+                identity,
+                eapMethod,
+                phase2Method
+            )
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun tryToConnectNewApi(
-        context : Context , authType : String , name : String , password : String , anonymousIdentity : String , identity : String , eapMethod : Int? , phase2Method : Int?
+        context: Context,
+        authType: String,
+        name: String,
+        password: String,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: Int?,
+        phase2Method: Int?
     ) {
         when (authType.toCaps()) {
-            "" , "NOPASS" -> connectToOpenNetworkNewApi(context , name)
-            "WPA" , "WPA2" -> connectToWpa2NetworkNewApi(context , name , password)
-            "WPA2-EAP" -> connectToWpa2EapNetworkNewApi(context , name , password , anonymousIdentity , identity , eapMethod , phase2Method)
-            "WPA3" -> connectToWpa3NetworkNewApi(context , name , password)
-            "WPA3-EAP" -> connectToWpa3EapNetworkNewApi(context , name , password , anonymousIdentity , identity , eapMethod , phase2Method)
+            "", "NOPASS" -> connectToOpenNetworkNewApi(context, name)
+            "WPA", "WPA2" -> connectToWpa2NetworkNewApi(context, name, password)
+            "WPA2-EAP" -> connectToWpa2EapNetworkNewApi(
+                context,
+                name,
+                password,
+                anonymousIdentity,
+                identity,
+                eapMethod,
+                phase2Method
+            )
+
+            "WPA3" -> connectToWpa3NetworkNewApi(context, name, password)
+            "WPA3-EAP" -> connectToWpa3EapNetworkNewApi(
+                context,
+                name,
+                password,
+                anonymousIdentity,
+                identity,
+                eapMethod,
+                phase2Method
+            )
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private fun connectToOpenNetworkNewApi(context : Context , name : String) {
+    private fun connectToOpenNetworkNewApi(context: Context, name: String) {
         val builder = WifiNetworkSuggestion.Builder().setSsid(name)
-        connect(context , builder)
+        connect(context, builder)
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private fun connectToWpa2NetworkNewApi(context : Context , name : String , password : String) {
+    private fun connectToWpa2NetworkNewApi(context: Context, name: String, password: String) {
         val builder = WifiNetworkSuggestion.Builder().setSsid(name).setWpa2Passphrase(password)
-        connect(context , builder)
+        connect(context, builder)
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun connectToWpa2EapNetworkNewApi(
-        context : Context , name : String , password : String , anonymousIdentity : String , identity : String , eapMethod : Int? , phase2Method : Int?
-    ) {
-        val config = WifiEnterpriseConfig().also { config ->
-            config.anonymousIdentity = anonymousIdentity
-            config.identity = identity
-            config.password = password
-            eapMethod?.apply {
-                config.eapMethod = this
-            }
-            phase2Method?.apply {
-                config.phase2Method = this
-            }
-        }
-        val builder = WifiNetworkSuggestion.Builder().setSsid(name).setWpa2Passphrase(password) // Note: setWpa2Passphrase might not be needed for EAP if password is in enterprise config
-                .setWpa2EnterpriseConfig(config)
-
-        connect(context , builder)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun connectToWpa3NetworkNewApi(context : Context , name : String , password : String) {
-        val builder = WifiNetworkSuggestion.Builder().setSsid(name).setWpa3Passphrase(password)
-
-        connect(context , builder)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun connectToWpa3EapNetworkNewApi(
-        context : Context , name : String , password : String , anonymousIdentity : String , identity : String , eapMethod : Int? , phase2Method : Int?
+        context: Context,
+        name: String,
+        password: String,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: Int?,
+        phase2Method: Int?
     ) {
         val config = WifiEnterpriseConfig().also { config ->
             config.anonymousIdentity = anonymousIdentity
@@ -106,13 +150,48 @@ object WifiConnector {
             }
         }
         val builder = WifiNetworkSuggestion.Builder().setSsid(name)
-                // Note: setWpa3Passphrase might not be needed for EAP if password is in enterprise config
-                .setWpa3EnterpriseConfig(config)
-        connect(context , builder)
+            .setWpa2Passphrase(password) // Note: setWpa2Passphrase might not be needed for EAP if password is in enterprise config
+            .setWpa2EnterpriseConfig(config)
+
+        connect(context, builder)
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    private fun connect(context : Context , builder : WifiNetworkSuggestion.Builder) {
+    private fun connectToWpa3NetworkNewApi(context: Context, name: String, password: String) {
+        val builder = WifiNetworkSuggestion.Builder().setSsid(name).setWpa3Passphrase(password)
+
+        connect(context, builder)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun connectToWpa3EapNetworkNewApi(
+        context: Context,
+        name: String,
+        password: String,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: Int?,
+        phase2Method: Int?
+    ) {
+        val config = WifiEnterpriseConfig().also { config ->
+            config.anonymousIdentity = anonymousIdentity
+            config.identity = identity
+            config.password = password
+            eapMethod?.apply {
+                config.eapMethod = this
+            }
+            phase2Method?.apply {
+                config.phase2Method = this
+            }
+        }
+        val builder = WifiNetworkSuggestion.Builder().setSsid(name)
+            // Note: setWpa3Passphrase might not be needed for EAP if password is in enterprise config
+            .setWpa3EnterpriseConfig(config)
+        connect(context, builder)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun connect(context: Context, builder: WifiNetworkSuggestion.Builder) {
         val suggestions = listOf(builder.build())
         // These operations can throw SecurityException if permissions are missing
         // or other exceptions. Consider more specific error handling if needed.
@@ -121,27 +200,45 @@ object WifiConnector {
     }
 
     private fun tryToConnectOldApi(
-        context : Context , authType : String , name : String , password : String , isHidden : Boolean , anonymousIdentity : String , identity : String , eapMethod : Int? , phase2Method : Int?
+        context: Context,
+        authType: String,
+        name: String,
+        password: String,
+        isHidden: Boolean,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: Int?,
+        phase2Method: Int?
     ) {
         enableWifiIfNeeded(context)
         when (authType.toCaps()) {
-            "" , "NOPASS" -> connectToOpenNetworkOldApi(context , name , isHidden)
-            "WPA" , "WPA2" -> connectToWpaNetworkOldApi(context , name , password , isHidden)
-            "WPA2-EAP" -> connectToWpa2EapNetworkOldApi(context , name , password , isHidden , anonymousIdentity , identity , eapMethod , phase2Method)
-            "WEP" -> connectToWepNetworkOldApi(context , name , password , isHidden)
+            "", "NOPASS" -> connectToOpenNetworkOldApi(context, name, isHidden)
+            "WPA", "WPA2" -> connectToWpaNetworkOldApi(context, name, password, isHidden)
+            "WPA2-EAP" -> connectToWpa2EapNetworkOldApi(
+                context,
+                name,
+                password,
+                isHidden,
+                anonymousIdentity,
+                identity,
+                eapMethod,
+                phase2Method
+            )
+
+            "WEP" -> connectToWepNetworkOldApi(context, name, password, isHidden)
         }
     }
 
-    private fun enableWifiIfNeeded(context : Context) {
+    private fun enableWifiIfNeeded(context: Context) {
         context.wifiManager?.apply {
-            if (! isWifiEnabled) {
+            if (!isWifiEnabled) {
                 @Suppress("MissingPermission") // Ensure you have CHANGE_WIFI_STATE permission
                 isWifiEnabled = true
             }
         }
     }
 
-    private fun connectToOpenNetworkOldApi(context : Context , name : String , isHidden : Boolean) {
+    private fun connectToOpenNetworkOldApi(context: Context, name: String, isHidden: Boolean) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = name.quote()
             hiddenSSID = isHidden
@@ -156,10 +253,15 @@ object WifiConnector {
             allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP)
             allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP)
         }
-        connect(context , wifiConfiguration)
+        connect(context, wifiConfiguration)
     }
 
-    private fun connectToWpaNetworkOldApi(context : Context , name : String , password : String , isHidden : Boolean) {
+    private fun connectToWpaNetworkOldApi(
+        context: Context,
+        name: String,
+        password: String,
+        isHidden: Boolean
+    ) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = name.quote()
             preSharedKey = password.quoteIfNotHex()
@@ -174,11 +276,18 @@ object WifiConnector {
             allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP)
             allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP)
         }
-        connect(context , wifiConfiguration)
+        connect(context, wifiConfiguration)
     }
 
     private fun connectToWpa2EapNetworkOldApi(
-        context : Context , name : String , password : String , isHidden : Boolean , anonymousIdentity : String , identity : String , eapMethod : Int? , phase2Method : Int?
+        context: Context,
+        name: String,
+        password: String,
+        isHidden: Boolean,
+        anonymousIdentity: String,
+        identity: String,
+        eapMethod: Int?,
+        phase2Method: Int?
     ) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = name.quote()
@@ -206,10 +315,15 @@ object WifiConnector {
                 enterpriseConfig.phase2Method = this
             }
         }
-        connect(context , wifiConfiguration)
+        connect(context, wifiConfiguration)
     }
 
-    private fun connectToWepNetworkOldApi(context : Context , name : String , password : String , isHidden : Boolean) {
+    private fun connectToWepNetworkOldApi(
+        context: Context,
+        name: String,
+        password: String,
+        isHidden: Boolean
+    ) {
         val wifiConfiguration = WifiConfiguration().apply {
             SSID = name.quote()
             wepKeys[0] = password.quoteIfNotHex() // Ensure WEP key format is correct (ASCII or hex)
@@ -228,39 +342,37 @@ object WifiConnector {
             // allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP) // if using TKIP with WEP
             // allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP) // if using CCMP with WEP (less common)
         }
-        connect(context , wifiConfiguration)
+        connect(context, wifiConfiguration)
     }
 
-    private fun connect(context : Context , wifiConfiguration : WifiConfiguration) {
+    private fun connect(context: Context, wifiConfiguration: WifiConfiguration) {
         context.wifiManager?.apply {
             @Suppress("MissingPermission") // Ensure you have CHANGE_WIFI_STATE and ACCESS_WIFI_STATE
             val id = addNetwork(wifiConfiguration)
-            if (id != - 1) {
+            if (id != -1) {
                 disconnect()
-                enableNetwork(id , true)
+                enableNetwork(id, true)
                 reconnect()
-            }
-            else {
+            } else {
                 // Handle error: network could not be added
                 throw Exception("Failed to add Wi-Fi network configuration.")
             }
         } ?: throw Exception("WifiManager not available.")
     }
 
-    private fun String.quote() : String {
+    private fun String.quote(): String {
         return if (startsWith("\"") && endsWith("\"")) this else "\"$this\""
     }
 
-    private fun String.quoteIfNotHex() : String {
+    private fun String.quoteIfNotHex(): String {
         return if (isHex()) {
             this
-        }
-        else {
+        } else {
             quote()
         }
     }
 
-    private fun String.isHex() : Boolean {
+    private fun String.isHex(): Boolean {
         // WEP keys can be 10, 26, or 58 hex digits (for 40, 104, 256 bit WEP respectively)
         // or 5 or 13 ASCII characters.
         // This check is for a generic 64-character hex string, which might be for WPA PSK.
@@ -268,7 +380,7 @@ object WifiConnector {
         return length == 64 && matches(hexRegex)
     }
 
-    private fun String.toEapMethod() : Int? {
+    private fun String.toEapMethod(): Int? {
         return when (this.uppercase()) { // Use uppercase for case-insensitive matching
             "AKA" -> WifiEnterpriseConfig.Eap.AKA
             "AKA_PRIME" -> requireApiLevel(Build.VERSION_CODES.M) { WifiEnterpriseConfig.Eap.AKA_PRIME }
@@ -283,7 +395,7 @@ object WifiConnector {
         }
     }
 
-    private fun String.toPhase2Method() : Int? {
+    private fun String.toPhase2Method(): Int? {
         return when (this.uppercase()) { // Use uppercase for case-insensitive matching
             "AKA" -> requireApiLevel(Build.VERSION_CODES.O) { WifiEnterpriseConfig.Phase2.AKA }
             "AKA_PRIME" -> requireApiLevel(Build.VERSION_CODES.O) { WifiEnterpriseConfig.Phase2.AKA_PRIME }
@@ -297,7 +409,7 @@ object WifiConnector {
         }
     }
 
-    private inline fun <T> requireApiLevel(version : Int , block : () -> T) : T? {
+    private inline fun <T> requireApiLevel(version: Int, block: () -> T): T? {
         return if (Build.VERSION.SDK_INT >= version) block() else null
     }
 }

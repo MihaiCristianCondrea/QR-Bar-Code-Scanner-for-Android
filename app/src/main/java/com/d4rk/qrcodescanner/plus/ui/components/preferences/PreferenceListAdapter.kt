@@ -33,6 +33,7 @@ class PreferenceListAdapter<T : Any>(
             TYPE_CATEGORY -> CategoryViewHolder(
                 ItemPreferenceCategoryBinding.inflate(inflater, parent, false)
             )
+
             else -> ActionViewHolder(
                 ItemPreferenceBinding.inflate(inflater, parent, false),
                 onActionClicked
@@ -47,6 +48,7 @@ class PreferenceListAdapter<T : Any>(
                     ?: error("CategoryViewHolder expected but was ${holder::class.java.simpleName}")
                 vh.bind(item)
             }
+
             is PreferenceListItem.Action<*> -> {
                 // Use nested, generic VH + a single localized cast
                 if (holder is ActionViewHolder<*>) {
@@ -115,8 +117,10 @@ class PreferenceListAdapter<T : Any>(
                     binding.widgetFrame.tag = widgetLayout
                 }
                 binding.widgetFrame.isVisible = true
-                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_in_new)?.isEnabled = false
-                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_notifications)?.isEnabled = false
+                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_in_new)?.isEnabled =
+                    false
+                binding.widgetFrame.findViewById<MaterialButton>(R.id.open_notifications)?.isEnabled =
+                    false
             } else {
                 binding.widgetFrame.isVisible = false
                 if (!binding.widgetFrame.isEmpty()) {

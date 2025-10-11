@@ -38,8 +38,8 @@ import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
 import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
+import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.SettingsActivity
-import com.d4rk.qrcodescanner.plus.ui.screens.settings.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.gms.ads.AdRequest
@@ -62,13 +62,13 @@ class MainActivity : AppCompatActivity() {
         private const val STATE_LAST_PREFERRED_DESTINATION = "state_last_preferred_destination"
     }
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var navController : NavController
-    private lateinit var appBarConfiguration : AppBarConfiguration
-    private lateinit var appUpdateManager : AppUpdateManager
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var appUpdateManager: AppUpdateManager
 
     private val preferencesRepository by lazy { mainPreferencesRepository }
-    private val mainViewModel : MainViewModel by viewModels {
+    private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(preferencesRepository)
     }
     private val navOrder = SparseIntArray()
@@ -79,14 +79,17 @@ class MainActivity : AppCompatActivity() {
     private var navGraphInitialized = false
     private var lastPreferredStartDestination = 0
 
-    private val changelogUrl = "https://raw.githubusercontent.com/D4rK7355608/com.d4rk.qrcodescanner.plus/master/CHANGELOG.md"
+    private val changelogUrl =
+        "https://raw.githubusercontent.com/D4rK7355608/com.d4rk.qrcodescanner.plus/master/CHANGELOG.md"
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        navGraphInitialized = savedInstanceState?.getBoolean(STATE_NAV_GRAPH_INITIALIZED , false) ?: false
-        lastPreferredStartDestination = savedInstanceState?.getInt(STATE_LAST_PREFERRED_DESTINATION , 0) ?: 0
+        navGraphInitialized =
+            savedInstanceState?.getBoolean(STATE_NAV_GRAPH_INITIALIZED, false) ?: false
+        lastPreferredStartDestination =
+            savedInstanceState?.getInt(STATE_LAST_PREFERRED_DESTINATION, 0) ?: 0
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -101,17 +104,25 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
 
         lifecycle.addObserver(object : DefaultLifecycleObserver {
-            override fun onResume(owner : LifecycleOwner) {
-                val analyticsEnabled = PreferenceManager.getDefaultSharedPreferences(this@MainActivity).getBoolean(
-                    getString(R.string.key_firebase) , true
-                )
-                FirebaseAnalytics.getInstance(this@MainActivity).setAnalyticsCollectionEnabled(analyticsEnabled)
+            override fun onResume(owner: LifecycleOwner) {
+                val analyticsEnabled =
+                    PreferenceManager.getDefaultSharedPreferences(this@MainActivity).getBoolean(
+                        getString(R.string.key_firebase), true
+                    )
+                FirebaseAnalytics.getInstance(this@MainActivity)
+                    .setAnalyticsCollectionEnabled(analyticsEnabled)
                 FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = analyticsEnabled
 
                 appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
+                            AppUpdateType.FLEXIBLE
+                        )
+                    ) {
                         @Suppress("DEPRECATION") appUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo , AppUpdateType.FLEXIBLE , this@MainActivity , requestUpdateCode
+                            appUpdateInfo,
+                            AppUpdateType.FLEXIBLE,
+                            this@MainActivity,
+                            requestUpdateCode
                         )
                     }
                 }
@@ -126,12 +137,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu : Menu) : Boolean {
-        menuInflater.inflate(R.menu.menu_main , menu)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.support -> {
                 true
@@ -150,19 +161,19 @@ class MainActivity : AppCompatActivity() {
         return super.onMenuOpened(featureId, menu)
     }
 
-    override fun onSupportNavigateUp() : Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onSaveInstanceState(outState : Bundle) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putBoolean(STATE_NAV_GRAPH_INITIALIZED , navGraphInitialized)
-        outState.putInt(STATE_LAST_PREFERRED_DESTINATION , lastPreferredStartDestination)
+        outState.putBoolean(STATE_NAV_GRAPH_INITIALIZED, navGraphInitialized)
+        outState.putInt(STATE_LAST_PREFERRED_DESTINATION, lastPreferredStartDestination)
     }
 
     @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode : Int , resultCode : Int , data : Intent?) {
-        super.onActivityResult(requestCode , resultCode , data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == requestUpdateCode) {
             when (resultCode) {
                 RESULT_OK -> Unit
@@ -173,22 +184,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigationController() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
-        navOrder.put(R.id.navigation_scan , 0)
-        navOrder.put(R.id.navigation_create , 1)
-        navOrder.put(R.id.navigation_history , 2)
+        navOrder.put(R.id.navigation_scan, 0)
+        navOrder.put(R.id.navigation_create, 1)
+        navOrder.put(R.id.navigation_history, 2)
 
-        navController.addOnDestinationChangedListener { _ , destination , _ ->
-            currentNavIndex = navOrder.get(destination.id , currentNavIndex)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            currentNavIndex = navOrder.get(destination.id, currentNavIndex)
             binding.toolbar.post { configureToolbarNavigation() }
         }
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_scan , R.id.navigation_create , R.id.navigation_history)
+            setOf(R.id.navigation_scan, R.id.navigation_create, R.id.navigation_history)
         )
-        setupActionBarWithNavController(navController , appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.toolbar.post { configureToolbarNavigation() }
     }
 
@@ -203,7 +215,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyThemeAndLanguage(uiState : MainUiState) {
+    private fun applyThemeAndLanguage(uiState: MainUiState) {
         AppCompatDelegate.setDefaultNightMode(uiState.themeMode)
         val languageTag = uiState.languageTag ?: getString(R.string.default_value_language)
         AppCompatDelegate.setApplicationLocales(
@@ -214,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun configureNavigation(uiState : MainUiState) {
+    private fun configureNavigation(uiState: MainUiState) {
         ensureNavGraphConfigured(uiState)
 
         val useNavigationRail = shouldUseNavigationRail()
@@ -229,8 +241,7 @@ class MainActivity : AppCompatActivity() {
             navigationRail.isVisible = true
             navigationBar.isVisible = false
             adBanner.isVisible = false
-        }
-        else {
+        } else {
             navigationRail.isVisible = false
             navigationBar.isVisible = true
             adBanner.isVisible = true
@@ -249,7 +260,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleNavigationSelection(itemId : Int) : Boolean {
+    private fun handleNavigationSelection(itemId: Int): Boolean {
         if (navOrder.indexOfKey(itemId) < 0) {
             return false
         }
@@ -258,45 +269,51 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         val newIndex = navOrder.get(itemId)
-        val forwardOptions = NavOptions.Builder().setEnterAnim(R.anim.fragment_spring_enter).setExitAnim(R.anim.fragment_spring_exit).setPopEnterAnim(R.anim.fragment_spring_pop_enter).setPopExitAnim(R.anim.fragment_spring_pop_exit).build()
-        val backwardOptions = NavOptions.Builder().setEnterAnim(R.anim.fragment_spring_pop_enter).setExitAnim(R.anim.fragment_spring_pop_exit).setPopEnterAnim(R.anim.fragment_spring_enter).setPopExitAnim(R.anim.fragment_spring_exit).build()
+        val forwardOptions = NavOptions.Builder().setEnterAnim(R.anim.fragment_spring_enter)
+            .setExitAnim(R.anim.fragment_spring_exit)
+            .setPopEnterAnim(R.anim.fragment_spring_pop_enter)
+            .setPopExitAnim(R.anim.fragment_spring_pop_exit).build()
+        val backwardOptions = NavOptions.Builder().setEnterAnim(R.anim.fragment_spring_pop_enter)
+            .setExitAnim(R.anim.fragment_spring_pop_exit)
+            .setPopEnterAnim(R.anim.fragment_spring_enter)
+            .setPopExitAnim(R.anim.fragment_spring_exit).build()
         val options = if (newIndex > currentNavIndex) forwardOptions else backwardOptions
-        navController.navigate(itemId , null , options)
+        navController.navigate(itemId, null, options)
         currentNavIndex = newIndex
         return true
     }
 
-    private fun ensureNavGraphConfigured(uiState : MainUiState) {
-        if (! navGraphInitialized) {
+    private fun ensureNavGraphConfigured(uiState: MainUiState) {
+        if (!navGraphInitialized) {
             val navGraph = navController.navInflater.inflate(R.navigation.mobile_navigation)
             navGraph.setStartDestination(uiState.defaultNavDestination)
-            navController.setGraph(navGraph , null)
+            navController.setGraph(navGraph, null)
             navGraphInitialized = true
             lastPreferredStartDestination = uiState.defaultNavDestination
-        }
-        else if (lastPreferredStartDestination == 0) {
+        } else if (lastPreferredStartDestination == 0) {
             lastPreferredStartDestination = uiState.defaultNavDestination
-        }
-        else if (uiState.defaultNavDestination != lastPreferredStartDestination) {
+        } else if (uiState.defaultNavDestination != lastPreferredStartDestination) {
             navigateToPreferredDestination(uiState.defaultNavDestination)
         }
     }
 
-    private fun navigateToPreferredDestination(preferredDestination : Int) {
-        val graph : NavGraph = navController.graph
+    private fun navigateToPreferredDestination(preferredDestination: Int) {
+        val graph: NavGraph = navController.graph
         graph.setStartDestination(preferredDestination)
         val currentDestination = navController.currentDestination
         if (currentDestination != null && currentDestination.id == preferredDestination) {
             lastPreferredStartDestination = preferredDestination
             return
         }
-        val options = NavOptions.Builder().setPopUpTo(graph.startDestinationId , true).setLaunchSingleTop(true).build()
-        navController.navigate(preferredDestination , null , options)
+        val options =
+            NavOptions.Builder().setPopUpTo(graph.startDestinationId, true).setLaunchSingleTop(true)
+                .build()
+        navController.navigate(preferredDestination, null, options)
         lastPreferredStartDestination = preferredDestination
     }
 
-    private fun applyBottomBarInsets(bottomBar : NavigationBarView) {
-        ViewCompat.setOnApplyWindowInsetsListener(bottomBar) { view , insets ->
+    private fun applyBottomBarInsets(bottomBar: NavigationBarView) {
+        ViewCompat.setOnApplyWindowInsetsListener(bottomBar) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.updatePadding(bottom = systemBars.bottom)
             insets
@@ -304,12 +321,12 @@ class MainActivity : AppCompatActivity() {
         ViewCompat.requestApplyInsets(bottomBar)
     }
 
-    private fun shouldUseNavigationRail() : Boolean {
+    private fun shouldUseNavigationRail(): Boolean {
         return resources.configuration.smallestScreenWidthDp >= 600
     }
 
     private fun configureToolbarNavigation() {
-        val navigationIcon = AppCompatResources.getDrawable(this , R.drawable.ic_menu)
+        val navigationIcon = AppCompatResources.getDrawable(this, R.drawable.ic_menu)
         binding.toolbar.navigationIcon = navigationIcon
         binding.toolbar.setNavigationContentDescription(R.string.menu)
         binding.toolbar.setNavigationOnClickListener { showPreferencesBottomSheet() }
@@ -321,17 +338,17 @@ class MainActivity : AppCompatActivity() {
         bottomSheetDialog.setContentView(bottomSheetBinding.root)
 
         bottomSheetBinding.menuSettings.setOnClickListener {
-            startActivity(Intent(this , SettingsActivity::class.java))
+            startActivity(Intent(this, SettingsActivity::class.java))
             bottomSheetDialog.dismiss()
         }
 
         bottomSheetBinding.menuHelpFeedback.setOnClickListener {
-            startActivity(Intent(this , HelpActivity::class.java))
+            startActivity(Intent(this, HelpActivity::class.java))
             bottomSheetDialog.dismiss()
         }
 
         bottomSheetBinding.menuUpdates.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW , changelogUrl.toUri()))
+            startActivity(Intent(Intent.ACTION_VIEW, changelogUrl.toUri()))
             bottomSheetDialog.dismiss()
         }
 
@@ -339,11 +356,12 @@ class MainActivity : AppCompatActivity() {
             val sharingIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(
-                    Intent.EXTRA_TEXT , "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
+                    Intent.EXTRA_TEXT,
+                    "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID
                 )
-                putExtra(Intent.EXTRA_SUBJECT , R.string.share_subject)
+                putExtra(Intent.EXTRA_SUBJECT, R.string.share_subject)
             }
-            startActivity(Intent.createChooser(sharingIntent , getString(R.string.share_using)))
+            startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_using)))
             bottomSheetDialog.dismiss()
         }
 
@@ -351,10 +369,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startupScreen() {
-        val startupPreference = getSharedPreferences("startup" , MODE_PRIVATE)
-        if (startupPreference.getBoolean("value" , true)) {
-            startupPreference.edit { putBoolean("value" , false) }
-            startActivity(Intent(this , StartupActivity::class.java))
+        val startupPreference = getSharedPreferences("startup", MODE_PRIVATE)
+        if (startupPreference.getBoolean("value", true)) {
+            startupPreference.edit { putBoolean("value", false) }
+            startActivity(Intent(this, StartupActivity::class.java))
         }
     }
 }

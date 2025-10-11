@@ -4,8 +4,8 @@ import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.ErrorDialogFragment
 
-val Fragment.packageManager : PackageManager get() = requireContext().packageManager
-fun Fragment.showError(error : Throwable?) {
-    val errorDialog = ErrorDialogFragment.newInstance(requireContext() , error)
-    errorDialog.show(childFragmentManager , "")
+val Fragment.packageManager: PackageManager get() = requireContext().packageManager // FIXME: Property "packageManager" is never used
+fun Fragment.showError(error: Throwable?) {
+    val errorDialog = ErrorDialogFragment.newInstance(requireContext(), error)
+    errorDialog.show(childFragmentManager, "")
 }

@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class BarcodeHistoryViewModel(
-    private val repository : BarcodeHistoryRepository
+    private val repository: BarcodeHistoryRepository
 ) : ViewModel() {
 
     private val _clearHistoryErrors = MutableSharedFlow<Throwable>(
@@ -23,9 +23,9 @@ class BarcodeHistoryViewModel(
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
-    val clearHistoryErrors : SharedFlow<Throwable> = _clearHistoryErrors
+    val clearHistoryErrors: SharedFlow<Throwable> = _clearHistoryErrors
 
-    val historyCount : StateFlow<Int> = repository.observeHistoryCount()
+    val historyCount: StateFlow<Int> = repository.observeHistoryCount()
         .distinctUntilChanged()
         .catch { throwable ->
             _clearHistoryErrors.emit(throwable)
@@ -48,10 +48,10 @@ class BarcodeHistoryViewModel(
 }
 
 class BarcodeHistoryViewModelFactory(
-    private val repository : BarcodeHistoryRepository
+    private val repository: BarcodeHistoryRepository
 ) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel> create(modelClass : Class<T>) : T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(BarcodeHistoryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return BarcodeHistoryViewModel(repository) as T

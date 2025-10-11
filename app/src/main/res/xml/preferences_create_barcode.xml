@@ -1,54 +1,51 @@
-<androidx.preference.PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.preference.PreferenceCategory
-        app:title="@string/qr_code">
+    <androidx.preference.PreferenceCategory app:title="@string/qr_code">
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_copy"
             app:key="clipboard"
-            app:title="@string/content_from_clipboard"
-            app:icon="@drawable/ic_copy" />
+            app:title="@string/content_from_clipboard" />
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_text"
             app:key="text"
-            app:title="@string/text"
-            app:icon="@drawable/ic_text" />
+            app:title="@string/text" />
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_link"
             app:key="url"
-            app:title="@string/url"
-            app:icon="@drawable/ic_link" />
+            app:title="@string/url" />
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_wifi"
             app:key="wifi"
-            app:title="@string/wifi"
-            app:icon="@drawable/ic_wifi" />
+            app:title="@string/wifi" />
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_location"
             app:key="location"
-            app:title="@string/location"
-            app:icon="@drawable/ic_location" />
+            app:title="@string/location" />
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_contact_white"
             app:key="contact"
-            app:title="@string/contact_v_card"
-            app:icon="@drawable/ic_contact_white" />
+            app:title="@string/contact_v_card" />
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_qr_code_white"
             app:key="more_qr_codes"
             app:title="@string/more_qr_codes"
-            app:icon="@drawable/ic_qr_code_white"
             app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     </androidx.preference.PreferenceCategory>
 
-    <androidx.preference.PreferenceCategory
-        app:title="@string/barcode">
+    <androidx.preference.PreferenceCategory app:title="@string/barcode">
 
         <androidx.preference.Preference
+            app:icon="@drawable/ic_barcode"
             app:key="all_barcodes"
             app:title="@string/all_barcodes_codes"
-            app:icon="@drawable/ic_barcode"
             app:widgetLayout="@layout/item_preference_widget_open_internal" />
 
     </androidx.preference.PreferenceCategory>

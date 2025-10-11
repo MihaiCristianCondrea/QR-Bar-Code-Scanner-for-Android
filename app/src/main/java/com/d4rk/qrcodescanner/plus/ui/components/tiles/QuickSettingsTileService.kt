@@ -13,13 +13,13 @@ class QuickSettingsTileService : TileService() {
     override fun onClick() {
         super.onClick()
 
-        val intent = Intent(applicationContext , MainActivity::class.java).apply {
+        val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
         }
 
         val pendingIntentFlags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         val pendingIntent = PendingIntent.getActivity(
-            this , 0 , intent , pendingIntentFlags
+            this, 0, intent, pendingIntentFlags
         )
 
         runCatching {

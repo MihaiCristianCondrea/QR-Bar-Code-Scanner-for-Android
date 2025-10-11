@@ -73,10 +73,10 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".ui.screens.settings.help.HelpActivity"
+            android:name="com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity"
             android:exported="false"
             android:label="@string/help"
-            android:parentActivityName=".ui.screens.settings.help.HelpActivity" />
+            android:parentActivityName="com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity" />
         <activity
             android:name=".ui.screens.settings.SettingsActivity"
             android:exported="false"

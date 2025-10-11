@@ -18,17 +18,17 @@ enum class BarcodeHistoryFilter {
 }
 
 class BarcodeHistoryRepository(
-    private val barcodeDatabase : BarcodeDatabase,
-    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO
+    private val barcodeDatabase: BarcodeDatabase,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
-    fun observeHistoryCount() : Flow<Int> {
+    fun observeHistoryCount(): Flow<Int> {
         return barcodeDatabase.observeCount().flowOn(ioDispatcher)
     }
 
-    fun observeHistory(filter : BarcodeHistoryFilter) : Flow<PagingData<Barcode>> {
+    fun observeHistory(filter: BarcodeHistoryFilter): Flow<PagingData<Barcode>> {
         return Pager(
-            config = PagingConfig(pageSize = PAGE_SIZE , enablePlaceholders = false)
+            config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false)
         ) {
             when (filter) {
                 BarcodeHistoryFilter.ALL -> barcodeDatabase.getAll()

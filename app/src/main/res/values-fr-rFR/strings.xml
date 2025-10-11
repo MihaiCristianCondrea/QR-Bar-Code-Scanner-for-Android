@@ -81,8 +81,6 @@
     <string name="none">Aucun</string>
     <string name="ask_every_time">Demander à chaque fois</string>
     <string name="app_updates">Mises à jour de l\'application</string>
-    <string name="check_for_updates">Vérifier les mises à jour…</string>
-    <string name="subscribe_to_beta">S\'abonner aux mises à jour bêta</string>
     <string name="changelog">Journal des modifications</string>
     <string name="privacy_and_security">Confidentialité et sécurité</string>
     <string name="privacy_policy">Politique de confidentialité</string>
@@ -108,9 +106,7 @@
     <string name="faq_state_expanded">Développé</string>
     <string name="version">Version %1$s</string>
     <string name="license">Licence</string>
-    <string name="more">Plus</string>
     <string name="share">Partager</string>
-    <string name="more_apps">Plus d\'applications…</string>
     <string name="support_the_developer">Soutenir le développeur</string>
     <string name="paid_support">Assistance payante</string>
     <string name="non_paid_support">Assistance gratuite</string>

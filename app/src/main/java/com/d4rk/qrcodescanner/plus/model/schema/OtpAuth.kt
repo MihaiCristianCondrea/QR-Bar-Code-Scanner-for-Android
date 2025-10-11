@@ -6,8 +6,15 @@ import com.d4rk.qrcodescanner.plus.utils.extension.appendQueryParameterIfNotNull
 import java.io.Serializable
 
 data class OtpAuth(
-    val type : String? = null , val label : String? = null , val issuer : String? = null , val secret : String? = null , val algorithm : String? = null , val digits : Int? = null , val period : Long? = null , val counter : Long? = null
-) : Schema , Serializable {
+    val type: String? = null,
+    val label: String? = null,
+    val issuer: String? = null,
+    val secret: String? = null,
+    val algorithm: String? = null,
+    val digits: Int? = null,
+    val period: Long? = null,
+    val counter: Long? = null
+) : Schema, Serializable {
     companion object {
         const val TOTP_TYPE = "totp"
         const val HOTP_TYPE = "hotp"
@@ -18,7 +25,7 @@ data class OtpAuth(
         private const val DIGITS_KEY = "hint_digits"
         private const val COUNTER_KEY = "counter"
         private const val PERIOD_KEY = "period"
-        fun parse(text : String) : OtpAuth? {
+        fun parse(text: String): OtpAuth? {
             val uri = text.toUri()
             if (uri.scheme != URI_SCHEME) {
                 return null
@@ -37,17 +44,22 @@ data class OtpAuth(
             val digits = uri.getQueryParameter(DIGITS_KEY)?.toIntOrNull()
             val period = uri.getQueryParameter(PERIOD_KEY)?.toLongOrNull()
             val counter = uri.getQueryParameter(COUNTER_KEY)?.toLongOrNull()
-            return OtpAuth(type , label , issuer , secret , algorithm , digits , period , counter)
+            return OtpAuth(type, label, issuer, secret, algorithm, digits, period, counter)
         }
     }
 
     override val schema = BarcodeSchema.OTP_AUTH
-    override fun toFormattedText() : String {
+    override fun toFormattedText(): String {
         return label.orEmpty()
     }
 
-    override fun toBarcodeText() : String {
-        return Uri.Builder().scheme(URI_SCHEME).authority(type).appendPath(label).appendQueryParameterIfNotNullOrBlank(SECRET_KEY , secret).appendQueryParameterIfNotNullOrBlank(ISSUER_KEY , issuer).appendQueryParameterIfNotNullOrBlank(ALGORITHM_KEY , algorithm)
-                .appendQueryParameterIfNotNullOrBlank(DIGITS_KEY , digits?.toString()).appendQueryParameterIfNotNullOrBlank(COUNTER_KEY , counter?.toString()).appendQueryParameterIfNotNullOrBlank(PERIOD_KEY , period?.toString()).build().toString()
+    override fun toBarcodeText(): String {
+        return Uri.Builder().scheme(URI_SCHEME).authority(type).appendPath(label)
+            .appendQueryParameterIfNotNullOrBlank(SECRET_KEY, secret)
+            .appendQueryParameterIfNotNullOrBlank(ISSUER_KEY, issuer)
+            .appendQueryParameterIfNotNullOrBlank(ALGORITHM_KEY, algorithm)
+            .appendQueryParameterIfNotNullOrBlank(DIGITS_KEY, digits?.toString())
+            .appendQueryParameterIfNotNullOrBlank(COUNTER_KEY, counter?.toString())
+            .appendQueryParameterIfNotNullOrBlank(PERIOD_KEY, period?.toString()).build().toString()
     }
 }

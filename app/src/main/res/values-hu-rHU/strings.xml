@@ -81,8 +81,6 @@
     <string name="none">Nincs</string>
     <string name="ask_every_time">Mindig kérdezze meg</string>
     <string name="app_updates">Alkalmazásfrissítések</string>
-    <string name="check_for_updates">Frissítések keresése…</string>
-    <string name="subscribe_to_beta">Bétafrissítések feliratkozása</string>
     <string name="changelog">Változások</string>
     <string name="privacy_and_security">Adatvédelem és biztonság</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
@@ -108,9 +106,7 @@
     <string name="faq">GYIK</string>
     <string name="send_feedback">Visszajelzés küldése</string>
     <string name="license">Licenc</string>
-    <string name="more">Továbbiak</string>
     <string name="share">Megosztás</string>
-    <string name="more_apps">További alkalmazások…</string>
     <string name="support_the_developer">Támogasd a fejlesztőt</string>
     <string name="paid_support">Fizetett támogatás</string>
     <string name="non_paid_support">Díjmentes támogatás</string>

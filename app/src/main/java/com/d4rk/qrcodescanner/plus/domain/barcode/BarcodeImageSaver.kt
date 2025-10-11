@@ -15,42 +15,53 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 
 object BarcodeImageSaver {
-    fun saveImageToCache(context : Context , image : Bitmap? , barcode : ParsedBarcode) : Uri? {
+    fun saveImageToCache(context: Context, image: Bitmap?, barcode: ParsedBarcode): Uri? {
         return runCatching {
             val imagesFolder = File(context.cacheDir, "images").apply { mkdirs() }
             val imageFileName = "${barcode.format}_${barcode.schema}_${barcode.date}.png"
             val imageFile = File(imagesFolder, imageFileName)
-            FileOutputStream(imageFile).use { out -> image?.compress(Bitmap.CompressFormat.PNG, 100, out) }
+            FileOutputStream(imageFile).use { out ->
+                image?.compress(
+                    Bitmap.CompressFormat.PNG,
+                    100,
+                    out
+                )
+            }
             FileProvider.getUriForFile(context, "com.d4rk.qrcodescanner.fileprovider", imageFile)
         }.getOrNull()
     }
 
-    suspend fun savePngImageToPublicDirectory(context : Context , image : Bitmap , barcode : Barcode) {
+    suspend fun savePngImageToPublicDirectory(context: Context, image: Bitmap, barcode: Barcode) {
         withContext(Dispatchers.IO) {
-            saveToPublicDirectory(context , barcode , "image/png") { outputStream ->
-                image.compress(Bitmap.CompressFormat.PNG , 100 , outputStream)
+            saveToPublicDirectory(context, barcode, "image/png") { outputStream ->
+                image.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
             }
         }
     }
 
-    suspend fun saveSvgImageToPublicDirectory(context : Context , image : String , barcode : Barcode) {
+    suspend fun saveSvgImageToPublicDirectory(context: Context, image: String, barcode: Barcode) {
         withContext(Dispatchers.IO) {
-            saveToPublicDirectory(context , barcode , "image/svg+xml") { outputStream ->
+            saveToPublicDirectory(context, barcode, "image/svg+xml") { outputStream ->
                 outputStream.write(image.toByteArray())
             }
         }
     }
 
-    private fun saveToPublicDirectory(context : Context , barcode : Barcode , mimeType : String , action : (OutputStream) -> Unit) {
+    private fun saveToPublicDirectory(
+        context: Context,
+        barcode: Barcode,
+        mimeType: String,
+        action: (OutputStream) -> Unit
+    ) {
         val contentResolver = context.contentResolver ?: return
         val imageTitle = "${barcode.format}_${barcode.schema}_${barcode.date}"
         val values = ContentValues().apply {
-            put(Images.Media.TITLE , imageTitle)
-            put(Images.Media.DISPLAY_NAME , imageTitle)
-            put(Images.Media.MIME_TYPE , mimeType)
-            put(Images.Media.DATE_ADDED , System.currentTimeMillis() / 1000)
+            put(Images.Media.TITLE, imageTitle)
+            put(Images.Media.DISPLAY_NAME, imageTitle)
+            put(Images.Media.MIME_TYPE, mimeType)
+            put(Images.Media.DATE_ADDED, System.currentTimeMillis() / 1000)
         }
-        val uri = contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI , values) ?: return
+        val uri = contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values) ?: return
         contentResolver.openOutputStream(uri)?.apply {
             action(this)
             flush()

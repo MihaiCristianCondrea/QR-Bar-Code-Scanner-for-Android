@@ -1,5 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_description">Pindai berbagai jenis kode QR dan barcode dengan mudah. 📷</string>
     <string name="welcome">Selamat datang</string>
     <string name="menu">Menu</string>
@@ -82,8 +81,6 @@
     <string name="none">Tidak ada</string>
     <string name="ask_every_time">Tanyakan setiap kali</string>
     <string name="app_updates">Pembaruan Aplikasi</string>
-    <string name="check_for_updates">Periksa pembaruan…</string>
-    <string name="subscribe_to_beta">Berlangganan pembaruan beta</string>
     <string name="changelog">Catatan Perubahan</string>
     <string name="privacy_and_security">Privasi dan keamanan</string>
     <string name="privacy_policy">Kebijakan Privasi</string>
@@ -109,9 +106,7 @@
     <string name="faq">FAQ</string>
     <string name="send_feedback">Kirim umpan balik</string>
     <string name="license">Lisensi</string>
-    <string name="more">Lainnya</string>
     <string name="share">Bagikan</string>
-    <string name="more_apps">Aplikasi lainnya…</string>
     <string name="support_the_developer">Dukung pengembang</string>
     <string name="paid_support">Dukungan Berbayar</string>
     <string name="non_paid_support">Dukungan Tanpa Bayaran</string>

@@ -1,15 +1,14 @@
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item_phone"
-        android:title="@string/create"
         android:icon="@drawable/ic_contact"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/create"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item_create_barcode"
-        android:title="@string/create"
+        android:enabled="false"
         android:icon="@drawable/ic_confirm_disabled"
-        app:showAsAction="always"
-        android:enabled="false"/>
+        android:title="@string/create"
+        app:showAsAction="always" />
 </menu>

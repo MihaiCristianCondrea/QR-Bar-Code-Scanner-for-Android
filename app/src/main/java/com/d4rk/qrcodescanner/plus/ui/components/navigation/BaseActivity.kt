@@ -1,15 +1,29 @@
 package com.d4rk.qrcodescanner.plus.ui.components.navigation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import com.d4rk.qrcodescanner.plus.di.rotationHelper
+import androidx.appcompat.view.menu.MenuBuilder
 
 abstract class BaseActivity : AppCompatActivity() {
-    @Suppress("DEPRECATION")
-    override fun onCreate(savedInstanceState : Bundle?) {
-        super.onCreate(savedInstanceState)
-        window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-        rotationHelper.lockCurrentOrientationIfNeeded(this)
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    @SuppressLint("RestrictedApi")
+    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+        if (menu is MenuBuilder) {
+            @Suppress("UsePropertyAccessSyntax")
+            menu.setOptionalIconsVisible(true)
+        }
+        return super.onMenuOpened(featureId, menu)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

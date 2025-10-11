@@ -23,19 +23,19 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class ExportHistoryViewModel(
-    private val barcodeDatabase : BarcodeDatabase ,
-    private val barcodeSaver : BarcodeSaver ,
-    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO
+    private val barcodeDatabase: BarcodeDatabase,
+    private val barcodeSaver: BarcodeSaver,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
     private val exportRequests = MutableSharedFlow<ExportHistoryRequest>(
-        replay = 0 ,
-        extraBufferCapacity = 1 ,
+        replay = 0,
+        extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val uiState : StateFlow<ExportHistoryUiState> = exportRequests
+    val uiState: StateFlow<ExportHistoryUiState> = exportRequests
         .flatMapLatest { request ->
             flow {
                 emit(ExportHistoryUiState.Loading)
@@ -43,24 +43,24 @@ class ExportHistoryViewModel(
                     .getAllForExport()
                     .flowOn(ioDispatcher)
                     .first()
-                request.exportType.save(barcodeSaver , request.context , request.fileName , barcodes)
+                request.exportType.save(barcodeSaver, request.context, request.fileName, barcodes)
                 emit(ExportHistoryUiState.Success)
             }.catch { throwable ->
                 emit(ExportHistoryUiState.Error(throwable))
             }
         }
         .stateIn(
-            scope = viewModelScope ,
-            started = SharingStarted.WhileSubscribed(5_000) ,
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
             initialValue = ExportHistoryUiState.Idle
         )
 
-    fun exportHistory(context : Context , fileName : String , exportType : ExportType) {
+    fun exportHistory(context: Context, fileName: String, exportType: ExportType) {
         viewModelScope.launch {
             exportRequests.emit(
                 ExportHistoryRequest(
-                    context = context.applicationContext ,
-                    fileName = fileName ,
+                    context = context.applicationContext,
+                    fileName = fileName,
                     exportType = exportType
                 )
             )
@@ -69,36 +69,36 @@ class ExportHistoryViewModel(
 }
 
 private data class ExportHistoryRequest(
-    val context : Context ,
-    val fileName : String ,
-    val exportType : ExportType
+    val context: Context,
+    val fileName: String,
+    val exportType: ExportType
 )
 
 sealed interface ExportHistoryUiState {
     data object Idle : ExportHistoryUiState
     data object Loading : ExportHistoryUiState
     data object Success : ExportHistoryUiState
-    data class Error(val throwable : Throwable) : ExportHistoryUiState
+    data class Error(val throwable: Throwable) : ExportHistoryUiState
 }
 
 enum class ExportType {
-    CSV ,
-    JSON ;
+    CSV,
+    JSON;
 
     suspend fun save(
-        barcodeSaver : BarcodeSaver ,
-        context : Context ,
-        fileName : String ,
-        barcodes : List<ExportBarcode>
+        barcodeSaver: BarcodeSaver,
+        context: Context,
+        fileName: String,
+        barcodes: List<ExportBarcode>
     ) {
         when (this) {
-            CSV -> barcodeSaver.saveBarcodeHistoryAsCsv(context , fileName , barcodes)
-            JSON -> barcodeSaver.saveBarcodeHistoryAsJson(context , fileName , barcodes)
+            CSV -> barcodeSaver.saveBarcodeHistoryAsCsv(context, fileName, barcodes)
+            JSON -> barcodeSaver.saveBarcodeHistoryAsJson(context, fileName, barcodes)
         }
     }
 
     companion object {
-        fun fromSpinnerIndex(index : Int) : ExportType? {
+        fun fromSpinnerIndex(index: Int): ExportType? {
             return when (index) {
                 0 -> CSV
                 1 -> JSON
@@ -109,15 +109,15 @@ enum class ExportType {
 }
 
 class ExportHistoryViewModelFactory(
-    private val barcodeDatabase : BarcodeDatabase ,
-    private val barcodeSaver : BarcodeSaver ,
-    private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO
+    private val barcodeDatabase: BarcodeDatabase,
+    private val barcodeSaver: BarcodeSaver,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel> create(modelClass : Class<T>) : T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ExportHistoryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ExportHistoryViewModel(barcodeDatabase , barcodeSaver , ioDispatcher) as T
+            return ExportHistoryViewModel(barcodeDatabase, barcodeSaver, ioDispatcher) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: $modelClass")
     }

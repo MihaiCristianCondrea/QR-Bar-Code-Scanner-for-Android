@@ -17,14 +17,19 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class DateTimePickerButton : FrameLayout {
-    private lateinit var binding : LayoutDateTimePickerButtonBinding
-    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm" , Locale.ENGLISH)
-    private val view : View = LayoutInflater.from(context).inflate(R.layout.layout_date_time_picker_button , this , true)
+    private lateinit var binding: LayoutDateTimePickerButtonBinding
+    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
+    private val view: View =
+        LayoutInflater.from(context).inflate(R.layout.layout_date_time_picker_button, this, true)
 
-    constructor(context : Context) : this(context , null)
-    constructor(context : Context , attrs : AttributeSet?) : this(context , attrs , - 1)
-    constructor(context : Context , attrs : AttributeSet? , defStyleAttr : Int) : super(context , attrs , defStyleAttr) {
-        context.obtainStyledAttributes(attrs , R.styleable.DateTimePickerButton).apply {
+    constructor(context: Context) : this(context, null)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        context.obtainStyledAttributes(attrs, R.styleable.DateTimePickerButton).apply {
             showHint(this)
             recycle()
         }
@@ -34,14 +39,15 @@ class DateTimePickerButton : FrameLayout {
         showDateTime()
     }
 
-    var dateTime : Long = System.currentTimeMillis()
+    var dateTime: Long = System.currentTimeMillis()
         set(value) {
             field = value
             showDateTime()
         }
 
-    private fun showHint(attributes : TypedArray) {
-        binding.textViewHint.text = attributes.getString(R.styleable.DateTimePickerButton_hint).orEmpty()
+    private fun showHint(attributes: TypedArray) {
+        binding.textViewHint.text =
+            attributes.getString(R.styleable.DateTimePickerButton_hint).orEmpty()
     }
 
     private fun showDateTimePickerDialog() {
@@ -49,20 +55,25 @@ class DateTimePickerButton : FrameLayout {
         val currentCalendar = java.util.Calendar.getInstance().apply {
             timeInMillis = dateTime
         }
-        val datePicker = MaterialDatePicker.Builder.datePicker().setTitleText(binding.textViewHint.text.toString()).setSelection(currentCalendar.timeInMillis).build()
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText(binding.textViewHint.text.toString())
+            .setSelection(currentCalendar.timeInMillis).build()
         datePicker.addOnPositiveButtonClickListener { selection ->
             val selectedDate = java.util.Calendar.getInstance().apply {
                 timeInMillis = selection
             }
-            val timePicker = MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).setHour(currentCalendar.get(java.util.Calendar.HOUR_OF_DAY)).setMinute(currentCalendar.get(java.util.Calendar.MINUTE)).setTitleText(binding.textViewHint.text.toString()).build()
+            val timePicker = MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(currentCalendar.get(java.util.Calendar.HOUR_OF_DAY))
+                .setMinute(currentCalendar.get(java.util.Calendar.MINUTE))
+                .setTitleText(binding.textViewHint.text.toString()).build()
             timePicker.addOnPositiveButtonClickListener {
-                selectedDate.set(java.util.Calendar.HOUR_OF_DAY , timePicker.hour)
-                selectedDate.set(java.util.Calendar.MINUTE , timePicker.minute)
+                selectedDate.set(java.util.Calendar.HOUR_OF_DAY, timePicker.hour)
+                selectedDate.set(java.util.Calendar.MINUTE, timePicker.minute)
                 dateTime = selectedDate.timeInMillis
             }
-            timePicker.show(fragmentManager , "timePicker")
+            timePicker.show(fragmentManager, "timePicker")
         }
-        datePicker.show(fragmentManager , "datePicker")
+        datePicker.show(fragmentManager, "datePicker")
     }
 
     private fun showDateTime() {

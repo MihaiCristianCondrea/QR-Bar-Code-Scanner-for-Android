@@ -1,8 +1,8 @@
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/support"
-        android:title="@string/support_the_developer"
         android:icon="@drawable/ic_support"
-        app:showAsAction="never"/>
+        android:title="@string/support_the_developer"
+        app:showAsAction="never" />
 </menu>

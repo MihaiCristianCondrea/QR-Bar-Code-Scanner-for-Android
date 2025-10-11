@@ -23,20 +23,24 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateQrCodeAppBinding
+    private lateinit var binding: FragmentCreateQrCodeAppBinding
     private val appAdapter by unsafeLazy { AppAdapter(parentActivity) }
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateQrCodeAppBinding.inflate(inflater , container , false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateQrCodeAppBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         loadApps()
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return App.fromPackage("")
     }
 
@@ -63,19 +67,20 @@ class CreateQrCodeAppFragment : BaseCreateBarcodeFragment() {
         }
     }
 
-    private fun getApps() : List<ResolveInfo> {
+    private fun getApps(): List<ResolveInfo> {
         val mainIntent = Intent(Intent.ACTION_MAIN).apply {
             addCategory(Intent.CATEGORY_LAUNCHER)
         }
-        return requireContext().packageManager.queryIntentActivities(mainIntent , 0).filter { it.activityInfo?.packageName != null }
+        return requireContext().packageManager.queryIntentActivities(mainIntent, 0)
+            .filter { it.activityInfo?.packageName != null }
     }
 
-    private fun showLoading(isLoading : Boolean) {
+    private fun showLoading(isLoading: Boolean) {
         binding.progressBarLoading.isVisible = isLoading
         binding.recyclerViewApps.isVisible = isLoading.not()
     }
 
-    private fun showApps(apps : List<ResolveInfo>) {
-        appAdapter.apps = apps
+    private fun showApps(apps: List<ResolveInfo>) {
+        appAdapter.submitList(apps)
     }
 }

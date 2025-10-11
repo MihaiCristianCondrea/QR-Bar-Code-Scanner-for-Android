@@ -11,45 +11,47 @@ import com.d4rk.qrcodescanner.plus.databinding.DialogEditBarcodeNameBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class EditBarcodeNameDialogFragment : DialogFragment() {
-    private lateinit var binding : DialogEditBarcodeNameBinding
+    private lateinit var binding: DialogEditBarcodeNameBinding
 
     interface Listener {
-        fun onNameConfirmed(name : String)
+        fun onNameConfirmed(name: String)
     }
 
     companion object {
         private const val NAME_KEY = "NAME_KEY"
-        fun newInstance(name : String?) : EditBarcodeNameDialogFragment {
+        fun newInstance(name: String?): EditBarcodeNameDialogFragment {
             return EditBarcodeNameDialogFragment().apply {
                 arguments = Bundle().apply {
-                    putString(NAME_KEY , name)
+                    putString(NAME_KEY, name)
                 }
             }
         }
     }
 
-    override fun onCreateDialog(savedInstanceState : Bundle?) : Dialog {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val listener = requireActivity() as? Listener
         val name = arguments?.getString(NAME_KEY).orEmpty()
         binding = DialogEditBarcodeNameBinding.inflate(layoutInflater)
-        val dialog = MaterialAlertDialogBuilder(requireActivity()).setTitle(R.string.edit_name).setView(binding.root).setPositiveButton(android.R.string.ok) { _ , _ ->
-                    val newName = binding.editTextBarcodeName.text.toString()
-                    listener?.onNameConfirmed(newName)
-                }.setIcon(R.drawable.ic_edit).setNegativeButton(android.R.string.cancel , null).create()
+        val dialog = MaterialAlertDialogBuilder(requireActivity()).setTitle(R.string.edit_name)
+            .setView(binding.root).setPositiveButton(android.R.string.ok) { _, _ ->
+            val newName = binding.editTextBarcodeName.text.toString()
+            listener?.onNameConfirmed(newName)
+        }.setIcon(R.drawable.ic_edit).setNegativeButton(android.R.string.cancel, null).create()
         dialog.setOnShowListener {
-            initNameEditText(binding.editTextBarcodeName , name)
+            initNameEditText(binding.editTextBarcodeName, name)
         }
         dialog.show()
         return dialog
     }
 
-    private fun initNameEditText(editText : EditText , name : String) {
+    private fun initNameEditText(editText: EditText, name: String) {
         editText.apply {
             setText(name)
             setSelection(name.length)
             requestFocus()
         }
-        val manager = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager
-        manager?.showSoftInput(editText , InputMethodManager.SHOW_IMPLICIT)
+        val manager =
+            requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager
+        manager?.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
     }
 }

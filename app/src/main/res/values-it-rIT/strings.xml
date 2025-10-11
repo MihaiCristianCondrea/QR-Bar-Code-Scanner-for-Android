@@ -1,5 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_description">Scansiona facilmente tutti i tipi di codici QR e codici a barre. 📷</string>
     <string name="welcome">Benvenuto</string>
     <string name="menu">Menu</string>
@@ -82,8 +81,6 @@
     <string name="none">Nessuno</string>
     <string name="ask_every_time">Chiedi ogni volta</string>
     <string name="app_updates">Aggiornamenti app</string>
-    <string name="check_for_updates">Verifica aggiornamenti…</string>
-    <string name="subscribe_to_beta">Iscriviti agli aggiornamenti beta</string>
     <string name="changelog">Changelog</string>
     <string name="privacy_and_security">Privacy e sicurezza</string>
     <string name="privacy_policy">Informativa sulla privacy</string>
@@ -109,9 +106,7 @@
     <string name="faq_state_expanded">Espanso</string>
     <string name="version">Versione %1$s</string>
     <string name="license">Licenza</string>
-    <string name="more">Altro</string>
     <string name="share">Condividi</string>
-    <string name="more_apps">Altre app…</string>
     <string name="support_the_developer">Supporta lo sviluppatore</string>
     <string name="paid_support">Supporto a pagamento</string>
     <string name="non_paid_support">Supporto gratuito</string>

@@ -75,6 +75,7 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
 
     private lateinit var binding: ActivityBarcodeBinding
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
+
     @Suppress("DEPRECATION")
     private val initialBarcode: Barcode by unsafeLazy {
         intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
@@ -655,7 +656,8 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
         if (uiState == null) {
             return
         }
-        menu.findItem(R.id.item_increase_brightness)?.isVisible = isCreated && isBrightnessAtMax.not()
+        menu.findItem(R.id.item_increase_brightness)?.isVisible =
+            isCreated && isBrightnessAtMax.not()
         menu.findItem(R.id.item_decrease_brightness)?.isVisible = isCreated && isBrightnessAtMax
         menu.findItem(R.id.item_add_to_favorites)?.apply {
             isVisible = uiState.isInDatabase

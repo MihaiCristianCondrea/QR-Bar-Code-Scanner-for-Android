@@ -14,20 +14,30 @@ import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class ChooseSearchEngineActivity : BaseActivity() {
-    private lateinit var binding : ActivityChooseSearchEngineBinding
+    private lateinit var binding: ActivityChooseSearchEngineBinding
 
     companion object {
-        fun start(context : Context) {
-            val intent = Intent(context , ChooseSearchEngineActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, ChooseSearchEngineActivity::class.java)
             context.startActivity(intent)
         }
     }
 
     private val buttons by unsafeLazy {
-        listOf(binding.buttonNone , binding.buttonAskEveryTime , binding.buttonBing , binding.buttonDuckDuckGo , binding.buttonGoogle , binding.buttonQwant , binding.buttonStartpage , binding.buttonYahoo , binding.buttonYandex)
+        listOf(
+            binding.buttonNone,
+            binding.buttonAskEveryTime,
+            binding.buttonBing,
+            binding.buttonDuckDuckGo,
+            binding.buttonGoogle,
+            binding.buttonQwant,
+            binding.buttonStartpage,
+            binding.buttonYahoo,
+            binding.buttonYandex
+        )
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseSearchEngineBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -63,7 +73,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
         binding.buttonYandex.setCheckedChangedListener(SearchEngine.YANDEX)
     }
 
-    private fun SettingsRadioButton.setCheckedChangedListener(searchEngine : SearchEngine) {
+    private fun SettingsRadioButton.setCheckedChangedListener(searchEngine: SearchEngine) {
         setCheckedChangedListener { isChecked ->
             if (isChecked) {
                 uncheckOtherButtons(this)
@@ -72,7 +82,7 @@ class ChooseSearchEngineActivity : BaseActivity() {
         }
     }
 
-    private fun uncheckOtherButtons(checkedButton : View) {
+    private fun uncheckOtherButtons(checkedButton: View) {
         buttons.forEach { button ->
             if (checkedButton !== button) {
                 button.isChecked = false

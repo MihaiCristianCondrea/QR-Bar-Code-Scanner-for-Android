@@ -18,16 +18,16 @@ import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class CreateBarcodeAllActivity : BaseActivity() {
     companion object {
-        fun start(context : Context) {
-            val intent = Intent(context , CreateBarcodeAllActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, CreateBarcodeAllActivity::class.java)
             context.startActivity(intent)
         }
     }
 
-    private lateinit var binding : ActivityCreateBarcodeAllBinding
-    private lateinit var adapter : PreferenceListAdapter<BarcodeAction>
+    private lateinit var binding: ActivityCreateBarcodeAllBinding
+    private lateinit var adapter: PreferenceListAdapter<BarcodeAction>
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateBarcodeAllBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -43,8 +43,8 @@ class CreateBarcodeAllActivity : BaseActivity() {
         adapter.submitList(buildItems())
     }
 
-    private fun buildItems() : List<PreferenceListItem<BarcodeAction>> {
-        val entries = PreferenceLayoutParser.parse(this , R.xml.preferences_create_barcode_all)
+    private fun buildItems(): List<PreferenceListItem<BarcodeAction>> {
+        val entries = PreferenceLayoutParser.parse(this, R.xml.preferences_create_barcode_all)
         return entries.mapNotNull { entry ->
             when (entry) {
                 is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)
@@ -53,7 +53,7 @@ class CreateBarcodeAllActivity : BaseActivity() {
         }
     }
 
-    private fun mapActionEntry(entry : PreferenceLayoutEntry.Action) : PreferenceListItem.Action<BarcodeAction>? {
+    private fun mapActionEntry(entry: PreferenceLayoutEntry.Action): PreferenceListItem.Action<BarcodeAction>? {
         val action = when (entry.key) {
             "data_matrix" -> BarcodeAction.DataMatrix
             "aztec" -> BarcodeAction.Aztec
@@ -79,24 +79,24 @@ class CreateBarcodeAllActivity : BaseActivity() {
         )
     }
 
-    private fun handleAction(action : BarcodeAction) {
+    private fun handleAction(action: BarcodeAction) {
         when (action) {
-            BarcodeAction.DataMatrix -> CreateBarcodeActivity.start(this , BarcodeFormat.DATA_MATRIX)
-            BarcodeAction.Aztec -> CreateBarcodeActivity.start(this , BarcodeFormat.AZTEC)
-            BarcodeAction.Pdf417 -> CreateBarcodeActivity.start(this , BarcodeFormat.PDF_417)
-            BarcodeAction.Codabar -> CreateBarcodeActivity.start(this , BarcodeFormat.CODABAR)
-            BarcodeAction.Code39 -> CreateBarcodeActivity.start(this , BarcodeFormat.CODE_39)
-            BarcodeAction.Code93 -> CreateBarcodeActivity.start(this , BarcodeFormat.CODE_93)
-            BarcodeAction.Code128 -> CreateBarcodeActivity.start(this , BarcodeFormat.CODE_128)
-            BarcodeAction.Ean8 -> CreateBarcodeActivity.start(this , BarcodeFormat.EAN_8)
-            BarcodeAction.Ean13 -> CreateBarcodeActivity.start(this , BarcodeFormat.EAN_13)
-            BarcodeAction.Itf -> CreateBarcodeActivity.start(this , BarcodeFormat.ITF)
-            BarcodeAction.UpcA -> CreateBarcodeActivity.start(this , BarcodeFormat.UPC_A)
-            BarcodeAction.UpcE -> CreateBarcodeActivity.start(this , BarcodeFormat.UPC_E)
+            BarcodeAction.DataMatrix -> CreateBarcodeActivity.start(this, BarcodeFormat.DATA_MATRIX)
+            BarcodeAction.Aztec -> CreateBarcodeActivity.start(this, BarcodeFormat.AZTEC)
+            BarcodeAction.Pdf417 -> CreateBarcodeActivity.start(this, BarcodeFormat.PDF_417)
+            BarcodeAction.Codabar -> CreateBarcodeActivity.start(this, BarcodeFormat.CODABAR)
+            BarcodeAction.Code39 -> CreateBarcodeActivity.start(this, BarcodeFormat.CODE_39)
+            BarcodeAction.Code93 -> CreateBarcodeActivity.start(this, BarcodeFormat.CODE_93)
+            BarcodeAction.Code128 -> CreateBarcodeActivity.start(this, BarcodeFormat.CODE_128)
+            BarcodeAction.Ean8 -> CreateBarcodeActivity.start(this, BarcodeFormat.EAN_8)
+            BarcodeAction.Ean13 -> CreateBarcodeActivity.start(this, BarcodeFormat.EAN_13)
+            BarcodeAction.Itf -> CreateBarcodeActivity.start(this, BarcodeFormat.ITF)
+            BarcodeAction.UpcA -> CreateBarcodeActivity.start(this, BarcodeFormat.UPC_A)
+            BarcodeAction.UpcE -> CreateBarcodeActivity.start(this, BarcodeFormat.UPC_E)
         }
     }
 
     private enum class BarcodeAction {
-        DataMatrix , Aztec , Pdf417 , Codabar , Code39 , Code93 , Code128 , Ean8 , Ean13 , Itf , UpcA , UpcE
+        DataMatrix, Aztec, Pdf417, Codabar, Code39, Code93, Code128, Ean8, Ean13, Itf, UpcA, UpcE
     }
 }

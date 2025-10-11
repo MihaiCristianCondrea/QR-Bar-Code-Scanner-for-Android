@@ -18,21 +18,26 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class BarcodeHistoryFragment : Fragment() , DeleteConfirmationDialogFragment.Listener {
-    private lateinit var _binding : FragmentBarcodeHistoryBinding
+class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
+    private lateinit var _binding: FragmentBarcodeHistoryBinding
     private val binding get() = _binding
     private var hasLoadedEmptyStateAd = false
     private val historyRepository by lazy { barcodeHistoryRepository }
-    private val viewModel : BarcodeHistoryViewModel by viewModels {
+    private val viewModel: BarcodeHistoryViewModel by viewModels {
         BarcodeHistoryViewModelFactory(historyRepository)
     }
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        _binding = FragmentBarcodeHistoryBinding.inflate(inflater , container , false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentBarcodeHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.exportHistoryButton.setOnClickListener {
             navigateToExportHistoryScreen()
         }
@@ -46,7 +51,8 @@ class BarcodeHistoryFragment : Fragment() , DeleteConfirmationDialogFragment.Lis
     }
 
     private fun initTabs() {
-        binding.viewPager.adapter = BarcodeHistoryViewPagerAdapter(requireContext() , childFragmentManager)
+        binding.viewPager.adapter =
+            BarcodeHistoryViewPagerAdapter(requireContext(), childFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
@@ -55,17 +61,17 @@ class BarcodeHistoryFragment : Fragment() , DeleteConfirmationDialogFragment.Lis
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.historyCount.collectLatest { count ->
                     val isEmpty = count == 0
-                    binding.tabLayout.isVisible = ! isEmpty
-                    binding.viewPager.isVisible = ! isEmpty
-                    binding.exportHistoryButton.isVisible = ! isEmpty
+                    binding.tabLayout.isVisible = !isEmpty
+                    binding.viewPager.isVisible = !isEmpty
+                    binding.exportHistoryButton.isVisible = !isEmpty
                     binding.emptyHistoryContainer.isVisible = isEmpty
                     binding.emptyHistoryMessage.isVisible = isEmpty
                     binding.emptyHistoryAdView.isVisible = isEmpty
-                    if (isEmpty && ! hasLoadedEmptyStateAd) {
+                    if (isEmpty && !hasLoadedEmptyStateAd) {
                         binding.emptyHistoryAdView.loadAd()
                         hasLoadedEmptyStateAd = true
                     }
-                    if (! isEmpty) {
+                    if (!isEmpty) {
                         hasLoadedEmptyStateAd = false
                     }
                 }

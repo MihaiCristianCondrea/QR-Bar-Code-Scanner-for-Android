@@ -28,41 +28,41 @@ import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
-    private lateinit var binding : ActivityScanBarcodeFromFileBinding
-    private val photoPickerLauncher : ActivityResultLauncher<PickVisualMediaRequest> =
+    private lateinit var binding: ActivityScanBarcodeFromFileBinding
+    private val photoPickerLauncher: ActivityResultLauncher<PickVisualMediaRequest> =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             handlePickedImage(uri)
         }
 
-    private val legacyImagePickerLauncher : ActivityResultLauncher<String> =
+    private val legacyImagePickerLauncher: ActivityResultLauncher<String> =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             handlePickedImage(uri)
         }
 
-    private val viewModel : ScanBarcodeFromFileViewModel by viewModels {
+    private val viewModel: ScanBarcodeFromFileViewModel by viewModels {
         ScanBarcodeFromFileViewModelFactory(
-            application = application ,
-            barcodeImageScanner = barcodeImageScanner ,
-            barcodeParser = barcodeParser ,
-            barcodeDatabase = barcodeDatabase ,
+            application = application,
+            barcodeImageScanner = barcodeImageScanner,
+            barcodeParser = barcodeParser,
+            barcodeDatabase = barcodeDatabase,
             settings = settings
         )
     }
 
     companion object {
         private const val STATE_CURRENT_IMAGE_URI = "state_current_image_uri"
-        fun start(context : Context) {
-            val intent = Intent(context , ScanBarcodeFromFileActivity::class.java)
+        fun start(context: Context) {
+            val intent = Intent(context, ScanBarcodeFromFileActivity::class.java)
             context.startActivity(intent)
         }
     }
 
-    private var displayedImageUri : Uri? = null
-    override fun onCreate(savedInstanceState : Bundle?) {
+    private var displayedImageUri: Uri? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanBarcodeFromFileBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -80,14 +80,14 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         handleScanButtonClicked()
     }
 
-    override fun onSaveInstanceState(outState : Bundle) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         viewModel.uiState.value.selectedImageUri?.let { uri ->
-            outState.putString(STATE_CURRENT_IMAGE_URI , uri.toString())
+            outState.putString(STATE_CURRENT_IMAGE_URI, uri.toString())
         }
     }
 
-    override fun onNewIntent(intent : Intent) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
         if (!handleIncomingIntent(intent)) {
@@ -102,18 +102,17 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     private fun selectImage() {
         if (isPhotoPickerAvailable()) {
             photoPickerLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-        }
-        else {
+        } else {
             legacyImagePickerLauncher.launch("image/*")
         }
     }
 
-    override fun onCreateOptionsMenu(menu : Menu) : Boolean {
-        menuInflater.inflate(R.menu.menu_scan_barcode_from_image , menu)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_scan_barcode_from_image, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.item_rotate_left -> {
                 // binding.cropImageView.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D)
@@ -144,7 +143,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
-    private fun handlePickedImage(uri : Uri?) {
+    private fun handlePickedImage(uri: Uri?) {
         if (uri == null) {
             finish()
             return
@@ -152,18 +151,17 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         viewModel.onImagePicked(uri)
     }
 
-    private fun handleIncomingIntent(intent : Intent?) : Boolean {
+    private fun handleIncomingIntent(intent: Intent?): Boolean {
         val uri = intent?.extractImageUri() ?: return false
         handlePickedImage(uri)
         return true
     }
 
-    private fun Intent.extractImageUri() : Uri? {
+    private fun Intent.extractImageUri(): Uri? {
         if (action == Intent.ACTION_SEND) {
             val streamUri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                getParcelableExtra(Intent.EXTRA_STREAM , Uri::class.java)
-            }
-            else {
+                getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+            } else {
                 @Suppress("DEPRECATION")
                 getParcelableExtra(Intent.EXTRA_STREAM)
             }
@@ -176,17 +174,18 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         return null
     }
 
-    private fun isPhotoPickerAvailable() : Boolean {
+    private fun isPhotoPickerAvailable(): Boolean {
         return when {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> true
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.R ->
                 SdkExtensions.getExtensionVersion(Build.VERSION_CODES.R) >= 2
+
             else -> false
         }
     }
 
-    private fun navigateToBarcodeScreen(barcode : Barcode) {
-        BarcodeActivity.start(this , barcode)
+    private fun navigateToBarcodeScreen(barcode: Barcode) {
+        BarcodeActivity.start(this, barcode)
         finish()
     }
 
@@ -201,8 +200,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
                             displayedImageUri = uri
                             if (uri != null) {
                                 binding.imageViewPreview.setImageURI(uri)
-                            }
-                            else {
+                            } else {
                                 binding.imageViewPreview.setImageDrawable(null)
                             }
                         }
@@ -211,7 +209,10 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
                 launch {
                     viewModel.events.collect { event ->
                         when (event) {
-                            is ScanBarcodeFromFileEvent.NavigateToBarcode -> navigateToBarcodeScreen(event.barcode)
+                            is ScanBarcodeFromFileEvent.NavigateToBarcode -> navigateToBarcodeScreen(
+                                event.barcode
+                            )
+
                             is ScanBarcodeFromFileEvent.ShowError -> showError(event.throwable)
                         }
                     }

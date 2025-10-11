@@ -23,15 +23,15 @@ import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class SaveBarcodeAsTextActivity : BaseActivity() {
-    private lateinit var binding : ActivitySaveBarcodeAsTextBinding
+    private lateinit var binding: ActivitySaveBarcodeAsTextBinding
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
         private val PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         private const val BARCODE_KEY = "BARCODE_KEY"
-        fun start(context : Context , barcode : Barcode) {
-            val intent = Intent(context , SaveBarcodeAsTextActivity::class.java).apply {
-                putExtra(BARCODE_KEY , barcode)
+        fun start(context: Context, barcode: Barcode) {
+            val intent = Intent(context, SaveBarcodeAsTextActivity::class.java).apply {
+                putExtra(BARCODE_KEY, barcode)
             }
             context.startActivity(intent)
         }
@@ -39,10 +39,11 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
 
     @Suppress("DEPRECATION")
     private val barcode by unsafeLazy {
-        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode ?: throw IllegalArgumentException("No barcode passed")
+        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
+            ?: throw IllegalArgumentException("No barcode passed")
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySaveBarcodeAsTextBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
@@ -52,15 +53,23 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
     }
 
-    override fun onRequestPermissionsResult(requestCode : Int , permissions : Array<out String> , grantResults : IntArray) {
-        super.onRequestPermissionsResult(requestCode , permissions , grantResults)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
             saveBarcode()
         }
     }
 
     private fun initFormatSpinner() {
-        binding.spinnerSaveAs.adapter = ArrayAdapter.createFromResource(this , R.array.activity_save_barcode_as_text_formats , R.layout.item_spinner).apply {
+        binding.spinnerSaveAs.adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.activity_save_barcode_as_text_formats,
+            R.layout.item_spinner
+        ).apply {
             setDropDownViewResource(R.layout.item_spinner_dropdown)
         }
     }
@@ -72,7 +81,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun requestPermissions() {
-        permissionsHelper.requestPermissions(this , PERMISSIONS , REQUEST_PERMISSIONS_CODE)
+        permissionsHelper.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSIONS_CODE)
     }
 
     private fun saveBarcode() {
@@ -86,7 +95,7 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         lifecycleScope.launch {
             runCatching {
                 withContext(Dispatchers.IO) {
-                    saveFunc(this@SaveBarcodeAsTextActivity , barcode)
+                    saveFunc(this@SaveBarcodeAsTextActivity, barcode)
                 }
             }.onSuccess {
                 showBarcodeSaved()
@@ -97,13 +106,13 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         }
     }
 
-    private fun showLoading(isLoading : Boolean) {
+    private fun showLoading(isLoading: Boolean) {
         binding.progressBarLoading.isVisible = isLoading
         binding.scrollView.isVisible = isLoading.not()
     }
 
     private fun showBarcodeSaved() {
-        Snackbar.make(binding.root , R.string.snack_saved_to_downloads , Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, R.string.snack_saved_to_downloads, Snackbar.LENGTH_LONG).show()
         finish()
     }
 }

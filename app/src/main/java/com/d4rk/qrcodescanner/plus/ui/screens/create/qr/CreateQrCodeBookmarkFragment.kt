@@ -13,21 +13,25 @@ import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeBookmarkFragment : BaseCreateBarcodeFragment() {
-    private lateinit var binding : FragmentCreateQrCodeBookmarkBinding
-    override fun onCreateView(inflater : LayoutInflater , container : ViewGroup? , savedInstanceState : Bundle?) : View {
-        binding = FragmentCreateQrCodeBookmarkBinding.inflate(inflater , container , false)
+    private lateinit var binding: FragmentCreateQrCodeBookmarkBinding
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCreateQrCodeBookmarkBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view : View , savedInstanceState : Bundle?) {
-        super.onViewCreated(view , savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initTitleEditText()
         handleTextChanged()
     }
 
-    override fun getBarcodeSchema() : Schema {
+    override fun getBarcodeSchema(): Schema {
         return Bookmark(
-            title = binding.editTextTitle.textString , url = binding.editTextUrl.textString
+            title = binding.editTextTitle.textString, url = binding.editTextUrl.textString
         )
     }
 
@@ -41,6 +45,7 @@ class CreateQrCodeBookmarkFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = binding.editTextTitle.isNotBlank() || binding.editTextUrl.isNotBlank()
+        parentActivity.isCreateBarcodeButtonEnabled =
+            binding.editTextTitle.isNotBlank() || binding.editTextUrl.isNotBlank()
     }
 }

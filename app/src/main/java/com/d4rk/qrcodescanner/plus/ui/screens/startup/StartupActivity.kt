@@ -20,13 +20,13 @@ import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class StartupActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityStartupBinding
+    private lateinit var binding: ActivityStartupBinding
 
-    private val viewModel : StartupViewModel by viewModels {
+    private val viewModel: StartupViewModel by viewModels {
         StartupViewModelFactory(StartupConsentRepository(applicationContext))
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStartupBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,13 +34,18 @@ class StartupActivity : AppCompatActivity() {
         observeViewModel()
         viewModel.initialize(this)
         binding.buttonBrowsePrivacyPolicyAndTermsOfService.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW , "https://sites.google.com/view/d4rk7355608/more/apps/privacy-policy".toUri()))
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    "https://sites.google.com/view/d4rk7355608/more/apps/privacy-policy".toUri()
+                )
+            )
         }
         binding.floatingButtonAgree.setOnClickListener {
             viewModel.onAgreeClicked()
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS) , 1)
+            requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
         }
     }
 
@@ -52,7 +57,7 @@ class StartupActivity : AppCompatActivity() {
                         binding.progressIndicator.isVisible = uiState.isLoading
                         binding.floatingButtonAgree.isEnabled = uiState.isLoading.not()
                         uiState.errorMessage?.let { message ->
-                            Toast.makeText(this@StartupActivity , message , Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@StartupActivity, message, Toast.LENGTH_LONG).show()
                             viewModel.clearError()
                         }
                     }
@@ -61,9 +66,15 @@ class StartupActivity : AppCompatActivity() {
                     viewModel.events.collectLatest { event ->
                         when (event) {
                             StartupUiEvent.NavigateToMain -> {
-                                startActivity(Intent(this@StartupActivity , MainActivity::class.java))
+                                startActivity(
+                                    Intent(
+                                        this@StartupActivity,
+                                        MainActivity::class.java
+                                    )
+                                )
                                 finish()
                             }
+
                             is StartupUiEvent.ShowConsentForm -> {
                                 event.consentForm.show(this@StartupActivity) {
                                     viewModel.onConsentFormDismissed(this@StartupActivity)

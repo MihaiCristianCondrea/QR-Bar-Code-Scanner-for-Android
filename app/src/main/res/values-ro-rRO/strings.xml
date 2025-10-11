@@ -1,5 +1,4 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_description">Scanează cu ușurință tot felul de coduri QR și coduri de bare. 📷</string>
     <string name="welcome">Bine ai venit</string>
     <string name="menu">Meniu</string>
@@ -82,8 +81,6 @@
     <string name="none">Niciuna</string>
     <string name="ask_every_time">Întreabă de fiecare dată</string>
     <string name="app_updates">Actualizări ale aplicației</string>
-    <string name="check_for_updates">Verifică actualizări…</string>
-    <string name="subscribe_to_beta">Abonează-te la actualizări beta</string>
     <string name="changelog">Istoric de modificări</string>
     <string name="privacy_and_security">Confidențialitate și securitate</string>
     <string name="privacy_policy">Politica de confidențialitate</string>
@@ -109,9 +106,7 @@
     <string name="faq_state_expanded">Extins</string>
     <string name="version">Versiunea %1$s</string>
     <string name="license">Licență</string>
-    <string name="more">Mai mult</string>
     <string name="share">Partajează</string>
-    <string name="more_apps">Mai multe aplicații…</string>
     <string name="support_the_developer">Susține dezvoltatorul</string>
     <string name="paid_support">Suport Plătit</string>
     <string name="non_paid_support">Suport Necalificat</string>

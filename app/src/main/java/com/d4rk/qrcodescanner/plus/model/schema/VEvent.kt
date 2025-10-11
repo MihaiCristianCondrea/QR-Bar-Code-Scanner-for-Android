@@ -12,7 +12,14 @@ import java.util.Locale
 import java.util.TimeZone
 
 data class VEvent(
-    val uid : String? = null , val stamp : String? = null , val organizer : String? = null , val description : String? = null , val location : String? = null , val startDate : Long? = null , val endDate : Long? = null , val summary : String? = null
+    val uid: String? = null,
+    val stamp: String? = null,
+    val organizer: String? = null,
+    val description: String? = null,
+    val location: String? = null,
+    val startDate: Long? = null,
+    val endDate: Long? = null,
+    val summary: String? = null
 ) : Schema {
     companion object {
         private const val SCHEMA_PREFIX = "BEGIN:VEVENT"
@@ -29,36 +36,37 @@ data class VEvent(
         private const val SUMMARY_PREFIX = "SUMMARY:"
         private val DATE_PARSERS by unsafeLazy {
             listOf(
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'" , Locale.US) ,
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss" , Locale.US) ,
-                SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'" , Locale.US) ,
-                SimpleDateFormat("yyyyMMdd'T'HHmmss" , Locale.US) ,
-                SimpleDateFormat("yyyy-MM-dd" , Locale.US) ,
-                SimpleDateFormat("yyyyMMdd" , Locale.US)
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US),
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US),
+                SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US),
+                SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US),
+                SimpleDateFormat("yyyy-MM-dd", Locale.US),
+                SimpleDateFormat("yyyyMMdd", Locale.US)
             )
         }
         private val BARCODE_TEXT_DATE_FORMATTER by unsafeLazy {
-            SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'" , Locale.US).apply {
+            SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
                 timeZone = TimeZone.getTimeZone("UTC")
             }
         }
         private val FORMATTED_TEXT_DATE_FORMATTER by unsafeLazy {
-            SimpleDateFormat("dd.MM.yyyy HH:mm" , Locale.ENGLISH)
+            SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
         }
 
-        fun parse(text : String) : VEvent? {
+        fun parse(text: String): VEvent? {
             if (text.startsWithIgnoreCase(SCHEMA_PREFIX).not()) {
                 return null
             }
-            var uid : String? = null
-            var stamp : String? = null
-            var organizer : String? = null
-            var description : String? = null
-            var location : String? = null
-            var startDate : Long? = null
-            var endDate : Long? = null
-            var summary : String? = null
-            text.removePrefixIgnoreCase(SCHEMA_PREFIX).split(PARAMETERS_SEPARATOR_1 , PARAMETERS_SEPARATOR_2).forEach { part ->
+            var uid: String? = null
+            var stamp: String? = null
+            var organizer: String? = null
+            var description: String? = null
+            var location: String? = null
+            var startDate: Long? = null
+            var endDate: Long? = null
+            var summary: String? = null
+            text.removePrefixIgnoreCase(SCHEMA_PREFIX)
+                .split(PARAMETERS_SEPARATOR_1, PARAMETERS_SEPARATOR_2).forEach { part ->
                 if (part.startsWithIgnoreCase(UID_PREFIX)) {
                     uid = part.removePrefixIgnoreCase(UID_PREFIX)
                     return@forEach
@@ -94,22 +102,35 @@ data class VEvent(
                     return@forEach
                 }
             }
-            return VEvent(uid , stamp , organizer , description , location , startDate , endDate , summary)
+            return VEvent(uid, stamp, organizer, description, location, startDate, endDate, summary)
         }
     }
 
     override val schema = BarcodeSchema.VEVENT
-    override fun toFormattedText() : String {
+    override fun toFormattedText(): String {
         return listOf(
-            uid , stamp , summary , description , location , FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(startDate) , FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(endDate) , organizer
+            uid,
+            stamp,
+            summary,
+            description,
+            location,
+            FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(startDate),
+            FORMATTED_TEXT_DATE_FORMATTER.formatOrNull(endDate),
+            organizer
         ).joinToStringNotNullOrBlankWithLineSeparator()
     }
 
-    override fun toBarcodeText() : String {
+    override fun toBarcodeText(): String {
         val startDate = BARCODE_TEXT_DATE_FORMATTER.formatOrNull(startDate)
         val endDate = BARCODE_TEXT_DATE_FORMATTER.formatOrNull(endDate)
-        return StringBuilder().append(SCHEMA_PREFIX).append(PARAMETERS_SEPARATOR_1).appendIfNotNullOrBlank(UID_PREFIX , uid , PARAMETERS_SEPARATOR_1).appendIfNotNullOrBlank(STAMP_PREFIX , stamp , PARAMETERS_SEPARATOR_1).appendIfNotNullOrBlank(ORGANIZER_PREFIX , organizer , PARAMETERS_SEPARATOR_1)
-                .appendIfNotNullOrBlank(DESCRIPTION_PREFIX , description , PARAMETERS_SEPARATOR_1).appendIfNotNullOrBlank(START_PREFIX , startDate , PARAMETERS_SEPARATOR_1).appendIfNotNullOrBlank(END_PREFIX , endDate , PARAMETERS_SEPARATOR_1)
-                .appendIfNotNullOrBlank(SUMMARY_PREFIX , summary , PARAMETERS_SEPARATOR_1).append(SCHEMA_SUFFIX).toString()
+        return StringBuilder().append(SCHEMA_PREFIX).append(PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(UID_PREFIX, uid, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(STAMP_PREFIX, stamp, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(ORGANIZER_PREFIX, organizer, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(DESCRIPTION_PREFIX, description, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(START_PREFIX, startDate, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(END_PREFIX, endDate, PARAMETERS_SEPARATOR_1)
+            .appendIfNotNullOrBlank(SUMMARY_PREFIX, summary, PARAMETERS_SEPARATOR_1)
+            .append(SCHEMA_SUFFIX).toString()
     }
 }

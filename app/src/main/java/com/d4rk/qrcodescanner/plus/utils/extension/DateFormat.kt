@@ -3,11 +3,11 @@ package com.d4rk.qrcodescanner.plus.utils.extension
 import java.text.DateFormat
 import java.util.Date
 
-fun DateFormat.parseOrNull(date : String?) : Date? {
+fun DateFormat.parseOrNull(date: String?): Date? {
     return runCatching { date?.let(::parse) }.getOrNull()
 }
 
-fun List<DateFormat>.parseOrNull(date : String?) : Date? {
+fun List<DateFormat>.parseOrNull(date: String?): Date? {
     forEach { dateParser ->
         val parsedDate = dateParser.parseOrNull(date)
         if (parsedDate != null) {
@@ -17,6 +17,6 @@ fun List<DateFormat>.parseOrNull(date : String?) : Date? {
     return null
 }
 
-fun DateFormat.formatOrNull(time : Long?) : String? {
+fun DateFormat.formatOrNull(time: Long?): String? {
     return runCatching { time?.let { format(Date(it)) } }.getOrNull()
 }
