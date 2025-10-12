@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="Add whatever u want"
                     android:gravity="start|top"
-                    android:hint="@string/hint_file_name"
+                    android:hint="@string/file_name"
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:lines="1"
@@ -57,7 +57,7 @@
                 android:layout_marginHorizontal="@dimen/default_margin_big"
                 android:layout_marginTop="@dimen/default_margin_big"
                 android:text="@string/export"
-                android:tooltipText="@string/tooltip_export" />
+                android:tooltipText="@string/export_your_history" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 

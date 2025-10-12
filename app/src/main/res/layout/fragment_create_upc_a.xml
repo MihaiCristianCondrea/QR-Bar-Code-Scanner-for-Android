@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:digits="0123456789"
             android:gravity="start|top"
-            android:hint="@string/hint_11_digits"
+            android:hint="@string/eleven_digits"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:lines="1"

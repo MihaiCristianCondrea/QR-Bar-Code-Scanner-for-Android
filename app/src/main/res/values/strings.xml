@@ -1,81 +1,187 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!--App Manifest-->
+    <!-- App Manifest -->
     <string name="app_description">Scan all kinds of QR codes and barcodes with ease. 📷</string>
 
-    <!--Startup screen-->
+    <!-- Startup screen -->
     <string name="welcome">Welcome</string>
-
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Read and agree to our Terms of Service and Privacy Policy to continue.</string>
     <string name="browse_terms_of_service_and_privacy_policy">Browse the <i><u>Terms of Service</u></i> and <i><u>Privacy Policy</u></i></string>
-
-
-    <!--Onboarding screen-->
-
-
-
-
-
-
-    <string name="menu">Menu</string>
-    <string name="ad_attribution">Ad</string>
     <string name="agree">Agree</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Menu</string>
+
+    <!-- Scanner tab screen -->
     <string name="scan">Scan</string>
-    <string name="flash">Flash</string>
     <string name="scan_image">Scan image</string>
+    <string name="flash">Flash</string>
+
+    <!-- Create QR Code tab screen -->
     <string name="create">Create</string>
     <string name="qr_code">QR Code</string>
     <string name="content_from_clipboard">Content from clipboard</string>
     <string name="text">Text</string>
     <string name="url">URL</string>
-    <string name="alternatively">Alternatively:</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="hidden">Hidden</string>
     <string name="location">Location</string>
     <string name="contact_v_card">Contact (VCard)</string>
+
     <string name="more_qr_codes">More QR codes</string>
-    <string name="otp">OTP</string>
-    <string name="type">Type</string>
-    <string name="algorithm">Algorithm</string>
-    <string name="random_secret">Random Secret</string>
-    <string name="contact_me_card">Contact (MeCard)</string>
-    <string name="event">Event</string>
-    <string name="phone">Phone</string>
-    <string name="email">Email</string>
-    <string name="sms">SMS</string>
-    <string name="mms">MMS</string>
-    <string name="bitcoin">Bitcoin</string>
-    <string name="cryptocurrency">Cryptocurrency</string>
-    <string name="bookmark">Bookmark</string>
-    <string name="app">App</string>
     <string name="barcode">Barcode</string>
     <string name="all_barcodes_codes">Barcodes and other 2D codes</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Create QR code</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Contact (MeCard)</string>
+    <string name="event">Event</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternatively:</string>
+    <string name="summary_alternatively_url">- Open your browser app\n- Load a website\n- Click \"Share\" from the menu\n- Select this app.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Encryption</string>
+    <string name="network_name">Network name</string>
+    <string name="password">Password</string>
+    <string name="hidden">Hidden</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="altitude">Altitude (optional)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Contacts</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="organization">Organization</string>
+    <string name="job">Job</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="fax">Fax</string>
+    <string name="website">Website</string>
+    <string name="summary_alternatively_contact">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="type">Type</string>
+    <string name="algorithm">Algorithm</string>
+    <string name="issuer">Issuer</string>
+    <string name="account">Account</string>
+    <string name="period">Period</string>
+    <string name="hint_counter">Counter</string>
+    <string name="secret">Secret</string>
+    <string name="random_secret">Random Secret</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Subject</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Cryptocurrency</string>
+    <string name="receiver_address">Receiver address</string>
+    <string name="amount">Amount</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Bookmark</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">App</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Increase brightness</string>
+    <string name="decrease_brightness">Decrease brightness</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="delete">Delete</string>
+    <string name="share_as_text">Share as text</string>
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="save_as_text">Save as text</string>
+    <string name="share_as_image">Share as image</string>
+    <string name="save_as_image">Save as image</string>
+    <string name="print">Print</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Create barcode</string>
     <string name="barcodes_2d">2D barcodes</string>
     <string name="barcodes_1d">1D barcodes</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Text without special characters</string>
+    <string name="text_in_upper_case_without_special_characters">Text in upper case without special characters</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Digits</string>
+    <string name="seven_digits">7 digits</string>
+    <string name="eleven_digits">11 digits</string>
+    <string name="twelve_digits">12 digits</string>
+    <string name="even_number_of_digits">Even number of digits</string>
+
+    <!-- History screen -->
     <string name="history">History</string>
-    <string name="export_history">Export history</string>
+    <string name="all">All</string>
+    <string name="favorites">Favorites</string>
     <string name="history_empty_message">You have no saved scans yet. Scan or create a code to see it here.</string>
+    <string name="export_your_history">Export your history</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Export history</string>
     <string name="export_as">Export as</string>
+    <string name="file_name">File name</string>
     <string name="export">Export</string>
-    <string name="about">About</string>
+
+    <!-- Settings screen -->
     <string name="settings">Settings</string>
-    <string name="appearance">Appearance</string>
+    <string name="notifications">Notifications</string>
+    <string name="summary_settings_notifications_overview">Manage app notifications</string>
     <string name="display">Display</string>
+    <string name="summary_settings_display_overview">Personalize your app\'s look and feel</string>
+    <string name="scanner">Scanner</string>
+    <string name="summary_settings_scanner_overview">Adjust how scanning behaves and how the camera responds</string>
+    <string name="summary_settings_history_overview">Control how scans are saved and manage your history</string>
+    <string name="security_and_privacy">Security &amp; Privacy</string>
+    <string name="summary_settings_security_privacy_overview">Manage your privacy settings</string>
+    <string name="advanced">Advanced</string>
+    <string name="summary_settings_advanced_overview">Explore more advanced settings</string>
+    <string name="about">About</string>
+    <string name="summary_settings_about_overview">Learn more about %1$s</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Appearance</string>
     <string name="theme">Theme</string>
     <string name="follow_system">Follow System Mode</string>
     <string name="light_mode">Light Mode</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="auto_battery_mode">Auto Battery Dark Mode</string>
-    <string name="default_tab">Default tab</string>
+    <string name="summary_preference_settings_theme">Choose how the app looks. Current: %1$s.</string>
     <string name="navigation">Navigation</string>
+    <string name="default_tab">Default tab</string>
+    <string name="summary_preference_settings_default_tab">Pick the first screen you see on launch. Current: %1$s.</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <string name="bottom_navigation_bar_labels">Bottom navigation bar labels</string>
     <string name="labeled">Labeled</string>
     <string name="selected">Selected</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="inverse_colors">Inverse colors</string>
     <string name="language">Language</string>
-    <string name="scanner">Scanner</string>
     <string name="open_content_automatically">Open content of scanned codes automatically</string>
-    <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="simple_auto_focus">Simple auto focus mode</string>
     <string name="vibrate">Vibrate</string>
     <string name="continuous_scanning">Continuous scanning</string>
@@ -88,16 +194,7 @@
     <string name="save_created_barcodes_to_history">Save created barcodes to history.</string>
     <string name="do_not_save_duplicates">Do not save duplicates</string>
     <string name="clear_history">Clear history</string>
-    <string name="notifications">Notifications</string>
     <string name="notification_settings">Notification settings</string>
-    <string name="summary_settings_notifications_overview">Manage app notifications</string>
-    <string name="summary_settings_display_overview">Personalize your app\'s look and feel</string>
-    <string name="summary_settings_scanner_overview">Adjust how scanning behaves and how the camera responds</string>
-    <string name="summary_settings_history_overview">Control how scans are saved and manage your history</string>
-    <string name="summary_settings_security_privacy_overview">Manage your privacy settings</string>
-    <string name="summary_settings_advanced_overview">Explore more advanced settings</string>
-    <string name="summary_settings_about_overview">Learn more about %1$s</string>
-    <string name="advanced">Advanced</string>
     <string name="firebase">Firebase</string>
     <string name="search_engines">Search Engines</string>
     <string name="none">None</string>
@@ -108,7 +205,6 @@
     <string name="cache_management">Cache management</string>
     <string name="changelog">Changelog</string>
     <string name="privacy_and_security">Privacy and security</string>
-    <string name="security_and_privacy">Security &amp; Privacy</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy">Privacy</string>
     <string name="update_downloaded">Update downloaded</string>
@@ -155,14 +251,11 @@
     <string name="device_model">Device Model:</string>
     <string name="android_version">Android Version:</string>
     <string name="api_level">API Level:</string>
-    <string name="create_barcode">Create barcode</string>
-    <string name="delete">Delete</string>
     <string name="title">Title</string>
     <string name="save">Save</string>
     <string name="saved">Saved</string>
     <string name="save_as">Save as</string>
     <string name="confirm">Confirm</string>
-    <string name="create_qr_code">Create QR code</string>
     <string name="error">Error</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="dialog_delete">Delete?</string>
@@ -170,9 +263,6 @@
     <string name="rotate_left">Rotate left</string>
     <string name="rotate_right">Rotate right</string>
     <string name="choose_another_image">Choose another image</string>
-    <string name="contacts">Contacts</string>
-    <string name="receiver_address">Receiver address</string>
-    <string name="amount">Amount</string>
     <string name="label">Label</string>
     <string name="organizer">Organizer</string>
     <string name="summary">Summary</string>
@@ -195,13 +285,8 @@
     <string name="open_link">Open link</string>
     <string name="open_in_other_app">Open in other app</string>
     <string name="show_password">Show password</string>
-    <string name="share_as_text">Share as text</string>
     <string name="search_on_the_web">Search on the web</string>
-    <string name="share_as_image">Share as image</string>
-    <string name="print">Print</string>
     <string name="connecting">Connecting…</string>
-    <string name="increase_brightness">Increase brightness</string>
-    <string name="decrease_brightness">Decrease brightness</string>
     <string name="unable_to_generate_password">Unable to generate password</string>
     <string name="counter">Counter: %s</string>
     <string name="timer_left">%1$s:%2$s left</string>
@@ -274,8 +359,6 @@
     <string name="summary_preference_settings_changelog">See what changed in the latest releases.</string>
     <string name="summary_preference_settings_open_source_licenses">View licenses for the libraries we use.</string>
     <string name="legal">Legal</string>
-    <string name="summary_preference_settings_theme">Choose how the app looks. Current: %1$s.</string>
-    <string name="summary_preference_settings_default_tab">Pick the first screen you see on launch. Current: %1$s.</string>
     <string name="summary_preference_settings_bottom_navigation_bar_labels">Control how labels appear in the bottom bar. Current: %1$s.</string>
     <string name="summary_preference_settings_language_value">Choose the app language. Current: %1$s.</string>
     <string name="summary_preference_permissions_ad_id">Allows the app to retrieve and use the advertising identifier associated with the user\'s device, providing personalized ads, measuring ad effectiveness, and showing ads on Android 13 or later devices.</string>
@@ -293,12 +376,9 @@
     <string name="summary_preference_permissions_read_storage">Allows the app to access your storage so you can save your QR code or barcode as text or image.</string>
     <string name="summary_preference_permissions_read_images">Allows the app to read images from your device so you can scan them for QR codes and barcodes on devices running Android 13 or later.</string>
     <string name="summary_preference_permissions_write_storage">Allows the app to write to your storage so you can save files, such as photos, videos, and documents.</string>
-    <string name="summary_browse_terms_of_service_and_privacy_policy">Read and agree to our Terms of Service and Privacy Policy to continue.</string>
     <string name="summary_require_restart">To take effect please restart the app!</string>
     <string name="summary_donations">No matter how much you donate, you will help us keep our app running and improve our features. We appreciate your generosity and kindness!</string>
     <string name="summary_delete_history">Delete history?</string>
-    <string name="summary_alternatively_url">- Open your browser app\n- Load a website\n- Click \"Share\" from the menu\n- Select this app.</string>
-    <string name="summary_alternatively_contact">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
     <string name="snack_unable_to_open_google_play_store">Unable to open Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Copied to clipboard! 📋</string>
     <string name="snack_saved_to_downloads">Saved to Downloads!</string>
@@ -307,39 +387,8 @@
     <string name="snack_feedback">Thanks for rating us! ❤️</string>
     <string name="snack_support">Would you like to support our app? ❤️</string>
     <string name="tooltip_agree">Accept the terms and conditions.</string>
-    <string name="tooltip_export">Export your history.</string>
-    <string name="tooltip_add_to_favorites">Add to favorites</string>
     <string name="tooltip_view_code">View code</string>
-    <string name="tooltip_save_as_text">Save as text</string>
-    <string name="tooltip_save_as_image">Save as image</string>
     <string name="tooltip_generate_new_secret">Generate a new secret</string>
-    <string name="hint_encryption">Encryption</string>
-    <string name="hint_network_name">Network name</string>
-    <string name="hint_password">Password</string>
-    <string name="hint_latitude">Latitude</string>
-    <string name="hint_longitude">Longitude</string>
-    <string name="hint_altitude">Altitude (optional)</string>
-    <string name="hint_first_name">First Name</string>
-    <string name="hint_last_name">Last Name</string>
-    <string name="hint_organization">Organization</string>
-    <string name="hint_job">Job</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_phone">Phone</string>
-    <string name="hint_fax">Fax</string>
-    <string name="hint_website">Website</string>
-    <string name="hint_issuer">Issuer</string>
-    <string name="hint_account">Account</string>
-    <string name="hint_digits">Digits</string>
-    <string name="hint_period">Period</string>
-    <string name="hint_counter">Counter</string>
-    <string name="hint_secret">Secret</string>
-    <string name="hint_file_name">File name</string>
-    <string name="hint_subject">Subject</string>
     <string name="hint_message">Message</string>
-    <string name="hint_text_without_special_characters">Text without special characters</string>
-    <string name="hint_12_digits">12 digits</string>
-    <string name="hint_7_digits">7 digits</string>
-    <string name="hint_11_digits">11 digits</string>
-    <string name="hint_text_in_upper_case_without_special_characters">Text in upper case without special characters</string>
-    <string name="hint_even_number_of_digits">Even number of digits</string>
+    <string name="ad_attribution">Ad</string>
 </resources>

@@ -65,7 +65,7 @@
         android:layout_margin="24dp"
         android:importantForAccessibility="no"
         android:src="@drawable/ic_import_export"
-        android:tooltipText="@string/tooltip_export"
+        android:tooltipText="@string/export_your_history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

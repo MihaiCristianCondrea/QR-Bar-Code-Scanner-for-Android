@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margin_big"
         android:layout_marginTop="8dp"
-        android:text="@string/hint_encryption"
+        android:text="@string/encryption"
         android:textSize="@dimen/default_text_size_extra_small" />
 
     <androidx.appcompat.widget.AppCompatSpinner
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:hint="@string/hint_network_name"
+            android:hint="@string/network_name"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:lines="1"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:hint="@string/hint_password"
+            android:hint="@string/password"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:lines="1"

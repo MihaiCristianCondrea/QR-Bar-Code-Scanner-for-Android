@@ -37,7 +37,7 @@
                 android:layout_marginHorizontal="@dimen/default_margin_big"
                 android:layout_marginTop="@dimen/default_margin_very_big"
                 android:text="@string/save"
-                android:tooltipText="@string/tooltip_save_as_image" />
+                android:tooltipText="@string/save_as_image" />
         </LinearLayout>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 

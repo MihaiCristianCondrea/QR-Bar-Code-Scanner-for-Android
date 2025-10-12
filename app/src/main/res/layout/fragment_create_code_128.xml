@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|top"
-            android:hint="@string/hint_text_without_special_characters"
+            android:hint="@string/text_without_special_characters"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 </FrameLayout>

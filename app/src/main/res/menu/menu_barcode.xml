@@ -15,7 +15,7 @@
     <item
         android:id="@+id/item_add_to_favorites"
         android:icon="@drawable/ic_favorite_unchecked"
-        android:title="@string/tooltip_add_to_favorites"
+        android:title="@string/add_to_favorites"
         android:visible="false"
         app:showAsAction="ifRoom" />
     <item

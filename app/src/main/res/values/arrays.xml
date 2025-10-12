@@ -21,8 +21,8 @@
         <item>SHA512</item>
     </string-array>
     <string-array name="fragment_barcode_history_tab_titles">
-        <item>All</item>
-        <item>Favorites</item>
+        <item>@string/all</item>
+        <item>@string/favorites</item>
     </string-array>
     <string-array name="activity_export_history_types">
         <item>CSV</item>
