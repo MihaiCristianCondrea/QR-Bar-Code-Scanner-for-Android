@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -35,6 +38,7 @@ import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.data.onboarding.OnboardingPreferences
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
+import com.d4rk.qrcodescanner.plus.di.appEngagementRepository
 import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.onboarding.OnboardingActivity
@@ -45,13 +49,12 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
-import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.model.ActivityResult
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.d4rk.qrcodescanner.plus.utils.helpers.InAppUpdateHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.ReviewHelper
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -63,9 +66,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var appUpdateManager: AppUpdateManager
 
     private val preferencesRepository by lazy { mainPreferencesRepository }
+    private val engagementRepository by lazy { appEngagementRepository }
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(preferencesRepository)
     }
@@ -75,8 +78,9 @@ class MainActivity : AppCompatActivity() {
         R.id.navigation_create,
         R.id.navigation_history
     )
-    private val requestUpdateCode = 1
     private val adRequest by lazy { AdRequest.Builder().build() }
+    private val updateResultLauncher: ActivityResultLauncher<IntentSenderRequest> =
+        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { }
 
     private var currentNavIndex = 0
     private var navGraphInitialized = false
@@ -107,7 +111,6 @@ class MainActivity : AppCompatActivity() {
         setupToolbar()
 
         MobileAds.initialize(this)
-        appUpdateManager = AppUpdateManagerFactory.create(this)
         initNavigationController()
         observeViewModel()
 
@@ -121,24 +124,12 @@ class MainActivity : AppCompatActivity() {
                     .setAnalyticsCollectionEnabled(analyticsEnabled)
                 FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = analyticsEnabled
 
-                appUpdateManager.appUpdateInfo.addOnSuccessListener { appUpdateInfo ->
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(
-                            AppUpdateType.FLEXIBLE
-                        )
-                    ) {
-                        @Suppress("DEPRECATION") appUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo,
-                            AppUpdateType.FLEXIBLE,
-                            this@MainActivity,
-                            requestUpdateCode
-                        )
-                    }
-                }
-
                 if (binding.adView.isVisible) {
                     binding.adView.loadAd(adRequest)
                 }
 
+                checkForUpdates()
+                checkInAppReview()
                 startupScreen()
             }
         })
@@ -179,18 +170,6 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putBoolean(STATE_NAV_GRAPH_INITIALIZED, navGraphInitialized)
         outState.putInt(STATE_LAST_PREFERRED_DESTINATION, lastPreferredStartDestination)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == requestUpdateCode) {
-            when (resultCode) {
-                RESULT_OK -> Unit
-                RESULT_CANCELED -> Unit
-                ActivityResult.RESULT_IN_APP_UPDATE_FAILED -> Unit
-            }
-        }
     }
 
     private fun initNavigationController() {
@@ -348,6 +327,33 @@ class MainActivity : AppCompatActivity() {
 
     private fun shouldUseNavigationRail(): Boolean {
         return resources.configuration.smallestScreenWidthDp >= 600
+    }
+
+    private fun checkForUpdates() {
+        lifecycleScope.launch {
+            InAppUpdateHelper.performUpdate(
+                appUpdateManager = AppUpdateManagerFactory.create(this@MainActivity),
+                updateResultLauncher = updateResultLauncher
+            )
+        }
+    }
+
+    private fun checkInAppReview() {
+        lifecycleScope.launch {
+            val sessionCount = engagementRepository.sessionCount.first()
+            val hasPrompted = engagementRepository.hasPromptedReview.first()
+
+            ReviewHelper.launchInAppReviewIfEligible(
+                activity = this@MainActivity,
+                sessionCount = sessionCount,
+                hasPromptedBefore = hasPrompted,
+                scope = this
+            ) {
+                launch { engagementRepository.setHasPromptedReview(true) }
+            }
+
+            engagementRepository.incrementSessionCount()
+        }
     }
 
     private fun showPreferencesBottomSheet() {

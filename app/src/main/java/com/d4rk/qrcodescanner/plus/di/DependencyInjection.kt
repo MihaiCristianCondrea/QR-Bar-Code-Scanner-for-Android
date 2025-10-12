@@ -11,6 +11,7 @@ import com.d4rk.qrcodescanner.plus.domain.create.OTPGenerator
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
+import com.d4rk.qrcodescanner.plus.domain.engagement.AppEngagementRepository
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
@@ -70,6 +71,9 @@ val AppCompatActivity.settings: Settings
     get() = koin.get()
 
 val AppCompatActivity.mainPreferencesRepository: MainPreferencesRepository
+    get() = koin.get()
+
+val AppCompatActivity.appEngagementRepository: AppEngagementRepository
     get() = koin.get()
 
 val Fragment.barcodeDatabase: BarcodeDatabase

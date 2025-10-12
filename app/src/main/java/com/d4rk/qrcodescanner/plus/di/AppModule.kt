@@ -1,6 +1,7 @@
 package com.d4rk.qrcodescanner.plus.di
 
 import androidx.room.Room
+import com.d4rk.qrcodescanner.plus.data.engagement.SharedPreferencesAppEngagementRepository
 import com.d4rk.qrcodescanner.plus.data.settings.SharedPreferencesMainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.data.support.GoogleSupportRepository
 import com.d4rk.qrcodescanner.plus.data.support.SupportRepository
@@ -15,6 +16,7 @@ import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabaseFactory
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
+import com.d4rk.qrcodescanner.plus.domain.engagement.AppEngagementRepository
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
@@ -47,6 +49,7 @@ val appModule = module {
     single { Settings(androidContext()) }
 
     single<MainPreferencesRepository> { SharedPreferencesMainPreferencesRepository(androidContext()) }
+    single<AppEngagementRepository> { SharedPreferencesAppEngagementRepository(androidContext()) }
 
     single { BarcodeParser }
     single { BarcodeImageScanner }
