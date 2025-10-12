@@ -15,13 +15,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.ads.AdUtils
 import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceBinding
+import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceNativeAdBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textview.MaterialTextView
-import com.google.android.material.color.MaterialColors
+import kotlin.random.Random
 
 class PreferenceListAdapter<T : Any>(
     private val onActionClicked: (T) -> Unit
@@ -30,12 +33,16 @@ class PreferenceListAdapter<T : Any>(
     override fun getItemViewType(position: Int): Int = when (getItem(position)) {
         is PreferenceListItem.Category -> TYPE_CATEGORY
         is PreferenceListItem.Action<*> -> TYPE_ACTION
+        is PreferenceListItem.NativeAd -> TYPE_AD
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
             TYPE_CATEGORY -> CategoryViewHolder.create(parent)
+            TYPE_AD -> NativeAdViewHolder(
+                ItemPreferenceNativeAdBinding.inflate(inflater, parent, false)
+            )
 
             else -> ActionViewHolder(
                 ItemPreferenceBinding.inflate(inflater, parent, false),
@@ -64,6 +71,12 @@ class PreferenceListAdapter<T : Any>(
                 } else {
                     error("ActionViewHolder expected but was ${holder::class.java.simpleName}")
                 }
+            }
+
+            is PreferenceListItem.NativeAd -> {
+                val vh = holder as? NativeAdViewHolder
+                    ?: error("NativeAdViewHolder expected but was ${holder::class.java.simpleName}")
+                vh.bind(item)
             }
         }
     }
@@ -122,8 +135,6 @@ class PreferenceListAdapter<T : Any>(
                     ).also { params ->
                         val margin = dp(PADDING_DP)
                         params.marginStart = margin
-                        params.topMargin = margin
-                        params.bottomMargin = margin
                         params.marginEnd = margin
                     }
 
@@ -140,9 +151,36 @@ class PreferenceListAdapter<T : Any>(
                             com.google.android.material.R.attr.colorOnSurfaceVariant
                         )
                     )
+
+                    val padding = dp(PADDING_DP)
+                    updatePaddingRelative(
+                        start = padding,
+                        top = padding,
+                        end = padding,
+                        bottom = padding
+                    )
+                    compoundDrawablePadding = padding
                 }
 
                 return CategoryViewHolder(materialTextView)
+            }
+        }
+    }
+
+    private class NativeAdViewHolder(
+        private val binding: ItemPreferenceNativeAdBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: PreferenceListItem.NativeAd) {
+            val adView = binding.nativeAdView
+            if (item.adLayoutRes != 0) {
+                adView.setNativeAdLayout(item.adLayoutRes)
+            }
+            item.adUnitIdRes?.let(adView::setNativeAdUnitId)
+
+            if (adView.getTag(R.id.native_ad_loaded_tag) != true) {
+                AdUtils.loadBanner(adView)
+                adView.setTag(R.id.native_ad_loaded_tag, true)
             }
         }
     }
@@ -243,6 +281,10 @@ class PreferenceListAdapter<T : Any>(
                 oldItem is PreferenceListItem.Action<*> && newItem is PreferenceListItem.Action<*> ->
                     oldItem.action == newItem.action
 
+                oldItem is PreferenceListItem.NativeAd && newItem is PreferenceListItem.NativeAd ->
+                    oldItem.adLayoutRes == newItem.adLayoutRes &&
+                        oldItem.adUnitIdRes == newItem.adUnitIdRes
+
                 else -> false
             }
         }
@@ -256,6 +298,7 @@ class PreferenceListAdapter<T : Any>(
     companion object {
         private const val TYPE_CATEGORY = 0
         private const val TYPE_ACTION = 1
+        private const val TYPE_AD = 2
     }
 }
 
@@ -277,4 +320,22 @@ sealed interface PreferenceListItem<out T : Any> {
         @param:DrawableRes val iconRes: Int,
         @param:LayoutRes val widgetLayoutRes: Int? = null
     ) : PreferenceListItem<T>
+    data class NativeAd(
+        @param:LayoutRes val adLayoutRes: Int = R.layout.ad_preference,
+        @param:StringRes val adUnitIdRes: Int? = null
+    ) : PreferenceListItem<Nothing>
 }
+
+fun <T : Any> List<PreferenceListItem<T>>.withMiddleNativeAd(
+    ad: PreferenceListItem.NativeAd = PreferenceListItem.NativeAd(),
+    random: Random = Random.Default
+): List<PreferenceListItem<T>> {
+    if (size < MIN_ITEMS_FOR_AD) return this
+    val upperBound = size - 1
+    val insertionIndex = random.nextInt(1, upperBound)
+    return toMutableList().also { items ->
+        items.add(insertionIndex, ad)
+    }
+}
+
+private const val MIN_ITEMS_FOR_AD = 3

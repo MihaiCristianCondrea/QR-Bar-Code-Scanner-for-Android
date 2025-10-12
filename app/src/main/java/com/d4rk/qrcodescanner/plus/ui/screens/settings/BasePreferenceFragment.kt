@@ -123,7 +123,8 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
             if (preference is PreferenceCategory) {
                 val titleView = itemView.findViewById<MaterialTextView>(android.R.id.title)
                 titleView?.let { textView ->
-                    val isBlank = textView.text?.toString()?.isBlank() ?: true
+                    val titleText = preference.title
+                    val isBlank = titleText?.toString().isNullOrBlank()
                     val padding = if (isBlank) 0 else textView.dp(CATEGORY_PADDING_DP)
                     textView.updatePaddingRelative(
                         start = padding,
@@ -133,6 +134,8 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
                     )
                     textView.minHeight = 0
                     textView.visibility = if (isBlank) View.GONE else View.VISIBLE
+                    textView.text = if (isBlank) null else titleText
+                    textView.compoundDrawablePadding = textView.dp(CATEGORY_DRAWABLE_PADDING_DP)
                     textView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         preference.icon,
                         null,
@@ -143,7 +146,16 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
                 (itemView.layoutParams as? ViewGroup.MarginLayoutParams)?.let { params ->
                     val topMargin = if (position == 0) 0 else spacing
                     val bottomMargin = spacing
+                    val horizontalMargin = itemView.dp(CATEGORY_HORIZONTAL_MARGIN_DP)
                     var updated = false
+                    if (params.marginStart != horizontalMargin) {
+                        params.marginStart = horizontalMargin
+                        updated = true
+                    }
+                    if (params.marginEnd != horizontalMargin) {
+                        params.marginEnd = horizontalMargin
+                        updated = true
+                    }
                     if (params.topMargin != topMargin) {
                         params.topMargin = topMargin
                         updated = true
@@ -269,3 +281,5 @@ private fun View.dp(dp: Int): Int {
 }
 
 private const val CATEGORY_PADDING_DP = 16
+private const val CATEGORY_DRAWABLE_PADDING_DP = 16
+private const val CATEGORY_HORIZONTAL_MARGIN_DP = 16

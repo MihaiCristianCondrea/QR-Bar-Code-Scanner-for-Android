@@ -12,9 +12,11 @@ import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEnt
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.withMiddleNativeAd
 import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateBarcodeActivity
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.zxing.BarcodeFormat
+import com.google.android.gms.ads.MobileAds
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class CreateQrCodeAllActivity : BaseActivity() {
@@ -33,6 +35,7 @@ class CreateQrCodeAllActivity : BaseActivity() {
         binding = ActivityCreateQrCodeAllBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
+        MobileAds.initialize(this)
         setupList()
     }
 
@@ -51,7 +54,7 @@ class CreateQrCodeAllActivity : BaseActivity() {
                 is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)
                 is PreferenceLayoutEntry.Action -> mapActionEntry(entry)
             }
-        }
+        }.withMiddleNativeAd()
     }
 
     private fun mapActionEntry(entry: PreferenceLayoutEntry.Action): PreferenceListItem.Action<QrAction>? {

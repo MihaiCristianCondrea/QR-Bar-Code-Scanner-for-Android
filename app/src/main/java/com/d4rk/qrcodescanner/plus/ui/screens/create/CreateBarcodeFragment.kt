@@ -13,6 +13,7 @@ import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutEnt
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceLayoutParser
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListAdapter
 import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceListItem
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.withMiddleNativeAd
 import com.d4rk.qrcodescanner.plus.ui.screens.create.barcode.CreateBarcodeAllActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.create.qr.CreateQrCodeAllActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.clipboardManager
@@ -65,7 +66,7 @@ class CreateBarcodeFragment : Fragment() {
                 is PreferenceLayoutEntry.Category -> PreferenceListItem.Category(entry.titleRes)
                 is PreferenceLayoutEntry.Action -> mapActionEntry(entry)
             }
-        }
+        }.withMiddleNativeAd()
     }
 
     private fun mapActionEntry(entry: PreferenceLayoutEntry.Action): PreferenceListItem.Action<PreferenceAction>? {
