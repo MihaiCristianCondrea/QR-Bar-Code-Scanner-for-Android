@@ -318,7 +318,7 @@
 
 
 
-
+    <!-- TODO: Sort the rest of the strings like the rest of them are based on the screen or usage -->
     <string name="summary_preference_settings_share">Tell friends about %1$s.</string>
     <string name="summary_preference_settings_changelog">See what changed in the latest releases.</string>
     <string name="notification_settings">Notification settings</string>
