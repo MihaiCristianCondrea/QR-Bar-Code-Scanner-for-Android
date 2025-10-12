@@ -1,6 +1,5 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.help
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,7 +11,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
-import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
@@ -27,6 +25,7 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityHelpBinding
 import com.d4rk.qrcodescanner.plus.databinding.DialogVersionInfoBinding
 import com.d4rk.qrcodescanner.plus.databinding.ItemHelpFaqBinding
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.OpenSourceLicensesHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewInfo
@@ -49,9 +48,8 @@ class HelpActivity : UpNavigationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHelpBinding.inflate(layoutInflater)
+        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
         AdUtils.loadBanner(binding.faqNativeAd)
         bindFaqItems()

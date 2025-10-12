@@ -8,10 +8,7 @@
     <me.zhanghai.android.fastscroll.FastScrollScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/content_container"
@@ -50,8 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="2dp"
-                app:nativeAdLayout="@layout/ad_help"
-                app:nativeAdUnitId="@string/native_ad_help_unit_id" />
+                app:nativeAdUnitId="@string/native_ad_help_unit_id"
+                app:nativeAdLayout="@layout/ad_help" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/contact_support_card"
@@ -60,8 +57,6 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                app:cardBackgroundColor="?attr/colorSurfaceVariant"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CardViewBottomRoundedFilled">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -116,6 +111,11 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </com.google.android.material.card.MaterialCardView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="72dp" />
+
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
