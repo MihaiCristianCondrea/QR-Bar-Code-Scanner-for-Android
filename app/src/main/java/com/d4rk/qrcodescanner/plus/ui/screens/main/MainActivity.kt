@@ -28,9 +28,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.BuildConfig
@@ -41,7 +38,6 @@ import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.SettingsActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
-import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -64,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var appUpdateManager: AppUpdateManager
 
     private val preferencesRepository by lazy { mainPreferencesRepository }
@@ -72,6 +67,11 @@ class MainActivity : AppCompatActivity() {
         MainViewModelFactory(preferencesRepository)
     }
     private val navOrder = SparseIntArray()
+    private val topLevelDestinations = setOf(
+        R.id.navigation_scan,
+        R.id.navigation_create,
+        R.id.navigation_history
+    )
     private val requestUpdateCode = 1
     private val adRequest by lazy { AdRequest.Builder().build() }
 
@@ -92,11 +92,10 @@ class MainActivity : AppCompatActivity() {
             savedInstanceState?.getInt(STATE_LAST_PREFERRED_DESTINATION, 0) ?: 0
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
+        //EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
-        configureToolbarNavigation()
+        setupToolbar()
 
         MobileAds.initialize(this)
         appUpdateManager = AppUpdateManagerFactory.create(this)
@@ -137,6 +136,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun setupToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
@@ -159,10 +163,6 @@ class MainActivity : AppCompatActivity() {
             menu.setOptionalIconsVisible(true)
         }
         return super.onMenuOpened(featureId, menu)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -194,14 +194,29 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             currentNavIndex = navOrder.get(destination.id, currentNavIndex)
-            binding.toolbar.post { configureToolbarNavigation() }
+            binding.toolbar.title = destination.label
+            updateToolbarForDestination(destination.id)
         }
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_scan, R.id.navigation_create, R.id.navigation_history)
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.toolbar.post { configureToolbarNavigation() }
+        binding.navRail.setupWithNavController(navController)
+        binding.navRail.setOnItemSelectedListener { item -> handleNavigationSelection(item.itemId) }
+
+        binding.navView.setupWithNavController(navController)
+        binding.navView.setOnItemSelectedListener { item -> handleNavigationSelection(item.itemId) }
+    }
+
+    private fun updateToolbarForDestination(destId: Int) {
+        if (destId in topLevelDestinations) {
+            binding.toolbar.navigationIcon =
+                AppCompatResources.getDrawable(this, R.drawable.ic_menu)
+            binding.toolbar.setNavigationContentDescription(R.string.menu)
+            binding.toolbar.setNavigationOnClickListener { showPreferencesBottomSheet() }
+        } else {
+            val up = AppCompatResources.getDrawable(this, R.drawable.ic_arrow_back)
+            binding.toolbar.navigationIcon = up
+            binding.toolbar.setNavigationContentDescription(R.string.back)
+            binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        }
     }
 
     private fun observeViewModel() {
@@ -323,13 +338,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun shouldUseNavigationRail(): Boolean {
         return resources.configuration.smallestScreenWidthDp >= 600
-    }
-
-    private fun configureToolbarNavigation() {
-        val navigationIcon = AppCompatResources.getDrawable(this, R.drawable.ic_menu)
-        binding.toolbar.navigationIcon = navigationIcon
-        binding.toolbar.setNavigationContentDescription(R.string.menu)
-        binding.toolbar.setNavigationOnClickListener { showPreferencesBottomSheet() }
     }
 
     private fun showPreferencesBottomSheet() {
