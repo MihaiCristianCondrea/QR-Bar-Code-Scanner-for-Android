@@ -15,6 +15,12 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
+import com.d4rk.qrcodescanner.plus.domain.support.InitBillingClientUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitMobileAdsUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitiatePurchaseUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.QueryProductDetailsUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.RefreshPurchasesUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.SetPurchaseStatusListenerUseCase
 import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.RotationHelper
 import org.koin.core.context.GlobalContext
@@ -73,5 +79,23 @@ val Fragment.barcodeHistoryRepository: BarcodeHistoryRepository
     get() = koin.get()
 
 val Fragment.settings: Settings
+    get() = koin.get()
+
+val initBillingClientUseCase: InitBillingClientUseCase
+    get() = koin.get()
+
+val queryProductDetailsUseCase: QueryProductDetailsUseCase
+    get() = koin.get()
+
+val initiatePurchaseUseCase: InitiatePurchaseUseCase
+    get() = koin.get()
+
+val initMobileAdsUseCase: InitMobileAdsUseCase
+    get() = koin.get()
+
+val refreshPurchasesUseCase: RefreshPurchasesUseCase
+    get() = koin.get()
+
+val setPurchaseStatusListenerUseCase: SetPurchaseStatusListenerUseCase
     get() = koin.get()
 

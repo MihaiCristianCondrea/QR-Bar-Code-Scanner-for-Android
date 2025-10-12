@@ -81,6 +81,11 @@
             android:label="@string/help"
             android:parentActivityName="com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity" />
         <activity
+            android:name=".ui.screens.support.SupportActivity"
+            android:exported="false"
+            android:label="@string/support_the_developer"
+            android:parentActivityName=".ui.screens.main.MainActivity" />
+        <activity
             android:name=".ui.screens.settings.GeneralPreferenceActivity"
             android:exported="false"
             android:label="@string/settings"

@@ -38,6 +38,7 @@
     <string name="arch" translatable="false">Arch:</string>
     <string name="summary_preference_settings_license" translatable="false">General Public License-3.0</string>
     <string name="contact_support_email" translatable="false">contact.mihaicristiancondrea@gmail.com</string>
+    <string name="support_link_url" translatable="false">https://bit.ly/3p8bpjj</string>
     <string name="feedback_for" translatable="false">Feedback for </string>
     <string name="dear_developer" translatable="false">Dear developer, </string>
     <string name="send_email_using" translatable="false">Send mail using:</string>

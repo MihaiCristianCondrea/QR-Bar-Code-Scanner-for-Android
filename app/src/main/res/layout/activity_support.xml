@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/support_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/support_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/support_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="32dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/support_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/support_the_developer"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/support_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/support_description"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+            <com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
+                android:id="@+id/support_native_ad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:nativeAdLayout="@layout/ad_support"
+                app:nativeAdUnitId="@string/native_ad_support_unit_id" />
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/banner_ad_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/ad_banner_unit_id" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/support_donation_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/support_donations_header"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_low_donation"
+                style="@style/Widget.Material3.Button.FilledTonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/support_low_donation" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_normal_donation"
+                style="@style/Widget.Material3.Button.FilledTonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/support_normal_donation" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_high_donation"
+                style="@style/Widget.Material3.Button.FilledTonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/support_high_donation" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_extreme_donation"
+                style="@style/Widget.Material3.Button.FilledTonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/support_extreme_donation" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_web_ad"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/support_visit_store" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

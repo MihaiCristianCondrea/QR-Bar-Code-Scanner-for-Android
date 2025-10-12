@@ -40,6 +40,7 @@ import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.onboarding.OnboardingActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
+import com.d4rk.qrcodescanner.plus.ui.screens.support.SupportActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -157,6 +158,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.support -> {
+                startActivity(Intent(this, SupportActivity::class.java))
                 true
             }
 

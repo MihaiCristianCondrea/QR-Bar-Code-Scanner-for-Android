@@ -310,6 +310,17 @@
     <string name="non_paid_support">Non-Paid Support</string>
     <string name="web_ad">Web Ad</string>
     <string name="watch_ad">Watch Ad</string>
+    <string name="support_description">Choose one of the options below to help keep new features coming.</string>
+    <string name="support_donations_header">Support options</string>
+    <string name="support_low_donation">Low donation</string>
+    <string name="support_normal_donation">Standard donation</string>
+    <string name="support_high_donation">High donation</string>
+    <string name="support_extreme_donation">Extreme donation</string>
+    <string name="support_visit_store">Explore more ways to support</string>
+    <string name="support_purchase_thank_you">Thank you so much for supporting the app! 🎉</string>
+    <string name="support_purchase_restored">Your support has been restored.</string>
+    <string name="support_purchase_revoked">Your support purchase was revoked.</string>
+    <string name="support_purchase_error">Something went wrong. Please try again shortly.</string>
 
     <!-- Advertisement -->
     <string name="ad_attribution">Ad</string>
