@@ -42,7 +42,12 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
                 Log.w(TAG, "onPurchasesUpdated: ${billingResult.debugMessage}")
             }
         }
-        .enablePendingPurchases(PendingPurchasesParams.newBuilder().build())
+        .enablePendingPurchases(
+            PendingPurchasesParams
+                .newBuilder()
+                .enableOneTimeProducts()
+                .build(),
+        )
         .build()
 
     override fun initBillingClient(onConnected: (() -> Unit)?) {
@@ -200,15 +205,17 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
         billingClient.acknowledgePurchase(params) { billingResult ->
             pendingAcknowledgeTokens.remove(purchase.purchaseToken)
             when (billingResult.responseCode) {
-                billingResult.responseCode -> {
+                BillingClient.BillingResponseCode.OK -> {
                     grantProducts(productIds, isNewPurchase = true)
                 }
-                billingResult.responseCode -> {
+
+                BillingClient.BillingResponseCode.ITEM_NOT_OWNED -> {
                     productIds.forEach { productId ->
                         grantedProductIds.remove(productId)
                         dispatchPurchaseRevoked(productId)
                     }
                 }
+
                 else -> {
                     Log.w(TAG, "Failed to acknowledge purchase: ${billingResult.debugMessage}")
                 }

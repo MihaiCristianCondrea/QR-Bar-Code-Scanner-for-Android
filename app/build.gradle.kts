@@ -168,8 +168,8 @@ dependencies {
     // Barcode & QR feature utilities
     implementation(dependencyNotation = libs.bundles.barcode.stack)
 
-    // Dependency injection
-    implementation(dependencyNotation = libs.koin.android)
+    // Dependency Injection
+    api(dependencyNotation = libs.bundles.koin)
 
     // Annotation processors (handled via KSP)
     ksp(dependencyNotation = libs.androidx.room.compiler)
@@ -180,6 +180,7 @@ dependencies {
 
     // Instrumentation Tests
     androidTestImplementation(dependencyNotation = libs.bundles.instrumentationTest)
+    debugImplementation(dependencyNotation = libs.androidx.ui.test.manifest)
 
     coreLibraryDesugaring(libs.android.desugarJdkLibs)
 }
