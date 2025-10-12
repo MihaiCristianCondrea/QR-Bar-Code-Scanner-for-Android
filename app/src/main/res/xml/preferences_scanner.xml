@@ -1,0 +1,65 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/scanner">
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_open_links_automatically"
+            app:summary="@string/summary_preference_settings_open_content_automatically"
+            app:title="@string/open_content_automatically" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_copy_to_clipboard"
+            app:summary="@string/summary_preference_settings_copy_to_clipboard"
+            app:title="@string/copy_to_clipboard" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_simple_auto_focus"
+            app:summary="@string/summary_preference_settings_simple_auto_focus"
+            app:title="@string/simple_auto_focus" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_flashlight"
+            app:summary="@string/summary_preference_settings_enable_flash_on_start"
+            app:title="@string/flash" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/key_vibrate"
+            app:summary="@string/summary_preference_settings_vibrate"
+            app:title="@string/vibrate" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_continuous_scanning"
+            app:summary="@string/summary_preference_settings_continuous_scanning"
+            app:title="@string/continuous_scanning" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_confirm_scans_manually"
+            app:summary="@string/summary_preference_settings_confirm_scans_manually"
+            app:title="@string/confirm_scans_manually" />
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_camera"
+            app:title="@string/camera">
+            <intent
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.camera.ChooseCameraActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
+        </androidx.preference.Preference>
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_supported_formats"
+            app:title="@string/supported_formats">
+            <intent
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.formats.SupportedFormatsActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
+        </androidx.preference.Preference>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

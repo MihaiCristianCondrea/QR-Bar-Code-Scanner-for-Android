@@ -1,0 +1,29 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.preference.PreferenceCategory app:title="@string/search_engines">
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_search_engines"
+            app:title="@string/search_engines">
+            <intent
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.search.ChooseSearchEngineActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
+        </androidx.preference.Preference>
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory app:title="@string/error_reporting">
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_bug_report"
+            app:title="@string/bug_report">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/MihaiCristianCondrea/QR-Bar-Code-Scanner-for-Android/issues/new" />
+        </androidx.preference.Preference>
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory app:title="@string/cache_management">
+        <androidx.preference.Preference
+            app:key="@string/key_cache_management"
+            app:summary="@string/summary_preference_settings_cache_management"
+            app:title="@string/clear_cache" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

@@ -1,0 +1,51 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory app:title="@string/appearance">
+
+        <androidx.preference.ListPreference
+            app:defaultValue="@string/default_value_theme"
+            app:entries="@array/preference_theme_entries"
+            app:entryValues="@array/preference_theme_values"
+            app:key="@string/key_theme"
+            app:title="@string/theme" />
+
+
+
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory app:title="@string/navigation">
+        <androidx.preference.ListPreference
+            android:defaultValue="@string/default_value_tab"
+            android:entries="@array/preference_default_tab_entries"
+            android:entryValues="@array/preference_default_tab_values"
+            app:key="@string/key_default_tab"
+            app:title="@string/default_tab" />
+
+        <androidx.preference.ListPreference
+            app:defaultValue="@string/default_value_bottom_navigation_bar_labels"
+            app:entries="@array/preference_bottom_navigation_bar_labels_entries"
+            app:entryValues="@array/preference_bottom_navigation_bar_labels_values"
+            app:key="@string/key_bottom_navigation_bar_labels"
+            app:title="@string/bottom_navigation_bar_labels" />
+    </androidx.preference.PreferenceCategory>
+
+
+    <androidx.preference.PreferenceCategory app:title="@string/scanner">
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_invert_bar_code_colors_in_dark_theme"
+            app:summary="@string/summary_preference_settings_inverse_colors"
+            app:title="@string/inverse_colors" />
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory app:title="@string/language">
+        <androidx.preference.ListPreference
+            app:defaultValue="@string/default_value_language"
+            app:entries="@array/preference_language_entries"
+            app:entryValues="@array/preference_language_values"
+            app:key="@string/key_language"
+            app:summary="@string/summary_preference_settings_language"
+            app:title="@string/language" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

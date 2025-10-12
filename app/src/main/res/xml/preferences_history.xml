@@ -1,0 +1,30 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/history">
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/key_save_scanned_barcodes"
+            app:summary="@string/summary_preference_settings_save_scanned_barcodes"
+            app:title="@string/save_scanned_barcodes_to_history" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/key_save_created_barcodes"
+            app:summary="@string/summary_preference_settings_save_created_barcodes"
+            app:title="@string/save_created_barcodes_to_history" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="@string/key_do_not_save_duplicates"
+            app:summary="@string/summary_preference_settings_do_not_save_duplicates"
+            app:title="@string/do_not_save_duplicates" />
+
+        <androidx.preference.Preference
+            app:key="@string/key_clean_history"
+            app:summary="@string/summary_preference_settings_clear_history"
+            app:title="@string/clear_history" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

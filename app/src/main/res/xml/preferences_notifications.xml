@@ -1,0 +1,12 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory
+        app:title="@string/notifications">
+
+        <androidx.preference.Preference
+            app:key="@string/key_notifications_settings"
+            app:summary="@string/summary_preference_settings_notification_settings"
+            app:title="@string/notification_settings" />
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

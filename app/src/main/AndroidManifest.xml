@@ -78,14 +78,49 @@
             android:label="@string/help"
             android:parentActivityName="com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity" />
         <activity
-            android:name=".ui.screens.settings.SettingsActivity"
+            android:name=".ui.screens.settings.GeneralPreferenceActivity"
             android:exported="false"
             android:label="@string/settings"
-            android:parentActivityName=".ui.screens.settings.SettingsActivity">
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.screens.settings.NotificationsSettingsActivity"
+            android:exported="false"
+            android:label="@string/notifications"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
+        <activity
+            android:name=".ui.screens.settings.DisplaySettingsActivity"
+            android:exported="false"
+            android:label="@string/display"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
+        <activity
+            android:name=".ui.screens.settings.ScannerSettingsActivity"
+            android:exported="false"
+            android:label="@string/scanner"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
+        <activity
+            android:name=".ui.screens.settings.HistorySettingsActivity"
+            android:exported="false"
+            android:label="@string/history"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
+        <activity
+            android:name=".ui.screens.settings.SecurityPrivacySettingsActivity"
+            android:exported="false"
+            android:label="@string/security_and_privacy"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
+        <activity
+            android:name=".ui.screens.settings.AdvancedSettingsActivity"
+            android:exported="false"
+            android:label="@string/advanced"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
+        <activity
+            android:name=".ui.screens.settings.AboutSettingsActivity"
+            android:exported="false"
+            android:label="@string/about"
+            android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
         <activity
             android:name=".ui.screens.scan.file.ScanBarcodeFromFileActivity"
             android:configChanges="orientation|screenSize"

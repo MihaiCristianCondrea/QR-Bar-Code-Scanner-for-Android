@@ -36,7 +36,7 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
 import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
-import com.d4rk.qrcodescanner.plus.ui.screens.settings.SettingsActivity
+import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -346,7 +346,7 @@ class MainActivity : AppCompatActivity() {
         bottomSheetDialog.setContentView(bottomSheetBinding.root)
 
         bottomSheetBinding.menuSettings.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            startActivity(Intent(this, GeneralPreferenceActivity::class.java))
             bottomSheetDialog.dismiss()
         }
 

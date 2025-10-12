@@ -1,0 +1,65 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.PreferenceCategory app:title="@string/privacy">
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_privacy_policy"
+            app:title="@string/privacy_policy">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://mihaicristiancondrea.github.io/profile/#privacy-policy-end-user-software" />
+        </androidx.preference.Preference>
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_terms_of_service"
+            app:title="@string/terms_of_service">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://mihaicristiancondrea.github.io/profile/#terms-of-service-end-user-software" />
+        </androidx.preference.Preference>
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_code_of_conduct"
+            app:title="@string/code_of_conduct">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://mihaicristiancondrea.github.io/profile/#code-of-conduct" />
+        </androidx.preference.Preference>
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_permissions"
+            app:title="@string/permissions">
+            <intent
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
+        </androidx.preference.Preference>
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_usage_and_diagnostics"
+            app:title="@string/usage_and_diagnostics">
+            <intent
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"
+                android:targetPackage="com.d4rk.qrcodescanner.plus" />
+        </androidx.preference.Preference>
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory app:title="@string/legal">
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_legal_notices"
+            app:title="@string/legal_notices">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://https://mihaicristiancondrea.github.io/profile/#legal-notices" />
+        </androidx.preference.Preference>
+
+        <androidx.preference.Preference
+            app:summary="@string/summary_preference_settings_license"
+            app:title="@string/license">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.gnu.org/licenses/gpl-3.0" />
+        </androidx.preference.Preference>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>
