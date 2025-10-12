@@ -307,8 +307,9 @@
 
     <!-- Support Screen -->
     <string name="paid_support">Paid Support</string>
+    <string name="summary_donations">Choose a one-time donation amount to support future development.</string>
     <string name="non_paid_support">Non-Paid Support</string>
-    <string name="web_ad">Web Ad</string>
+    <string name="web_ad">Visit our support page</string>
     <string name="watch_ad">Watch Ad</string>
     <string name="support_description">Choose one of the options below to help keep new features coming.</string>
     <string name="support_donations_header">Support options</string>
