@@ -1,9 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--App Manifest-->
     <string name="app_description">Scan all kinds of QR codes and barcodes with ease. 📷</string>
+
+    <!--Startup screen-->
     <string name="welcome">Welcome</string>
+
+    <string name="browse_terms_of_service_and_privacy_policy">Browse the <i><u>Terms of Service</u></i> and <i><u>Privacy Policy</u></i></string>
+
+
+    <!--Onboarding screen-->
+
+
+
+
+
+
     <string name="menu">Menu</string>
     <string name="ad_attribution">Ad</string>
-    <string name="browse_terms_of_service_and_privacy_policy">Browse the <i><u>Terms of Service</u></i> and <i><u>Privacy Policy</u></i></string>
     <string name="agree">Agree</string>
     <string name="scan">Scan</string>
     <string name="flash">Flash</string>
@@ -97,6 +111,10 @@
     <string name="security_and_privacy">Security &amp; Privacy</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy">Privacy</string>
+    <string name="update_downloaded">Update downloaded</string>
+    <string name="view_in_google_play">View in Google Play Store</string>
+    <string name="beta_program">Beta program</string>
+    <string name="open_source_licenses">Open source licenses</string>
     <string name="terms_of_service">Terms of Service</string>
     <string name="code_of_conduct">Code of Conduct</string>
     <string name="permissions">Permissions</string>
@@ -113,8 +131,7 @@
     <string name="contact_support_email_subject">Support request for %1$s</string>
     <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
     <string name="support_link_unavailable">No email apps are available to handle this request.</string>
-    <string name="menu_view_in_google_play">View in Google Play</string>
-    <string name="menu_version_info">Version info</string>
+    <string name="version_info">Version info</string>
     <string name="menu_beta_program">Join the beta program</string>
     <string name="menu_open_source_licenses">Open source licenses</string>
     <string name="faq_state_collapsed">Collapsed</string>

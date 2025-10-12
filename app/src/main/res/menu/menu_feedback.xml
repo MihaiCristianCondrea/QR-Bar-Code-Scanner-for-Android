@@ -1,40 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
         android:id="@+id/view_in_google_play"
-        android:orderInCategory="1"
-        android:title="@string/menu_view_in_google_play"
-        app:showAsAction="never" />
-
+        android:icon="@drawable/ic_play_store_tinted"
+        android:iconTint="?attr/colorOnSurface"
+        android:title="@string/view_in_google_play"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="never"
+        tools:targetApi="26" />
     <item
         android:id="@+id/version_info"
-        android:orderInCategory="2"
-        android:title="@string/menu_version_info"
-        app:showAsAction="never" />
-
+        android:icon="@drawable/ic_perm_device_information"
+        android:iconTint="?attr/colorOnSurface"
+        android:title="@string/version_info"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="never"
+        tools:targetApi="26" />
     <item
         android:id="@+id/beta_program"
-        android:orderInCategory="3"
-        android:title="@string/menu_beta_program"
-        app:showAsAction="never" />
-
+        android:icon="@drawable/ic_tips_and_updates"
+        android:iconTint="?attr/colorOnSurface"
+        android:title="@string/beta_program"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="never"
+        tools:targetApi="26" />
     <item
         android:id="@+id/terms_of_service"
-        android:orderInCategory="4"
+        android:icon="@drawable/ic_terms_of_service"
+        android:iconTint="?attr/colorOnSurface"
         android:title="@string/terms_of_service"
-        app:showAsAction="never" />
-
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="never"
+        tools:targetApi="26" />
     <item
         android:id="@+id/privacy_policy"
-        android:orderInCategory="5"
+        android:icon="@drawable/ic_privacy_policy"
+        android:iconTint="?attr/colorOnSurface"
         android:title="@string/privacy_policy"
-        app:showAsAction="never" />
-
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="never"
+        tools:targetApi="26" />
     <item
         android:id="@+id/oss"
-        android:orderInCategory="6"
-        android:title="@string/menu_open_source_licenses"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_license"
+        android:iconTint="?attr/colorOnSurface"
+        android:title="@string/open_source_licenses"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="never"
+        tools:targetApi="26" />
 </menu>

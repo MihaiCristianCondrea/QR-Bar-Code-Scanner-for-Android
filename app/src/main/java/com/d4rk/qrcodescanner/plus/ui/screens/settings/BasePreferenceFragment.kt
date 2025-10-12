@@ -202,6 +202,18 @@ abstract class BasePreferenceFragment(@XmlRes private val preferenceResId: Int) 
             val hasIcon = icon.drawable != null
             icon.visibility = if (hasIcon) View.VISIBLE else View.GONE
         }
+        val titleView = itemView.findViewById<MaterialTextView>(android.R.id.title)
+        val summaryView = itemView.findViewById<MaterialTextView>(android.R.id.summary)
+        val hasTitle = titleView?.text?.isNullOrBlank() == false
+        val hasSummary = summaryView?.text?.isNullOrBlank() == false
+        titleView?.visibility = if (hasTitle) View.VISIBLE else View.GONE
+        summaryView?.visibility = if (hasSummary) View.VISIBLE else View.GONE
+        val textContainer = when {
+            titleView?.parent is ViewGroup -> titleView.parent as ViewGroup
+            summaryView?.parent is ViewGroup -> summaryView.parent as ViewGroup
+            else -> null
+        }
+        textContainer?.visibility = if (hasTitle || hasSummary) View.VISIBLE else View.GONE
         val widgetFrame = itemView.findViewById<ViewGroup>(android.R.id.widget_frame)
         widgetFrame?.let { frame ->
             val hasChild = frame.childCount > 0
