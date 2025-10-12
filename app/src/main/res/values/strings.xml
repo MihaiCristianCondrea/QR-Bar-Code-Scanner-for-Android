@@ -188,6 +188,7 @@
     <string name="summary_preference_settings_continuous_scanning">Save scans to history only</string>
     <string name="confirm_scans_manually">Confirm scans manually</string>
     <string name="camera">Camera</string>
+    <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
     <string name="front">Front</string>
     <string name="back">Back</string>
     <string name="supported_formats">Supported formats</string>
@@ -231,7 +232,6 @@
 
     <!-- About Settings screen -->
     <string name="app_info">App info</string>
-    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="application_build_version">Application build version</string>
     <string name="open_source_licenses">Open source licenses</string>
     <string name="summary_preference_settings_open_source_licenses">View licenses for the libraries we use</string>
@@ -278,7 +278,6 @@
 
 
 
-    <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
     <string name="summary_preference_settings_share">Tell friends about %1$s.</string>
     <string name="summary_preference_settings_changelog">See what changed in the latest releases.</string>
     <string name="notification_settings">Notification settings</string>
@@ -287,11 +286,6 @@
     <string name="bug_report">Bug report</string>
     <string name="normal">Normal</string>
     <string name="runtime">Runtime</string>
-
-
-
-
-
     <string name="contact_support_email_subject">Support request for %1$s</string>
     <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
     <string name="support_link_unavailable">No email apps are available to handle this request.</string>

@@ -32,10 +32,12 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.data.onboarding.OnboardingPreferences
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
 import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
+import com.d4rk.qrcodescanner.plus.ui.screens.onboarding.OnboardingActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.google.android.gms.ads.AdRequest
@@ -90,6 +92,12 @@ class MainActivity : AppCompatActivity() {
             savedInstanceState?.getBoolean(STATE_NAV_GRAPH_INITIALIZED, false) ?: false
         lastPreferredStartDestination =
             savedInstanceState?.getInt(STATE_LAST_PREFERRED_DESTINATION, 0) ?: 0
+
+        if (!OnboardingPreferences.isOnboardingComplete(this)) {
+            startActivity(Intent(this, OnboardingActivity::class.java))
+            finish()
+            return
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         //EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)

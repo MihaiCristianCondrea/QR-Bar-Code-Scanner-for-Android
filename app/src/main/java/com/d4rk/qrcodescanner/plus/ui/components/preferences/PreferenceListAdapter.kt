@@ -79,6 +79,10 @@ class PreferenceListAdapter<T : Any>(
         private val binding: ItemPreferenceCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: PreferenceListItem.Category) {
+            if (category.titleRes == 0) {
+                binding.root.setPadding(0, 0, 0, 0)
+            }
+
             binding.title.setText(category.titleRes)
         }
     }
@@ -94,6 +98,13 @@ class PreferenceListAdapter<T : Any>(
 
             if (item.iconRes != 0) {
                 binding.icon.setImageResource(item.iconRes)
+            }
+
+            if (item.titleRes == 0 && item.iconRes == 0) {
+                binding.root.setPadding(0, 0, 0, 0)
+            }
+
+            if (item.iconRes != 0) {
                 binding.icon.isVisible = true
             } else {
                 binding.icon.isVisible = false

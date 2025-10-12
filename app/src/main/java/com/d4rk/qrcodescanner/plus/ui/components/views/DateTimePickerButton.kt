@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
 import androidx.fragment.app.FragmentActivity
 import com.d4rk.qrcodescanner.plus.R
@@ -16,24 +15,22 @@ import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class DateTimePickerButton : FrameLayout {
-    private lateinit var binding: LayoutDateTimePickerButtonBinding
-    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
-    private val view: View =
-        LayoutInflater.from(context).inflate(R.layout.layout_date_time_picker_button, this, true)
+class DateTimePickerButton @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+) : FrameLayout(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+    private val binding: LayoutDateTimePickerButtonBinding =
+        LayoutDateTimePickerButtonBinding.inflate(LayoutInflater.from(context), this, true)
+    private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
+
+    init {
         context.obtainStyledAttributes(attrs, R.styleable.DateTimePickerButton).apply {
             showHint(this)
             recycle()
         }
-        view.setOnClickListener {
+        binding.root.setOnClickListener {
             showDateTimePickerDialog()
         }
         showDateTime()
@@ -51,7 +48,8 @@ class DateTimePickerButton : FrameLayout {
     }
 
     private fun showDateTimePickerDialog() {
-        val fragmentManager = (context as FragmentActivity).supportFragmentManager
+        val fragmentActivity = context as? FragmentActivity ?: return
+        val fragmentManager = fragmentActivity.supportFragmentManager
         val currentCalendar = java.util.Calendar.getInstance().apply {
             timeInMillis = dateTime
         }

@@ -57,6 +57,9 @@
         <activity
             android:name=".ui.screens.startup.StartupActivity" />
         <activity
+            android:name=".ui.screens.onboarding.OnboardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.screens.main.MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"

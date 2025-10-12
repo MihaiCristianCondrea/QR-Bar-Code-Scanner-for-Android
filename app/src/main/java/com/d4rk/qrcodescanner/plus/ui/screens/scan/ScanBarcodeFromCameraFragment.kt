@@ -191,13 +191,17 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun setupCameraProvider() {
-        val providerFuture = ProcessCameraProvider.getInstance(requireContext())
+        val currentContext = context ?: return
+        val providerFuture = ProcessCameraProvider.getInstance(currentContext)
         providerFuture.addListener({
+            if (!isAdded) {
+                return@addListener
+            }
             cameraProvider = providerFuture.get()
             if (areAllPermissionsGranted()) {
                 bindCameraUseCases()
             }
-        }, ContextCompat.getMainExecutor(requireContext()))
+        }, ContextCompat.getMainExecutor(currentContext))
     }
 
     private fun bindCameraUseCases() {
@@ -621,15 +625,23 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun requestPermissions() {
+        if (!isAdded) {
+            return
+        }
+        val hostActivity = activity as? AppCompatActivity ?: return
         permissionsHelper.requestNotGrantedPermissions(
-            requireActivity() as AppCompatActivity,
+            hostActivity,
             PERMISSIONS,
             PERMISSION_REQUEST_CODE,
         )
     }
 
     private fun areAllPermissionsGranted(): Boolean {
-        return permissionsHelper.areAllPermissionsGranted(requireActivity(), PERMISSIONS)
+        if (!isAdded) {
+            return false
+        }
+        val hostActivity = activity ?: return false
+        return permissionsHelper.areAllPermissionsGranted(hostActivity, PERMISSIONS)
     }
 
     private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
