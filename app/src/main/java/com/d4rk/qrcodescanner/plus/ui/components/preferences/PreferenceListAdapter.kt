@@ -1,22 +1,27 @@
 package com.d4rk.qrcodescanner.plus.ui.components.preferences
 
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
+import androidx.core.view.updatePaddingRelative
+import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceBinding
-import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceCategoryBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.google.android.material.textview.MaterialTextView
+import com.google.android.material.color.MaterialColors
 
 class PreferenceListAdapter<T : Any>(
     private val onActionClicked: (T) -> Unit
@@ -30,9 +35,7 @@ class PreferenceListAdapter<T : Any>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            TYPE_CATEGORY -> CategoryViewHolder(
-                ItemPreferenceCategoryBinding.inflate(inflater, parent, false)
-            )
+            TYPE_CATEGORY -> CategoryViewHolder.create(parent)
 
             else -> ActionViewHolder(
                 ItemPreferenceBinding.inflate(inflater, parent, false),
@@ -76,14 +79,71 @@ class PreferenceListAdapter<T : Any>(
     }
 
     private class CategoryViewHolder(
-        private val binding: ItemPreferenceCategoryBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+        private val titleView: MaterialTextView
+    ) : RecyclerView.ViewHolder(titleView) {
+
         fun bind(category: PreferenceListItem.Category) {
-            if (category.titleRes == 0) {
-                binding.root.setPadding(0, 0, 0, 0)
+            val context = titleView.context
+            val resolvedText: CharSequence? = when {
+                category.titleText != null -> category.titleText
+                category.titleRes != 0 -> context.getText(category.titleRes)
+                else -> null
             }
 
-            binding.title.setText(category.titleRes)
+            val isBlank = resolvedText.isNullOrBlank()
+
+            val padding = if (isBlank) 0 else titleView.dp(PADDING_DP)
+            titleView.updatePaddingRelative(
+                start = padding,
+                top = padding,
+                end = padding,
+                bottom = padding
+            )
+
+            titleView.minHeight = 0
+            titleView.visibility = if (isBlank && category.hideWhenBlank) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
+
+            titleView.text = if (isBlank) null else resolvedText
+        }
+
+        companion object {
+            private const val PADDING_DP = 16
+
+            fun create(parent: ViewGroup): CategoryViewHolder {
+                val context = parent.context
+                val materialTextView = MaterialTextView(context).apply {
+                    layoutParams = RecyclerView.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    ).also { params ->
+                        val margin = dp(PADDING_DP)
+                        params.marginStart = margin
+                        params.topMargin = margin
+                        params.bottomMargin = margin
+                        params.marginEnd = margin
+                    }
+
+                    gravity = Gravity.CENTER_VERTICAL
+
+                    TextViewCompat.setTextAppearance(
+                        this,
+                        com.google.android.material.R.style.TextAppearance_Material3_BodySmall
+                    )
+
+                    setTextColor(
+                        MaterialColors.getColor(
+                            this,
+                            com.google.android.material.R.attr.colorOnSurfaceVariant
+                        )
+                    )
+                }
+
+                return CategoryViewHolder(materialTextView)
+            }
         }
     }
 
@@ -176,7 +236,9 @@ class PreferenceListAdapter<T : Any>(
             if (oldItem::class != newItem::class) return false
             return when {
                 oldItem is PreferenceListItem.Category && newItem is PreferenceListItem.Category ->
-                    oldItem.titleRes == newItem.titleRes
+                    oldItem.titleRes == newItem.titleRes &&
+                        oldItem.titleText == newItem.titleText &&
+                        oldItem.hideWhenBlank == newItem.hideWhenBlank
 
                 oldItem is PreferenceListItem.Action<*> && newItem is PreferenceListItem.Action<*> ->
                     oldItem.action == newItem.action
@@ -197,8 +259,17 @@ class PreferenceListAdapter<T : Any>(
     }
 }
 
+private fun View.dp(dp: Int): Int {
+    val density = resources.displayMetrics.density
+    return (dp * density + 0.5f).toInt()
+}
+
 sealed interface PreferenceListItem<out T : Any> {
-    data class Category(@param:StringRes val titleRes: Int) : PreferenceListItem<Nothing>
+    data class Category(
+        @param:StringRes val titleRes: Int = 0,
+        val titleText: CharSequence? = null,
+        val hideWhenBlank: Boolean = true
+    ) : PreferenceListItem<Nothing>
     data class Action<T : Any>(
         val action: T,
         @param:StringRes val titleRes: Int,

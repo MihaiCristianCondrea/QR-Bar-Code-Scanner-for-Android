@@ -14,7 +14,7 @@
 
         <androidx.preference.Preference
             app:key="@string/key_open_source_licenses"
-            app:title="@string/menu_open_source_licenses" />
+            app:title="@string/open_source_licenses" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory

@@ -3,9 +3,7 @@
     android:id="@android:id/title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
     android:drawablePadding="16dp"
     android:gravity="center_vertical"
-    android:padding="16dp"
     android:textAppearance="@style/TextAppearance.Material3.BodySmall"
     android:textColor="?attr/colorOnSurfaceVariant" />

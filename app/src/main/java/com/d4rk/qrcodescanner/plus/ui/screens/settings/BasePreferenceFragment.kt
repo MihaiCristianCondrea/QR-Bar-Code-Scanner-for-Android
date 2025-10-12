@@ -19,6 +19,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.textview.MaterialTextView
 import androidx.core.view.isNotEmpty
+import androidx.core.view.updatePaddingRelative
 
 abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId: Int) : PreferenceFragmentCompat() {
     private var settingsList: RecyclerView? = null
@@ -121,7 +122,24 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
             val itemView = holder.itemView
             if (preference is PreferenceCategory) {
                 val titleView = itemView.findViewById<MaterialTextView>(android.R.id.title)
-                titleView?.setCompoundDrawablesRelativeWithIntrinsicBounds(preference.icon, null, null, null)
+                titleView?.let { textView ->
+                    val isBlank = textView.text?.toString()?.isBlank() ?: true
+                    val padding = if (isBlank) 0 else textView.dp(CATEGORY_PADDING_DP)
+                    textView.updatePaddingRelative(
+                        start = padding,
+                        top = padding,
+                        end = padding,
+                        bottom = padding
+                    )
+                    textView.minHeight = 0
+                    textView.visibility = if (isBlank) View.GONE else View.VISIBLE
+                    textView.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        preference.icon,
+                        null,
+                        null,
+                        null
+                    )
+                }
                 (itemView.layoutParams as? ViewGroup.MarginLayoutParams)?.let { params ->
                     val topMargin = if (position == 0) 0 else spacing
                     val bottomMargin = spacing
@@ -244,3 +262,10 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
         }
     }
 }
+
+private fun View.dp(dp: Int): Int {
+    val density = resources.displayMetrics.density
+    return (dp * density + 0.5f).toInt()
+}
+
+private const val CATEGORY_PADDING_DP = 16

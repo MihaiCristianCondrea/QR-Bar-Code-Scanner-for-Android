@@ -221,10 +221,46 @@
     <string name="summary_preference_settings_legal_notices">View legal information about the service</string>
     <string name="license">License</string>
 
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">Access network state [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Allows the app to check network connectivity and retrieve information about Wi-Fi, including enabled status and connected Wi-Fi device names.</string>
+    <string name="ad_id">Ad id [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Allows the app to retrieve and use the advertising identifier associated with the user\'s device, providing personalized ads, measuring ad effectiveness, and showing ads on Android 13 or later devices.</string>
+    <string name="billing">Billing [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Allows the app to use the Google Play Billing Library to handle in-app purchases and donations.</string>
+    <string name="check_license">Check license [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Allows the app to verify its compliance with the license agreement and enforce licensing terms to protect intellectual property.</string>
+    <string name="foreground_service">Foreground service [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Allows the app to create and use services that run in the foreground, giving them priority over other background processes and improving performance and reliability.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Allows the app to establish an internet connection to send error reports or check for updates.</string>
+    <string name="vibrate_permission">Vibrate [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Allows the app to vibrate when a QR code is scanned.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Allows the app to connect to Wi-Fi networks by scanning QR codes.</string>
+    <string name="runtime">Runtime</string>
+    <string name="post_notifications">Post notifications [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Allows the app to display notifications on the devices with Android 13 or later.</string>
+    <string name="camera_permission">Camera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner handles QR and barcode capture without sharing the camera feed with the app.</string>
+    <string name="read_contacts">Read contacts [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Allows the app to create a QR code from a contact in your contact list.</string>
+    <string name="read_storage">Read storage [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Allows the app to access your storage so you can save your QR code or barcode as text or image.</string>
+    <string name="read_images">Read images [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Allows the app to read images from your device so you can scan them for QR codes and barcodes on devices running Android 13 or later.</string>
+    <string name="write_storage">Write storage [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Allows the app to write to your storage so you can save files, such as photos, videos, and documents.</string>
+    <string name="special">Special</string>
+    <string name="access_notification_policy">Access notification policy [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Allows the app to access and modify the device\'s notification policy, controlling how and when notifications are displayed to the user and providing custom notification management features.</string>
+
     <!-- Advanced Settings screen -->
     <string name="search_engines">Search Engines</string>
     <string name="summary_preference_settings_search_engines">Choose a search engine for web searches</string>
     <string name="error_reporting">Error reporting</string>
+    <string name="bug_report">Bug report</string>
     <string name="summary_preference_settings_bug_report">Send bug reports amd feature requests to the app\'s GitHub repository issues page</string>
     <string name="cache_management">Cache management</string>
     <string name="clear_cache">Clear cache</string>
@@ -269,9 +305,14 @@
     <string name="contact_support_description">Share details to get help reaching your goal</string>
     <string name="send_feedback">Send feedback</string>
 
+    <!-- Support Screen -->
+    <string name="paid_support">Paid Support</string>
+    <string name="non_paid_support">Non-Paid Support</string>
+    <string name="web_ad">Web Ad</string>
+    <string name="watch_ad">Watch Ad</string>
 
-
-
+    <!-- Advertisement -->
+    <string name="ad_attribution">Ad</string>
 
 
 
@@ -283,22 +324,15 @@
     <string name="notification_settings">Notification settings</string>
     <string name="none">None</string>
     <string name="ask_every_time">Ask every time</string>
-    <string name="bug_report">Bug report</string>
-    <string name="normal">Normal</string>
-    <string name="runtime">Runtime</string>
     <string name="contact_support_email_subject">Support request for %1$s</string>
     <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
     <string name="support_link_unavailable">No email apps are available to handle this request.</string>
     <string name="version_info">Version info</string>
-    <string name="menu_open_source_licenses">Open source licenses</string>
     <string name="faq_state_collapsed">Collapsed</string>
     <string name="faq_state_expanded">Expanded</string>
     <string name="version">Version %1$s</string>
     <string name="support_the_developer">Support the developer</string>
-    <string name="paid_support">Paid Support</string>
-    <string name="non_paid_support">Non-Paid Support</string>
-    <string name="web_ad">Web Ad</string>
-    <string name="watch_ad">Watch Ad</string>
+
     <string name="title">Title</string>
     <string name="save">Save</string>
     <string name="saved">Saved</string>
@@ -344,40 +378,10 @@
     <string name="share_using">Share using…</string>
     <string name="require_restart">Require restart!</string>
     <string name="barcode_schema_boarding_pass">Boarding Pass</string>
-    <string name="ad_id">Ad id [AD_ID]</string>
-    <string name="internet">Internet [INTERNET]</string>
-    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
-    <string name="post_notifications">Post notifications [POST_NOTIFICATIONS]</string>
-    <string name="vibrate_permission">Vibrate [VIBRATE]</string>
-    <string name="access_network_state">Access network state [ACCESS_NETWORK_STATE]</string>
-    <string name="access_notification_policy">Access notification policy [ACCESS_NOTIFICATION_POLICY]</string>
-    <string name="billing">Billing [BILLING]</string>
-    <string name="camera_permission">Camera [CAMERA]</string>
-    <string name="check_license">Check license [CHECK_LICENSE]</string>
-    <string name="foreground_service">Foreground service [FOREGROUND_SERVICE]</string>
-    <string name="read_contacts">Read contacts [READ_CONTACTS]</string>
-    <string name="read_storage">Read storage [READ_EXTERNAL_STORAGE]</string>
-    <string name="read_images">Read images [READ_IMAGES]</string>
-    <string name="write_storage">Write storage [WRITE_EXTERNAL_STORAGE]</string>
     <string name="summary_preference_settings_language">Changes the language used in the app</string>
     <string name="summary_preference_settings_simple_auto_focus">Enable only if you have problems focusing.</string>
     <string name="summary_preference_settings_confirm_scans_manually">Avoid accidental scans.</string>
     <string name="summary_preference_settings_notification_settings">Choose how the app alerts you in system settings.</string>
-    <string name="summary_preference_permissions_ad_id">Allows the app to retrieve and use the advertising identifier associated with the user\'s device, providing personalized ads, measuring ad effectiveness, and showing ads on Android 13 or later devices.</string>
-    <string name="summary_preference_permissions_change_wifi_state">Allows the app to connect to Wi-Fi networks by scanning QR codes.</string>
-    <string name="summary_preference_permissions_internet">Allows the app to establish an internet connection to send error reports or check for updates.</string>
-    <string name="summary_preference_permissions_post_notifications">Allows the app to display notifications on the devices with Android 13 or later.</string>
-    <string name="summary_preference_permissions_vibrate">Allows the app to vibrate when a QR code is scanned.</string>
-    <string name="summary_preference_permissions_access_network_state">Allows the app to check network connectivity and retrieve information about Wi-Fi, including enabled status and connected Wi-Fi device names.</string>
-    <string name="summary_preference_permissions_access_notification_policy">Allows the app to access and modify the device\'s notification policy, controlling how and when notifications are displayed to the user and providing custom notification management features.</string>
-    <string name="summary_preference_permissions_billing">Allows the app to use the Google Play Billing Library to handle in-app purchases and donations.</string>
-    <string name="summary_preference_permissions_camera">Google Code Scanner handles QR and barcode capture without sharing the camera feed with the app.</string>
-    <string name="summary_preference_permissions_check_license">Allows the app to verify its compliance with the license agreement and enforce licensing terms to protect intellectual property.</string>
-    <string name="summary_preference_permissions_foreground_service">Allows the app to create and use services that run in the foreground, giving them priority over other background processes and improving performance and reliability.</string>
-    <string name="summary_preference_permissions_read_contacts">Allows the app to create a QR code from a contact in your contact list.</string>
-    <string name="summary_preference_permissions_read_storage">Allows the app to access your storage so you can save your QR code or barcode as text or image.</string>
-    <string name="summary_preference_permissions_read_images">Allows the app to read images from your device so you can scan them for QR codes and barcodes on devices running Android 13 or later.</string>
-    <string name="summary_preference_permissions_write_storage">Allows the app to write to your storage so you can save files, such as photos, videos, and documents.</string>
     <string name="summary_require_restart">To take effect please restart the app!</string>
     <string name="summary_donations">No matter how much you donate, you will help us keep our app running and improve our features. We appreciate your generosity and kindness!</string>
     <string name="summary_delete_history">Delete history?</string>
@@ -392,5 +396,4 @@
     <string name="tooltip_view_code">View code</string>
     <string name="tooltip_generate_new_secret">Generate a new secret</string>
     <string name="hint_message">Message</string>
-    <string name="ad_attribution">Ad</string>
 </resources>
