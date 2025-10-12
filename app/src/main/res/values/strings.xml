@@ -14,6 +14,12 @@
     <!-- Main screen -->
     <string name="menu">Menu</string>
 
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Settings</string>
+    <string name="help_and_feedback">Help &amp; feedback</string>
+    <string name="updates">Updates</string>
+    <string name="share">Share</string>
+
     <!-- Scanner tab screen -->
     <string name="scan">Scan</string>
     <string name="scan_image">Scan image</string>
@@ -135,7 +141,6 @@
     <string name="export">Export</string>
 
     <!-- Settings screen -->
-    <string name="settings">Settings</string>
     <string name="notifications">Notifications</string>
     <string name="summary_settings_notifications_overview">Manage app notifications</string>
     <string name="display">Display</string>
@@ -157,100 +162,149 @@
     <string name="light_mode">Light Mode</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="auto_battery_mode">Auto Battery Dark Mode</string>
-    <string name="summary_preference_settings_theme">Choose how the app looks. Current: %1$s.</string>
+    <string name="summary_preference_settings_theme">Choose how the app looks. Current: %1$s</string>
     <string name="navigation">Navigation</string>
     <string name="default_tab">Default tab</string>
-    <string name="summary_preference_settings_default_tab">Pick the first screen you see on launch. Current: %1$s.</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="summary_preference_settings_default_tab">Pick the first screen you see on launch. Current: %1$s</string>
     <string name="bottom_navigation_bar_labels">Bottom navigation bar labels</string>
     <string name="labeled">Labeled</string>
     <string name="selected">Selected</string>
     <string name="unlabeled">Unlabeled</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Control how labels appear in the bottom bar. Current: %1$s</string>
     <string name="inverse_colors">Inverse colors</string>
+    <string name="summary_preference_settings_inverse_colors">Show codes with white content on dark background &amp; dark mode</string>
     <string name="language">Language</string>
+    <string name="summary_preference_settings_language_value">Choose the app language. Current: %1$s</string>
+
+    <!-- Scanner Settings screen -->
     <string name="open_content_automatically">Open content of scanned codes automatically</string>
+    <string name="summary_preference_settings_open_content_automatically">May open harmful content</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Copy scanned barcodes to clipboard</string>
     <string name="simple_auto_focus">Simple auto focus mode</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Enable flash on start</string>
     <string name="vibrate">Vibrate</string>
+    <string name="summary_preference_settings_vibrate">Vibrate on scan</string>
     <string name="continuous_scanning">Continuous scanning</string>
+    <string name="summary_preference_settings_continuous_scanning">Save scans to history only</string>
     <string name="confirm_scans_manually">Confirm scans manually</string>
     <string name="camera">Camera</string>
     <string name="front">Front</string>
     <string name="back">Back</string>
     <string name="supported_formats">Supported formats</string>
-    <string name="save_scanned_barcodes_to_history">Save scanned barcodes to history.</string>
-    <string name="save_created_barcodes_to_history">Save created barcodes to history.</string>
+    <string name="summary_preference_settings_supported_formats">Pick the barcode formats the scanner looks for.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Save scanned barcodes to history</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Store every scan so you can revisit it later</string>
+    <string name="save_created_barcodes_to_history">Save created barcodes to history</string>
+    <string name="summary_preference_settings_save_created_barcodes">Keep the codes you generate easy to find</string>
     <string name="do_not_save_duplicates">Do not save duplicates</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Avoid duplicates in history</string>
     <string name="clear_history">Clear history</string>
-    <string name="notification_settings">Notification settings</string>
-    <string name="firebase">Firebase</string>
-    <string name="search_engines">Search Engines</string>
-    <string name="none">None</string>
-    <string name="ask_every_time">Ask every time</string>
-    <string name="app_updates">App updates</string>
-    <string name="bug_report">Bug report</string>
-    <string name="error_reporting">Error reporting</string>
-    <string name="cache_management">Cache management</string>
-    <string name="changelog">Changelog</string>
-    <string name="privacy_and_security">Privacy and security</string>
-    <string name="privacy_policy">Privacy Policy</string>
+    <string name="summary_preference_settings_clear_history">Remove all saved scans from the device</string>
+
+    <!-- Security & Privacy Settings screen -->
     <string name="privacy">Privacy</string>
-    <string name="update_downloaded">Update downloaded</string>
-    <string name="view_in_google_play">View in Google Play Store</string>
-    <string name="beta_program">Beta program</string>
-    <string name="open_source_licenses">Open source licenses</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="summary_preference_settings_privacy_policy">View the policy that governs how your data is handled</string>
     <string name="terms_of_service">Terms of Service</string>
+    <string name="summary_preference_settings_terms_of_service">Review the terms you agree to when using this service</string>
     <string name="code_of_conduct">Code of Conduct</string>
+    <string name="summary_preference_settings_code_of_conduct">Understand the rules and guidelines of behavior within the service</string>
     <string name="permissions">Permissions</string>
+    <string name="summary_preference_settings_permissions">Manage the permissions granted to the service</string>
     <string name="usage_and_diagnostics">Usage and diagnostics</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Share data to help improve in-app experience</string>
+    <string name="legal">Legal</string>
     <string name="legal_notices">Legal notices</string>
-    <string name="normal">Normal</string>
-    <string name="runtime">Runtime</string>
-    <string name="help_and_feedback">Help &amp; feedback</string>
-    <string name="help">Help</string>
-    <string name="faq">FAQs</string>
-    <string name="send_feedback">Send feedback</string>
-    <string name="contact_support_title">Contact support</string>
-    <string name="contact_support_description">Share details to get help reaching your goal</string>
-    <string name="contact_support_email_subject">Support request for %1$s</string>
-    <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
-    <string name="support_link_unavailable">No email apps are available to handle this request.</string>
-    <string name="version_info">Version info</string>
-    <string name="menu_beta_program">Join the beta program</string>
-    <string name="menu_open_source_licenses">Open source licenses</string>
-    <string name="faq_state_collapsed">Collapsed</string>
-    <string name="faq_state_expanded">Expanded</string>
-    <string name="version">Version %1$s</string>
-    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
+    <string name="summary_preference_settings_legal_notices">View legal information about the service</string>
     <string name="license">License</string>
-    <string name="share">Share</string>
-    <string name="support_the_developer">Support the developer</string>
-    <string name="paid_support">Paid Support</string>
-    <string name="non_paid_support">Non-Paid Support</string>
-    <string name="web_ad">Web Ad</string>
-    <string name="watch_ad">Watch Ad</string>
-    <string name="info">Info</string>
-    <string name="app_info">App info</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Search Engines</string>
+    <string name="summary_preference_settings_search_engines">Choose a search engine for web searches</string>
+    <string name="error_reporting">Error reporting</string>
+    <string name="summary_preference_settings_bug_report">Send bug reports amd feature requests to the app\'s GitHub repository issues page</string>
+    <string name="cache_management">Cache management</string>
     <string name="clear_cache">Clear cache</string>
+    <string name="summary_preference_settings_cache_management">Clear temporary application data</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">App info</string>
+    <string name="copyright">© 2024 QR &amp; Bar Code Scanner Plus</string>
     <string name="application_build_version">Application build version</string>
+    <string name="open_source_licenses">Open source licenses</string>
+    <string name="summary_preference_settings_open_source_licenses">View licenses for the libraries we use</string>
     <string name="device_info">Device info</string>
     <string name="app_build">App Build: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="device_model">Device Model:</string>
     <string name="android_version">Android Version:</string>
     <string name="api_level">API Level:</string>
+
+    <!-- Help screen -->
+    <string name="help">Help</string>
+    <string name="view_in_google_play">View in Google Play Store</string>
+    <string name="beta_program">Beta program</string>
+    <string name="faq">FAQs</string>
+    <string name="question_1">What is QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus is a free app that allows you to scan and generate QR codes. It can scan all common barcode formats, including QR, Data Matrix, Aztec, UPC, EAN, and many more.</string>
+    <string name="question_2">What are the benefits of using QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus is a powerful, versatile, and free app that can scan all common barcode formats, use a flashlight to scan in the dark, zoom to read barcodes from far distances, connect to Wi-Fi, generate QR codes from text, contacts, apps, bookmarks, and clipboard, and has a simple and intuitive interface.</string>
+    <string name="question_3">What are the system requirements for QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus is compatible with all Android devices running Android 8.0 (Oreo) or higher.</string>
+    <string name="question_4">How do I scan a QR code with QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">To scan a QR code with QR &amp; Bar Code Scanner Plus, simply open the app and point your phone\'s camera at the QR code. The app will automatically scan the code and display the results.</string>
+    <string name="question_5"> How do I create a QR code with QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">To create a QR code with QR &amp; Bar Code Scanner Plus, open the app and go to the \'Create\' menu. Choose the type of QR code or bar code you want and enter the data you want to include in the QR code and tap on the \'Create\' button. The app will then generate a QR code that you can save or share.</string>
+    <string name="question_6">How do I change the theme of QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">The theme of QR &amp; Bar Code Scanner Plus can be changed by going to the app\'s settings and selecting the desired theme.</string>
+    <string name="question_7">How do I report a bug?</string>
+    <string name="summary_preference_faq_7">If you find a bug in QR &amp; Bar Code Scanner Plus, you can report it by going to the app\'s GitHub page and creating a new issue.</string>
+    <string name="question_8">Is QR &amp; Bar Code Scanner Plus safe to use?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus is a safe app to use. The app only collects error logs through Firebase Crashlytics and Firebase Analytics, which can be turned off.</string>
+    <string name="question_9">How do I contact the developer of the app?</string>
+    <string name="summary_preference_faq_9">If you have any questions or problems with the app, you can contact the developer through the app\'s \'Help &amp; feedback\' page.</string>
+    <string name="contact_support_title">Contact support</string>
+    <string name="contact_support_description">Share details to get help reaching your goal</string>
+    <string name="send_feedback">Send feedback</string>
+
+
+
+
+
+
+
+
+
+
+    <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
+    <string name="summary_preference_settings_share">Tell friends about %1$s.</string>
+    <string name="summary_preference_settings_changelog">See what changed in the latest releases.</string>
+    <string name="notification_settings">Notification settings</string>
+    <string name="none">None</string>
+    <string name="ask_every_time">Ask every time</string>
+    <string name="bug_report">Bug report</string>
+    <string name="normal">Normal</string>
+    <string name="runtime">Runtime</string>
+
+
+
+
+
+    <string name="contact_support_email_subject">Support request for %1$s</string>
+    <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
+    <string name="support_link_unavailable">No email apps are available to handle this request.</string>
+    <string name="version_info">Version info</string>
+    <string name="menu_open_source_licenses">Open source licenses</string>
+    <string name="faq_state_collapsed">Collapsed</string>
+    <string name="faq_state_expanded">Expanded</string>
+    <string name="version">Version %1$s</string>
+    <string name="support_the_developer">Support the developer</string>
+    <string name="paid_support">Paid Support</string>
+    <string name="non_paid_support">Non-Paid Support</string>
+    <string name="web_ad">Web Ad</string>
+    <string name="watch_ad">Watch Ad</string>
     <string name="title">Title</string>
     <string name="save">Save</string>
     <string name="saved">Saved</string>
@@ -311,56 +365,10 @@
     <string name="read_storage">Read storage [READ_EXTERNAL_STORAGE]</string>
     <string name="read_images">Read images [READ_IMAGES]</string>
     <string name="write_storage">Write storage [WRITE_EXTERNAL_STORAGE]</string>
-    <string name="question_1">What is QR &amp; Bar Code Scanner Plus?</string>
-    <string name="question_2">What are the benefits of using QR &amp; Bar Code Scanner Plus?</string>
-    <string name="question_3">What are the system requirements for QR &amp; Bar Code Scanner Plus?</string>
-    <string name="question_4">How do I scan a QR code with QR &amp; Bar Code Scanner Plus?</string>
-    <string name="question_5"> How do I create a QR code with QR &amp; Bar Code Scanner Plus?</string>
-    <string name="question_6">How do I change the theme of QR &amp; Bar Code Scanner Plus?</string>
-    <string name="question_7">How do I report a bug?</string>
-    <string name="question_8">Is QR &amp; Bar Code Scanner Plus safe to use?</string>
-    <string name="question_9">How do I contact the developer of the app?</string>
-    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus is a free app that allows you to scan and generate QR codes. It can scan all common barcode formats, including QR, Data Matrix, Aztec, UPC, EAN, and many more.</string>
-    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus is a powerful, versatile, and free app that can scan all common barcode formats, use a flashlight to scan in the dark, zoom to read barcodes from far distances, connect to Wi-Fi, generate QR codes from text, contacts, apps, bookmarks, and clipboard, and has a simple and intuitive interface.</string>
-    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus is compatible with all Android devices running Android 8.0 (Oreo) or higher.</string>
-    <string name="summary_preference_faq_4">To scan a QR code with QR &amp; Bar Code Scanner Plus, simply open the app and point your phone\'s camera at the QR code. The app will automatically scan the code and display the results.</string>
-    <string name="summary_preference_faq_5">To create a QR code with QR &amp; Bar Code Scanner Plus, open the app and go to the \'Create\' menu. Choose the type of QR code or bar code you want and enter the data you want to include in the QR code and tap on the \'Create\' button. The app will then generate a QR code that you can save or share.</string>
-    <string name="summary_preference_faq_6">The theme of QR &amp; Bar Code Scanner Plus can be changed by going to the app\'s settings and selecting the desired theme.</string>
-    <string name="summary_preference_faq_7">If you find a bug in QR &amp; Bar Code Scanner Plus, you can report it by going to the app\'s GitHub page and creating a new issue.</string>
-    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus is a safe app to use. The app only collects error logs through Firebase Crashlytics and Firebase Analytics, which can be turned off.</string>
-    <string name="summary_preference_faq_9">If you have any questions or problems with the app, you can contact the developer through the app\'s \'Help &amp; feedback\' page.</string>
-    <string name="summary_preference_settings_inverse_colors">Show codes with white content on dark background &amp; dark mode.</string>
     <string name="summary_preference_settings_language">Changes the language used in the app</string>
-    <string name="summary_preference_settings_open_content_automatically">May open harmful content.</string>
-    <string name="summary_preference_settings_copy_to_clipboard">Copy scanned barcodes to clipboard.</string>
     <string name="summary_preference_settings_simple_auto_focus">Enable only if you have problems focusing.</string>
-    <string name="summary_preference_settings_enable_flash_on_start">Enable flash on start.</string>
-    <string name="summary_preference_settings_vibrate">Vibrate on scan.</string>
-    <string name="summary_preference_settings_continuous_scanning">Save scans to history only.</string>
     <string name="summary_preference_settings_confirm_scans_manually">Avoid accidental scans.</string>
-    <string name="summary_preference_settings_do_not_save_duplicates">Avoid duplicates in history.</string>
-    <string name="summary_preference_settings_firebase">This let us collect information about app performance and crash logs.</string>
-    <string name="summary_preference_settings_bug_report">Send nug reports amd feature requests to the app\'s GitHub repository issues page</string>
-    <string name="summary_preference_settings_cache_management">Clear temporary application data</string>
-    <string name="summary_preference_settings_search_engines">Choose a search engine for web searches.</string>
     <string name="summary_preference_settings_notification_settings">Choose how the app alerts you in system settings.</string>
-    <string name="summary_preference_settings_save_scanned_barcodes">Store every scan so you can revisit it later.</string>
-    <string name="summary_preference_settings_save_created_barcodes">Keep the codes you generate easy to find.</string>
-    <string name="summary_preference_settings_clear_history">Remove all saved scans from the device.</string>
-    <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
-    <string name="summary_preference_settings_supported_formats">Pick the barcode formats the scanner looks for.</string>
-    <string name="summary_preference_settings_privacy_policy">View the policy that governs how your data is handled</string>
-    <string name="summary_preference_settings_terms_of_service">Review the terms you agree to when using this service</string>
-    <string name="summary_preference_settings_code_of_conduct">Understand the rules and guidelines of behavior within the service</string>
-    <string name="summary_preference_settings_permissions">Manage the permissions granted to the service</string>
-    <string name="summary_preference_settings_usage_and_diagnostics">Share data to help improve in-app experience</string>
-    <string name="summary_preference_settings_legal_notices">View legal information about the service</string>
-    <string name="summary_preference_settings_share">Tell friends about %1$s.</string>
-    <string name="summary_preference_settings_changelog">See what changed in the latest releases.</string>
-    <string name="summary_preference_settings_open_source_licenses">View licenses for the libraries we use.</string>
-    <string name="legal">Legal</string>
-    <string name="summary_preference_settings_bottom_navigation_bar_labels">Control how labels appear in the bottom bar. Current: %1$s.</string>
-    <string name="summary_preference_settings_language_value">Choose the app language. Current: %1$s.</string>
     <string name="summary_preference_permissions_ad_id">Allows the app to retrieve and use the advertising identifier associated with the user\'s device, providing personalized ads, measuring ad effectiveness, and showing ads on Android 13 or later devices.</string>
     <string name="summary_preference_permissions_change_wifi_state">Allows the app to connect to Wi-Fi networks by scanning QR codes.</string>
     <string name="summary_preference_permissions_internet">Allows the app to establish an internet connection to send error reports or check for updates.</string>

@@ -18,8 +18,9 @@ import com.d4rk.qrcodescanner.plus.R
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.textview.MaterialTextView
+import androidx.core.view.isNotEmpty
 
-abstract class BasePreferenceFragment(@XmlRes private val preferenceResId: Int) : PreferenceFragmentCompat() {
+abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId: Int) : PreferenceFragmentCompat() {
     private var settingsList: RecyclerView? = null
     private var preferenceAdapterObserver: RecyclerView.AdapterDataObserver? = null
     private var preferenceChildAttachListener: RecyclerView.OnChildAttachStateChangeListener? = null
@@ -204,8 +205,8 @@ abstract class BasePreferenceFragment(@XmlRes private val preferenceResId: Int) 
         }
         val titleView = itemView.findViewById<MaterialTextView>(android.R.id.title)
         val summaryView = itemView.findViewById<MaterialTextView>(android.R.id.summary)
-        val hasTitle = titleView?.text?.isNullOrBlank() == false
-        val hasSummary = summaryView?.text?.isNullOrBlank() == false
+        val hasTitle = titleView?.text?.isBlank() == false
+        val hasSummary = summaryView?.text?.isBlank() == false
         titleView?.visibility = if (hasTitle) View.VISIBLE else View.GONE
         summaryView?.visibility = if (hasSummary) View.VISIBLE else View.GONE
         val textContainer = when {
@@ -216,7 +217,7 @@ abstract class BasePreferenceFragment(@XmlRes private val preferenceResId: Int) 
         textContainer?.visibility = if (hasTitle || hasSummary) View.VISIBLE else View.GONE
         val widgetFrame = itemView.findViewById<ViewGroup>(android.R.id.widget_frame)
         widgetFrame?.let { frame ->
-            val hasChild = frame.childCount > 0
+            val hasChild = frame.isNotEmpty()
             frame.visibility = if (hasChild) View.VISIBLE else View.GONE
             if (hasChild) {
                 for (index in 0 until frame.childCount) {
