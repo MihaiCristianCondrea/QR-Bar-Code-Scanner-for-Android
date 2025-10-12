@@ -2,6 +2,8 @@ package com.d4rk.qrcodescanner.plus.di
 
 import androidx.room.Room
 import com.d4rk.qrcodescanner.plus.data.settings.SharedPreferencesMainPreferencesRepository
+import com.d4rk.qrcodescanner.plus.data.support.GoogleSupportRepository
+import com.d4rk.qrcodescanner.plus.data.support.SupportRepository
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
@@ -17,6 +19,12 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
+import com.d4rk.qrcodescanner.plus.domain.support.InitBillingClientUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitMobileAdsUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitiatePurchaseUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.QueryProductDetailsUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.RefreshPurchasesUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.SetPurchaseStatusListenerUseCase
 import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.RotationHelper
 import kotlinx.coroutines.Dispatchers
@@ -51,4 +59,11 @@ val appModule = module {
     single { ContactHelper }
     single { PermissionsHelper }
     single { RotationHelper }
+    single<SupportRepository> { GoogleSupportRepository(androidContext()) }
+    single { InitBillingClientUseCase(get()) }
+    single { QueryProductDetailsUseCase(get()) }
+    single { InitiatePurchaseUseCase(get()) }
+    single { InitMobileAdsUseCase(get()) }
+    single { RefreshPurchasesUseCase(get()) }
+    single { SetPurchaseStatusListenerUseCase(get()) }
 }
