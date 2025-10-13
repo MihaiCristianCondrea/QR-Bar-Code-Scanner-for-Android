@@ -19,4 +19,7 @@
     <dimen name="preference_list_vertical_padding">16dp</dimen>
     <dimen name="manual_focus_area_radius">96dp</dimen>
     <dimen name="barcode_overlay_stroke_width">3dp</dimen>
+    <dimen name="onboarding_indicator_spacing">6dp</dimen>
+    <dimen name="onboarding_indicator_small">10dp</dimen>
+    <dimen name="onboarding_indicator_large">14dp</dimen>
 </resources>

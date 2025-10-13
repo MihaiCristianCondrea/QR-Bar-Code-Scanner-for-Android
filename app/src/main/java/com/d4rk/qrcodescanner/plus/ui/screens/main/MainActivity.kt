@@ -43,6 +43,7 @@ import com.d4rk.qrcodescanner.plus.ui.screens.onboarding.OnboardingActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.support.SupportActivity
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         R.id.navigation_create,
         R.id.navigation_history
     )
-    private val adRequest by lazy { AdRequest.Builder().build() }
+    private val adRequest: AdRequest by lazy { buildAdRequest() }
     private val updateResultLauncher: ActivityResultLauncher<IntentSenderRequest> =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { }
 
@@ -406,6 +407,17 @@ class MainActivity : AppCompatActivity() {
         if (binding.adView.isVisible) {
             binding.adView.loadAd(adRequest)
         }
+    }
+
+    private fun buildAdRequest(): AdRequest {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val personalizedAds = preferences.getBoolean(getString(R.string.key_personalized_ads), true)
+        val builder = AdRequest.Builder()
+        if (!personalizedAds) {
+            val extras = Bundle().apply { putString("npa", "1") }
+            builder.addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+        }
+        return builder.build()
     }
 
     private suspend fun showStartupScreenIfNeeded() {
