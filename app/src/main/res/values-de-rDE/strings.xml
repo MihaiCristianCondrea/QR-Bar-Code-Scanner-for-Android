@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Akzeptieren Sie die Allgemeinen Geschäftsbedingungen.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Überspringen</string>
+    <string name="back">Zurück</string>
+    <string name="next">Weiter</string>
+    <string name="onboarding_theme_title">Wähle deinen Stil</string>
+    <string name="onboarding_theme_description">Wähle das Design, das sich für dich richtig anfühlt.</string>
+    <string name="onboarding_theme_follow_system_title">Systemeinstellung verwenden</string>
+    <string name="onboarding_theme_follow_system_description">Passt sich automatisch deiner Geräteeinstellung an.</string>
+    <string name="onboarding_theme_light_title">Helles Design</string>
+    <string name="onboarding_theme_light_description">Helle Farben mit maximalem Kontrast.</string>
+    <string name="onboarding_theme_dark_title">Dunkles Design</string>
+    <string name="onboarding_theme_dark_description">Perfekt für dunkle Umgebungen.</string>
+    <string name="onboarding_start_title">Wo sollen wir beginnen?</string>
+    <string name="onboarding_start_description">Wähle den ersten Bildschirm, den du beim Öffnen der App siehst.</string>
+    <string name="onboarding_start_scan_description">Starte direkt im Scanner, um sofort zu zielen und zu scannen.</string>
+    <string name="onboarding_start_create_description">Spring in den Creator, um sofort neue Codes zu gestalten.</string>
+    <string name="onboarding_start_history_description">Sieh dir deine gespeicherten Scans an, sobald die App startet.</string>
+    <string name="bottom_navigation_labels_description">Bestimme, wie Beschriftungen in der unteren Navigationsleiste erscheinen.</string>
+    <string name="onboarding_labels_all">Beschriftungen für alle Tabs anzeigen.</string>
+    <string name="onboarding_labels_selected">Nur die Beschriftung des ausgewählten Tabs anzeigen.</string>
+    <string name="onboarding_labels_hidden">Alle Beschriftungen ausblenden für einen minimalistischen Look.</string>
+    <string name="privacy_icon">Symbol für Datenschutz</string>
+    <string name="onboarding_data_title">Steuere deine Daten</string>
+    <string name="onboarding_data_subtitle">Du entscheidest, was wir erfassen. Du kannst dies jederzeit in den Einstellungen ändern.</string>
+    <string name="onboarding_data_toggle">Nutzungs- &amp; Diagnosedaten</string>
+    <string name="onboarding_data_active">Analyseerfassung ist aktiviert.</string>
+    <string name="onboarding_data_inactive">Analyseerfassung ist deaktiviert.</string>
+    <string name="onboarding_data_ads">Personalisierte Anzeigen</string>
+    <string name="onboarding_data_ads_desc">Hilf uns, Anzeigen anzuzeigen, die besser zu dir passen.</string>
+    <string name="onboarding_data_ads_disabled">Du siehst weiterhin Anzeigen, sie sind jedoch eventuell weniger relevant.</string>
+    <string name="privacy_policy_link">Datenschutzerklärung</string>
+    <string name="success_icon">Erfolgssymbol</string>
+    <string name="onboarding_done_title">Alles erledigt!</string>
+    <string name="onboarding_done_subtitle">Deine Einstellungen wurden gespeichert. Viel Spaß mit der App.</string>
+    <string name="get_started_button">Los geht\'s</string>
 
     <!-- Main screen -->
     <string name="menu">Menü</string>
@@ -215,7 +249,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Wählen Sie aus, welche Kamera sich beim Starten des Scannens öffnet.</string>
     <string name="front">Vorderseite</string>
-    <string name="back">Rückseite</string>
+    <string name="camera_back">Rückseite</string>
     <string name="supported_formats">Unterstützte Formate</string>
     <string name="summary_preference_settings_supported_formats">Wählen Sie die Barcode-Formate aus, nach denen der Scanner sucht.</string>
 

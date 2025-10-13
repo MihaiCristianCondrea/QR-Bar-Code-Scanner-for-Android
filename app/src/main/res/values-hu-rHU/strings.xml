@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Fogadja el a feltételeket.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Kihagyás</string>
+    <string name="back">Vissza</string>
+    <string name="next">Tovább</string>
+    <string name="onboarding_theme_title">Válassz stílust</string>
+    <string name="onboarding_theme_description">Válaszd ki azt a témát, ami a legjobban illik hozzád.</string>
+    <string name="onboarding_theme_follow_system_title">Rendszer követése</string>
+    <string name="onboarding_theme_follow_system_description">Automatikusan igazodik az eszközöd beállításaihoz.</string>
+    <string name="onboarding_theme_light_title">Világos téma</string>
+    <string name="onboarding_theme_light_description">Élénk színek maximális kontraszttal.</string>
+    <string name="onboarding_theme_dark_title">Sötét téma</string>
+    <string name="onboarding_theme_dark_description">Tökéletes gyenge fényviszonyokhoz.</string>
+    <string name="onboarding_start_title">Mivel kezdjünk?</string>
+    <string name="onboarding_start_description">Válaszd ki, melyik képernyő jelenjen meg először az app megnyitásakor.</string>
+    <string name="onboarding_start_scan_description">Nyisd meg közvetlenül a szkennert, hogy azonnal célra tarts és olvass be.</string>
+    <string name="onboarding_start_create_description">Lépj a készítőbe, és tervezz rögtön új kódokat.</string>
+    <string name="onboarding_start_history_description">Nézd át elmentett beolvasásaidat az app indításakor.</string>
+    <string name="bottom_navigation_labels_description">Döntsd el, hogyan jelenjenek meg a feliratok az alsó navigációs sávban.</string>
+    <string name="onboarding_labels_all">Mutassa az összes fül feliratát.</string>
+    <string name="onboarding_labels_selected">Csak a kiválasztott fül feliratát mutassa.</string>
+    <string name="onboarding_labels_hidden">Rejtse el az összes feliratot a letisztult megjelenésért.</string>
+    <string name="privacy_icon">Adatvédelem ikon</string>
+    <string name="onboarding_data_title">Szabályozd az adataidat</string>
+    <string name="onboarding_data_subtitle">Te döntöd el, mit gyűjtünk. Ezt bármikor módosíthatod a Beállításokban.</string>
+    <string name="onboarding_data_toggle">Használat és diagnosztika</string>
+    <string name="onboarding_data_active">Az analitikai gyűjtés be van kapcsolva.</string>
+    <string name="onboarding_data_inactive">Az analitikai gyűjtés ki van kapcsolva.</string>
+    <string name="onboarding_data_ads">Személyre szabott hirdetések</string>
+    <string name="onboarding_data_ads_desc">Segíts, hogy relevánsabb hirdetéseket mutathassunk neked.</string>
+    <string name="onboarding_data_ads_disabled">Továbbra is látsz hirdetéseket, de kevésbé lehetnek relevánsak.</string>
+    <string name="privacy_policy_link">Adatvédelmi szabályzat</string>
+    <string name="success_icon">Siker ikon</string>
+    <string name="onboarding_done_title">Minden kész!</string>
+    <string name="onboarding_done_subtitle">A beállításaid elmentve. Jó szórakozást az apphoz.</string>
+    <string name="get_started_button">Kezdjük</string>
 
     <!-- Main screen -->
     <string name="menu">Menü</string>
@@ -215,7 +249,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Válassza ki, melyik kamera nyíljon meg a szkennelés indításakor.</string>
     <string name="front">Előlapi</string>
-    <string name="back">Hátlapi</string>
+    <string name="camera_back">Hátlapi</string>
     <string name="supported_formats">Támogatott formátumok</string>
     <string name="summary_preference_settings_supported_formats">Válassza ki a vonalkódformátumokat, amelyeket a szkenner keres.</string>
 

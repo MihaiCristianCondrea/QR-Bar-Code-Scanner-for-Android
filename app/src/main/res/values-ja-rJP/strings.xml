@@ -11,6 +11,40 @@
     <string name="tooltip_agree">利用規約に同意します。</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">スキップ</string>
+    <string name="back">戻る</string>
+    <string name="next">次へ</string>
+    <string name="onboarding_theme_title">表示スタイルを選択</string>
+    <string name="onboarding_theme_description">自分にしっくりくるテーマを選びましょう。</string>
+    <string name="onboarding_theme_follow_system_title">システムに合わせる</string>
+    <string name="onboarding_theme_follow_system_description">端末の設定に自動で合わせます。</string>
+    <string name="onboarding_theme_light_title">ライトテーマ</string>
+    <string name="onboarding_theme_light_description">最大限のコントラストで明るい色合い。</string>
+    <string name="onboarding_theme_dark_title">ダークテーマ</string>
+    <string name="onboarding_theme_dark_description">暗い環境に最適です。</string>
+    <string name="onboarding_start_title">どこから始めますか？</string>
+    <string name="onboarding_start_description">アプリを開いたときに最初に表示する画面を選んでください。</string>
+    <string name="onboarding_start_scan_description">スキャナーを直接開いて、すぐに読み取れるようにします。</string>
+    <string name="onboarding_start_create_description">クリエイターを開いて、新しいコードをすぐに作成しましょう。</string>
+    <string name="onboarding_start_history_description">アプリ起動時に保存済みのスキャンを確認できます。</string>
+    <string name="bottom_navigation_labels_description">下部ナビゲーションバーでラベルをどう表示するかを決めます。</string>
+    <string name="onboarding_labels_all">すべてのタブにラベルを表示。</string>
+    <string name="onboarding_labels_selected">選択中のタブのラベルだけ表示。</string>
+    <string name="onboarding_labels_hidden">すべてのラベルを非表示にしてミニマルに。</string>
+    <string name="privacy_icon">プライバシーアイコン</string>
+    <string name="onboarding_data_title">データを管理する</string>
+    <string name="onboarding_data_subtitle">収集内容を決めるのはあなたです。設定でいつでも変更できます。</string>
+    <string name="onboarding_data_toggle">使用状況と診断</string>
+    <string name="onboarding_data_active">分析データの収集はオンです。</string>
+    <string name="onboarding_data_inactive">分析データの収集はオフです。</string>
+    <string name="onboarding_data_ads">パーソナライズド広告</string>
+    <string name="onboarding_data_ads_desc">より関連性の高い広告を表示できるようご協力ください。</string>
+    <string name="onboarding_data_ads_disabled">広告は表示されますが、関連性が低くなる可能性があります。</string>
+    <string name="privacy_policy_link">プライバシーポリシー</string>
+    <string name="success_icon">成功アイコン</string>
+    <string name="onboarding_done_title">準備完了！</string>
+    <string name="onboarding_done_subtitle">設定を保存しました。アプリをお楽しみください。</string>
+    <string name="get_started_button">はじめる</string>
 
     <!-- Main screen -->
     <string name="menu">メニュー</string>
@@ -215,7 +249,7 @@
     <string name="camera">カメラ</string>
     <string name="summary_preference_settings_camera">スキャン開始時に開くカメラを選択します。</string>
     <string name="front">前面</string>
-    <string name="back">背面</string>
+    <string name="camera_back">背面</string>
     <string name="supported_formats">対応フォーマット</string>
     <string name="summary_preference_settings_supported_formats">スキャナーが検索するバーコード形式を選択します。</string>
 

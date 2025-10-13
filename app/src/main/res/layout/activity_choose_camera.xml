@@ -18,7 +18,7 @@
                 android:id="@+id/button_back_camera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:text="@string/back" />
+                app:text="@string/camera_back" />
 
             <com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
                 android:id="@+id/button_front_camera"

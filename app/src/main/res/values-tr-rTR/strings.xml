@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Şartları ve koşulları kabul edin.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Atla</string>
+    <string name="back">Geri</string>
+    <string name="next">İleri</string>
+    <string name="onboarding_theme_title">Tarzını seç</string>
+    <string name="onboarding_theme_description">Sana en uygun temayı seç.</string>
+    <string name="onboarding_theme_follow_system_title">Sistemi takip et</string>
+    <string name="onboarding_theme_follow_system_description">Cihaz ayarına otomatik olarak uyum sağlar.</string>
+    <string name="onboarding_theme_light_title">Açık tema</string>
+    <string name="onboarding_theme_light_description">Maksimum kontrastlı parlak renkler.</string>
+    <string name="onboarding_theme_dark_title">Koyu tema</string>
+    <string name="onboarding_theme_dark_description">Düşük ışıklı ortamlar için ideal.</string>
+    <string name="onboarding_start_title">Nereden başlayalım?</string>
+    <string name="onboarding_start_description">Uygulamayı açtığında göreceğin ilk ekranı seç.</string>
+    <string name="onboarding_start_scan_description">Doğrudan tarayıcıyı aç, anında hedefle ve tara.</string>
+    <string name="onboarding_start_create_description">Yeni kodları hemen tasarlamak için oluşturucuya geç.</string>
+    <string name="onboarding_start_history_description">Uygulama açılır açılmaz kayıtlı taramalarını gözden geçir.</string>
+    <string name="bottom_navigation_labels_description">Alt gezinme çubuğunda etiketlerin nasıl görüneceğine karar ver.</string>
+    <string name="onboarding_labels_all">Her sekme için etiket göster.</string>
+    <string name="onboarding_labels_selected">Yalnızca seçili sekmenin etiketini göster.</string>
+    <string name="onboarding_labels_hidden">Minimal bir görünüm için tüm etiketleri gizle.</string>
+    <string name="privacy_icon">Gizlilik simgesi</string>
+    <string name="onboarding_data_title">Verilerini kontrol et</string>
+    <string name="onboarding_data_subtitle">Neleri topladığımızı sen seçersin. Bunu Ayarlar\'dan istediğin zaman değiştirebilirsin.</string>
+    <string name="onboarding_data_toggle">Kullanım ve tanılama</string>
+    <string name="onboarding_data_active">Analiz toplama açık.</string>
+    <string name="onboarding_data_inactive">Analiz toplama kapalı.</string>
+    <string name="onboarding_data_ads">Kişiselleştirilmiş reklamlar</string>
+    <string name="onboarding_data_ads_desc">Senin için daha alakalı reklamlar göstermemize yardımcı ol.</string>
+    <string name="onboarding_data_ads_disabled">Yine reklam göreceksin, ancak daha az alakalı olabilir.</string>
+    <string name="privacy_policy_link">Gizlilik politikası</string>
+    <string name="success_icon">Başarı simgesi</string>
+    <string name="onboarding_done_title">Hazırsın!</string>
+    <string name="onboarding_done_subtitle">Tercihlerin kaydedildi. Uygulamanın tadını çıkar.</string>
+    <string name="get_started_button">Başla</string>
 
     <!-- Main screen -->
     <string name="menu">Menü</string>
@@ -215,7 +249,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Taramaya başladığınızda hangi kameranın açılacağını seçin.</string>
     <string name="front">Ön</string>
-    <string name="back">Arka</string>
+    <string name="camera_back">Arka</string>
     <string name="supported_formats">Desteklenen formatlar</string>
     <string name="summary_preference_settings_supported_formats">Tarayıcının arayacağı barkod formatlarını seçin.</string>
 

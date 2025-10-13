@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Zaakceptuj warunki.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Pomiń</string>
+    <string name="back">Wstecz</string>
+    <string name="next">Dalej</string>
+    <string name="onboarding_theme_title">Wybierz swój wygląd</string>
+    <string name="onboarding_theme_description">Wybierz motyw, który najlepiej do Ciebie pasuje.</string>
+    <string name="onboarding_theme_follow_system_title">Zgodnie z systemem</string>
+    <string name="onboarding_theme_follow_system_description">Automatycznie dopasowuje się do ustawień urządzenia.</string>
+    <string name="onboarding_theme_light_title">Jasny motyw</string>
+    <string name="onboarding_theme_light_description">Jasne kolory z maksymalnym kontrastem.</string>
+    <string name="onboarding_theme_dark_title">Ciemny motyw</string>
+    <string name="onboarding_theme_dark_description">Idealny do słabo oświetlonych miejsc.</string>
+    <string name="onboarding_start_title">Od czego zaczynamy?</string>
+    <string name="onboarding_start_description">Wybierz pierwszy ekran, który zobaczysz po otwarciu aplikacji.</string>
+    <string name="onboarding_start_scan_description">Otwórz bezpośrednio skaner, aby od razu celować i skanować.</string>
+    <string name="onboarding_start_create_description">Przejdź do kreatora i natychmiast projektuj nowe kody.</string>
+    <string name="onboarding_start_history_description">Przeglądaj zapisane skany zaraz po uruchomieniu aplikacji.</string>
+    <string name="bottom_navigation_labels_description">Zdecyduj, jak mają wyglądać etykiety w dolnym pasku nawigacji.</string>
+    <string name="onboarding_labels_all">Pokazuj etykiety dla wszystkich kart.</string>
+    <string name="onboarding_labels_selected">Pokazuj tylko etykietę wybranej karty.</string>
+    <string name="onboarding_labels_hidden">Ukryj wszystkie etykiety dla minimalistycznego wyglądu.</string>
+    <string name="privacy_icon">Ikona prywatności</string>
+    <string name="onboarding_data_title">Kontroluj swoje dane</string>
+    <string name="onboarding_data_subtitle">Ty decydujesz, co zbieramy. Możesz to zmienić w Ustawieniach w dowolnym momencie.</string>
+    <string name="onboarding_data_toggle">Użytkowanie i diagnostyka</string>
+    <string name="onboarding_data_active">Zbieranie danych analitycznych jest włączone.</string>
+    <string name="onboarding_data_inactive">Zbieranie danych analitycznych jest wyłączone.</string>
+    <string name="onboarding_data_ads">Spersonalizowane reklamy</string>
+    <string name="onboarding_data_ads_desc">Pomóż nam wyświetlać bardziej trafne reklamy.</string>
+    <string name="onboarding_data_ads_disabled">Nadal będziesz widzieć reklamy, ale mogą być mniej trafne.</string>
+    <string name="privacy_policy_link">Polityka prywatności</string>
+    <string name="success_icon">Ikona powodzenia</string>
+    <string name="onboarding_done_title">Wszystko gotowe!</string>
+    <string name="onboarding_done_subtitle">Twoje preferencje zostały zapisane. Korzystaj z aplikacji.</string>
+    <string name="get_started_button">Zacznij</string>
 
     <!-- Main screen -->
     <string name="menu">Menu</string>
@@ -215,7 +249,7 @@
     <string name="camera">Aparat</string>
     <string name="summary_preference_settings_camera">Wybierz, który aparat ma się otwierać po rozpoczęciu skanowania.</string>
     <string name="front">Przedni</string>
-    <string name="back">Tylny</string>
+    <string name="camera_back">Tylny</string>
     <string name="supported_formats">Obsługiwane formaty</string>
     <string name="summary_preference_settings_supported_formats">Wybierz formaty kodów kreskowych, których ma szukać skaner.</string>
 

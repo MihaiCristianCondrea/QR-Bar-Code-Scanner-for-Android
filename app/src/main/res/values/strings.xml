@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Accept the terms and conditions.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Skip</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="onboarding_theme_title">Choose your look</string>
+    <string name="onboarding_theme_description">Pick the theme that feels right for you.</string>
+    <string name="onboarding_theme_follow_system_title">Follow system</string>
+    <string name="onboarding_theme_follow_system_description">Automatically match your device setting.</string>
+    <string name="onboarding_theme_light_title">Light theme</string>
+    <string name="onboarding_theme_light_description">Bright colors with maximum contrast.</string>
+    <string name="onboarding_theme_dark_title">Dark theme</string>
+    <string name="onboarding_theme_dark_description">Perfect for low-light environments.</string>
+    <string name="onboarding_start_title">Where should we start?</string>
+    <string name="onboarding_start_description">Choose the first screen you see when opening the app.</string>
+    <string name="onboarding_start_scan_description">Open directly to the scanner so you can point and scan instantly.</string>
+    <string name="onboarding_start_create_description">Jump into the creator to design new codes right away.</string>
+    <string name="onboarding_start_history_description">Review your saved scans the moment the app launches.</string>
+    <string name="bottom_navigation_labels_description">Decide how labels appear in the bottom navigation bar.</string>
+    <string name="onboarding_labels_all">Show labels for every tab.</string>
+    <string name="onboarding_labels_selected">Only show the label of the selected tab.</string>
+    <string name="onboarding_labels_hidden">Hide all labels for a minimal look.</string>
+    <string name="privacy_icon">Privacy icon</string>
+    <string name="onboarding_data_title">Control your data</string>
+    <string name="onboarding_data_subtitle">You decide what we collect. You can change these anytime in Settings.</string>
+    <string name="onboarding_data_toggle">Usage &amp; diagnostics</string>
+    <string name="onboarding_data_active">Analytics collection is on.</string>
+    <string name="onboarding_data_inactive">Analytics collection is off.</string>
+    <string name="onboarding_data_ads">Personalized ads</string>
+    <string name="onboarding_data_ads_desc">Help us show ads that are more relevant to you.</string>
+    <string name="onboarding_data_ads_disabled">You\'ll still see ads, but they may be less relevant.</string>
+    <string name="privacy_policy_link">Privacy policy</string>
+    <string name="success_icon">Success icon</string>
+    <string name="onboarding_done_title">You\'re all set!</string>
+    <string name="onboarding_done_subtitle">Your preferences have been saved. Enjoy the app.</string>
+    <string name="get_started_button">Get started</string>
 
     <!-- Main screen -->
     <string name="menu">Menu</string>
@@ -215,7 +249,7 @@
     <string name="camera">Camera</string>
     <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
     <string name="front">Front</string>
-    <string name="back">Back</string>
+    <string name="camera_back">Back</string>
     <string name="supported_formats">Supported formats</string>
     <string name="summary_preference_settings_supported_formats">Pick the barcode formats the scanner looks for.</string>
 

@@ -1,6 +1,7 @@
 package com.d4rk.qrcodescanner.plus.data.support
 
 import android.content.Context
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -14,6 +15,9 @@ import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.QueryPurchasesParams
+import androidx.preference.PreferenceManager
+import com.d4rk.qrcodescanner.plus.R
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import java.util.Collections
@@ -24,6 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 class GoogleSupportRepository(context: Context) : SupportRepository {
 
     private val applicationContext = context.applicationContext
+    private val resources = context.resources
     private val mainHandler = Handler(Looper.getMainLooper())
     private val productDetailsCache = ConcurrentHashMap<String, ProductDetails>()
     private val grantedProductIds = Collections.synchronizedSet(mutableSetOf<String>())
@@ -145,7 +150,15 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
         if (adsInitialized.compareAndSet(false, true)) {
             MobileAds.initialize(applicationContext)
         }
-        return AdRequest.Builder().build()
+        val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val personalizedAdsKey = resources.getString(R.string.key_personalized_ads)
+        val personalizedAds = preferences.getBoolean(personalizedAdsKey, true)
+        val builder = AdRequest.Builder()
+        if (!personalizedAds) {
+            val extras = Bundle().apply { putString("npa", "1") }
+            builder.addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+        }
+        return builder.build()
     }
 
     override fun setPurchaseStatusListener(listener: SupportRepository.PurchaseStatusListener) {

@@ -58,6 +58,7 @@
             android:name=".ui.screens.startup.StartupActivity" />
         <activity
             android:name=".ui.screens.onboarding.OnboardingActivity"
+            android:theme="@style/AppTheme"
             android:exported="false" />
         <activity
             android:name=".ui.screens.main.MainActivity"

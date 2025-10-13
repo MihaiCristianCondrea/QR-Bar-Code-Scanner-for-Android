@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Terima syarat dan ketentuan.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Lewati</string>
+    <string name="back">Kembali</string>
+    <string name="next">Berikutnya</string>
+    <string name="onboarding_theme_title">Pilih tampilan Anda</string>
+    <string name="onboarding_theme_description">Pilih tema yang paling pas untuk Anda.</string>
+    <string name="onboarding_theme_follow_system_title">Ikuti sistem</string>
+    <string name="onboarding_theme_follow_system_description">Secara otomatis menyesuaikan dengan pengaturan perangkat Anda.</string>
+    <string name="onboarding_theme_light_title">Tema terang</string>
+    <string name="onboarding_theme_light_description">Warna cerah dengan kontras maksimal.</string>
+    <string name="onboarding_theme_dark_title">Tema gelap</string>
+    <string name="onboarding_theme_dark_description">Sempurna untuk kondisi minim cahaya.</string>
+    <string name="onboarding_start_title">Mulai dari mana?</string>
+    <string name="onboarding_start_description">Pilih layar pertama yang muncul saat membuka app.</string>
+    <string name="onboarding_start_scan_description">Buka pemindai secara langsung agar bisa membidik dan memindai seketika.</string>
+    <string name="onboarding_start_create_description">Masuk ke pembuat untuk langsung merancang kode baru.</string>
+    <string name="onboarding_start_history_description">Tinjau hasil pindai tersimpan segera setelah app dibuka.</string>
+    <string name="bottom_navigation_labels_description">Tentukan bagaimana label ditampilkan di bilah navigasi bawah.</string>
+    <string name="onboarding_labels_all">Tampilkan label untuk setiap tab.</string>
+    <string name="onboarding_labels_selected">Hanya tampilkan label tab yang dipilih.</string>
+    <string name="onboarding_labels_hidden">Sembunyikan semua label untuk tampilan minimalis.</string>
+    <string name="privacy_icon">Ikon privasi</string>
+    <string name="onboarding_data_title">Kendalikan data Anda</string>
+    <string name="onboarding_data_subtitle">Anda menentukan apa yang kami kumpulkan. Dapat diubah kapan saja di Setelan.</string>
+    <string name="onboarding_data_toggle">Penggunaan &amp; diagnostik</string>
+    <string name="onboarding_data_active">Pengumpulan analitik sedang aktif.</string>
+    <string name="onboarding_data_inactive">Pengumpulan analitik dinonaktifkan.</string>
+    <string name="onboarding_data_ads">Iklan yang dipersonalisasi</string>
+    <string name="onboarding_data_ads_desc">Bantu kami menampilkan iklan yang lebih relevan bagi Anda.</string>
+    <string name="onboarding_data_ads_disabled">Anda tetap akan melihat iklan, tetapi mungkin kurang relevan.</string>
+    <string name="privacy_policy_link">Kebijakan privasi</string>
+    <string name="success_icon">Ikon sukses</string>
+    <string name="onboarding_done_title">Semua siap!</string>
+    <string name="onboarding_done_subtitle">Preferensi Anda telah disimpan. Nikmati aplikasinya.</string>
+    <string name="get_started_button">Mulai</string>
 
     <!-- Main screen -->
     <string name="menu">Menu</string>
@@ -215,7 +249,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Pilih kamera mana yang terbuka saat Anda mulai memindai.</string>
     <string name="front">Depan</string>
-    <string name="back">Belakang</string>
+    <string name="camera_back">Belakang</string>
     <string name="supported_formats">Format yang didukung</string>
     <string name="summary_preference_settings_supported_formats">Pilih format kode batang yang dicari oleh pemindai.</string>
 

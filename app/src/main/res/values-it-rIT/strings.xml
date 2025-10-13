@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Accetta i termini e le condizioni.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Salta</string>
+    <string name="back">Indietro</string>
+    <string name="next">Avanti</string>
+    <string name="onboarding_theme_title">Scegli il tuo stile</string>
+    <string name="onboarding_theme_description">Scegli il tema che senti più tuo.</string>
+    <string name="onboarding_theme_follow_system_title">Segui il sistema</string>
+    <string name="onboarding_theme_follow_system_description">Si abbina automaticamente alle impostazioni del tuo dispositivo.</string>
+    <string name="onboarding_theme_light_title">Tema chiaro</string>
+    <string name="onboarding_theme_light_description">Colori luminosi con il massimo contrasto.</string>
+    <string name="onboarding_theme_dark_title">Tema scuro</string>
+    <string name="onboarding_theme_dark_description">Perfetto per gli ambienti poco illuminati.</string>
+    <string name="onboarding_start_title">Da dove iniziamo?</string>
+    <string name="onboarding_start_description">Scegli la prima schermata che vedi quando apri l\'app.</string>
+    <string name="onboarding_start_scan_description">Apri direttamente lo scanner per puntare e scansionare all\'istante.</string>
+    <string name="onboarding_start_create_description">Entra nel creator per progettare subito nuovi codici.</string>
+    <string name="onboarding_start_history_description">Rivedi le tue scansioni salvate non appena si avvia l\'app.</string>
+    <string name="bottom_navigation_labels_description">Decidi come mostrare le etichette nella barra di navigazione inferiore.</string>
+    <string name="onboarding_labels_all">Mostra le etichette per ogni scheda.</string>
+    <string name="onboarding_labels_selected">Mostra solo l\'etichetta della scheda selezionata.</string>
+    <string name="onboarding_labels_hidden">Nascondi tutte le etichette per un look minimale.</string>
+    <string name="privacy_icon">Icona della privacy</string>
+    <string name="onboarding_data_title">Controlla i tuoi dati</string>
+    <string name="onboarding_data_subtitle">Decidi tu cosa raccogliamo. Puoi modificarlo quando vuoi nelle Impostazioni.</string>
+    <string name="onboarding_data_toggle">Utilizzo e diagnostica</string>
+    <string name="onboarding_data_active">La raccolta delle analisi è attiva.</string>
+    <string name="onboarding_data_inactive">La raccolта delle analisi è disattivata.</string>
+    <string name="onboarding_data_ads">Annunci personalizzati</string>
+    <string name="onboarding_data_ads_desc">Aiutaci a mostrarti annunci più pertinenti.</string>
+    <string name="onboarding_data_ads_disabled">Continuerai a vedere annunci, ma potrebbero essere meno pertinenti.</string>
+    <string name="privacy_policy_link">Informativa sulla privacy</string>
+    <string name="success_icon">Icona di successo</string>
+    <string name="onboarding_done_title">Tutto pronto!</string>
+    <string name="onboarding_done_subtitle">Le tue preferenze sono state salvate. Buon uso dell\'app.</string>
+    <string name="get_started_button">Inizia</string>
 
     <!-- Main screen -->
     <string name="menu">Menu</string>
@@ -215,7 +249,7 @@
     <string name="camera">Fotocamera</string>
     <string name="summary_preference_settings_camera">Seleziona quale fotocamera si apre quando inizi a scansionare.</string>
     <string name="front">Anteriore</string>
-    <string name="back">Posteriore</string>
+    <string name="camera_back">Posteriore</string>
     <string name="supported_formats">Formati supportati</string>
     <string name="summary_preference_settings_supported_formats">Scegli i formati di codici a barre che lo scanner deve cercare.</string>
 

@@ -14,6 +14,11 @@
         <item name="android:navigationBarColor">?attr/colorSurfaceContainer</item>
     </style>
 
+    <style name="AppTheme" parent="@style/AppThemeActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="AppThemeActionBar" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowLightStatusBar">true</item>

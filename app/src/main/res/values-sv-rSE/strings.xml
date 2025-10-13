@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Acceptera villkoren.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Hoppa över</string>
+    <string name="back">Tillbaka</string>
+    <string name="next">Nästa</string>
+    <string name="onboarding_theme_title">Välj din stil</string>
+    <string name="onboarding_theme_description">Välj det tema som känns rätt för dig.</string>
+    <string name="onboarding_theme_follow_system_title">Följ systemet</string>
+    <string name="onboarding_theme_follow_system_description">Matchar automatiskt din enhets inställningar.</string>
+    <string name="onboarding_theme_light_title">Ljust tema</string>
+    <string name="onboarding_theme_light_description">Ljusa färger med maximal kontrast.</string>
+    <string name="onboarding_theme_dark_title">Mörkt tema</string>
+    <string name="onboarding_theme_dark_description">Perfekt i miljöer med svagt ljus.</string>
+    <string name="onboarding_start_title">Var ska vi börja?</string>
+    <string name="onboarding_start_description">Välj vilken skärm du ser först när du öppnar appen.</string>
+    <string name="onboarding_start_scan_description">Öppna direkt till skannern så att du kan rikta och skanna på en gång.</string>
+    <string name="onboarding_start_create_description">Hoppa in i skaparen för att göra nya koder direkt.</string>
+    <string name="onboarding_start_history_description">Gå igenom dina sparade skanningar så snart appen startar.</string>
+    <string name="bottom_navigation_labels_description">Bestäm hur etiketter visas i den nedre navigationsraden.</string>
+    <string name="onboarding_labels_all">Visa etiketter för varje flik.</string>
+    <string name="onboarding_labels_selected">Visa bara etiketten för den valda fliken.</string>
+    <string name="onboarding_labels_hidden">Dölj alla etiketter för ett minimalistiskt utseende.</string>
+    <string name="privacy_icon">Integritetsikon</string>
+    <string name="onboarding_data_title">Kontrollera dina data</string>
+    <string name="onboarding_data_subtitle">Du bestämmer vad vi samlar in. Du kan ändra detta när som helst i Inställningar.</string>
+    <string name="onboarding_data_toggle">Användning och diagnostik</string>
+    <string name="onboarding_data_active">Insamling av analysdata är påslagen.</string>
+    <string name="onboarding_data_inactive">Insamling av analysdata är avslagen.</string>
+    <string name="onboarding_data_ads">Personanpassade annonser</string>
+    <string name="onboarding_data_ads_desc">Hjälp oss visa annonser som är mer relevanta för dig.</string>
+    <string name="onboarding_data_ads_disabled">Du kommer fortfarande att se annonser, men de kan vara mindre relevanta.</string>
+    <string name="privacy_policy_link">Integritetspolicy</string>
+    <string name="success_icon">Ikon för framgång</string>
+    <string name="onboarding_done_title">Allt klart!</string>
+    <string name="onboarding_done_subtitle">Dina inställningar har sparats. Ha kul med appen.</string>
+    <string name="get_started_button">Kom igång</string>
 
     <!-- Main screen -->
     <string name="menu">Meny</string>
@@ -215,7 +249,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Välj vilken kamera som öppnas när du börjar skanna.</string>
     <string name="front">Främre</string>
-    <string name="back">Bakre</string>
+    <string name="camera_back">Bakre</string>
     <string name="supported_formats">Format som stöds</string>
     <string name="summary_preference_settings_supported_formats">Välj de streckkodsformat som skannern letar efter.</string>
 
