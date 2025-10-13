@@ -248,7 +248,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Välj vilken kamera som öppnas när du börjar skanna.</string>
     <string name="front">Främre</string>
-    <string name="back">Bakre</string>
+    <string name="camera_back">Bakre</string>
     <string name="supported_formats">Format som stöds</string>
     <string name="summary_preference_settings_supported_formats">Välj de streckkodsformat som skannern letar efter.</string>
 

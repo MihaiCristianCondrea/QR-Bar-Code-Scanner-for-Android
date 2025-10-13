@@ -248,7 +248,7 @@
     <string name="camera">Caméra</string>
     <string name="summary_preference_settings_camera">Sélectionnez la caméra qui s\'ouvre au démarrage du scan.</string>
     <string name="front">Avant</string>
-    <string name="back">Arrière</string>
+    <string name="camera_back">Arrière</string>
     <string name="supported_formats">Formats pris en charge</string>
     <string name="summary_preference_settings_supported_formats">Choisissez les formats de codes-barres que le scanner recherche.</string>
 

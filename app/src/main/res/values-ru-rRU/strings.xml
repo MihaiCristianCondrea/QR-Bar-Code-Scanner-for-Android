@@ -248,7 +248,7 @@
     <string name="camera">Камера</string>
     <string name="summary_preference_settings_camera">Выберите, какая камера будет открываться при запуске сканирования.</string>
     <string name="front">Фронтальная</string>
-    <string name="back">Основная</string>
+    <string name="camera_back">Основная</string>
     <string name="supported_formats">Поддерживаемые форматы</string>
     <string name="summary_preference_settings_supported_formats">Выберите форматы штрихкодов для поиска сканером.</string>
 

@@ -248,7 +248,7 @@
     <string name="camera">カメラ</string>
     <string name="summary_preference_settings_camera">スキャン開始時に開くカメラを選択します。</string>
     <string name="front">前面</string>
-    <string name="back">背面</string>
+    <string name="camera_back">背面</string>
     <string name="supported_formats">対応フォーマット</string>
     <string name="summary_preference_settings_supported_formats">スキャナーが検索するバーコード形式を選択します。</string>
 

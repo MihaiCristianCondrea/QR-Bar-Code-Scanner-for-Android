@@ -248,7 +248,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Válassza ki, melyik kamera nyíljon meg a szkennelés indításakor.</string>
     <string name="front">Előlapi</string>
-    <string name="back">Hátlapi</string>
+    <string name="camera_back">Hátlapi</string>
     <string name="supported_formats">Támogatott formátumok</string>
     <string name="summary_preference_settings_supported_formats">Válassza ki a vonalkódformátumokat, amelyeket a szkenner keres.</string>
 

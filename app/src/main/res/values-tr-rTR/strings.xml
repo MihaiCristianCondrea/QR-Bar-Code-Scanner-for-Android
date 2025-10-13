@@ -248,7 +248,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Taramaya başladığınızda hangi kameranın açılacağını seçin.</string>
     <string name="front">Ön</string>
-    <string name="back">Arka</string>
+    <string name="camera_back">Arka</string>
     <string name="supported_formats">Desteklenen formatlar</string>
     <string name="summary_preference_settings_supported_formats">Tarayıcının arayacağı barkod formatlarını seçin.</string>
 

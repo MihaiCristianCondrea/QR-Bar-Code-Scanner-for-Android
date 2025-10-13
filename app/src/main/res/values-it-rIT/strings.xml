@@ -248,7 +248,7 @@
     <string name="camera">Fotocamera</string>
     <string name="summary_preference_settings_camera">Seleziona quale fotocamera si apre quando inizi a scansionare.</string>
     <string name="front">Anteriore</string>
-    <string name="back">Posteriore</string>
+    <string name="camera_back">Posteriore</string>
     <string name="supported_formats">Formati supportati</string>
     <string name="summary_preference_settings_supported_formats">Scegli i formati di codici a barre che lo scanner deve cercare.</string>
 

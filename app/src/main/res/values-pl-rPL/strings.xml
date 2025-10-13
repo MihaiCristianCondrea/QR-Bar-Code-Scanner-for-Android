@@ -248,7 +248,7 @@
     <string name="camera">Aparat</string>
     <string name="summary_preference_settings_camera">Wybierz, który aparat ma się otwierać po rozpoczęciu skanowania.</string>
     <string name="front">Przedni</string>
-    <string name="back">Tylny</string>
+    <string name="camera_back">Tylny</string>
     <string name="supported_formats">Obsługiwane formaty</string>
     <string name="summary_preference_settings_supported_formats">Wybierz formaty kodów kreskowych, których ma szukać skaner.</string>
 

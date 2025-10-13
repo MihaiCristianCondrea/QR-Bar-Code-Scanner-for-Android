@@ -248,7 +248,7 @@
     <string name="camera">Camera</string>
     <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
     <string name="front">Front</string>
-    <string name="back">Back</string>
+    <string name="camera_back">Back</string>
     <string name="supported_formats">Supported formats</string>
     <string name="summary_preference_settings_supported_formats">Pick the barcode formats the scanner looks for.</string>
 

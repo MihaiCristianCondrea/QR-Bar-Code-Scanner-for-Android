@@ -248,7 +248,7 @@
     <string name="camera">Камера</string>
     <string name="summary_preference_settings_camera">Изберете коя камера да се отваря, когато започнете да сканирате.</string>
     <string name="front">Предна</string>
-    <string name="back">Задна</string>
+    <string name="camera_back">Задна</string>
     <string name="supported_formats">Поддържани формати</string>
     <string name="summary_preference_settings_supported_formats">Изберете форматите на баркодове, които скенерът да търси.</string>
 

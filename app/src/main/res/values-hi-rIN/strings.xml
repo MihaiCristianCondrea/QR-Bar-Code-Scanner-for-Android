@@ -248,7 +248,7 @@
     <string name="camera">कैमरा</string>
     <string name="summary_preference_settings_camera">चुनें कि स्कैनिंग शुरू करने पर कौन सा कैमरा खुलता है।</string>
     <string name="front">सामने</string>
-    <string name="back">पीछे</string>
+    <string name="camera_back">पीछे</string>
     <string name="supported_formats">समर्थित प्रारूप</string>
     <string name="summary_preference_settings_supported_formats">स्कैनर द्वारा खोजे जाने वाले बारकोड प्रारूप चुनें।</string>
 

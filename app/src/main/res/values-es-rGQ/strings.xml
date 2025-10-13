@@ -248,7 +248,7 @@
     <string name="camera">Cámara</string>
     <string name="summary_preference_settings_camera">Seleccione qué cámara se abre al iniciar el escaneo.</string>
     <string name="front">Frontal</string>
-    <string name="back">Trasera</string>
+    <string name="camera_back">Trasera</string>
     <string name="supported_formats">Formatos compatibles</string>
     <string name="summary_preference_settings_supported_formats">Elija los formatos de código de barras que busca el escáner.</string>
 

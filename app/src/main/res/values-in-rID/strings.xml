@@ -248,7 +248,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Pilih kamera mana yang terbuka saat Anda mulai memindai.</string>
     <string name="front">Depan</string>
-    <string name="back">Belakang</string>
+    <string name="camera_back">Belakang</string>
     <string name="supported_formats">Format yang didukung</string>
     <string name="summary_preference_settings_supported_formats">Pilih format kode batang yang dicari oleh pemindai.</string>
 

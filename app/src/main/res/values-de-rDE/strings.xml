@@ -248,7 +248,7 @@
     <string name="camera">Kamera</string>
     <string name="summary_preference_settings_camera">Wählen Sie aus, welche Kamera sich beim Starten des Scannens öffnet.</string>
     <string name="front">Vorderseite</string>
-    <string name="back">Rückseite</string>
+    <string name="camera_back">Rückseite</string>
     <string name="supported_formats">Unterstützte Formate</string>
     <string name="summary_preference_settings_supported_formats">Wählen Sie die Barcode-Formate aus, nach denen der Scanner sucht.</string>
 

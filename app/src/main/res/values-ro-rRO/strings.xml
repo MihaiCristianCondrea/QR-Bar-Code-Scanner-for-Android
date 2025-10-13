@@ -248,7 +248,7 @@
     <string name="camera">Cameră</string>
     <string name="summary_preference_settings_camera">Selectează camera care se deschide când începi scanarea.</string>
     <string name="front">Față</string>
-    <string name="back">Spate</string>
+    <string name="camera_back">Spate</string>
     <string name="supported_formats">Formate acceptate</string>
     <string name="summary_preference_settings_supported_formats">Alege formatele de coduri de bare căutate de scaner.</string>
 
