@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Прийняти умови та положення.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Пропустити</string>
+    <string name="back">Назад</string>
+    <string name="next">Далі</string>
+    <string name="onboarding_theme_title">Виберіть свій стиль</string>
+    <string name="onboarding_theme_description">Оберіть тему, яка підходить саме вам.</string>
+    <string name="onboarding_theme_follow_system_title">Як у системі</string>
+    <string name="onboarding_theme_follow_system_description">Автоматично відповідати налаштуванням пристрою.</string>
+    <string name="onboarding_theme_light_title">Світла тема</string>
+    <string name="onboarding_theme_light_description">Яскраві кольори з максимальним контрастом.</string>
+    <string name="onboarding_theme_dark_title">Темна тема</string>
+    <string name="onboarding_theme_dark_description">Ідеально для умов із слабким освітленням.</string>
+    <string name="onboarding_start_title">З чого почнемо?</string>
+    <string name="onboarding_start_description">Оберіть перший екран, який відкриватиметься під час запуску застосунку.</string>
+    <string name="onboarding_start_scan_description">Відкривайте сканер одразу, щоб миттєво навести камеру та сканувати.</string>
+    <string name="onboarding_start_create_description">Починайте зі створювача, щоб одразу генерувати нові коди.</string>
+    <string name="onboarding_start_history_description">Переглядайте збережені сканування одразу після запуску застосунку.</string>
+    <string name="bottom_navigation_labels_description">Визначте, як відображатимуться підписи в нижній панелі навігації.</string>
+    <string name="onboarding_labels_all">Показувати підписи для всіх вкладок.</string>
+    <string name="onboarding_labels_selected">Показувати підпис лише вибраної вкладки.</string>
+    <string name="onboarding_labels_hidden">Приховати всі підписи для мінімалістичного вигляду.</string>
+    <string name="privacy_icon">Піктограма конфіденційності</string>
+    <string name="onboarding_data_title">Керуйте своїми даними</string>
+    <string name="onboarding_data_subtitle">Ви вирішуєте, що ми збираємо. Ви можете змінити ці параметри будь-коли в налаштуваннях.</string>
+    <string name="onboarding_data_toggle">Використання та діагностика</string>
+    <string name="onboarding_data_active">Збір аналітики увімкнено.</string>
+    <string name="onboarding_data_inactive">Збір аналітики вимкнено.</string>
+    <string name="onboarding_data_ads">Персоналізована реклама</string>
+    <string name="onboarding_data_ads_desc">Допоможіть нам показувати рекламу, що більше відповідає вашим інтересам.</string>
+    <string name="onboarding_data_ads_disabled">Реклама залишиться, але може бути менш доречною.</string>
+    <string name="privacy_policy_link">Політика конфіденційності</string>
+    <string name="success_icon">Піктограма успіху</string>
+    <string name="onboarding_done_title">Усе готово!</string>
+    <string name="onboarding_done_subtitle">Ваші налаштування збережено. Насолоджуйтеся застосунком.</string>
+    <string name="get_started_button">Почати</string>
 
     <!-- Main screen -->
     <string name="menu">Меню</string>
