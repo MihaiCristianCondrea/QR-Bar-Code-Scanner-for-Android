@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
 import com.d4rk.qrcodescanner.plus.model.ExportBarcode
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -14,13 +15,12 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ExportHistoryViewModel(
     private val barcodeDatabase: BarcodeDatabase,
@@ -39,14 +39,21 @@ class ExportHistoryViewModel(
         .flatMapLatest { request ->
             flow {
                 emit(ExportHistoryUiState.Loading)
-                val barcodes = barcodeDatabase
-                    .getAllForExport()
-                    .flowOn(ioDispatcher)
-                    .first()
-                request.exportType.save(barcodeSaver, request.context, request.fileName, barcodes)
-                emit(ExportHistoryUiState.Success)
-            }.catch { throwable ->
-                emit(ExportHistoryUiState.Error(throwable))
+                try {
+                    val barcodes = withContext(ioDispatcher) {
+                        barcodeDatabase.getAllForExport().first()
+                    }
+                    request.exportType.save(
+                        barcodeSaver = barcodeSaver,
+                        context = request.context,
+                        fileName = request.fileName,
+                        barcodes = barcodes
+                    )
+                    emit(ExportHistoryUiState.Success)
+                } catch (throwable: Throwable) {
+                    if (throwable is CancellationException) throw throwable
+                    emit(ExportHistoryUiState.Error(throwable))
+                }
             }
         }
         .stateIn(
