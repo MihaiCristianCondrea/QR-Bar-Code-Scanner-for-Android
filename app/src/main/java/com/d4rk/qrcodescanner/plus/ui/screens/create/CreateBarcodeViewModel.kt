@@ -10,9 +10,7 @@ import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 class CreateBarcodeViewModel(
     private val barcodeDatabase: BarcodeDatabase,
@@ -20,25 +18,23 @@ class CreateBarcodeViewModel(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
 
-    fun saveBarcode(barcode: Barcode): Flow<Barcode> {
-        return flow {
-            val savedBarcode = if (settings.saveCreatedBarcodesToHistory) {
+    suspend fun saveBarcode(barcode: Barcode): Barcode {
+        return withContext(ioDispatcher) {
+            if (settings.saveCreatedBarcodesToHistory) {
                 val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
                 barcode.copy(id = id)
             } else {
                 barcode
             }
-            emit(savedBarcode)
-        }.flowOn(ioDispatcher)
+        }
     }
 
-    fun readVCard(contentResolver: ContentResolver, uri: Uri): Flow<String> {
-        return flow {
-            val text = contentResolver.openInputStream(uri)?.use { stream ->
+    suspend fun readVCard(contentResolver: ContentResolver, uri: Uri): String {
+        return withContext(ioDispatcher) {
+            contentResolver.openInputStream(uri)?.use { stream ->
                 stream.reader().use { reader -> reader.readText() }
-            }
-            emit(text.orEmpty())
-        }.flowOn(ioDispatcher)
+            }.orEmpty()
+        }
     }
 }
 

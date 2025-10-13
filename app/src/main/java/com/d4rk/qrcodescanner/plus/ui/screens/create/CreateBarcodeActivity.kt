@@ -60,11 +60,7 @@ import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.BarcodeFormat
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flatMapConcat
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
@@ -240,7 +236,6 @@ class CreateBarcodeActivity : UpNavigationActivity(), AppAdapter.Listener {
         createBarcodeFromSchema(schema, true)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     private fun createBarcodeForVCard() {
         val uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java) ?: return
@@ -248,10 +243,15 @@ class CreateBarcodeActivity : UpNavigationActivity(), AppAdapter.Listener {
             @Suppress("DEPRECATION") intent?.extras?.get(Intent.EXTRA_STREAM) as? Uri ?: return
         }
         lifecycleScope.launch {
-            val creationFlow = viewModel.readVCard(contentResolver, uri)
-                .map { text -> barcodeParser.parseSchema(barcodeFormat, text) }
-                .flatMapConcat { schema -> createBarcodeFlow(schema, true) }
-            collectCreationFlow(creationFlow)
+            val schema = runCatching {
+                val text = viewModel.readVCard(contentResolver, uri)
+                barcodeParser.parseSchema(barcodeFormat, text)
+            }.getOrElse { throwable ->
+                if (throwable is CancellationException) throw throwable
+                showError(throwable)
+                return@launch
+            }
+            createBarcode(schema, true)
         }
     }
 
@@ -348,23 +348,19 @@ class CreateBarcodeActivity : UpNavigationActivity(), AppAdapter.Listener {
 
     private fun createBarcodeFromSchema(schema: Schema, finish: Boolean = false) {
         lifecycleScope.launch {
-            collectCreationFlow(createBarcodeFlow(schema, finish))
+            createBarcode(schema, finish)
         }
     }
 
-    private fun createBarcodeFlow(schema: Schema, finish: Boolean): Flow<CreateBarcodeNavigation> {
-        val barcode = buildBarcode(schema)
-        return viewModel.saveBarcode(barcode).map { savedBarcode ->
-            CreateBarcodeNavigation(savedBarcode, finish)
+    private suspend fun createBarcode(schema: Schema, finish: Boolean) {
+        val savedBarcode = runCatching {
+            viewModel.saveBarcode(buildBarcode(schema))
+        }.getOrElse { throwable ->
+            if (throwable is CancellationException) throw throwable
+            showError(throwable)
+            return
         }
-    }
-
-    private suspend fun collectCreationFlow(flow: Flow<CreateBarcodeNavigation>) {
-        flow
-            .catch { showError(it) }
-            .collect { navigation ->
-                navigateToBarcodeScreen(navigation.barcode, navigation.finish)
-            }
+        navigateToBarcodeScreen(savedBarcode, finish)
     }
 
     private fun buildBarcode(schema: Schema): Barcode {
@@ -377,11 +373,6 @@ class CreateBarcodeActivity : UpNavigationActivity(), AppAdapter.Listener {
             isGenerated = true
         )
     }
-
-    private data class CreateBarcodeNavigation(
-        val barcode: Barcode,
-        val finish: Boolean
-    )
 
     private fun getCurrentFragment(): BaseCreateBarcodeFragment {
         return supportFragmentManager.findFragmentById(R.id.container) as BaseCreateBarcodeFragment
