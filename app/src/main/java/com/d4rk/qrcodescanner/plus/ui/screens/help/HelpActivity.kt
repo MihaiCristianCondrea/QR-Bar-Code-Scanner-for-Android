@@ -3,8 +3,6 @@ package com.d4rk.qrcodescanner.plus.ui.screens.help
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -31,13 +29,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class HelpActivity : UpNavigationActivity() {
 
     private lateinit var binding: ActivityHelpBinding
-    private val handler = Handler(Looper.getMainLooper())
     private var reviewRequestJob: Job? = null
 
     private val helpViewModel: HelpViewModel by viewModels {
@@ -56,7 +54,10 @@ class HelpActivity : UpNavigationActivity() {
         setupContactSupportCard()
         setupFeedbackFab()
 
-        handler.postDelayed({ binding.fabContactSupport.shrink() }, FAB_AUTO_SHRINK_DELAY_MS)
+        lifecycleScope.launch {
+            delay(FAB_AUTO_SHRINK_DELAY_MS)
+            binding.fabContactSupport.shrink()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -171,13 +172,11 @@ class HelpActivity : UpNavigationActivity() {
         }
         binding.fabContactSupport.isEnabled = false
         reviewRequestJob = lifecycleScope.launch {
-            helpViewModel.requestReviewFlow().collect { result ->
-                when (result) {
-                    is ReviewRequestResult.Success -> handleInAppReview(result.reviewInfo)
-                    is ReviewRequestResult.Error -> {
-                        binding.fabContactSupport.isEnabled = true
-                        launchGooglePlayReviews()
-                    }
+            when (val result = helpViewModel.requestReview()) {
+                is ReviewRequestResult.Success -> handleInAppReview(result.reviewInfo)
+                is ReviewRequestResult.Error -> {
+                    binding.fabContactSupport.isEnabled = true
+                    launchGooglePlayReviews()
                 }
             }
         }
@@ -185,16 +184,15 @@ class HelpActivity : UpNavigationActivity() {
     }
 
     private suspend fun handleInAppReview(reviewInfo: ReviewInfo) {
-        helpViewModel.launchReviewFlow(this, reviewInfo).collect { launchResult ->
-            binding.fabContactSupport.isEnabled = true
-            when (launchResult) {
-                ReviewLaunchResult.Success -> {
-                    Snackbar.make(binding.root, R.string.snack_feedback, Snackbar.LENGTH_SHORT)
-                        .show()
-                }
-
-                is ReviewLaunchResult.Error -> launchGooglePlayReviews()
+        val launchResult = helpViewModel.launchReview(this, reviewInfo)
+        binding.fabContactSupport.isEnabled = true
+        when (launchResult) {
+            ReviewLaunchResult.Success -> {
+                Snackbar.make(binding.root, R.string.snack_feedback, Snackbar.LENGTH_SHORT)
+                    .show()
             }
+
+            is ReviewLaunchResult.Error -> launchGooglePlayReviews()
         }
     }
 
@@ -260,7 +258,6 @@ class HelpActivity : UpNavigationActivity() {
     }
 
     override fun onDestroy() {
-        handler.removeCallbacksAndMessages(null)
         reviewRequestJob?.cancel()
         reviewRequestJob = null
         super.onDestroy()

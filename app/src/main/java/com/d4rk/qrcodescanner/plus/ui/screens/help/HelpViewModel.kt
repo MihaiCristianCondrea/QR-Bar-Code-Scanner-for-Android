@@ -7,28 +7,17 @@ import com.d4rk.qrcodescanner.plus.data.help.HelpRepository
 import com.d4rk.qrcodescanner.plus.data.help.ReviewLaunchResult
 import com.d4rk.qrcodescanner.plus.data.help.ReviewRequestResult
 import com.google.android.play.core.review.ReviewInfo
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 
 class HelpViewModel(private val repository: HelpRepository) : ViewModel() {
 
-    fun requestReviewFlow(): Flow<ReviewRequestResult> {
-        return repository.requestReviewFlow().catch { throwable ->
-            if (throwable is CancellationException) {
-                throw throwable
-            }
-            emit(ReviewRequestResult.Error(throwable))
-        }
+    suspend fun requestReview(): ReviewRequestResult {
+        return runCatching { repository.requestReview() }
+            .getOrElse { throwable -> ReviewRequestResult.Error(throwable) }
     }
 
-    fun launchReviewFlow(activity: Activity, reviewInfo: ReviewInfo): Flow<ReviewLaunchResult> {
-        return repository.launchReviewFlow(activity, reviewInfo).catch { throwable ->
-            if (throwable is CancellationException) {
-                throw throwable
-            }
-            emit(ReviewLaunchResult.Error(throwable))
-        }
+    suspend fun launchReview(activity: Activity, reviewInfo: ReviewInfo): ReviewLaunchResult {
+        return runCatching { repository.launchReview(activity, reviewInfo) }
+            .getOrElse { throwable -> ReviewLaunchResult.Error(throwable) }
     }
 }
 

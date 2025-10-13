@@ -5,11 +5,9 @@ import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.conflate
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
 
 class HelpRepository(
     private val reviewManager: ReviewManager,
@@ -17,47 +15,45 @@ class HelpRepository(
     private val mainDispatcher: CoroutineDispatcher = Dispatchers.Main
 ) {
 
-    fun requestReviewFlow(): Flow<ReviewRequestResult> = callbackFlow {
-        val requestTask = reviewManager.requestReviewFlow()
-        requestTask.addOnCompleteListener { task ->
-            val result = if (task.isSuccessful) {
-                val reviewInfo = task.result
-                if (reviewInfo != null) {
-                    ReviewRequestResult.Success(reviewInfo)
-                } else {
-                    ReviewRequestResult.Error(IllegalStateException("ReviewInfo is null"))
+    suspend fun requestReview(): ReviewRequestResult = withContext(ioDispatcher) {
+        suspendCancellableCoroutine { continuation ->
+            val requestTask = reviewManager.requestReviewFlow()
+            requestTask.addOnCompleteListener { task ->
+                if (!continuation.isActive) {
+                    return@addOnCompleteListener
                 }
-            } else {
-                val exception = task.exception ?: Exception("Failed to request review flow")
-                ReviewRequestResult.Error(exception)
+                if (task.isSuccessful) {
+                    val reviewInfo = task.result
+                    if (reviewInfo != null) {
+                        continuation.resume(ReviewRequestResult.Success(reviewInfo))
+                    } else {
+                        continuation.resume(ReviewRequestResult.Error(IllegalStateException("ReviewInfo is null")))
+                    }
+                } else {
+                    val exception = task.exception ?: Exception("Failed to request review flow")
+                    continuation.resume(ReviewRequestResult.Error(exception))
+                }
             }
-            trySend(result).isSuccess
-            close()
         }
-
-        awaitClose { }
     }
-        .flowOn(ioDispatcher)
-        .conflate()
 
-    fun launchReviewFlow(activity: Activity, reviewInfo: ReviewInfo): Flow<ReviewLaunchResult> =
-        callbackFlow {
-            val launchTask = reviewManager.launchReviewFlow(activity, reviewInfo)
-            launchTask.addOnCompleteListener { task ->
-                val result = if (task.isSuccessful) {
-                    ReviewLaunchResult.Success
-                } else {
-                    val exception = task.exception ?: Exception("Failed to launch review flow")
-                    ReviewLaunchResult.Error(exception)
+    suspend fun launchReview(activity: Activity, reviewInfo: ReviewInfo): ReviewLaunchResult =
+        withContext(mainDispatcher) {
+            suspendCancellableCoroutine { continuation ->
+                val launchTask = reviewManager.launchReviewFlow(activity, reviewInfo)
+                launchTask.addOnCompleteListener { task ->
+                    if (!continuation.isActive) {
+                        return@addOnCompleteListener
+                    }
+                    if (task.isSuccessful) {
+                        continuation.resume(ReviewLaunchResult.Success)
+                    } else {
+                        val exception = task.exception ?: Exception("Failed to launch review flow")
+                        continuation.resume(ReviewLaunchResult.Error(exception))
+                    }
                 }
-                trySend(result).isSuccess
-                close()
             }
-
-            awaitClose { }
         }
-            .flowOn(mainDispatcher)
-            .conflate()
 }
 
 sealed interface ReviewRequestResult {
