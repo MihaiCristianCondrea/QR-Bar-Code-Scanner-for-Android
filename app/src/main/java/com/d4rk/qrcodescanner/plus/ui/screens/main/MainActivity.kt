@@ -22,9 +22,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
-import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
@@ -54,8 +52,10 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.d4rk.qrcodescanner.plus.utils.helpers.InAppUpdateHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.ReviewHelper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -113,26 +113,7 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this)
         initNavigationController()
         observeViewModel()
-
-        lifecycle.addObserver(object : DefaultLifecycleObserver {
-            override fun onResume(owner: LifecycleOwner) {
-                val analyticsEnabled =
-                    PreferenceManager.getDefaultSharedPreferences(this@MainActivity).getBoolean(
-                        getString(R.string.key_firebase), true
-                    )
-                FirebaseAnalytics.getInstance(this@MainActivity)
-                    .setAnalyticsCollectionEnabled(analyticsEnabled)
-                FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = analyticsEnabled
-
-                if (binding.adView.isVisible) {
-                    binding.adView.loadAd(adRequest)
-                }
-
-                checkForUpdates()
-                checkInAppReview()
-                startupScreen()
-            }
-        })
+        observeLifecycleEvents()
 
     }
 
@@ -215,6 +196,19 @@ class MainActivity : AppCompatActivity() {
                     applyThemeAndLanguage(uiState)
                     configureNavigation(uiState)
                 }
+            }
+        }
+    }
+
+    private fun observeLifecycleEvents() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                val analyticsEnabled = fetchAnalyticsEnabled()
+                updateAnalyticsCollection(analyticsEnabled)
+                refreshAdIfVisible()
+                checkForUpdates()
+                checkInAppReview()
+                showStartupScreenIfNeeded()
             }
         }
     }
@@ -329,29 +323,32 @@ class MainActivity : AppCompatActivity() {
         return resources.configuration.smallestScreenWidthDp >= 600
     }
 
-    private fun checkForUpdates() {
-        lifecycleScope.launch {
-            InAppUpdateHelper.performUpdate(
-                appUpdateManager = AppUpdateManagerFactory.create(this@MainActivity),
-                updateResultLauncher = updateResultLauncher
-            )
-        }
+    private suspend fun checkForUpdates() {
+        InAppUpdateHelper.performUpdate(
+            appUpdateManager = AppUpdateManagerFactory.create(this@MainActivity),
+            updateResultLauncher = updateResultLauncher
+        )
     }
 
-    private fun checkInAppReview() {
-        lifecycleScope.launch {
+    private suspend fun checkInAppReview() {
+        val (sessionCount, hasPrompted) = withContext(Dispatchers.IO) {
             val sessionCount = engagementRepository.sessionCount.first()
             val hasPrompted = engagementRepository.hasPromptedReview.first()
+            sessionCount to hasPrompted
+        }
 
-            ReviewHelper.launchInAppReviewIfEligible(
-                activity = this@MainActivity,
-                sessionCount = sessionCount,
-                hasPromptedBefore = hasPrompted,
-                scope = this
-            ) {
-                launch { engagementRepository.setHasPromptedReview(true) }
+        ReviewHelper.launchInAppReviewIfEligible(
+            activity = this,
+            sessionCount = sessionCount,
+            hasPromptedBefore = hasPrompted,
+            scope = lifecycleScope
+        ) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                engagementRepository.setHasPromptedReview(true)
             }
+        }
 
+        withContext(Dispatchers.IO) {
             engagementRepository.incrementSessionCount()
         }
     }
@@ -392,10 +389,35 @@ class MainActivity : AppCompatActivity() {
         bottomSheetDialog.show()
     }
 
-    private fun startupScreen() {
-        val startupPreference = getSharedPreferences("startup", MODE_PRIVATE)
-        if (startupPreference.getBoolean("value", true)) {
+    private suspend fun fetchAnalyticsEnabled(): Boolean {
+        return withContext(Dispatchers.IO) {
+            PreferenceManager.getDefaultSharedPreferences(this@MainActivity).getBoolean(
+                getString(R.string.key_firebase), true
+            )
+        }
+    }
+
+    private fun updateAnalyticsCollection(isEnabled: Boolean) {
+        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(isEnabled)
+        FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = isEnabled
+    }
+
+    private fun refreshAdIfVisible() {
+        if (binding.adView.isVisible) {
+            binding.adView.loadAd(adRequest)
+        }
+    }
+
+    private suspend fun showStartupScreenIfNeeded() {
+        val shouldShowStartup = withContext(Dispatchers.IO) {
+            val startupPreference = getSharedPreferences("startup", MODE_PRIVATE)
+            if (!startupPreference.getBoolean("value", true)) {
+                return@withContext false
+            }
             startupPreference.edit { putBoolean("value", false) }
+            true
+        }
+        if (shouldShowStartup) {
             startActivity(Intent(this, StartupActivity::class.java))
         }
     }
