@@ -330,12 +330,76 @@ fun <T : Any> List<PreferenceListItem<T>>.withMiddleNativeAd(
     ad: PreferenceListItem.NativeAd = PreferenceListItem.NativeAd(),
     random: Random = Random.Default
 ): List<PreferenceListItem<T>> {
-    if (size < MIN_ITEMS_FOR_AD) return this
-    val upperBound = size - 1
-    val insertionIndex = random.nextInt(1, upperBound)
-    return toMutableList().also { items ->
-        items.add(insertionIndex, ad)
+    if (isEmpty()) return this
+
+    val result = mutableListOf<PreferenceListItem<T>>()
+    var index = 0
+
+    while (index < size) {
+        val item = this[index]
+        if (item is PreferenceListItem.Category) {
+            result += item
+            index++
+            val sectionItems = mutableListOf<PreferenceListItem<T>>()
+            while (index < size && this[index] !is PreferenceListItem.Category) {
+                sectionItems += this[index]
+                index++
+            }
+            result += sectionItems.withSectionAds(ad, random)
+        } else {
+            val sectionItems = mutableListOf<PreferenceListItem<T>>()
+            while (index < size && this[index] !is PreferenceListItem.Category) {
+                sectionItems += this[index]
+                index++
+            }
+            result += sectionItems.withSectionAds(ad, random)
+        }
     }
+
+    return result
+}
+
+private fun <T : Any> List<PreferenceListItem<T>>.withSectionAds(
+    adTemplate: PreferenceListItem.NativeAd,
+    random: Random
+): List<PreferenceListItem<T>> {
+    if (size < MIN_ITEMS_FOR_AD) return this
+
+    val candidateIndices = (1 until size - 1).toMutableList()
+    if (candidateIndices.isEmpty()) return this
+
+    val adPositions = mutableListOf<Int>()
+    val firstAdIndex = candidateIndices.random(random)
+    adPositions += firstAdIndex
+
+    if (size > MIN_ITEMS_FOR_SECOND_AD) {
+        candidateIndices.removeAll { index ->
+            kotlin.math.abs(index - firstAdIndex) < MIN_DISTANCE_BETWEEN_ADS
+        }
+
+        if (candidateIndices.isNotEmpty()) {
+            adPositions += candidateIndices.random(random)
+        }
+    }
+
+    if (adPositions.isEmpty()) return this
+
+    val sortedPositions = adPositions.sorted()
+    val iterator = sortedPositions.iterator()
+    var currentAdIndex = if (iterator.hasNext()) iterator.next() else null
+
+    val result = mutableListOf<PreferenceListItem<T>>()
+    for ((index, item) in this.withIndex()) {
+        while (currentAdIndex != null && currentAdIndex == index) {
+            result += adTemplate.copy()
+            currentAdIndex = if (iterator.hasNext()) iterator.next() else null
+        }
+        result += item
+    }
+
+    return result
 }
 
 private const val MIN_ITEMS_FOR_AD = 3
+private const val MIN_ITEMS_FOR_SECOND_AD = 10
+private const val MIN_DISTANCE_BETWEEN_ADS = 4
