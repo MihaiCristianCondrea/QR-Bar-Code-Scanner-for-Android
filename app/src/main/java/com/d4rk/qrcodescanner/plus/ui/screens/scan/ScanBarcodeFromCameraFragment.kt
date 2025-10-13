@@ -148,8 +148,7 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         cameraProvider = null
     }
 
-    override fun onRequestPermissionsResult(
-        // FIXME: This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+    override fun onRequestPermissionsResult( // FIXME: This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray,

@@ -6,14 +6,9 @@
 
         <androidx.preference.Preference
             app:icon="@drawable/ic_notifications_tinted"
-            app:key="@string/key_settings_overview_notifications"
+            app:key="@string/key_notifications_settings"
             app:summary="@string/summary_settings_notifications_overview"
-            app:title="@string/notifications">
-
-            <intent
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.NotificationsSettingsActivity"
-                android:targetPackage="com.d4rk.qrcodescanner.plus" />
-        </androidx.preference.Preference>
+            app:title="@string/notifications"/>
 
         <androidx.preference.Preference
             app:icon="@drawable/ic_appearance_tinted"
