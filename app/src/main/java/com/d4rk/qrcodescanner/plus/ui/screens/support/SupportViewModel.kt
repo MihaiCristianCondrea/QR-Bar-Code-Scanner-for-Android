@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.d4rk.qrcodescanner.plus.data.support.SupportRepository
 import com.d4rk.qrcodescanner.plus.domain.support.InitBillingClientUseCase
 import com.d4rk.qrcodescanner.plus.domain.support.InitMobileAdsUseCase
@@ -12,6 +13,7 @@ import com.d4rk.qrcodescanner.plus.domain.support.QueryProductDetailsUseCase
 import com.d4rk.qrcodescanner.plus.domain.support.RefreshPurchasesUseCase
 import com.d4rk.qrcodescanner.plus.domain.support.SetPurchaseStatusListenerUseCase
 import com.google.android.gms.ads.AdRequest
+import kotlinx.coroutines.launch
 
 class SupportViewModel(
     private val initBillingClientUseCase: InitBillingClientUseCase,
@@ -23,19 +25,50 @@ class SupportViewModel(
 ) : ViewModel() {
 
     private val purchaseStatus = MutableLiveData<SupportPurchaseStatus>()
+    private val productPrices = MutableLiveData<Map<String, String>>()
+    private val uiMessage = MutableLiveData<SupportUiMessage?>()
 
-    fun initBillingClient(onConnected: (() -> Unit)? = null) {
-        initBillingClientUseCase {
+    fun initializeSupport(productIds: List<String>) {
+        viewModelScope.launch {
+            val isConnected = runCatching { initBillingClientUseCase() }
+                .getOrElse {
+                    uiMessage.postValue(SupportUiMessage.BILLING_CONNECTION_FAILED)
+                    return@launch
+                }
+
+            if (!isConnected) {
+                uiMessage.postValue(SupportUiMessage.BILLING_CONNECTION_FAILED)
+                return@launch
+            }
+
             refreshPurchasesUseCase()
-            onConnected?.invoke()
-        }
-    }
 
-    fun queryProductDetails(
-        productIds: List<String>,
-        listener: SupportRepository.OnProductDetailsListener,
-    ) {
-        queryProductDetailsUseCase(productIds, listener)
+            val productDetails = runCatching { queryProductDetailsUseCase(productIds) }
+                .getOrElse {
+                    uiMessage.postValue(SupportUiMessage.PRODUCT_DETAILS_UNAVAILABLE)
+                    return@launch
+                }
+
+            if (productDetails.isEmpty()) {
+                uiMessage.postValue(SupportUiMessage.PRODUCT_DETAILS_UNAVAILABLE)
+                return@launch
+            }
+
+            val prices = productDetails.mapNotNull { details ->
+                val price = details.oneTimePurchaseOfferDetails?.formattedPrice.orEmpty()
+                if (price.isBlank()) {
+                    null
+                } else {
+                    details.productId to price
+                }
+            }.toMap()
+
+            if (prices.isEmpty()) {
+                uiMessage.postValue(SupportUiMessage.PRODUCT_DETAILS_UNAVAILABLE)
+            } else {
+                productPrices.postValue(prices)
+            }
+        }
     }
 
     fun initiatePurchase(productId: String): SupportRepository.BillingFlowLauncher? {
@@ -47,6 +80,10 @@ class SupportViewModel(
     }
 
     fun getPurchaseStatus(): LiveData<SupportPurchaseStatus> = purchaseStatus
+
+    fun getProductPrices(): LiveData<Map<String, String>> = productPrices
+
+    fun getUiMessage(): LiveData<SupportUiMessage?> = uiMessage
 
     fun registerPurchaseStatusListener() {
         setPurchaseStatusListenerUseCase(
@@ -75,7 +112,13 @@ class SupportViewModel(
     }
 
     fun refreshPurchases() {
-        refreshPurchasesUseCase()
+        viewModelScope.launch {
+            refreshPurchasesUseCase()
+        }
+    }
+
+    fun consumeUiMessage() {
+        uiMessage.value = null
     }
 }
 
@@ -102,4 +145,9 @@ class SupportViewModelFactory(
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
+}
+
+enum class SupportUiMessage {
+    BILLING_CONNECTION_FAILED,
+    PRODUCT_DETAILS_UNAVAILABLE,
 }

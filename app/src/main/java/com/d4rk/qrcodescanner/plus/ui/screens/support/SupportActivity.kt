@@ -39,12 +39,14 @@ class SupportActivity : UpNavigationActivity() {
 
         supportViewModel.registerPurchaseStatusListener()
         supportViewModel.getPurchaseStatus().observe(this, this::handlePurchaseStatus)
+        supportViewModel.getProductPrices().observe(this, this::handleProductPrices)
+        supportViewModel.getUiMessage().observe(this, this::handleUiMessage)
 
         setupDonationButtons()
         setupSupportLink()
         loadAds()
 
-        supportViewModel.initBillingClient { queryProductDetails() }
+        supportViewModel.initializeSupport(SUPPORT_PRODUCT_IDS)
     }
 
     override fun onResume() {
@@ -80,28 +82,6 @@ class SupportActivity : UpNavigationActivity() {
         binding.bannerAdView.loadAd(adRequest)
     }
 
-    private fun queryProductDetails() {
-        val productIds = listOf(
-            LOW_DONATION_ID,
-            NORMAL_DONATION_ID,
-            HIGH_DONATION_ID,
-            EXTREME_DONATION_ID,
-        )
-
-        supportViewModel.queryProductDetails(productIds) { productDetailsList ->
-            productDetailsList.forEach { productDetails ->
-                val price = productDetails.oneTimePurchaseOfferDetails?.formattedPrice.orEmpty()
-                if (price.isBlank()) return@forEach
-                when (productDetails.productId) {
-                    LOW_DONATION_ID -> binding.buttonLowDonation.text = price
-                    NORMAL_DONATION_ID -> binding.buttonNormalDonation.text = price
-                    HIGH_DONATION_ID -> binding.buttonHighDonation.text = price
-                    EXTREME_DONATION_ID -> binding.buttonExtremeDonation.text = price
-                }
-            }
-        }
-    }
-
     private fun initiatePurchase(productId: String) {
         val launcher = supportViewModel.initiatePurchase(productId)
         if (launcher == null) {
@@ -134,10 +114,34 @@ class SupportActivity : UpNavigationActivity() {
         Toast.makeText(this, messageRes, Toast.LENGTH_LONG).show()
     }
 
+    private fun handleProductPrices(prices: Map<String, String>?) {
+        prices ?: return
+        binding.buttonLowDonation.text = prices[LOW_DONATION_ID] ?: binding.buttonLowDonation.text
+        binding.buttonNormalDonation.text = prices[NORMAL_DONATION_ID] ?: binding.buttonNormalDonation.text
+        binding.buttonHighDonation.text = prices[HIGH_DONATION_ID] ?: binding.buttonHighDonation.text
+        binding.buttonExtremeDonation.text = prices[EXTREME_DONATION_ID] ?: binding.buttonExtremeDonation.text
+    }
+
+    private fun handleUiMessage(message: SupportUiMessage?) {
+        message ?: return
+        val messageRes = when (message) {
+            SupportUiMessage.BILLING_CONNECTION_FAILED -> R.string.support_billing_unavailable
+            SupportUiMessage.PRODUCT_DETAILS_UNAVAILABLE -> R.string.support_product_details_error
+        }
+        Toast.makeText(this, messageRes, Toast.LENGTH_LONG).show()
+        supportViewModel.consumeUiMessage()
+    }
+
     companion object {
         private const val LOW_DONATION_ID = "low_donation"
         private const val NORMAL_DONATION_ID = "normal_donation"
         private const val HIGH_DONATION_ID = "high_donation"
         private const val EXTREME_DONATION_ID = "extreme_donation"
+        private val SUPPORT_PRODUCT_IDS = listOf(
+            LOW_DONATION_ID,
+            NORMAL_DONATION_ID,
+            HIGH_DONATION_ID,
+            EXTREME_DONATION_ID,
+        )
     }
 }

@@ -9,7 +9,7 @@ import com.google.android.gms.ads.AdRequest
  */
 interface SupportRepository {
 
-    fun initBillingClient(onConnected: (() -> Unit)? = null)
+    fun initBillingClient(onConnected: ((Boolean) -> Unit)? = null)
 
     fun queryProductDetails(
         productIds: List<String>,

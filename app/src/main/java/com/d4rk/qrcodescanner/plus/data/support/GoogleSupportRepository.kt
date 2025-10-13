@@ -28,7 +28,7 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
     private val productDetailsCache = ConcurrentHashMap<String, ProductDetails>()
     private val grantedProductIds = Collections.synchronizedSet(mutableSetOf<String>())
     private val pendingAcknowledgeTokens = Collections.synchronizedSet(mutableSetOf<String>())
-    private val pendingConnectionCallbacks = CopyOnWriteArrayList<() -> Unit>()
+    private val pendingConnectionCallbacks = CopyOnWriteArrayList<(Boolean) -> Unit>()
     private val isConnecting = AtomicBoolean(false)
     private val adsInitialized = AtomicBoolean(false)
     @Volatile
@@ -50,9 +50,11 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
         )
         .build()
 
-    override fun initBillingClient(onConnected: (() -> Unit)?) {
+    override fun initBillingClient(onConnected: ((Boolean) -> Unit)?) {
         if (billingClient.isReady) {
-            onConnected?.let { callback -> mainHandler.post(callback) }
+            onConnected?.let { callback ->
+                mainHandler.post { callback(true) }
+            }
             return
         }
 
@@ -66,18 +68,27 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
             override fun onBillingSetupFinished(billingResult: BillingResult) {
                 isConnecting.set(false)
                 if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                    pendingConnectionCallbacks.forEach { callback -> mainHandler.post(callback) }
+                    dispatchConnectionResult(isConnected = true)
                 } else {
                     Log.w(TAG, "Billing setup failed: ${billingResult.debugMessage}")
+                    dispatchConnectionResult(isConnected = false)
                 }
-                pendingConnectionCallbacks.clear()
             }
 
             override fun onBillingServiceDisconnected() {
                 isConnecting.set(false)
                 Log.w(TAG, "Billing service disconnected")
+                dispatchConnectionResult(isConnected = false)
             }
         })
+    }
+
+    private fun dispatchConnectionResult(isConnected: Boolean) {
+        val callbacks = pendingConnectionCallbacks.toList()
+        pendingConnectionCallbacks.clear()
+        callbacks.forEach { callback ->
+            mainHandler.post { callback(isConnected) }
+        }
     }
 
     override fun queryProductDetails(

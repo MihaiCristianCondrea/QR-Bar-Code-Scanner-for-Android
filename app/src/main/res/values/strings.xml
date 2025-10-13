@@ -318,6 +318,8 @@
     <string name="support_purchase_restored">Your support has been restored.</string>
     <string name="support_purchase_revoked">Your support purchase was revoked.</string>
     <string name="support_purchase_error">Something went wrong. Please try again shortly.</string>
+    <string name="support_billing_unavailable">We couldn't connect to Google Play Billing. Please try again soon.</string>
+    <string name="support_product_details_error">Donation options are temporarily unavailable. Please try again later.</string>
 
     <!-- Advertisement -->
     <string name="ad_attribution">Ad</string>
