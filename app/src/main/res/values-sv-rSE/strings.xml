@@ -24,6 +24,7 @@
     <!-- Scanner tab screen -->
     <string name="scan">Skanna</string>
     <string name="scan_image">Skanna bild</string>
+    <string name="scan_barcode_from_image_not_found">Ingen streckkod kunde upptäckas på den här bilden.</string>
     <string name="flash">Blixt</string>
 
     <!-- Scan Image screen -->

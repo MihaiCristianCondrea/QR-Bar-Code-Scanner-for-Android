@@ -24,6 +24,7 @@
     <!-- Scanner tab screen -->
     <string name="scan">Skanuj</string>
     <string name="scan_image">Skanuj obraz</string>
+    <string name="scan_barcode_from_image_not_found">Nie wykryto kodu kreskowego na tym obrazie.</string>
     <string name="flash">Lampa błyskowa</string>
 
     <!-- Scan Image screen -->

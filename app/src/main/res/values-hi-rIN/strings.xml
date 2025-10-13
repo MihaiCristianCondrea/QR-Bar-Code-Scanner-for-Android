@@ -24,6 +24,7 @@
     <!-- Scanner tab screen -->
     <string name="scan">स्कैन करें</string>
     <string name="scan_image">छवि स्कैन करें</string>
+    <string name="scan_barcode_from_image_not_found">इस छवि में कोई बारकोड नहीं मिला।</string>
     <string name="flash">फ्लैश</string>
 
     <!-- Scan Image screen -->
