@@ -8,10 +8,10 @@ import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 sealed interface ConsentRequestOutcome {
     data class Success(
@@ -24,47 +24,67 @@ sealed interface ConsentRequestOutcome {
 
 class StartupConsentRepository(
     context: Context,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val consentDispatcher: CoroutineDispatcher = Dispatchers.Main,
 ) {
 
     private val consentInformation: ConsentInformation =
         UserMessagingPlatform.getConsentInformation(context)
 
-    fun requestConsent(activity: Activity): Flow<ConsentRequestOutcome> = callbackFlow {
-        val params = ConsentRequestParameters.Builder()
-            .setTagForUnderAgeOfConsent(false)
-            .build()
-        consentInformation.requestConsentInfoUpdate(
-            activity,
-            params,
-            {
-                trySend(
-                    ConsentRequestOutcome.Success(
-                        consentStatus = consentInformation.consentStatus,
-                        isConsentFormAvailable = consentInformation.isConsentFormAvailable,
-                    )
+    suspend fun requestConsent(activity: Activity): ConsentRequestOutcome =
+        withContext(consentDispatcher) {
+            suspendCancellableCoroutine { continuation ->
+                val params = ConsentRequestParameters.Builder()
+                    .setTagForUnderAgeOfConsent(false)
+                    .build()
+                consentInformation.requestConsentInfoUpdate(
+                    activity,
+                    params,
+                    {
+                        if (continuation.isActive) {
+                            continuation.resume(
+                                ConsentRequestOutcome.Success(
+                                    consentStatus = consentInformation.consentStatus,
+                                    isConsentFormAvailable = consentInformation.isConsentFormAvailable,
+                                )
+                            )
+                        }
+                    },
+                    { formError ->
+                        if (continuation.isActive) {
+                            continuation.resume(
+                                ConsentRequestOutcome.Failure(formError.message)
+                            )
+                        }
+                    }
                 )
-                close()
-            },
-            { formError ->
-                trySend(ConsentRequestOutcome.Failure(formError.message))
-                close()
-            }
-        )
-        awaitClose { }
-    }.flowOn(ioDispatcher)
 
-    fun loadConsentForm(activity: Activity): Flow<ConsentForm> = callbackFlow {
-        UserMessagingPlatform.loadConsentForm(
-            activity,
-            { consentForm ->
-                trySend(consentForm)
-                close()
-            },
-            { formError ->
-                close(Exception(formError.message))
+                continuation.invokeOnCancellation {
+                    // There is no cancellation API for the consent request, but we avoid
+                    // resuming the continuation after cancellation by checking isActive.
+                }
             }
-        )
-        awaitClose { }
-    }.flowOn(ioDispatcher)
+        }
+
+    suspend fun loadConsentForm(activity: Activity): ConsentForm =
+        withContext(consentDispatcher) {
+            suspendCancellableCoroutine { continuation ->
+                UserMessagingPlatform.loadConsentForm(
+                    activity,
+                    { consentForm ->
+                        if (continuation.isActive) {
+                            continuation.resume(consentForm)
+                        }
+                    },
+                    { formError ->
+                        if (continuation.isActive) {
+                            continuation.resumeWithException(Exception(formError.message))
+                        }
+                    }
+                )
+
+                continuation.invokeOnCancellation {
+                    // No explicit cancellation API is provided by UMP.
+                }
+            }
+        }
 }

@@ -15,10 +15,6 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -55,7 +51,7 @@ class StartupViewModel(
 
     fun onAgreeClicked() {
         viewModelScope.launch {
-            _events.emit(StartupUiEvent.NavigateToMain)
+            emitNavigation()
         }
     }
 
@@ -66,28 +62,28 @@ class StartupViewModel(
     private fun requestConsent(activity: Activity, force: Boolean = false) {
         if (!force && consentRequestJob?.isActive == true) return
         consentRequestJob?.cancel()
-        consentRequestJob = consentRepository.requestConsent(activity)
-            .onStart {
-                _uiState.update { current -> current.copy(isLoading = true, errorMessage = null) }
-            }
-            .onEach { outcome ->
-                when (outcome) {
-                    is ConsentRequestOutcome.Success -> handleConsentSuccess(activity, outcome)
-                    is ConsentRequestOutcome.Failure -> handleConsentFailure(outcome.message)
+        consentRequestJob = viewModelScope.launch {
+            _uiState.update { current -> current.copy(isLoading = true, errorMessage = null) }
+
+            val outcome = runCatching { consentRepository.requestConsent(activity) }
+                .getOrElse { throwable ->
+                    _uiState.update { current ->
+                        current.copy(
+                            isLoading = false,
+                            errorMessage = throwable.message ?: throwable.localizedMessage,
+                        )
+                    }
+                    return@launch
                 }
+
+            when (outcome) {
+                is ConsentRequestOutcome.Success -> handleConsentSuccess(activity, outcome)
+                is ConsentRequestOutcome.Failure -> handleConsentFailure(outcome.message)
             }
-            .catch { throwable ->
-                _uiState.update { current ->
-                    current.copy(
-                        isLoading = false,
-                        errorMessage = throwable.message ?: throwable.localizedMessage,
-                    )
-                }
-            }
-            .launchIn(viewModelScope)
+        }
     }
 
-    private fun handleConsentSuccess(
+    private suspend fun handleConsentSuccess(
         activity: Activity,
         outcome: ConsentRequestOutcome.Success,
     ) {
@@ -126,28 +122,24 @@ class StartupViewModel(
         }
     }
 
-    private fun loadConsentForm(activity: Activity) {
-        viewModelScope.launch {
-            consentRepository.loadConsentForm(activity)
-                .catch { throwable ->
-                    _uiState.update { current ->
-                        current.copy(
-                            isLoading = false,
-                            errorMessage = throwable.message ?: throwable.localizedMessage,
-                        )
-                    }
+    private suspend fun loadConsentForm(activity: Activity) {
+        val consentForm = runCatching { consentRepository.loadConsentForm(activity) }
+            .getOrElse { throwable ->
+                _uiState.update { current ->
+                    current.copy(
+                        isLoading = false,
+                        errorMessage = throwable.message ?: throwable.localizedMessage,
+                    )
                 }
-                .collect { consentForm ->
-                    _uiState.update { current -> current.copy(isLoading = false) }
-                    _events.emit(StartupUiEvent.ShowConsentForm(consentForm))
-                }
-        }
+                return
+            }
+
+        _uiState.update { current -> current.copy(isLoading = false) }
+        _events.emit(StartupUiEvent.ShowConsentForm(consentForm))
     }
 
-    private fun emitNavigation() {
-        viewModelScope.launch {
-            _events.emit(StartupUiEvent.NavigateToMain)
-        }
+    private suspend fun emitNavigation() {
+        _events.emit(StartupUiEvent.NavigateToMain)
     }
 }
 
