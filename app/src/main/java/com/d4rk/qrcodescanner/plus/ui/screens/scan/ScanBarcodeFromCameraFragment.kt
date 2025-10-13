@@ -57,12 +57,13 @@ import com.google.mlkit.vision.common.InputImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
@@ -425,30 +426,24 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private fun saveScannedBarcode(barcode: Barcode) {
-        persistBarcode(barcode)
-            .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
-            .onEach { id ->
+        viewLifecycleOwner.lifecycleScope.launch {
+            val result = runCatching { persistBarcode(barcode) }
+            lastResult = barcode
+            pendingBarcode = null
+            result.onSuccess { id ->
                 val savedBarcode = barcode.copy(id = id)
-                lastResult = barcode
-                pendingBarcode = null
                 if (settings.continuousScanning) {
                     scheduleResumeScanning(showMessage = true)
                 } else {
                     navigateToBarcodeScreen(savedBarcode)
                 }
-            }
-            .catch { throwable ->
-                lastResult = barcode
-                pendingBarcode = null
-                showError(throwable)
-            }
-            .launchIn(viewLifecycleOwner.lifecycleScope)
+            }.onFailure(::showError)
+        }
     }
 
-    private fun persistBarcode(barcode: Barcode) = flow {
-        val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
-        emit(id)
-    }.flowOn(Dispatchers.IO)
+    private suspend fun persistBarcode(barcode: Barcode): Long = withContext(Dispatchers.IO) {
+        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
+    }
 
     private fun scheduleResumeScanning(showMessage: Boolean) {
         resumeScanningJob?.cancel()
