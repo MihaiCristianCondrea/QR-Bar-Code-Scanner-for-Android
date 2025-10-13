@@ -41,6 +41,7 @@ data class ScanBarcodeFromFileUiState(
 sealed interface ScanBarcodeFromFileEvent {
     data class NavigateToBarcode(val barcode: Barcode) : ScanBarcodeFromFileEvent
     data class ShowError(val throwable: Throwable) : ScanBarcodeFromFileEvent
+    data object ShowNoBarcodeFound : ScanBarcodeFromFileEvent
 }
 
 class ScanBarcodeFromFileViewModel(
@@ -112,7 +113,9 @@ class ScanBarcodeFromFileViewModel(
 
     private suspend fun handleScanFailure(throwable: Throwable) {
         completeScan()
-        if (throwable !is NotFoundException) {
+        if (throwable is NotFoundException) {
+            _events.emit(ScanBarcodeFromFileEvent.ShowNoBarcodeFound)
+        } else {
             _events.emit(ScanBarcodeFromFileEvent.ShowError(throwable))
         }
     }

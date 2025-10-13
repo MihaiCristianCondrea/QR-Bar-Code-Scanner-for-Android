@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.ext.SdkExtensions
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,6 +18,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.ads.AdUtils
 import com.d4rk.qrcodescanner.plus.databinding.ActivityScanBarcodeFromFileBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
 import com.d4rk.qrcodescanner.plus.di.barcodeImageScanner
@@ -68,6 +70,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         binding.buttonScan.isEnabled = false
+        AdUtils.loadBanner(binding.nativeAdView)
         observeViewModel()
         val restored = savedInstanceState?.getString(STATE_CURRENT_IMAGE_URI)?.let {
             handlePickedImage(it.toUri())
@@ -214,10 +217,19 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
                             )
 
                             is ScanBarcodeFromFileEvent.ShowError -> showError(event.throwable)
+                            ScanBarcodeFromFileEvent.ShowNoBarcodeFound -> showNoBarcodeFoundMessage()
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun showNoBarcodeFoundMessage() {
+        Toast.makeText(
+            this,
+            R.string.scan_barcode_from_image_not_found,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

@@ -6,23 +6,40 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_image_preview"
         style="@style/Widget.Material3.CardView.Elevated"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:padding="@dimen/default_margin"
         app:cardCornerRadius="24dp"
-        app:layout_constraintBottom_toTopOf="@id/button_scan"
+        app:layout_constraintBottom_toTopOf="@id/native_ad_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_preview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
             android:scaleType="fitCenter"
             tools:ignore="ImageContrastCheck"
             tools:src="@drawable/ic_launcher_foreground" />
     </com.google.android.material.card.MaterialCardView>
+
+    <com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
+        android:id="@+id/native_ad_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/button_scan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_image_preview"
+        app:nativeAdLayout="@layout/ad_scan_from_file" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_scan"
@@ -30,10 +47,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="@dimen/default_margin"
         android:enabled="false"
         android:paddingHorizontal="@dimen/default_margin_very_large"
         android:text="@string/scan"
+        app:layout_constraintTop_toBottomOf="@id/native_ad_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

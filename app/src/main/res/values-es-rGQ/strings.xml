@@ -24,6 +24,7 @@
     <!-- Scanner tab screen -->
     <string name="scan">Escanear</string>
     <string name="scan_image">Escanear imagen</string>
+    <string name="scan_barcode_from_image_not_found">No se pudo detectar ningún código de barras en esta imagen.</string>
     <string name="flash">Flash</string>
 
     <!-- Scan Image screen -->

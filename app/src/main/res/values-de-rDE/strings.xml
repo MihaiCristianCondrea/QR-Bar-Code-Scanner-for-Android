@@ -24,6 +24,7 @@
     <!-- Scanner tab screen -->
     <string name="scan">Scannen</string>
     <string name="scan_image">Bild scannen</string>
+    <string name="scan_barcode_from_image_not_found">In diesem Bild konnte kein Barcode erkannt werden.</string>
     <string name="flash">Blitz</string>
 
     <!-- Scan Image screen -->
