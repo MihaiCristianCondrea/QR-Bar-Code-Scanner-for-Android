@@ -21,7 +21,7 @@ android {
         minSdk = 23
         targetSdk = 36
         versionCode = 32
-        versionName = "3.1.1-pre-1"
+        versionName = "4.0.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         @Suppress("UnstableApiUsage")
         androidResources.localeFilters += listOf(

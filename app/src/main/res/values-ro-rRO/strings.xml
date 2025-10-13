@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Scanează cu ușurință toate tipurile de coduri QR și coduri de bare. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Bun venit</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Citește și acceptă Termenii și condițiile și Politica de confidențialitate pentru a continua.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Răsfoiește <i><u>Termenii și condițiile</u></i> și <i><u>Politica de confidențialitate</u></i></string>
+    <string name="agree">Acceptă</string>
+    <string name="tooltip_agree">Acceptă termenii și condițiile.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Meniu</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Setări</string>
+    <string name="help_and_feedback">Ajutor și feedback</string>
+    <string name="updates">Actualizări</string>
+    <string name="share">Distribuie</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Scanează</string>
+    <string name="scan_image">Scanează imagine</string>
+    <string name="flash">Bliț</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Rotește la stânga</string>
+    <string name="rotate_right">Rotește la dreapta</string>
+    <string name="choose_another_image">Alege altă imagine</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Creează</string>
+    <string name="qr_code">Cod QR</string>
+    <string name="content_from_clipboard">Conținut din clipboard</string>
+    <string name="text">Text</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Locație</string>
+    <string name="contact_v_card">Contact (VCard)</string>
+
+    <string name="more_qr_codes">Mai multe coduri QR</string>
+    <string name="barcode">Cod de bare</string>
+    <string name="all_barcodes_codes">Coduri de bare și alte coduri 2D</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Creează cod QR</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Contact (MeCard)</string>
+    <string name="event">Eveniment</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternativ:</string>
+    <string name="summary_alternatively_url">- Deschide browserul\n- Încarcă un site web\n- Apasă pe „Distribuie” din meniu\n- Selectează această aplicație.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Criptare</string>
+    <string name="network_name">Nume rețea</string>
+    <string name="password">Parolă</string>
+    <string name="hidden">Ascunsă</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Latitudine</string>
+    <string name="longitude">Longitudine</string>
+    <string name="altitude">Altitudine (opțional)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Contacte</string>
+    <string name="first_name">Prenume</string>
+    <string name="last_name">Nume</string>
+    <string name="organization">Organizație</string>
+    <string name="job">Funcție</string>
+    <string name="email">E-mail</string>
+    <string name="phone">Telefon</string>
+    <string name="fax">Fax</string>
+    <string name="website">Site web</string>
+    <string name="summary_alternatively_contact">- Deschide aplicația de contacte\n- Deschide un contact existent sau creează unul nou\n- Apasă pe „Distribuie” din meniu\n- Selectează această aplicație</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Tip</string>
+    <string name="algorithm">Algoritm</string>
+    <string name="issuer">Emitent</string>
+    <string name="account">Cont</string>
+    <string name="period">Perioadă</string>
+    <string name="hint_counter">Contor</string>
+    <string name="secret">Secret</string>
+    <string name="random_secret">Secret aleatoriu</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Titlu</string>
+    <string name="organizer">Organizator</string>
+    <string name="summary">Rezumat</string>
+    <string name="start_date">Dată început</string>
+    <string name="end_date">Dată sfârșit</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Subiect</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Mesaj</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Criptomonedă</string>
+    <string name="receiver_address">Adresă destinatar</string>
+    <string name="amount">Sumă</string>
+    <string name="label">Etichetă</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Marcaj</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">Aplicație</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Crește luminozitatea</string>
+    <string name="decrease_brightness">Scade luminozitatea</string>
+    <string name="add_to_favorites">Adaugă la favorite</string>
+    <string name="delete">Șterge</string>
+    <string name="share_as_text">Distribuie ca text</string>
+    <string name="copy_to_clipboard">Copiază în clipboard</string>
+    <string name="save_as_text">Salvează ca text</string>
+    <string name="share_as_image">Distribuie ca imagine</string>
+    <string name="save_as_image">Salvează ca imagine</string>
+    <string name="print">Imprimă</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Creează cod de bare</string>
+    <string name="barcodes_2d">Coduri de bare 2D</string>
+    <string name="barcodes_1d">Coduri de bare 1D</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Text fără caractere speciale</string>
+    <string name="text_in_upper_case_without_special_characters">Text cu majuscule fără caractere speciale</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Cifre</string>
+    <string name="seven_digits">7 cifre</string>
+    <string name="eleven_digits">11 cifre</string>
+    <string name="twelve_digits">12 cifre</string>
+    <string name="even_number_of_digits">Număr par de cifre</string>
+
+    <!-- History screen -->
+    <string name="history">Istoric</string>
+    <string name="all">Toate</string>
+    <string name="favorites">Favorite</string>
+    <string name="history_empty_message">Nu ai încă scanări salvate. Scanează sau creează un cod pentru a-l vedea aici.</string>
+    <string name="export_your_history">Exportă istoricul</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Exportă istoric</string>
+    <string name="export_as">Exportă ca</string>
+    <string name="file_name">Nume fișier</string>
+    <string name="export">Exportă</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Notificări</string>
+    <string name="summary_settings_notifications_overview">Gestionează notificările aplicației</string>
+    <string name="display">Afișare</string>
+    <string name="summary_settings_display_overview">Personalizează aspectul aplicației</string>
+    <string name="scanner">Scaner</string>
+    <string name="summary_settings_scanner_overview">Ajustează comportamentul scanării și răspunsul camerei</string>
+    <string name="summary_settings_history_overview">Controlează salvarea scanărilor și gestionează istoricul</string>
+    <string name="security_and_privacy">Securitate și confidențialitate</string>
+    <string name="summary_settings_security_privacy_overview">Gestionează setările de confidențialitate</string>
+    <string name="advanced">Avansate</string>
+    <string name="summary_settings_advanced_overview">Explorează setări mai avansate</string>
+    <string name="about">Despre</string>
+    <string name="summary_settings_about_overview">Află mai multe despre %1$s</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Setări notificări</string>
+    <string name="summary_preference_settings_notification_settings">Alege cum te avertizează aplicația în setările de sistem.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Aspect</string>
+    <string name="theme">Temă</string>
+    <string name="follow_system">După setările sistemului</string>
+    <string name="light_mode">Mod luminos</string>
+    <string name="dark_mode">Mod întunecat</string>
+    <string name="auto_battery_mode">Mod întunecat automat (baterie)</string>
+    <string name="summary_preference_settings_theme">Alege aspectul aplicației. Actual: %1$s</string>
+    <string name="navigation">Navigare</string>
+    <string name="default_tab">Filă implicită</string>
+    <string name="summary_preference_settings_default_tab">Alege primul ecran la lansare. Actual: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Etichete bară navigare inferioară</string>
+    <string name="labeled">Cu etichete</string>
+    <string name="selected_variant">Selectat</string>
+    <string name="unlabeled">Fără etichete</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Controlează afișarea etichetelor în bara de jos. Actual: %1$s</string>
+    <string name="inverse_colors">Inversare culori</string>
+    <string name="summary_preference_settings_inverse_colors">Afișează coduri cu conținut alb pe fundal întunecat și mod întunecat</string>
+    <string name="language">Limbă</string>
+    <string name="summary_preference_settings_language_value">Alege limba aplicației. Actuală: %1$s</string>
+    <string name="summary_preference_settings_language">Schimbă limba utilizată în aplicație</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Deschide automat conținutul codurilor scanate</string>
+    <string name="summary_preference_settings_open_content_automatically">Poate deschide conținut dăunător</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Copiază codurile de bare scanate în clipboard</string>
+    <string name="simple_auto_focus">Mod focalizare automată simplă</string>
+    <string name="summary_preference_settings_simple_auto_focus">Activează doar dacă ai probleme cu focalizarea.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Activează blițul la pornire</string>
+    <string name="vibrate">Vibrație</string>
+    <string name="summary_preference_settings_vibrate">Vibrează la scanare</string>
+    <string name="continuous_scanning">Scanare continuă</string>
+    <string name="summary_preference_settings_continuous_scanning">Salvează scanările doar în istoric</string>
+    <string name="confirm_scans_manually">Confirmă scanările manual</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Evită scanările accidentale.</string>
+    <string name="camera">Cameră</string>
+    <string name="summary_preference_settings_camera">Selectează camera care se deschide când începi scanarea.</string>
+    <string name="front">Față</string>
+    <string name="back">Spate</string>
+    <string name="supported_formats">Formate acceptate</string>
+    <string name="summary_preference_settings_supported_formats">Alege formatele de coduri de bare căutate de scaner.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Salvează codurile de bare scanate în istoric</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Stochează fiecare scanare pentru a reveni ulterior</string>
+    <string name="save_created_barcodes_to_history">Salvează codurile de bare create în istoric</string>
+    <string name="summary_preference_settings_save_created_barcodes">Păstrează codurile generate ușor de găsit</string>
+    <string name="do_not_save_duplicates">Nu salva duplicatele</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Evită duplicatele în istoric</string>
+    <string name="clear_history">Golește istoricul</string>
+    <string name="summary_preference_settings_clear_history">Elimină toate scanările salvate de pe dispozitiv</string>
+    <string name="summary_delete_history">Ștergi istoricul?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Confidențialitate</string>
+    <string name="privacy_policy">Politică de confidențialitate</string>
+    <string name="summary_preference_settings_privacy_policy">Vezi politica ce guvernează gestionarea datelor tale</string>
+    <string name="terms_of_service">Termeni și condiții</string>
+    <string name="summary_preference_settings_terms_of_service">Revizuiește termenii acceptați la utilizarea acestui serviciu</string>
+    <string name="code_of_conduct">Cod de conduită</string>
+    <string name="summary_preference_settings_code_of_conduct">Înțelege regulile și liniile directoare de comportament în cadrul serviciului</string>
+    <string name="permissions">Permisiuni</string>
+    <string name="summary_preference_settings_permissions">Gestionează permisiunile acordate serviciului</string>
+    <string name="usage_and_diagnostics">Utilizare și diagnosticare</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Partajează date pentru a ajuta la îmbunătățirea experienței în aplicație</string>
+    <string name="legal">Legal</string>
+    <string name="legal_notices">Avize legale</string>
+    <string name="summary_preference_settings_legal_notices">Vezi informațiile legale despre serviciu</string>
+    <string name="license">Licență</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">Accesare stare rețea [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Permite aplicației să verifice conectivitatea rețelei și să preia informații despre Wi-Fi, inclusiv starea de activare și numele dispozitivelor Wi-Fi conectate.</string>
+    <string name="ad_id">ID publicitar [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Permite aplicației să preia și să utilizeze identificatorul publicitar asociat dispozitivului utilizatorului, oferind reclame personalizate, măsurând eficiența reclamelor și afișând reclame pe dispozitive cu Android 13 sau mai nou.</string>
+    <string name="billing">Facturare [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Permite aplicației să utilizeze Biblioteca de facturare Google Play pentru a gestiona achizițiile și donațiile în aplicație.</string>
+    <string name="check_license">Verificare licență [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Permite aplicației să verifice conformitatea cu acordul de licență și să aplice termenii de licențiere pentru a proteja proprietatea intelectuală.</string>
+    <string name="foreground_service">Serviciu în prim-plan [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Permite aplicației să creeze și să utilizeze servicii care rulează în prim-plan, acordându-le prioritate față de alte procese de fundal și îmbunătățind performanța și fiabilitatea.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Permite aplicației să stabilească o conexiune la internet pentru a trimite rapoarte de eroare sau a verifica actualizările.</string>
+    <string name="vibrate_permission">Vibrație [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Permite aplicației să vibreze la scanarea unui cod QR.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Permite aplicației să se conecteze la rețele Wi-Fi prin scanarea codurilor QR.</string>
+    <string name="runtime">Runtime</string>
+    <string name="post_notifications">Postare notificări [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Permite aplicației să afișeze notificări pe dispozitivele cu Android 13 sau mai nou.</string>
+    <string name="camera_permission">Cameră [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner gestionează captura de coduri QR și coduri de bare fără a partaja fluxul camerei cu aplicația.</string>
+    <string name="read_contacts">Citire contacte [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Permite aplicației să creeze un cod QR dintr-un contact din lista ta de contacte.</string>
+    <string name="read_storage">Citire stocare [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Permite aplicației să acceseze stocarea pentru a putea salva codul QR sau codul de bare ca text sau imagine.</string>
+    <string name="read_images">Citire imagini [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Permite aplicației să citească imagini de pe dispozitiv pentru a le scana după coduri QR și coduri de bare pe dispozitivele care rulează Android 13 sau mai nou.</string>
+    <string name="write_storage">Scriere stocare [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Permite aplicației să scrie în stocare pentru a putea salva fișiere, cum ar fi fotografii, videoclipuri și documente.</string>
+    <string name="special">Special</string>
+    <string name="access_notification_policy">Accesare politică notificări [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Permite aplicației să acceseze și să modifice politica de notificări a dispozitivului, controlând modul și momentul în care notificările sunt afișate utilizatorului și oferind funcții personalizate de gestionare a notificărilor.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Motoare de căutare</string>
+    <string name="summary_preference_settings_search_engines">Alege un motor de căutare pentru căutări web</string>
+    <string name="none">Niciunul</string>
+    <string name="ask_every_time">Întreabă de fiecare dată</string>
+    <string name="error_reporting">Raportare erori</string>
+    <string name="bug_report">Raportare eroare</string>
+    <string name="summary_preference_settings_bug_report">Trimite rapoarte de erori și cereri de funcții pe pagina de probleme a depozitului GitHub al aplicației</string>
+    <string name="cache_management">Gestionare cache</string>
+    <string name="clear_cache">Golește cache-ul</string>
+    <string name="summary_preference_settings_cache_management">Șterge datele temporare ale aplicației</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Informații aplicație</string>
+    <string name="application_build_version">Versiune build aplicație</string>
+    <string name="open_source_licenses">Licențe open source</string>
+    <string name="summary_preference_settings_open_source_licenses">Vezi licențele pentru bibliotecile utilizate</string>
+    <string name="device_info">Informații dispozitiv</string>
+    <string name="app_build">Build aplicație: Lansare\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Producător:</string>
+    <string name="device_model">Model dispozitiv:</string>
+    <string name="android_version">Versiune Android:</string>
+    <string name="api_level">Nivel API:</string>
+
+    <!-- Help screen -->
+    <string name="help">Ajutor</string>
+    <string name="view_in_google_play">Vezi în Google Play Store</string>
+    <string name="beta_program">Program beta</string>
+    <string name="faq">Întrebări frecvente</string>
+    <string name="question_1">Ce este QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus este o aplicație gratuită care îți permite să scanezi și să generezi coduri QR. Poate scana toate formatele comune de coduri de bare, inclusiv QR, Data Matrix, Aztec, UPC, EAN și multe altele.</string>
+    <string name="question_2">Care sunt beneficiile utilizării QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus este o aplicație puternică, versatilă și gratuită, care poate scana toate formatele comune de coduri de bare, utiliza lanterna pentru a scana în întuneric, mări pentru a citi coduri de bare de la distanță, conecta la Wi-Fi, genera coduri QR din text, contacte, aplicații, marcaje și clipboard, având o interfață simplă și intuitivă.</string>
+    <string name="question_3">Care sunt cerințele de sistem pentru QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus este compatibilă cu toate dispozitivele Android care rulează Android 8.0 (Oreo) sau mai nou.</string>
+    <string name="question_4">Cum scanez un cod QR cu QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">Pentru a scana un cod QR cu QR &amp; Bar Code Scanner Plus, pur și simplu deschide aplicația și îndreaptă camera telefonului spre codul QR. Aplicația va scana automat codul și va afișa rezultatele.</string>
+    <string name="question_5"> Cum creez un cod QR cu QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">Pentru a crea un cod QR cu QR &amp; Bar Code Scanner Plus, deschide aplicația și mergi la meniul „Creează”. Alege tipul de cod QR sau cod de bare dorit, introdu datele pe care vrei să le incluzi în codul QR și apasă pe butonul „Creează”. Aplicația va genera apoi un cod QR pe care îl poți salva sau distribui.</string>
+    <string name="question_6">Cum schimb tema QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Tema QR &amp; Bar Code Scanner Plus poate fi schimbată accesând setările aplicației și selectând tema dorită.</string>
+    <string name="question_7">Cum raportez o eroare?</string>
+    <string name="summary_preference_faq_7">Dacă găsești o eroare în QR &amp; Bar Code Scanner Plus, o poți raporta accesând pagina GitHub a aplicației și creând o problemă nouă.</string>
+    <string name="question_8">Este QR &amp; Bar Code Scanner Plus sigură de utilizat?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus este o aplicație sigură. Aplicația colectează jurnale de erori doar prin Firebase Crashlytics și Firebase Analytics, care pot fi dezactivate.</string>
+    <string name="question_9">Cum contactez dezvoltatorul aplicației?</string>
+    <string name="summary_preference_faq_9">Dacă ai întrebări sau probleme cu aplicația, poți contacta dezvoltatorul prin pagina „Ajutor și feedback” a aplicației.</string>
+    <string name="contact_support_title">Contactează asistența</string>
+    <string name="contact_support_description">Partajează detalii pentru a primi ajutor</string>
+    <string name="send_feedback">Trimite feedback</string>
+    <string name="contact_support_email_subject">Cerere de asistență pentru %1$s</string>
+    <string name="contact_support_email_body">Bună ziua,\n\nAm nevoie de ajutor cu QR &amp; Bar Code Scanner Plus.\n\nMulțumesc!</string>
+    <string name="version_info">Informații versiune</string>
+    <string name="version">Versiune %1$s</string>
+    <string name="faq_state_collapsed">Restrâns</string>
+    <string name="faq_state_expanded">Extins</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Nu există aplicații de e-mail disponibile pentru a gestiona această solicitare.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Susține dezvoltatorul</string>
+    <string name="paid_support">Susținere plătită</string>
+    <string name="summary_donations">Alege o sumă unică de donație pentru a sprijini dezvoltarea viitoare.</string>
+    <string name="non_paid_support">Susținere gratuită</string>
+    <string name="web_ad">Vizitează pagina noastră de asistență</string>
+    <string name="watch_ad">Vizionează reclamă</string>
+    <string name="support_description">Alege una dintre opțiunile de mai jos pentru a ajuta la adăugarea de noi funcții.</string>
+    <string name="support_donations_header">Opțiuni de susținere</string>
+    <string name="support_visit_store">Explorează mai multe moduri de a susține</string>
+    <string name="support_purchase_thank_you">Mulțumim mult pentru susținerea aplicației! 🎉</string>
+    <string name="support_purchase_restored">Susținerea ta a fost restabilită.</string>
+    <string name="support_purchase_revoked">Achiziția ta de susținere a fost revocată.</string>
+    <string name="support_purchase_error">Ceva nu a mers bine. Te rugăm să încerci din nou în curând.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Anunț</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Încearc-o acum!!!</string>
+    <string name="share_using">Distribuie folosind…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Salvează ca</string>
+    <string name="save">Salvează</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Confirmă</string>
+    <string name="error">Eroare</string>
+    <string name="something_went_wrong">Ceva nu a mers bine</string>
+    <string name="dialog_delete">Ștergi?</string>
+    <string name="edit_name">Editează numele</string>
+    <string name="require_restart">Necesită repornire!</string>
+    <string name="summary_require_restart">Pentru a avea efect, te rugăm să repornești aplicația!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Adaugă în calendar</string>
+    <string name="add_to_contacts">Adaugă la contacte</string>
+    <string name="call" tools:ignore="StringFormatCount">Apelează %s</string>
+    <string name="send_sms_mms_to">Trimite SMS/MMS la %s</string>
+    <string name="email_to">Trimite e-mail la %s</string>
+    <string name="show_location">Afișează locația</string>
+    <string name="connect_to_wifi">Conectează la Wi-Fi</string>
+    <string name="open_wifi_settings">Deschide setările Wi-Fi</string>
+    <string name="copy_network_name">Copiază numele rețelei</string>
+    <string name="copy_network_password">Copiază parola rețelei</string>
+    <string name="open_app">Deschide aplicația</string>
+    <string name="open_in_market">Deschide în magazin</string>
+    <string name="open_in_youtube">Deschide în Youtube</string>
+    <string name="save_to_bookmark">Salvează la marcaje</string>
+    <string name="open_link">Deschide linkul</string>
+    <string name="open_in_other_app">Deschide în altă aplicație</string>
+    <string name="show_password">Afișează parola</string>
+    <string name="search_on_the_web">Caută pe web</string>
+    <string name="connecting">Se conectează…</string>
+    <string name="tooltip_view_code">Vezi codul</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Nu s-a putut genera parola</string>
+    <string name="counter">Contor: %s</string>
+    <string name="timer_left">%1$s:%2$s rămase</string>
+    <string name="refresh">Reîmprospătează</string>
+    <string name="tooltip_generate_new_secret">Generează un secret nou</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">URL Youtube</string>
+    <string name="barcode_schema_boarding_pass">Tichet de îmbarcare</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Salvat</string>
+    <string name="snack_unable_to_open_google_play_store">Nu s-a putut deschide Google Play Store.</string>
+    <string name="snack_copied_to_clipboard">Copiat în clipboard! 📋</string>
+    <string name="snack_saved_to_downloads">Salvat în Descărcări!</string>
+    <string name="snack_saved_to_gallery">Salvat în Galerie</string>
+    <string name="snack_no_app_found">Nu s-a găsit nicio aplicație pentru această acțiune. Te rugăm să instalezi o aplicație compatibilă.</string>
+    <string name="snack_feedback">Mulțumim pentru evaluare! ❤️</string>
+    <string name="snack_support">Ai dori să susții aplicația noastră? ❤️</string>
+</resources>

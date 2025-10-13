@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">あらゆる種類のQRコードとバーコードを簡単にスキャンします。📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">ようこそ</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">続行するには、利用規約とプライバシーポリシーを読んで同意してください。</string>
+    <string name="browse_terms_of_service_and_privacy_policy"><i><u>利用規約</u></i>と<i><u>プライバシーポリシー</u></i>を閲覧する</string>
+    <string name="agree">同意する</string>
+    <string name="tooltip_agree">利用規約に同意します。</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">メニュー</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">設定</string>
+    <string name="help_and_feedback">ヘルプとフィードバック</string>
+    <string name="updates">アップデート</string>
+    <string name="share">共有</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">スキャン</string>
+    <string name="scan_image">画像をスキャン</string>
+    <string name="flash">フラッシュ</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">左に回転</string>
+    <string name="rotate_right">右に回転</string>
+    <string name="choose_another_image">別の画像を選択</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">作成</string>
+    <string name="qr_code">QRコード</string>
+    <string name="content_from_clipboard">クリップボードから作成</string>
+    <string name="text">テキスト</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">位置情報</string>
+    <string name="contact_v_card">連絡先 (VCard)</string>
+
+    <string name="more_qr_codes">その他のQRコード</string>
+    <string name="barcode">バーコード</string>
+    <string name="all_barcodes_codes">バーコードとその他の2Dコード</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">QRコードを作成</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">連絡先 (MeCard)</string>
+    <string name="event">イベント</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">または：</string>
+    <string name="summary_alternatively_url">- ブラウザアプリを開きます\n- ウェブサイトを読み込みます\n- メニューから「共有」をクリックします\n- このアプリを選択します。</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">暗号化</string>
+    <string name="network_name">ネットワーク名</string>
+    <string name="password">パスワード</string>
+    <string name="hidden">非表示</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">緯度</string>
+    <string name="longitude">経度</string>
+    <string name="altitude">高度 (任意)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">連絡先</string>
+    <string name="first_name">名</string>
+    <string name="last_name">姓</string>
+    <string name="organization">組織</string>
+    <string name="job">役職</string>
+    <string name="email">メール</string>
+    <string name="phone">電話</string>
+    <string name="fax">Fax</string>
+    <string name="website">ウェブサイト</string>
+    <string name="summary_alternatively_contact">- 連絡先アプリを開きます\n- 既存の連絡先を開くか、新しい連絡先を作成します\n- メニューから「共有」をクリックします\n- このアプリを選択します</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">タイプ</string>
+    <string name="algorithm">アルゴリズム</string>
+    <string name="issuer">発行者</string>
+    <string name="account">アカウント</string>
+    <string name="period">期間</string>
+    <string name="hint_counter">カウンター</string>
+    <string name="secret">シークレット</string>
+    <string name="random_secret">ランダムシークレット</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">タイトル</string>
+    <string name="organizer">主催者</string>
+    <string name="summary">概要</string>
+    <string name="start_date">開始日</string>
+    <string name="end_date">終了日</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">件名</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">メッセージ</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">暗号通貨</string>
+    <string name="receiver_address">受信者アドレス</string>
+    <string name="amount">金額</string>
+    <string name="label">ラベル</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">ブックマーク</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">アプリ</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">明るさを上げる</string>
+    <string name="decrease_brightness">明るさを下げる</string>
+    <string name="add_to_favorites">お気に入りに追加</string>
+    <string name="delete">削除</string>
+    <string name="share_as_text">テキストとして共有</string>
+    <string name="copy_to_clipboard">クリップボードにコピー</string>
+    <string name="save_as_text">テキストとして保存</string>
+    <string name="share_as_image">画像として共有</string>
+    <string name="save_as_image">画像として保存</string>
+    <string name="print">印刷</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">バーコードを作成</string>
+    <string name="barcodes_2d">2Dバーコード</string>
+    <string name="barcodes_1d">1Dバーコード</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">特殊文字なしのテキスト</string>
+    <string name="text_in_upper_case_without_special_characters">特殊文字なしの大文字テキスト</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">数字</string>
+    <string name="seven_digits">7桁の数字</string>
+    <string name="eleven_digits">11桁の数字</string>
+    <string name="twelve_digits">12桁の数字</string>
+    <string name="even_number_of_digits">偶数の桁数</string>
+
+    <!-- History screen -->
+    <string name="history">履歴</string>
+    <string name="all">すべて</string>
+    <string name="favorites">お気に入り</string>
+    <string name="history_empty_message">保存されたスキャンはまだありません。コードをスキャンまたは作成してここに表示します。</string>
+    <string name="export_your_history">履歴をエクスポート</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">履歴をエクスポート</string>
+    <string name="export_as">形式を指定してエクスポート</string>
+    <string name="file_name">ファイル名</string>
+    <string name="export">エクスポート</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">通知</string>
+    <string name="summary_settings_notifications_overview">アプリの通知を管理する</string>
+    <string name="display">表示</string>
+    <string name="summary_settings_display_overview">アプリの見た目をカスタマイズする</string>
+    <string name="scanner">スキャナー</string>
+    <string name="summary_settings_scanner_overview">スキャンの動作とカメラの応答を調整する</string>
+    <string name="summary_settings_history_overview">スキャンの保存方法を制御し、履歴を管理する</string>
+    <string name="security_and_privacy">セキュリティとプライバシー</string>
+    <string name="summary_settings_security_privacy_overview">プライバシー設定を管理する</string>
+    <string name="advanced">詳細設定</string>
+    <string name="summary_settings_advanced_overview">その他の詳細設定を探索する</string>
+    <string name="about">概要</string>
+    <string name="summary_settings_about_overview">%1$sについての詳細</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">通知設定</string>
+    <string name="summary_preference_settings_notification_settings">システム設定でアプリが通知する方法を選択します。</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">外観</string>
+    <string name="theme">テーマ</string>
+    <string name="follow_system">システムモードに従う</string>
+    <string name="light_mode">ライトモード</string>
+    <string name="dark_mode">ダークモード</string>
+    <string name="auto_battery_mode">バッテリーセーバー連動ダークモード</string>
+    <string name="summary_preference_settings_theme">アプリの表示方法を選択します。現在：%1$s</string>
+    <string name="navigation">ナビゲーション</string>
+    <string name="default_tab">デフォルトのタブ</string>
+    <string name="summary_preference_settings_default_tab">起動時に表示される最初の画面を選択します。現在：%1$s</string>
+    <string name="bottom_navigation_bar_labels">下部ナビゲーションバーのラベル</string>
+    <string name="labeled">ラベル付き</string>
+    <string name="selected_variant">選択中</string>
+    <string name="unlabeled">ラベルなし</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">下部バーにラベルを表示する方法を制御します。現在：%1$s</string>
+    <string name="inverse_colors">色を反転</string>
+    <string name="summary_preference_settings_inverse_colors">ダークモード時に暗い背景に白いコンテンツでコードを表示します</string>
+    <string name="language">言語</string>
+    <string name="summary_preference_settings_language_value">アプリの言語を選択します。現在：%1$s</string>
+    <string name="summary_preference_settings_language">アプリで使用される言語を変更します</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">スキャンしたコードのコンテンツを自動的に開く</string>
+    <string name="summary_preference_settings_open_content_automatically">有害なコンテンツを開く可能性があります</string>
+    <string name="summary_preference_settings_copy_to_clipboard">スキャンしたバーコードをクリップボードにコピーする</string>
+    <string name="simple_auto_focus">簡易オートフォーカスモード</string>
+    <string name="summary_preference_settings_simple_auto_focus">フォーカスに問題がある場合のみ有効にしてください。</string>
+    <string name="summary_preference_settings_enable_flash_on_start">起動時にフラッシュを有効にする</string>
+    <string name="vibrate">バイブレーション</string>
+    <string name="summary_preference_settings_vibrate">スキャン時に振動させる</string>
+    <string name="continuous_scanning">連続スキャン</string>
+    <string name="summary_preference_settings_continuous_scanning">スキャンを履歴にのみ保存する</string>
+    <string name="confirm_scans_manually">手動でスキャンを確定する</string>
+    <string name="summary_preference_settings_confirm_scans_manually">誤ったスキャンを避けます。</string>
+    <string name="camera">カメラ</string>
+    <string name="summary_preference_settings_camera">スキャン開始時に開くカメラを選択します。</string>
+    <string name="front">前面</string>
+    <string name="back">背面</string>
+    <string name="supported_formats">対応フォーマット</string>
+    <string name="summary_preference_settings_supported_formats">スキャナーが検索するバーコード形式を選択します。</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">スキャンしたバーコードを履歴に保存する</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">すべてのスキャンを保存して後で再確認できるようにします</string>
+    <string name="save_created_barcodes_to_history">作成したバーコードを履歴に保存する</string>
+    <string name="summary_preference_settings_save_created_barcodes">生成したコードを簡単に見つけられるようにします</string>
+    <string name="do_not_save_duplicates">重複を保存しない</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">履歴内の重複を避けます</string>
+    <string name="clear_history">履歴を消去</string>
+    <string name="summary_preference_settings_clear_history">デバイスから保存されたすべてのスキャンを削除します</string>
+    <string name="summary_delete_history">履歴を削除しますか？</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">プライバシー</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="summary_preference_settings_privacy_policy">データの取り扱いに関するポリシーを表示します</string>
+    <string name="terms_of_service">利用規約</string>
+    <string name="summary_preference_settings_terms_of_service">このサービスを使用する際に同意する規約を確認します</string>
+    <string name="code_of_conduct">行動規範</string>
+    <string name="summary_preference_settings_code_of_conduct">サービス内での行動に関するルールとガイドラインを理解します</string>
+    <string name="permissions">権限</string>
+    <string name="summary_preference_settings_permissions">サービスに付与された権限を管理します</string>
+    <string name="usage_and_diagnostics">使用状況と診断</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">アプリ内エクスペリエンスの向上に役立つデータを共有します</string>
+    <string name="legal">法的情報</string>
+    <string name="legal_notices">法的通知</string>
+    <string name="summary_preference_settings_legal_notices">サービスに関する法的情報を表示します</string>
+    <string name="license">ライセンス</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">ノーマル</string>
+    <string name="access_network_state">ネットワーク状態へのアクセス [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">アプリがネットワーク接続を確認し、有効状態や接続されたWi-Fiデバイス名などのWi-Fiに関する情報を取得できるようにします。</string>
+    <string name="ad_id">広告ID [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">アプリがユーザーのデバイスに関連付けられた広告識別子を取得して使用できるようにし、パーソナライズされた広告の提供、広告効果の測定、Android 13以降のデバイスでの広告表示を可能にします。</string>
+    <string name="billing">請求 [BILLING]</string>
+    <string name="summary_preference_permissions_billing">アプリがGoogle Play Billing Libraryを使用してアプリ内購入や寄付を処理できるようにします。</string>
+    <string name="check_license">ライセンスの確認 [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">アプリがライセンス契約への準拠を確認し、知的財産を保護するためにライセンス条項を施行できるようにします。</string>
+    <string name="foreground_service">フォアグラウンドサービス [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">アプリがフォアグラウンドで実行されるサービスを作成および使用できるようにし、他のバックグラウンドプロセスよりも優先順位を高くしてパフォーマンスと信頼性を向上させます。</string>
+    <string name="internet">インターネット [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">アプリがエラーレポートの送信やアップデートの確認のためにインターネット接続を確立できるようにします。</string>
+    <string name="vibrate_permission">バイブレーション [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">QRコードのスキャン時にアプリが振動できるようにします。</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">QRコードをスキャンしてWi-Fiネットワークに接続できるようにします。</string>
+    <string name="runtime">ランタイム</string>
+    <string name="post_notifications">通知の投稿 [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Android 13以降のデバイスでアプリが通知を表示できるようにします。</string>
+    <string name="camera_permission">カメラ [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Googleコードスキャナーは、カメラフィードをアプリと共有せずにQRコードとバーコードのキャプチャを処理します。</string>
+    <string name="read_contacts">連絡先の読み取り [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">連絡先リストの連絡先からQRコードを作成できるようにします。</string>
+    <string name="read_storage">ストレージの読み取り [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">QRコードやバーコードをテキストや画像として保存できるように、ストレージにアクセスできるようにします。</string>
+    <string name="read_images">画像の読み取り [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Android 13以降のデバイスでQRコードとバーコードをスキャンできるように、デバイスから画像を読み取れるようにします。</string>
+    <string name="write_storage">ストレージへの書き込み [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">写真、ビデオ、ドキュメントなどのファイルを保存できるように、ストレージへの書き込みを許可します。</string>
+    <string name="special">スペシャル</string>
+    <string name="access_notification_policy">通知ポリシーへのアクセス [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">アプリがデバイスの通知ポリシーにアクセスして変更できるようにし、ユーザーに通知が表示される方法とタイミングを制御し、カスタム通知管理機能を提供します。</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">検索エンジン</string>
+    <string name="summary_preference_settings_search_engines">ウェブ検索に使用する検索エンジンを選択する</string>
+    <string name="none">なし</string>
+    <string name="ask_every_time">毎回尋ねる</string>
+    <string name="error_reporting">エラー報告</string>
+    <string name="bug_report">バグ報告</string>
+    <string name="summary_preference_settings_bug_report">バグ報告や機能リクエストをアプリのGitHubリポジトリのIssuesページに送信する</string>
+    <string name="cache_management">キャッシュ管理</string>
+    <string name="clear_cache">キャッシュを消去</string>
+    <string name="summary_preference_settings_cache_management">一時的なアプリケーションデータを消去する</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">アプリ情報</string>
+    <string name="application_build_version">アプリケーションビルドバージョン</string>
+    <string name="open_source_licenses">オープンソースライセンス</string>
+    <string name="summary_preference_settings_open_source_licenses">使用しているライブラリのライセンスを表示する</string>
+    <string name="device_info">デバイス情報</string>
+    <string name="app_build">アプリビルド：リリース\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">メーカー：</string>
+    <string name="device_model">デバイスモデル：</string>
+    <string name="android_version">Androidバージョン：</string>
+    <string name="api_level">APIレベル：</string>
+
+    <!-- Help screen -->
+    <string name="help">ヘルプ</string>
+    <string name="view_in_google_play">Google Playストアで表示</string>
+    <string name="beta_program">ベータプログラム</string>
+    <string name="faq">よくある質問</string>
+    <string name="question_1">QR &amp; Bar Code Scanner Plusとは何ですか？</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plusは、QRコードのスキャンと生成ができる無料アプリです。QR、データマトリックス、アステカ、UPC、EANなど、すべての一般的なバーコード形式をスキャンできます。</string>
+    <string name="question_2">QR &amp; Bar Code Scanner Plusを使用する利点は何ですか？</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plusは、すべての一般的なバーコード形式をスキャンし、暗闇でスキャンするための懐中電灯を使用し、遠くからバーコードを読むためにズームし、Wi-Fiに接続し、テキスト、連絡先、アプリ、ブックマーク、クリップボードからQRコードを生成できる、強力で多機能な無料アプリで、シンプルで直感的なインターフェースを備えています。</string>
+    <string name="question_3">QR &amp; Bar Code Scanner Plusのシステム要件は何ですか？</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plusは、Android 8.0 (Oreo)以降を実行しているすべてのAndroidデバイスと互換性があります。</string>
+    <string name="question_4">QR &amp; Bar Code Scanner PlusでQRコードをスキャンするにはどうすればよいですか？</string>
+    <string name="summary_preference_faq_4">QR &amp; Bar Code Scanner PlusでQRコードをスキャンするには、アプリを開いて携帯電話のカメラをQRコードに向けるだけです。アプリが自動的にコードをスキャンし、結果を表示します。</string>
+    <string name="question_5"> QR &amp; Bar Code Scanner PlusでQRコードを作成するにはどうすればよいですか？</string>
+    <string name="summary_preference_faq_5">QR &amp; Bar Code Scanner PlusでQRコードを作成するには、アプリを開いて「作成」メニューに移動します。作成したいQRコードまたはバーコードの種類を選択し、QRコードに含めたいデータを入力して「作成」ボタンをタップします。すると、保存または共有できるQRコードが生成されます。</string>
+    <string name="question_6">QR &amp; Bar Code Scanner Plusのテーマを変更するにはどうすればよいですか？</string>
+    <string name="summary_preference_faq_6">QR &amp; Bar Code Scanner Plusのテーマは、アプリの設定に移動して目的のテーマを選択することで変更できます。</string>
+    <string name="question_7">バグを報告するにはどうすればよいですか？</string>
+    <string name="summary_preference_faq_7">QR &amp; Bar Code Scanner Plusでバグを見つけた場合は、アプリのGitHubページにアクセスして新しいIssueを作成することで報告できます。</string>
+    <string name="question_8">QR &amp; Bar Code Scanner Plusは安全に使用できますか？</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plusは安全に使用できるアプリです。このアプリはFirebase CrashlyticsとFirebase Analyticsを介してエラーログのみを収集し、これらはオフにすることができます。</string>
+    <string name="question_9">アプリの開発者に連絡するにはどうすればよいですか？</string>
+    <string name="summary_preference_faq_9">アプリに関する質問や問題がある場合は、アプリの「ヘルプとフィードバック」ページから開発者に連絡できます。</string>
+    <string name="contact_support_title">サポートに連絡</string>
+    <string name="contact_support_description">目標達成のためのヘルプを得るために詳細を共有する</string>
+    <string name="send_feedback">フィードバックを送信</string>
+    <string name="contact_support_email_subject">%1$sのサポートリクエスト</string>
+    <string name="contact_support_email_body">こんにちは、\n\nQR &amp; Bar Code Scanner Plusについて助けが必要です。\n\nよろしくお願いします。</string>
+    <string name="version_info">バージョン情報</string>
+    <string name="version">バージョン %1$s</string>
+    <string name="faq_state_collapsed">折りたたまれた状態</string>
+    <string name="faq_state_expanded">展開された状態</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">このリクエストを処理できるメールアプリはありません。</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">開発者をサポート</string>
+    <string name="paid_support">有料サポート</string>
+    <string name="summary_donations">将来の開発をサポートするために、1回限りの寄付額を選択してください。</string>
+    <string name="non_paid_support">無料サポート</string>
+    <string name="web_ad">サポートページをご覧ください</string>
+    <string name="watch_ad">広告を見る</string>
+    <string name="support_description">新機能の追加を維持するために、以下のオプションのいずれかを選択してください。</string>
+    <string name="support_donations_header">サポートオプション</string>
+    <string name="support_visit_store">その他のサポート方法を探す</string>
+    <string name="support_purchase_thank_you">アプリをサポートしていただき、誠にありがとうございます！🎉</string>
+    <string name="support_purchase_restored">サポートが復元されました。</string>
+    <string name="support_purchase_revoked">サポート購入が取り消されました。</string>
+    <string name="support_purchase_error">問題が発生しました。しばらくしてからもう一度お試しください。</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">広告</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">今すぐ試してみてください！！！</string>
+    <string name="share_using">共有に使用するアプリ…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">名前を付けて保存</string>
+    <string name="save">保存</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">確認</string>
+    <string name="error">エラー</string>
+    <string name="something_went_wrong">問題が発生しました</string>
+    <string name="dialog_delete">削除しますか？</string>
+    <string name="edit_name">名前を編集</string>
+    <string name="require_restart">再起動が必要です！</string>
+    <string name="summary_require_restart">有効にするにはアプリを再起動してください！</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">カレンダーに追加</string>
+    <string name="add_to_contacts">連絡先に追加</string>
+    <string name="call" tools:ignore="StringFormatCount">%sに電話</string>
+    <string name="send_sms_mms_to">%sにSMS/MMSを送信</string>
+    <string name="email_to">%sにメール</string>
+    <string name="show_location">場所を表示</string>
+    <string name="connect_to_wifi">Wi-Fiに接続</string>
+    <string name="open_wifi_settings">Wi-Fi設定を開く</string>
+    <string name="copy_network_name">ネットワーク名をコピー</string>
+    <string name="copy_network_password">ネットワークパスワードをコピー</string>
+    <string name="open_app">アプリを開く</string>
+    <string name="open_in_market">マーケットで開く</string>
+    <string name="open_in_youtube">Youtubeで開く</string>
+    <string name="save_to_bookmark">ブックマークに保存</string>
+    <string name="open_link">リンクを開く</string>
+    <string name="open_in_other_app">他のアプリで開く</string>
+    <string name="show_password">パスワードを表示</string>
+    <string name="search_on_the_web">ウェブで検索</string>
+    <string name="connecting">接続中…</string>
+    <string name="tooltip_view_code">コードを表示</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">パスワードを生成できません</string>
+    <string name="counter">カウンター：%s</string>
+    <string name="timer_left">残り%1$s:%2$s</string>
+    <string name="refresh">更新</string>
+    <string name="tooltip_generate_new_secret">新しいシークレットを生成</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">Youtube URL</string>
+    <string name="barcode_schema_boarding_pass">搭乗券</string>
+
+    <!-- Snackbars -->
+    <string name="saved">保存しました</string>
+    <string name="snack_unable_to_open_google_play_store">Google Playストアを開けません。</string>
+    <string name="snack_copied_to_clipboard">クリップボードにコピーしました！📋</string>
+    <string name="snack_saved_to_downloads">ダウンロードに保存しました！</string>
+    <string name="snack_saved_to_gallery">ギャラリーに保存しました</string>
+    <string name="snack_no_app_found">このアクションに対応するアプリが見つかりません。互換性のあるアプリをインストールしてください。</string>
+    <string name="snack_feedback">評価していただきありがとうございます！❤️</string>
+    <string name="snack_support">私たちのアプリをサポートしませんか？❤️</string>
+</resources>
