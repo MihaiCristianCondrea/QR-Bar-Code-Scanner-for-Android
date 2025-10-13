@@ -27,6 +27,7 @@
     <string name="spanish" translatable="false">Español</string>
     <string name="turkish" translatable="false">Türkçe</string>
     <string name="ukrainian" translatable="false">Українська</string>
+    <string name="application_version_summary" translatable="false">%1$s (%2$d)</string>
     <string name="activity_export_history_file_name_default" translatable="false">db</string>
     <string name="activity_choose_search_engine_bing" translatable="false">Bing</string>
     <string name="activity_choose_search_engine_startpage" translatable="false">StartPage</string>

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.preference.Preference
 import com.d4rk.qrcodescanner.plus.R
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.d4rk.qrcodescanner.plus.BuildConfig
 
 class AboutSettingsActivity : BasePreferenceActivity() {
     override val toolbarTitleResId: Int = R.string.about
@@ -16,6 +17,14 @@ class AboutSettingsActivity : BasePreferenceActivity() {
 
     class AboutSettingsFragment : BasePreferenceFragment(R.xml.preferences_about) {
         override fun onPreferencesCreated() {
+            val buildVersionPreference =
+                findPreference<Preference>(getString(R.string.key_application_build_version))
+            buildVersionPreference?.summary = getString(
+                R.string.application_version_summary,
+                BuildConfig.VERSION_NAME,
+                BuildConfig.VERSION_CODE
+            )
+
             val deviceInfoPreference =
                 findPreference<Preference>(getString(R.string.key_device_info))
             deviceInfoPreference?.let { preference ->

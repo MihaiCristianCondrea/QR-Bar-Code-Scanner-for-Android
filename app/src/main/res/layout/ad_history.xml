@@ -1,97 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/ad_card"
-        style="@style/Widget.Material3.CardView.Elevated"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="24dp">
+        android:layout_height="wrap_content">
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:id="@+id/layout_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_circle"
+            android:padding="@dimen/icon_button_icon_padding"
+            app:layout_constraintBottom_toTopOf="@id/delimiter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ad_app_icon"
+                android:layout_width="@dimen/icon_button_icon_size"
+                android:layout_height="@dimen/icon_button_icon_size"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_history" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/text_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/delimiter"
+            app:layout_constraintEnd_toStartOf="@id/ad_call_to_action"
+            app:layout_goneMarginEnd="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/layout_image"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/ad_attribution" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ad_headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:textStyle="bold"
+                tools:text="Scan faster with ACME" />
 
-                <include layout="@layout/ad_attribution" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/ad_headline"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/ad_body"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/ad_app_icon"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="12dp"
-                        android:contentDescription="@null"
-                        android:scaleType="centerCrop"
-                        android:visibility="gone"
-                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/ad_call_to_action"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:minWidth="88dp"
-                        android:minHeight="40dp" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/media_card"
-                    style="@style/Widget.Material3.CardView.Outlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="16dp"
-                    android:visibility="gone"
-                    app:cardCornerRadius="12dp">
-
-                    <com.google.android.gms.ads.nativead.MediaView
-                        android:id="@+id/ad_media"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop" />
-                </com.google.android.material.card.MaterialCardView>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <com.google.android.gms.ads.nativead.AdChoicesView
-                android:id="@+id/ad_choices"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ad_body"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|end"
-                android:padding="8dp" />
-        </FrameLayout>
-    </com.google.android.material.card.MaterialCardView>
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="Try our premium plan to unlock unlimited history exports." />
+
+            <FrameLayout
+                android:id="@+id/media_card"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
+
+                <com.google.android.gms.ads.nativead.MediaView
+                    android:id="@+id/ad_media"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ad_call_to_action"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@id/delimiter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="Install" />
+
+        <com.google.android.gms.ads.nativead.AdChoicesView
+            android:id="@+id/ad_choices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_container" />
+
+        <View
+            android:id="@+id/delimiter"
+            android:layout_width="0dp"
+            android:layout_height="0.2dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="12dp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_container" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.gms.ads.nativead.NativeAdView>
 
