@@ -17,6 +17,7 @@ import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.google.zxing.NotFoundException
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -26,13 +27,9 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 data class ScanBarcodeFromFileUiState(
     val selectedImageUri: Uri? = null,
@@ -76,22 +73,25 @@ class ScanBarcodeFromFileViewModel(
     fun scanSelectedImage() {
         val uri = _uiState.value.selectedImageUri ?: return
         scanJob?.cancel()
-        scanJob = scanBarcodeFromUri(uri)
-            .onStart {
-                _uiState.update { current -> current.copy(isScanning = true) }
+        scanJob = viewModelScope.launch {
+            _uiState.update { current -> current.copy(isScanning = true) }
+            try {
+                val barcode = scanBarcodeFromUri(uri)
+                handleScanSuccess(barcode)
+            } catch (cancellation: CancellationException) {
+                completeScan()
+                throw cancellation
+            } catch (throwable: Throwable) {
+                handleScanFailure(throwable)
             }
-            .onEach { barcode -> handleScanSuccess(barcode) }
-            .catch { throwable -> handleScanFailure(throwable) }
-            .launchIn(viewModelScope)
+        }
     }
 
-    private fun scanBarcodeFromUri(uri: Uri) = flow {
+    private suspend fun scanBarcodeFromUri(uri: Uri): Barcode = withContext(ioDispatcher) {
         val bitmap = decodeBitmap(uri)
         val mlKitBarcode = barcodeImageScanner.parse(bitmap)
-        val barcode = barcodeParser.parse(mlKitBarcode)
-            ?: throw NotFoundException.getNotFoundInstance()
-        emit(barcode)
-    }.flowOn(ioDispatcher)
+        barcodeParser.parse(mlKitBarcode) ?: throw NotFoundException.getNotFoundInstance()
+    }
 
     private suspend fun handleScanSuccess(barcode: Barcode) {
         if (settings.saveScannedBarcodesToHistory.not()) {
@@ -100,16 +100,14 @@ class ScanBarcodeFromFileViewModel(
             return
         }
 
-        persistBarcode(barcode)
-            .onEach { id ->
-                completeScan()
-                _events.emit(ScanBarcodeFromFileEvent.NavigateToBarcode(barcode.copy(id = id)))
-            }
-            .catch { throwable ->
-                completeScan()
-                _events.emit(ScanBarcodeFromFileEvent.ShowError(throwable))
-            }
-            .launchIn(viewModelScope)
+        try {
+            val id = persistBarcode(barcode)
+            completeScan()
+            _events.emit(ScanBarcodeFromFileEvent.NavigateToBarcode(barcode.copy(id = id)))
+        } catch (throwable: Throwable) {
+            completeScan()
+            _events.emit(ScanBarcodeFromFileEvent.ShowError(throwable))
+        }
     }
 
     private suspend fun handleScanFailure(throwable: Throwable) {
@@ -119,10 +117,9 @@ class ScanBarcodeFromFileViewModel(
         }
     }
 
-    private fun persistBarcode(barcode: Barcode) = flow {
-        val id = barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
-        emit(id)
-    }.flowOn(ioDispatcher)
+    private suspend fun persistBarcode(barcode: Barcode): Long = withContext(ioDispatcher) {
+        barcodeDatabase.save(barcode, settings.doNotSaveDuplicates)
+    }
 
     private fun completeScan() {
         _uiState.update { current ->
