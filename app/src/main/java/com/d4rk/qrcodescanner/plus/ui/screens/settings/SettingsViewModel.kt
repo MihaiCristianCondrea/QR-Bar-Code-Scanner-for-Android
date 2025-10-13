@@ -62,12 +62,16 @@ class SettingsViewModel(
 }
 
 class SettingsViewModelFactory(
-    private val mainPreferencesRepository: MainPreferencesRepository
+    private val mainPreferencesRepository: MainPreferencesRepository,
+    private val computationDispatcher: CoroutineDispatcher = Dispatchers.Default
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SettingsViewModel(mainPreferencesRepository) as T
+            return SettingsViewModel(
+                mainPreferencesRepository = mainPreferencesRepository,
+                computationDispatcher = computationDispatcher
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
