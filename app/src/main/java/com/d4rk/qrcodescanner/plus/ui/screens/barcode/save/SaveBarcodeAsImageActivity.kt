@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySaveBarcodeAsImageBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
@@ -18,13 +21,14 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class SaveBarcodeAsImageActivity : BaseActivity() {
     private lateinit var binding: ActivitySaveBarcodeAsImageBinding
+    private val viewModel: SaveBarcodeAsImageViewModel by viewModels {
+        SaveBarcodeAsImageViewModelFactory(barcodeImageGenerator, barcodeImageSaver)
+    }
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
@@ -53,6 +57,8 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
         initFormatSpinner()
         initSaveButton()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+        observeUiState()
+        observeEvents()
     }
 
     override fun onRequestPermissionsResult(
@@ -88,45 +94,31 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     }
 
     private fun saveBarcode() {
-        showLoading(true)
-        val saveAs = binding.spinnerSaveAs.selectedItemPosition
+        val format = SaveBarcodeAsImageFormat.fromSpinnerIndex(binding.spinnerSaveAs.selectedItemPosition)
+            ?: return
+        viewModel.saveBarcode(applicationContext, barcode, format)
+    }
+
+    private fun observeUiState() {
         lifecycleScope.launch {
-            val result = runCatching {
-                when (saveAs) {
-                    0 -> {
-                        val bitmap = withContext(Dispatchers.Default) {
-                            barcodeImageGenerator.generateBitmap(barcode, 640, 640, 2)
-                        } ?: throw IllegalStateException("Unable to generate barcode bitmap")
-                        withContext(Dispatchers.IO) {
-                            barcodeImageSaver.savePngImageToPublicDirectory(
-                                this@SaveBarcodeAsImageActivity,
-                                bitmap,
-                                barcode
-                            )
-                        }
-                    }
-
-                    1 -> {
-                        val svg = withContext(Dispatchers.Default) {
-                            barcodeImageGenerator.generateSvg(barcode, 640, 640, 2)
-                        }
-                        withContext(Dispatchers.IO) {
-                            barcodeImageSaver.saveSvgImageToPublicDirectory(
-                                this@SaveBarcodeAsImageActivity,
-                                svg,
-                                barcode
-                            )
-                        }
-                    }
-
-                    else -> Unit
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    showLoading(state.isSaving)
+                    binding.buttonSave.isEnabled = state.isSaving.not()
                 }
             }
-            showLoading(false)
-            result.onSuccess {
-                showBarcodeSaved()
-            }.onFailure { error ->
-                showError(error)
+        }
+    }
+
+    private fun observeEvents() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collect { event ->
+                    when (event) {
+                        SaveBarcodeAsImageEvent.Success -> showBarcodeSaved()
+                        is SaveBarcodeAsImageEvent.Error -> showError(event.throwable)
+                    }
+                }
             }
         }
     }

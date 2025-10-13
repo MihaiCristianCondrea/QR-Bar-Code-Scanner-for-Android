@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySaveBarcodeAsTextBinding
 import com.d4rk.qrcodescanner.plus.di.barcodeSaver
@@ -17,13 +20,14 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 class SaveBarcodeAsTextActivity : BaseActivity() {
     private lateinit var binding: ActivitySaveBarcodeAsTextBinding
+    private val viewModel: SaveBarcodeAsTextViewModel by viewModels {
+        SaveBarcodeAsTextViewModelFactory(barcodeSaver)
+    }
 
     companion object {
         private const val REQUEST_PERMISSIONS_CODE = 101
@@ -51,6 +55,8 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         initFormatSpinner()
         initSaveButton()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+        observeUiState()
+        observeEvents()
     }
 
     override fun onRequestPermissionsResult(
@@ -59,7 +65,10 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (permissionsHelper.areAllPermissionsGranted(grantResults)) {
+        if (
+            requestCode == REQUEST_PERMISSIONS_CODE &&
+            permissionsHelper.areAllPermissionsGranted(grantResults)
+        ) {
             saveBarcode()
         }
     }
@@ -85,23 +94,31 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun saveBarcode() {
-        val saveFunc = when (binding.spinnerSaveAs.selectedItemPosition) {
-            0 -> barcodeSaver::saveBarcodeAsCsv
-            1 -> barcodeSaver::saveBarcodeAsJson
-            else -> return
-        }
-        showLoading(true)
+        val format = SaveBarcodeAsTextFormat.fromSpinnerIndex(binding.spinnerSaveAs.selectedItemPosition)
+            ?: return
+        viewModel.saveBarcode(applicationContext, barcode, format)
+    }
 
+    private fun observeUiState() {
         lifecycleScope.launch {
-            runCatching {
-                withContext(Dispatchers.IO) {
-                    saveFunc(this@SaveBarcodeAsTextActivity, barcode)
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { state ->
+                    showLoading(state.isSaving)
+                    binding.buttonSave.isEnabled = state.isSaving.not()
                 }
-            }.onSuccess {
-                showBarcodeSaved()
-            }.onFailure { error ->
-                showLoading(false)
-                showError(error)
+            }
+        }
+    }
+
+    private fun observeEvents() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collect { event ->
+                    when (event) {
+                        SaveBarcodeAsTextEvent.Success -> showBarcodeSaved()
+                        is SaveBarcodeAsTextEvent.Error -> showError(event.throwable)
+                    }
+                }
             }
         }
     }
