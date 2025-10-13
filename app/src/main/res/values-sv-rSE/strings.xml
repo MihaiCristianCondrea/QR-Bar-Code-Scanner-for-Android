@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Skanna alla typer av QR-koder och streckkoder med lätthet. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Välkommen</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Läs och godkänn våra användarvillkor och vår integritetspolicy för att fortsätta.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Bläddra igenom <i><u>användarvillkoren</u></i> och <i><u>integritetspolicyn</u></i></string>
+    <string name="agree">Godkänn</string>
+    <string name="tooltip_agree">Acceptera villkoren.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Meny</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Inställningar</string>
+    <string name="help_and_feedback">Hjälp och feedback</string>
+    <string name="updates">Uppdateringar</string>
+    <string name="share">Dela</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Skanna</string>
+    <string name="scan_image">Skanna bild</string>
+    <string name="flash">Blixt</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Rotera vänster</string>
+    <string name="rotate_right">Rotera höger</string>
+    <string name="choose_another_image">Välj en annan bild</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Skapa</string>
+    <string name="qr_code">QR-kod</string>
+    <string name="content_from_clipboard">Innehåll från urklipp</string>
+    <string name="text">Text</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Plats</string>
+    <string name="contact_v_card">Kontakt (VCard)</string>
+
+    <string name="more_qr_codes">Fler QR-koder</string>
+    <string name="barcode">Streckkod</string>
+    <string name="all_barcodes_codes">Streckkoder och andra 2D-koder</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Skapa QR-kod</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Kontakt (MeCard)</string>
+    <string name="event">Händelse</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternativt:</string>
+    <string name="summary_alternatively_url">- Öppna din webbläsarapp\n- Ladda en webbplats\n- Klicka på \"Dela\" från menyn\n- Välj den här appen.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Kryptering</string>
+    <string name="network_name">Nätverksnamn</string>
+    <string name="password">Lösenord</string>
+    <string name="hidden">Dold</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Latitud</string>
+    <string name="longitude">Longitud</string>
+    <string name="altitude">Höjd (valfritt)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Kontakter</string>
+    <string name="first_name">Förnamn</string>
+    <string name="last_name">Efternamn</string>
+    <string name="organization">Organisation</string>
+    <string name="job">Titel</string>
+    <string name="email">E-post</string>
+    <string name="phone">Telefon</string>
+    <string name="fax">Fax</string>
+    <string name="website">Webbplats</string>
+    <string name="summary_alternatively_contact">- Öppna din kontaktapp\n- Öppna en befintlig kontakt eller skapa en ny\n- Klicka på \"Dela\" från menyn\n- Välj den här appen</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Typ</string>
+    <string name="algorithm">Algoritm</string>
+    <string name="issuer">Utfärdare</string>
+    <string name="account">Konto</string>
+    <string name="period">Period</string>
+    <string name="hint_counter">Räknare</string>
+    <string name="secret">Hemlighet</string>
+    <string name="random_secret">Slumpmässig hemlighet</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Titel</string>
+    <string name="organizer">Arrangör</string>
+    <string name="summary">Sammanfattning</string>
+    <string name="start_date">Startdatum</string>
+    <string name="end_date">Slutdatum</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Ämne</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Meddelande</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Kryptovaluta</string>
+    <string name="receiver_address">Mottagaradress</string>
+    <string name="amount">Belopp</string>
+    <string name="label">Etikett</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Bokmärke</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">App</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Öka ljusstyrkan</string>
+    <string name="decrease_brightness">Minska ljusstyrkan</string>
+    <string name="add_to_favorites">Lägg till i favoriter</string>
+    <string name="delete">Ta bort</string>
+    <string name="share_as_text">Dela som text</string>
+    <string name="copy_to_clipboard">Kopiera till urklipp</string>
+    <string name="save_as_text">Spara som text</string>
+    <string name="share_as_image">Dela som bild</string>
+    <string name="save_as_image">Spara som bild</string>
+    <string name="print">Skriv ut</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Skapa streckkod</string>
+    <string name="barcodes_2d">2D-streckkoder</string>
+    <string name="barcodes_1d">1D-streckkoder</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Text utan specialtecken</string>
+    <string name="text_in_upper_case_without_special_characters">Text i versaler utan specialtecken</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Siffror</string>
+    <string name="seven_digits">7 siffror</string>
+    <string name="eleven_digits">11 siffror</string>
+    <string name="twelve_digits">12 siffror</string>
+    <string name="even_number_of_digits">Jämnt antal siffror</string>
+
+    <!-- History screen -->
+    <string name="history">Historik</string>
+    <string name="all">Alla</string>
+    <string name="favorites">Favoriter</string>
+    <string name="history_empty_message">Du har inga sparade skanningar än. Skanna eller skapa en kod för att se den här.</string>
+    <string name="export_your_history">Exportera din historik</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Exportera historik</string>
+    <string name="export_as">Exportera som</string>
+    <string name="file_name">Filnamn</string>
+    <string name="export">Exportera</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Aviseringar</string>
+    <string name="summary_settings_notifications_overview">Hantera appaviseringar</string>
+    <string name="display">Visning</string>
+    <string name="summary_settings_display_overview">Anpassa appens utseende och känsla</string>
+    <string name="scanner">Skanner</string>
+    <string name="summary_settings_scanner_overview">Justera hur skanningen beter sig och hur kameran svarar</string>
+    <string name="summary_settings_history_overview">Styr hur skanningar sparas och hantera din historik</string>
+    <string name="security_and_privacy">Säkerhet och integritet</string>
+    <string name="summary_settings_security_privacy_overview">Hantera dina integritetsinställningar</string>
+    <string name="advanced">Avancerat</string>
+    <string name="summary_settings_advanced_overview">Utforska mer avancerade inställningar</string>
+    <string name="about">Om</string>
+    <string name="summary_settings_about_overview">Läs mer om %1$s</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Aviseringsinställningar</string>
+    <string name="summary_preference_settings_notification_settings">Välj hur appen aviserar dig i systeminställningarna.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Utseende</string>
+    <string name="theme">Tema</string>
+    <string name="follow_system">Följ systemläge</string>
+    <string name="light_mode">Ljust läge</string>
+    <string name="dark_mode">Mörkt läge</string>
+    <string name="auto_battery_mode">Automatiskt mörkt läge vid lågt batteri</string>
+    <string name="summary_preference_settings_theme">Välj hur appen ser ut. Nuvarande: %1$s</string>
+    <string name="navigation">Navigering</string>
+    <string name="default_tab">Standardflik</string>
+    <string name="summary_preference_settings_default_tab">Välj den första skärmen du ser vid start. Nuvarande: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Etiketter i nedre navigeringsfältet</string>
+    <string name="labeled">Med etikett</string>
+    <string name="selected_variant">Vald</string>
+    <string name="unlabeled">Utan etikett</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Styr hur etiketter visas i det nedre fältet. Nuvarande: %1$s</string>
+    <string name="inverse_colors">Inverterade färger</string>
+    <string name="summary_preference_settings_inverse_colors">Visa koder med vitt innehåll på mörk bakgrund &amp; i mörkt läge</string>
+    <string name="language">Språk</string>
+    <string name="summary_preference_settings_language_value">Välj appspråk. Nuvarande: %1$s</string>
+    <string name="summary_preference_settings_language">Ändrar språket som används i appen</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Öppna innehållet i skannade koder automatiskt</string>
+    <string name="summary_preference_settings_open_content_automatically">Kan öppna skadligt innehåll</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Kopiera skannade streckkoder till urklipp</string>
+    <string name="simple_auto_focus">Enkelt autofokusläge</string>
+    <string name="summary_preference_settings_simple_auto_focus">Aktivera endast om du har problem med att fokusera.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Aktivera blixt vid start</string>
+    <string name="vibrate">Vibrera</string>
+    <string name="summary_preference_settings_vibrate">Vibrera vid skanning</string>
+    <string name="continuous_scanning">Kontinuerlig skanning</string>
+    <string name="summary_preference_settings_continuous_scanning">Spara endast skanningar i historiken</string>
+    <string name="confirm_scans_manually">Bekräfta skanningar manuellt</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Undvik oavsiktliga skanningar.</string>
+    <string name="camera">Kamera</string>
+    <string name="summary_preference_settings_camera">Välj vilken kamera som öppnas när du börjar skanna.</string>
+    <string name="front">Främre</string>
+    <string name="back">Bakre</string>
+    <string name="supported_formats">Format som stöds</string>
+    <string name="summary_preference_settings_supported_formats">Välj de streckkodsformat som skannern letar efter.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Spara skannade streckkoder i historiken</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Spara varje skanning så att du kan återvända till den senare</string>
+    <string name="save_created_barcodes_to_history">Spara skapade streckkoder i historiken</string>
+    <string name="summary_preference_settings_save_created_barcodes">Håll koderna du genererar lätta att hitta</string>
+    <string name="do_not_save_duplicates">Spara inte dubbletter</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Undvik dubbletter i historiken</string>
+    <string name="clear_history">Rensa historik</string>
+    <string name="summary_preference_settings_clear_history">Ta bort alla sparade skanningar från enheten</string>
+    <string name="summary_delete_history">Ta bort historik?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Integritet</string>
+    <string name="privacy_policy">Integritetspolicy</string>
+    <string name="summary_preference_settings_privacy_policy">Visa policyn som styr hur dina data hanteras</string>
+    <string name="terms_of_service">Användarvillkor</string>
+    <string name="summary_preference_settings_terms_of_service">Granska villkoren du godkänner när du använder den här tjänsten</string>
+    <string name="code_of_conduct">Uppförandekod</string>
+    <string name="summary_preference_settings_code_of_conduct">Förstå reglerna och riktlinjerna för beteende inom tjänsten</string>
+    <string name="permissions">Behörigheter</string>
+    <string name="summary_preference_settings_permissions">Hantera de behörigheter som beviljats tjänsten</string>
+    <string name="usage_and_diagnostics">Användning och diagnostik</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Dela data för att hjälpa till att förbättra upplevelsen i appen</string>
+    <string name="legal">Juridiskt</string>
+    <string name="legal_notices">Juridiska meddelanden</string>
+    <string name="summary_preference_settings_legal_notices">Visa juridisk information om tjänsten</string>
+    <string name="license">Licens</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">Åtkomst till nätverksstatus [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Tillåter appen att kontrollera nätverksanslutning och hämta information om Wi-Fi, inklusive aktiverad status och anslutna Wi-Fi-enheters namn.</string>
+    <string name="ad_id">Annons-ID [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Tillåter appen att hämta och använda annonsidentifieraren som är associerad med användarens enhet, för att tillhandahålla personliga annonser, mäta annonseffektivitet och visa annonser på enheter med Android 13 eller senare.</string>
+    <string name="billing">Fakturering [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Tillåter appen att använda Google Play Billing Library för att hantera köp i appen och donationer.</string>
+    <string name="check_license">Kontrollera licens [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Tillåter appen att verifiera sin efterlevnad av licensavtalet och upprätthålla licensvillkor för att skydda immateriell egendom.</string>
+    <string name="foreground_service">Förgrundstjänst [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Tillåter appen att skapa och använda tjänster som körs i förgrunden, vilket ger dem prioritet över andra bakgrundsprocesser och förbättrar prestanda och tillförlitlighet.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Tillåter appen att upprätta en internetanslutning för att skicka felrapporter eller söka efter uppdateringar.</string>
+    <string name="vibrate_permission">Vibrera [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Tillåter appen att vibrera när en QR-kod skannas.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Tillåter appen att ansluta till Wi-Fi-nätverk genom att skanna QR-koder.</string>
+    <string name="runtime">Körning</string>
+    <string name="post_notifications">Skicka aviseringar [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Tillåter appen att visa aviseringar på enheter med Android 13 eller senare.</string>
+    <string name="camera_permission">Kamera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner hanterar inhämtning av QR- och streckkoder utan att dela kameraflödet med appen.</string>
+    <string name="read_contacts">Läs kontakter [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Tillåter appen att skapa en QR-kod från en kontakt i din kontaktlista.</string>
+    <string name="read_storage">Läs lagring [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Tillåter appen att komma åt din lagring så att du kan spara din QR-kod eller streckkod som text eller bild.</string>
+    <string name="read_images">Läs bilder [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Tillåter appen att läsa bilder från din enhet så att du kan skanna dem efter QR-koder och streckkoder på enheter som kör Android 13 eller senare.</string>
+    <string name="write_storage">Skriv till lagring [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Tillåter appen att skriva till din lagring så att du kan spara filer, som foton, videor och dokument.</string>
+    <string name="special">Särskild</string>
+    <string name="access_notification_policy">Åtkomst till aviseringspolicy [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Tillåter appen att komma åt och ändra enhetens aviseringspolicy, styra hur och när aviseringar visas för användaren och tillhandahålla anpassade funktioner för aviseringshantering.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Sökmotorer</string>
+    <string name="summary_preference_settings_search_engines">Välj en sökmotor för webbsökningar</string>
+    <string name="none">Ingen</string>
+    <string name="ask_every_time">Fråga varje gång</string>
+    <string name="error_reporting">Felrapportering</string>
+    <string name="bug_report">Felrapport</string>
+    <string name="summary_preference_settings_bug_report">Skicka felrapporter och funktionsförfrågningar till appens GitHub-förvars sida för ärenden</string>
+    <string name="cache_management">Cachehantering</string>
+    <string name="clear_cache">Rensa cache</string>
+    <string name="summary_preference_settings_cache_management">Rensa tillfälliga applikationsdata</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Appinformation</string>
+    <string name="application_build_version">Applikationens byggversion</string>
+    <string name="open_source_licenses">Licenser för öppen källkod</string>
+    <string name="summary_preference_settings_open_source_licenses">Visa licenser för de bibliotek vi använder</string>
+    <string name="device_info">Enhetsinformation</string>
+    <string name="app_build">App-version: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Tillverkare:</string>
+    <string name="device_model">Enhetsmodell:</string>
+    <string name="android_version">Android-version:</string>
+    <string name="api_level">API-nivå:</string>
+
+    <!-- Help screen -->
+    <string name="help">Hjälp</string>
+    <string name="view_in_google_play">Visa i Google Play Store</string>
+    <string name="beta_program">Betaprogram</string>
+    <string name="faq">Vanliga frågor</string>
+    <string name="question_1">Vad är QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus är en gratis app som låter dig skanna och generera QR-koder. Den kan skanna alla vanliga streckkodsformat, inklusive QR, Data Matrix, Aztec, UPC, EAN och många fler.</string>
+    <string name="question_2">Vilka är fördelarna med att använda QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus är en kraftfull, mångsidig och gratis app som kan skanna alla vanliga streckkodsformat, använda en ficklampa för att skanna i mörkret, zooma för att läsa streckkoder från långt avstånd, ansluta till Wi-Fi, generera QR-koder från text, kontakter, appar, bokmärken och urklipp, och har ett enkelt och intuitivt gränssnitt.</string>
+    <string name="question_3">Vilka är systemkraven för QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus är kompatibel med alla Android-enheter som kör Android 8.0 (Oreo) eller senare.</string>
+    <string name="question_4">Hur skannar jag en QR-kod med QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">För att skanna en QR-kod med QR &amp; Bar Code Scanner Plus, öppna bara appen och rikta telefonens kamera mot QR-koden. Appen skannar automatiskt koden och visar resultaten.</string>
+    <string name="question_5"> Hur skapar jag en QR-kod med QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">För att skapa en QR-kod med QR &amp; Bar Code Scanner Plus, öppna appen och gå till menyn \'Skapa\'. Välj den typ av QR-kod eller streckkod du vill ha, ange de data du vill inkludera i QR-koden och tryck på knappen \'Skapa\'. Appen genererar då en QR-kod som du kan spara eller dela.</string>
+    <string name="question_6">Hur ändrar jag temat för QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Temat för QR &amp; Bar Code Scanner Plus kan ändras genom att gå till appens inställningar och välja önskat tema.</string>
+    <string name="question_7">Hur rapporterar jag ett fel?</string>
+    <string name="summary_preference_faq_7">Om du hittar ett fel i QR &amp; Bar Code Scanner Plus kan du rapportera det genom att gå till appens GitHub-sida och skapa ett nytt ärende (issue).</string>
+    <string name="question_8">Är QR &amp; Bar Code Scanner Plus säker att använda?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus är en säker app att använda. Appen samlar endast in felloggar via Firebase Crashlytics och Firebase Analytics, vilket kan stängas av.</string>
+    <string name="question_9">Hur kontaktar jag appens utvecklare?</string>
+    <string name="summary_preference_faq_9">Om du har några frågor eller problem med appen kan du kontakta utvecklaren via appens sida \'Hjälp &amp; feedback\'.</string>
+    <string name="contact_support_title">Kontakta support</string>
+    <string name="contact_support_description">Dela detaljer för att få hjälp att nå ditt mål</string>
+    <string name="send_feedback">Skicka feedback</string>
+    <string name="contact_support_email_subject">Supportförfrågan för %1$s</string>
+    <string name="contact_support_email_body">Hej,\n\nJag behöver hjälp med QR &amp; Bar Code Scanner Plus.\n\nTack!</string>
+    <string name="version_info">Versionsinformation</string>
+    <string name="version">Version %1$s</string>
+    <string name="faq_state_collapsed">Hopfälld</string>
+    <string name="faq_state_expanded">Utfälld</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Inga e-postappar är tillgängliga för att hantera denna begäran.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Stöd utvecklaren</string>
+    <string name="paid_support">Betald support</string>
+    <string name="summary_donations">Välj ett engångsbelopp för donation för att stödja framtida utveckling.</string>
+    <string name="non_paid_support">Obetald support</string>
+    <string name="web_ad">Besök vår supportsida</string>
+    <string name="watch_ad">Titta på annons</string>
+    <string name="support_description">Välj ett av alternativen nedan för att hjälpa till att hålla nya funktioner på väg.</string>
+    <string name="support_donations_header">Supportalternativ</string>
+    <string name="support_visit_store">Utforska fler sätt att stödja</string>
+    <string name="support_purchase_thank_you">Tack så mycket för att du stöder appen! 🎉</string>
+    <string name="support_purchase_restored">Ditt stöd har återställts.</string>
+    <string name="support_purchase_revoked">Ditt supportköp har återkallats.</string>
+    <string name="support_purchase_error">Något gick fel. Försök igen om en stund.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Annons</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Prova nu!!!</string>
+    <string name="share_using">Dela med…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Spara som</string>
+    <string name="save">Spara</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Bekräfta</string>
+    <string name="error">Fel</string>
+    <string name="something_went_wrong">Något gick fel</string>
+    <string name="dialog_delete">Ta bort?</string>
+    <string name="edit_name">Redigera namn</string>
+    <string name="require_restart">Kräver omstart!</string>
+    <string name="summary_require_restart">För att ändringen ska träda i kraft, starta om appen!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Lägg till i kalender</string>
+    <string name="add_to_contacts">Lägg till i kontakter</string>
+    <string name="call" tools:ignore="StringFormatCount">Ring %s</string>
+    <string name="send_sms_mms_to">Skicka SMS/MMS till %s</string>
+    <string name="email_to">Skicka e-post till %s</string>
+    <string name="show_location">Visa plats</string>
+    <string name="connect_to_wifi">Anslut till Wi-Fi</string>
+    <string name="open_wifi_settings">Öppna Wi-Fi-inställningar</string>
+    <string name="copy_network_name">Kopiera nätverksnamn</string>
+    <string name="copy_network_password">Kopiera nätverkslösenord</string>
+    <string name="open_app">Öppna app</string>
+    <string name="open_in_market">Öppna i butik</string>
+    <string name="open_in_youtube">Öppna i Youtube</string>
+    <string name="save_to_bookmark">Spara i bokmärken</string>
+    <string name="open_link">Öppna länk</string>
+    <string name="open_in_other_app">Öppna i annan app</string>
+    <string name="show_password">Visa lösenord</string>
+    <string name="search_on_the_web">Sök på webben</string>
+    <string name="connecting">Ansluter…</string>
+    <string name="tooltip_view_code">Visa kod</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Kunde inte generera lösenord</string>
+    <string name="counter">Räknare: %s</string>
+    <string name="timer_left">%1$s:%2$s kvar</string>
+    <string name="refresh">Uppdatera</string>
+    <string name="tooltip_generate_new_secret">Generera en ny hemlighet</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">Youtube-URL</string>
+    <string name="barcode_schema_boarding_pass">Boardingkort</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Sparad</string>
+    <string name="snack_unable_to_open_google_play_store">Kunde inte öppna Google Play Store.</string>
+    <string name="snack_copied_to_clipboard">Kopierat till urklipp! 📋</string>
+    <string name="snack_saved_to_downloads">Sparat i Hämtade filer!</string>
+    <string name="snack_saved_to_gallery">Sparat i Galleri</string>
+    <string name="snack_no_app_found">Ingen app hittades för denna åtgärd. Installera en kompatibel app.</string>
+    <string name="snack_feedback">Tack för att du betygsätter oss! ❤️</string>
+    <string name="snack_support">Vill du stödja vår app? ❤️</string>
+</resources>

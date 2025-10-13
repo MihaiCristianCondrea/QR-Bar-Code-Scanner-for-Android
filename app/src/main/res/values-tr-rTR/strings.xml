@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Her türlü QR kodunu ve barkodu kolayca tarayın. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Hoş geldiniz</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Devam etmek için Hizmet Şartlarımızı ve Gizlilik Politikamızı okuyup kabul edin.</string>
+    <string name="browse_terms_of_service_and_privacy_policy"><i><u>Hizmet Şartları</u></i> ve <i><u>Gizlilik Politikası</u></i>\'na göz atın</string>
+    <string name="agree">Kabul Et</string>
+    <string name="tooltip_agree">Şartları ve koşulları kabul edin.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Menü</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Ayarlar</string>
+    <string name="help_and_feedback">Yardım ve geri bildirim</string>
+    <string name="updates">Güncellemeler</string>
+    <string name="share">Paylaş</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Tara</string>
+    <string name="scan_image">Görüntü tara</string>
+    <string name="flash">Flaş</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Sola döndür</string>
+    <string name="rotate_right">Sağa döndür</string>
+    <string name="choose_another_image">Başka bir görüntü seç</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Oluştur</string>
+    <string name="qr_code">QR Kodu</string>
+    <string name="content_from_clipboard">Panodan içerik</string>
+    <string name="text">Metin</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Konum</string>
+    <string name="contact_v_card">Kişi (VCard)</string>
+
+    <string name="more_qr_codes">Daha fazla QR kodu</string>
+    <string name="barcode">Barkod</string>
+    <string name="all_barcodes_codes">Barkodlar ve diğer 2D kodlar</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">QR kodu oluştur</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Kişi (MeCard)</string>
+    <string name="event">Etkinlik</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternatif olarak:</string>
+    <string name="summary_alternatively_url">- Tarayıcı uygulamanızı açın\n- Bir web sitesi yükleyin\n- Menüden \"Paylaş\"a tıklayın\n- Bu uygulamayı seçin.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Şifreleme</string>
+    <string name="network_name">Ağ adı</string>
+    <string name="password">Şifre</string>
+    <string name="hidden">Gizli</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Enlem</string>
+    <string name="longitude">Boylam</string>
+    <string name="altitude">İrtifa (isteğe bağlı)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Kişiler</string>
+    <string name="first_name">Ad</string>
+    <string name="last_name">Soyadı</string>
+    <string name="organization">Kuruluş</string>
+    <string name="job">Meslek</string>
+    <string name="email">E-posta</string>
+    <string name="phone">Telefon</string>
+    <string name="fax">Faks</string>
+    <string name="website">Web sitesi</string>
+    <string name="summary_alternatively_contact">- Kişiler uygulamanızı açın\n- Mevcut bir kişiyi açın veya yeni bir tane oluşturun\n- Menüden \"Paylaş\"a tıklayın\n- Bu uygulamayı seçin</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Tür</string>
+    <string name="algorithm">Algoritma</string>
+    <string name="issuer">Yayıncı</string>
+    <string name="account">Hesap</string>
+    <string name="period">Süre</string>
+    <string name="hint_counter">Sayaç</string>
+    <string name="secret">Gizli anahtar</string>
+    <string name="random_secret">Rastgele Gizli Anahtar</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Başlık</string>
+    <string name="organizer">Organizatör</string>
+    <string name="summary">Özet</string>
+    <string name="start_date">Başlangıç tarihi</string>
+    <string name="end_date">Bitiş tarihi</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Konu</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Mesaj</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Kripto para</string>
+    <string name="receiver_address">Alıcı adresi</string>
+    <string name="amount">Miktar</string>
+    <string name="label">Etiket</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Yer imi</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">Uygulama</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Parlaklığı artır</string>
+    <string name="decrease_brightness">Parlaklığı azalt</string>
+    <string name="add_to_favorites">Favorilere ekle</string>
+    <string name="delete">Sil</string>
+    <string name="share_as_text">Metin olarak paylaş</string>
+    <string name="copy_to_clipboard">Panoya kopyala</string>
+    <string name="save_as_text">Metin olarak kaydet</string>
+    <string name="share_as_image">Görüntü olarak paylaş</string>
+    <string name="save_as_image">Görüntü olarak kaydet</string>
+    <string name="print">Yazdır</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Barkod oluştur</string>
+    <string name="barcodes_2d">2D barkodlar</string>
+    <string name="barcodes_1d">1D barkodlar</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Özel karakter içermeyen metin</string>
+    <string name="text_in_upper_case_without_special_characters">Büyük harflerle özel karakter içermeyen metin</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Rakamlar</string>
+    <string name="seven_digits">7 rakam</string>
+    <string name="eleven_digits">11 rakam</string>
+    <string name="twelve_digits">12 rakam</string>
+    <string name="even_number_of_digits">Çift sayıda rakam</string>
+
+    <!-- History screen -->
+    <string name="history">Geçmiş</string>
+    <string name="all">Tümü</string>
+    <string name="favorites">Favoriler</string>
+    <string name="history_empty_message">Henüz kaydedilmiş bir taramanız yok. Burada görmek için bir kod tarayın veya oluşturun.</string>
+    <string name="export_your_history">Geçmişinizi dışa aktarın</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Geçmişi dışa aktar</string>
+    <string name="export_as">Farklı dışa aktar</string>
+    <string name="file_name">Dosya adı</string>
+    <string name="export">Dışa Aktar</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Bildirimler</string>
+    <string name="summary_settings_notifications_overview">Uygulama bildirimlerini yönetin</string>
+    <string name="display">Ekran</string>
+    <string name="summary_settings_display_overview">Uygulamanızın görünümünü ve hissini kişiselleştirin</string>
+    <string name="scanner">Tarayıcı</string>
+    <string name="summary_settings_scanner_overview">Tarama davranışını ve kameranın tepkisini ayarlayın</string>
+    <string name="summary_settings_history_overview">Taramaların nasıl kaydedileceğini kontrol edin ve geçmişinizi yönetin</string>
+    <string name="security_and_privacy">Güvenlik ve Gizlilik</string>
+    <string name="summary_settings_security_privacy_overview">Gizlilik ayarlarınızı yönetin</string>
+    <string name="advanced">Gelişmiş</string>
+    <string name="summary_settings_advanced_overview">Daha gelişmiş ayarları keşfedin</string>
+    <string name="about">Hakkında</string>
+    <string name="summary_settings_about_overview">%1$s hakkında daha fazla bilgi edinin</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Bildirim ayarları</string>
+    <string name="summary_preference_settings_notification_settings">Uygulamanın sizi sistem ayarlarında nasıl uyaracağını seçin.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Görünüm</string>
+    <string name="theme">Tema</string>
+    <string name="follow_system">Sistem Modunu Takip Et</string>
+    <string name="light_mode">Açık Mod</string>
+    <string name="dark_mode">Karanlık Mod</string>
+    <string name="auto_battery_mode">Otomatik Pil Koyu Modu</string>
+    <string name="summary_preference_settings_theme">Uygulamanın nasıl görüneceğini seçin. Mevcut: %1$s</string>
+    <string name="navigation">Gezinme</string>
+    <string name="default_tab">Varsayılan sekme</string>
+    <string name="summary_preference_settings_default_tab">Başlangıçta gördüğünüz ilk ekranı seçin. Mevcut: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Alt gezinme çubuğu etiketleri</string>
+    <string name="labeled">Etiketli</string>
+    <string name="selected_variant">Seçili</string>
+    <string name="unlabeled">Etiketsiz</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Alt çubuktaki etiketlerin nasıl görüneceğini kontrol edin. Mevcut: %1$s</string>
+    <string name="inverse_colors">Renkleri ters çevir</string>
+    <string name="summary_preference_settings_inverse_colors">Koyu arka planda ve karanlık modda beyaz içerikli kodları göster</string>
+    <string name="language">Dil</string>
+    <string name="summary_preference_settings_language_value">Uygulama dilini seçin. Mevcut: %1$s</string>
+    <string name="summary_preference_settings_language">Uygulamada kullanılan dili değiştirir</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Taranan kodların içeriğini otomatik olarak aç</string>
+    <string name="summary_preference_settings_open_content_automatically">Zararlı içerik açabilir</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Taranan barkodları panoya kopyala</string>
+    <string name="simple_auto_focus">Basit otomatik odaklama modu</string>
+    <string name="summary_preference_settings_simple_auto_focus">Yalnızca odaklanma sorunları yaşıyorsanız etkinleştirin.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Başlangıçta flaşı etkinleştir</string>
+    <string name="vibrate">Titreşim</string>
+    <string name="summary_preference_settings_vibrate">Taramada titret</string>
+    <string name="continuous_scanning">Sürekli tarama</string>
+    <string name="summary_preference_settings_continuous_scanning">Taramaları yalnızca geçmişe kaydet</string>
+    <string name="confirm_scans_manually">Taramaları manuel olarak onayla</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Yanlışlıkla taramaları önleyin.</string>
+    <string name="camera">Kamera</string>
+    <string name="summary_preference_settings_camera">Taramaya başladığınızda hangi kameranın açılacağını seçin.</string>
+    <string name="front">Ön</string>
+    <string name="back">Arka</string>
+    <string name="supported_formats">Desteklenen formatlar</string>
+    <string name="summary_preference_settings_supported_formats">Tarayıcının arayacağı barkod formatlarını seçin.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Taranan barkodları geçmişe kaydet</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Daha sonra tekrar ziyaret edebilmek için her taramayı saklayın</string>
+    <string name="save_created_barcodes_to_history">Oluşturulan barkodları geçmişe kaydet</string>
+    <string name="summary_preference_settings_save_created_barcodes">Oluşturduğunuz kodları kolayca bulunabilir tutun</string>
+    <string name="do_not_save_duplicates">Kopyaları kaydetme</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Geçmişte kopyaları önleyin</string>
+    <string name="clear_history">Geçmişi temizle</string>
+    <string name="summary_preference_settings_clear_history">Cihazdaki tüm kayıtlı taramaları kaldırın</string>
+    <string name="summary_delete_history">Geçmiş silinsin mi?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Gizlilik</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="summary_preference_settings_privacy_policy">Verilerinizin nasıl işlendiğini yöneten politikayı görüntüleyin</string>
+    <string name="terms_of_service">Hizmet Şartları</string>
+    <string name="summary_preference_settings_terms_of_service">Bu hizmeti kullanırken kabul ettiğiniz şartları gözden geçirin</string>
+    <string name="code_of_conduct">Davranış Kuralları</string>
+    <string name="summary_preference_settings_code_of_conduct">Hizmet içindeki davranış kurallarını ve yönergelerini anlayın</string>
+    <string name="permissions">İzinler</string>
+    <string name="summary_preference_settings_permissions">Hizmete verilen izinleri yönetin</string>
+    <string name="usage_and_diagnostics">Kullanım ve teşhis</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Uygulama içi deneyimi iyileştirmeye yardımcı olmak için verileri paylaşın</string>
+    <string name="legal">Yasal</string>
+    <string name="legal_notices">Yasal uyarılar</string>
+    <string name="summary_preference_settings_legal_notices">Hizmetle ilgili yasal bilgileri görüntüleyin</string>
+    <string name="license">Lisans</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">Ağ durumuna erişim [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Uygulamanın ağ bağlantısını kontrol etmesine ve etkin durum ve bağlı Wi-Fi cihaz adları dahil olmak üzere Wi-Fi hakkında bilgi almasına olanak tanır.</string>
+    <string name="ad_id">Reklam kimliği [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Uygulamanın, kullanıcının cihazıyla ilişkili reklam tanımlayıcısını almasına ve kullanmasına, kişiselleştirilmiş reklamlar sunmasına, reklam etkinliğini ölçmesine ve Android 13 veya sonraki sürümlere sahip cihazlarda reklam göstermesine olanak tanır.</string>
+    <string name="billing">Faturalandırma [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Uygulamanın uygulama içi satın alımları ve bağışları yönetmek için Google Play Faturalandırma Kitaplığı\'nı kullanmasına olanak tanır.</string>
+    <string name="check_license">Lisansı kontrol et [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Uygulamanın lisans sözleşmesine uygunluğunu doğrulamasına ve fikri mülkiyeti korumak için lisans koşullarını uygulamasına olanak tanır.</string>
+    <string name="foreground_service">Ön plan hizmeti [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Uygulamanın ön planda çalışan hizmetler oluşturmasına ve kullanmasına, onlara diğer arka plan işlemlerine göre öncelik vermesine ve performansı ve güvenilirliği artırmasına olanak tanır.</string>
+    <string name="internet">İnternet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Uygulamanın hata raporları göndermek veya güncellemeleri kontrol etmek için bir internet bağlantısı kurmasına olanak tanır.</string>
+    <string name="vibrate_permission">Titreşim [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Uygulamanın bir QR kodu tarandığında titremesine olanak tanır.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Uygulamanın QR kodlarını tarayarak Wi-Fi ağlarına bağlanmasına olanak tanır.</string>
+    <string name="runtime">Çalışma Zamanı</string>
+    <string name="post_notifications">Bildirim gönderme [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Uygulamanın Android 13 veya sonraki sürümlere sahip cihazlarda bildirim göstermesine olanak tanır.</string>
+    <string name="camera_permission">Kamera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Kod Tarayıcı, kamera akışını uygulamayla paylaşmadan QR ve barkod yakalamayı yönetir.</string>
+    <string name="read_contacts">Kişileri okuma [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Uygulamanın kişi listenizdeki bir kişiden bir QR kodu oluşturmasına olanak tanır.</string>
+    <string name="read_storage">Depolamayı okuma [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Uygulamanın depolama alanınıza erişmesine olanak tanır, böylece QR kodunuzu veya barkodunuzu metin veya resim olarak kaydedebilirsiniz.</string>
+    <string name="read_images">Görüntüleri okuma [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Uygulamanın, Android 13 veya sonraki sürümleri çalıştıran cihazlarda QR kodları ve barkodlar için tarayabilmeniz için cihazınızdan görüntüleri okumasına olanak tanır.</string>
+    <string name="write_storage">Depolamaya yazma [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Uygulamanın, fotoğraflar, videolar ve belgeler gibi dosyaları kaydedebilmeniz için depolama alanınıza yazmasına olanak tanır.</string>
+    <string name="special">Özel</string>
+    <string name="access_notification_policy">Bildirim politikasına erişim [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Uygulamanın, cihazın bildirim politikasına erişmesine ve değiştirmesine, bildirimlerin kullanıcıya nasıl ve ne zaman gösterileceğini kontrol etmesine ve özel bildirim yönetimi özellikleri sunmasına olanak tanır.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Arama Motorları</string>
+    <string name="summary_preference_settings_search_engines">Web aramaları için bir arama motoru seçin</string>
+    <string name="none">Hiçbiri</string>
+    <string name="ask_every_time">Her zaman sor</string>
+    <string name="error_reporting">Hata raporlama</string>
+    <string name="bug_report">Hata bildir</string>
+    <string name="summary_preference_settings_bug_report">Hata raporlarını ve özellik isteklerini uygulamanın GitHub deposunun sorunlar sayfasına gönderin</string>
+    <string name="cache_management">Önbellek yönetimi</string>
+    <string name="clear_cache">Önbelleği temizle</string>
+    <string name="summary_preference_settings_cache_management">Geçici uygulama verilerini temizle</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Uygulama bilgisi</string>
+    <string name="application_build_version">Uygulama derleme sürümü</string>
+    <string name="open_source_licenses">Açık kaynak lisansları</string>
+    <string name="summary_preference_settings_open_source_licenses">Kullandığımız kütüphanelerin lisanslarını görüntüleyin</string>
+    <string name="device_info">Cihaz bilgisi</string>
+    <string name="app_build">Uygulama Derlemesi: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Üretici:</string>
+    <string name="device_model">Cihaz Modeli:</string>
+    <string name="android_version">Android Sürümü:</string>
+    <string name="api_level">API Seviyesi:</string>
+
+    <!-- Help screen -->
+    <string name="help">Yardım</string>
+    <string name="view_in_google_play">Google Play Store\'da görüntüle</string>
+    <string name="beta_program">Beta programı</string>
+    <string name="faq">SSS</string>
+    <string name="question_1">QR &amp; Bar Code Scanner Plus nedir?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus, QR kodlarını taramanıza ve oluşturmanıza olanak tanıyan ücretsiz bir uygulamadır. QR, Data Matrix, Aztec, UPC, EAN ve daha pek çok yaygın barkod formatını tarayabilir.</string>
+    <string name="question_2">QR &amp; Bar Code Scanner Plus kullanmanın faydaları nelerdir?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus, tüm yaygın barkod formatlarını tarayabilen, karanlıkta tarama yapmak için el feneri kullanabilen, uzak mesafelerden barkodları okumak için yakınlaştırabilen, Wi-Fi\'ye bağlanabilen, metin, kişiler, uygulamalar, yer imleri ve panodan QR kodları oluşturabilen ve basit ve sezgisel bir arayüze sahip güçlü, çok yönlü ve ücretsiz bir uygulamadır.</string>
+    <string name="question_3">QR &amp; Bar Code Scanner Plus için sistem gereksinimleri nelerdir?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus, Android 8.0 (Oreo) veya üstü bir sürüm çalıştıran tüm Android cihazlarla uyumludur.</string>
+    <string name="question_4">QR &amp; Bar Code Scanner Plus ile bir QR kodunu nasıl tararım?</string>
+    <string name="summary_preference_faq_4">QR &amp; Bar Code Scanner Plus ile bir QR kodunu taramak için uygulamayı açın ve telefonunuzun kamerasını QR koduna doğrultun. Uygulama kodu otomatik olarak tarayacak ve sonuçları gösterecektir.</string>
+    <string name="question_5"> QR &amp; Bar Code Scanner Plus ile nasıl bir QR kodu oluştururum?</string>
+    <string name="summary_preference_faq_5">QR &amp; Bar Code Scanner Plus ile bir QR kodu oluşturmak için uygulamayı açın ve \'Oluştur\' menüsüne gidin. İstediğiniz QR kodu veya barkod türünü seçin ve QR koduna eklemek istediğiniz verileri girip \'Oluştur\' düğmesine dokunun. Uygulama daha sonra kaydedebileceğiniz veya paylaşabileceğiniz bir QR kodu oluşturacaktır.</string>
+    <string name="question_6">QR &amp; Bar Code Scanner Plus\'ın temasını nasıl değiştiririm?</string>
+    <string name="summary_preference_faq_6">QR &amp; Bar Code Scanner Plus\'ın teması, uygulamanın ayarlarına gidip istenen temayı seçerek değiştirilebilir.</string>
+    <string name="question_7">Bir hatayı nasıl bildiririm?</string>
+    <string name="summary_preference_faq_7">QR &amp; Bar Code Scanner Plus\'ta bir hata bulursanız, uygulamanın GitHub sayfasına gidip yeni bir sorun (issue) oluşturarak bildirebilirsiniz.</string>
+    <string name="question_8">QR &amp; Bar Code Scanner Plus\'ı kullanmak güvenli midir?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus, kullanımı güvenli bir uygulamadır. Uygulama yalnızca Firebase Crashlytics ve Firebase Analytics aracılığıyla hata günlükleri toplar ve bu özellik kapatılabilir.</string>
+    <string name="question_9">Uygulamanın geliştiricisiyle nasıl iletişime geçebilirim?</string>
+    <string name="summary_preference_faq_9">Uygulamayla ilgili herhangi bir sorunuz veya sorununuz varsa, uygulamanın \'Yardım ve geri bildirim\' sayfası aracılığıyla geliştiriciyle iletişime geçebilirsiniz.</string>
+    <string name="contact_support_title">Destekle iletişime geçin</string>
+    <string name="contact_support_description">Hedefinize ulaşmak için yardım almak üzere ayrıntıları paylaşın</string>
+    <string name="send_feedback">Geri bildirim gönder</string>
+    <string name="contact_support_email_subject">%1$s için destek talebi</string>
+    <string name="contact_support_email_body">Merhaba,\n\nQR &amp; Bar Code Scanner Plus ile ilgili yardıma ihtiyacım var.\n\nTeşekkürler!</string>
+    <string name="version_info">Sürüm bilgisi</string>
+    <string name="version">Sürüm %1$s</string>
+    <string name="faq_state_collapsed">Daraltılmış</string>
+    <string name="faq_state_expanded">Genişletilmiş</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Bu isteği işleyecek e-posta uygulaması bulunmuyor.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Geliştiriciyi destekle</string>
+    <string name="paid_support">Ücretli Destek</string>
+    <string name="summary_donations">Gelecekteki geliştirmeyi desteklemek için tek seferlik bir bağış miktarı seçin.</string>
+    <string name="non_paid_support">Ücretsiz Destek</string>
+    <string name="web_ad">Destek sayfamızı ziyaret edin</string>
+    <string name="watch_ad">Reklam İzle</string>
+    <string name="support_description">Yeni özelliklerin gelmesine yardımcı olmak için aşağıdaki seçeneklerden birini seçin.</string>
+    <string name="support_donations_header">Destek seçenekleri</string>
+    <string name="support_visit_store">Daha fazla destek yolu keşfedin</string>
+    <string name="support_purchase_thank_you">Uygulamayı desteklediğiniz için çok teşekkür ederiz! 🎉</string>
+    <string name="support_purchase_restored">Desteğiniz geri yüklendi.</string>
+    <string name="support_purchase_revoked">Destek satın alımınız iptal edildi.</string>
+    <string name="support_purchase_error">Bir şeyler ters gitti. Lütfen kısa bir süre sonra tekrar deneyin.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Reklam</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Şimdi dene!!!</string>
+    <string name="share_using">Şununla paylaş…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Farklı kaydet</string>
+    <string name="save">Kaydet</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Onayla</string>
+    <string name="error">Hata</string>
+    <string name="something_went_wrong">Bir şeyler ters gitti</string>
+    <string name="dialog_delete">Silinsin mi?</string>
+    <string name="edit_name">Adı düzenle</string>
+    <string name="require_restart">Yeniden başlatma gerekli!</string>
+    <string name="summary_require_restart">Etkili olması için lütfen uygulamayı yeniden başlatın!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Takvime ekle</string>
+    <string name="add_to_contacts">Kişilere ekle</string>
+    <string name="call" tools:ignore="StringFormatCount">%s ara</string>
+    <string name="send_sms_mms_to">%s hedefine SMS/MMS gönder</string>
+    <string name="email_to">%s adresine e-posta gönder</string>
+    <string name="show_location">Konumu göster</string>
+    <string name="connect_to_wifi">Wi-Fi\'ye bağlan</string>
+    <string name="open_wifi_settings">Wi-Fi ayarlarını aç</string>
+    <string name="copy_network_name">Ağ adını kopyala</string>
+    <string name="copy_network_password">Ağ şifresini kopyala</string>
+    <string name="open_app">Uygulamayı aç</string>
+    <string name="open_in_market">Markette aç</string>
+    <string name="open_in_youtube">Youtube\'da aç</string>
+    <string name="save_to_bookmark">Yer imlerine kaydet</string>
+    <string name="open_link">Bağlantıyı aç</string>
+    <string name="open_in_other_app">Başka uygulamada aç</string>
+    <string name="show_password">Şifreyi göster</string>
+    <string name="search_on_the_web">Web\'de ara</string>
+    <string name="connecting">Bağlanılıyor…</string>
+    <string name="tooltip_view_code">Kodu görüntüle</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Şifre oluşturulamadı</string>
+    <string name="counter">Sayaç: %s</string>
+    <string name="timer_left">Kalan süre %1$s:%2$s</string>
+    <string name="refresh">Yenile</string>
+    <string name="tooltip_generate_new_secret">Yeni bir gizli anahtar oluştur</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">Youtube URL</string>
+    <string name="barcode_schema_boarding_pass">Biniş Kartı</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Kaydedildi</string>
+    <string name="snack_unable_to_open_google_play_store">Google Play Store açılamadı.</string>
+    <string name="snack_copied_to_clipboard">Panoya kopyalandı! 📋</string>
+    <string name="snack_saved_to_downloads">İndirilenlere kaydedildi!</string>
+    <string name="snack_saved_to_gallery">Galeriye kaydedildi</string>
+    <string name="snack_no_app_found">Bu işlem için uygulama bulunamadı. Lütfen uyumlu bir uygulama yükleyin.</string>
+    <string name="snack_feedback">Bizi değerlendirdiğiniz için teşekkürler! ❤️</string>
+    <string name="snack_support">Uygulamamızı desteklemek ister misiniz? ❤️</string>
+</resources>

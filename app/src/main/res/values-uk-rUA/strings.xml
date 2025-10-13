@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">З легкістю скануйте всі види QR-кодів і штрих-кодів. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Ласкаво просимо</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Прочитайте та погодьтеся з нашими Умовами надання послуг та Політикою конфіденційності, щоб продовжити.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Перегляньте <i><u>Умови надання послуг</u></i> та <i><u>Політику конфіденційності</u></i></string>
+    <string name="agree">Погоджуюсь</string>
+    <string name="tooltip_agree">Прийняти умови та положення.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Меню</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Налаштування</string>
+    <string name="help_and_feedback">Допомога та відгуки</string>
+    <string name="updates">Оновлення</string>
+    <string name="share">Поділитися</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Сканувати</string>
+    <string name="scan_image">Сканувати зображення</string>
+    <string name="flash">Спалах</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Повернути ліворуч</string>
+    <string name="rotate_right">Повернути праворуч</string>
+    <string name="choose_another_image">Вибрати інше зображення</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Створити</string>
+    <string name="qr_code">QR-код</string>
+    <string name="content_from_clipboard">Вміст з буфера обміну</string>
+    <string name="text">Текст</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Місцезнаходження</string>
+    <string name="contact_v_card">Контакт (VCard)</string>
+
+    <string name="more_qr_codes">Більше QR-кодів</string>
+    <string name="barcode">Штрих-код</string>
+    <string name="all_barcodes_codes">Штрих-коди та інші 2D-коди</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Створити QR-код</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Контакт (MeCard)</string>
+    <string name="event">Подія</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Альтернативно:</string>
+    <string name="summary_alternatively_url">- Відкрийте браузер\n- Завантажте веб-сайт\n- Натисніть \"Поділитися\" в меню\n- Виберіть цей додаток.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Шифрування</string>
+    <string name="network_name">Назва мережі</string>
+    <string name="password">Пароль</string>
+    <string name="hidden">Приховано</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Широта</string>
+    <string name="longitude">Довгота</string>
+    <string name="altitude">Висота (необов\'язково)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Контакти</string>
+    <string name="first_name">Ім\'я</string>
+    <string name="last_name">Прізвище</string>
+    <string name="organization">Організація</string>
+    <string name="job">Посада</string>
+    <string name="email">Електронна пошта</string>
+    <string name="phone">Телефон</string>
+    <string name="fax">Факс</string>
+    <string name="website">Веб-сайт</string>
+    <string name="summary_alternatively_contact">- Відкрийте додаток \"Контакти\"\n- Відкрийте існуючий контакт або створіть новий\n- Натисніть \"Поділитися\" в меню\n- Виберіть цей додаток</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Тип</string>
+    <string name="algorithm">Алгоритм</string>
+    <string name="issuer">Видавець</string>
+    <string name="account">Обліковий запис</string>
+    <string name="period">Період</string>
+    <string name="hint_counter">Лічильник</string>
+    <string name="secret">Секрет</string>
+    <string name="random_secret">Випадковий секрет</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Назва</string>
+    <string name="organizer">Організатор</string>
+    <string name="summary">Опис</string>
+    <string name="start_date">Дата початку</string>
+    <string name="end_date">Дата закінчення</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Тема</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Повідомлення</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Криптовалюта</string>
+    <string name="receiver_address">Адреса одержувача</string>
+    <string name="amount">Сума</string>
+    <string name="label">Мітка</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Закладка</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">Додаток</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Збільшити яскравість</string>
+    <string name="decrease_brightness">Зменшити яскравість</string>
+    <string name="add_to_favorites">Додати до улюблених</string>
+    <string name="delete">Видалити</string>
+    <string name="share_as_text">Поділитися як текст</string>
+    <string name="copy_to_clipboard">Копіювати в буфер обміну</string>
+    <string name="save_as_text">Зберегти як текст</string>
+    <string name="share_as_image">Поділитися як зображення</string>
+    <string name="save_as_image">Зберегти як зображення</string>
+    <string name="print">Друк</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Створити штрих-код</string>
+    <string name="barcodes_2d">2D штрих-коди</string>
+    <string name="barcodes_1d">1D штрих-коди</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Текст без спеціальних символів</string>
+    <string name="text_in_upper_case_without_special_characters">Текст у верхньому регістрі без спеціальних символів</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Цифри</string>
+    <string name="seven_digits">7 цифр</string>
+    <string name="eleven_digits">11 цифр</string>
+    <string name="twelve_digits">12 цифр</string>
+    <string name="even_number_of_digits">Парна кількість цифр</string>
+
+    <!-- History screen -->
+    <string name="history">Історія</string>
+    <string name="all">Усі</string>
+    <string name="favorites">Улюблені</string>
+    <string name="history_empty_message">У вас ще немає збережених сканувань. Відскануйте або створіть код, щоб побачити його тут.</string>
+    <string name="export_your_history">Експортувати вашу історію</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Експорт історії</string>
+    <string name="export_as">Експортувати як</string>
+    <string name="file_name">Назва файлу</string>
+    <string name="export">Експорт</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Сповіщення</string>
+    <string name="summary_settings_notifications_overview">Керування сповіщеннями додатку</string>
+    <string name="display">Екран</string>
+    <string name="summary_settings_display_overview">Персоналізуйте вигляд і відчуття вашого додатку</string>
+    <string name="scanner">Сканер</string>
+    <string name="summary_settings_scanner_overview">Налаштуйте поведінку сканування та реакцію камери</string>
+    <string name="summary_settings_history_overview">Керуйте збереженням сканів та вашою історією</string>
+    <string name="security_and_privacy">Безпека та конфіденційність</string>
+    <string name="summary_settings_security_privacy_overview">Керування налаштуваннями конфіденційності</string>
+    <string name="advanced">Розширені</string>
+    <string name="summary_settings_advanced_overview">Ознайомтеся з розширеними налаштуваннями</string>
+    <string name="about">Про додаток</string>
+    <string name="summary_settings_about_overview">Дізнайтеся більше про %1$s</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Налаштування сповіщень</string>
+    <string name="summary_preference_settings_notification_settings">Виберіть, як додаток сповіщатиме вас у системних налаштуваннях.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Вигляд</string>
+    <string name="theme">Тема</string>
+    <string name="follow_system">Як у системі</string>
+    <string name="light_mode">Світла тема</string>
+    <string name="dark_mode">Темна тема</string>
+    <string name="auto_battery_mode">Автоматично (за рівнем заряду)</string>
+    <string name="summary_preference_settings_theme">Виберіть оформлення додатку. Поточна: %1$s</string>
+    <string name="navigation">Навігація</string>
+    <string name="default_tab">Вкладка за замовчуванням</string>
+    <string name="summary_preference_settings_default_tab">Виберіть перший екран при запуску. Поточна: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Підписи на панелі навігації</string>
+    <string name="labeled">З підписами</string>
+    <string name="selected_variant">Вибраний</string>
+    <string name="unlabeled">Без підписів</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Керуйте відображенням підписів на нижній панелі. Поточний: %1$s</string>
+    <string name="inverse_colors">Інверсія кольорів</string>
+    <string name="summary_preference_settings_inverse_colors">Показувати коди з білим вмістом на темному тлі та в темній темі</string>
+    <string name="language">Мова</string>
+    <string name="summary_preference_settings_language_value">Виберіть мову додатку. Поточна: %1$s</string>
+    <string name="summary_preference_settings_language">Змінює мову, що використовується в додатку</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Відкривати вміст кодів автоматично</string>
+    <string name="summary_preference_settings_open_content_automatically">Може відкривати шкідливий вміст</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Копіювати відскановані штрих-коди до буфера обміну</string>
+    <string name="simple_auto_focus">Простий режим автофокусу</string>
+    <string name="summary_preference_settings_simple_auto_focus">Вмикайте, лише якщо є проблеми з фокусуванням.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Вмикати спалах при запуску</string>
+    <string name="vibrate">Вібрувати</string>
+    <string name="summary_preference_settings_vibrate">Вібрувати при скануванні</string>
+    <string name="continuous_scanning">Безперервне сканування</string>
+    <string name="summary_preference_settings_continuous_scanning">Зберігати скани тільки в історію</string>
+    <string name="confirm_scans_manually">Підтверджувати сканування вручну</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Уникайте випадкових сканувань.</string>
+    <string name="camera">Камера</string>
+    <string name="summary_preference_settings_camera">Виберіть, яка камера відкриватиметься при запуску сканування.</string>
+    <string name="front">Фронтальна</string>
+    <string name="back">Основна</string>
+    <string name="supported_formats">Підтримувані формати</string>
+    <string name="summary_preference_settings_supported_formats">Виберіть формати штрих-кодів для пошуку сканером.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Зберігати відскановані штрих-коди в історію</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Зберігайте кожне сканування, щоб повернутися до нього пізніше</string>
+    <string name="save_created_barcodes_to_history">Зберігати створені штрих-коди в історію</string>
+    <string name="summary_preference_settings_save_created_barcodes">Зберігайте створені вами коди в легкодоступному місці</string>
+    <string name="do_not_save_duplicates">Не зберігати дублікати</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Уникайте дублікатів в історії</string>
+    <string name="clear_history">Очистити історію</string>
+    <string name="summary_preference_settings_clear_history">Видалити всі збережені скани з пристрою</string>
+    <string name="summary_delete_history">Видалити історію?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Конфіденційність</string>
+    <string name="privacy_policy">Політика конфіденційності</string>
+    <string name="summary_preference_settings_privacy_policy">Перегляньте політику, що регулює обробку ваших даних</string>
+    <string name="terms_of_service">Умови надання послуг</string>
+    <string name="summary_preference_settings_terms_of_service">Перегляньте умови, з якими ви погоджуєтеся, користуючись цим сервісом</string>
+    <string name="code_of_conduct">Правила поведінки</string>
+    <string name="summary_preference_settings_code_of_conduct">Ознайомтеся з правилами та рекомендаціями щодо поведінки в рамках сервісу</string>
+    <string name="permissions">Дозволи</string>
+    <string name="summary_preference_settings_permissions">Керуйте дозволами, наданими сервісу</string>
+    <string name="usage_and_diagnostics">Використання та діагностика</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Діліться даними, щоб допомогти покращити роботу додатку</string>
+    <string name="legal">Правова інформація</string>
+    <string name="legal_notices">Юридичні повідомлення</string>
+    <string name="summary_preference_settings_legal_notices">Перегляд правової інформації про сервіс</string>
+    <string name="license">Ліцензія</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Звичайні</string>
+    <string name="access_network_state">Доступ до стану мережі [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Дозволяє додатку перевіряти підключення до мережі та отримувати інформацію про Wi-Fi, включаючи стан увімкнення та імена підключених пристроїв Wi-Fi.</string>
+    <string name="ad_id">Рекламний ідентифікатор [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Дозволяє додатку отримувати та використовувати рекламний ідентифікатор, пов\'язаний з пристроєм користувача, для надання персоналізованої реклами, вимірювання її ефективності та показу на пристроях з Android 13 або новішої версії.</string>
+    <string name="billing">Платежі [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Дозволяє додатку використовувати бібліотеку Google Play Billing для обробки внутрішніх покупок та пожертвувань.</string>
+    <string name="check_license">Перевірка ліцензії [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Дозволяє додатку перевіряти відповідність ліцензійній угоді та застосовувати умови ліцензування для захисту інтелектуальної власності.</string>
+    <string name="foreground_service">Робота у фоновому режимі [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Дозволяє додатку створювати та використовувати служби, що працюють у фоновому режимі, надаючи їм пріоритет над іншими фоновими процесами та підвищуючи продуктивність та надійність.</string>
+    <string name="internet">Інтернет [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Дозволяє додатку встановлювати інтернет-з\'єднання для надсилання звітів про помилки або перевірки оновлень.</string>
+    <string name="vibrate_permission">Вібрація [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Дозволяє додатку вібрувати при скануванні QR-коду.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Дозволяє додатку підключатися до мереж Wi-Fi шляхом сканування QR-кодів.</string>
+    <string name="runtime">Під час виконання</string>
+    <string name="post_notifications">Надсилання сповіщень [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Дозволяє додатку відображати сповіщення на пристроях з Android 13 або новішої версії.</string>
+    <string name="camera_permission">Камера [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner обробляє захоплення QR та штрих-кодів, не передаючи відеопотік з камери додатку.</string>
+    <string name="read_contacts">Читання контактів [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Дозволяє додатку створювати QR-код з контакту у вашому списку контактів.</string>
+    <string name="read_storage">Читання сховища [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Дозволяє додатку отримувати доступ до вашого сховища, щоб ви могли зберегти QR-код або штрих-код як текст або зображення.</string>
+    <string name="read_images">Читання зображень [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Дозволяє додатку читати зображення з вашого пристрою для сканування QR-кодів та штрих-кодів на пристроях з Android 13 або новішої версії.</string>
+    <string name="write_storage">Запис у сховище [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Дозволяє додатку записувати дані у ваше сховище, щоб ви могли зберігати файли, такі як фотографії, відео та документи.</string>
+    <string name="special">Спеціальні</string>
+    <string name="access_notification_policy">Доступ до політики сповіщень [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Дозволяє додатку отримувати доступ та змінювати політику сповіщень пристрою, контролюючи, як і коли сповіщення відображаються користувачеві, та надаючи налаштовувані функції керування сповіщеннями.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Пошукові системи</string>
+    <string name="summary_preference_settings_search_engines">Виберіть пошукову систему для веб-пошуку</string>
+    <string name="none">Немає</string>
+    <string name="ask_every_time">Запитувати щоразу</string>
+    <string name="error_reporting">Звіти про помилки</string>
+    <string name="bug_report">Повідомити про помилку</string>
+    <string name="summary_preference_settings_bug_report">Надсилайте звіти про помилки та запити на нові функції на сторінку проблем репозиторію додатку в GitHub</string>
+    <string name="cache_management">Керування кешем</string>
+    <string name="clear_cache">Очистити кеш</string>
+    <string name="summary_preference_settings_cache_management">Очистити тимчасові дані додатку</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Інформація про додаток</string>
+    <string name="application_build_version">Версія збірки додатку</string>
+    <string name="open_source_licenses">Ліцензії відкритого ПЗ</string>
+    <string name="summary_preference_settings_open_source_licenses">Перегляд ліцензій використовуваних бібліотек</string>
+    <string name="device_info">Інформація про пристрій</string>
+    <string name="app_build">Збірка: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Виробник:</string>
+    <string name="device_model">Модель пристрою:</string>
+    <string name="android_version">Версія Android:</string>
+    <string name="api_level">Рівень API:</string>
+
+    <!-- Help screen -->
+    <string name="help">Допомога</string>
+    <string name="view_in_google_play">Переглянути в Google Play Store</string>
+    <string name="beta_program">Бета-програма</string>
+    <string name="faq">ЧаПи</string>
+    <string name="question_1">Що таке QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus — це безкоштовний додаток, що дозволяє сканувати та створювати QR-коди. Він може сканувати всі поширені формати штрих-кодів, включаючи QR, Data Matrix, Aztec, UPC, EAN та багато інших.</string>
+    <string name="question_2">Які переваги використання QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus — це потужний, універсальний та безкоштовний додаток, який може сканувати всі поширені формати штрих-кодів, використовувати ліхтарик для сканування в темряві, масштабувати для читання штрих-кодів з великої відстані, підключатися до Wi-Fi, створювати QR-коди з тексту, контактів, додатків, закладок та буфера обміну, а також має простий та інтуїтивно зрозумілий інтерфейс.</string>
+    <string name="question_3">Які системні вимоги для QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus сумісний з усіма пристроями Android під керуванням Android 8.0 (Oreo) або вище.</string>
+    <string name="question_4">Як відсканувати QR-код за допомогою QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">Щоб відсканувати QR-код за допомогою QR &amp; Bar Code Scanner Plus, просто відкрийте додаток і наведіть камеру телефону на QR-код. Додаток автоматично відсканує код і відобразить результати.</string>
+    <string name="question_5"> Як створити QR-код за допомогою QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">Щоб створити QR-код за допомогою QR &amp; Bar Code Scanner Plus, відкрийте додаток і перейдіть до меню \'Створити\'. Виберіть тип QR-коду або штрих-коду, який ви хочете, введіть дані для включення в QR-код і натисніть кнопку \'Створити\'. Додаток згенерує QR-код, який ви зможете зберегти або поділитися.</string>
+    <string name="question_6">Як змінити тему в QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Тему QR &amp; Bar Code Scanner Plus можна змінити, перейшовши до налаштувань додатку та вибравши бажану тему.</string>
+    <string name="question_7">Як повідомити про помилку?</string>
+    <string name="summary_preference_faq_7">Якщо ви виявили помилку в QR &amp; Bar Code Scanner Plus, ви можете повідомити про неї, перейшовши на сторінку додатку в GitHub і створивши нову проблему (issue).</string>
+    <string name="question_8">Чи безпечно використовувати QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus — безпечний додаток. Він збирає лише журнали помилок через Firebase Crashlytics та Firebase Analytics, які можна вимкнути.</string>
+    <string name="question_9">Як зв\'язатися з розробником додатку?</string>
+    <string name="summary_preference_faq_9">Якщо у вас є будь-які питання або проблеми з додатком, ви можете зв\'язатися з розробником через сторінку \'Допомога та відгуки\' в додатку.</string>
+    <string name="contact_support_title">Зв\'язатися з підтримкою</string>
+    <string name="contact_support_description">Поділіться деталями, щоб отримати допомогу в досягненні вашої мети</string>
+    <string name="send_feedback">Надіслати відгук</string>
+    <string name="contact_support_email_subject">Запит до підтримки для %1$s</string>
+    <string name="contact_support_email_body">Вітаю,\n\nМені потрібна допомога з QR &amp; Bar Code Scanner Plus.\n\nДякую!</string>
+    <string name="version_info">Інформація про версію</string>
+    <string name="version">Версія %1$s</string>
+    <string name="faq_state_collapsed">Згорнуто</string>
+    <string name="faq_state_expanded">Розгорнуто</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Немає доступних поштових додатків для обробки цього запиту.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Підтримати розробника</string>
+    <string name="paid_support">Платна підтримка</string>
+    <string name="summary_donations">Виберіть суму разової пожертви для підтримки майбутньої розробки.</string>
+    <string name="non_paid_support">Безкоштовна підтримка</string>
+    <string name="web_ad">Відвідайте нашу сторінку підтримки</string>
+    <string name="watch_ad">Переглянути рекламу</string>
+    <string name="support_description">Виберіть один з варіантів нижче, щоб допомогти у появі нових функцій.</string>
+    <string name="support_donations_header">Варіанти підтримки</string>
+    <string name="support_visit_store">Дізнайтеся про інші способи підтримки</string>
+    <string name="support_purchase_thank_you">Дуже дякуємо за підтримку додатку! 🎉</string>
+    <string name="support_purchase_restored">Вашу підтримку відновлено.</string>
+    <string name="support_purchase_revoked">Вашу покупку для підтримки було відкликано.</string>
+    <string name="support_purchase_error">Щось пішло не так. Будь ласка, спробуйте ще раз пізніше.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Реклама</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Спробуй зараз!!!</string>
+    <string name="share_using">Поділитися за допомогою…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Зберегти як</string>
+    <string name="save">Зберегти</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Підтвердити</string>
+    <string name="error">Помилка</string>
+    <string name="something_went_wrong">Щось пішло не так</string>
+    <string name="dialog_delete">Видалити?</string>
+    <string name="edit_name">Редагувати назву</string>
+    <string name="require_restart">Потрібне перезавантаження!</string>
+    <string name="summary_require_restart">Для набуття чинності змін перезапустіть додаток!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Додати в календар</string>
+    <string name="add_to_contacts">Додати до контактів</string>
+    <string name="call" tools:ignore="StringFormatCount">Зателефонувати %s</string>
+    <string name="send_sms_mms_to">Надіслати SMS/MMS на %s</string>
+    <string name="email_to">Написати на %s</string>
+    <string name="show_location">Показати місцезнаходження</string>
+    <string name="connect_to_wifi">Підключитися до Wi-Fi</string>
+    <string name="open_wifi_settings">Відкрити налаштування Wi-Fi</string>
+    <string name="copy_network_name">Копіювати назву мережі</string>
+    <string name="copy_network_password">Копіювати пароль мережі</string>
+    <string name="open_app">Відкрити додаток</string>
+    <string name="open_in_market">Відкрити в маркеті</string>
+    <string name="open_in_youtube">Відкрити в Youtube</string>
+    <string name="save_to_bookmark">Зберегти в закладки</string>
+    <string name="open_link">Відкрити посилання</string>
+    <string name="open_in_other_app">Відкрити в іншому додатку</string>
+    <string name="show_password">Показати пароль</string>
+    <string name="search_on_the_web">Шукати в інтернеті</string>
+    <string name="connecting">Підключення…</string>
+    <string name="tooltip_view_code">Переглянути код</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Не вдалося згенерувати пароль</string>
+    <string name="counter">Лічильник: %s</string>
+    <string name="timer_left">Залишилось %1$s:%2$s</string>
+    <string name="refresh">Оновити</string>
+    <string name="tooltip_generate_new_secret">Згенерувати новий секрет</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">URL Youtube</string>
+    <string name="barcode_schema_boarding_pass">Посадковий талон</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Збережено</string>
+    <string name="snack_unable_to_open_google_play_store">Не вдалося відкрити Google Play Store.</string>
+    <string name="snack_copied_to_clipboard">Скопійовано в буфер обміну! 📋</string>
+    <string name="snack_saved_to_downloads">Збережено в Завантаження!</string>
+    <string name="snack_saved_to_gallery">Збережено в Галерею</string>
+    <string name="snack_no_app_found">Не знайдено додаток для цієї дії. Встановіть сумісний додаток.</string>
+    <string name="snack_feedback">Дякуємо за оцінку! ❤️</string>
+    <string name="snack_support">Хочете підтримати наш додаток? ❤️</string>
+</resources>
