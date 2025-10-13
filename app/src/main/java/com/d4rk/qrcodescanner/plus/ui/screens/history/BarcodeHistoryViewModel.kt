@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.stateIn
@@ -23,11 +25,12 @@ class BarcodeHistoryViewModel(
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
-    val clearHistoryErrors: SharedFlow<Throwable> = _clearHistoryErrors
+    val clearHistoryErrors: SharedFlow<Throwable> = _clearHistoryErrors.asSharedFlow()
 
     val historyCount: StateFlow<Int> = repository.observeHistoryCount()
         .distinctUntilChanged()
         .catch { throwable ->
+            if (throwable is CancellationException) throw throwable
             _clearHistoryErrors.emit(throwable)
             emit(0)
         }
@@ -41,6 +44,7 @@ class BarcodeHistoryViewModel(
         viewModelScope.launch {
             val result = runCatching { repository.clearHistory() }
             result.exceptionOrNull()?.let { throwable ->
+                if (throwable is CancellationException) throw throwable
                 _clearHistoryErrors.emit(throwable)
             }
         }
