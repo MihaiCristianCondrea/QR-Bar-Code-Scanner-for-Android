@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Acceptez les termes et conditions.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Ignorer</string>
+    <string name="back">Retour</string>
+    <string name="next">Suivant</string>
+    <string name="onboarding_theme_title">Choisissez votre style</string>
+    <string name="onboarding_theme_description">Choisissez le thème qui vous correspond le mieux.</string>
+    <string name="onboarding_theme_follow_system_title">Suivre le système</string>
+    <string name="onboarding_theme_follow_system_description">Correspond automatiquement aux réglages de votre appareil.</string>
+    <string name="onboarding_theme_light_title">Thème clair</string>
+    <string name="onboarding_theme_light_description">Couleurs lumineuses avec un contraste maximal.</string>
+    <string name="onboarding_theme_dark_title">Thème sombre</string>
+    <string name="onboarding_theme_dark_description">Idéal dans les environnements peu éclairés.</string>
+    <string name="onboarding_start_title">Par où commencer ?</string>
+    <string name="onboarding_start_description">Choisissez le premier écran qui apparaît à l'ouverture de l'app.</string>
+    <string name="onboarding_start_scan_description">Ouvrez directement le scanner pour viser et scanner instantanément.</string>
+    <string name="onboarding_start_create_description">Accédez au créateur pour concevoir de nouveaux codes immédiatement.</string>
+    <string name="onboarding_start_history_description">Consultez vos scans enregistrés dès le lancement de l'app.</string>
+    <string name="bottom_navigation_labels_description">Décidez de l'affichage des libellés dans la barre de navigation inférieure.</string>
+    <string name="onboarding_labels_all">Afficher les libellés pour chaque onglet.</string>
+    <string name="onboarding_labels_selected">Afficher uniquement le libellé de l'onglet sélectionné.</string>
+    <string name="onboarding_labels_hidden">Masquer tous les libellés pour un rendu minimaliste.</string>
+    <string name="privacy_icon">Icône de confidentialité</string>
+    <string name="onboarding_data_title">Contrôlez vos données</string>
+    <string name="onboarding_data_subtitle">Vous choisissez ce que nous collectons. Modifiez ces choix à tout moment dans les paramètres.</string>
+    <string name="onboarding_data_toggle">Utilisation et diagnostics</string>
+    <string name="onboarding_data_active">La collecte des analyses est activée.</string>
+    <string name="onboarding_data_inactive">La collecte des analyses est désactivée.</string>
+    <string name="onboarding_data_ads">Annonces personnalisées</string>
+    <string name="onboarding_data_ads_desc">Aidez-nous à afficher des annonces plus pertinentes pour vous.</string>
+    <string name="onboarding_data_ads_disabled">Vous verrez toujours des annonces, mais elles pourraient être moins pertinentes.</string>
+    <string name="privacy_policy_link">Politique de confidentialité</string>
+    <string name="success_icon">Icône de réussite</string>
+    <string name="onboarding_done_title">Tout est prêt !</string>
+    <string name="onboarding_done_subtitle">Vos préférences ont été enregistrées. Profitez de l'app.</string>
+    <string name="get_started_button">Commencer</string>
 
     <!-- Main screen -->
     <string name="menu">Menu</string>

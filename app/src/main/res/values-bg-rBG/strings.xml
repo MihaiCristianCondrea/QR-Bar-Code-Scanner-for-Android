@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Приемете общите условия.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Пропусни</string>
+    <string name="back">Назад</string>
+    <string name="next">Напред</string>
+    <string name="onboarding_theme_title">Изберете своя стил</string>
+    <string name="onboarding_theme_description">Изберете темата, която ви подхожда най-добре.</string>
+    <string name="onboarding_theme_follow_system_title">Следвай системата</string>
+    <string name="onboarding_theme_follow_system_description">Автоматично съответства на настройките на устройството ви.</string>
+    <string name="onboarding_theme_light_title">Светла тема</string>
+    <string name="onboarding_theme_light_description">Ярки цветове с максимален контраст.</string>
+    <string name="onboarding_theme_dark_title">Тъмна тема</string>
+    <string name="onboarding_theme_dark_description">Перфектна за среда с ниска осветеност.</string>
+    <string name="onboarding_start_title">Откъде да започнем?</string>
+    <string name="onboarding_start_description">Изберете първия екран, който ще виждате, когато отворите приложението.</string>
+    <string name="onboarding_start_scan_description">Отваряйте директно скенера, за да насочите и сканирате мигновено.</string>
+    <string name="onboarding_start_create_description">Преминете към създаването, за да изработвате нови кодове веднага.</string>
+    <string name="onboarding_start_history_description">Преглеждайте запазените си сканирания веднага щом приложението се стартира.</string>
+    <string name="bottom_navigation_labels_description">Решете как да се показват етикетите в долната навигационна лента.</string>
+    <string name="onboarding_labels_all">Показвай етикети за всеки раздел.</string>
+    <string name="onboarding_labels_selected">Показвай само етикета на избрания раздел.</string>
+    <string name="onboarding_labels_hidden">Скрий всички етикети за минималистична визия.</string>
+    <string name="privacy_icon">Икона за поверителност</string>
+    <string name="onboarding_data_title">Контролирайте данните си</string>
+    <string name="onboarding_data_subtitle">Вие решавате какво събираме. Можете да го промените по всяко време в Настройки.</string>
+    <string name="onboarding_data_toggle">Използване и диагностика</string>
+    <string name="onboarding_data_active">Събирането на аналитични данни е включено.</string>
+    <string name="onboarding_data_inactive">Събирането на аналитични данни е изключено.</string>
+    <string name="onboarding_data_ads">Персонализирани реклами</string>
+    <string name="onboarding_data_ads_desc">Помогнете ни да показваме реклами, които са по-релевантни за вас.</string>
+    <string name="onboarding_data_ads_disabled">Ще виждате реклами, но може да са по-малко релевантни.</string>
+    <string name="privacy_policy_link">Политика за поверителност</string>
+    <string name="success_icon">Икона за успех</string>
+    <string name="onboarding_done_title">Всичко е готово!</string>
+    <string name="onboarding_done_subtitle">Вашите предпочитания са запазени. Насладете се на приложението.</string>
+    <string name="get_started_button">Започни</string>
 
     <!-- Main screen -->
     <string name="menu">Меню</string>

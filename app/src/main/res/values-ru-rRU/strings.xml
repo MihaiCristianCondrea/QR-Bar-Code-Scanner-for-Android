@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Принять положения и условия.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Пропустить</string>
+    <string name="back">Назад</string>
+    <string name="next">Далее</string>
+    <string name="onboarding_theme_title">Выберите оформление</string>
+    <string name="onboarding_theme_description">Выберите тему, которая подходит именно вам.</string>
+    <string name="onboarding_theme_follow_system_title">Как в системе</string>
+    <string name="onboarding_theme_follow_system_description">Автоматически подстраивается под настройки устройства.</string>
+    <string name="onboarding_theme_light_title">Светлая тема</string>
+    <string name="onboarding_theme_light_description">Яркие цвета с максимальным контрастом.</string>
+    <string name="onboarding_theme_dark_title">Тёмная тема</string>
+    <string name="onboarding_theme_dark_description">Отлично подходит для условий слабого освещения.</string>
+    <string name="onboarding_start_title">С чего начнём?</string>
+    <string name="onboarding_start_description">Выберите первый экран, который увидите при запуске приложения.</string>
+    <string name="onboarding_start_scan_description">Открывайте сразу сканер, чтобы мгновенно навести и считать код.</string>
+    <string name="onboarding_start_create_description">Переходите в конструктор, чтобы сразу создавать новые коды.</string>
+    <string name="onboarding_start_history_description">Просматривайте сохранённые сканы сразу после запуска приложения.</string>
+    <string name="bottom_navigation_labels_description">Определите, как будут отображаться подписи в нижней панели навигации.</string>
+    <string name="onboarding_labels_all">Показывать подписи для всех вкладок.</string>
+    <string name="onboarding_labels_selected">Показывать подпись только выбранной вкладки.</string>
+    <string name="onboarding_labels_hidden">Скрыть все подписи для минималистичного вида.</string>
+    <string name="privacy_icon">Значок конфиденциальности</string>
+    <string name="onboarding_data_title">Управляйте своими данными</string>
+    <string name="onboarding_data_subtitle">Вы решаете, что мы собираем. Это можно изменить в любое время в настройках.</string>
+    <string name="onboarding_data_toggle">Использование и диагностика</string>
+    <string name="onboarding_data_active">Сбор аналитики включён.</string>
+    <string name="onboarding_data_inactive">Сбор аналитики выключен.</string>
+    <string name="onboarding_data_ads">Персонализированная реклама</string>
+    <string name="onboarding_data_ads_desc">Помогите нам показывать более актуальную рекламу.</string>
+    <string name="onboarding_data_ads_disabled">Реклама останется, но может быть менее релевантной.</string>
+    <string name="privacy_policy_link">Политика конфиденциальности</string>
+    <string name="success_icon">Значок успеха</string>
+    <string name="onboarding_done_title">Готово!</string>
+    <string name="onboarding_done_subtitle">Ваши предпочтения сохранены. Приятного использования приложения.</string>
+    <string name="get_started_button">Начать</string>
 
     <!-- Main screen -->
     <string name="menu">Меню</string>

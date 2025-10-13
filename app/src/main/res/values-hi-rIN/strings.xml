@@ -11,6 +11,40 @@
     <string name="tooltip_agree">नियम और शर्तों को स्वीकार करें।</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">छोड़ें</string>
+    <string name="back">वापस</string>
+    <string name="next">आगे</string>
+    <string name="onboarding_theme_title">अपना लुक चुनें</string>
+    <string name="onboarding_theme_description">वह थीम चुनें जो आपको सही लगे।</string>
+    <string name="onboarding_theme_follow_system_title">सिस्टम के अनुसार</string>
+    <string name="onboarding_theme_follow_system_description">स्वचालित रूप से आपके डिवाइस की सेटिंग से मेल खाता है।</string>
+    <string name="onboarding_theme_light_title">लाइट थीम</string>
+    <string name="onboarding_theme_light_description">अधिकतम कंट्रास्ट के साथ चमकीले रंग।</string>
+    <string name="onboarding_theme_dark_title">डार्क थीम</string>
+    <string name="onboarding_theme_dark_description">कम रोशनी वाले माहौल के लिए बिल्कुल उपयुक्त।</string>
+    <string name="onboarding_start_title">हम कहाँ से शुरू करें?</string>
+    <string name="onboarding_start_description">ऐप खोलते ही कौन-सी स्क्रीन दिखे, इसे चुनें।</string>
+    <string name="onboarding_start_scan_description">सीधे स्कैनर खोलें ताकि तुरंत निशाना लगाकर स्कैन कर सकें।</string>
+    <string name="onboarding_start_create_description">क्रिएटर पर जाएँ और तुरंत नए कोड डिज़ाइन करें।</string>
+    <string name="onboarding_start_history_description">ऐप खुलते ही अपने सहेजे गए स्कैन देखें।</string>
+    <string name="bottom_navigation_labels_description">निचली नेविगेशन पट्टी में लेबल कैसे दिखें, तय करें।</string>
+    <string name="onboarding_labels_all">हर टैब के लिए लेबल दिखाएँ।</string>
+    <string name="onboarding_labels_selected">सिर्फ चुने गए टैब का लेबल दिखाएँ।</string>
+    <string name="onboarding_labels_hidden">मिनिमल लुक के लिए सभी लेबल छिपाएँ।</string>
+    <string name="privacy_icon">गोपनीयता आइकन</string>
+    <string name="onboarding_data_title">अपने डेटा पर नियंत्रण रखें</string>
+    <string name="onboarding_data_subtitle">हम क्या संग्रह करें, यह आप तय करें। इसे कभी भी सेटिंग में बदल सकते हैं।</string>
+    <string name="onboarding_data_toggle">उपयोग और डायग्नोस्टिक्स</string>
+    <string name="onboarding_data_active">एनालिटिक्स संग्रह चालू है।</string>
+    <string name="onboarding_data_inactive">एनालिटिक्स संग्रह बंद है।</string>
+    <string name="onboarding_data_ads">व्यक्तिगत विज्ञापन</string>
+    <string name="onboarding_data_ads_desc">हमें आपके लिए अधिक प्रासंगिक विज्ञापन दिखाने में मदद करें।</string>
+    <string name="onboarding_data_ads_disabled">आपको अब भी विज्ञापन दिखेंगे, पर वे कम प्रासंगिक हो सकते हैं।</string>
+    <string name="privacy_policy_link">गोपनीयता नीति</string>
+    <string name="success_icon">सफलता आइकन</string>
+    <string name="onboarding_done_title">सब तैयार है!</string>
+    <string name="onboarding_done_subtitle">आपकी प्राथमिकताएँ सहेजी गईं। ऐप का आनंद लें।</string>
+    <string name="get_started_button">शुरू करें</string>
 
     <!-- Main screen -->
     <string name="menu">मेनू</string>

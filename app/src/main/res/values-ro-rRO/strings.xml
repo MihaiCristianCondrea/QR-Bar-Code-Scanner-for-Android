@@ -11,6 +11,40 @@
     <string name="tooltip_agree">Acceptă termenii și condițiile.</string>
 
     <!-- Onboarding screen -->
+    <string name="skip">Omite</string>
+    <string name="back">Înapoi</string>
+    <string name="next">Înainte</string>
+    <string name="onboarding_theme_title">Alege-ți stilul</string>
+    <string name="onboarding_theme_description">Alege tema care ți se potrivește cel mai bine.</string>
+    <string name="onboarding_theme_follow_system_title">Urmează sistemul</string>
+    <string name="onboarding_theme_follow_system_description">Se potrivește automat cu setarea dispozitivului tău.</string>
+    <string name="onboarding_theme_light_title">Temă luminoasă</string>
+    <string name="onboarding_theme_light_description">Culori luminoase cu contrast maxim.</string>
+    <string name="onboarding_theme_dark_title">Temă închisă</string>
+    <string name="onboarding_theme_dark_description">Perfectă pentru medii slab iluminate.</string>
+    <string name="onboarding_start_title">De unde începem?</string>
+    <string name="onboarding_start_description">Alege primul ecran pe care îl vezi când deschizi aplicația.</string>
+    <string name="onboarding_start_scan_description">Deschide direct scanerul ca să poți ținti și scana instantaneu.</string>
+    <string name="onboarding_start_create_description">Intră în creator pentru a proiecta imediat coduri noi.</string>
+    <string name="onboarding_start_history_description">Vezi scanările salvate chiar din momentul lansării aplicației.</string>
+    <string name="bottom_navigation_labels_description">Decide cum apar etichetele în bara de navigare de jos.</string>
+    <string name="onboarding_labels_all">Arată etichetele pentru fiecare filă.</string>
+    <string name="onboarding_labels_selected">Arată doar eticheta filei selectate.</string>
+    <string name="onboarding_labels_hidden">Ascunde toate etichetele pentru un aspect minimalist.</string>
+    <string name="privacy_icon">Pictogramă confidențialitate</string>
+    <string name="onboarding_data_title">Controlează-ți datele</string>
+    <string name="onboarding_data_subtitle">Tu decizi ce colectăm. Poți schimba oricând aceste opțiuni din Setări.</string>
+    <string name="onboarding_data_toggle">Utilizare și diagnostic</string>
+    <string name="onboarding_data_active">Colectarea analizelor este activă.</string>
+    <string name="onboarding_data_inactive">Colectarea analizelor este dezactivată.</string>
+    <string name="onboarding_data_ads">Anunțuri personalizate</string>
+    <string name="onboarding_data_ads_desc">Ajută-ne să afișăm anunțuri mai relevante pentru tine.</string>
+    <string name="onboarding_data_ads_disabled">Vei vedea în continuare anunțuri, dar pot fi mai puțin relevante.</string>
+    <string name="privacy_policy_link">Politica de confidențialitate</string>
+    <string name="success_icon">Pictogramă succes</string>
+    <string name="onboarding_done_title">Totul este pregătit!</string>
+    <string name="onboarding_done_subtitle">Preferințele tale au fost salvate. Bucură-te de aplicație.</string>
+    <string name="get_started_button">Începe</string>
 
     <!-- Main screen -->
     <string name="menu">Meniu</string>
