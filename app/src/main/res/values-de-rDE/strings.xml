@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Scannen Sie mühelos alle Arten von QR-Codes und Barcodes. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Willkommen</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Lesen und akzeptieren Sie unsere Nutzungsbedingungen und Datenschutzrichtlinie, um fortzufahren.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Durchsuchen Sie die <i><u>Nutzungsbedingungen</u></i> und die <i><u>Datenschutzrichtlinie</u></i></string>
+    <string name="agree">Zustimmen</string>
+    <string name="tooltip_agree">Akzeptieren Sie die Allgemeinen Geschäftsbedingungen.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Menü</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Einstellungen</string>
+    <string name="help_and_feedback">Hilfe &amp; Feedback</string>
+    <string name="updates">Updates</string>
+    <string name="share">Teilen</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Scannen</string>
+    <string name="scan_image">Bild scannen</string>
+    <string name="flash">Blitz</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Nach links drehen</string>
+    <string name="rotate_right">Nach rechts drehen</string>
+    <string name="choose_another_image">Anderes Bild auswählen</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Erstellen</string>
+    <string name="qr_code">QR-Code</string>
+    <string name="content_from_clipboard">Inhalt aus der Zwischenablage</string>
+    <string name="text">Text</string>
+    <string name="url">URL</string>
+    <string name="wifi">WLAN</string>
+    <string name="location">Standort</string>
+    <string name="contact_v_card">Kontakt (VCard)</string>
+
+    <string name="more_qr_codes">Weitere QR-Codes</string>
+    <string name="barcode">Barcode</string>
+    <string name="all_barcodes_codes">Barcodes und andere 2D-Codes</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">QR-Code erstellen</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Kontakt (MeCard)</string>
+    <string name="event">Termin</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternativ:</string>
+    <string name="summary_alternatively_url">- Öffnen Sie Ihre Browser-App\n- Laden Sie eine Webseite\n- Klicken Sie im Menü auf \"Teilen\"\n- Wählen Sie diese App aus.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Verschlüsselung</string>
+    <string name="network_name">Netzwerkname</string>
+    <string name="password">Passwort</string>
+    <string name="hidden">Versteckt</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Breitengrad</string>
+    <string name="longitude">Längengrad</string>
+    <string name="altitude">Höhe (optional)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Kontakte</string>
+    <string name="first_name">Vorname</string>
+    <string name="last_name">Nachname</string>
+    <string name="organization">Organisation</string>
+    <string name="job">Position</string>
+    <string name="email">E-Mail</string>
+    <string name="phone">Telefon</string>
+    <string name="fax">Fax</string>
+    <string name="website">Webseite</string>
+    <string name="summary_alternatively_contact">- Öffnen Sie Ihre Kontakte-App\n- Öffnen Sie einen bestehenden Kontakt oder erstellen Sie einen neuen\n- Klicken Sie im Menü auf \"Teilen\"\n- Wählen Sie diese App aus</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Typ</string>
+    <string name="algorithm">Algorithmus</string>
+    <string name="issuer">Aussteller</string>
+    <string name="account">Konto</string>
+    <string name="period">Zeitraum</string>
+    <string name="hint_counter">Zähler</string>
+    <string name="secret">Geheimnis</string>
+    <string name="random_secret">Zufälliges Geheimnis</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Titel</string>
+    <string name="organizer">Veranstalter</string>
+    <string name="summary">Zusammenfassung</string>
+    <string name="start_date">Startdatum</string>
+    <string name="end_date">Enddatum</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Betreff</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Nachricht</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Kryptowährung</string>
+    <string name="receiver_address">Empfängeradresse</string>
+    <string name="amount">Betrag</string>
+    <string name="label">Bezeichnung</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Lesezeichen</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">App</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Helligkeit erhöhen</string>
+    <string name="decrease_brightness">Helligkeit verringern</string>
+    <string name="add_to_favorites">Zu Favoriten hinzufügen</string>
+    <string name="delete">Löschen</string>
+    <string name="share_as_text">Als Text teilen</string>
+    <string name="copy_to_clipboard">In die Zwischenablage kopieren</string>
+    <string name="save_as_text">Als Text speichern</string>
+    <string name="share_as_image">Als Bild teilen</string>
+    <string name="save_as_image">Als Bild speichern</string>
+    <string name="print">Drucken</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Barcode erstellen</string>
+    <string name="barcodes_2d">2D-Barcodes</string>
+    <string name="barcodes_1d">1D-Barcodes</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Text ohne Sonderzeichen</string>
+    <string name="text_in_upper_case_without_special_characters">Text in Großbuchstaben ohne Sonderzeichen</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Ziffern</string>
+    <string name="seven_digits">7 Ziffern</string>
+    <string name="eleven_digits">11 Ziffern</string>
+    <string name="twelve_digits">12 Ziffern</string>
+    <string name="even_number_of_digits">Gerade Anzahl von Ziffern</string>
+
+    <!-- History screen -->
+    <string name="history">Verlauf</string>
+    <string name="all">Alle</string>
+    <string name="favorites">Favoriten</string>
+    <string name="history_empty_message">Sie haben noch keine Scans gespeichert. Scannen oder erstellen Sie einen Code, um ihn hier zu sehen.</string>
+    <string name="export_your_history">Ihren Verlauf exportieren</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Verlauf exportieren</string>
+    <string name="export_as">Exportieren als</string>
+    <string name="file_name">Dateiname</string>
+    <string name="export">Exportieren</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Benachrichtigungen</string>
+    <string name="summary_settings_notifications_overview">App-Benachrichtigungen verwalten</string>
+    <string name="display">Anzeige</string>
+    <string name="summary_settings_display_overview">Passen Sie das Erscheinungsbild Ihrer App an.</string>
+    <string name="scanner">Scanner</string>
+    <string name="summary_settings_scanner_overview">Passen Sie das Scan-Verhalten und die Reaktion der Kamera an.</string>
+    <string name="summary_settings_history_overview">Legen Sie fest, wie Scans gespeichert werden, und verwalten Sie Ihren Verlauf.</string>
+    <string name="security_and_privacy">Sicherheit &amp; Datenschutz</string>
+    <string name="summary_settings_security_privacy_overview">Verwalten Sie Ihre Datenschutzeinstellungen.</string>
+    <string name="advanced">Erweitert</string>
+    <string name="summary_settings_advanced_overview">Entdecken Sie weitere erweiterte Einstellungen.</string>
+    <string name="about">Über</string>
+    <string name="summary_settings_about_overview">Erfahren Sie mehr über %1$s.</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Benachrichtigungseinstellungen</string>
+    <string name="summary_preference_settings_notification_settings">Wählen Sie in den Systemeinstellungen, wie die App Sie benachrichtigt.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Erscheinungsbild</string>
+    <string name="theme">Design</string>
+    <string name="follow_system">Systemmodus folgen</string>
+    <string name="light_mode">Heller Modus</string>
+    <string name="dark_mode">Dunkler Modus</string>
+    <string name="auto_battery_mode">Automatischer dunkler Modus bei niedrigem Akkustand</string>
+    <string name="summary_preference_settings_theme">Wählen Sie das Erscheinungsbild der App. Aktuell: %1$s</string>
+    <string name="navigation">Navigation</string>
+    <string name="default_tab">Standard-Tab</string>
+    <string name="summary_preference_settings_default_tab">Wählen Sie den ersten Bildschirm, den Sie beim Start sehen. Aktuell: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Beschriftungen der unteren Navigationsleiste</string>
+    <string name="labeled">Beschriftet</string>
+    <string name="selected_variant">Ausgewählt</string>
+    <string name="unlabeled">Unbeschriftet</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Steuern Sie, wie Beschriftungen in der unteren Leiste angezeigt werden. Aktuell: %1$s</string>
+    <string name="inverse_colors">Farben umkehren</string>
+    <string name="summary_preference_settings_inverse_colors">Codes mit weißem Inhalt auf dunklem Hintergrund &amp; im dunklen Modus anzeigen</string>
+    <string name="language">Sprache</string>
+    <string name="summary_preference_settings_language_value">Wählen Sie die App-Sprache. Aktuell: %1$s</string>
+    <string name="summary_preference_settings_language">Ändert die in der App verwendete Sprache</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Inhalt gescannter Codes automatisch öffnen</string>
+    <string name="summary_preference_settings_open_content_automatically">Kann schädliche Inhalte öffnen</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Gescannte Barcodes in die Zwischenablage kopieren</string>
+    <string name="simple_auto_focus">Einfacher Autofokus-Modus</string>
+    <string name="summary_preference_settings_simple_auto_focus">Nur aktivieren, wenn Sie Probleme mit dem Fokussieren haben.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Blitz beim Start aktivieren</string>
+    <string name="vibrate">Vibrieren</string>
+    <string name="summary_preference_settings_vibrate">Beim Scannen vibrieren</string>
+    <string name="continuous_scanning">Kontinuierliches Scannen</string>
+    <string name="summary_preference_settings_continuous_scanning">Scans nur im Verlauf speichern</string>
+    <string name="confirm_scans_manually">Scans manuell bestätigen</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Versehentliche Scans vermeiden.</string>
+    <string name="camera">Kamera</string>
+    <string name="summary_preference_settings_camera">Wählen Sie aus, welche Kamera sich beim Starten des Scannens öffnet.</string>
+    <string name="front">Vorderseite</string>
+    <string name="back">Rückseite</string>
+    <string name="supported_formats">Unterstützte Formate</string>
+    <string name="summary_preference_settings_supported_formats">Wählen Sie die Barcode-Formate aus, nach denen der Scanner sucht.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Gescannte Barcodes im Verlauf speichern</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Speichern Sie jeden Scan, um ihn später wieder aufrufen zu können.</string>
+    <string name="save_created_barcodes_to_history">Erstellte Barcodes im Verlauf speichern</string>
+    <string name="summary_preference_settings_save_created_barcodes">Sorgen Sie dafür, dass die von Ihnen erstellten Codes leicht zu finden sind.</string>
+    <string name="do_not_save_duplicates">Keine Duplikate speichern</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Duplikate im Verlauf vermeiden</string>
+    <string name="clear_history">Verlauf löschen</string>
+    <string name="summary_preference_settings_clear_history">Alle gespeicherten Scans vom Gerät entfernen</string>
+    <string name="summary_delete_history">Verlauf löschen?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Datenschutz</string>
+    <string name="privacy_policy">Datenschutzrichtlinie</string>
+    <string name="summary_preference_settings_privacy_policy">Sehen Sie sich die Richtlinie an, die regelt, wie Ihre Daten behandelt werden.</string>
+    <string name="terms_of_service">Nutzungsbedingungen</string>
+    <string name="summary_preference_settings_terms_of_service">Überprüfen Sie die Bedingungen, denen Sie bei der Nutzung dieses Dienstes zustimmen.</string>
+    <string name="code_of_conduct">Verhaltenskodex</string>
+    <string name="summary_preference_settings_code_of_conduct">Verstehen Sie die Regeln und Richtlinien für das Verhalten innerhalb des Dienstes.</string>
+    <string name="permissions">Berechtigungen</string>
+    <string name="summary_preference_settings_permissions">Verwalten Sie die dem Dienst erteilten Berechtigungen.</string>
+    <string name="usage_and_diagnostics">Nutzung und Diagnose</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Teilen Sie Daten, um die In-App-Erfahrung zu verbessern.</string>
+    <string name="legal">Rechtliches</string>
+    <string name="legal_notices">Rechtliche Hinweise</string>
+    <string name="summary_preference_settings_legal_notices">Rechtliche Informationen über den Dienst anzeigen</string>
+    <string name="license">Lizenz</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">Netzwerkstatus abrufen [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Ermöglicht der App, die Netzwerkverbindung zu überprüfen und Informationen über WLAN abzurufen, einschließlich des Aktivierungsstatus und der Namen verbundener WLAN-Geräte.</string>
+    <string name="ad_id">Werbe-ID [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Ermöglicht der App, die mit dem Gerät des Nutzers verknüpfte Werbe-ID abzurufen und zu verwenden, um personalisierte Anzeigen bereitzustellen, die Wirksamkeit von Anzeigen zu messen und Anzeigen auf Geräten mit Android 13 oder höher anzuzeigen.</string>
+    <string name="billing">Abrechnung [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Ermöglicht der App, die Google Play Billing Library zur Abwicklung von In-App-Käufen und Spenden zu verwenden.</string>
+    <string name="check_license">Lizenz prüfen [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Ermöglicht der App, die Einhaltung der Lizenzvereinbarung zu überprüfen und die Lizenzbedingungen durchzusetzen, um geistiges Eigentum zu schützen.</string>
+    <string name="foreground_service">Vordergrunddienst [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Ermöglicht der App, Dienste zu erstellen und zu verwenden, die im Vordergrund ausgeführt werden, was ihnen Vorrang vor anderen Hintergrundprozessen einräumt und die Leistung sowie Zuverlässigkeit verbessert.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Ermöglicht der App, eine Internetverbindung herzustellen, um Fehlerberichte zu senden oder nach Updates zu suchen.</string>
+    <string name="vibrate_permission">Vibrieren [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Ermöglicht der App, beim Scannen eines QR-Codes zu vibrieren.</string>
+    <string name="change_wifi_state">WLAN [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Ermöglicht der App, sich durch Scannen von QR-Codes mit WLAN-Netzwerken zu verbinden.</string>
+    <string name="runtime">Laufzeit</string>
+    <string name="post_notifications">Benachrichtigungen senden [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Ermöglicht der App, Benachrichtigungen auf Geräten mit Android 13 oder höher anzuzeigen.</string>
+    <string name="camera_permission">Kamera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Der Google Code Scanner erfasst QR- und Barcodes, ohne den Kamera-Feed mit der App zu teilen.</string>
+    <string name="read_contacts">Kontakte lesen [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Ermöglicht der App, einen QR-Code aus einem Kontakt in Ihrer Kontaktliste zu erstellen.</string>
+    <string name="read_storage">Speicher lesen [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Ermöglicht der App den Zugriff auf Ihren Speicher, damit Sie Ihren QR-Code oder Barcode als Text oder Bild speichern können.</string>
+    <string name="read_images">Bilder lesen [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Ermöglicht der App, Bilder von Ihrem Gerät zu lesen, damit Sie sie auf Geräten mit Android 13 oder höher nach QR-Codes und Barcodes durchsuchen können.</string>
+    <string name="write_storage">Speicher schreiben [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Ermöglicht der App, in Ihren Speicher zu schreiben, damit Sie Dateien wie Fotos, Videos und Dokumente speichern können.</string>
+    <string name="special">Speziell</string>
+    <string name="access_notification_policy">Zugriff auf Benachrichtigungsrichtlinie [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Ermöglicht der App, auf die Benachrichtigungsrichtlinie des Geräts zuzugreifen und diese zu ändern, um zu steuern, wie und wann Benachrichtigungen dem Benutzer angezeigt werden, und um benutzerdefinierte Funktionen zur Benachrichtigungsverwaltung bereitzustellen.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Suchmaschinen</string>
+    <string name="summary_preference_settings_search_engines">Wählen Sie eine Suchmaschine für Websuchen aus.</string>
+    <string name="none">Keine</string>
+    <string name="ask_every_time">Jedes Mal fragen</string>
+    <string name="error_reporting">Fehlerberichterstattung</string>
+    <string name="bug_report">Fehlerbericht</string>
+    <string name="summary_preference_settings_bug_report">Senden Sie Fehlerberichte und Funktionswünsche an die Issues-Seite des GitHub-Repositorys der App.</string>
+    <string name="cache_management">Cache-Verwaltung</string>
+    <string name="clear_cache">Cache leeren</string>
+    <string name="summary_preference_settings_cache_management">Temporäre Anwendungsdaten löschen</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">App-Info</string>
+    <string name="application_build_version">Anwendungs-Build-Version</string>
+    <string name="open_source_licenses">Open-Source-Lizenzen</string>
+    <string name="summary_preference_settings_open_source_licenses">Lizenzen für die von uns verwendeten Bibliotheken anzeigen</string>
+    <string name="device_info">Geräteinformationen</string>
+    <string name="app_build">App-Build: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Hersteller:</string>
+    <string name="device_model">Gerätemodell:</string>
+    <string name="android_version">Android-Version:</string>
+    <string name="api_level">API-Level:</string>
+
+    <!-- Help screen -->
+    <string name="help">Hilfe</string>
+    <string name="view_in_google_play">Im Google Play Store ansehen</string>
+    <string name="beta_program">Beta-Programm</string>
+    <string name="faq">FAQs</string>
+    <string name="question_1">Was ist QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus ist eine kostenlose App, mit der Sie QR-Codes scannen und erstellen können. Sie kann alle gängigen Barcode-Formate scannen, einschließlich QR, Data Matrix, Aztec, UPC, EAN und viele mehr.</string>
+    <string name="question_2">Welche Vorteile bietet die Verwendung von QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus ist eine leistungsstarke, vielseitige und kostenlose App, die alle gängigen Barcode-Formate scannen, eine Taschenlampe zum Scannen im Dunkeln verwenden, zum Lesen von Barcodes aus großer Entfernung zoomen, eine Verbindung zum WLAN herstellen, QR-Codes aus Text, Kontakten, Apps, Lesezeichen und der Zwischenablage erstellen kann und über eine einfache und intuitive Benutzeroberfläche verfügt.</string>
+    <string name="question_3">Was sind die Systemanforderungen für QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus ist mit allen Android-Geräten kompatibel, auf denen Android 8.0 (Oreo) oder höher ausgeführt wird.</string>
+    <string name="question_4">Wie scanne ich einen QR-Code mit QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">Um einen QR-Code mit QR &amp; Bar Code Scanner Plus zu scannen, öffnen Sie einfach die App und richten Sie die Kamera Ihres Telefons auf den QR-Code. Die App scannt den Code automatisch und zeigt die Ergebnisse an.</string>
+    <string name="question_5"> Wie erstelle ich einen QR-Code mit QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">Um einen QR-Code mit QR &amp; Bar Code Scanner Plus zu erstellen, öffnen Sie die App und gehen Sie zum Menü \'Erstellen\'. Wählen Sie die Art des QR-Codes oder Barcodes aus, geben Sie die Daten ein, die Sie in den QR-Code aufnehmen möchten, und tippen Sie auf die Schaltfläche \'Erstellen\'. Die App generiert dann einen QR-Code, den Sie speichern oder teilen können.</string>
+    <string name="question_6">Wie ändere ich das Design von QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Das Design von QR &amp; Bar Code Scanner Plus kann geändert werden, indem Sie zu den Einstellungen der App gehen und das gewünschte Design auswählen.</string>
+    <string name="question_7">Wie melde ich einen Fehler?</string>
+    <string name="summary_preference_faq_7">Wenn Sie einen Fehler in QR &amp; Bar Code Scanner Plus finden, können Sie ihn melden, indem Sie auf die GitHub-Seite der App gehen und ein neues Issue erstellen.</string>
+    <string name="question_8">Ist die Verwendung von QR &amp; Bar Code Scanner Plus sicher?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus ist eine sichere App. Die App sammelt nur Fehlerprotokolle über Firebase Crashlytics und Firebase Analytics, was deaktiviert werden kann.</string>
+    <string name="question_9">Wie kontaktiere ich den Entwickler der App?</string>
+    <string name="summary_preference_faq_9">Wenn Sie Fragen oder Probleme mit der App haben, können Sie den Entwickler über die Seite \'Hilfe &amp; Feedback\' der App kontaktieren.</string>
+    <string name="contact_support_title">Support kontaktieren</string>
+    <string name="contact_support_description">Teilen Sie Details, um Hilfe beim Erreichen Ihres Ziels zu erhalten.</string>
+    <string name="send_feedback">Feedback senden</string>
+    <string name="contact_support_email_subject">Supportanfrage für %1$s</string>
+    <string name="contact_support_email_body">Hallo,\n\nich benötige Hilfe bei QR &amp; Bar Code Scanner Plus.\n\nVielen Dank!</string>
+    <string name="version_info">Versionsinformationen</string>
+    <string name="version">Version %1$s</string>
+    <string name="faq_state_collapsed">Eingeklappt</string>
+    <string name="faq_state_expanded">Ausgeklappt</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Es sind keine E-Mail-Apps verfügbar, um diese Anfrage zu bearbeiten.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Den Entwickler unterstützen</string>
+    <string name="paid_support">Bezahlte Unterstützung</string>
+    <string name="summary_donations">Wählen Sie einen einmaligen Spendenbetrag, um die zukünftige Entwicklung zu unterstützen.</string>
+    <string name="non_paid_support">Kostenlose Unterstützung</string>
+    <string name="web_ad">Besuchen Sie unsere Support-Seite</string>
+    <string name="watch_ad">Werbung ansehen</string>
+    <string name="support_description">Wählen Sie eine der folgenden Optionen, um die Entwicklung neuer Funktionen zu unterstützen.</string>
+    <string name="support_donations_header">Unterstützungsoptionen</string>
+    <string name="support_visit_store">Entdecken Sie weitere Unterstützungsmöglichkeiten</string>
+    <string name="support_purchase_thank_you">Vielen Dank für Ihre Unterstützung der App! 🎉</string>
+    <string name="support_purchase_restored">Ihre Unterstützung wurde wiederhergestellt.</string>
+    <string name="support_purchase_revoked">Ihr Unterstützungskauf wurde widerrufen.</string>
+    <string name="support_purchase_error">Etwas ist schiefgelaufen. Bitte versuchen Sie es in Kürze erneut.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Anzeige</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Jetzt ausprobieren!!!</string>
+    <string name="share_using">Teilen mit…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Speichern als</string>
+    <string name="save">Speichern</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Bestätigen</string>
+    <string name="error">Fehler</string>
+    <string name="something_went_wrong">Etwas ist schiefgelaufen</string>
+    <string name="dialog_delete">Löschen?</string>
+    <string name="edit_name">Namen bearbeiten</string>
+    <string name="require_restart">Neustart erforderlich!</string>
+    <string name="summary_require_restart">Damit die Änderungen wirksam werden, starten Sie die App bitte neu!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Zum Kalender hinzufügen</string>
+    <string name="add_to_contacts">Zu Kontakten hinzufügen</string>
+    <string name="call" tools:ignore="StringFormatCount">%s anrufen</string>
+    <string name="send_sms_mms_to">SMS/MMS an %s senden</string>
+    <string name="email_to">E-Mail an %s</string>
+    <string name="show_location">Standort anzeigen</string>
+    <string name="connect_to_wifi">Mit WLAN verbinden</string>
+    <string name="open_wifi_settings">WLAN-Einstellungen öffnen</string>
+    <string name="copy_network_name">Netzwerknamen kopieren</string>
+    <string name="copy_network_password">Netzwerkpasswort kopieren</string>
+    <string name="open_app">App öffnen</string>
+    <string name="open_in_market">Im Market öffnen</string>
+    <string name="open_in_youtube">In YouTube öffnen</string>
+    <string name="save_to_bookmark">In Lesezeichen speichern</string>
+    <string name="open_link">Link öffnen</string>
+    <string name="open_in_other_app">In anderer App öffnen</string>
+    <string name="show_password">Passwort anzeigen</string>
+    <string name="search_on_the_web">Im Web suchen</string>
+    <string name="connecting">Verbinden…</string>
+    <string name="tooltip_view_code">Code anzeigen</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Passwort konnte nicht generiert werden</string>
+    <string name="counter">Zähler: %s</string>
+    <string name="timer_left">%1$s:%2$s verbleibend</string>
+    <string name="refresh">Aktualisieren</string>
+    <string name="tooltip_generate_new_secret">Neues Geheimnis generieren</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">YouTube-URL</string>
+    <string name="barcode_schema_boarding_pass">Bordkarte</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Gespeichert</string>
+    <string name="snack_unable_to_open_google_play_store">Google Play Store konnte nicht geöffnet werden.</string>
+    <string name="snack_copied_to_clipboard">In die Zwischenablage kopiert! 📋</string>
+    <string name="snack_saved_to_downloads">In Downloads gespeichert!</string>
+    <string name="snack_saved_to_gallery">In der Galerie gespeichert</string>
+    <string name="snack_no_app_found">Für diese Aktion wurde keine App gefunden. Bitte installieren Sie eine kompatible App.</string>
+    <string name="snack_feedback">Danke für Ihre Bewertung! ❤️</string>
+    <string name="snack_support">Möchten Sie unsere App unterstützen? ❤️</string>
+</resources>

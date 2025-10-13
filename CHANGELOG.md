@@ -1,3 +1,16 @@
+# Version 4.0.0
+
+- Reworked the entire app to support the same features, now faster and more optimized.
+- Migrated from the old ZXing scanning library to Google's ML Kit library and CameraX for better performance and compatibility.
+- Added support for new languages.
+- Updated the design to follow Material Design 3 guidelines.
+- Updated and fixed the in-app updater.
+- Added an in-app review prompt to gather user feedback.
+- Re-arranged the settings page for better organization.
+- Improved support for edge-to-edge displays.
+- Made the camera overlay buttons adapt to the brightness of the camera feed.
+- Made various under-the-hood improvements for a better overall app experience.
+
 # Version 3.1_r1:
 
 - Added a new support page to show appreciation and gratitude to the developer.

@@ -8,6 +8,7 @@
     <string name="summary_browse_terms_of_service_and_privacy_policy">Read and agree to our Terms of Service and Privacy Policy to continue.</string>
     <string name="browse_terms_of_service_and_privacy_policy">Browse the <i><u>Terms of Service</u></i> and <i><u>Privacy Policy</u></i></string>
     <string name="agree">Agree</string>
+    <string name="tooltip_agree">Accept the terms and conditions.</string>
 
     <!-- Onboarding screen -->
 
@@ -24,6 +25,11 @@
     <string name="scan">Scan</string>
     <string name="scan_image">Scan image</string>
     <string name="flash">Flash</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Rotate left</string>
+    <string name="rotate_right">Rotate right</string>
+    <string name="choose_another_image">Choose another image</string>
 
     <!-- Create QR Code tab screen -->
     <string name="create">Create</string>
@@ -74,7 +80,7 @@
     <string name="website">Website</string>
     <string name="summary_alternatively_contact">- Open your contacts app\n- Open an existing contact or create a new one\n- Click \"Share\" from the menu\n- Select this app</string>
 
-    <!-- Create QR Code - Event screen -->
+    <!-- Create QR Code - OTP screen -->
     <string name="type">Type</string>
     <string name="algorithm">Algorithm</string>
     <string name="issuer">Issuer</string>
@@ -84,14 +90,25 @@
     <string name="secret">Secret</string>
     <string name="random_secret">Random Secret</string>
 
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Title</string>
+    <string name="organizer">Organizer</string>
+    <string name="summary">Summary</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+
     <!-- Create QR Code - MMS screen -->
     <string name="hint_subject">Subject</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Message</string>
 
     <!-- Create QR Code - Bitcoin screen -->
     <string name="bitcoin">Bitcoin</string>
     <string name="cryptocurrency">Cryptocurrency</string>
     <string name="receiver_address">Receiver address</string>
     <string name="amount">Amount</string>
+    <string name="label">Label</string>
 
     <!-- Create QR Code - Bookmark screen -->
     <string name="bookmark">Bookmark</string>
@@ -155,6 +172,10 @@
     <string name="about">About</string>
     <string name="summary_settings_about_overview">Learn more about %1$s</string>
 
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Notification settings</string>
+    <string name="summary_preference_settings_notification_settings">Choose how the app alerts you in system settings.</string>
+
     <!-- Display Settings screen -->
     <string name="appearance">Appearance</string>
     <string name="theme">Theme</string>
@@ -168,25 +189,28 @@
     <string name="summary_preference_settings_default_tab">Pick the first screen you see on launch. Current: %1$s</string>
     <string name="bottom_navigation_bar_labels">Bottom navigation bar labels</string>
     <string name="labeled">Labeled</string>
-    <string name="selected">Selected</string>
+    <string name="selected_variant">Selected</string>
     <string name="unlabeled">Unlabeled</string>
     <string name="summary_preference_settings_bottom_navigation_bar_labels">Control how labels appear in the bottom bar. Current: %1$s</string>
     <string name="inverse_colors">Inverse colors</string>
     <string name="summary_preference_settings_inverse_colors">Show codes with white content on dark background &amp; dark mode</string>
     <string name="language">Language</string>
     <string name="summary_preference_settings_language_value">Choose the app language. Current: %1$s</string>
+    <string name="summary_preference_settings_language">Changes the language used in the app</string>
 
     <!-- Scanner Settings screen -->
     <string name="open_content_automatically">Open content of scanned codes automatically</string>
     <string name="summary_preference_settings_open_content_automatically">May open harmful content</string>
     <string name="summary_preference_settings_copy_to_clipboard">Copy scanned barcodes to clipboard</string>
     <string name="simple_auto_focus">Simple auto focus mode</string>
+    <string name="summary_preference_settings_simple_auto_focus">Enable only if you have problems focusing.</string>
     <string name="summary_preference_settings_enable_flash_on_start">Enable flash on start</string>
     <string name="vibrate">Vibrate</string>
     <string name="summary_preference_settings_vibrate">Vibrate on scan</string>
     <string name="continuous_scanning">Continuous scanning</string>
     <string name="summary_preference_settings_continuous_scanning">Save scans to history only</string>
     <string name="confirm_scans_manually">Confirm scans manually</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Avoid accidental scans.</string>
     <string name="camera">Camera</string>
     <string name="summary_preference_settings_camera">Select which camera opens when you start scanning.</string>
     <string name="front">Front</string>
@@ -203,6 +227,7 @@
     <string name="summary_preference_settings_do_not_save_duplicates">Avoid duplicates in history</string>
     <string name="clear_history">Clear history</string>
     <string name="summary_preference_settings_clear_history">Remove all saved scans from the device</string>
+    <string name="summary_delete_history">Delete history?</string>
 
     <!-- Security & Privacy Settings screen -->
     <string name="privacy">Privacy</string>
@@ -259,6 +284,8 @@
     <!-- Advanced Settings screen -->
     <string name="search_engines">Search Engines</string>
     <string name="summary_preference_settings_search_engines">Choose a search engine for web searches</string>
+    <string name="none">None</string>
+    <string name="ask_every_time">Ask every time</string>
     <string name="error_reporting">Error reporting</string>
     <string name="bug_report">Bug report</string>
     <string name="summary_preference_settings_bug_report">Send bug reports amd feature requests to the app\'s GitHub repository issues page</string>
@@ -304,8 +331,18 @@
     <string name="contact_support_title">Contact support</string>
     <string name="contact_support_description">Share details to get help reaching your goal</string>
     <string name="send_feedback">Send feedback</string>
+    <string name="contact_support_email_subject">Support request for %1$s</string>
+    <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
+    <string name="version_info">Version info</string>
+    <string name="version">Version %1$s</string>
+    <string name="faq_state_collapsed">Collapsed</string>
+    <string name="faq_state_expanded">Expanded</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">No email apps are available to handle this request.</string>
 
     <!-- Support Screen -->
+    <string name="support_the_developer">Support the developer</string>
     <string name="paid_support">Paid Support</string>
     <string name="summary_donations">Choose a one-time donation amount to support future development.</string>
     <string name="non_paid_support">Non-Paid Support</string>
@@ -322,42 +359,24 @@
     <!-- Advertisement -->
     <string name="ad_attribution">Ad</string>
 
+    <!-- Sharing -->
+    <string name="share_subject">Try it now!!!</string>
+    <string name="share_using">Share using…</string>
 
-
-
-
-    <!-- TODO: Sort the rest of the strings like the rest of them are based on the screen or usage -->
-    <string name="summary_preference_settings_share">Tell friends about %1$s.</string>
-    <string name="summary_preference_settings_changelog">See what changed in the latest releases.</string>
-    <string name="notification_settings">Notification settings</string>
-    <string name="none">None</string>
-    <string name="ask_every_time">Ask every time</string>
-    <string name="contact_support_email_subject">Support request for %1$s</string>
-    <string name="contact_support_email_body">Hello,\n\nI need help with QR &amp; Bar Code Scanner Plus.\n\nThanks!</string>
-    <string name="support_link_unavailable">No email apps are available to handle this request.</string>
-    <string name="version_info">Version info</string>
-    <string name="faq_state_collapsed">Collapsed</string>
-    <string name="faq_state_expanded">Expanded</string>
-    <string name="version">Version %1$s</string>
-    <string name="support_the_developer">Support the developer</string>
-
-    <string name="title">Title</string>
-    <string name="save">Save</string>
-    <string name="saved">Saved</string>
+    <!-- Save barcode screen -->
     <string name="save_as">Save as</string>
+    <string name="save">Save</string>
+
+    <!-- Dialogs -->
     <string name="confirm">Confirm</string>
     <string name="error">Error</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="dialog_delete">Delete?</string>
     <string name="edit_name">Edit name</string>
-    <string name="rotate_left">Rotate left</string>
-    <string name="rotate_right">Rotate right</string>
-    <string name="choose_another_image">Choose another image</string>
-    <string name="label">Label</string>
-    <string name="organizer">Organizer</string>
-    <string name="summary">Summary</string>
-    <string name="start_date">Start date</string>
-    <string name="end_date">End date</string>
+    <string name="require_restart">Require restart!</string>
+    <string name="summary_require_restart">To take effect please restart the app!</string>
+
+    <!-- QR Code Details screen -->
     <string name="add_to_calendar">Add to calendar</string>
     <string name="add_to_contacts">Add to contacts</string>
     <string name="call" tools:ignore="StringFormatCount">Call %s</string>
@@ -377,21 +396,21 @@
     <string name="show_password">Show password</string>
     <string name="search_on_the_web">Search on the web</string>
     <string name="connecting">Connecting…</string>
+    <string name="tooltip_view_code">View code</string>
+
+    <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Unable to generate password</string>
     <string name="counter">Counter: %s</string>
     <string name="timer_left">%1$s:%2$s left</string>
     <string name="refresh">Refresh</string>
+    <string name="tooltip_generate_new_secret">Generate a new secret</string>
+
+    <!-- Barcode schema labels -->
     <string name="youtube_url">Youtube URL</string>
-    <string name="share_subject">Try it now!!!</string>
-    <string name="share_using">Share using…</string>
-    <string name="require_restart">Require restart!</string>
     <string name="barcode_schema_boarding_pass">Boarding Pass</string>
-    <string name="summary_preference_settings_language">Changes the language used in the app</string>
-    <string name="summary_preference_settings_simple_auto_focus">Enable only if you have problems focusing.</string>
-    <string name="summary_preference_settings_confirm_scans_manually">Avoid accidental scans.</string>
-    <string name="summary_preference_settings_notification_settings">Choose how the app alerts you in system settings.</string>
-    <string name="summary_require_restart">To take effect please restart the app!</string>
-    <string name="summary_delete_history">Delete history?</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Saved</string>
     <string name="snack_unable_to_open_google_play_store">Unable to open Google Play Store.</string>
     <string name="snack_copied_to_clipboard">Copied to clipboard! 📋</string>
     <string name="snack_saved_to_downloads">Saved to Downloads!</string>
@@ -399,8 +418,4 @@
     <string name="snack_no_app_found">No app found for this action. Please install a compatible app.</string>
     <string name="snack_feedback">Thanks for rating us! ❤️</string>
     <string name="snack_support">Would you like to support our app? ❤️</string>
-    <string name="tooltip_agree">Accept the terms and conditions.</string>
-    <string name="tooltip_view_code">View code</string>
-    <string name="tooltip_generate_new_secret">Generate a new secret</string>
-    <string name="hint_message">Message</string>
 </resources>

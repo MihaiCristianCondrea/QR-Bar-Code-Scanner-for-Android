@@ -26,11 +26,12 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ad_app_icon"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/ad_headline"
