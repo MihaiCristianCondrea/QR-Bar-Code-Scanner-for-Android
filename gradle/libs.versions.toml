@@ -43,7 +43,7 @@ desugarJdkLibs = "2.1.5"
 
 # Testing
 junittest = "3.7.0"
-mannodermaus = "1.13.4.0"
+mannodermaus = "1.14.0.0"
 mockk = "1.14.6"
 jupiter = "6.0.0"
 testCoroutines = "1.10.2"
