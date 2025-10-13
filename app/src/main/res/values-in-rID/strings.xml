@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Pindai berbagai jenis kode QR dan barcode dengan mudah. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Selamat Datang</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Baca dan setujui Syarat Layanan dan Kebijakan Privasi kami untuk melanjutkan.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Jelajahi <i><u>Syarat Layanan</u></i> dan <i><u>Kebijakan Privasi</u></i></string>
+    <string name="agree">Setuju</string>
+    <string name="tooltip_agree">Terima syarat dan ketentuan.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Menu</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Pengaturan</string>
+    <string name="help_and_feedback">Bantuan &amp; umpan balik</string>
+    <string name="updates">Pembaruan</string>
+    <string name="share">Bagikan</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Pindai</string>
+    <string name="scan_image">Pindai gambar</string>
+    <string name="flash">Kilat</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Putar ke kiri</string>
+    <string name="rotate_right">Putar ke kanan</string>
+    <string name="choose_another_image">Pilih gambar lain</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Buat</string>
+    <string name="qr_code">Kode QR</string>
+    <string name="content_from_clipboard">Konten dari papan klip</string>
+    <string name="text">Teks</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Lokasi</string>
+    <string name="contact_v_card">Kontak (VCard)</string>
+
+    <string name="more_qr_codes">Lebih banyak kode QR</string>
+    <string name="barcode">Kode batang</string>
+    <string name="all_barcodes_codes">Kode batang dan kode 2D lainnya</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Buat kode QR</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Kontak (MeCard)</string>
+    <string name="event">Acara</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternatifnya:</string>
+    <string name="summary_alternatively_url">- Buka aplikasi peramban Anda\n- Muat situs web\n- Klik "Bagikan" dari menu\n- Pilih aplikasi ini.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Enkripsi</string>
+    <string name="network_name">Nama jaringan</string>
+    <string name="password">Kata Sandi</string>
+    <string name="hidden">Tersembunyi</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Garis Lintang</string>
+    <string name="longitude">Garis Bujur</string>
+    <string name="altitude">Ketinggian (opsional)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Kontak</string>
+    <string name="first_name">Nama Depan</string>
+    <string name="last_name">Nama Belakang</string>
+    <string name="organization">Organisasi</string>
+    <string name="job">Pekerjaan</string>
+    <string name="email">Email</string>
+    <string name="phone">Telepon</string>
+    <string name="fax">Fax</string>
+    <string name="website">Situs web</string>
+    <string name="summary_alternatively_contact">- Buka aplikasi kontak Anda\n- Buka kontak yang sudah ada atau buat yang baru\n- Klik "Bagikan" dari menu\n- Pilih aplikasi ini</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Tipe</string>
+    <string name="algorithm">Algoritma</string>
+    <string name="issuer">Penerbit</string>
+    <string name="account">Akun</string>
+    <string name="period">Periode</string>
+    <string name="hint_counter">Penghitung</string>
+    <string name="secret">Rahasia</string>
+    <string name="random_secret">Rahasia Acak</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Judul</string>
+    <string name="organizer">Penyelenggara</string>
+    <string name="summary">Ringkasan</string>
+    <string name="start_date">Tanggal mulai</string>
+    <string name="end_date">Tanggal berakhir</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Subjek</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Pesan</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Mata uang kripto</string>
+    <string name="receiver_address">Alamat penerima</string>
+    <string name="amount">Jumlah</string>
+    <string name="label">Label</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Marka buku</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">Aplikasi</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Tingkatkan kecerahan</string>
+    <string name="decrease_brightness">Kurangi kecerahan</string>
+    <string name="add_to_favorites">Tambahkan ke favorit</string>
+    <string name="delete">Hapus</string>
+    <string name="share_as_text">Bagikan sebagai teks</string>
+    <string name="copy_to_clipboard">Salin ke papan klip</string>
+    <string name="save_as_text">Simpan sebagai teks</string>
+    <string name="share_as_image">Bagikan sebagai gambar</string>
+    <string name="save_as_image">Simpan sebagai gambar</string>
+    <string name="print">Cetak</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Buat kode batang</string>
+    <string name="barcodes_2d">Kode batang 2D</string>
+    <string name="barcodes_1d">Kode batang 1D</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Teks tanpa karakter khusus</string>
+    <string name="text_in_upper_case_without_special_characters">Teks dalam huruf besar tanpa karakter khusus</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Angka</string>
+    <string name="seven_digits">7 angka</string>
+    <string name="eleven_digits">11 angka</string>
+    <string name="twelve_digits">12 angka</string>
+    <string name="even_number_of_digits">Jumlah angka genap</string>
+
+    <!-- History screen -->
+    <string name="history">Riwayat</string>
+    <string name="all">Semua</string>
+    <string name="favorites">Favorit</string>
+    <string name="history_empty_message">Anda belum menyimpan pemindaian. Pindai atau buat kode untuk melihatnya di sini.</string>
+    <string name="export_your_history">Ekspor riwayat Anda</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Ekspor riwayat</string>
+    <string name="export_as">Ekspor sebagai</string>
+    <string name="file_name">Nama file</string>
+    <string name="export">Ekspor</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Notifikasi</string>
+    <string name="summary_settings_notifications_overview">Kelola notifikasi aplikasi</string>
+    <string name="display">Tampilan</string>
+    <string name="summary_settings_display_overview">Personalisasi tampilan dan nuansa aplikasi Anda</string>
+    <string name="scanner">Pemindai</string>
+    <string name="summary_settings_scanner_overview">Sesuaikan perilaku pemindaian dan respons kamera</string>
+    <string name="summary_settings_history_overview">Kontrol cara pemindaian disimpan dan kelola riwayat Anda</string>
+    <string name="security_and_privacy">Keamanan &amp; Privasi</string>
+    <string name="summary_settings_security_privacy_overview">Kelola pengaturan privasi Anda</string>
+    <string name="advanced">Lanjutan</string>
+    <string name="summary_settings_advanced_overview">Jelajahi pengaturan lanjutan lainnya</string>
+    <string name="about">Tentang</string>
+    <string name="summary_settings_about_overview">Pelajari lebih lanjut tentang %1$s</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Pengaturan notifikasi</string>
+    <string name="summary_preference_settings_notification_settings">Pilih cara aplikasi memberi tahu Anda di pengaturan sistem.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Tampilan</string>
+    <string name="theme">Tema</string>
+    <string name="follow_system">Ikuti Mode Sistem</string>
+    <string name="light_mode">Mode Terang</string>
+    <string name="dark_mode">Mode Gelap</string>
+    <string name="auto_battery_mode">Mode Gelap Otomatis Baterai</string>
+    <string name="summary_preference_settings_theme">Pilih tampilan aplikasi. Saat ini: %1$s</string>
+    <string name="navigation">Navigasi</string>
+    <string name="default_tab">Tab default</string>
+    <string name="summary_preference_settings_default_tab">Pilih layar pertama yang Anda lihat saat diluncurkan. Saat ini: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Label bilah navigasi bawah</string>
+    <string name="labeled">Berlabel</string>
+    <string name="selected_variant">Terpilih</string>
+    <string name="unlabeled">Tanpa label</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Kontrol cara label muncul di bilah bawah. Saat ini: %1$s</string>
+    <string name="inverse_colors">Balikkan warna</string>
+    <string name="summary_preference_settings_inverse_colors">Tampilkan kode dengan konten putih di latar belakang gelap &amp; mode gelap</string>
+    <string name="language">Bahasa</string>
+    <string name="summary_preference_settings_language_value">Pilih bahasa aplikasi. Saat ini: %1$s</string>
+    <string name="summary_preference_settings_language">Mengubah bahasa yang digunakan dalam aplikasi</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Buka konten kode yang dipindai secara otomatis</string>
+    <string name="summary_preference_settings_open_content_automatically">Dapat membuka konten berbahaya</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Salin kode batang yang dipindai ke papan klip</string>
+    <string name="simple_auto_focus">Mode fokus otomatis sederhana</string>
+    <string name="summary_preference_settings_simple_auto_focus">Aktifkan hanya jika Anda mengalami masalah dengan fokus.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Aktifkan kilat saat mulai</string>
+    <string name="vibrate">Getar</string>
+    <string name="summary_preference_settings_vibrate">Bergetar saat memindai</string>
+    <string name="continuous_scanning">Pemindaian berkelanjutan</string>
+    <string name="summary_preference_settings_continuous_scanning">Simpan pemindaian hanya ke riwayat</string>
+    <string name="confirm_scans_manually">Konfirmasi pemindaian secara manual</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Hindari pemindaian yang tidak disengaja.</string>
+    <string name="camera">Kamera</string>
+    <string name="summary_preference_settings_camera">Pilih kamera mana yang terbuka saat Anda mulai memindai.</string>
+    <string name="front">Depan</string>
+    <string name="back">Belakang</string>
+    <string name="supported_formats">Format yang didukung</string>
+    <string name="summary_preference_settings_supported_formats">Pilih format kode batang yang dicari oleh pemindai.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Simpan kode batang yang dipindai ke riwayat</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Simpan setiap pemindaian agar Anda dapat meninjaunya nanti</string>
+    <string name="save_created_barcodes_to_history">Simpan kode batang yang dibuat ke riwayat</string>
+    <string name="summary_preference_settings_save_created_barcodes">Simpan kode yang Anda hasilkan agar mudah ditemukan</string>
+    <string name="do_not_save_duplicates">Jangan simpan duplikat</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Hindari duplikat dalam riwayat</string>
+    <string name="clear_history">Hapus riwayat</string>
+    <string name="summary_preference_settings_clear_history">Hapus semua pemindaian tersimpan dari perangkat</string>
+    <string name="summary_delete_history">Hapus riwayat?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Privasi</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="summary_preference_settings_privacy_policy">Lihat kebijakan yang mengatur cara data Anda ditangani</string>
+    <string name="terms_of_service">Syarat Layanan</string>
+    <string name="summary_preference_settings_terms_of_service">Tinjau syarat yang Anda setujui saat menggunakan layanan ini</string>
+    <string name="code_of_conduct">Kode Etik</string>
+    <string name="summary_preference_settings_code_of_conduct">Pahami aturan dan pedoman perilaku dalam layanan</string>
+    <string name="permissions">Izin</string>
+    <string name="summary_preference_settings_permissions">Kelola izin yang diberikan ke layanan</string>
+    <string name="usage_and_diagnostics">Penggunaan dan diagnostik</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Bagikan data untuk membantu meningkatkan pengalaman dalam aplikasi</string>
+    <string name="legal">Hukum</string>
+    <string name="legal_notices">Pemberitahuan hukum</string>
+    <string name="summary_preference_settings_legal_notices">Lihat informasi hukum tentang layanan</string>
+    <string name="license">Lisensi</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">Akses status jaringan [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Memungkinkan aplikasi untuk memeriksa konektivitas jaringan dan mengambil informasi tentang Wi-Fi, termasuk status aktif dan nama perangkat Wi-Fi yang terhubung.</string>
+    <string name="ad_id">ID Iklan [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Memungkinkan aplikasi untuk mengambil dan menggunakan pengidentifikasi iklan yang terkait dengan perangkat pengguna, memberikan iklan yang dipersonalisasi, mengukur efektivitas iklan, dan menampilkan iklan pada perangkat Android 13 atau yang lebih baru.</string>
+    <string name="billing">Penagihan [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Memungkinkan aplikasi untuk menggunakan Pustaka Penagihan Google Play untuk menangani pembelian dalam aplikasi dan donasi.</string>
+    <string name="check_license">Periksa lisensi [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Memungkinkan aplikasi untuk memverifikasi kepatuhannya terhadap perjanjian lisensi dan menegakkan ketentuan lisensi untuk melindungi kekayaan intelektual.</string>
+    <string name="foreground_service">Layanan latar depan [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Memungkinkan aplikasi untuk membuat dan menggunakan layanan yang berjalan di latar depan, memberi mereka prioritas di atas proses latar belakang lainnya dan meningkatkan kinerja dan keandalan.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Memungkinkan aplikasi untuk membuat koneksi internet untuk mengirim laporan kesalahan atau memeriksa pembaruan.</string>
+    <string name="vibrate_permission">Getar [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Memungkinkan aplikasi bergetar saat kode QR dipindai.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Memungkinkan aplikasi untuk terhubung ke jaringan Wi-Fi dengan memindai kode QR.</string>
+    <string name="runtime">Waktu berjalan</string>
+    <string name="post_notifications">Kirim notifikasi [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Memungkinkan aplikasi untuk menampilkan notifikasi pada perangkat dengan Android 13 atau yang lebih baru.</string>
+    <string name="camera_permission">Kamera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Pemindai Kode Google menangani penangkapan QR dan kode batang tanpa membagikan feed kamera dengan aplikasi.</string>
+    <string name="read_contacts">Baca kontak [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Memungkinkan aplikasi untuk membuat kode QR dari kontak dalam daftar kontak Anda.</string>
+    <string name="read_storage">Baca penyimpanan [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Memungkinkan aplikasi untuk mengakses penyimpanan Anda sehingga Anda dapat menyimpan kode QR atau kode batang Anda sebagai teks atau gambar.</string>
+    <string name="read_images">Baca gambar [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Memungkinkan aplikasi untuk membaca gambar dari perangkat Anda sehingga Anda dapat memindainya untuk kode QR dan kode batang pada perangkat yang menjalankan Android 13 atau yang lebih baru.</string>
+    <string name="write_storage">Tulis ke penyimpanan [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Memungkinkan aplikasi untuk menulis ke penyimpanan Anda sehingga Anda dapat menyimpan file, seperti foto, video, dan dokumen.</string>
+    <string name="special">Khusus</string>
+    <string name="access_notification_policy">Akses kebijakan notifikasi [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Memungkinkan aplikasi untuk mengakses dan memodifikasi kebijakan notifikasi perangkat, mengontrol bagaimana dan kapan notifikasi ditampilkan kepada pengguna dan menyediakan fitur manajemen notifikasi khusus.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Mesin Pencari</string>
+    <string name="summary_preference_settings_search_engines">Pilih mesin pencari untuk pencarian web</string>
+    <string name="none">Tidak ada</string>
+    <string name="ask_every_time">Tanya setiap kali</string>
+    <string name="error_reporting">Pelaporan kesalahan</string>
+    <string name="bug_report">Laporan bug</string>
+    <string name="summary_preference_settings_bug_report">Kirim laporan bug dan permintaan fitur ke halaman isu repositori GitHub aplikasi</string>
+    <string name="cache_management">Manajemen cache</string>
+    <string name="clear_cache">Hapus cache</string>
+    <string name="summary_preference_settings_cache_management">Hapus data aplikasi sementara</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Info Aplikasi</string>
+    <string name="application_build_version">Versi build aplikasi</string>
+    <string name="open_source_licenses">Lisensi sumber terbuka</string>
+    <string name="summary_preference_settings_open_source_licenses">Lihat lisensi untuk pustaka yang kami gunakan</string>
+    <string name="device_info">Info Perangkat</string>
+    <string name="app_build">Build Aplikasi: Rilis\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Produsen:</string>
+    <string name="device_model">Model Perangkat:</string>
+    <string name="android_version">Versi Android:</string>
+    <string name="api_level">Tingkat API:</string>
+
+    <!-- Help screen -->
+    <string name="help">Bantuan</string>
+    <string name="view_in_google_play">Lihat di Google Play Store</string>
+    <string name="beta_program">Program Beta</string>
+    <string name="faq">FAQ</string>
+    <string name="question_1">Apa itu QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus adalah aplikasi gratis yang memungkinkan Anda memindai dan menghasilkan kode QR. Ini dapat memindai semua format kode batang umum, termasuk QR, Data Matrix, Aztec, UPC, EAN, dan banyak lagi.</string>
+    <string name="question_2">Apa manfaat menggunakan QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus adalah aplikasi yang kuat, serbaguna, dan gratis yang dapat memindai semua format kode batang umum, menggunakan lampu kilat untuk memindai dalam gelap, memperbesar untuk membaca kode batang dari jarak jauh, terhubung ke Wi-Fi, menghasilkan kode QR dari teks, kontak, aplikasi, penanda buku, dan papan klip, serta memiliki antarmuka yang sederhana dan intuitif.</string>
+    <string name="question_3">Apa persyaratan sistem untuk QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus kompatibel dengan semua perangkat Android yang menjalankan Android 8.0 (Oreo) atau lebih tinggi.</string>
+    <string name="question_4">Bagaimana cara memindai kode QR dengan QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">Untuk memindai kode QR dengan QR &amp; Bar Code Scanner Plus, cukup buka aplikasi dan arahkan kamera ponsel Anda ke kode QR. Aplikasi akan secara otomatis memindai kode dan menampilkan hasilnya.</string>
+    <string name="question_5"> Bagaimana cara membuat kode QR dengan QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">Untuk membuat kode QR dengan QR &amp; Bar Code Scanner Plus, buka aplikasi dan buka menu \'Buat\'. Pilih jenis kode QR atau kode batang yang Anda inginkan dan masukkan data yang ingin Anda sertakan dalam kode QR dan ketuk tombol \'Buat\'. Aplikasi kemudian akan menghasilkan kode QR yang dapat Anda simpan atau bagikan.</string>
+    <string name="question_6">Bagaimana cara mengubah tema QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Tema QR &amp; Bar Code Scanner Plus dapat diubah dengan membuka pengaturan aplikasi dan memilih tema yang diinginkan.</string>
+    <string name="question_7">Bagaimana cara melaporkan bug?</string>
+    <string name="summary_preference_faq_7">Jika Anda menemukan bug di QR &amp; Bar Code Scanner Plus, Anda dapat melaporkannya dengan membuka halaman GitHub aplikasi dan membuat isu baru.</string>
+    <string name="question_8">Apakah QR &amp; Bar Code Scanner Plus aman digunakan?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus adalah aplikasi yang aman digunakan. Aplikasi hanya mengumpulkan log kesalahan melalui Firebase Crashlytics dan Firebase Analytics, yang dapat dimatikan.</string>
+    <string name="question_9">Bagaimana cara menghubungi pengembang aplikasi?</string>
+    <string name="summary_preference_faq_9">Jika Anda memiliki pertanyaan atau masalah dengan aplikasi, Anda dapat menghubungi pengembang melalui halaman \'Bantuan &amp; umpan balik\' aplikasi.</string>
+    <string name="contact_support_title">Hubungi dukungan</string>
+    <string name="contact_support_description">Bagikan detail untuk mendapatkan bantuan mencapai tujuan Anda</string>
+    <string name="send_feedback">Kirim umpan balik</string>
+    <string name="contact_support_email_subject">Permintaan dukungan untuk %1$s</string>
+    <string name="contact_support_email_body">Halo,\n\nSaya butuh bantuan dengan QR &amp; Bar Code Scanner Plus.\n\nTerima kasih!</string>
+    <string name="version_info">Info Versi</string>
+    <string name="version">Versi %1$s</string>
+    <string name="faq_state_collapsed">Dilipat</string>
+    <string name="faq_state_expanded">Dibuka</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Tidak ada aplikasi email yang tersedia untuk menangani permintaan ini.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Dukung pengembang</string>
+    <string name="paid_support">Dukungan Berbayar</string>
+    <string name="summary_donations">Pilih jumlah donasi satu kali untuk mendukung pengembangan di masa mendatang.</string>
+    <string name="non_paid_support">Dukungan Tanpa Bayar</string>
+    <string name="web_ad">Kunjungi halaman dukungan kami</string>
+    <string name="watch_ad">Tonton Iklan</string>
+    <string name="support_description">Pilih salah satu opsi di bawah ini untuk membantu agar fitur-fitur baru terus bermunculan.</string>
+    <string name="support_donations_header">Opsi dukungan</string>
+    <string name="support_visit_store">Jelajahi lebih banyak cara untuk mendukung</string>
+    <string name="support_purchase_thank_you">Terima kasih banyak telah mendukung aplikasi ini! 🎉</string>
+    <string name="support_purchase_restored">Dukungan Anda telah dipulihkan.</string>
+    <string name="support_purchase_revoked">Pembelian dukungan Anda telah dicabut.</string>
+    <string name="support_purchase_error">Terjadi kesalahan. Silakan coba lagi segera.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Iklan</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Coba sekarang!!!</string>
+    <string name="share_using">Bagikan menggunakan…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Simpan sebagai</string>
+    <string name="save">Simpan</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Konfirmasi</string>
+    <string name="error">Kesalahan</string>
+    <string name="something_went_wrong">Terjadi kesalahan</string>
+    <string name="dialog_delete">Hapus?</string>
+    <string name="edit_name">Edit nama</string>
+    <string name="require_restart">Membutuhkan mulai ulang!</string>
+    <string name="summary_require_restart">Agar berlaku, silakan mulai ulang aplikasi!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Tambahkan ke kalender</string>
+    <string name="add_to_contacts">Tambahkan ke kontak</string>
+    <string name="call" tools:ignore="StringFormatCount">Telepon %s</string>
+    <string name="send_sms_mms_to">Kirim SMS/MMS ke %s</string>
+    <string name="email_to">Email ke %s</string>
+    <string name="show_location">Tampilkan lokasi</string>
+    <string name="connect_to_wifi">Hubungkan ke Wi-Fi</string>
+    <string name="open_wifi_settings">Buka pengaturan Wi-Fi</string>
+    <string name="copy_network_name">Salin nama jaringan</string>
+    <string name="copy_network_password">Salin kata sandi jaringan</string>
+    <string name="open_app">Buka aplikasi</string>
+    <string name="open_in_market">Buka di pasar</string>
+    <string name="open_in_youtube">Buka di Youtube</string>
+    <string name="save_to_bookmark">Simpan ke penanda buku</string>
+    <string name="open_link">Buka tautan</string>
+    <string name="open_in_other_app">Buka di aplikasi lain</string>
+    <string name="show_password">Tampilkan kata sandi</string>
+    <string name="search_on_the_web">Cari di web</string>
+    <string name="connecting">Menghubungkan…</string>
+    <string name="tooltip_view_code">Lihat kode</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Tidak dapat membuat kata sandi</string>
+    <string name="counter">Penghitung: %s</string>
+    <string name="timer_left">%1$s:%2$s tersisa</string>
+    <string name="refresh">Segarkan</string>
+    <string name="tooltip_generate_new_secret">Hasilkan rahasia baru</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">URL Youtube</string>
+    <string name="barcode_schema_boarding_pass">Papan Tiket</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Tersimpan</string>
+    <string name="snack_unable_to_open_google_play_store">Tidak dapat membuka Google Play Store.</string>
+    <string name="snack_copied_to_clipboard">Disalin ke papan klip! 📋</string>
+    <string name="snack_saved_to_downloads">Disimpan ke Unduhan!</string>
+    <string name="snack_saved_to_gallery">Disimpan ke Galeri</string>
+    <string name="snack_no_app_found">Tidak ada aplikasi yang ditemukan untuk tindakan ini. Silakan instal aplikasi yang kompatibel.</string>
+    <string name="snack_feedback">Terima kasih telah menilai kami! ❤️</string>
+    <string name="snack_support">Apakah Anda ingin mendukung aplikasi kami? ❤️</string>
+</resources>

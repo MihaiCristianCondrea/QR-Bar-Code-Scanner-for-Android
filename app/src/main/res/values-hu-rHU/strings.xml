@@ -1,0 +1,421 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Szkenneljen be mindenféle QR-kódot és vonalkódot könnyedén. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Üdvözöljük</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">A folytatáshoz olvassa el és fogadja el a Szolgáltatási feltételeket és az Adatvédelmi irányelveket.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Böngéssze a <i><u>Szolgáltatási feltételeket</u></i> és az <i><u>Adatvédelmi irányelveket</u></i></string>
+    <string name="agree">Elfogadom</string>
+    <string name="tooltip_agree">Fogadja el a feltételeket.</string>
+
+    <!-- Onboarding screen -->
+
+    <!-- Main screen -->
+    <string name="menu">Menü</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Beállítások</string>
+    <string name="help_and_feedback">Súgó és visszajelzés</string>
+    <string name="updates">Frissítések</string>
+    <string name="share">Megosztás</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Szkennelés</string>
+    <string name="scan_image">Kép beolvasása</string>
+    <string name="flash">Vaku</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Forgatás balra</string>
+    <string name="rotate_right">Forgatás jobbra</string>
+    <string name="choose_another_image">Másik kép kiválasztása</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Létrehozás</string>
+    <string name="qr_code">QR-kód</string>
+    <string name="content_from_clipboard">Tartalom a vágólapról</string>
+    <string name="text">Szöveg</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Hely</string>
+    <string name="contact_v_card">Névjegy (VCard)</string>
+
+    <string name="more_qr_codes">További QR-kódok</string>
+    <string name="barcode">Vonalkód</string>
+    <string name="all_barcodes_codes">Vonalkódok és egyéb 2D kódok</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">QR-kód létrehozása</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Névjegy (MeCard)</string>
+    <string name="event">Esemény</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Alternatívaként:</string>
+    <string name="summary_alternatively_url">- Nyissa meg a böngészőalkalmazást\n- Töltsön be egy webhelyet\n- Kattintson a menüben a \"Megosztás\" gombra\n- Válassza ki ezt az alkalmazást.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Titkosítás</string>
+    <string name="network_name">Hálózatnév</string>
+    <string name="password">Jelszó</string>
+    <string name="hidden">Rejtett</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Szélesség</string>
+    <string name="longitude">Hosszúság</string>
+    <string name="altitude">Magasság (opcionális)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Névjegyek</string>
+    <string name="first_name">Keresztnév</string>
+    <string name="last_name">Vezetéknév</string>
+    <string name="organization">Szervezet</string>
+    <string name="job">Munkakör</string>
+    <string name="email">E-mail</string>
+    <string name="phone">Telefon</string>
+    <string name="fax">Fax</string>
+    <string name="website">Weboldal</string>
+    <string name="summary_alternatively_contact">- Nyissa meg a névjegyek alkalmazást\n- Nyisson meg egy meglévő névjegyet, vagy hozzon létre egy újat\n- Kattintson a menüben a \"Megosztás\" gombra\n- Válassza ki ezt az alkalmazást</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Típus</string>
+    <string name="algorithm">Algoritmus</string>
+    <string name="issuer">Kibocsátó</string>
+    <string name="account">Fiók</string>
+    <string name="period">Időszak</string>
+    <string name="hint_counter">Számláló</string>
+    <string name="secret">Titok</string>
+    <string name="random_secret">Véletlenszerű titok</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Cím</string>
+    <string name="organizer">Szervező</string>
+    <string name="summary">Összegzés</string>
+    <string name="start_date">Kezdés dátuma</string>
+    <string name="end_date">Befejezés dátuma</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Tárgy</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Üzenet</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Kriptovaluta</string>
+    <string name="receiver_address">Fogadó címe</string>
+    <string name="amount">Összeg</string>
+    <string name="label">Címke</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Könyvjelző</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">Alkalmazás</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Fényerő növelése</string>
+    <string name="decrease_brightness">Fényerő csökkentése</string>
+    <string name="add_to_favorites">Hozzáadás a kedvencekhez</string>
+    <string name="delete">Törlés</string>
+    <string name="share_as_text">Megosztás szövegként</string>
+    <string name="copy_to_clipboard">Másolás a vágólapra</string>
+    <string name="save_as_text">Mentés szövegként</string>
+    <string name="share_as_image">Megosztás képként</string>
+    <string name="save_as_image">Mentés képként</string>
+    <string name="print">Nyomtatás</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Vonalkód létrehozása</string>
+    <string name="barcodes_2d">2D vonalkódok</string>
+    <string name="barcodes_1d">1D vonalkódok</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Szöveg speciális karakterek nélkül</string>
+    <string name="text_in_upper_case_without_special_characters">Szöveg nagybetűkkel, speciális karakterek nélkül</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Számjegyek</string>
+    <string name="seven_digits">7 számjegy</string>
+    <string name="eleven_digits">11 számjegy</string>
+    <string name="twelve_digits">12 számjegy</string>
+    <string name="even_number_of_digits">Páros számú számjegy</string>
+
+    <!-- History screen -->
+    <string name="history">Előzmények</string>
+    <string name="all">Összes</string>
+    <string name="favorites">Kedvencek</string>
+    <string name="history_empty_message">Még nincsenek mentett beolvasásai. Olvasson be vagy hozzon létre egy kódot, hogy itt láthassa.</string>
+    <string name="export_your_history">Előzmények exportálása</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Előzmények exportálása</string>
+    <string name="export_as">Exportálás mint</string>
+    <string name="file_name">Fájlnév</string>
+    <string name="export">Exportálás</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Értesítések</string>
+    <string name="summary_settings_notifications_overview">Alkalmazásértesítések kezelése</string>
+    <string name="display">Kijelző</string>
+    <string name="summary_settings_display_overview">Személyre szabhatja az alkalmazás kinézetét</string>
+    <string name="scanner">Szkenner</string>
+    <string name="summary_settings_scanner_overview">Állítsa be a szkennelés viselkedését és a kamera reakcióját</string>
+    <string name="summary_settings_history_overview">Szabályozhatja a beolvasások mentését és kezelheti az előzményeket</string>
+    <string name="security_and_privacy">Biztonság és adatvédelem</string>
+    <string name="summary_settings_security_privacy_overview">Kezelje az adatvédelmi beállításait</string>
+    <string name="advanced">Haladó</string>
+    <string name="summary_settings_advanced_overview">Fedezzen fel további haladó beállításokat</string>
+    <string name="about">Névjegy</string>
+    <string name="summary_settings_about_overview">Tudjon meg többet a(z) %1$s alkalmazásról</string>
+
+    <!-- Notification Settings screen -->
+    <string name="notification_settings">Értesítési beállítások</string>
+    <string name="summary_preference_settings_notification_settings">Válassza ki a rendszerbeállításokban, hogyan értesítse Önt az alkalmazás.</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Megjelenés</string>
+    <string name="theme">Téma</string>
+    <string name="follow_system">Rendszer mód követése</string>
+    <string name="light_mode">Világos mód</string>
+    <string name="dark_mode">Sötét mód</string>
+    <string name="auto_battery_mode">Automatikus sötét mód akkumulátorkímélő esetén</string>
+    <string name="summary_preference_settings_theme">Válassza ki az alkalmazás kinézetét. Jelenlegi: %1$s</string>
+    <string name="navigation">Navigáció</string>
+    <string name="default_tab">Alapértelmezett lap</string>
+    <string name="summary_preference_settings_default_tab">Válassza ki az első képernyőt, amelyet indításkor lát. Jelenlegi: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Alsó navigációs sáv címkéi</string>
+    <string name="labeled">Címkézett</string>
+    <string name="selected_variant">Kiválasztott</string>
+    <string name="unlabeled">Címke nélküli</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Szabályozza, hogyan jelenjenek meg a címkék az alsó sávban. Jelenlegi: %1$s</string>
+    <string name="inverse_colors">Színek invertálása</string>
+    <string name="summary_preference_settings_inverse_colors">Kódok megjelenítése fehér tartalommal sötét háttéren és sötét módban</string>
+    <string name="language">Nyelv</string>
+    <string name="summary_preference_settings_language_value">Válassza ki az alkalmazás nyelvét. Jelenlegi: %1$s</string>
+    <string name="summary_preference_settings_language">Megváltoztatja az alkalmazásban használt nyelvet</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Beolvasott kódok tartalmának automatikus megnyitása</string>
+    <string name="summary_preference_settings_open_content_automatically">Kártékony tartalmat nyithat meg</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Beolvasott vonalkódok másolása a vágólapra</string>
+    <string name="simple_auto_focus">Egyszerű autofókusz mód</string>
+    <string name="summary_preference_settings_simple_auto_focus">Csak akkor engedélyezze, ha problémái vannak a fókuszálással.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Vaku engedélyezése indításkor</string>
+    <string name="vibrate">Rezgés</string>
+    <string name="summary_preference_settings_vibrate">Rezgés beolvasáskor</string>
+    <string name="continuous_scanning">Folyamatos szkennelés</string>
+    <string name="summary_preference_settings_continuous_scanning">Beolvasások mentése csak az előzményekbe</string>
+    <string name="confirm_scans_manually">Beolvasások kézi megerősítése</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Kerülje el a véletlen beolvasásokat.</string>
+    <string name="camera">Kamera</string>
+    <string name="summary_preference_settings_camera">Válassza ki, melyik kamera nyíljon meg a szkennelés indításakor.</string>
+    <string name="front">Előlapi</string>
+    <string name="back">Hátlapi</string>
+    <string name="supported_formats">Támogatott formátumok</string>
+    <string name="summary_preference_settings_supported_formats">Válassza ki a vonalkódformátumokat, amelyeket a szkenner keres.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Beolvasott vonalkódok mentése az előzményekbe</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Tároljon minden beolvasást, hogy később visszanézhesse</string>
+    <string name="save_created_barcodes_to_history">Létrehozott vonalkódok mentése az előzményekbe</string>
+    <string name="summary_preference_settings_save_created_barcodes">Tartsa a generált kódokat könnyen megtalálható helyen</string>
+    <string name="do_not_save_duplicates">Ne mentsen másolatokat</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Kerülje a másolatokat az előzményekben</string>
+    <string name="clear_history">Előzmények törlése</string>
+    <string name="summary_preference_settings_clear_history">Minden mentett beolvasás eltávolítása az eszközről</string>
+    <string name="summary_delete_history">Törli az előzményeket?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Adatvédelem</string>
+    <string name="privacy_policy">Adatvédelmi irányelvek</string>
+    <string name="summary_preference_settings_privacy_policy">Tekintse meg az adatkezelési irányelveket</string>
+    <string name="terms_of_service">Szolgáltatási feltételek</string>
+    <string name="summary_preference_settings_terms_of_service">Tekintse át a szolgáltatás használatával elfogadott feltételeket</string>
+    <string name="code_of_conduct">Magatartási kódex</string>
+    <string name="summary_preference_settings_code_of_conduct">Ismerje meg a szolgáltatáson belüli viselkedési szabályokat és irányelveket</string>
+    <string name="permissions">Engedélyek</string>
+    <string name="summary_preference_settings_permissions">Kezelje a szolgáltatásnak adott engedélyeket</string>
+    <string name="usage_and_diagnostics">Használat és diagnosztika</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Osszon meg adatokat az alkalmazáson belüli élmény javítása érdekében</string>
+    <string name="legal">Jogi nyilatkozat</string>
+    <string name="legal_notices">Jogi közlemények</string>
+    <string name="summary_preference_settings_legal_notices">Tekintse meg a szolgáltatással kapcsolatos jogi információkat</string>
+    <string name="license">Licenc</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normál</string>
+    <string name="access_network_state">Hálózati állapot elérése [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Lehetővé teszi az alkalmazás számára a hálózati kapcsolat ellenőrzését és a Wi-Fi-vel kapcsolatos információk lekérését, beleértve az engedélyezett állapotot és a csatlakoztatott Wi-Fi eszközök nevét.</string>
+    <string name="ad_id">Hirdetési azonosító [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Lehetővé teszi az alkalmazás számára, hogy lekérje és felhasználja a felhasználó eszközéhez társított hirdetési azonosítót, személyre szabott hirdetéseket biztosítva, a hirdetések hatékonyságát mérve és hirdetéseket jelenítve meg Android 13 vagy újabb verziójú eszközökön.</string>
+    <string name="billing">Számlázás [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Lehetővé teszi az alkalmazás számára a Google Play Számlázási Könyvtár használatát az alkalmazáson belüli vásárlások és adományok kezelésére.</string>
+    <string name="check_license">Licenc ellenőrzése [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Lehetővé teszi az alkalmazás számára, hogy ellenőrizze a licencmegállapodásnak való megfelelést és érvényesítse a licencfeltételeket a szellemi tulajdon védelme érdekében.</string>
+    <string name="foreground_service">Előtérben futó szolgáltatás [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Lehetővé teszi az alkalmazás számára, hogy előtérben futó szolgáltatásokat hozzon létre és használjon, amelyek elsőbbséget élveznek más háttérfolyamatokkal szemben, javítva a teljesítményt és a megbízhatóságot.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Lehetővé teszi az alkalmazás számára, hogy internetkapcsolatot létesítsen hibajelentések küldéséhez vagy frissítések kereséséhez.</string>
+    <string name="vibrate_permission">Rezgés [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Lehetővé teszi az alkalmazás számára, hogy rezegjen, amikor egy QR-kódot beolvas.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Lehetővé teszi az alkalmazás számára, hogy QR-kódok beolvasásával csatlakozzon Wi-Fi hálózatokhoz.</string>
+    <string name="runtime">Futásidejű</string>
+    <string name="post_notifications">Értesítések küldése [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Lehetővé teszi az alkalmazás számára, hogy értesítéseket jelenítsen meg Android 13 vagy újabb verziójú eszközökön.</string>
+    <string name="camera_permission">Kamera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">A Google Code Scanner kezeli a QR- és vonalkódok rögzítését anélkül, hogy megosztaná a kamera képét az alkalmazással.</string>
+    <string name="read_contacts">Névjegyek olvasása [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Lehetővé teszi az alkalmazás számára, hogy QR-kódot hozzon létre a névjegyzékében szereplő egyik névjegyből.</string>
+    <string name="read_storage">Tárhely olvasása [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Lehetővé teszi az alkalmazás számára a tárhelyhez való hozzáférést, hogy elmenthesse a QR-kódot vagy vonalkódot szövegként vagy képként.</string>
+    <string name="read_images">Képek olvasása [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Lehetővé teszi az alkalmazás számára, hogy képeket olvasson az eszközéről, így beolvashatja azokat QR-kódok és vonalkódok után Android 13 vagy újabb verziót futtató eszközökön.</string>
+    <string name="write_storage">Tárhelyre írás [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Lehetővé teszi az alkalmazás számára, hogy a tárhelyére írjon, így fájlokat menthet, például fényképeket, videókat és dokumentumokat.</string>
+    <string name="special">Különleges</string>
+    <string name="access_notification_policy">Értesítési házirend elérése [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Lehetővé teszi az alkalmazás számára, hogy hozzáférjen és módosítsa az eszköz értesítési házirendjét, szabályozva, hogy az értesítések hogyan és mikor jelenjenek meg a felhasználó számára, és egyedi értesítéskezelési funkciókat biztosítva.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Keresőmotorok</string>
+    <string name="summary_preference_settings_search_engines">Válasszon keresőmotort a webes keresésekhez</string>
+    <string name="none">Nincs</string>
+    <string name="ask_every_time">Kérdezzen rá minden alkalommal</string>
+    <string name="error_reporting">Hibajelentés</string>
+    <string name="bug_report">Hibajelentés</string>
+    <string name="summary_preference_settings_bug_report">Küldjön hibajelentéseket és funkciókéréseket az alkalmazás GitHub-tárhelyének hibajegyeihez</string>
+    <string name="cache_management">Gyorsítótár kezelése</string>
+    <string name="clear_cache">Gyorsítótár törlése</string>
+    <string name="summary_preference_settings_cache_management">Ideiglenes alkalmazásadatok törlése</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Alkalmazásinformációk</string>
+    <string name="application_build_version">Alkalmazás build verziója</string>
+    <string name="open_source_licenses">Nyílt forráskódú licencek</string>
+    <string name="summary_preference_settings_open_source_licenses">Tekintse meg a használt könyvtárak licenceit</string>
+    <string name="device_info">Eszközinformációk</string>
+    <string name="app_build">Alkalmazás build: Kiadás\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Gyártó:</string>
+    <string name="device_model">Eszközmodell:</string>
+    <string name="android_version">Android verzió:</string>
+    <string name="api_level">API szint:</string>
+
+    <!-- Help screen -->
+    <string name="help">Súgó</string>
+    <string name="view_in_google_play">Megtekintés a Google Play Áruházban</string>
+    <string name="beta_program">Béta program</string>
+    <string name="faq">GYIK</string>
+    <string name="question_1">Mi az a QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">A QR &amp; Bar Code Scanner Plus egy ingyenes alkalmazás, amely lehetővé teszi QR-kódok beolvasását és generálását. Képes beolvasni az összes elterjedt vonalkódformátumot, beleértve a QR, Data Matrix, Aztec, UPC, EAN és még sok mást.</string>
+    <string name="question_2">Milyen előnyei vannak a QR &amp; Bar Code Scanner Plus használatának?</string>
+    <string name="summary_preference_faq_2">A QR &amp; Bar Code Scanner Plus egy erőteljes, sokoldalú és ingyenes alkalmazás, amely képes beolvasni az összes elterjedt vonalkódformátumot, zseblámpát használ a sötétben történő szkenneléshez, nagyítással olvassa a vonalkódokat távolról, csatlakozik a Wi-Fi-hez, QR-kódokat generál szövegből, névjegyekből, alkalmazásokból, könyvjelzőkből és a vágólapról, valamint egyszerű és intuitív felülettel rendelkezik.</string>
+    <string name="question_3">Melyek a rendszerkövetelmények a QR &amp; Bar Code Scanner Plus számára?</string>
+    <string name="summary_preference_faq_3">A QR &amp; Bar Code Scanner Plus kompatibilis minden Android 8.0 (Oreo) vagy újabb verziót futtató Android-eszközzel.</string>
+    <string name="question_4">Hogyan olvassak be egy QR-kódot a QR &amp; Bar Code Scanner Plus segítségével?</string>
+    <string name="summary_preference_faq_4">Egy QR-kód beolvasásához a QR &amp; Bar Code Scanner Plus segítségével egyszerűen nyissa meg az alkalmazást, és irányítsa a telefon kameráját a QR-kódra. Az alkalmazás automatikusan beolvassa a kódot és megjeleníti az eredményeket.</string>
+    <string name="question_5"> Hogyan hozhatok létre QR-kódot a QR &amp; Bar Code Scanner Plus segítségével?</string>
+    <string name="summary_preference_faq_5">Egy QR-kód létrehozásához a QR &amp; Bar Code Scanner Plus segítségével nyissa meg az alkalmazást, és lépjen a \'Létrehozás\' menübe. Válassza ki a kívánt QR-kód vagy vonalkód típusát, adja meg a QR-kódba foglalni kívánt adatokat, majd koppintson a \'Létrehozás\' gombra. Az alkalmazás ezután létrehoz egy QR-kódot, amelyet elmenthet vagy megoszthat.</string>
+    <string name="question_6">Hogyan változtathatom meg a QR &amp; Bar Code Scanner Plus témáját?</string>
+    <string name="summary_preference_faq_6">A QR &amp; Bar Code Scanner Plus témáját az alkalmazás beállításaiban lehet megváltoztatni a kívánt téma kiválasztásával.</string>
+    <string name="question_7">Hogyan jelenthetek hibát?</string>
+    <string name="summary_preference_faq_7">Ha hibát talál a QR &amp; Bar Code Scanner Plus alkalmazásban, jelentheti azt az alkalmazás GitHub oldalán egy új hibajegy létrehozásával.</string>
+    <string name="question_8">Biztonságos a QR &amp; Bar Code Scanner Plus használata?</string>
+    <string name="summary_preference_faq_8">A QR &amp; Bar Code Scanner Plus egy biztonságos alkalmazás. Az alkalmazás csak a Firebase Crashlytics és a Firebase Analytics segítségével gyűjt hibanaplókat, amelyek kikapcsolhatók.</string>
+    <string name="question_9">Hogyan léphetek kapcsolatba az alkalmazás fejlesztőjével?</string>
+    <string name="summary_preference_faq_9">Ha bármilyen kérdése vagy problémája van az alkalmazással kapcsolatban, felveheti a kapcsolatot a fejlesztővel az alkalmazás \'Súgó és visszajelzés\' oldalán keresztül.</string>
+    <string name="contact_support_title">Kapcsolatfelvétel a támogatással</string>
+    <string name="contact_support_description">Ossza meg a részleteket, hogy segítséget kapjon célja eléréséhez</string>
+    <string name="send_feedback">Visszajelzés küldése</string>
+    <string name="contact_support_email_subject">Támogatási kérelem a(z) %1$s számára</string>
+    <string name="contact_support_email_body">Üdvözlöm,\n\nSegítségre van szükségem a QR &amp; Bar Code Scanner Plus alkalmazással kapcsolatban.\n\nKöszönöm!</string>
+    <string name="version_info">Verzióinformáció</string>
+    <string name="version">Verzió %1$s</string>
+    <string name="faq_state_collapsed">Összecsukva</string>
+    <string name="faq_state_expanded">Kibontva</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Nincs elérhető e-mail alkalmazás a kérés kezeléséhez.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Támogassa a fejlesztőt</string>
+    <string name="paid_support">Fizetős támogatás</string>
+    <string name="summary_donations">Válasszon egy egyszeri adományösszeget a jövőbeli fejlesztés támogatásához.</string>
+    <string name="non_paid_support">Ingyenes támogatás</string>
+    <string name="web_ad">Látogasson el a támogatási oldalunkra</string>
+    <string name="watch_ad">Hirdetés megtekintése</string>
+    <string name="support_description">Válasszon az alábbi lehetőségek közül, hogy segítsen az új funkciók megjelenésében.</string>
+    <string name="support_donations_header">Támogatási lehetőségek</string>
+    <string name="support_visit_store">Fedezzen fel további támogatási módokat</string>
+    <string name="support_purchase_thank_you">Nagyon köszönjük, hogy támogatja az alkalmazást! 🎉</string>
+    <string name="support_purchase_restored">A támogatását visszaállítottuk.</string>
+    <string name="support_purchase_revoked">A támogatási vásárlását visszavonták.</string>
+    <string name="support_purchase_error">Valami hiba történt. Kérjük, próbálja újra hamarosan.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Hirdetés</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Próbáld ki most!!!</string>
+    <string name="share_using">Megosztás ezzel…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Mentés másként</string>
+    <string name="save">Mentés</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Megerősítés</string>
+    <string name="error">Hiba</string>
+    <string name="something_went_wrong">Valami hiba történt</string>
+    <string name="dialog_delete">Törli?</string>
+    <string name="edit_name">Név szerkesztése</string>
+    <string name="require_restart">Újraindítás szükséges!</string>
+    <string name="summary_require_restart">A módosítások érvénybe lépéséhez kérjük, indítsa újra az alkalmazást!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Hozzáadás a naptárhoz</string>
+    <string name="add_to_contacts">Hozzáadás a névjegyekhez</string>
+    <string name="call" tools:ignore="StringFormatCount">%s hívása</string>
+    <string name="send_sms_mms_to">SMS/MMS küldése ide: %s</string>
+    <string name="email_to">E-mail küldése ide: %s</string>
+    <string name="show_location">Hely megjelenítése</string>
+    <string name="connect_to_wifi">Csatlakozás Wi-Fi-hez</string>
+    <string name="open_wifi_settings">Wi-Fi beállítások megnyitása</string>
+    <string name="copy_network_name">Hálózatnév másolása</string>
+    <string name="copy_network_password">Hálózati jelszó másolása</string>
+    <string name="open_app">Alkalmazás megnyitása</string>
+    <string name="open_in_market">Megnyitás az áruházban</string>
+    <string name="open_in_youtube">Megnyitás a Youtube-on</string>
+    <string name="save_to_bookmark">Mentés a könyvjelzőkbe</string>
+    <string name="open_link">Link megnyitása</string>
+    <string name="open_in_other_app">Megnyitás más alkalmazásban</string>
+    <string name="show_password">Jelszó megjelenítése</string>
+    <string name="search_on_the_web">Keresés az interneten</string>
+    <string name="connecting">Csatlakozás…</string>
+    <string name="tooltip_view_code">Kód megtekintése</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Nem sikerült jelszót generálni</string>
+    <string name="counter">Számláló: %s</string>
+    <string name="timer_left">%1$s:%2$s van hátra</string>
+    <string name="refresh">Frissítés</string>
+    <string name="tooltip_generate_new_secret">Új titok generálása</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">Youtube URL</string>
+    <string name="barcode_schema_boarding_pass">Beszállókártya</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Mentve</string>
+    <string name="snack_unable_to_open_google_play_store">Nem sikerült megnyitni a Google Play Áruházat.</string>
+    <string name="snack_copied_to_clipboard">Vágólapra másolva! 📋</string>
+    <string name="snack_saved_to_downloads">Mentve a Letöltések mappába!</string>
+    <string name="snack_saved_to_gallery">Mentve a Galériába</string>
+    <string name="snack_no_app_found">Nem található alkalmazás ehhez a művelethez. Kérjük, telepítsen egy kompatibilis alkalmazást.</string>
+    <string name="snack_feedback">Köszönjük az értékelést! ❤️</string>
+    <string name="snack_support">Szeretné támogatni az alkalmazásunkat? ❤️</string>
+</resources>
