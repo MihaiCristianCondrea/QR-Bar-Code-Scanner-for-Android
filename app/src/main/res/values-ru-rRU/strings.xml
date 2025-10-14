@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Не удалось сгенерировать пароль</string>
+    <string name="error_missing_otp_data">Не удаётся отобразить данные OTP.</string>
     <string name="counter">Счетчик: %s</string>
     <string name="timer_left">Осталось %1$s:%2$s</string>
     <string name="refresh">Обновить</string>

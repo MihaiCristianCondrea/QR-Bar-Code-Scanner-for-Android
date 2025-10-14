@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Tidak dapat membuat kata sandi</string>
+    <string name="error_missing_otp_data">Detail OTP tidak dapat ditampilkan.</string>
     <string name="counter">Penghitung: %s</string>
     <string name="timer_left">%1$s:%2$s tersisa</string>
     <string name="refresh">Segarkan</string>

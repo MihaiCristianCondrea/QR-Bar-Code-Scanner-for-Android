@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Nu s-a putut genera parola</string>
+    <string name="error_missing_otp_data">Detaliile OTP nu pot fi afișate.</string>
     <string name="counter">Contor: %s</string>
     <string name="timer_left">%1$s:%2$s rămase</string>
     <string name="refresh">Reîmprospătează</string>

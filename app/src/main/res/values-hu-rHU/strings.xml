@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Nem sikerült jelszót generálni</string>
+    <string name="error_missing_otp_data">Az OTP részletei nem jeleníthetők meg.</string>
     <string name="counter">Számláló: %s</string>
     <string name="timer_left">%1$s:%2$s van hátra</string>
     <string name="refresh">Frissítés</string>

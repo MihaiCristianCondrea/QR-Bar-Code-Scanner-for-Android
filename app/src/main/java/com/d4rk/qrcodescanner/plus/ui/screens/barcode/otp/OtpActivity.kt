@@ -2,8 +2,10 @@ package com.d4rk.qrcodescanner.plus.ui.screens.barcode.otp
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
@@ -35,18 +37,24 @@ class OtpActivity : UpNavigationActivity() {
         }
     }
 
-    @Suppress("DEPRECATION")
-    private val otpArgs: OtpAuth by lazy(LazyThreadSafetyMode.NONE) {
-        val otp = intent?.getSerializableExtra(OTP_KEY) as? OtpAuth
-        requireNotNull(otp) { "OtpActivity requires an OtpAuth argument" }
-    }
+    private var resolvedOtpArgs: OtpAuth? = null
 
     private val viewModel: OtpViewModel by viewModels {
-        OtpViewModelFactory(otpArgs, otpGenerator)
+        val otp = requireNotNull(resolvedOtpArgs) { "OtpActivity requires an OtpAuth argument" }
+        OtpViewModelFactory(otp, otpGenerator)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        resolvedOtpArgs = savedInstanceState?.let(::restoreOtpFromBundle)
+            ?: extractOtpFromIntent(intent)
+
+        if (resolvedOtpArgs == null) {
+            handleMissingOtpArgs()
+            return
+        }
+
         binding = ActivityBarcodeOtpBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
@@ -55,6 +63,13 @@ class OtpActivity : UpNavigationActivity() {
         handleRefreshOtpClicked()
         collectUiState()
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        resolvedOtpArgs?.let { otp ->
+            outState.putSerializable(OTP_KEY, otp)
+        }
     }
 
     private fun enableSecurity() {
@@ -109,5 +124,29 @@ class OtpActivity : UpNavigationActivity() {
         } else {
             "0$this"
         }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun extractOtpFromIntent(source: Intent?): OtpAuth? {
+        if (source == null) return null
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            source.getSerializableExtra(OTP_KEY, OtpAuth::class.java)
+        } else {
+            source.getSerializableExtra(OTP_KEY) as? OtpAuth
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun restoreOtpFromBundle(bundle: Bundle): OtpAuth? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            bundle.getSerializable(OTP_KEY, OtpAuth::class.java)
+        } else {
+            bundle.getSerializable(OTP_KEY) as? OtpAuth
+        }
+    }
+
+    private fun handleMissingOtpArgs() {
+        Toast.makeText(this, R.string.error_missing_otp_data, Toast.LENGTH_SHORT).show()
+        finish()
     }
 }

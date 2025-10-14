@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">पासवर्ड बनाने में असमर्थ</string>
+    <string name="error_missing_otp_data">OTP विवरण प्रदर्शित नहीं किए जा सकते।</string>
     <string name="counter">काउंटर: %s</string>
     <string name="timer_left">%1$s:%2$s शेष</string>
     <string name="refresh">रीफ्रेश करें</string>

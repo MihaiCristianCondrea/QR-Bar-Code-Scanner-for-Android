@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Неуспешно генериране на парола</string>
+    <string name="error_missing_otp_data">Не могат да се покажат подробностите за OTP.</string>
     <string name="counter">Брояч: %s</string>
     <string name="timer_left">Остават %1$s:%2$s</string>
     <string name="refresh">Опресняване</string>

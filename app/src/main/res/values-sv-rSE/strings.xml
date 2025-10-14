@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Kunde inte generera lösenord</string>
+    <string name="error_missing_otp_data">Det går inte att visa OTP-detaljerna.</string>
     <string name="counter">Räknare: %s</string>
     <string name="timer_left">%1$s:%2$s kvar</string>
     <string name="refresh">Uppdatera</string>

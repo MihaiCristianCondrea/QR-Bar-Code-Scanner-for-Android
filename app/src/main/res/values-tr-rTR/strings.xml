@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Şifre oluşturulamadı</string>
+    <string name="error_missing_otp_data">OTP ayrıntıları görüntülenemiyor.</string>
     <string name="counter">Sayaç: %s</string>
     <string name="timer_left">Kalan süre %1$s:%2$s</string>
     <string name="refresh">Yenile</string>

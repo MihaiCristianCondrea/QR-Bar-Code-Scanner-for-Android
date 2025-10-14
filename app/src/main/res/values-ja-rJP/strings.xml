@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">パスワードを生成できません</string>
+    <string name="error_missing_otp_data">OTP の詳細を表示できません。</string>
     <string name="counter">カウンター：%s</string>
     <string name="timer_left">残り%1$s:%2$s</string>
     <string name="refresh">更新</string>

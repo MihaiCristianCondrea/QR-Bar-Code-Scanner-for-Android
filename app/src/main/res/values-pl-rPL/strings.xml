@@ -427,6 +427,7 @@
 
     <!-- QR Code Details - OTP -->
     <string name="unable_to_generate_password">Nie można wygenerować hasła</string>
+    <string name="error_missing_otp_data">Nie można wyświetlić szczegółów OTP.</string>
     <string name="counter">Licznik: %s</string>
     <string name="timer_left">Pozostało %1$s:%2$s</string>
     <string name="refresh">Odśwież</string>
