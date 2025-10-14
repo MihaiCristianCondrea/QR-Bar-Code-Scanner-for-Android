@@ -72,22 +72,6 @@
                         android:minHeight="40dp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/media_card"
-                    style="@style/Widget.Material3.CardView.Outlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    app:cardCornerRadius="12dp">
-
-                    <com.google.android.gms.ads.nativead.MediaView
-                        android:id="@+id/ad_media"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop" />
-                </com.google.android.material.card.MaterialCardView>
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.google.android.gms.ads.nativead.AdChoicesView

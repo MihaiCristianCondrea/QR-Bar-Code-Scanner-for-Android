@@ -9,40 +9,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:id="@+id/layout_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ad_app_icon"
+            android:layout_width="@dimen/icon_button_icon_size_big"
+            android:layout_height="@dimen/icon_button_icon_size_big"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            android:background="@drawable/bg_circle"
-            android:padding="@dimen/icon_button_icon_padding"
+            android:background="?attr/colorPrimary"
+            android:contentDescription="@null"
             app:layout_constraintBottom_toTopOf="@id/delimiter"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ad_app_icon"
-                android:layout_width="@dimen/icon_button_icon_size"
-                android:layout_height="@dimen/icon_button_icon_size"
-                android:contentDescription="@null"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/ic_history" />
-        </FrameLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/text_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginBottom="12dp"
             android:orientation="vertical"
+            android:padding="@dimen/icon_button_icon_padding"
             app:layout_constraintBottom_toTopOf="@id/delimiter"
             app:layout_constraintEnd_toStartOf="@id/ad_call_to_action"
-            app:layout_goneMarginEnd="@dimen/default_margin"
-            app:layout_constraintStart_toEndOf="@id/layout_image"
+            app:layout_constraintStart_toEndOf="@id/ad_app_icon"
             app:layout_constraintTop_toTopOf="parent">
 
             <include layout="@layout/ad_attribution" />
@@ -87,8 +79,8 @@
             android:id="@+id/ad_choices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/default_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/text_container" />
 
@@ -96,9 +88,9 @@
             android:id="@+id/delimiter"
             android:layout_width="0dp"
             android:layout_height="0.2dp"
-            android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/default_margin"
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

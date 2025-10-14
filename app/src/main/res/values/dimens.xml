@@ -10,6 +10,7 @@
     <dimen name="default_text_size_very_large">22sp</dimen>
     <dimen name="zoom_seek_bar_height">100dp</dimen>
     <dimen name="icon_button_icon_size">18dp</dimen>
+    <dimen name="icon_button_icon_size_big">42dp</dimen>
     <dimen name="icon_button_icon_padding">9dp</dimen>
     <dimen name="icon_button_vertical_padding">12dp</dimen>
     <dimen name="icon_button_with_delimiter_vertical_padding">12dp</dimen>
