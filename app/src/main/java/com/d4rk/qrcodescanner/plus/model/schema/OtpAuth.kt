@@ -1,8 +1,6 @@
 package com.d4rk.qrcodescanner.plus.model.schema
 
-import android.net.Uri
 import androidx.core.net.toUri
-import com.d4rk.qrcodescanner.plus.utils.extension.appendQueryParameterIfNotNullOrBlank
 import java.io.Serializable
 
 data class OtpAuth(
@@ -48,6 +46,29 @@ data class OtpAuth(
             val counter = uri.getQueryParameter(COUNTER_KEY)?.toLongOrNull()
             return OtpAuth(type, label, issuer, secret, algorithm, digits, period, counter)
         }
+
+        private const val UNRESERVED_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~"
+        private const val LABEL_ALLOWED_CHARS = "$UNRESERVED_CHARS:"
+
+        fun encodeUriComponent(value: String, allow: String = UNRESERVED_CHARS): String {
+            if (value.isEmpty()) {
+                return value
+            }
+
+            val safeChars = allow.toSet()
+            val builder = StringBuilder(value.length)
+            value.forEach { char ->
+                if (char in safeChars) {
+                    builder.append(char)
+                } else {
+                    char.toString().toByteArray(Charsets.UTF_8).forEach { byte ->
+                        builder.append('%')
+                        builder.append(((byte.toInt()) and 0xFF).toString(16).uppercase().padStart(2, '0'))
+                    }
+                }
+            }
+            return builder.toString()
+        }
     }
 
     override val schema = BarcodeSchema.OTP_AUTH
@@ -56,12 +77,31 @@ data class OtpAuth(
     }
 
     override fun toBarcodeText(): String {
-        return Uri.Builder().scheme(URI_SCHEME).authority(type).appendPath(label)
-            .appendQueryParameterIfNotNullOrBlank(SECRET_KEY, secret)
-            .appendQueryParameterIfNotNullOrBlank(ISSUER_KEY, issuer)
-            .appendQueryParameterIfNotNullOrBlank(ALGORITHM_KEY, algorithm)
-            .appendQueryParameterIfNotNullOrBlank(DIGITS_KEY, digits?.toString())
-            .appendQueryParameterIfNotNullOrBlank(COUNTER_KEY, counter?.toString())
-            .appendQueryParameterIfNotNullOrBlank(PERIOD_KEY, period?.toString()).build().toString()
+        val safeType = requireNotNull(type)
+        val path = encodeUriComponent(requireNotNull(label), LABEL_ALLOWED_CHARS)
+        val queryParameters = listOfNotNull(
+            secret?.takeIf { it.isNotBlank() }?.let { SECRET_KEY to it },
+            issuer?.takeIf { it.isNotBlank() }?.let { ISSUER_KEY to it },
+            algorithm?.takeIf { it.isNotBlank() }?.let { ALGORITHM_KEY to it },
+            digits?.let { DIGITS_KEY to it.toString() },
+            counter?.let { COUNTER_KEY to it.toString() },
+            period?.let { PERIOD_KEY to it.toString() }
+        )
+
+        val query = queryParameters.joinToString(separator = "&") { (key, value) ->
+            "${encodeUriComponent(key)}=${encodeUriComponent(value)}"
+        }
+
+        return buildString {
+            append(URI_SCHEME)
+            append("://")
+            append(safeType)
+            append('/')
+            append(path)
+            if (query.isNotEmpty()) {
+                append('?')
+                append(query)
+            }
+        }
     }
 }
