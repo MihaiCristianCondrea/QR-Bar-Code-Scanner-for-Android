@@ -12,20 +12,24 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySaveBarcodeAsImageBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
-import com.d4rk.qrcodescanner.plus.di.barcodeImageSaver
-import com.d4rk.qrcodescanner.plus.di.permissionsHelper
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 
 class SaveBarcodeAsImageActivity : BaseActivity() {
     private lateinit var binding: ActivitySaveBarcodeAsImageBinding
+    private val barcodeImageGenerator: BarcodeImageGenerator by inject()
+    private val barcodeImageSaver: BarcodeImageSaver by inject()
+    private val permissionsHelper: PermissionsHelper by inject()
     private val viewModel: SaveBarcodeAsImageViewModel by viewModels {
         SaveBarcodeAsImageViewModelFactory(barcodeImageGenerator, barcodeImageSaver)
     }

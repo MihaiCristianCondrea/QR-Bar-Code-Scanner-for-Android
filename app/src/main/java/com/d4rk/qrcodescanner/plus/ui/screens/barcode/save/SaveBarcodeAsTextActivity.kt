@@ -12,19 +12,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySaveBarcodeAsTextBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeSaver
-import com.d4rk.qrcodescanner.plus.di.permissionsHelper
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 
 class SaveBarcodeAsTextActivity : BaseActivity() {
     private lateinit var binding: ActivitySaveBarcodeAsTextBinding
+    private val barcodeSaver: BarcodeSaver by inject()
+    private val permissionsHelper: PermissionsHelper by inject()
     private val viewModel: SaveBarcodeAsTextViewModel by viewModels {
         SaveBarcodeAsTextViewModelFactory(barcodeSaver)
     }

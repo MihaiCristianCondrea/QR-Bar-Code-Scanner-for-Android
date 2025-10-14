@@ -34,12 +34,11 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentScanBarcodeFromCameraBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.di.barcodeParser
-import com.d4rk.qrcodescanner.plus.di.permissionsHelper
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
 import com.d4rk.qrcodescanner.plus.domain.history.save
+import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.domain.scan.SupportedBarcodeFormats
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.ConfirmBarcodeDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.views.BarcodeOverlayView
@@ -67,6 +66,8 @@ import kotlinx.coroutines.withContext
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
+import org.koin.android.ext.android.inject
 
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 
@@ -83,6 +84,10 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
     }
 
     private lateinit var binding: FragmentScanBarcodeFromCameraBinding
+    private val barcodeDatabase: BarcodeDatabase by inject()
+    private val barcodeParser: BarcodeParser by inject()
+    private val settings: Settings by inject()
+    private val permissionsHelper: PermissionsHelper by inject()
 
     private val vibrationPattern = longArrayOf(0, 350)
     private val zoomStep = 5

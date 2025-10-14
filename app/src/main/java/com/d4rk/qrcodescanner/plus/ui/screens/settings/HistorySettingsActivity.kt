@@ -3,8 +3,9 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings
 import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
 import com.d4rk.qrcodescanner.plus.R
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
+import org.koin.android.ext.android.inject
 
 class HistorySettingsActivity : BasePreferenceActivity() {
     override val toolbarTitleResId: Int = R.string.history
@@ -12,6 +13,8 @@ class HistorySettingsActivity : BasePreferenceActivity() {
     override fun createPreferenceFragment() = HistorySettingsFragment()
 
     class HistorySettingsFragment : BasePreferenceFragment(R.xml.preferences_history) {
+        private val settings: Settings by inject()
+
         override fun onPreferencesCreated() {
             bindSwitchPreference(
                 keyResId = R.string.key_save_scanned_barcodes,

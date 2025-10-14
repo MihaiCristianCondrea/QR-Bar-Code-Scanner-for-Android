@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeOtpBinding
-import com.d4rk.qrcodescanner.plus.di.otpGenerator
+import com.d4rk.qrcodescanner.plus.domain.create.OTPGenerator
 import com.d4rk.qrcodescanner.plus.model.schema.OtpAuth
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
@@ -19,9 +19,11 @@ import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 
 class OtpActivity : UpNavigationActivity() {
     private lateinit var binding: ActivityBarcodeOtpBinding
+    private val otpGenerator: OTPGenerator by inject()
 
     companion object {
         private const val OTP_KEY = "OTP_KEY"

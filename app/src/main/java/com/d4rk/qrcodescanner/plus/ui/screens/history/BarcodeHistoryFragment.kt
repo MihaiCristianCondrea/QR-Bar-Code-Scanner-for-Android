@@ -11,20 +11,21 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeHistoryRepository
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.screens.history.export.ExportHistoryActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class BarcodeHistoryFragment : Fragment(), DeleteConfirmationDialogFragment.Listener {
     private lateinit var _binding: FragmentBarcodeHistoryBinding
     private val binding get() = _binding
     private var hasLoadedEmptyStateAd = false
-    private val historyRepository by lazy { barcodeHistoryRepository }
+    private val barcodeHistoryRepository: BarcodeHistoryRepository by inject()
     private val viewModel: BarcodeHistoryViewModel by viewModels {
-        BarcodeHistoryViewModelFactory(historyRepository)
+        BarcodeHistoryViewModelFactory(barcodeHistoryRepository)
     }
 
     override fun onCreateView(

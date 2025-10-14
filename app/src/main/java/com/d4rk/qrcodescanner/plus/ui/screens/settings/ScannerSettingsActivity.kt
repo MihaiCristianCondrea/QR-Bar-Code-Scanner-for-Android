@@ -2,7 +2,8 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings
 
 import androidx.preference.SwitchPreferenceCompat
 import com.d4rk.qrcodescanner.plus.R
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
+import org.koin.android.ext.android.inject
 
 class ScannerSettingsActivity : BasePreferenceActivity() {
     override val toolbarTitleResId: Int = R.string.scanner
@@ -10,6 +11,8 @@ class ScannerSettingsActivity : BasePreferenceActivity() {
     override fun createPreferenceFragment() = ScannerSettingsFragment()
 
     class ScannerSettingsFragment : BasePreferenceFragment(R.xml.preferences_scanner) {
+        private val settings: Settings by inject()
+
         override fun onPreferencesCreated() {
             bindSwitchPreference(
                 keyResId = R.string.key_open_links_automatically,

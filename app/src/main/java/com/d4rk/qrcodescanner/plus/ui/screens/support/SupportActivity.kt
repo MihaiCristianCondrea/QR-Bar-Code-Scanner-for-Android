@@ -7,18 +7,26 @@ import androidx.activity.viewModels
 import androidx.core.net.toUri
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySupportBinding
-import com.d4rk.qrcodescanner.plus.di.initBillingClientUseCase
-import com.d4rk.qrcodescanner.plus.di.initMobileAdsUseCase
-import com.d4rk.qrcodescanner.plus.di.initiatePurchaseUseCase
-import com.d4rk.qrcodescanner.plus.di.queryProductDetailsUseCase
-import com.d4rk.qrcodescanner.plus.di.refreshPurchasesUseCase
-import com.d4rk.qrcodescanner.plus.di.setPurchaseStatusListenerUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitBillingClientUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitMobileAdsUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.InitiatePurchaseUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.QueryProductDetailsUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.RefreshPurchasesUseCase
+import com.d4rk.qrcodescanner.plus.domain.support.SetPurchaseStatusListenerUseCase
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import org.koin.android.ext.android.inject
 
 class SupportActivity : UpNavigationActivity() {
 
     private lateinit var binding: ActivitySupportBinding
+
+    private val initBillingClientUseCase: InitBillingClientUseCase by inject()
+    private val queryProductDetailsUseCase: QueryProductDetailsUseCase by inject()
+    private val initiatePurchaseUseCase: InitiatePurchaseUseCase by inject()
+    private val initMobileAdsUseCase: InitMobileAdsUseCase by inject()
+    private val refreshPurchasesUseCase: RefreshPurchasesUseCase by inject()
+    private val setPurchaseStatusListenerUseCase: SetPurchaseStatusListenerUseCase by inject()
 
     private val supportViewModel: SupportViewModel by viewModels {
         SupportViewModelFactory(

@@ -36,8 +36,8 @@ import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.data.onboarding.OnboardingPreferences
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
-import com.d4rk.qrcodescanner.plus.di.appEngagementRepository
-import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
+import com.d4rk.qrcodescanner.plus.domain.engagement.AppEngagementRepository
+import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
@@ -56,6 +56,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,8 +68,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
-    private val preferencesRepository by lazy { mainPreferencesRepository }
-    private val engagementRepository by lazy { appEngagementRepository }
+    private val preferencesRepository: MainPreferencesRepository by inject()
+    private val engagementRepository: AppEngagementRepository by inject()
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(preferencesRepository)
     }

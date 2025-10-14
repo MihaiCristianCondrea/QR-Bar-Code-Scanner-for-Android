@@ -20,10 +20,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.ads.AdUtils
 import com.d4rk.qrcodescanner.plus.databinding.ActivityScanBarcodeFromFileBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.di.barcodeImageScanner
-import com.d4rk.qrcodescanner.plus.di.barcodeParser
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
+import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
+import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
@@ -32,9 +32,14 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class ScanBarcodeFromFileActivity : BaseActivity() {
     private lateinit var binding: ActivityScanBarcodeFromFileBinding
+    private val barcodeImageScanner: BarcodeImageScanner by inject()
+    private val barcodeParser: BarcodeParser by inject()
+    private val barcodeDatabase: BarcodeDatabase by inject()
+    private val settings: Settings by inject()
     private val photoPickerLauncher: ActivityResultLauncher<PickVisualMediaRequest> =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             handlePickedImage(uri)

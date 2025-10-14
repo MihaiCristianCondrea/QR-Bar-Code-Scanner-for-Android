@@ -5,15 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySupportedFormatsBinding
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.domain.scan.SupportedBarcodeFormats
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.zxing.BarcodeFormat
+import org.koin.android.ext.android.inject
 
 class SupportedFormatsActivity : BaseActivity(), FormatsAdapter.Listener {
     private lateinit var binding: ActivitySupportedFormatsBinding
+    private val settings: Settings by inject()
 
     companion object {
         fun start(context: Context) {

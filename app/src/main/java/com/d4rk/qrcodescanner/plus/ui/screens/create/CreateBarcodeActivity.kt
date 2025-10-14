@@ -14,11 +14,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityCreateBarcodeBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.di.barcodeParser
-import com.d4rk.qrcodescanner.plus.di.contactHelper
-import com.d4rk.qrcodescanner.plus.di.permissionsHelper
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.create.ContactHelper
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
+import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.schema.App
 import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
@@ -58,14 +57,23 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.BarcodeFormat
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 
 class CreateBarcodeActivity : UpNavigationActivity(), AppAdapter.Listener {
     private lateinit var binding: ActivityCreateBarcodeBinding
+
+    private val barcodeDatabase: BarcodeDatabase by inject()
+    private val settings: Settings by inject()
+    private val barcodeParser: BarcodeParser by inject()
+    private val permissionsHelper: PermissionsHelper by inject()
+    private val contactHelper: ContactHelper by inject()
+
     private val viewModel by viewModels<CreateBarcodeViewModel> {
         CreateBarcodeViewModelFactory(barcodeDatabase, settings)
     }

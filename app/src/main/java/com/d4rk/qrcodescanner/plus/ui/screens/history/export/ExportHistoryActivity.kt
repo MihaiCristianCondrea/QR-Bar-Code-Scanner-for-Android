@@ -13,20 +13,24 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityExportHistoryBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDatabase
-import com.d4rk.qrcodescanner.plus.di.barcodeSaver
-import com.d4rk.qrcodescanner.plus.di.permissionsHelper
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 
 class ExportHistoryActivity : BaseActivity() {
     private lateinit var binding: ActivityExportHistoryBinding
+    private val barcodeDatabase: BarcodeDatabase by inject()
+    private val barcodeSaver: BarcodeSaver by inject()
+    private val permissionsHelper: PermissionsHelper by inject()
     private val viewModel: ExportHistoryViewModel by viewModels {
         ExportHistoryViewModelFactory(barcodeDatabase, barcodeSaver)
     }

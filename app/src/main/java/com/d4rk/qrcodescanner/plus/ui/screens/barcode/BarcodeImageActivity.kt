@@ -10,8 +10,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeImageBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
@@ -24,6 +24,7 @@ import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
+import org.koin.android.ext.android.inject
 
 class BarcodeImageActivity : UpNavigationActivity() {
     companion object {
@@ -36,6 +37,8 @@ class BarcodeImageActivity : UpNavigationActivity() {
     }
 
     private lateinit var binding: ActivityBarcodeImageBinding
+    private val barcodeImageGenerator: BarcodeImageGenerator by inject()
+    private val settings: Settings by inject()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
     @Suppress("DEPRECATION")

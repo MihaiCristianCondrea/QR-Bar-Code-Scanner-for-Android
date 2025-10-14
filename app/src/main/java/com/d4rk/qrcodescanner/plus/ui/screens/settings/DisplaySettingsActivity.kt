@@ -5,8 +5,9 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
 import com.d4rk.qrcodescanner.plus.R
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.RequireRestartDialog
+import org.koin.android.ext.android.inject
 
 class DisplaySettingsActivity : BasePreferenceActivity() {
     override val toolbarTitleResId: Int = R.string.display
@@ -14,6 +15,8 @@ class DisplaySettingsActivity : BasePreferenceActivity() {
     override fun createPreferenceFragment() = DisplaySettingsFragment()
 
     class DisplaySettingsFragment : BasePreferenceFragment(R.xml.preferences_display) {
+        private val settings: Settings by inject()
+
         override fun onPreferencesCreated() {
             findPreference<ListPreference>(getString(R.string.key_theme))?.apply {
                 bindSummary(R.string.summary_preference_settings_theme)

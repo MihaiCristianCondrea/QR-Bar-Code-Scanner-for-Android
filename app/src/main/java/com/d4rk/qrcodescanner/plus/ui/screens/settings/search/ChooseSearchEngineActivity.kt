@@ -5,16 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.d4rk.qrcodescanner.plus.databinding.ActivityChooseSearchEngineBinding
-import com.d4rk.qrcodescanner.plus.di.settings
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.ui.components.views.SettingsRadioButton
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 
 class ChooseSearchEngineActivity : BaseActivity() {
     private lateinit var binding: ActivityChooseSearchEngineBinding
+    private val settings: Settings by inject()
 
     companion object {
         fun start(context: Context) {

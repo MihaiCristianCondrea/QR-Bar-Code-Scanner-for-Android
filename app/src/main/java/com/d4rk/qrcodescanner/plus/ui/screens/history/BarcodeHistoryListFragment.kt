@@ -13,19 +13,20 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryListBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryFilter
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.orZero
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     private lateinit var _binding: FragmentBarcodeHistoryListBinding
     private val binding get() = _binding
     private var hasLoadedEmptyStateAd = false
-    private val historyRepository by lazy { barcodeHistoryRepository }
+    private val barcodeHistoryRepository: BarcodeHistoryRepository by inject()
     private val historyFilter: BarcodeHistoryFilter by lazy {
         when (arguments?.getInt(TYPE_KEY).orZero()) {
             TYPE_ALL -> BarcodeHistoryFilter.ALL
@@ -34,7 +35,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
         }
     }
     private val viewModel: BarcodeHistoryListViewModel by viewModels {
-        BarcodeHistoryListViewModelFactory(historyRepository, historyFilter)
+        BarcodeHistoryListViewModelFactory(barcodeHistoryRepository, historyFilter)
     }
 
     companion object {

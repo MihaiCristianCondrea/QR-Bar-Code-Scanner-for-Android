@@ -8,7 +8,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.ContactsContract
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -22,11 +21,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.print.PrintHelper
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeBinding
-import com.d4rk.qrcodescanner.plus.di.barcodeDetailsRepository
-import com.d4rk.qrcodescanner.plus.di.barcodeImageGenerator
-import com.d4rk.qrcodescanner.plus.di.barcodeImageSaver
-import com.d4rk.qrcodescanner.plus.di.settings
-import com.d4rk.qrcodescanner.plus.di.wifiConnector
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
+import com.d4rk.qrcodescanner.plus.domain.barcode.WifiConnector
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.model.ParsedBarcode
 import com.d4rk.qrcodescanner.plus.model.SearchEngine
@@ -58,6 +57,7 @@ import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
+import org.koin.android.ext.android.inject
 
 class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment.Listener,
     ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
@@ -74,6 +74,11 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
     }
 
     private lateinit var binding: ActivityBarcodeBinding
+    private val barcodeDetailsRepository: BarcodeDetailsRepository by inject()
+    private val barcodeImageGenerator: BarcodeImageGenerator by inject()
+    private val barcodeImageSaver: BarcodeImageSaver by inject()
+    private val settings: Settings by inject()
+    private val wifiConnector: WifiConnector by inject()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
     @Suppress("DEPRECATION")
@@ -84,9 +89,8 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
     private val isCreated by unsafeLazy {
         intent?.getBooleanExtra(IS_CREATED, false).orFalse()
     }
-    private val barcodeRepository by unsafeLazy { barcodeDetailsRepository }
     private val barcodeViewModel: BarcodeViewModel by viewModels {
-        BarcodeViewModelFactory(initialBarcode, barcodeRepository)
+        BarcodeViewModelFactory(initialBarcode, barcodeDetailsRepository)
     }
     private lateinit var barcodeModel: Barcode
     private lateinit var parsedBarcode: ParsedBarcode
@@ -513,7 +517,7 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
     }
 
     private fun openWifiSettings() {
-        val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
+        val intent = Intent(android.provider.Settings.ACTION_WIFI_SETTINGS)
         startActivityIfExists(intent)
     }
 

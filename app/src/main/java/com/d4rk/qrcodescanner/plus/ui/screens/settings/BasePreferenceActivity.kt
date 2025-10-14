@@ -9,13 +9,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.preference.PreferenceFragmentCompat
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivitySettingsBinding
-import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
+import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 abstract class BasePreferenceActivity : AppCompatActivity() {
     protected lateinit var binding: ActivitySettingsBinding
-    private val preferencesRepository by lazy { mainPreferencesRepository }
+    private val preferencesRepository: MainPreferencesRepository by inject()
     private val settingsViewModel: SettingsViewModel by viewModels {
         SettingsViewModelFactory(preferencesRepository)
     }
