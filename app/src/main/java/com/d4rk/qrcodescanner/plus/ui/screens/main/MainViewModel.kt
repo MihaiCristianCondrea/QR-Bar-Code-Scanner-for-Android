@@ -29,7 +29,6 @@ class MainViewModel(
 ) : ViewModel() {
 
     private data class UiAccumulator(
-        val lastThemeMode: Int? = null,
         val lastLanguageTag: String? = null,
         val uiState: MainUiState = MainUiState()
     )
@@ -46,19 +45,17 @@ class MainViewModel(
             preferences.toSnapshot()
         }
         .runningFold(UiAccumulator()) { accumulator, snapshot ->
-            val themeChanged = accumulator.lastThemeMode != null && (
-                    accumulator.lastThemeMode != snapshot.themeMode || accumulator.lastLanguageTag != snapshot.languageTag
-                    )
+            val languageChanged = accumulator.lastLanguageTag != null &&
+                accumulator.lastLanguageTag != snapshot.languageTag
 
             UiAccumulator(
-                lastThemeMode = snapshot.themeMode,
                 lastLanguageTag = snapshot.languageTag,
                 uiState = MainUiState(
                     bottomNavVisibility = snapshot.labelVisibility,
                     defaultNavDestination = snapshot.startDestination,
                     themeMode = snapshot.themeMode,
                     languageTag = snapshot.languageTag,
-                    themeChanged = themeChanged
+                    requiresRecreation = languageChanged
                 )
             )
         }

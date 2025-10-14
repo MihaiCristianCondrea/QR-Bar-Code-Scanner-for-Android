@@ -220,7 +220,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setApplicationLocales(
             LocaleListCompat.forLanguageTags(languageTag)
         )
-        if (uiState.themeChanged) {
+        if (uiState.requiresRecreation) {
             recreate()
         }
     }

@@ -12,5 +12,5 @@ data class MainUiState(
     val defaultNavDestination: Int = R.id.navigation_scan,
     val themeMode: Int = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
     val languageTag: String? = null,
-    val themeChanged: Boolean = false
+    val requiresRecreation: Boolean = false
 )
