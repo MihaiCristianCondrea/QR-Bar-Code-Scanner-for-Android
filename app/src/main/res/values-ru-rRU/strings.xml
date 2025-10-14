@@ -59,6 +59,7 @@
     <string name="scan">Сканировать</string>
     <string name="scan_image">Сканировать изображение</string>
     <string name="scan_barcode_from_image_not_found">На этом изображении не удалось обнаружить штрих-код.</string>
+    <string name="barcode_error_missing_extra">Не удалось открыть этот штрихкод. Попробуйте сканировать его ещё раз.</string>
     <string name="flash">Вспышка</string>
 
     <!-- Scan Image screen -->

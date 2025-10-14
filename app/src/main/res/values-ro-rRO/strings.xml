@@ -59,6 +59,7 @@
     <string name="scan">Scanează</string>
     <string name="scan_image">Scanează imagine</string>
     <string name="scan_barcode_from_image_not_found">Nu a fost detectat niciun cod de bare în această imagine.</string>
+    <string name="barcode_error_missing_extra">Nu am reușit să deschidem acest cod de bare. Te rugăm să încerci să-l scanezi din nou.</string>
     <string name="flash">Bliț</string>
 
     <!-- Scan Image screen -->

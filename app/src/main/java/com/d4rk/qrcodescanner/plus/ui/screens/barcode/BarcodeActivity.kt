@@ -10,6 +10,7 @@ import android.provider.CalendarContract
 import android.provider.ContactsContract
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
@@ -81,11 +82,7 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
     private val wifiConnector: WifiConnector by inject()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
-    @Suppress("DEPRECATION")
-    private val initialBarcode: Barcode by unsafeLazy {
-        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
-            ?: throw IllegalArgumentException("No barcode passed")
-    }
+    private lateinit var initialBarcode: Barcode
     private val isCreated by unsafeLazy {
         intent?.getBooleanExtra(IS_CREATED, false).orFalse()
     }
@@ -107,6 +104,15 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
     private var isBrightnessAtMax = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val barcode = readBarcode(savedInstanceState)
+        if (barcode == null) {
+            showMissingBarcodeError()
+            finish()
+            return
+        }
+        initialBarcode = barcode
+
         binding = ActivityBarcodeBinding.inflate(layoutInflater)
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
@@ -123,6 +129,27 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
         MobileAds.initialize(this)
         binding.adView.loadAd(AdRequest.Builder().build())
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
+    }
+
+    @Suppress("DEPRECATION")
+    private fun readBarcode(savedInstanceState: Bundle?): Barcode? {
+        val fromIntent = intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
+        if (fromIntent != null) {
+            return fromIntent
+        }
+        return savedInstanceState?.getSerializable(BARCODE_KEY) as? Barcode
+    }
+
+    private fun showMissingBarcodeError() {
+        Toast.makeText(this, R.string.barcode_error_missing_extra, Toast.LENGTH_SHORT).show()
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (::initialBarcode.isInitialized) {
+            outState.putSerializable(BARCODE_KEY, initialBarcode)
+        }
     }
 
     override fun onDeleteConfirmed() {

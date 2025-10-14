@@ -59,6 +59,7 @@
     <string name="scan">Pindai</string>
     <string name="scan_image">Pindai gambar</string>
     <string name="scan_barcode_from_image_not_found">Tidak ada kode batang yang dapat dideteksi dalam gambar ini.</string>
+    <string name="barcode_error_missing_extra">Kami tidak dapat membuka kode batang ini. Silakan coba pindai lagi.</string>
     <string name="flash">Kilat</string>
 
     <!-- Scan Image screen -->

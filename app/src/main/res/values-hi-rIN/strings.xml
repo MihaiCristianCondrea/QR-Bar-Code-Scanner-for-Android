@@ -59,6 +59,7 @@
     <string name="scan">स्कैन करें</string>
     <string name="scan_image">छवि स्कैन करें</string>
     <string name="scan_barcode_from_image_not_found">इस छवि में कोई बारकोड नहीं मिला।</string>
+    <string name="barcode_error_missing_extra">हम इस बारकोड को खोल नहीं पाए। कृपया इसे फिर से स्कैन करने का प्रयास करें।</string>
     <string name="flash">फ्लैश</string>
 
     <!-- Scan Image screen -->

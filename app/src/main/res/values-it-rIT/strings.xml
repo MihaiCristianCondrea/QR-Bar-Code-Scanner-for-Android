@@ -59,6 +59,7 @@
     <string name="scan">Scansiona</string>
     <string name="scan_image">Scansiona immagine</string>
     <string name="scan_barcode_from_image_not_found">Non è stato possibile rilevare alcun codice a barre in questa immagine.</string>
+    <string name="barcode_error_missing_extra">Non siamo riusciti ad aprire questo codice a barre. Riprova a scansionarlo.</string>
     <string name="flash">Flash</string>
 
     <!-- Scan Image screen -->

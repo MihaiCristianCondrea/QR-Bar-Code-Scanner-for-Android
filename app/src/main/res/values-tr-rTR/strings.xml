@@ -59,6 +59,7 @@
     <string name="scan">Tara</string>
     <string name="scan_image">Görüntü tara</string>
     <string name="scan_barcode_from_image_not_found">Bu görüntüde herhangi bir barkod tespit edilemedi.</string>
+    <string name="barcode_error_missing_extra">Bu barkodu açamadık. Lütfen yeniden taramayı deneyin.</string>
     <string name="flash">Flaş</string>
 
     <!-- Scan Image screen -->

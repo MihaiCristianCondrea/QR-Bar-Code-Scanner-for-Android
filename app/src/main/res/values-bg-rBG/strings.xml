@@ -59,6 +59,7 @@
     <string name="scan">Сканиране</string>
     <string name="scan_image">Сканиране на изображение</string>
     <string name="scan_barcode_from_image_not_found">Не беше открит баркод в това изображение.</string>
+    <string name="barcode_error_missing_extra">Не успяхме да отворим този баркод. Моля, опитайте да го сканирате отново.</string>
     <string name="flash">Светкавица</string>
 
     <!-- Scan Image screen -->
