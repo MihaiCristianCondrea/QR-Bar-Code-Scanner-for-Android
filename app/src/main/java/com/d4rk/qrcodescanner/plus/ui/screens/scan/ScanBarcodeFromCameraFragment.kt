@@ -148,16 +148,6 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         cameraProvider = null
     }
 
-    override fun onRequestPermissionsResult( // FIXME: This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray,
-    ) {
-        if (requestCode == PERMISSION_REQUEST_CODE && areAllPermissionsGranted(grantResults)) {
-            bindCameraUseCases()
-        }
-    }
-
     override fun onBarcodeConfirmed(barcode: Barcode) {
         pendingBarcode = null
         when {
@@ -636,9 +626,5 @@ class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.L
         }
         val hostActivity = activity ?: return false
         return permissionsHelper.areAllPermissionsGranted(hostActivity, PERMISSIONS)
-    }
-
-    private fun areAllPermissionsGranted(grantResults: IntArray): Boolean {
-        return permissionsHelper.areAllPermissionsGranted(grantResults)
     }
 }

@@ -28,9 +28,9 @@ object OnboardingPreferences {
 
     fun setFreshInstall(context: Context, isFreshInstall: Boolean) {
         PreferenceManager.getDefaultSharedPreferences(context)
-            .edit()
-            .putBoolean(KEY_FRESH_INSTALL, isFreshInstall)
-            .apply()
+            .edit {
+                putBoolean(KEY_FRESH_INSTALL, isFreshInstall)
+            }
     }
 
     fun isAnalyticsEnabled(context: Context): Boolean {

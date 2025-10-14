@@ -39,10 +39,11 @@ import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBindi
 import com.d4rk.qrcodescanner.plus.di.appEngagementRepository
 import com.d4rk.qrcodescanner.plus.di.mainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
-import com.d4rk.qrcodescanner.plus.ui.screens.onboarding.OnboardingActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.support.SupportActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.InAppUpdateHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.ReviewHelper
 import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -51,8 +52,6 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.d4rk.qrcodescanner.plus.utils.helpers.InAppUpdateHelper
-import com.d4rk.qrcodescanner.plus.utils.helpers.ReviewHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -101,12 +100,6 @@ class MainActivity : AppCompatActivity() {
 
         if (OnboardingPreferences.isFreshInstall(this)) {
             startActivity(Intent(this, StartupActivity::class.java))
-            finish()
-            return
-        }
-
-        if (!OnboardingPreferences.isOnboardingComplete(this)) {
-            startActivity(Intent(this, OnboardingActivity::class.java))
             finish()
             return
         }
