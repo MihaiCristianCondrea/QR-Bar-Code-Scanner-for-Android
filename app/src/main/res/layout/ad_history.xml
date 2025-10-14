@@ -13,7 +13,6 @@
             android:id="@+id/layout_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/bg_circle"
@@ -69,20 +68,6 @@
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 tools:text="Try our premium plan to unlock unlimited history exports." />
 
-            <FrameLayout
-                android:id="@+id/media_card"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="8dp"
-                android:visibility="gone">
-
-                <com.google.android.gms.ads.nativead.MediaView
-                    android:id="@+id/ad_media"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop" />
-            </FrameLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.button.MaterialButton
