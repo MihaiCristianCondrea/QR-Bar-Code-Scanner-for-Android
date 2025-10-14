@@ -8,25 +8,33 @@ import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.d4rk.qrcodescanner.plus.ads.placement.NativeAdPlacementConfig
+import com.d4rk.qrcodescanner.plus.ads.placement.NativeAdPlacementController
+import com.d4rk.qrcodescanner.plus.ads.placement.NativeAdPlacementPlan
 import com.d4rk.qrcodescanner.plus.databinding.ItemBarcodeHistoryBinding
 import com.d4rk.qrcodescanner.plus.databinding.ItemHistoryNativeAdBinding
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.utils.extension.toImageId
 import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
+import com.google.android.gms.ads.nativead.NativeAd
 import java.text.SimpleDateFormat
 import java.util.Locale
-import kotlin.math.abs
-import kotlin.random.Random
 
 class BarcodeHistoryAdapter(private val listener: Listener) :
     PagingDataAdapter<Barcode, RecyclerView.ViewHolder>(DiffUtilCallback) {
+
     interface Listener {
         fun onBarcodeClicked(barcode: Barcode)
     }
 
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
-    private var adAdapterPositions: List<Int> = emptyList()
-    private var lastDataItemCount: Int = -1
+    private val adPlacementController = NativeAdPlacementController(
+        NativeAdPlacementConfig(maxDensity = 0.25, minSpacing = 5, edgeBuffer = 2)
+    )
+    private var nativeAds: List<NativeAd> = emptyList()
+
+    /** Current ad plan used to overlay ads into the adapter positions. */
+    private var adPlan: NativeAdPlacementPlan = NativeAdPlacementPlan.EMPTY
 
     init {
         addOnPagesUpdatedListener { recomputeAdPositions() }
@@ -47,7 +55,11 @@ class BarcodeHistoryAdapter(private val listener: Listener) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is NativeAdViewHolder -> holder.bind()
+            is NativeAdViewHolder -> {
+                val nativeAd = adPlan.adAtAdapterPosition(position)
+                if (nativeAd != null) holder.bind(nativeAd)
+            }
+
             is BarcodeViewHolder -> bindBarcode(holder, position)
         }
     }
@@ -57,77 +69,87 @@ class BarcodeHistoryAdapter(private val listener: Listener) :
     }
 
     override fun getItemCount(): Int {
-        return super.getItemCount() + adAdapterPositions.size
+        return super.getItemCount() + adPlan.placements.size
+    }
+
+    fun updateNativeAds(ads: List<NativeAd>) {
+        nativeAds = ads
+        adPlacementController.updateAds(nativeAds)
+        recomputeAdPositions(forceAdRecomputation = true)
     }
 
     private fun bindBarcode(holder: BarcodeViewHolder, adapterPosition: Int) {
         val dataIndex = toDataIndex(adapterPosition)
         if (dataIndex < 0) return
         val barcode = getItem(dataIndex) ?: return
-        val isLastItem = dataIndex == super.getItemCount().dec().coerceAtLeast(-1)
+        val isLastItem = dataIndex == (super.getItemCount() - 1).coerceAtLeast(-1)
         holder.show(barcode, isLastItem)
     }
 
+    /** Map adapter position -> data index by skipping ad positions before it. */
     private fun toDataIndex(adapterPosition: Int): Int {
         var offset = 0
-        for (adPosition in adAdapterPositions) {
-            if (adPosition < adapterPosition) {
-                offset++
-            } else {
-                break
-            }
+        for (adPosition in adPlan.adapterPositions) {
+            if (adPosition < adapterPosition) offset++ else break
         }
         return adapterPosition - offset
     }
 
     private fun isAdPosition(position: Int): Boolean {
-        return adAdapterPositions.binarySearch(position) >= 0
+        return adPlan.adapterPositions.binarySearch(position) >= 0
     }
 
-    private fun recomputeAdPositions() {
+    /**
+     * Recompute where ads should appear, then dispatch precise insert/remove ops
+     * instead of using notifyDataSetChanged().
+     */
+    private fun recomputeAdPositions(forceAdRecomputation: Boolean = false) {
         val dataCount = snapshot().items.size
-        if (dataCount == lastDataItemCount) return
-        lastDataItemCount = dataCount
+        if (!forceAdRecomputation && dataCount == 0 && nativeAds.isEmpty()) return
 
-        val sourcePositions = calculateAdPositions(dataCount)
-        adAdapterPositions = calculateAdapterPositions(sourcePositions)
-        notifyDataSetChanged()
-    }
-
-    private fun calculateAdPositions(size: Int, random: Random = Random.Default): List<Int> {
-        if (size < MIN_ITEMS_FOR_AD) return emptyList()
-
-        val candidateIndices = (1 until size - 1).toMutableList()
-        if (candidateIndices.isEmpty()) return emptyList()
-
-        val positions = mutableListOf<Int>()
-        val firstAd = candidateIndices.random(random)
-        positions += firstAd
-
-        if (size > MIN_ITEMS_FOR_SECOND_AD) {
-            candidateIndices.removeAll { index ->
-                abs(index - firstAd) < MIN_DISTANCE_BETWEEN_ADS
+        val oldAdPlacementPlan = adPlan
+        val newAdPlacementPlan =
+            if (dataCount <= 0 || nativeAds.isEmpty()) {
+                NativeAdPlacementPlan.EMPTY
+            } else {
+                adPlacementController.beginSession().plan(dataCount)
             }
 
-            if (candidateIndices.isNotEmpty()) {
-                positions += candidateIndices.random(random)
+        if (newAdPlacementPlan == oldAdPlacementPlan) return
+
+        val removedAdPositions = mutableListOf<Int>()
+        val insertedAdPositions = mutableListOf<Int>()
+
+        val oldAdAdapterPositions = oldAdPlacementPlan.adapterPositions
+        val newAdAdapterPositions = newAdPlacementPlan.adapterPositions
+        var oldPositionIndex = 0
+        var newPositionIndex = 0
+        while (oldPositionIndex < oldAdAdapterPositions.size || newPositionIndex < newAdAdapterPositions.size) {
+            val oldPosition = if (oldPositionIndex < oldAdAdapterPositions.size) oldAdAdapterPositions[oldPositionIndex] else Int.MAX_VALUE
+            val newPosition = if (newPositionIndex < newAdAdapterPositions.size) newAdAdapterPositions[newPositionIndex] else Int.MAX_VALUE
+            when {
+                oldPosition == newPosition -> {
+                    oldPositionIndex++; newPositionIndex++
+                }
+
+                oldPosition < newPosition -> {
+                    removedAdPositions += oldPosition; oldPositionIndex++
+                }
+
+                else -> {
+                    insertedAdPositions += newPosition; newPositionIndex++
+                }
             }
         }
 
-        return positions.sorted()
-    }
-
-    private fun calculateAdapterPositions(sourcePositions: List<Int>): List<Int> {
-        var offset = 0
-        return sourcePositions.map { index ->
-            val adapterPosition = index + offset
-            offset++
-            adapterPosition
-        }
+        adPlan = newAdPlacementPlan
+        for (pos in removedAdPositions.asReversed()) notifyItemRemoved(pos)
+        for (pos in insertedAdPositions) notifyItemInserted(pos)
     }
 
     inner class BarcodeViewHolder(private val binding: ItemBarcodeHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun show(barcode: Barcode, isLastItem: Boolean) {
             showDate(barcode)
             showFormat(barcode)
@@ -165,17 +187,15 @@ class BarcodeHistoryAdapter(private val listener: Listener) :
         }
 
         private fun setClickListener(barcode: Barcode) {
-            itemView.setOnClickListener {
-                listener.onBarcodeClicked(barcode)
-            }
+            itemView.setOnClickListener { listener.onBarcodeClicked(barcode) }
         }
     }
 
     private class NativeAdViewHolder(
         private val binding: ItemHistoryNativeAdBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind() {
-            binding.nativeAdView.loadAd()
+        fun bind(nativeAd: NativeAd) {
+            binding.nativeAdView.renderNativeAd(nativeAd)
         }
     }
 
@@ -192,8 +212,5 @@ class BarcodeHistoryAdapter(private val listener: Listener) :
     companion object {
         private const val TYPE_BARCODE = 0
         private const val TYPE_AD = 1
-        private const val MIN_ITEMS_FOR_AD = 3
-        private const val MIN_ITEMS_FOR_SECOND_AD = 10
-        private const val MIN_DISTANCE_BETWEEN_ADS = 4
     }
 }

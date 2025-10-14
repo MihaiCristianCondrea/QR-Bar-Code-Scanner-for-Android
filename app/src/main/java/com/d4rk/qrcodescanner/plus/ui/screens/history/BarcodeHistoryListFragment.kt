@@ -12,12 +12,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.ads.loader.NativeAdPreloader
+import com.d4rk.qrcodescanner.plus.ads.placement.NativeAdPlacementConfig
+import com.d4rk.qrcodescanner.plus.ads.placement.NativeAdPlacementController
 import com.d4rk.qrcodescanner.plus.databinding.FragmentBarcodeHistoryListBinding
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryFilter
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.model.Barcode
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.BarcodeActivity
 import com.d4rk.qrcodescanner.plus.utils.extension.orZero
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.nativead.NativeAd
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -60,6 +67,11 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
     }
 
     private val scanHistoryAdapter = BarcodeHistoryAdapter(this)
+    private val nativeAds = mutableListOf<NativeAd>()
+    private val placementEstimator = NativeAdPlacementController(
+        NativeAdPlacementConfig(maxDensity = 0.25, minSpacing = 5, edgeBuffer = 2)
+    )
+    private var isLoadingAds: Boolean = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -85,6 +97,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = scanHistoryAdapter
         }
+        scanHistoryAdapter.addOnPagesUpdatedListener { maybePreloadAds() }
     }
 
     private fun observeHistory() {
@@ -92,6 +105,7 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.history.collectLatest { pagingData ->
                     scanHistoryAdapter.submitData(pagingData)
+                    maybePreloadAds()
                 }
             }
         }
@@ -115,5 +129,63 @@ class BarcodeHistoryListFragment : Fragment(), BarcodeHistoryAdapter.Listener {
                 }
             }
         }
+    }
+
+    private fun maybePreloadAds() {
+        val snapshotSize = scanHistoryAdapter.snapshot().items.size
+        val expectedAds = placementEstimator.expectedAdCount(snapshotSize)
+        if (expectedAds == 0) {
+            if (nativeAds.isNotEmpty()) {
+                nativeAds.forEach(NativeAd::destroy)
+                nativeAds.clear()
+                scanHistoryAdapter.updateNativeAds(nativeAds)
+            }
+            return
+        }
+        if (expectedAds <= nativeAds.size || isLoadingAds) {
+            if (nativeAds.isNotEmpty()) {
+                if (expectedAds < nativeAds.size) {
+                    val iterator = nativeAds.listIterator(expectedAds)
+                    val toRemove = mutableListOf<NativeAd>()
+                    while (iterator.hasNext()) {
+                        toRemove += iterator.next()
+                        iterator.remove()
+                    }
+                    toRemove.forEach(NativeAd::destroy)
+                }
+                scanHistoryAdapter.updateNativeAds(nativeAds)
+            }
+            return
+        }
+
+        val missing = expectedAds - nativeAds.size
+
+        isLoadingAds = true
+        NativeAdPreloader.preload(
+            context = requireContext(),
+            adUnitId = getString(R.string.native_ad_support_unit_id),
+            adRequest = AdRequest.Builder().build(),
+            count = missing,
+            onFinished = { ads ->
+                if (!isAdded) {
+                    ads.forEach(NativeAd::destroy)
+                    isLoadingAds = false
+                    return@preload
+                }
+                nativeAds.addAll(ads)
+                scanHistoryAdapter.updateNativeAds(nativeAds)
+                isLoadingAds = false
+            },
+            onFailed = { error: LoadAdError ->
+                isLoadingAds = false
+            }
+        )
+    }
+
+    override fun onDestroyView() {
+        binding.recyclerViewHistory.adapter = null
+        nativeAds.forEach(NativeAd::destroy)
+        nativeAds.clear()
+        super.onDestroyView()
     }
 }

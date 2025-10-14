@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.res.use
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.ads.loader.NativeAdLoader
+import com.d4rk.qrcodescanner.plus.ads.loader.NativeAdViewBinder
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.nativead.NativeAd
@@ -61,6 +62,24 @@ class NativeAdBannerView @JvmOverloads constructor(
                 nativeAd = loadedAd
             }
         )
+    }
+
+    fun renderNativeAd(nativeAd: NativeAd, @LayoutRes layoutResOverride: Int? = null) {
+        val desiredLayout = layoutResOverride ?: layoutRes
+        nativeAd.destroyOnReplaceIfNeeded()
+        NativeAdViewBinder.bind(
+            context = context,
+            container = this,
+            layoutRes = desiredLayout,
+            nativeAd = nativeAd
+        )
+        this.nativeAd = nativeAd
+    }
+
+    private fun NativeAd.destroyOnReplaceIfNeeded() {
+        if (this@NativeAdBannerView.nativeAd != null && this@NativeAdBannerView.nativeAd != this) {
+            this@NativeAdBannerView.nativeAd?.destroy()
+        }
     }
 
     fun setNativeAdLayout(@LayoutRes layoutRes: Int) {

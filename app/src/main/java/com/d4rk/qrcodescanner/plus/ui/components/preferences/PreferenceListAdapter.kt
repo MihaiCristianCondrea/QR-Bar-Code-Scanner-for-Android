@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.R
-import com.d4rk.qrcodescanner.plus.ads.AdUtils
 import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceBinding
 import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceNativeAdBinding
 import com.google.android.material.button.MaterialButton
@@ -24,7 +23,7 @@ import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textview.MaterialTextView
-import kotlin.random.Random
+import com.google.android.gms.ads.nativead.NativeAd as GoogleNativeAd
 
 class PreferenceListAdapter<T : Any>(
     private val onActionClicked: (T) -> Unit
@@ -172,16 +171,11 @@ class PreferenceListAdapter<T : Any>(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: PreferenceListItem.NativeAd) {
-            val adView = binding.nativeAdView
+            val ad = item.nativeAd ?: return
             if (item.adLayoutRes != 0) {
-                adView.setNativeAdLayout(item.adLayoutRes)
+                binding.nativeAdView.setNativeAdLayout(item.adLayoutRes)
             }
-            item.adUnitIdRes?.let(adView::setNativeAdUnitId)
-
-            if (adView.getTag(R.id.native_ad_loaded_tag) != true) {
-                AdUtils.loadBanner(adView)
-                adView.setTag(R.id.native_ad_loaded_tag, true)
-            }
+            binding.nativeAdView.renderNativeAd(ad)
         }
     }
 
@@ -282,8 +276,8 @@ class PreferenceListAdapter<T : Any>(
                     oldItem.action == newItem.action
 
                 oldItem is PreferenceListItem.NativeAd && newItem is PreferenceListItem.NativeAd ->
-                    oldItem.adLayoutRes == newItem.adLayoutRes &&
-                        oldItem.adUnitIdRes == newItem.adUnitIdRes
+                    oldItem.nativeAd == newItem.nativeAd &&
+                        oldItem.adLayoutRes == newItem.adLayoutRes
 
                 else -> false
             }
@@ -321,85 +315,7 @@ sealed interface PreferenceListItem<out T : Any> {
         @param:LayoutRes val widgetLayoutRes: Int? = null
     ) : PreferenceListItem<T>
     data class NativeAd(
-        @param:LayoutRes val adLayoutRes: Int = R.layout.ad_preference,
-        @param:StringRes val adUnitIdRes: Int? = null
+        val nativeAd: GoogleNativeAd? = null,
+        @param:LayoutRes val adLayoutRes: Int = R.layout.ad_preference
     ) : PreferenceListItem<Nothing>
 }
-
-fun <T : Any> List<PreferenceListItem<T>>.withMiddleNativeAd(
-    ad: PreferenceListItem.NativeAd = PreferenceListItem.NativeAd(),
-    random: Random = Random.Default
-): List<PreferenceListItem<T>> {
-    if (isEmpty()) return this
-
-    val result = mutableListOf<PreferenceListItem<T>>()
-    var index = 0
-
-    while (index < size) {
-        val item = this[index]
-        if (item is PreferenceListItem.Category) {
-            result += item
-            index++
-            val sectionItems = mutableListOf<PreferenceListItem<T>>()
-            while (index < size && this[index] !is PreferenceListItem.Category) {
-                sectionItems += this[index]
-                index++
-            }
-            result += sectionItems.withSectionAds(ad, random)
-        } else {
-            val sectionItems = mutableListOf<PreferenceListItem<T>>()
-            while (index < size && this[index] !is PreferenceListItem.Category) {
-                sectionItems += this[index]
-                index++
-            }
-            result += sectionItems.withSectionAds(ad, random)
-        }
-    }
-
-    return result
-}
-
-private fun <T : Any> List<PreferenceListItem<T>>.withSectionAds(
-    adTemplate: PreferenceListItem.NativeAd,
-    random: Random
-): List<PreferenceListItem<T>> {
-    if (size < MIN_ITEMS_FOR_AD) return this
-
-    val candidateIndices = (1 until size - 1).toMutableList()
-    if (candidateIndices.isEmpty()) return this
-
-    val adPositions = mutableListOf<Int>()
-    val firstAdIndex = candidateIndices.random(random)
-    adPositions += firstAdIndex
-
-    if (size > MIN_ITEMS_FOR_SECOND_AD) {
-        candidateIndices.removeAll { index ->
-            kotlin.math.abs(index - firstAdIndex) < MIN_DISTANCE_BETWEEN_ADS
-        }
-
-        if (candidateIndices.isNotEmpty()) {
-            adPositions += candidateIndices.random(random)
-        }
-    }
-
-    if (adPositions.isEmpty()) return this
-
-    val sortedPositions = adPositions.sorted()
-    val iterator = sortedPositions.iterator()
-    var currentAdIndex = if (iterator.hasNext()) iterator.next() else null
-
-    val result = mutableListOf<PreferenceListItem<T>>()
-    for ((index, item) in this.withIndex()) {
-        while (currentAdIndex != null && currentAdIndex == index) {
-            result += adTemplate.copy()
-            currentAdIndex = if (iterator.hasNext()) iterator.next() else null
-        }
-        result += item
-    }
-
-    return result
-}
-
-private const val MIN_ITEMS_FOR_AD = 3
-private const val MIN_ITEMS_FOR_SECOND_AD = 10
-private const val MIN_DISTANCE_BETWEEN_ADS = 4
