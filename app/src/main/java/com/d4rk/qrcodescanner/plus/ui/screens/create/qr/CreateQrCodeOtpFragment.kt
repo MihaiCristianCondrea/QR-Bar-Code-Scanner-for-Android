@@ -44,7 +44,7 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
     override fun getBarcodeSchema(): Schema {
         return OtpAuth(
             type = binding.spinnerOptTypes.selectedItem?.toString()?.lowercase(Locale.ENGLISH),
-            algorithm = binding.spinnerAlgorithms.selectedItem?.toString(),
+            algorithm = resolveSelectedAlgorithm(),
             label = if (binding.editTextIssuer.isNotBlank()) {
                 "${binding.editTextIssuer.textString}:${binding.editTextAccount.textString}"
             } else {
@@ -126,8 +126,20 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
     }
 
     private fun generateRandomSecret(): String {
-        val algorithm = binding.spinnerAlgorithms.selectedItem?.toString().toHmacAlgorithm()
+        val algorithm = resolveSelectedAlgorithm().toHmacAlgorithm()
         val secret = randomGenerator.createRandomSecret(algorithm)
         return secret.encodeBase32()
+    }
+
+    private fun resolveSelectedAlgorithm(): String? {
+        val rawValue = binding.spinnerAlgorithms.selectedItem?.toString() ?: return null
+        if (rawValue.isBlank()) {
+            return null
+        }
+        val normalized = rawValue.uppercase(Locale.ENGLISH)
+        return when (normalized) {
+            "SHA1", "SHA256", "SHA512" -> normalized
+            else -> "SHA1"
+        }
     }
 }

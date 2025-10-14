@@ -22,7 +22,8 @@ data class OtpAuth(
         private const val SECRET_KEY = "secret"
         private const val ISSUER_KEY = "issuer"
         private const val ALGORITHM_KEY = "algorithm"
-        private const val DIGITS_KEY = "hint_digits"
+        private const val DIGITS_KEY = "digits"
+        private const val LEGACY_DIGITS_KEY = "hint_digits"
         private const val COUNTER_KEY = "counter"
         private const val PERIOD_KEY = "period"
         fun parse(text: String): OtpAuth? {
@@ -42,6 +43,7 @@ data class OtpAuth(
             val secret = uri.getQueryParameter(SECRET_KEY)
             val algorithm = uri.getQueryParameter(ALGORITHM_KEY)
             val digits = uri.getQueryParameter(DIGITS_KEY)?.toIntOrNull()
+                ?: uri.getQueryParameter(LEGACY_DIGITS_KEY)?.toIntOrNull()
             val period = uri.getQueryParameter(PERIOD_KEY)?.toLongOrNull()
             val counter = uri.getQueryParameter(COUNTER_KEY)?.toLongOrNull()
             return OtpAuth(type, label, issuer, secret, algorithm, digits, period, counter)

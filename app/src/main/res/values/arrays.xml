@@ -16,7 +16,7 @@
         <item>TOTP</item>
     </string-array>
     <string-array name="fragment_create_qr_code_otp_algorithms">
-        <item>SHA!</item>
+        <item>SHA1</item>
         <item>SHA256</item>
         <item>SHA512</item>
     </string-array>
