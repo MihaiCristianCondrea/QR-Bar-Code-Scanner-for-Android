@@ -12,9 +12,11 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.d4rk.qrcodescanner.plus.data.onboarding.OnboardingPreferences
 import com.d4rk.qrcodescanner.plus.data.startup.StartupConsentRepository
 import com.d4rk.qrcodescanner.plus.databinding.ActivityStartupBinding
 import com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity
+import com.d4rk.qrcodescanner.plus.ui.screens.onboarding.OnboardingActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
@@ -28,6 +30,13 @@ class StartupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (!OnboardingPreferences.isFreshInstall(this)) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+
         binding = ActivityStartupBinding.inflate(layoutInflater)
         setContentView(binding.root)
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
@@ -65,11 +74,11 @@ class StartupActivity : AppCompatActivity() {
                 launch {
                     viewModel.events.collectLatest { event ->
                         when (event) {
-                            StartupUiEvent.NavigateToMain -> {
+                            StartupUiEvent.NavigateToOnboarding -> {
                                 startActivity(
                                     Intent(
                                         this@StartupActivity,
-                                        MainActivity::class.java
+                                        OnboardingActivity::class.java
                                     )
                                 )
                                 finish()

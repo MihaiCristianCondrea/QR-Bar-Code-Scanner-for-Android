@@ -207,10 +207,6 @@
     <string name="about">О приложении</string>
     <string name="summary_settings_about_overview">Узнайте больше о %1$s</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Настройки уведомлений</string>
-    <string name="summary_preference_settings_notification_settings">Выберите, как приложение будет оповещать вас в системных настройках.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Внешний вид</string>
     <string name="theme">Тема</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Выберите сумму разового пожертвования для поддержки будущей разработки.</string>
     <string name="non_paid_support">Бесплатная поддержка</string>
     <string name="web_ad">Посетите нашу страницу поддержки</string>
-    <string name="watch_ad">Посмотреть рекламу</string>
-    <string name="support_description">Выберите один из вариантов ниже, чтобы помочь в появлении новых функций.</string>
-    <string name="support_donations_header">Варианты поддержки</string>
-    <string name="support_visit_store">Узнайте о других способах поддержки</string>
     <string name="support_purchase_thank_you">Большое спасибо за поддержку приложения! 🎉</string>
     <string name="support_purchase_restored">Ваша поддержка восстановлена.</string>
     <string name="support_purchase_revoked">Ваша покупка для поддержки была отозвана.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Сохранено в Галерею</string>
     <string name="snack_no_app_found">Не найдено приложение для этого действия. Установите совместимое приложение.</string>
     <string name="snack_feedback">Спасибо за оценку! ❤️</string>
-    <string name="snack_support">Хотите поддержать наше приложение? ❤️</string>
 </resources>

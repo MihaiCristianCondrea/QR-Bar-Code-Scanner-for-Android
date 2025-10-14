@@ -28,16 +28,6 @@ import com.google.zxing.ResultMetadataType
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
 
 object BarcodeParser {
-    fun parseResult(result: Result): Barcode {
-        return parse(
-            format = result.barcodeFormat,
-            text = result.text,
-            timestamp = result.timestamp,
-            errorCorrectionLevel = result.resultMetadata?.get(ResultMetadataType.ERROR_CORRECTION_LEVEL) as? String,
-            country = result.resultMetadata?.get(ResultMetadataType.POSSIBLE_COUNTRY) as? String
-        )
-    }
-
     fun parse(barcode: MlKitBarcode): Barcode? {
         val rawValue = barcode.rawValue ?: return null
         val format = barcode.format.toZxingFormat() ?: return null

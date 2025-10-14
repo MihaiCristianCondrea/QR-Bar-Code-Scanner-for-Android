@@ -67,5 +67,6 @@
         android:src="@drawable/ic_import_export"
         android:tooltipText="@string/export_your_history"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:targetApi="26" />
 </androidx.constraintlayout.widget.ConstraintLayout>

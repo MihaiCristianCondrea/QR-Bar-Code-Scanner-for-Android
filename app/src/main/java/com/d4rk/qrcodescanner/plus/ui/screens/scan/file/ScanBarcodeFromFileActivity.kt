@@ -98,10 +98,6 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     private fun selectImage() {
         if (isPhotoPickerAvailable()) {
             photoPickerLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))

@@ -1,9 +1,11 @@
-<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+<shortcuts xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_scan_from_camera"
         android:shortcutId="scanFromCamera"
-        android:shortcutShortLabel="@string/scan">
+        android:shortcutShortLabel="@string/scan"
+        tools:targetApi="25">
         <intent
             android:action=".SCAN_FROM_CAMERA"
             android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"
@@ -13,7 +15,8 @@
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_scan_from_file"
         android:shortcutId="scanFromFile"
-        android:shortcutShortLabel="@string/scan_image">
+        android:shortcutShortLabel="@string/scan_image"
+        tools:targetApi="25">
         <intent
             android:action=".SCAN_FROM_FILE"
             android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.scan.file.ScanBarcodeFromFileActivity"
@@ -23,7 +26,8 @@
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_create_barcode"
         android:shortcutId="createBarcode"
-        android:shortcutShortLabel="@string/create_barcode">
+        android:shortcutShortLabel="@string/create_barcode"
+        tools:targetApi="25">
         <intent
             android:action=".CREATE_BARCODE"
             android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"
@@ -33,7 +37,8 @@
         android:enabled="true"
         android:icon="@mipmap/ic_shortcut_history"
         android:shortcutId="history"
-        android:shortcutShortLabel="@string/history">
+        android:shortcutShortLabel="@string/history"
+        tools:targetApi="25">
         <intent
             android:action=".HISTORY"
             android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity"

@@ -207,10 +207,6 @@
     <string name="about">O aplikacji</string>
     <string name="summary_settings_about_overview">Dowiedz się więcej o %1$s</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Ustawienia powiadomień</string>
-    <string name="summary_preference_settings_notification_settings">Wybierz, w jaki sposób aplikacja ma Cię powiadamiać w ustawieniach systemowych.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Wygląd</string>
     <string name="theme">Motyw</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Wybierz jednorazową kwotę darowizny, aby wesprzeć przyszły rozwój.</string>
     <string name="non_paid_support">Bezpłatne wsparcie</string>
     <string name="web_ad">Odwiedź naszą stronę pomocy</string>
-    <string name="watch_ad">Obejrzyj reklamę</string>
-    <string name="support_description">Wybierz jedną z poniższych opcji, aby pomóc w utrzymaniu nowych funkcji.</string>
-    <string name="support_donations_header">Opcje wsparcia</string>
-    <string name="support_visit_store">Odkryj więcej sposobów wsparcia</string>
     <string name="support_purchase_thank_you">Bardzo dziękujemy za wsparcie aplikacji! 🎉</string>
     <string name="support_purchase_restored">Twoje wsparcie zostało przywrócone.</string>
     <string name="support_purchase_revoked">Twój zakup wsparcia został cofnięty.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Zapisano w Galerii</string>
     <string name="snack_no_app_found">Nie znaleziono aplikacji do wykonania tej czynności. Zainstaluj kompatybilną aplikację.</string>
     <string name="snack_feedback">Dziękujemy za ocenę! ❤️</string>
-    <string name="snack_support">Chcesz wesprzeć naszą aplikację? ❤️</string>
 </resources>

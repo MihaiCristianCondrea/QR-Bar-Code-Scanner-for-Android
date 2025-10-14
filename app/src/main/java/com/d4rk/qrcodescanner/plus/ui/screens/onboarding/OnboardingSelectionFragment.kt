@@ -110,16 +110,16 @@ class OnboardingSelectionFragment : Fragment(R.layout.fragment_onboarding_select
 
     private data class SelectionOption(
         val value: String,
-        @DrawableRes val iconRes: Int,
-        @StringRes val titleRes: Int,
-        @StringRes val descriptionRes: Int,
+        @param:DrawableRes val iconRes: Int,
+        @param:StringRes val titleRes: Int,
+        @param:StringRes val descriptionRes: Int,
     )
 
     private data class OptionsConfig(
         val preferenceKey: String,
         val defaultValue: String,
-        @StringRes val titleRes: Int,
-        @StringRes val descriptionRes: Int,
+        @param:StringRes val titleRes: Int,
+        @param:StringRes val descriptionRes: Int,
         val options: List<SelectionOption>,
     )
 

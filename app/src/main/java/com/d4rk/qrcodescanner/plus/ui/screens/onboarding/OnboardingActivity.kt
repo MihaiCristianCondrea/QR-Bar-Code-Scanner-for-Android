@@ -40,6 +40,7 @@ class OnboardingActivity : AppCompatActivity(), OnboardingDoneFragment.Callback 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (OnboardingPreferences.isOnboardingComplete(this)) {
+            OnboardingPreferences.setFreshInstall(this, false)
             navigateToMain()
             return
         }
@@ -153,6 +154,7 @@ class OnboardingActivity : AppCompatActivity(), OnboardingDoneFragment.Callback 
 
     private fun completeOnboarding() {
         OnboardingPreferences.setOnboardingComplete(this, true)
+        OnboardingPreferences.setFreshInstall(this, false)
         navigateToMain()
     }
 

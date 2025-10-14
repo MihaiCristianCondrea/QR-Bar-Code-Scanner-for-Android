@@ -207,10 +207,6 @@
     <string name="about">Névjegy</string>
     <string name="summary_settings_about_overview">Tudjon meg többet a(z) %1$s alkalmazásról</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Értesítési beállítások</string>
-    <string name="summary_preference_settings_notification_settings">Válassza ki a rendszerbeállításokban, hogyan értesítse Önt az alkalmazás.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Megjelenés</string>
     <string name="theme">Téma</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Válasszon egy egyszeri adományösszeget a jövőbeli fejlesztés támogatásához.</string>
     <string name="non_paid_support">Ingyenes támogatás</string>
     <string name="web_ad">Látogasson el a támogatási oldalunkra</string>
-    <string name="watch_ad">Hirdetés megtekintése</string>
-    <string name="support_description">Válasszon az alábbi lehetőségek közül, hogy segítsen az új funkciók megjelenésében.</string>
-    <string name="support_donations_header">Támogatási lehetőségek</string>
-    <string name="support_visit_store">Fedezzen fel további támogatási módokat</string>
     <string name="support_purchase_thank_you">Nagyon köszönjük, hogy támogatja az alkalmazást! 🎉</string>
     <string name="support_purchase_restored">A támogatását visszaállítottuk.</string>
     <string name="support_purchase_revoked">A támogatási vásárlását visszavonták.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Mentve a Galériába</string>
     <string name="snack_no_app_found">Nem található alkalmazás ehhez a művelethez. Kérjük, telepítsen egy kompatibilis alkalmazást.</string>
     <string name="snack_feedback">Köszönjük az értékelést! ❤️</string>
-    <string name="snack_support">Szeretné támogatni az alkalmazásunkat? ❤️</string>
 </resources>

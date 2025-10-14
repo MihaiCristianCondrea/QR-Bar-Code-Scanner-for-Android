@@ -1,5 +1,6 @@
 package com.d4rk.qrcodescanner.plus.ui.components.preferences
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Xml
 import androidx.annotation.DrawableRes
@@ -50,6 +51,7 @@ object PreferenceLayoutParser {
         return entries
     }
 
+    @SuppressLint("PrivateResource")
     private fun parseCategory(
         context: Context,
         parser: XmlPullParser

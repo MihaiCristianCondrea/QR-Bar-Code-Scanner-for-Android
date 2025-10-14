@@ -40,15 +40,5 @@
     <string name="summary_preference_settings_license" translatable="false">General Public License-3.0</string>
     <string name="contact_support_email" translatable="false">contact.mihaicristiancondrea@gmail.com</string>
     <string name="support_link_url" translatable="false">https://bit.ly/3p8bpjj</string>
-    <string name="feedback_for" translatable="false">Feedback for </string>
-    <string name="dear_developer" translatable="false">Dear developer, </string>
-    <string name="send_email_using" translatable="false">Send mail using:</string>
-    <string name="changelog_title" translatable="false">Changelog - Version %1s</string>
-    <string name="changes" translatable="false">\n
-        • Added a new support page to show appreciation and gratitude to the developer.\n\n
-        • Fixed various bugs and improved readability, consistency, app performance, and responsiveness by optimizing and styling the outdated code.\n\n
-        • Made various project structure enhancements for better readability and maintainability.\n\n
-        • Made various under-the-hood improvements for a better overall app experience.
-    </string>
     <string name="copyright" translatable="false">Copyright ©2021-2025, Mihai-Cristian Condrea</string>
 </resources>

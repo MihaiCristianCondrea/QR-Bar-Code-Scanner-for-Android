@@ -207,10 +207,6 @@
     <string name="about">Tentang</string>
     <string name="summary_settings_about_overview">Pelajari lebih lanjut tentang %1$s</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Pengaturan notifikasi</string>
-    <string name="summary_preference_settings_notification_settings">Pilih cara aplikasi memberi tahu Anda di pengaturan sistem.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Tampilan</string>
     <string name="theme">Tema</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Pilih jumlah donasi satu kali untuk mendukung pengembangan di masa mendatang.</string>
     <string name="non_paid_support">Dukungan Tanpa Bayar</string>
     <string name="web_ad">Kunjungi halaman dukungan kami</string>
-    <string name="watch_ad">Tonton Iklan</string>
-    <string name="support_description">Pilih salah satu opsi di bawah ini untuk membantu agar fitur-fitur baru terus bermunculan.</string>
-    <string name="support_donations_header">Opsi dukungan</string>
-    <string name="support_visit_store">Jelajahi lebih banyak cara untuk mendukung</string>
     <string name="support_purchase_thank_you">Terima kasih banyak telah mendukung aplikasi ini! 🎉</string>
     <string name="support_purchase_restored">Dukungan Anda telah dipulihkan.</string>
     <string name="support_purchase_revoked">Pembelian dukungan Anda telah dicabut.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Disimpan ke Galeri</string>
     <string name="snack_no_app_found">Tidak ada aplikasi yang ditemukan untuk tindakan ini. Silakan instal aplikasi yang kompatibel.</string>
     <string name="snack_feedback">Terima kasih telah menilai kami! ❤️</string>
-    <string name="snack_support">Apakah Anda ingin mendukung aplikasi kami? ❤️</string>
 </resources>

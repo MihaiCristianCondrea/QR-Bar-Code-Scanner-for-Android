@@ -24,7 +24,7 @@ data class StartupUiState(
 )
 
 sealed interface StartupUiEvent {
-    object NavigateToMain : StartupUiEvent
+    object NavigateToOnboarding : StartupUiEvent
     data class ShowConsentForm(val consentForm: ConsentForm) : StartupUiEvent
 }
 
@@ -139,7 +139,7 @@ class StartupViewModel(
     }
 
     private suspend fun emitNavigation() {
-        _events.emit(StartupUiEvent.NavigateToMain)
+        _events.emit(StartupUiEvent.NavigateToOnboarding)
     }
 }
 

@@ -207,10 +207,6 @@
     <string name="about">概要</string>
     <string name="summary_settings_about_overview">%1$sについての詳細</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">通知設定</string>
-    <string name="summary_preference_settings_notification_settings">システム設定でアプリが通知する方法を選択します。</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">外観</string>
     <string name="theme">テーマ</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">将来の開発をサポートするために、1回限りの寄付額を選択してください。</string>
     <string name="non_paid_support">無料サポート</string>
     <string name="web_ad">サポートページをご覧ください</string>
-    <string name="watch_ad">広告を見る</string>
-    <string name="support_description">新機能の追加を維持するために、以下のオプションのいずれかを選択してください。</string>
-    <string name="support_donations_header">サポートオプション</string>
-    <string name="support_visit_store">その他のサポート方法を探す</string>
     <string name="support_purchase_thank_you">アプリをサポートしていただき、誠にありがとうございます！🎉</string>
     <string name="support_purchase_restored">サポートが復元されました。</string>
     <string name="support_purchase_revoked">サポート購入が取り消されました。</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">ギャラリーに保存しました</string>
     <string name="snack_no_app_found">このアクションに対応するアプリが見つかりません。互換性のあるアプリをインストールしてください。</string>
     <string name="snack_feedback">評価していただきありがとうございます！❤️</string>
-    <string name="snack_support">私たちのアプリをサポートしませんか？❤️</string>
 </resources>

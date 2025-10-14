@@ -99,6 +99,12 @@ class MainActivity : AppCompatActivity() {
         lastPreferredStartDestination =
             savedInstanceState?.getInt(STATE_LAST_PREFERRED_DESTINATION, 0) ?: 0
 
+        if (OnboardingPreferences.isFreshInstall(this)) {
+            startActivity(Intent(this, StartupActivity::class.java))
+            finish()
+            return
+        }
+
         if (!OnboardingPreferences.isOnboardingComplete(this)) {
             startActivity(Intent(this, OnboardingActivity::class.java))
             finish()

@@ -207,10 +207,6 @@
     <string name="about">Despre</string>
     <string name="summary_settings_about_overview">Află mai multe despre %1$s</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Setări notificări</string>
-    <string name="summary_preference_settings_notification_settings">Alege cum te avertizează aplicația în setările de sistem.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Aspect</string>
     <string name="theme">Temă</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Alege o sumă unică de donație pentru a sprijini dezvoltarea viitoare.</string>
     <string name="non_paid_support">Susținere gratuită</string>
     <string name="web_ad">Vizitează pagina noastră de asistență</string>
-    <string name="watch_ad">Vizionează reclamă</string>
-    <string name="support_description">Alege una dintre opțiunile de mai jos pentru a ajuta la adăugarea de noi funcții.</string>
-    <string name="support_donations_header">Opțiuni de susținere</string>
-    <string name="support_visit_store">Explorează mai multe moduri de a susține</string>
     <string name="support_purchase_thank_you">Mulțumim mult pentru susținerea aplicației! 🎉</string>
     <string name="support_purchase_restored">Susținerea ta a fost restabilită.</string>
     <string name="support_purchase_revoked">Achiziția ta de susținere a fost revocată.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Salvat în Galerie</string>
     <string name="snack_no_app_found">Nu s-a găsit nicio aplicație pentru această acțiune. Te rugăm să instalezi o aplicație compatibilă.</string>
     <string name="snack_feedback">Mulțumim pentru evaluare! ❤️</string>
-    <string name="snack_support">Ai dori să susții aplicația noastră? ❤️</string>
 </resources>

@@ -207,10 +207,6 @@
     <string name="about">Om</string>
     <string name="summary_settings_about_overview">Läs mer om %1$s</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Aviseringsinställningar</string>
-    <string name="summary_preference_settings_notification_settings">Välj hur appen aviserar dig i systeminställningarna.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Utseende</string>
     <string name="theme">Tema</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Välj ett engångsbelopp för donation för att stödja framtida utveckling.</string>
     <string name="non_paid_support">Obetald support</string>
     <string name="web_ad">Besök vår supportsida</string>
-    <string name="watch_ad">Titta på annons</string>
-    <string name="support_description">Välj ett av alternativen nedan för att hjälpa till att hålla nya funktioner på väg.</string>
-    <string name="support_donations_header">Supportalternativ</string>
-    <string name="support_visit_store">Utforska fler sätt att stödja</string>
     <string name="support_purchase_thank_you">Tack så mycket för att du stöder appen! 🎉</string>
     <string name="support_purchase_restored">Ditt stöd har återställts.</string>
     <string name="support_purchase_revoked">Ditt supportköp har återkallats.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Sparat i Galleri</string>
     <string name="snack_no_app_found">Ingen app hittades för denna åtgärd. Installera en kompatibel app.</string>
     <string name="snack_feedback">Tack för att du betygsätter oss! ❤️</string>
-    <string name="snack_support">Vill du stödja vår app? ❤️</string>
 </resources>

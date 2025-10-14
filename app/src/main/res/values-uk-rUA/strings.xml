@@ -207,10 +207,6 @@
     <string name="about">Про додаток</string>
     <string name="summary_settings_about_overview">Дізнайтеся більше про %1$s</string>
 
-    <!-- Notification Settings screen -->
-    <string name="notification_settings">Налаштування сповіщень</string>
-    <string name="summary_preference_settings_notification_settings">Виберіть, як додаток сповіщатиме вас у системних налаштуваннях.</string>
-
     <!-- Display Settings screen -->
     <string name="appearance">Вигляд</string>
     <string name="theme">Тема</string>
@@ -382,10 +378,6 @@
     <string name="summary_donations">Виберіть суму разової пожертви для підтримки майбутньої розробки.</string>
     <string name="non_paid_support">Безкоштовна підтримка</string>
     <string name="web_ad">Відвідайте нашу сторінку підтримки</string>
-    <string name="watch_ad">Переглянути рекламу</string>
-    <string name="support_description">Виберіть один з варіантів нижче, щоб допомогти у появі нових функцій.</string>
-    <string name="support_donations_header">Варіанти підтримки</string>
-    <string name="support_visit_store">Дізнайтеся про інші способи підтримки</string>
     <string name="support_purchase_thank_you">Дуже дякуємо за підтримку додатку! 🎉</string>
     <string name="support_purchase_restored">Вашу підтримку відновлено.</string>
     <string name="support_purchase_revoked">Вашу покупку для підтримки було відкликано.</string>
@@ -452,5 +444,4 @@
     <string name="snack_saved_to_gallery">Збережено в Галерею</string>
     <string name="snack_no_app_found">Не знайдено додаток для цієї дії. Встановіть сумісний додаток.</string>
     <string name="snack_feedback">Дякуємо за оцінку! ❤️</string>
-    <string name="snack_support">Хочете підтримати наш додаток? ❤️</string>
 </resources>

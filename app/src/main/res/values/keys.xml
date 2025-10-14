@@ -16,7 +16,6 @@
     <string name="key_save_created_barcodes" translatable="false">save_created_barcodes</string>
     <string name="key_confirm_scans_manually" translatable="false">confirm_scans_manually</string>
     <string name="key_notifications_settings" translatable="false">notifications_settings</string>
-    <string name="key_settings_overview_notifications" translatable="false">settings_overview_notifications</string>
     <string name="key_settings_overview_display" translatable="false">settings_overview_display</string>
     <string name="key_settings_overview_scanner" translatable="false">settings_overview_scanner</string>
     <string name="key_settings_overview_history" translatable="false">settings_overview_history</string>
@@ -24,8 +23,6 @@
     <string name="key_settings_overview_advanced" translatable="false">settings_overview_advanced</string>
     <string name="key_settings_overview_about" translatable="false">settings_overview_about</string>
     <string name="key_firebase" translatable="false">firebase</string>
-    <string name="key_share" translatable="false">share</string>
-    <string name="key_changelog" translatable="false">changelog</string>
     <string name="key_cache_management" translatable="false">cache_management</string>
     <string name="key_device_info" translatable="false">device_info</string>
     <string name="key_application_build_version" translatable="false">application_build_version</string>
