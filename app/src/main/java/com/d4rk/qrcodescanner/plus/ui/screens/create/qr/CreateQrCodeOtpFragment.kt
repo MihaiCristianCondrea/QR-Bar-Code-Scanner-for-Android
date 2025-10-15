@@ -73,6 +73,7 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
                     id: Long
                 ) {
                     binding.textInputLayoutCounter.isVisible = position == 0
+                    toggleCreateBarcodeButton()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -115,10 +116,9 @@ class CreateQrCodeOtpFragment : BaseCreateBarcodeFragment() {
         val isHotp = binding.spinnerOptTypes.selectedItemPosition == 0
         val areGeneralFieldsNotBlank =
             binding.editTextAccount.isNotBlank() && binding.editTextSecret.isNotBlank()
-        val areHotpFieldsNotBlank =
-            binding.editTextCounter.isNotBlank() && binding.editTextPeriod.isNotBlank()
+        val isHotpFieldsValid = binding.editTextCounter.isNotBlank()
         parentActivity.isCreateBarcodeButtonEnabled =
-            areGeneralFieldsNotBlank && (isHotp.not() || isHotp && areHotpFieldsNotBlank)
+            areGeneralFieldsNotBlank && (isHotp.not() || isHotp && isHotpFieldsValid)
     }
 
     private fun showRandomSecret() {
