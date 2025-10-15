@@ -40,8 +40,8 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initEditText()
         handleTextChanged()
+        initEditText()
     }
 
     override fun getBarcodeSchema(): Schema {
@@ -55,11 +55,21 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
             setSelection(defaultText.length)
             requestFocus()
         }
+        updateCreateButtonState()
     }
 
     private fun handleTextChanged() {
         binding.editText.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
+            updateCreateButtonState()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateCreateButtonState()
+    }
+
+    private fun updateCreateButtonState() {
+        parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
     }
 }
