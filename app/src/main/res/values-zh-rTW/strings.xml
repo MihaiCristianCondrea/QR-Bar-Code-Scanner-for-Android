@@ -1,0 +1,436 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">輕鬆掃描各種 QR Code 與條碼。 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">歡迎</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">請閱讀並同意我們的服務條款和隱私權政策以繼續。</string>
+    <string name="browse_terms_of_service_and_privacy_policy">瀏覽<i><u>服務條款</u></i>與<i><u>隱私權政策</u></i></string>
+    <string name="agree">同意</string>
+    <string name="tooltip_agree">接受條款與條件。</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">略過</string>
+    <string name="back">返回</string>
+    <string name="next">下一步</string>
+    <string name="onboarding_theme_title">選擇您的外觀</string>
+    <string name="onboarding_theme_description">挑選您喜歡的主題。</string>
+    <string name="onboarding_theme_follow_system_title">跟隨系統</string>
+    <string name="onboarding_theme_follow_system_description">自動符合您的裝置設定。</string>
+    <string name="onboarding_theme_light_title">淺色主題</string>
+    <string name="onboarding_theme_light_description">明亮的色彩與最大的對比度。</string>
+    <string name="onboarding_theme_dark_title">深色主題</string>
+    <string name="onboarding_theme_dark_description">適合低光環境。</string>
+    <string name="onboarding_start_title">我們該從何開始？</string>
+    <string name="onboarding_start_description">選擇您開啟應用程式時看到的第一個畫面。</string>
+    <string name="onboarding_start_scan_description">直接開啟掃描器，讓您能立即對準並掃描。</string>
+    <string name="onboarding_start_create_description">立即進入建立器設計新的條碼。</string>
+    <string name="onboarding_start_history_description">應用程式啟動時立即查看您儲存的掃描紀錄。</string>
+    <string name="bottom_navigation_labels_description">決定標籤在底部導覽列的顯示方式。</string>
+    <string name="onboarding_labels_all">為每個分頁顯示標籤。</string>
+    <string name="onboarding_labels_selected">僅顯示所選分頁的標籤。</string>
+    <string name="onboarding_labels_hidden">隱藏所有標籤以獲得簡潔外觀。</string>
+    <string name="privacy_icon">隱私圖示</string>
+    <string name="onboarding_data_title">控制您的資料</string>
+    <string name="onboarding_data_subtitle">由您決定我們收集的內容。您可以隨時在「設定」中變更。</string>
+    <string name="onboarding_data_toggle">使用情況與診斷</string>
+    <string name="onboarding_data_active">分析資料收集已開啟。</string>
+    <string name="onboarding_data_inactive">分析資料收集已關閉。</string>
+    <string name="onboarding_data_ads">個人化廣告</string>
+    <string name="onboarding_data_ads_desc">協助我們顯示與您更相關的廣告。</string>
+    <string name="onboarding_data_ads_disabled">您仍然會看到廣告，但可能相關性較低。</string>
+    <string name="privacy_policy_link">隱私權政策</string>
+    <string name="success_icon">成功圖示</string>
+    <string name="onboarding_done_title">您已準備就緒！</string>
+    <string name="onboarding_done_subtitle">您的偏好設定已儲存。祝您使用愉快。</string>
+    <string name="get_started_button">開始使用</string>
+
+    <!-- Main screen -->
+    <string name="menu">選單</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">設定</string>
+    <string name="help_and_feedback">說明與意見回饋</string>
+    <string name="updates">更新</string>
+    <string name="share">分享</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">掃描</string>
+    <string name="scan_image">掃描圖片</string>
+    <string name="scan_barcode_from_image_not_found">在此圖片中偵測不到條碼。</string>
+    <string name="barcode_error_missing_extra">我們無法開啟此條碼。請重新掃描一次。</string>
+    <string name="flash">閃光燈</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">向左旋轉</string>
+    <string name="rotate_right">向右旋轉</string>
+    <string name="choose_another_image">選擇其他圖片</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">建立</string>
+    <string name="qr_code">QR Code</string>
+    <string name="content_from_clipboard">從剪貼簿貼上內容</string>
+    <string name="text">文字</string>
+    <string name="url">網址</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">位置</string>
+    <string name="contact_v_card">聯絡人 (VCard)</string>
+
+    <string name="more_qr_codes">更多 QR Code</string>
+    <string name="barcode">條碼</string>
+    <string name="all_barcodes_codes">條碼與其他 2D 碼</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">建立 QR Code</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">聯絡人 (MeCard)</string>
+    <string name="event">活動</string>
+    <string name="sms">簡訊</string>
+    <string name="mms">多媒體訊息</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">或者：</string>
+    <string name="summary_alternatively_url">- 開啟您的瀏覽器應用程式\n- 載入一個網站\n- 從選單中點擊「分享」\n- 選擇此應用程式。</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">加密</string>
+    <string name="network_name">網路名稱</string>
+    <string name="password">密碼</string>
+    <string name="hidden">隱藏</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">緯度</string>
+    <string name="longitude">經度</string>
+    <string name="altitude">海拔 (選填)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">聯絡人</string>
+    <string name="first_name">名字</string>
+    <string name="last_name">姓氏</string>
+    <string name="organization">組織</string>
+    <string name="job">職位</string>
+    <string name="email">電子郵件</string>
+    <string name="phone">電話</string>
+    <string name="fax">傳真</string>
+    <string name="website">網站</string>
+    <string name="summary_alternatively_contact">- 開啟您的聯絡人應用程式\n- 開啟現有聯絡人或建立新聯絡人\n- 從選單中點擊「分享」\n- 選擇此應用程式</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">類型</string>
+    <string name="algorithm">演算法</string>
+    <string name="issuer">發行者</string>
+    <string name="account">帳戶</string>
+    <string name="period">期間</string>
+    <string name="hint_counter">計數器</string>
+    <string name="secret">密鑰</string>
+    <string name="random_secret">隨機密鑰</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">標題</string>
+    <string name="organizer">主辦單位</string>
+    <string name="summary">摘要</string>
+    <string name="start_date">開始日期</string>
+    <string name="end_date">結束日期</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">主旨</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">訊息</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">比特幣</string>
+    <string name="cryptocurrency">加密貨幣</string>
+    <string name="receiver_address">接收者地址</string>
+    <string name="amount">金額</string>
+    <string name="label">標籤</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">書籤</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">應用程式</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">增加亮度</string>
+    <string name="decrease_brightness">降低亮度</string>
+    <string name="add_to_favorites">新增至我的最愛</string>
+    <string name="delete">刪除</string>
+    <string name="share_as_text">以文字分享</string>
+    <string name="copy_to_clipboard">複製到剪貼簿</string>
+    <string name="save_as_text">另存為文字</string>
+    <string name="share_as_image">以圖片分享</string>
+    <string name="save_as_image">另存為圖片</string>
+    <string name="print">列印</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">建立條碼</string>
+    <string name="barcodes_2d">2D 條碼</string>
+    <string name="barcodes_1d">1D 條碼</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">不含特殊字元的文字</string>
+    <string name="text_in_upper_case_without_special_characters">不含特殊字元的大寫文字</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">數字</string>
+    <string name="seven_digits">7 位數字</string>
+    <string name="eleven_digits">11 位數字</string>
+    <string name="twelve_digits">12 位數字</string>
+    <string name="even_number_of_digits">偶數位數</string>
+
+    <!-- History screen -->
+    <string name="history">歷史紀錄</string>
+    <string name="all">全部</string>
+    <string name="favorites">我的最愛</string>
+    <string name="history_empty_message">您還沒有儲存的掃描紀錄。掃描或建立一個條碼以在此處查看。</string>
+    <string name="export_your_history">匯出您的歷史紀錄</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">匯出歷史紀錄</string>
+    <string name="export_as">匯出為</string>
+    <string name="file_name">檔案名稱</string>
+    <string name="export">匯出</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">通知</string>
+    <string name="summary_settings_notifications_overview">管理應用程式通知</string>
+    <string name="display">顯示</string>
+    <string name="summary_settings_display_overview">個人化您的應用程式外觀</string>
+    <string name="scanner">掃描器</string>
+    <string name="summary_settings_scanner_overview">調整掃描行為與相機反應方式</string>
+    <string name="summary_settings_history_overview">控制掃描紀錄的儲存方式並管理您的歷史紀錄</string>
+    <string name="security_and_privacy">安全性與隱私權</string>
+    <string name="summary_settings_security_privacy_overview">管理您的隱私權設定</string>
+    <string name="advanced">進階</string>
+    <string name="summary_settings_advanced_overview">探索更多進階設定</string>
+    <string name="about">關於</string>
+    <string name="summary_settings_about_overview">深入了解 %1$s</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">外觀</string>
+    <string name="theme">主題</string>
+    <string name="follow_system">跟隨系統模式</string>
+    <string name="light_mode">淺色模式</string>
+    <string name="dark_mode">深色模式</string>
+    <string name="auto_battery_mode">自動省電深色模式</string>
+    <string name="summary_preference_settings_theme">選擇應用程式的外觀。目前：%1$s</string>
+    <string name="navigation">導覽</string>
+    <string name="default_tab">預設分頁</string>
+    <string name="summary_preference_settings_default_tab">選擇您啟動時看到的第一個畫面。目前：%1$s</string>
+    <string name="bottom_navigation_bar_labels">底部導覽列標籤</string>
+    <string name="labeled">已標記</string>
+    <string name="selected_variant">已選擇</string>
+    <string name="unlabeled">未標記</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">控制底部導覽列中標籤的顯示方式。目前：%1$s</string>
+    <string name="inverse_colors">反轉顏色</string>
+    <string name="summary_preference_settings_inverse_colors">在深色背景和深色模式下顯示帶有白色內容的條碼</string>
+    <string name="language">語言</string>
+    <string name="summary_preference_settings_language_value">選擇應用程式語言。目前：%1$s</string>
+    <string name="summary_preference_settings_language">變更應用程式中使用的語言</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">自動開啟掃描條碼的內容</string>
+    <string name="summary_preference_settings_open_content_automatically">可能會開啟有害內容</string>
+    <string name="summary_preference_settings_copy_to_clipboard">將掃描的條碼複製到剪貼簿</string>
+    <string name="simple_auto_focus">簡易自動對焦模式</string>
+    <string name="summary_preference_settings_simple_auto_focus">僅在您對焦有問題時啟用。</string>
+    <string name="summary_preference_settings_enable_flash_on_start">啟動時啟用閃光燈</string>
+    <string name="vibrate">震動</string>
+    <string name="continuous_scanning">連續掃描</string>
+    <string name="summary_preference_settings_continuous_scanning">僅將掃描結果儲存至歷史紀錄</string>
+    <string name="confirm_scans_manually">手動確認掃描</string>
+    <string name="summary_preference_settings_confirm_scans_manually">避免意外掃描。</string>
+    <string name="camera">相機</string>
+    <string name="front">前置</string>
+    <string name="camera_back">後置</string>
+    <string name="supported_formats">支援的格式</string>
+    <string name="summary_preference_settings_supported_formats">選擇掃描器要尋找的條碼格式。</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">將掃描的條碼儲存至歷史紀錄</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">儲存每次掃描，以便您稍後重新檢視</string>
+    <string name="save_created_barcodes_to_history">將建立的條碼儲存至歷史紀錄</string>
+    <string name="summary_preference_settings_save_created_barcodes">讓您產生的條碼易於尋找</string>
+    <string name="do_not_save_duplicates">不儲存重複項目</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">避免歷史紀錄中出現重複項目</string>
+    <string name="clear_history">清除歷史紀錄</string>
+    <string name="summary_preference_settings_clear_history">從裝置移除所有儲存的掃描紀錄</string>
+    <string name="summary_delete_history">要刪除歷史紀錄嗎？</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">隱私權</string>
+    <string name="privacy_policy">隱私權政策</string>
+    <string name="summary_preference_settings_privacy_policy">查看規範您資料處理方式的政策</string>
+    <string name="terms_of_service">服務條款</string>
+    <string name="summary_preference_settings_terms_of_service">檢視您使用此服務時同意的條款</string>
+    <string name="code_of_conduct">行為準則</string>
+    <string name="summary_preference_settings_code_of_conduct">了解服務內的行為規則與指南</string>
+    <string name="permissions">權限</string>
+    <string name="summary_preference_settings_permissions">管理授予此服務的權限</string>
+    <string name="usage_and_diagnostics">使用情況與診斷</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">分享資料以協助改善應用程式內體驗</string>
+    <string name="legal">法律</string>
+    <string name="legal_notices">法律聲明</string>
+    <string name="summary_preference_settings_legal_notices">查看關於此服務的法律資訊</string>
+    <string name="license">授權</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">一般</string>
+    <string name="access_network_state">存取網路狀態 [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">允許應用程式檢查網路連線並擷取關於 Wi-Fi 的資訊，包括啟用狀態與已連線的 Wi-Fi 裝置名稱。</string>
+    <string name="ad_id">廣告 ID [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">允許應用程式擷取並使用與使用者裝置相關的廣告識別碼，以提供個人化廣告、衡量廣告效果，並在 Android 13 或更新版本的裝置上顯示廣告。</string>
+    <string name="billing">帳單 [BILLING]</string>
+    <string name="check_license">檢查授權 [CHECK_LICENSE]</string>
+    <string name="foreground_service">前景服務 [FOREGROUND_SERVICE]</string>
+    <string name="internet">網際網路 [INTERNET]</string>
+    <string name="vibrate_permission">震動 [VIBRATE]</string>
+    <string name="summary_preference_settings_vibrate">允許應用程式在掃描 QR Code 時震動。</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="runtime">執行階段</string>
+    <string name="post_notifications">發布通知 [POST_NOTIFICATIONS]</string>
+    <string name="camera_permission">相機 [CAMERA]</string>
+    <string name="summary_preference_settings_camera">Google Code Scanner 處理 QR 與條碼擷取，而不會與應用程式分享相機畫面。</string>
+    <string name="read_contacts">讀取聯絡人 [READ_CONTACTS]</string>
+    <string name="read_storage">讀取儲存空間 [READ_EXTERNAL_STORAGE]</string>
+    <string name="read_images">讀取圖片 [READ_IMAGES]</string>
+    <string name="write_storage">寫入儲存空間 [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="special">特殊</string>
+    <string name="access_notification_policy">存取通知政策 [ACCESS_NOTIFICATION_POLICY]</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">搜尋引擎</string>
+    <string name="summary_preference_settings_search_engines">選擇用於網路搜尋的搜尋引擎</string>
+    <string name="none">無</string>
+    <string name="ask_every_time">每次詢問</string>
+    <string name="error_reporting">錯誤報告</string>
+    <string name="bug_report">錯誤回報</string>
+    <string name="summary_preference_settings_bug_report">將錯誤報告與功能要求傳送至應用程式的 GitHub 儲存庫問題頁面</string>
+    <string name="cache_management">快取管理</string>
+    <string name="clear_cache">清除快取</string>
+    <string name="summary_preference_settings_cache_management">清除暫存的應用程式資料</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">應用程式資訊</string>
+    <string name="application_build_version">應用程式建置版本</string>
+    <string name="open_source_licenses">開放原始碼授權</string>
+    <string name="summary_preference_settings_open_source_licenses">查看我們使用的程式庫的授權</string>
+    <string name="device_info">裝置資訊</string>
+    <string name="app_build">應用程式建置：正式版\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">製造商：</string>
+    <string name="device_model">裝置型號：</string>
+    <string name="android_version">Android 版本：</string>
+    <string name="api_level">API 等級：</string>
+
+    <!-- Help screen -->
+    <string name="help">說明</string>
+    <string name="view_in_google_play">在 Google Play 商店中檢視</string>
+    <string name="beta_program">Beta 版計畫</string>
+    <string name="faq">常見問題</string>
+    <string name="question_1">什麼是 QR &amp; Bar Code Scanner Plus？</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus 是一款免費的應用程式，可讓您掃描並產生 QR Code。它可以掃描所有常見的條碼格式，包括 QR、Data Matrix、Aztec、UPC、EAN 等等。</string>
+    <string name="question_2">使用 QR &amp; Bar Code Scanner Plus 有什麼好處？</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus 是一款功能強大、多功能且免費的應用程式，可以掃描所有常見的條碼格式、使用手電筒在黑暗中掃描、縮放以讀取遠距離的條碼、連接到 Wi-Fi、從文字、聯絡人、應用程式、書籤與剪貼簿產生 QR Code，並且介面簡單直觀。</string>
+    <string name="question_3">QR &amp; Bar Code Scanner Plus 的系統需求是什麼？</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus 與所有執行 Android 8.0 (Oreo) 或更新版本的 Android 裝置相容。</string>
+    <string name="question_4">如何使用 QR &amp; Bar Code Scanner Plus 掃描 QR Code？</string>
+    <string name="summary_preference_faq_4">若要使用 QR &amp; Bar Code Scanner Plus 掃描 QR Code，只需開啟應用程式並將手機的相機對準 QR Code。應用程式會自動掃描條碼並顯示結果。</string>
+    <string name="question_5"> 如何使用 QR &amp; Bar Code Scanner Plus 建立 QR Code？</string>
+    <string name="summary_preference_faq_5">若要使用 QR &amp; Bar Code Scanner Plus 建立 QR Code，請開啟應用程式並前往「建立」選單。選擇您想要的 QR Code 或條碼類型，然後輸入您想包含在 QR Code 中的資料，並點擊「建立」按鈕。應用程式接著會產生一個您可以儲存或分享的 QR Code。</string>
+    <string name="question_6">如何變更 QR &amp; Bar Code Scanner Plus 的主題？</string>
+    <string name="summary_preference_faq_6">QR &amp; Bar Code Scanner Plus 的主題可以透過前往應用程式的設定並選擇所需的主題來變更。</string>
+    <string name="question_7">如何回報錯誤？</string>
+    <string name="summary_preference_faq_7">如果您在 QR &amp; Bar Code Scanner Plus 中發現錯誤，您可以透過前往應用程式的 GitHub 頁面並建立新的 issue 來回報。</string>
+    <string name="question_8">使用 QR &amp; Bar Code Scanner Plus 安全嗎？</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus 是一款可以安全使用的應用程式。此應用程式僅透過 Firebase Crashlytics 與 Firebase Analytics 收集錯誤日誌，此功能可以關閉。</string>
+    <string name="question_9">如何聯絡應用程式的開發者？</string>
+    <string name="summary_preference_faq_9">如果您對應用程式有任何問題，可以透過應用程式的「說明與意見回饋」頁面聯絡開發者。</string>
+    <string name="contact_support_title">聯絡支援</string>
+    <string name="contact_support_description">分享詳細資訊以取得協助達成您的目標</string>
+    <string name="send_feedback">傳送意見回饋</string>
+    <string name="contact_support_email_subject">關於 %1$s 的支援請求</string>
+    <string name="contact_support_email_body">您好，\n\n我需要關於 QR &amp; Bar Code Scanner Plus 的協助。\n\n謝謝！</string>
+    <string name="version_info">版本資訊</string>
+    <string name="version">版本 %1$s</string>
+    <string name="faq_state_collapsed">已收合</string>
+    <string name="faq_state_expanded">已展開</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">沒有可用的電子郵件應用程式來處理此請求。</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">支持開發者</string>
+    <string name="paid_support">付費支持</string>
+    <string name="summary_donations">選擇一次性捐款金額以支持未來發展。</string>
+    <string name="non_paid_support">非付費支持</string>
+    <string name="web_ad">造訪我們的支援頁面</string>
+    <string name="support_purchase_thank_you">非常感謝您支持此應用程式！🎉</string>
+    <string name="support_purchase_restored">您的支持已恢復。</string>
+    <string name="support_purchase_revoked">您的支持購買已被撤銷。</string>
+    <string name="support_purchase_error">發生了一些錯誤。請稍後再試。</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">廣告</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">立即試用！！！</string>
+    <string name="share_using">使用……分享</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">另存為</string>
+    <string name="save">儲存</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">確認</string>
+    <string name="error">錯誤</string>
+    <string name="something_went_wrong">發生了一些錯誤</string>
+    <string name="dialog_delete">要刪除嗎？</string>
+    <string name="edit_name">編輯名稱</string>
+    <string name="require_restart">需要重新啟動！</string>
+    <string name="summary_require_restart">為使其生效，請重新啟動應用程式！</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">新增至日曆</string>
+    <string name="add_to_contacts">新增至聯絡人</string>
+    <string name="call" tools:ignore="StringFormatCount">撥打 %s</string>
+    <string name="send_sms_mms_to">傳送簡訊/多媒體訊息至 %s</string>
+    <string name="email_to">傳送電子郵件至 %s</string>
+    <string name="show_location">顯示位置</string>
+    <string name="connect_to_wifi">連線至 Wi-Fi</string>
+    <string name="open_wifi_settings">開啟 Wi-Fi 設定</string>
+    <string name="copy_network_name">複製網路名稱</string>
+    <string name="copy_network_password">複製網路密碼</string>
+    <string name="open_app">開啟應用程式</string>
+    <string name="open_in_market">在市集中開啟</string>
+    <string name="open_in_youtube">在 Youtube 中開啟</string>
+    <string name="save_to_bookmark">儲存至書籤</string>
+    <string name="open_link">開啟連結</string>
+    <string name="open_in_other_app">在其他應用程式中開啟</string>
+    <string name="show_password">顯示密碼</string>
+    <string name="search_on_the_web">在網路上搜尋</string>
+    <string name="connecting">正在連線…</string>
+    <string name="tooltip_view_code">檢視條碼</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">無法產生密碼</string>
+    <string name="error_missing_otp_data">無法顯示 OTP 詳細資訊。</string>
+    <string name="counter">計數器：%s</string>
+    <string name="timer_left">剩下 %1$s:%2$s</string>
+    <string name="refresh">重新整理</string>
+    <string name="tooltip_generate_new_secret">產生新的密鑰</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">Youtube 網址</string>
+    <string name="barcode_schema_boarding_pass">登機證</string>
+
+    <!-- Snackbars -->
+    <string name="saved">已儲存</string>
+    <string name="snack_unable_to_open_google_play_store">無法開啟 Google Play 商店。</string>
+    <string name="snack_copied_to_clipboard">已複製到剪貼簿！📋</string>
+    <string name="snack_saved_to_downloads">已儲存至下載！</string>
+    <string name="snack_saved_to_gallery">已儲存至相簿</string>
+    <string name="snack_no_app_found">找不到此操作的應用程式。請安裝相容的應用程式。</string>
+    <string name="snack_feedback">感謝您的評分！❤️</string>
+</resources>

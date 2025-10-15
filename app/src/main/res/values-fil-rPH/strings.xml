@@ -1,0 +1,449 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">I-scan ang lahat ng uri ng QR code at barcode nang madali. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Maligayang pagdating</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Basahin at sumang-ayon sa aming Mga Tuntunin ng Serbisyo at Patakaran sa Privacy upang magpatuloy.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">I-browse ang <i><u>Mga Tuntunin ng Serbisyo</u></i> at <i><u>Patakaran sa Privacy</u></i></string>
+    <string name="agree">Sumang-ayon</string>
+    <string name="tooltip_agree">Tanggapin ang mga tuntunin at kundisyon.</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">Laktawan</string>
+    <string name="back">Bumalik</string>
+    <string name="next">Susunod</string>
+    <string name="onboarding_theme_title">Piliin ang iyong itsura</string>
+    <string name="onboarding_theme_description">Piliin ang tema na angkop para sa iyo.</string>
+    <string name="onboarding_theme_follow_system_title">Sundin ang system</string>
+    <string name="onboarding_theme_follow_system_description">Awtomatikong itugma ang setting ng iyong device.</string>
+    <string name="onboarding_theme_light_title">Light na tema</string>
+    <string name="onboarding_theme_light_description">Maliwanag na kulay na may pinakamataas na contrast.</string>
+    <string name="onboarding_theme_dark_title">Dark na tema</string>
+    <string name="onboarding_theme_dark_description">Perpekto para sa mga kapaligirang madilim.</string>
+    <string name="onboarding_start_title">Saan tayo magsisimula?</string>
+    <string name="onboarding_start_description">Piliin ang unang screen na makikita mo sa pagbubukas ng app.</string>
+    <string name="onboarding_start_scan_description">Direktang buksan sa scanner para makapagturo at makapag-scan kaagad.</string>
+    <string name="onboarding_start_create_description">Pumunta sa creator upang mag-disenyo ng mga bagong code kaagad.</string>
+    <string name="onboarding_start_history_description">Suriin ang iyong mga naka-save na scan sa sandaling mag-launch ang app.</string>
+    <string name="bottom_navigation_labels_description">Magpasya kung paano lalabas ang mga label sa ibabang navigation bar.</string>
+    <string name="onboarding_labels_all">Ipakita ang mga label para sa bawat tab.</string>
+    <string name="onboarding_labels_selected">Ipakita lamang ang label ng napiling tab.</string>
+    <string name="onboarding_labels_hidden">Itago ang lahat ng label para sa minimalistang itsura.</string>
+    <string name="privacy_icon">Icon ng privacy</string>
+    <string name="onboarding_data_title">Kontrolin ang iyong data</string>
+    <string name="onboarding_data_subtitle">Ikaw ang magpapasya kung ano ang aming kinokolekta. Maaari mong baguhin ito anumang oras sa Mga Setting.</string>
+    <string name="onboarding_data_toggle">Paggamit at diagnostics</string>
+    <string name="onboarding_data_active">Naka-on ang koleksyon ng analytics.</string>
+    <string name="onboarding_data_inactive">Naka-off ang koleksyon ng analytics.</string>
+    <string name="onboarding_data_ads">Mga personalized na ad</string>
+    <string name="onboarding_data_ads_desc">Tulungan kaming magpakita ng mga ad na mas may kaugnayan sa iyo.</string>
+    <string name="onboarding_data_ads_disabled">Makakakita ka pa rin ng mga ad, ngunit maaaring hindi gaanong may kaugnayan.</string>
+    <string name="privacy_policy_link">Patakaran sa privacy</string>
+    <string name="success_icon">Icon ng tagumpay</string>
+    <string name="onboarding_done_title">Handa ka na!</string>
+    <string name="onboarding_done_subtitle">Nai-save na ang iyong mga preference. I-enjoy ang app.</string>
+    <string name="get_started_button">Magsimula</string>
+
+    <!-- Main screen -->
+    <string name="menu">Menu</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Mga Setting</string>
+    <string name="help_and_feedback">Tulong at feedback</string>
+    <string name="updates">Mga Update</string>
+    <string name="share">Ibahagi</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">I-scan</string>
+    <string name="scan_image">I-scan ang imahe</string>
+    <string name="scan_barcode_from_image_not_found">Walang barcode na na-detect sa imaheng ito.</string>
+    <string name="barcode_error_missing_extra">Hindi namin mabuksan ang barcode na ito. Pakisubukang i-scan itong muli.</string>
+    <string name="flash">Flash</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">I-rotate pakaliwa</string>
+    <string name="rotate_right">I-rotate pakanan</string>
+    <string name="choose_another_image">Pumili ng ibang imahe</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Gumawa</string>
+    <string name="qr_code">QR Code</string>
+    <string name="content_from_clipboard">Nilalaman mula sa clipboard</string>
+    <string name="text">Text</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Lokasyon</string>
+    <string name="contact_v_card">Contact (VCard)</string>
+
+    <string name="more_qr_codes">Higit pang mga QR code</string>
+    <string name="barcode">Barcode</string>
+    <string name="all_barcodes_codes">Mga barcode at iba pang 2D code</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Gumawa ng QR code</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Contact (MeCard)</string>
+    <string name="event">Event</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Bilang alternatibo:</string>
+    <string name="summary_alternatively_url">- Buksan ang iyong browser app\n- Mag-load ng isang website\n- I-click ang \"Ibahagi\" mula sa menu\n- Piliin ang app na ito.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Encryption</string>
+    <string name="network_name">Pangalan ng network</string>
+    <string name="password">Password</string>
+    <string name="hidden">Nakatago</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="altitude">Altitude (opsyonal)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Mga Contact</string>
+    <string name="first_name">Pangalan</string>
+    <string name="last_name">Apelyido</string>
+    <string name="organization">Organisasyon</string>
+    <string name="job">Trabaho</string>
+    <string name="email">Email</string>
+    <string name="phone">Telepono</string>
+    <string name="fax">Fax</string>
+    <string name="website">Website</string>
+    <string name="summary_alternatively_contact">- Buksan ang iyong contacts app\n- Magbukas ng isang umiiral na contact o gumawa ng bago\n- I-click ang \"Ibahagi\" mula sa menu\n- Piliin ang app na ito</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Uri</string>
+    <string name="algorithm">Algorithm</string>
+    <string name="issuer">Nag-isyu</string>
+    <string name="account">Account</string>
+    <string name="period">Panahon</string>
+    <string name="hint_counter">Counter</string>
+    <string name="secret">Sikreto</string>
+    <string name="random_secret">Random na Sikreto</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Pamagat</string>
+    <string name="organizer">Organizer</string>
+    <string name="summary">Buod</string>
+    <string name="start_date">Petsa ng pagsisimula</string>
+    <string name="end_date">Petsa ng pagtatapos</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Paksa</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Mensahe</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Cryptocurrency</string>
+    <string name="receiver_address">Address ng tatanggap</string>
+    <string name="amount">Halaga</string>
+    <string name="label">Label</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Bookmark</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">App</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Taasan ang liwanag</string>
+    <string name="decrease_brightness">Bawasan ang liwanag</string>
+    <string name="add_to_favorites">Idagdag sa mga paborito</string>
+    <string name="delete">Burahin</string>
+    <string name="share_as_text">Ibahagi bilang text</string>
+    <string name="copy_to_clipboard">Kopyahin sa clipboard</string>
+    <string name="save_as_text">I-save bilang text</string>
+    <string name="share_as_image">Ibahagi bilang imahe</string>
+    <string name="save_as_image">I-save bilang imahe</string>
+    <string name="print">I-print</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Gumawa ng barcode</string>
+    <string name="barcodes_2d">Mga 2D barcode</string>
+    <string name="barcodes_1d">Mga 1D barcode</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Text na walang mga espesyal na character</string>
+    <string name="text_in_upper_case_without_special_characters">Text na naka-upper case na walang mga espesyal na character</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Mga Digit</string>
+    <string name="seven_digits">7 digit</string>
+    <string name="eleven_digits">11 digit</string>
+    <string name="twelve_digits">12 digit</string>
+    <string name="even_number_of_digits">Pares na bilang ng mga digit</string>
+
+    <!-- History screen -->
+    <string name="history">History</string>
+    <string name="all">Lahat</string>
+    <string name="favorites">Mga Paborito</string>
+    <string name="history_empty_message">Wala ka pang naka-save na mga scan. Mag-scan o gumawa ng code para makita ito dito.</string>
+    <string name="export_your_history">I-export ang iyong history</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">I-export ang history</string>
+    <string name="export_as">I-export bilang</string>
+    <string name="file_name">Pangalan ng file</string>
+    <string name="export">I-export</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Mga Notification</string>
+    <string name="summary_settings_notifications_overview">Pamahalaan ang mga notification ng app</string>
+    <string name="display">Display</string>
+    <string name="summary_settings_display_overview">I-personalize ang itsura at pakiramdam ng iyong app</string>
+    <string name="scanner">Scanner</string>
+    <string name="summary_settings_scanner_overview">I-adjust kung paano kumikilos ang pag-scan at kung paano tumutugon ang camera</string>
+    <string name="summary_settings_history_overview">Kontrolin kung paano nai-save ang mga scan at pamahalaan ang iyong history</string>
+    <string name="security_and_privacy">Seguridad at Privacy</string>
+    <string name="summary_settings_security_privacy_overview">Pamahalaan ang iyong mga setting ng privacy</string>
+    <string name="advanced">Advanced</string>
+    <string name="summary_settings_advanced_overview">Galugarin ang mas maraming advanced na setting</string>
+    <string name="about">Tungkol sa</string>
+    <string name="summary_settings_about_overview">Matuto nang higit pa tungkol sa %1$s</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Itsura</string>
+    <string name="theme">Tema</string>
+    <string name="follow_system">Sundin ang System Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="auto_battery_mode">Auto Battery Dark Mode</string>
+    <string name="summary_preference_settings_theme">Piliin kung ano ang itsura ng app. Kasalukuyan: %1$s</string>
+    <string name="navigation">Nabigasyon</string>
+    <string name="default_tab">Default na tab</string>
+    <string name="summary_preference_settings_default_tab">Piliin ang unang screen na makikita mo sa pag-launch. Kasalukuyan: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Mga label ng bottom navigation bar</string>
+    <string name="labeled">May label</string>
+    <string name="selected_variant">Napili</string>
+    <string name="unlabeled">Walang label</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Kontrolin kung paano lumalabas ang mga label sa ibabang bar. Kasalukuyan: %1$s</string>
+    <string name="inverse_colors">Baligtarin ang mga kulay</string>
+    <string name="summary_preference_settings_inverse_colors">Ipakita ang mga code na may puting nilalaman sa madilim na background at dark mode</string>
+    <string name="language">Wika</string>
+    <string name="summary_preference_settings_language_value">Piliin ang wika ng app. Kasalukuyan: %1$s</string>
+    <string name="summary_preference_settings_language">Binabago ang wikang ginagamit sa app</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Awtomatikong buksan ang nilalaman ng mga na-scan na code</string>
+    <string name="summary_preference_settings_open_content_automatically">Maaaring magbukas ng mapaminsalang nilalaman</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Kopyahin ang mga na-scan na barcode sa clipboard</string>
+    <string name="simple_auto_focus">Simpleng auto focus mode</string>
+    <string name="summary_preference_settings_simple_auto_focus">I-enable lang kung mayroon kang mga problema sa pag-focus.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">I-enable ang flash sa pagsisimula</string>
+    <string name="vibrate">Mag-vibrate</string>
+    <string name="summary_preference_settings_vibrate">Mag-vibrate sa pag-scan</string>
+    <string name="continuous_scanning">Tuloy-tuloy na pag-scan</string>
+    <string name="summary_preference_settings_continuous_scanning">I-save ang mga scan sa history lamang</string>
+    <string name="confirm_scans_manually">Manu-manong kumpirmahin ang mga scan</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Iwasan ang mga aksidenteng pag-scan.</string>
+    <string name="camera">Camera</string>
+    <string name="summary_preference_settings_camera">Piliin kung aling camera ang magbubukas kapag sinimulan mo ang pag-scan.</string>
+    <string name="front">Harap</string>
+    <string name="camera_back">Likod</string>
+    <string name="supported_formats">Mga suportadong format</string>
+    <string name="summary_preference_settings_supported_formats">Piliin ang mga format ng barcode na hahanapin ng scanner.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">I-save ang mga na-scan na barcode sa history</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">I-imbak ang bawat scan para mabalikan mo ito mamaya</string>
+    <string name="save_created_barcodes_to_history">I-save ang mga ginawang barcode sa history</string>
+    <string name="summary_preference_settings_save_created_barcodes">Panatilihing madaling mahanap ang mga code na iyong binuo</string>
+    <string name="do_not_save_duplicates">Huwag i-save ang mga duplicate</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Iwasan ang mga duplicate sa history</string>
+    <string name="clear_history">Burahin ang history</string>
+    <string name="summary_preference_settings_clear_history">Alisin ang lahat ng naka-save na scan mula sa device</string>
+    <string name="summary_delete_history">Burahin ang history?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Privacy</string>
+    <string name="privacy_policy">Patakaran sa Privacy</string>
+    <string name="summary_preference_settings_privacy_policy">Tingnan ang patakaran na namamahala kung paano pinangangasiwaan ang iyong data</string>
+    <string name="terms_of_service">Mga Tuntunin ng Serbisyo</string>
+    <string name="summary_preference_settings_terms_of_service">Suriin ang mga tuntunin na sinasang-ayunan mo kapag ginagamit ang serbisyong ito</string>
+    <string name="code_of_conduct">Code of Conduct</string>
+    <string name="summary_preference_settings_code_of_conduct">Unawain ang mga panuntunan at alituntunin ng pag-uugali sa loob ng serbisyo</string>
+    <string name="permissions">Mga Pahintulot</string>
+    <string name="summary_preference_settings_permissions">Pamahalaan ang mga pahintulot na ipinagkaloob sa serbisyo</string>
+    <string name="usage_and_diagnostics">Paggamit at diagnostics</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Ibahagi ang data upang makatulong na mapabuti ang karanasan sa in-app</string>
+    <string name="legal">Legal</string>
+    <string name="legal_notices">Mga legal na paunawa</string>
+    <string name="summary_preference_settings_legal_notices">Tingnan ang legal na impormasyon tungkol sa serbisyo</string>
+    <string name="license">Lisensya</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Normal</string>
+    <string name="access_network_state">I-access ang estado ng network [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Pinapayagan ang app na suriin ang koneksyon sa network at kumuha ng impormasyon tungkol sa Wi-Fi, kabilang ang naka-enable na status at mga pangalan ng konektadong Wi-Fi device.</string>
+    <string name="ad_id">Ad id [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Pinapayagan ang app na kunin at gamitin ang advertising identifier na nauugnay sa device ng user, na nagbibigay ng mga personalized na ad, pagsukat ng pagiging epektibo ng ad, at pagpapakita ng mga ad sa mga device na may Android 13 o mas bago.</string>
+    <string name="billing">Pagsingil [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Pinapayagan ang app na gamitin ang Google Play Billing Library upang pangasiwaan ang mga in-app na pagbili at donasyon.</string>
+    <string name="check_license">Suriin ang lisensya [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Pinapayagan ang app na i-verify ang pagsunod nito sa kasunduan sa lisensya at ipatupad ang mga tuntunin sa paglilisensya upang maprotektahan ang intelektwal na ari-arian.</string>
+    <string name="foreground_service">Serbisyo sa foreground [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Pinapayagan ang app na lumikha at gumamit ng mga serbisyo na tumatakbo sa foreground, na nagbibigay sa kanila ng priyoridad kaysa sa iba pang mga proseso sa background at nagpapabuti ng performance at pagiging maaasahan.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Pinapayagan ang app na magtatag ng koneksyon sa internet upang magpadala ng mga ulat ng error o suriin ang mga update.</string>
+    <string name="vibrate_permission">Mag-vibrate [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Pinapayagan ang app na mag-vibrate kapag na-scan ang isang QR code.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Pinapayagan ang app na kumonekta sa mga Wi-Fi network sa pamamagitan ng pag-scan ng mga QR code.</string>
+    <string name="runtime">Runtime</string>
+    <string name="post_notifications">Mag-post ng mga notification [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Pinapayagan ang app na magpakita ng mga notification sa mga device na may Android 13 o mas bago.</string>
+    <string name="camera_permission">Camera [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Pinangangasiwaan ng Google Code Scanner ang pagkuha ng QR at barcode nang hindi ibinabahagi ang feed ng camera sa app.</string>
+    <string name="read_contacts">Basahin ang mga contact [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Pinapayagan ang app na lumikha ng isang QR code mula sa isang contact sa iyong listahan ng contact.</string>
+    <string name="read_storage">Basahin ang storage [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Pinapayagan ang app na i-access ang iyong storage para mai-save mo ang iyong QR code o barcode bilang text o imahe.</string>
+    <string name="read_images">Basahin ang mga imahe [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Pinapayagan ang app na magbasa ng mga imahe mula sa iyong device para mai-scan mo ang mga ito para sa mga QR code at barcode sa mga device na tumatakbo sa Android 13 o mas bago.</string>
+    <string name="write_storage">Sumulat sa storage [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Pinapayagan ang app na sumulat sa iyong storage para makapag-save ka ng mga file, tulad ng mga larawan, video, at dokumento.</string>
+    <string name="special">Espesyal</string>
+    <string name="access_notification_policy">I-access ang patakaran sa notification [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Pinapayagan ang app na i-access at baguhin ang patakaran sa notification ng device, na kinokontrol kung paano at kailan ipinapakita ang mga notification sa user at nagbibigay ng mga custom na tampok sa pamamahala ng notification.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Mga Search Engine</string>
+    <string name="summary_preference_settings_search_engines">Pumili ng isang search engine para sa mga paghahanap sa web</string>
+    <string name="none">Wala</string>
+    <string name="ask_every_time">Magtanong sa tuwing</string>
+    <string name="error_reporting">Pag-uulat ng error</string>
+    <string name="bug_report">Ulat ng bug</string>
+    <string name="summary_preference_settings_bug_report">Magpadala ng mga ulat ng bug at mga hiling sa tampok sa pahina ng mga isyu ng repositoryo ng GitHub ng app</string>
+    <string name="cache_management">Pamamahala ng cache</string>
+    <string name="clear_cache">Burahin ang cache</string>
+    <string name="summary_preference_settings_cache_management">Burahin ang pansamantalang data ng application</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Impormasyon ng app</string>
+    <string name="application_build_version">Bersyon ng build ng application</string>
+    <string name="open_source_licenses">Mga lisensya ng open source</string>
+    <string name="summary_preference_settings_open_source_licenses">Tingnan ang mga lisensya para sa mga library na ginagamit namin</string>
+    <string name="device_info">Impormasyon ng device</string>
+    <string name="app_build">Build ng App: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Manufacturer:</string>
+    <string name="device_model">Modelo ng Device:</string>
+    <string name="android_version">Bersyon ng Android:</string>
+    <string name="api_level">Antas ng API:</string>
+
+    <!-- Help screen -->
+    <string name="help">Tulong</string>
+    <string name="view_in_google_play">Tingnan sa Google Play Store</string>
+    <string name="beta_program">Programa ng beta</string>
+    <string name="faq">Mga FAQ</string>
+    <string name="question_1">Ano ang QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_1">Ang QR &amp; Bar Code Scanner Plus ay isang libreng app na nagbibigay-daan sa iyo na mag-scan at bumuo ng mga QR code. Maaari itong mag-scan ng lahat ng karaniwang format ng barcode, kabilang ang QR, Data Matrix, Aztec, UPC, EAN, at marami pang iba.</string>
+    <string name="question_2">Ano ang mga benepisyo ng paggamit ng QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_2">Ang QR &amp; Bar Code Scanner Plus ay isang makapangyarihan, maraming gamit, at libreng app na maaaring mag-scan ng lahat ng karaniwang format ng barcode, gumamit ng flashlight upang mag-scan sa dilim, mag-zoom upang mabasa ang mga barcode mula sa malalayong distansya, kumonekta sa Wi-Fi, bumuo ng mga QR code mula sa text, mga contact, app, bookmark, at clipboard, at may simple at madaling gamitin na interface.</string>
+    <string name="question_3">Ano ang mga kinakailangan ng system para sa QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_3">Ang QR &amp; Bar Code Scanner Plus ay compatible sa lahat ng Android device na tumatakbo sa Android 8.0 (Oreo) o mas mataas.</string>
+    <string name="question_4">Paano ako mag-scan ng QR code gamit ang QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">Upang mag-scan ng QR code gamit ang QR &amp; Bar Code Scanner Plus, buksan lang ang app at itutok ang camera ng iyong telepono sa QR code. Awtomatikong i-scan ng app ang code at ipapakita ang mga resulta.</string>
+    <string name="question_5"> Paano ako gagawa ng QR code gamit ang QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">Upang gumawa ng QR code gamit ang QR &amp; Bar Code Scanner Plus, buksan ang app at pumunta sa menu na \'Gumawa\'. Piliin ang uri ng QR code o bar code na gusto mo at ilagay ang data na gusto mong isama sa QR code at i-tap ang pindutang \'Gumawa\'. Pagkatapos ay bubuo ang app ng isang QR code na maaari mong i-save o ibahagi.</string>
+    <string name="question_6">Paano ko babaguhin ang tema ng QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Maaaring baguhin ang tema ng QR &amp; Bar Code Scanner Plus sa pamamagitan ng pagpunta sa mga setting ng app at pagpili ng nais na tema.</string>
+    <string name="question_7">Paano ako mag-uulat ng bug?</string>
+    <string name="summary_preference_faq_7">Kung makakita ka ng bug sa QR &amp; Bar Code Scanner Plus, maaari mo itong iulat sa pamamagitan ng pagpunta sa pahina ng GitHub ng app at paglikha ng bagong isyu.</string>
+    <string name="question_8">Ligtas bang gamitin ang QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_8">Ang QR &amp; Bar Code Scanner Plus ay isang ligtas na app na gamitin. Nangongolekta lamang ang app ng mga log ng error sa pamamagitan ng Firebase Crashlytics at Firebase Analytics, na maaaring i-off.</string>
+    <string name="question_9">Paano ko makokontak ang developer ng app?</string>
+    <string name="summary_preference_faq_9">Kung mayroon kang anumang mga katanungan o problema sa app, maaari kang makipag-ugnayan sa developer sa pamamagitan ng pahina ng \'Tulong at feedback\' ng app.</string>
+    <string name="contact_support_title">Makipag-ugnayan sa suporta</string>
+    <string name="contact_support_description">Ibahagi ang mga detalye upang makakuha ng tulong sa pag-abot sa iyong layunin</string>
+    <string name="send_feedback">Magpadala ng feedback</string>
+    <string name="contact_support_email_subject">Hiling ng suporta para sa %1$s</string>
+    <string name="contact_support_email_body">Kamusta,\n\nKailangan ko ng tulong sa QR &amp; Bar Code Scanner Plus.\n\nSalamat!</string>
+    <string name="version_info">Impormasyon ng bersyon</string>
+    <string name="version">Bersyon %1$s</string>
+    <string name="faq_state_collapsed">Nakatiklop</string>
+    <string name="faq_state_expanded">Nakalawak</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Walang available na email app para asikasuhin ang hiling na ito.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Suportahan ang developer</string>
+    <string name="paid_support">Bayad na Suporta</string>
+    <string name="summary_donations">Pumili ng isang beses na halaga ng donasyon upang suportahan ang pag-unlad sa hinaharap.</string>
+    <string name="non_paid_support">Hindi Bayad na Suporta</string>
+    <string name="web_ad">Bisitahin ang aming pahina ng suporta</string>
+    <string name="support_purchase_thank_you">Maraming salamat sa pagsuporta sa app! 🎉</string>
+    <string name="support_purchase_restored">Naibalik na ang iyong suporta.</string>
+    <string name="support_purchase_revoked">Binawi ang iyong pagbili ng suporta.</string>
+    <string name="support_purchase_error">May nangyaring mali. Pakisubukang muli sa ilang sandali.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Ad</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Subukan ito ngayon!!!</string>
+    <string name="share_using">Ibahagi gamit ang…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">I-save bilang</string>
+    <string name="save">I-save</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Kumpirmahin</string>
+    <string name="error">Error</string>
+    <string name="something_went_wrong">May nangyaring mali</string>
+    <string name="dialog_delete">Burahin?</string>
+    <string name="edit_name">I-edit ang pangalan</string>
+    <string name="require_restart">Kailangan ng restart!</string>
+    <string name="summary_require_restart">Upang magkabisa mangyaring i-restart ang app!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Idagdag sa kalendaryo</string>
+    <string name="add_to_contacts">Idagdag sa mga contact</string>
+    <string name="call" tools:ignore="StringFormatCount">Tawagan si %s</string>
+    <string name="send_sms_mms_to">Magpadala ng SMS/MMS kay %s</string>
+    <string name="email_to">Mag-email kay %s</string>
+    <string name="show_location">Ipakita ang lokasyon</string>
+    <string name="connect_to_wifi">Kumonekta sa Wi-Fi</string>
+    <string name="open_wifi_settings">Buksan ang mga setting ng Wi-Fi</string>
+    <string name="copy_network_name">Kopyahin ang pangalan ng network</string>
+    <string name="copy_network_password">Kopyahin ang password ng network</string>
+    <string name="open_app">Buksan ang app</string>
+    <string name="open_in_market">Buksan sa market</string>
+    <string name="open_in_youtube">Buksan sa Youtube</string>
+    <string name="save_to_bookmark">I-save sa mga bookmark</string>
+    <string name="open_link">Buksan ang link</string>
+    <string name="open_in_other_app">Buksan sa ibang app</string>
+    <string name="show_password">Ipakita ang password</string>
+    <string name="search_on_the_web">Maghanap sa web</string>
+    <string name="connecting">Kumokonekta…</string>
+    <string name="tooltip_view_code">Tingnan ang code</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Hindi makabuo ng password</string>
+    <string name="error_missing_otp_data">Hindi maipakita ang mga detalye ng OTP.</string>
+    <string name="counter">Counter: %s</string>
+    <string name="timer_left">%1$s:%2$s ang natitira</string>
+    <string name="refresh">I-refresh</string>
+    <string name="tooltip_generate_new_secret">Bumuo ng bagong sikreto</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">Youtube URL</string>
+    <string name="barcode_schema_boarding_pass">Boarding Pass</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Nai-save</string>
+    <string name="snack_unable_to_open_google_play_store">Hindi mabuksan ang Google Play Store.</string>
+    <string name="snack_copied_to_clipboard">Kinopya sa clipboard! 📋</string>
+    <string name="snack_saved_to_downloads">Nai-save sa Mga Download!</string>
+    <string name="snack_saved_to_gallery">Nai-save sa Gallery</string>
+    <string name="snack_no_app_found">Walang app na nahanap para sa aksyon na ito. Paki-install ng isang compatible na app.</string>
+    <string name="snack_feedback">Salamat sa pag-rate sa amin! ❤️</string>
+</resources>

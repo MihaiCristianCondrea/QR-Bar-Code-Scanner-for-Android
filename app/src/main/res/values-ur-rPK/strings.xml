@@ -1,0 +1,449 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">آسانی کے ساتھ ہر قسم کے QR کوڈز اور بارکوڈز کو اسکین کریں۔ 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">خوش آمدید</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">جاری رکھنے کے لیے ہماری سروس کی شرائط اور رازداری کی پالیسی کو پڑھیں اور ان سے اتفاق کریں۔</string>
+    <string name="browse_terms_of_service_and_privacy_policy"><i><u>سروس کی شرائط</u></i> اور <i><u>رازداری کی پالیسی</u></i> کو براؤز کریں۔</string>
+    <string name="agree">اتفاق کریں</string>
+    <string name="tooltip_agree">شرائط و ضوابط قبول کریں۔</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">چھوڑ دیں</string>
+    <string name="back">پیچھے</string>
+    <string name="next">آگے</string>
+    <string name="onboarding_theme_title">اپنی شکل منتخب کریں</string>
+    <string name="onboarding_theme_description">وہ تھیم منتخب کریں جو آپ کے لیے صحیح محسوس ہو۔</string>
+    <string name="onboarding_theme_follow_system_title">سسٹم کو فالو کریں</string>
+    <string name="onboarding_theme_follow_system_description">خود بخود اپنے آلے کی ترتیب سے مطابقت رکھیں۔</string>
+    <string name="onboarding_theme_light_title">لائٹ تھیم</string>
+    <string name="onboarding_theme_light_description">زیادہ سے زیادہ کنٹراسٹ کے ساتھ روشن رنگ۔</string>
+    <string name="onboarding_theme_dark_title">ڈارک تھیم</string>
+    <string name="onboarding_theme_dark_description">کم روشنی والے ماحول کے لیے بہترین۔</string>
+    <string name="onboarding_start_title">ہمیں کہاں سے شروع کرنا چاہئے؟</string>
+    <string name="onboarding_start_description">ایپ کھولتے وقت نظر آنے والی پہلی اسکرین کا انتخاب کریں۔</string>
+    <string name="onboarding_start_scan_description">براہ راست اسکینر پر کھولیں تاکہ آپ فوری طور پر اشارہ اور اسکین کرسکیں۔</string>
+    <string name="onboarding_start_create_description">فوراً نئے کوڈز ڈیزائن کرنے کے لیے تخلیق کار میں جائیں۔</string>
+    <string name="onboarding_start_history_description">ایپ لانچ ہوتے ہی اپنے محفوظ کردہ اسکینز کا جائزہ لیں۔</string>
+    <string name="bottom_navigation_labels_description">فیصلہ کریں کہ نیچے نیویگیشن بار میں لیبل کیسے ظاہر ہوں۔</string>
+    <string name="onboarding_labels_all">ہر ٹیب کے لیے لیبل دکھائیں۔</string>
+    <string name="onboarding_labels_selected">صرف منتخب ٹیب کا لیبل دکھائیں۔</string>
+    <string name="onboarding_labels_hidden">کم سے کم نظر کے لیے تمام لیبل چھپائیں۔</string>
+    <string name="privacy_icon">رازداری کا آئیکن</string>
+    <string name="onboarding_data_title">اپنے ڈیٹا کو کنٹرول کریں</string>
+    <string name="onboarding_data_subtitle">آپ فیصلہ کرتے ہیں کہ ہم کیا جمع کرتے ہیں۔ آپ انہیں کسی بھی وقت ترتیبات میں تبدیل کر سکتے ہیں۔</string>
+    <string name="onboarding_data_toggle">استعمال اور تشخیص</string>
+    <string name="onboarding_data_active">تجزیات کا مجموعہ آن ہے۔</string>
+    <string name="onboarding_data_inactive">تجزیات کا مجموعہ آف ہے۔</string>
+    <string name="onboarding_data_ads">ذاتی نوعیت کے اشتہارات</string>
+    <string name="onboarding_data_ads_desc">آپ کے لیے زیادہ متعلقہ اشتہارات دکھانے میں ہماری مدد کریں۔</string>
+    <string name="onboarding_data_ads_disabled">آپ کو اب بھی اشتہارات نظر آئیں گے، لیکن وہ کم متعلقہ ہو سکتے ہیں۔</string>
+    <string name="privacy_policy_link">رازداری کی پالیسی</string>
+    <string name="success_icon">کامیابی کا آئیکن</string>
+    <string name="onboarding_done_title">آپ پوری طرح تیار ہیں!</string>
+    <string name="onboarding_done_subtitle">آپ کی ترجیحات محفوظ ہو گئی ہیں۔ ایپ سے لطف اٹھائیں۔</string>
+    <string name="get_started_button">شروع کریں</string>
+
+    <!-- Main screen -->
+    <string name="menu">مینو</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">ترتیبات</string>
+    <string name="help_and_feedback">مدد اور تاثرات</string>
+    <string name="updates">اپ ڈیٹس</string>
+    <string name="share">شیئر کریں</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">اسکین کریں</string>
+    <string name="scan_image">تصویر اسکین کریں</string>
+    <string name="scan_barcode_from_image_not_found">اس تصویر میں کوئی بارکوڈ نہیں ملا۔</string>
+    <string name="barcode_error_missing_extra">ہم یہ بارکوڈ نہیں کھول سکے۔ براہ کرم اسے دوبارہ اسکین کرنے کی کوشش کریں۔</string>
+    <string name="flash">فلیش</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">بائیں گھمائیں</string>
+    <string name="rotate_right">دائیں گھمائیں</string>
+    <string name="choose_another_image">دوسری تصویر منتخب کریں</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">بنائیں</string>
+    <string name="qr_code">QR کوڈ</string>
+    <string name="content_from_clipboard">کلپ بورڈ سے مواد</string>
+    <string name="text">متن</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">مقام</string>
+    <string name="contact_v_card">رابطہ (VCard)</string>
+
+    <string name="more_qr_codes">مزید QR کوڈز</string>
+    <string name="barcode">بارکوڈ</string>
+    <string name="all_barcodes_codes">بارکوڈز اور دیگر 2D کوڈز</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">QR کوڈ بنائیں</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">رابطہ (MeCard)</string>
+    <string name="event">ایونٹ</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">متبادل طور پر:</string>
+    <string name="summary_alternatively_url">- اپنی براؤزر ایپ کھولیں\n- ایک ویب سائٹ لوڈ کریں\n- مینو سے "شیئر کریں" پر کلک کریں\n- اس ایپ کو منتخب کریں۔</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">خفیہ کاری</string>
+    <string name="network_name">نیٹ ورک کا نام</string>
+    <string name="password">پاس ورڈ</string>
+    <string name="hidden">پوشیدہ</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">عرض بلد</string>
+    <string name="longitude">طول بلد</string>
+    <string name="altitude">اونچائی (اختیاری)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">رابطے</string>
+    <string name="first_name">پہلا نام</string>
+    <string name="last_name">آخری نام</string>
+    <string name="organization">تنظیم</string>
+    <string name="job">ملازمت</string>
+    <string name="email">ای میل</string>
+    <string name="phone">فون</string>
+    <string name="fax">فیکس</string>
+    <string name="website">ویب سائٹ</string>
+    <string name="summary_alternatively_contact">- اپنی روابط ایپ کھولیں\n- ایک موجودہ رابطہ کھولیں یا نیا بنائیں\n- مینو سے "شیئر کریں" پر کلک کریں\n- اس ایپ کو منتخب کریں</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">قسم</string>
+    <string name="algorithm">الگورتھم</string>
+    <string name="issuer">جاری کنندہ</string>
+    <string name="account">اکاؤنٹ</string>
+    <string name="period">مدت</string>
+    <string name="hint_counter">کاؤنٹر</string>
+    <string name="secret">خفیہ</string>
+    <string name="random_secret">بے ترتیب خفیہ</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">عنوان</string>
+    <string name="organizer">منتظم</string>
+    <string name="summary">خلاصہ</string>
+    <string name="start_date">شروع کی تاریخ</string>
+    <string name="end_date">اختتام کی تاریخ</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">مضمون</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">پیغام</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">بٹ کوائن</string>
+    <string name="cryptocurrency">کریپٹو کرنسی</string>
+    <string name="receiver_address">وصول کنندہ کا پتہ</string>
+    <string name="amount">رقم</string>
+    <string name="label">لیبل</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">بک مارک</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">ایپ</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">چمک بڑھائیں</string>
+    <string name="decrease_brightness">چمک کم کریں</string>
+    <string name="add_to_favorites">پسندیدہ میں شامل کریں</string>
+    <string name="delete">حذف کریں</string>
+    <string name="share_as_text">متن کے طور پر شیئر کریں</string>
+    <string name="copy_to_clipboard">کلپ بورڈ پر کاپی کریں</string>
+    <string name="save_as_text">متن کے طور پر محفوظ کریں</string>
+    <string name="share_as_image">تصویر کے طور پر شیئر کریں</string>
+    <string name="save_as_image">تصویر کے طور پر محفوظ کریں</string>
+    <string name="print">پرنٹ کریں</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">بارکوڈ بنائیں</string>
+    <string name="barcodes_2d">2D بارکوڈز</string>
+    <string name="barcodes_1d">1D بارکوڈز</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">خاص حروف کے بغیر متن</string>
+    <string name="text_in_upper_case_without_special_characters">بڑے حروف میں خاص حروف کے بغیر متن</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">ہندسے</string>
+    <string name="seven_digits">7 ہندسے</string>
+    <string name="eleven_digits">11 ہندسے</string>
+    <string name="twelve_digits">12 ہندسے</string>
+    <string name="even_number_of_digits">جفت تعداد میں ہندسے</string>
+
+    <!-- History screen -->
+    <string name="history">تاریخ</string>
+    <string name="all">سب</string>
+    <string name="favorites">پسندیدہ</string>
+    <string name="history_empty_message">آپ کے پاس ابھی تک کوئی محفوظ شدہ اسکین نہیں ہے۔ اسے یہاں دیکھنے کے لیے کوڈ اسکین کریں یا بنائیں۔</string>
+    <string name="export_your_history">اپنی تاریخ برآمد کریں</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">تاریخ برآمد کریں</string>
+    <string name="export_as">اس طرح برآمد کریں</string>
+    <string name="file_name">فائل کا نام</string>
+    <string name="export">برآمد کریں</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">اطلاعات</string>
+    <string name="summary_settings_notifications_overview">ایپ کی اطلاعات کا نظم کریں</string>
+    <string name="display">ڈسپلے</string>
+    <string name="summary_settings_display_overview">اپنی ایپ کی شکل و صورت کو ذاتی بنائیں۔</string>
+    <string name="scanner">اسکینر</string>
+    <string name="summary_settings_scanner_overview">اسکیننگ کے رویے اور کیمرے کے ردعمل کو ایڈجسٹ کریں۔</string>
+    <string name="summary_settings_history_overview">اسکینز کو کیسے محفوظ کیا جاتا ہے اسے کنٹرول کریں اور اپنی تاریخ کا نظم کریں۔</string>
+    <string name="security_and_privacy">سیکیورٹی اور رازداری</string>
+    <string name="summary_settings_security_privacy_overview">اپنی رازداری کی ترتیبات کا نظم کریں۔</string>
+    <string name="advanced">اعلی درجے کی</string>
+    <string name="summary_settings_advanced_overview">مزید اعلی درجے کی ترتیبات کو دریافت کریں۔</string>
+    <string name="about">کے بارے میں</string>
+    <string name="summary_settings_about_overview">%1$s کے بارے میں مزید جانیں</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">ظاہری شکل</string>
+    <string name="theme">تھیم</string>
+    <string name="follow_system">سسٹم موڈ کو فالو کریں</string>
+    <string name="light_mode">لائٹ موڈ</string>
+    <string name="dark_mode">ڈارک موڈ</string>
+    <string name="auto_battery_mode">آٹو بیٹری ڈارک موڈ</string>
+    <string name="summary_preference_settings_theme">ایپ کیسی دکھتی ہے اس کا انتخاب کریں۔ موجودہ: %1$s</string>
+    <string name="navigation">نیویگیشن</string>
+    <string name="default_tab">ڈیفالٹ ٹیب</string>
+    <string name="summary_preference_settings_default_tab">لانچ پر نظر آنے والی پہلی اسکرین کا انتخاب کریں۔ موجودہ: %1$s</string>
+    <string name="bottom_navigation_bar_labels">نیچے نیویگیشن بار کے لیبل</string>
+    <string name="labeled">لیبل شدہ</string>
+    <string name="selected_variant">منتخب</string>
+    <string name="unlabeled">بغیر لیبل کے</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">نیچے بار میں لیبل کیسے ظاہر ہوتے ہیں اسے کنٹرول کریں۔ موجودہ: %1$s</string>
+    <string name="inverse_colors">الٹے رنگ</string>
+    <string name="summary_preference_settings_inverse_colors">سفید مواد کے ساتھ کوڈز کو گہرے پس منظر اور ڈارک موڈ پر دکھائیں۔</string>
+    <string name="language">زبان</string>
+    <string name="summary_preference_settings_language_value">ایپ کی زبان منتخب کریں۔ موجودہ: %1$s</string>
+    <string name="summary_preference_settings_language">ایپ میں استعمال ہونے والی زبان کو تبدیل کرتا ہے۔</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">اسکین شدہ کوڈز کا مواد خود بخود کھولیں۔</string>
+    <string name="summary_preference_settings_open_content_automatically">نقصان دہ مواد کھول سکتا ہے۔</string>
+    <string name="summary_preference_settings_copy_to_clipboard">اسکین شدہ بارکوڈز کو کلپ بورڈ پر کاپی کریں۔</string>
+    <string name="simple_auto_focus">سادہ آٹو فوکس موڈ</string>
+    <string name="summary_preference_settings_simple_auto_focus">صرف اس صورت میں فعال کریں جب آپ کو فوکس کرنے میں دشواری ہو۔</string>
+    <string name="summary_preference_settings_enable_flash_on_start">شروع پر فلیش کو فعال کریں۔</string>
+    <string name="vibrate">وائبریٹ</string>
+    <string name="summary_preference_settings_vibrate">اسکین پر وائبریٹ کریں۔</string>
+    <string name="continuous_scanning">مسلسل اسکیننگ</string>
+    <string name="summary_preference_settings_continuous_scanning">اسکینز کو صرف تاریخ میں محفوظ کریں۔</string>
+    <string name="confirm_scans_manually">دستی طور پر اسکینز کی تصدیق کریں۔</string>
+    <string name="summary_preference_settings_confirm_scans_manually">حادثاتی اسکینز سے بچیں۔</string>
+    <string name="camera">کیمرہ</string>
+    <string name="summary_preference_settings_camera">منتخب کریں کہ جب آپ اسکیننگ شروع کرتے ہیں تو کون سا کیمرہ کھلتا ہے۔</string>
+    <string name="front">سامنے</string>
+    <string name="camera_back">پیچھے</string>
+    <string name="supported_formats">تعاون یافتہ فارمیٹس</string>
+    <string name="summary_preference_settings_supported_formats">اسکینر جن بارکوڈ فارمیٹس کو تلاش کرتا ہے ان کا انتخاب کریں۔</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">اسکین شدہ بارکوڈز کو تاریخ میں محفوظ کریں۔</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">ہر اسکین کو ذخیرہ کریں تاکہ آپ بعد میں اس پر دوبارہ نظر ڈال سکیں۔</string>
+    <string name="save_created_barcodes_to_history">تخلیق شدہ بارکوڈز کو تاریخ میں محفوظ کریں۔</string>
+    <string name="summary_preference_settings_save_created_barcodes">آپ جو کوڈز بناتے ہیں انہیں آسانی سے تلاش کرنے کے لیے رکھیں۔</string>
+    <string name="do_not_save_duplicates">ڈپلیکیٹس کو محفوظ نہ کریں۔</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">تاریخ میں ڈپلیکیٹس سے بچیں۔</string>
+    <string name="clear_history">تاریخ صاف کریں</string>
+    <string name="summary_preference_settings_clear_history">ڈیوائس سے تمام محفوظ شدہ اسکینز کو ہٹا دیں۔</string>
+    <string name="summary_delete_history">تاریخ حذف کریں؟</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">رازداری</string>
+    <string name="privacy_policy">رازداری کی پالیسی</string>
+    <string name="summary_preference_settings_privacy_policy">وہ پالیسی دیکھیں جو آپ کے ڈیٹا کو سنبھالنے کے طریقے کو کنٹرول کرتی ہے۔</string>
+    <string name="terms_of_service">سروس کی شرائط</string>
+    <string name="summary_preference_settings_terms_of_service">ان شرائط کا جائزہ لیں جن سے آپ اس سروس کا استعمال کرتے وقت اتفاق کرتے ہیں۔</string>
+    <string name="code_of_conduct">ضابطہ اخلاق</string>
+    <string name="summary_preference_settings_code_of_conduct">سروس کے اندر رویے کے اصولوں اور رہنما خطوط کو سمجھیں۔</string>
+    <string name="permissions">اجازتیں</string>
+    <string name="summary_preference_settings_permissions">سروس کو دی گئی اجازتوں کا نظم کریں۔</string>
+    <string name="usage_and_diagnostics">استعمال اور تشخیص</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">ایپ میں تجربے کو بہتر بنانے میں مدد کے لیے ڈیٹا شیئر کریں۔</string>
+    <string name="legal">قانونی</string>
+    <string name="legal_notices">قانونی نوٹس</string>
+    <string name="summary_preference_settings_legal_notices">سروس کے بارے میں قانونی معلومات دیکھیں۔</string>
+    <string name="license">لائسنس</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">نارمل</string>
+    <string name="access_network_state">نیٹ ورک کی حالت تک رسائی [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">ایپ کو نیٹ ورک کنیکٹیویٹی چیک کرنے اور Wi-Fi کے بارے میں معلومات حاصل کرنے کی اجازت دیتا ہے، بشمول فعال حالت اور منسلک Wi-Fi ڈیوائس کے نام۔</string>
+    <string name="ad_id">اشتہار کی شناخت [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">ایپ کو صارف کے آلے سے وابستہ اشتہاری شناخت کنندہ کو بازیافت کرنے اور استعمال کرنے کی اجازت دیتا ہے، ذاتی نوعیت کے اشتہارات فراہم کرتا ہے، اشتہار کی تاثیر کی پیمائش کرتا ہے، اور Android 13 یا بعد کے آلات پر اشتہارات دکھاتا ہے۔</string>
+    <string name="billing">بلنگ [BILLING]</string>
+    <string name="summary_preference_permissions_billing">ایپ کو Google Play بلنگ لائبریری کا استعمال کرکے درون ایپ خریداریوں اور عطیات کو سنبھالنے کی اجازت دیتا ہے۔</string>
+    <string name="check_license">لائسنس چیک کریں [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">ایپ کو لائسنس کے معاہدے کی تعمیل کی تصدیق کرنے اور دانشورانہ املاک کے تحفظ کے لیے لائسنس کی شرائط کو نافذ کرنے کی اجازت دیتا ہے۔</string>
+    <string name="foreground_service">پیش منظر کی خدمت [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">ایپ کو پیش منظر میں چلنے والی خدمات بنانے اور استعمال کرنے کی اجازت دیتا ہے، انہیں دیگر پس منظر کے عمل پر ترجیح دیتا ہے اور کارکردگی اور وشوسنییتا کو بہتر بناتا ہے۔</string>
+    <string name="internet">انٹرنیٹ [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">ایپ کو غلطی کی رپورٹیں بھیجنے یا اپ ڈیٹس کی جانچ کرنے کے لیے انٹرنیٹ کنکشن قائم کرنے کی اجازت دیتا ہے۔</string>
+    <string name="vibrate_permission">وائبریٹ [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">جب QR کوڈ اسکین ہوتا ہے تو ایپ کو وائبریٹ کرنے کی اجازت دیتا ہے۔</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">ایپ کو QR کوڈز اسکین کرکے Wi-Fi نیٹ ورکس سے منسلک ہونے کی اجازت دیتا ہے۔</string>
+    <string name="runtime">رن ٹائم</string>
+    <string name="post_notifications">اطلاعات پوسٹ کریں [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Android 13 یا بعد والے آلات پر اطلاعات دکھانے کی اجازت دیتا ہے۔</string>
+    <string name="camera_permission">کیمرہ [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">گوگل کوڈ اسکینر ایپ کے ساتھ کیمرہ فیڈ شیئر کیے بغیر QR اور بارکوڈ کیپچر کو سنبھالتا ہے۔</string>
+    <string name="read_contacts">رابطے پڑھیں [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">ایپ کو آپ کی رابطہ فہرست میں موجود کسی رابطے سے QR کوڈ بنانے کی اجازت دیتا ہے۔</string>
+    <string name="read_storage">اسٹوریج پڑھیں [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">ایپ کو آپ کے اسٹوریج تک رسائی کی اجازت دیتا ہے تاکہ آپ اپنے QR کوڈ یا بارکوڈ کو متن یا تصویر کے طور پر محفوظ کرسکیں۔</string>
+    <string name="read_images">تصاویر پڑھیں [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">ایپ کو آپ کے آلے سے تصاویر پڑھنے کی اجازت دیتا ہے تاکہ آپ انہیں Android 13 یا بعد میں چلنے والے آلات پر QR کوڈز اور بارکوڈز کے لیے اسکین کرسکیں۔</string>
+    <string name="write_storage">اسٹوریج لکھیں [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">ایپ کو آپ کے اسٹوریج میں لکھنے کی اجازت دیتا ہے تاکہ آپ فائلیں، جیسے تصاویر، ویڈیوز اور دستاویزات محفوظ کرسکیں۔</string>
+    <string name="special">خاص</string>
+    <string name="access_notification_policy">اطلاع کی پالیسی تک رسائی [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">ایپ کو آلے کی اطلاع کی پالیسی تک رسائی اور اس میں ترمیم کرنے کی اجازت دیتا ہے، یہ کنٹرول کرتا ہے کہ صارف کو اطلاعات کیسے اور کب دکھائی جاتی ہیں اور اپنی مرضی کے مطابق اطلاع کے انتظام کی خصوصیات فراہم کرتا ہے۔</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">سرچ انجن</string>
+    <string name="summary_preference_settings_search_engines">ویب تلاش کے لیے ایک سرچ انجن منتخب کریں۔</string>
+    <string name="none">کوئی نہیں</string>
+    <string name="ask_every_time">ہر بار پوچھیں</string>
+    <string name="error_reporting">غلطی کی اطلاع دینا</string>
+    <string name="bug_report">بگ کی اطلاع دیں</string>
+    <string name="summary_preference_settings_bug_report">ایپ کے GitHub ریپوزٹری کے مسائل کے صفحے پر بگ رپورٹس اور فیچر کی درخواستیں بھیجیں۔</string>
+    <string name="cache_management">کیشے کا انتظام</string>
+    <string name="clear_cache">کیشے صاف کریں</string>
+    <string name="summary_preference_settings_cache_management">عارضی ایپلیکیشن ڈیٹا صاف کریں۔</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">ایپ کی معلومات</string>
+    <string name="application_build_version">ایپلیکیشن بلڈ ورژن</string>
+    <string name="open_source_licenses">اوپن سورس لائسنس</string>
+    <string name="summary_preference_settings_open_source_licenses">ہم جو لائبریریاں استعمال کرتے ہیں ان کے لائسنس دیکھیں۔</string>
+    <string name="device_info">ڈیوائس کی معلومات</string>
+    <string name="app_build">ایپ بلڈ: ریلیز\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">مینوفیکچرر:</string>
+    <string name="device_model">ڈیوائس ماڈل:</string>
+    <string name="android_version">اینڈرائڈ ورژن:</string>
+    <string name="api_level">API لیول:</string>
+
+    <!-- Help screen -->
+    <string name="help">مدد</string>
+    <string name="view_in_google_play">گوگل پلے اسٹور میں دیکھیں</string>
+    <string name="beta_program">بیٹا پروگرام</string>
+    <string name="faq">اکثر پوچھے گئے سوالات</string>
+    <string name="question_1">QR &amp; Bar Code Scanner Plus کیا ہے؟</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus ایک مفت ایپ ہے جو آپ کو QR کوڈز اسکین کرنے اور بنانے کی اجازت دیتی ہے۔ یہ تمام عام بارکوڈ فارمیٹس کو اسکین کرسکتا ہے، بشمول QR، ڈیٹا میٹرکس، Aztec، UPC، EAN، اور بہت کچھ۔</string>
+    <string name="question_2">QR &amp; Bar Code Scanner Plus استعمال کرنے کے کیا فوائد ہیں؟</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus ایک طاقتور، ورسٹائل اور مفت ایپ ہے جو تمام عام بارکوڈ فارمیٹس کو اسکین کرسکتی ہے، اندھیرے میں اسکین کرنے کے لیے فلیش لائٹ استعمال کرسکتی ہے، دور سے بارکوڈ پڑھنے کے لیے زوم کرسکتی ہے، Wi-Fi سے منسلک ہوسکتی ہے، متن، روابط، ایپس، بک مارکس اور کلپ بورڈ سے QR کوڈز بناسکتی ہے، اور اس کا ایک سادہ اور بدیہی انٹرفیس ہے۔</string>
+    <string name="question_3">QR &amp; Bar Code Scanner Plus کے لیے سسٹم کے تقاضے کیا ہیں؟</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus تمام Android آلات کے ساتھ مطابقت رکھتا ہے جو Android 8.0 (Oreo) یا اس سے اعلیٰ ورژن پر چل رہے ہیں۔</string>
+    <string name="question_4">میں QR &amp; Bar Code Scanner Plus کے ساتھ QR کوڈ کیسے اسکین کروں؟</string>
+    <string name="summary_preference_faq_4">QR &amp; Bar Code Scanner Plus کے ساتھ QR کوڈ اسکین کرنے کے لیے، بس ایپ کھولیں اور اپنے فون کے کیمرہ کو QR کوڈ پر رکھیں۔ ایپ خود بخود کوڈ کو اسکین کرے گی اور نتائج دکھائے گی۔</string>
+    <string name="question_5"> میں QR &amp; Bar Code Scanner Plus کے ساتھ QR کوڈ کیسے بناؤں؟</string>
+    <string name="summary_preference_faq_5">QR &amp; Bar Code Scanner Plus کے ساتھ QR کوڈ بنانے کے لیے، ایپ کھولیں اور \'تخلیق کریں\' مینو پر جائیں۔ جس قسم کا QR کوڈ یا بار کوڈ آپ چاہتے ہیں اسے منتخب کریں اور وہ ڈیٹا درج کریں جسے آپ QR کوڈ میں شامل کرنا چاہتے ہیں اور \'تخلیق کریں\' بٹن پر ٹیپ کریں۔ اس کے بعد ایپ ایک QR کوڈ بنائے گی جسے آپ محفوظ یا شیئر کرسکتے ہیں۔</string>
+    <string name="question_6">میں QR &amp; Bar Code Scanner Plus کا تھیم کیسے تبدیل کروں؟</string>
+    <string name="summary_preference_faq_6">QR &amp; Bar Code Scanner Plus کا تھیم ایپ کی ترتیبات میں جاکر اور مطلوبہ تھیم منتخب کرکے تبدیل کیا جاسکتا ہے۔</string>
+    <string name="question_7">میں بگ کی اطلاع کیسے دوں؟</string>
+    <string name="summary_preference_faq_7">اگر آپ کو QR &amp; Bar Code Scanner Plus میں کوئی بگ ملتا ہے، تو آپ ایپ کے GitHub صفحے پر جاکر اور ایک نیا مسئلہ بنا کر اس کی اطلاع دے سکتے ہیں۔</string>
+    <string name="question_8">کیا QR &amp; Bar Code Scanner Plus استعمال کرنا محفوظ ہے؟</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus استعمال کرنے کے لیے ایک محفوظ ایپ ہے۔ ایپ صرف Firebase Crashlytics اور Firebase Analytics کے ذریعے غلطی کے نوشتہ جات جمع کرتی ہے، جنہیں بند کیا جاسکتا ہے۔</string>
+    <string name="question_9">میں ایپ کے ڈویلپر سے کیسے رابطہ کروں؟</string>
+    <string name="summary_preference_faq_9">اگر آپ کو ایپ کے ساتھ کوئی سوال یا پریشانی ہے، تو آپ ایپ کے \'مدد اور تاثرات\' صفحے کے ذریعے ڈویلپر سے رابطہ کرسکتے ہیں۔</string>
+    <string name="contact_support_title">سپورٹ سے رابطہ کریں</string>
+    <string name="contact_support_description">اپنے مقصد تک پہنچنے میں مدد حاصل کرنے کے لیے تفصیلات شیئر کریں۔</string>
+    <string name="send_feedback">تاثرات بھیجیں</string>
+    <string name="contact_support_email_subject">%1$s کے لیے سپورٹ کی درخواست</string>
+    <string name="contact_support_email_body">ہیلو،\n\nمجھے QR &amp; Bar Code Scanner Plus کے ساتھ مدد کی ضرورت ہے۔\n\nشکریہ!</string>
+    <string name="version_info">ورژن کی معلومات</string>
+    <string name="version">ورژن %1$s</string>
+    <string name="faq_state_collapsed">سکیڑا ہوا</string>
+    <string name="faq_state_expanded">پھیلایا ہوا</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">اس درخواست کو سنبھالنے کے لیے کوئی ای میل ایپس دستیاب نہیں ہیں۔</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">ڈویلپر کی حمایت کریں</string>
+    <string name="paid_support">ادا شدہ سپورٹ</string>
+    <string name="summary_donations">مستقبل کی ترقی کی حمایت کے لیے ایک وقتی عطیہ کی رقم منتخب کریں۔</string>
+    <string name="non_paid_support">غیر ادا شدہ سپورٹ</string>
+    <string name="web_ad">ہمارے سپورٹ پیج پر جائیں</string>
+    <string name="support_purchase_thank_you">ایپ کی حمایت کے لیے آپ کا بہت بہت شکریہ! 🎉</string>
+    <string name="support_purchase_restored">آپ کی حمایت بحال کردی گئی ہے۔</string>
+    <string name="support_purchase_revoked">آپ کی حمایت کی خریداری منسوخ کردی گئی تھی۔</string>
+    <string name="support_purchase_error">کچھ غلط ہو گیا۔ براہ کرم جلد ہی دوبارہ کوشش کریں۔</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">اشتہار</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">ابھی آزمائیں!!!</string>
+    <string name="share_using">استعمال کرکے شیئر کریں…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">اس طرح محفوظ کریں</string>
+    <string name="save">محفوظ کریں</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">تصدیق کریں</string>
+    <string name="error">خرابی</string>
+    <string name="something_went_wrong">کچھ غلط ہو گیا</string>
+    <string name="dialog_delete">حذف کریں؟</string>
+    <string name="edit_name">نام میں ترمیم کریں</string>
+    <string name="require_restart">دوبارہ شروع کرنے کی ضرورت ہے!</string>
+    <string name="summary_require_restart">اثر انداز ہونے کے لیے براہ کرم ایپ کو دوبارہ شروع کریں!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">کیلنڈر میں شامل کریں</string>
+    <string name="add_to_contacts">رابطوں میں شامل کریں</string>
+    <string name="call" tools:ignore="StringFormatCount">%s کو کال کریں</string>
+    <string name="send_sms_mms_to">%s کو SMS/MMS بھیجیں</string>
+    <string name="email_to">%s کو ای میل کریں</string>
+    <string name="show_location">مقام دکھائیں</string>
+    <string name="connect_to_wifi">Wi-Fi سے جڑیں</string>
+    <string name="open_wifi_settings">Wi-Fi کی ترتیبات کھولیں</string>
+    <string name="copy_network_name">نیٹ ورک کا نام کاپی کریں</string>
+    <string name="copy_network_password">نیٹ ورک کا پاس ورڈ کاپی کریں</string>
+    <string name="open_app">ایپ کھولیں</string>
+    <string name="open_in_market">مارکیٹ میں کھولیں</string>
+    <string name="open_in_youtube">یوٹیوب میں کھولیں</string>
+    <string name="save_to_bookmark">بک مارکس میں محفوظ کریں</string>
+    <string name="open_link">لنک کھولیں</string>
+    <string name="open_in_other_app">دوسری ایپ میں کھولیں</string>
+    <string name="show_password">پاس ورڈ دکھائیں</string>
+    <string name="search_on_the_web">ویب پر تلاش کریں</string>
+    <string name="connecting">جڑ رہا ہے…</string>
+    <string name="tooltip_view_code">کوڈ دیکھیں</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">پاس ورڈ بنانے سے قاصر</string>
+    <string name="error_missing_otp_data">OTP تفصیلات دکھانے سے قاصر۔</string>
+    <string name="counter">کاؤنٹر: %s</string>
+    <string name="timer_left">%1$s:%2$s باقی ہیں</string>
+    <string name="refresh">ریفریش کریں</string>
+    <string name="tooltip_generate_new_secret">نیا خفیہ بنائیں</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">یوٹیوب URL</string>
+    <string name="barcode_schema_boarding_pass">بورڈنگ پاس</string>
+
+    <!-- Snackbars -->
+    <string name="saved">محفوظ ہو گیا</string>
+    <string name="snack_unable_to_open_google_play_store">گوگل پلے اسٹور کھولنے سے قاصر۔</string>
+    <string name="snack_copied_to_clipboard">کلپ بورڈ پر کاپی ہو گیا! 📋</string>
+    <string name="snack_saved_to_downloads">ڈاؤن لوڈز میں محفوظ ہو گیا!</string>
+    <string name="snack_saved_to_gallery">گیلری میں محفوظ ہو گیا</string>
+    <string name="snack_no_app_found">اس کارروائی کے لیے کوئی ایپ نہیں ملی۔ براہ کرم ایک مطابقت پذیر ایپ انسٹال کریں۔</string>
+    <string name="snack_feedback">ہمیں درجہ بندی کرنے کے لیے شکریہ! ❤️</string>
+</resources>

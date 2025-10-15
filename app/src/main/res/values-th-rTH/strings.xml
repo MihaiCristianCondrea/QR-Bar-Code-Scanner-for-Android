@@ -1,0 +1,449 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">สแกนคิวอาร์โค้ดและบาร์โค้ดทุกชนิดได้อย่างง่ายดาย 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">ยินดีต้อนรับ</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">โปรดอ่านและยอมรับข้อกำหนดในการให้บริการและนโยบายความเป็นส่วนตัวของเราเพื่อดำเนินการต่อ</string>
+    <string name="browse_terms_of_service_and_privacy_policy">เรียกดู <i><u>ข้อกำหนดในการให้บริการ</u></i> และ <i><u>นโยบายความเป็นส่วนตัว</u></i></string>
+    <string name="agree">ยอมรับ</string>
+    <string name="tooltip_agree">ยอมรับข้อกำหนดและเงื่อนไข</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">ข้าม</string>
+    <string name="back">ย้อนกลับ</string>
+    <string name="next">ถัดไป</string>
+    <string name="onboarding_theme_title">เลือกรูปลักษณ์ของคุณ</string>
+    <string name="onboarding_theme_description">เลือกธีมที่เหมาะกับคุณ</string>
+    <string name="onboarding_theme_follow_system_title">ใช้ธีมเดียวกับระบบ</string>
+    <string name="onboarding_theme_follow_system_description">ปรับให้ตรงกับการตั้งค่าอุปกรณ์ของคุณโดยอัตโนมัติ</string>
+    <string name="onboarding_theme_light_title">ธีมสว่าง</string>
+    <string name="onboarding_theme_light_description">สีสว่างพร้อมคอนทราสต์สูงสุด</string>
+    <string name="onboarding_theme_dark_title">ธีมมืด</string>
+    <string name="onboarding_theme_dark_description">เหมาะสำหรับสภาพแวดล้อมที่มีแสงน้อย</string>
+    <string name="onboarding_start_title">เราควรเริ่มจากตรงไหน?</string>
+    <string name="onboarding_start_description">เลือกหน้าจอแรกที่คุณเห็นเมื่อเปิดแอป</string>
+    <string name="onboarding_start_scan_description">เปิดไปยังเครื่องสแกนโดยตรงเพื่อให้คุณสามารถเล็งและสแกนได้ทันที</string>
+    <string name="onboarding_start_create_description">เข้าสู่เครื่องมือสร้างเพื่อออกแบบโค้ดใหม่ได้ทันที</string>
+    <string name="onboarding_start_history_description">ตรวจสอบการสแกนที่บันทึกไว้ทันทีที่แอปเปิดขึ้น</string>
+    <string name="bottom_navigation_labels_description">ตัดสินใจว่าป้ายกำกับจะปรากฏในแถบนำทางด้านล่างอย่างไร</string>
+    <string name="onboarding_labels_all">แสดงป้ายกำกับสำหรับทุกแท็บ</string>
+    <string name="onboarding_labels_selected">แสดงเฉพาะป้ายกำกับของแท็บที่เลือก</string>
+    <string name="onboarding_labels_hidden">ซ่อนป้ายกำกับทั้งหมดเพื่อให้ดูเรียบง่าย</string>
+    <string name="privacy_icon">ไอคอนความเป็นส่วนตัว</string>
+    <string name="onboarding_data_title">ควบคุมข้อมูลของคุณ</string>
+    <string name="onboarding_data_subtitle">คุณเป็นผู้ตัดสินใจว่าเราจะเก็บข้อมูลใดบ้าง คุณสามารถเปลี่ยนแปลงได้ตลอดเวลาในการตั้งค่า</string>
+    <string name="onboarding_data_toggle">การใช้งานและการวินิจฉัย</string>
+    <string name="onboarding_data_active">การรวบรวมข้อมูลวิเคราะห์เปิดอยู่</string>
+    <string name="onboarding_data_inactive">การรวบรวมข้อมูลวิเคราะห์ปิดอยู่</string>
+    <string name="onboarding_data_ads">โฆษณาที่ปรับให้เหมาะกับคุณ</string>
+    <string name="onboarding_data_ads_desc">ช่วยให้เราแสดงโฆษณาที่เกี่ยวข้องกับคุณมากขึ้น</string>
+    <string name="onboarding_data_ads_disabled">คุณจะยังคงเห็นโฆษณา แต่อาจมีความเกี่ยวข้องน้อยลง</string>
+    <string name="privacy_policy_link">นโยบายความเป็นส่วนตัว</string>
+    <string name="success_icon">ไอคอนสำเร็จ</string>
+    <string name="onboarding_done_title">คุณพร้อมแล้ว!</string>
+    <string name="onboarding_done_subtitle">บันทึกการตั้งค่าของคุณแล้ว ขอให้สนุกกับแอป</string>
+    <string name="get_started_button">เริ่มต้นใช้งาน</string>
+
+    <!-- Main screen -->
+    <string name="menu">เมนู</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">การตั้งค่า</string>
+    <string name="help_and_feedback">ความช่วยเหลือและข้อเสนอแนะ</string>
+    <string name="updates">อัปเดต</string>
+    <string name="share">แชร์</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">สแกน</string>
+    <string name="scan_image">สแกนรูปภาพ</string>
+    <string name="scan_barcode_from_image_not_found">ไม่พบรหัสบาร์โค้ดในรูปภาพนี้</string>
+    <string name="barcode_error_missing_extra">เราไม่สามารถเปิดบาร์โค้ดนี้ได้ กรุณาลองสแกนอีกครั้ง</string>
+    <string name="flash">แฟลช</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">หมุนซ้าย</string>
+    <string name="rotate_right">หมุนขวา</string>
+    <string name="choose_another_image">เลือกรูปภาพอื่น</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">สร้าง</string>
+    <string name="qr_code">คิวอาร์โค้ด</string>
+    <string name="content_from_clipboard">เนื้อหาจากคลิปบอร์ด</string>
+    <string name="text">ข้อความ</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">ตำแหน่ง</string>
+    <string name="contact_v_card">รายชื่อ (VCard)</string>
+
+    <string name="more_qr_codes">คิวอาร์โค้ดเพิ่มเติม</string>
+    <string name="barcode">บาร์โค้ด</string>
+    <string name="all_barcodes_codes">บาร์โค้ดและโค้ด 2D อื่นๆ</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">สร้างคิวอาร์โค้ด</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">รายชื่อ (MeCard)</string>
+    <string name="event">กิจกรรม</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">หรือ:</string>
+    <string name="summary_alternatively_url">- เปิดแอปเบราว์เซอร์ของคุณ\n- โหลดเว็บไซต์\n- คลิก "แชร์" จากเมนู\n- เลือกแอปนี้</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">การเข้ารหัส</string>
+    <string name="network_name">ชื่อเครือข่าย</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="hidden">ซ่อน</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">ละติจูด</string>
+    <string name="longitude">ลองจิจูด</string>
+    <string name="altitude">ความสูง (ไม่บังคับ)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">รายชื่อ</string>
+    <string name="first_name">ชื่อ</string>
+    <string name="last_name">นามสกุล</string>
+    <string name="organization">องค์กร</string>
+    <string name="job">ตำแหน่งงาน</string>
+    <string name="email">อีเมล</string>
+    <string name="phone">โทรศัพท์</string>
+    <string name="fax">แฟกซ์</string>
+    <string name="website">เว็บไซต์</string>
+    <string name="summary_alternatively_contact">- เปิดแอปรายชื่อของคุณ\n- เปิดรายชื่อที่มีอยู่หรือสร้างใหม่\n- คลิก "แชร์" จากเมนู\n- เลือกแอปนี้</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">ประเภท</string>
+    <string name="algorithm">อัลกอริทึม</string>
+    <string name="issuer">ผู้ออก</string>
+    <string name="account">บัญชี</string>
+    <string name="period">ระยะเวลา</string>
+    <string name="hint_counter">ตัวนับ</string>
+    <string name="secret">รหัสลับ</string>
+    <string name="random_secret">รหัสลับแบบสุ่ม</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">หัวข้อ</string>
+    <string name="organizer">ผู้จัด</string>
+    <string name="summary">สรุป</string>
+    <string name="start_date">วันที่เริ่มต้น</string>
+    <string name="end_date">วันที่สิ้นสุด</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">เรื่อง</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">ข้อความ</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">สกุลเงินดิจิทัล</string>
+    <string name="receiver_address">ที่อยู่ผู้รับ</string>
+    <string name="amount">จำนวน</string>
+    <string name="label">ป้ายกำกับ</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">บุ๊กมาร์ก</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">แอป</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">เพิ่มความสว่าง</string>
+    <string name="decrease_brightness">ลดความสว่าง</string>
+    <string name="add_to_favorites">เพิ่มในรายการโปรด</string>
+    <string name="delete">ลบ</string>
+    <string name="share_as_text">แชร์เป็นข้อความ</string>
+    <string name="copy_to_clipboard">คัดลอกไปยังคลิปบอร์ด</string>
+    <string name="save_as_text">บันทึกเป็นข้อความ</string>
+    <string name="share_as_image">แชร์เป็นรูปภาพ</string>
+    <string name="save_as_image">บันทึกเป็นรูปภาพ</string>
+    <string name="print">พิมพ์</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">สร้างบาร์โค้ด</string>
+    <string name="barcodes_2d">บาร์โค้ด 2D</string>
+    <string name="barcodes_1d">บาร์โค้ด 1D</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">ข้อความที่ไม่มีอักขระพิเศษ</string>
+    <string name="text_in_upper_case_without_special_characters">ข้อความตัวพิมพ์ใหญ่ที่ไม่มีอักขระพิเศษ</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">ตัวเลข</string>
+    <string name="seven_digits">7 หลัก</string>
+    <string name="eleven_digits">11 หลัก</string>
+    <string name="twelve_digits">12 หลัก</string>
+    <string name="even_number_of_digits">จำนวนหลักคู่</string>
+
+    <!-- History screen -->
+    <string name="history">ประวัติ</string>
+    <string name="all">ทั้งหมด</string>
+    <string name="favorites">รายการโปรด</string>
+    <string name="history_empty_message">คุณยังไม่มีการสแกนที่บันทึกไว้ สแกนหรือสร้างโค้ดเพื่อดูที่นี่</string>
+    <string name="export_your_history">ส่งออกประวัติของคุณ</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">ส่งออกประวัติ</string>
+    <string name="export_as">ส่งออกเป็น</string>
+    <string name="file_name">ชื่อไฟล์</string>
+    <string name="export">ส่งออก</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">การแจ้งเตือน</string>
+    <string name="summary_settings_notifications_overview">จัดการการแจ้งเตือนของแอป</string>
+    <string name="display">การแสดงผล</string>
+    <string name="summary_settings_display_overview">ปรับแต่งรูปลักษณ์และความรู้สึกของแอป</string>
+    <string name="scanner">เครื่องสแกน</string>
+    <string name="summary_settings_scanner_overview">ปรับพฤติกรรมการสแกนและการตอบสนองของกล้อง</string>
+    <string name="summary_settings_history_overview">ควบคุมวิธีการบันทึกการสแกนและจัดการประวัติของคุณ</string>
+    <string name="security_and_privacy">ความปลอดภัยและความเป็นส่วนตัว</string>
+    <string name="summary_settings_security_privacy_overview">จัดการการตั้งค่าความเป็นส่วนตัวของคุณ</string>
+    <string name="advanced">ขั้นสูง</string>
+    <string name="summary_settings_advanced_overview">สำรวจการตั้งค่าขั้นสูงเพิ่มเติม</string>
+    <string name="about">เกี่ยวกับ</string>
+    <string name="summary_settings_about_overview">เรียนรู้เพิ่มเติมเกี่ยวกับ %1$s</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">รูปลักษณ์</string>
+    <string name="theme">ธีม</string>
+    <string name="follow_system">ใช้โหมดของระบบ</string>
+    <string name="light_mode">โหมดสว่าง</string>
+    <string name="dark_mode">โหมดมืด</string>
+    <string name="auto_battery_mode">โหมดมืดอัตโนมัติตามแบตเตอรี่</string>
+    <string name="summary_preference_settings_theme">เลือกลักษณะของแอป ปัจจุบัน: %1$s</string>
+    <string name="navigation">การนำทาง</string>
+    <string name="default_tab">แท็บเริ่มต้น</string>
+    <string name="summary_preference_settings_default_tab">เลือกหน้าจอแรกที่คุณเห็นเมื่อเปิดแอป ปัจจุบัน: %1$s</string>
+    <string name="bottom_navigation_bar_labels">ป้ายกำกับแถบนำทางด้านล่าง</string>
+    <string name="labeled">มีป้ายกำกับ</string>
+    <string name="selected_variant">ที่เลือก</string>
+    <string name="unlabeled">ไม่มีป้ายกำกับ</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">ควบคุมการแสดงป้ายกำกับในแถบด้านล่าง ปัจจุบัน: %1$s</string>
+    <string name="inverse_colors">สลับสี</string>
+    <string name="summary_preference_settings_inverse_colors">แสดงโค้ดที่มีเนื้อหาสีขาวบนพื้นหลังสีเข้มและในโหมดมืด</string>
+    <string name="language">ภาษา</string>
+    <string name="summary_preference_settings_language_value">เลือกภาษาของแอป ปัจจุบัน: %1$s</string>
+    <string name="summary_preference_settings_language">เปลี่ยนภาษาที่ใช้ในแอป</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">เปิดเนื้อหาของโค้ดที่สแกนโดยอัตโนมัติ</string>
+    <string name="summary_preference_settings_open_content_automatically">อาจเปิดเนื้อหาที่เป็นอันตราย</string>
+    <string name="summary_preference_settings_copy_to_clipboard">คัดลอกบาร์โค้ดที่สแกนไปยังคลิปบอร์ด</string>
+    <string name="simple_auto_focus">โหมดโฟกัสอัตโนมัติแบบง่าย</string>
+    <string name="summary_preference_settings_simple_auto_focus">เปิดใช้งานเฉพาะเมื่อคุณมีปัญหาในการโฟกัส</string>
+    <string name="summary_preference_settings_enable_flash_on_start">เปิดแฟลชเมื่อเริ่มต้น</string>
+    <string name="vibrate">สั่น</string>
+    <string name="summary_preference_settings_vibrate">สั่นเมื่อสแกน</string>
+    <string name="continuous_scanning">การสแกนต่อเนื่อง</string>
+    <string name="summary_preference_settings_continuous_scanning">บันทึกการสแกนไปยังประวัติเท่านั้น</string>
+    <string name="confirm_scans_manually">ยืนยันการสแกนด้วยตนเอง</string>
+    <string name="summary_preference_settings_confirm_scans_manually">หลีกเลี่ยงการสแกนโดยไม่ตั้งใจ</string>
+    <string name="camera">กล้อง</string>
+    <string name="summary_preference_settings_camera">เลือกกล้องที่จะเปิดเมื่อคุณเริ่มสแกน</string>
+    <string name="front">ด้านหน้า</string>
+    <string name="camera_back">ด้านหลัง</string>
+    <string name="supported_formats">รูปแบบที่รองรับ</string>
+    <string name="summary_preference_settings_supported_formats">เลือกรูปแบบบาร์โค้ดที่เครื่องสแกนจะค้นหา</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">บันทึกบาร์โค้ดที่สแกนไปยังประวัติ</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">จัดเก็บทุกการสแกนเพื่อให้คุณสามารถกลับมาดูได้ในภายหลัง</string>
+    <string name="save_created_barcodes_to_history">บันทึกบาร์โค้ดที่สร้างไปยังประวัติ</string>
+    <string name="summary_preference_settings_save_created_barcodes">เก็บโค้ดที่คุณสร้างให้ค้นหาได้ง่าย</string>
+    <string name="do_not_save_duplicates">ไม่บันทึกรายการซ้ำ</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">หลีกเลี่ยงรายการซ้ำในประวัติ</string>
+    <string name="clear_history">ล้างประวัติ</string>
+    <string name="summary_preference_settings_clear_history">ลบการสแกนที่บันทึกไว้ทั้งหมดออกจากอุปกรณ์</string>
+    <string name="summary_delete_history">ลบประวัติหรือไม่</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">ความเป็นส่วนตัว</string>
+    <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
+    <string name="summary_preference_settings_privacy_policy">ดูนโยบายที่ควบคุมวิธีการจัดการข้อมูลของคุณ</string>
+    <string name="terms_of_service">ข้อกำหนดในการให้บริการ</string>
+    <string name="summary_preference_settings_terms_of_service">ตรวจสอบข้อกำหนดที่คุณยอมรับเมื่อใช้บริการนี้</string>
+    <string name="code_of_conduct">หลักจรรยาบรรณ</string>
+    <string name="summary_preference_settings_code_of_conduct">ทำความเข้าใจกฎและแนวทางปฏิบัติภายในบริการ</string>
+    <string name="permissions">สิทธิ์</string>
+    <string name="summary_preference_settings_permissions">จัดการสิทธิ์ที่มอบให้กับบริการ</string>
+    <string name="usage_and_diagnostics">การใช้งานและการวินิจฉัย</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">แบ่งปันข้อมูลเพื่อช่วยปรับปรุงประสบการณ์ในแอป</string>
+    <string name="legal">กฎหมาย</string>
+    <string name="legal_notices">ประกาศทางกฎหมาย</string>
+    <string name="summary_preference_settings_legal_notices">ดูข้อมูลทางกฎหมายเกี่ยวกับบริการ</string>
+    <string name="license">ใบอนุญาต</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">ปกติ</string>
+    <string name="access_network_state">เข้าถึงสถานะเครือข่าย [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">อนุญาตให้แอปตรวจสอบการเชื่อมต่อเครือข่ายและดึงข้อมูลเกี่ยวกับ Wi-Fi รวมถึงสถานะการเปิดใช้งานและชื่ออุปกรณ์ Wi-Fi ที่เชื่อมต่อ</string>
+    <string name="ad_id">รหัสโฆษณา [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">อนุญาตให้แอปดึงและใช้ตัวระบุโฆษณาที่เชื่อมโยงกับอุปกรณ์ของผู้ใช้ เพื่อให้โฆษณาที่ปรับให้เหมาะกับแต่ละบุคคล วัดประสิทธิภาพโฆษณา และแสดงโฆษณาบนอุปกรณ์ Android 13 หรือใหม่กว่า</string>
+    <string name="billing">การเรียกเก็บเงิน [BILLING]</string>
+    <string name="summary_preference_permissions_billing">อนุญาตให้แอปใช้ไลบรารีการเรียกเก็บเงินของ Google Play เพื่อจัดการการซื้อในแอปและการบริจาค</string>
+    <string name="check_license">ตรวจสอบใบอนุญาต [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">อนุญาตให้แอปตรวจสอบการปฏิบัติตามข้อตกลงใบอนุญาตและบังคับใช้เงื่อนไขการออกใบอนุญาตเพื่อปกป้องทรัพย์สินทางปัญญา</string>
+    <string name="foreground_service">บริการเบื้องหน้า [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">อนุญาตให้แอปสร้างและใช้บริการที่ทำงานในเบื้องหน้า ทำให้มีความสำคัญเหนือกระบวนการเบื้องหลังอื่นๆ และปรับปรุงประสิทธิภาพและความน่าเชื่อถือ</string>
+    <string name="internet">อินเทอร์เน็ต [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">อนุญาตให้แอปสร้างการเชื่อมต่ออินเทอร์เน็ตเพื่อส่งรายงานข้อผิดพลาดหรือตรวจสอบการอัปเดต</string>
+    <string name="vibrate_permission">สั่น [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">อนุญาตให้แอปสั่นเมื่อสแกนคิวอาร์โค้ด</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">อนุญาตให้แอปเชื่อมต่อกับเครือข่าย Wi-Fi โดยการสแกนคิวอาร์โค้ด</string>
+    <string name="runtime">ขณะใช้งาน</string>
+    <string name="post_notifications">โพสต์การแจ้งเตือน [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">อนุญาตให้แอปแสดงการแจ้งเตือนบนอุปกรณ์ที่ใช้ Android 13 หรือใหม่กว่า</string>
+    <string name="camera_permission">กล้อง [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner จัดการการจับภาพ QR และบาร์โค้ดโดยไม่แชร์ฟีดกล้องกับแอป</string>
+    <string name="read_contacts">อ่านรายชื่อ [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">อนุญาตให้แอปสร้างคิวอาร์โค้ดจากรายชื่อในสมุดโทรศัพท์ของคุณ</string>
+    <string name="read_storage">อ่านพื้นที่เก็บข้อมูล [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">อนุญาตให้แอปเข้าถึงพื้นที่เก็บข้อมูลของคุณเพื่อบันทึกคิวอาร์โค้ดหรือบาร์โค้ดเป็นข้อความหรือรูปภาพ</string>
+    <string name="read_images">อ่านรูปภาพ [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">อนุญาตให้แอปอ่านรูปภาพจากอุปกรณ์ของคุณเพื่อสแกนหาคิวอาร์โค้ดและบาร์โค้ดบนอุปกรณ์ที่ใช้ Android 13 หรือใหม่กว่า</string>
+    <string name="write_storage">เขียนไปยังพื้นที่เก็บข้อมูล [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">อนุญาตให้แอปเขียนไปยังพื้นที่เก็บข้อมูลของคุณเพื่อบันทึกไฟล์ต่างๆ เช่น รูปภาพ วิดีโอ และเอกสาร</string>
+    <string name="special">พิเศษ</string>
+    <string name="access_notification_policy">เข้าถึงนโยบายการแจ้งเตือน [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">อนุญาตให้แอปเข้าถึงและแก้ไขนโยบายการแจ้งเตือนของอุปกรณ์ ควบคุมวิธีการและเวลาที่การแจ้งเตือนจะแสดงต่อผู้ใช้ และให้คุณสมบัติการจัดการการแจ้งเตือนแบบกำหนดเอง</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">เครื่องมือค้นหา</string>
+    <string name="summary_preference_settings_search_engines">เลือกเครื่องมือค้นหาสำหรับการค้นหาเว็บ</string>
+    <string name="none">ไม่มี</string>
+    <string name="ask_every_time">ถามทุกครั้ง</string>
+    <string name="error_reporting">การรายงานข้อผิดพลาด</string>
+    <string name="bug_report">รายงานข้อผิดพลาด</string>
+    <string name="summary_preference_settings_bug_report">ส่งรายงานข้อผิดพลาดและคำขอคุณสมบัติไปยังหน้าปัญหาของที่เก็บ GitHub ของแอป</string>
+    <string name="cache_management">การจัดการแคช</string>
+    <string name="clear_cache">ล้างแคช</string>
+    <string name="summary_preference_settings_cache_management">ล้างข้อมูลชั่วคราวของแอปพลิเคชัน</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">ข้อมูลแอป</string>
+    <string name="application_build_version">เวอร์ชันบิวด์ของแอปพลิเคชัน</string>
+    <string name="open_source_licenses">ใบอนุญาตโอเพนซอร์ส</string>
+    <string name="summary_preference_settings_open_source_licenses">ดูใบอนุญาตสำหรับไลบรารีที่เราใช้</string>
+    <string name="device_info">ข้อมูลอุปกรณ์</string>
+    <string name="app_build">บิวด์แอป: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">ผู้ผลิต:</string>
+    <string name="device_model">รุ่นอุปกรณ์:</string>
+    <string name="android_version">เวอร์ชัน Android:</string>
+    <string name="api_level">ระดับ API:</string>
+
+    <!-- Help screen -->
+    <string name="help">ความช่วยเหลือ</string>
+    <string name="view_in_google_play">ดูใน Google Play Store</string>
+    <string name="beta_program">โปรแกรมเบต้า</string>
+    <string name="faq">คำถามที่พบบ่อย</string>
+    <string name="question_1">QR &amp; Bar Code Scanner Plus คืออะไร</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus เป็นแอปฟรีที่ให้คุณสแกนและสร้างคิวอาร์โค้ด สามารถสแกนรูปแบบบาร์โค้ดทั่วไปทั้งหมด รวมถึง QR, Data Matrix, Aztec, UPC, EAN และอื่นๆ อีกมากมาย</string>
+    <string name="question_2">ประโยชน์ของการใช้ QR &amp; Bar Code Scanner Plus คืออะไร</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus เป็นแอปที่มีประสิทธิภาพ หลากหลาย และฟรี สามารถสแกนรูปแบบบาร์โค้ดทั่วไปทั้งหมด ใช้ไฟฉายเพื่อสแกนในที่มืด ซูมเพื่ออ่านบาร์โค้ดจากระยะไกล เชื่อมต่อ Wi-Fi สร้างคิวอาร์โค้ดจากข้อความ รายชื่อ แอป บุ๊กมาร์ก และคลิปบอร์ด และมีอินเทอร์เฟซที่เรียบง่ายและใช้งานง่าย</string>
+    <string name="question_3">ข้อกำหนดของระบบสำหรับ QR &amp; Bar Code Scanner Plus คืออะไร</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus เข้ากันได้กับอุปกรณ์ Android ทั้งหมดที่ใช้ Android 8.0 (Oreo) หรือสูงกว่า</string>
+    <string name="question_4">ฉันจะสแกนคิวอาร์โค้ดด้วย QR &amp; Bar Code Scanner Plus ได้อย่างไร</string>
+    <string name="summary_preference_faq_4">หากต้องการสแกนคิวอาร์โค้ดด้วย QR &amp; Bar Code Scanner Plus เพียงเปิดแอปแล้วเล็งกล้องโทรศัพท์ไปที่คิวอาร์โค้ด แอปจะสแกนโค้ดโดยอัตโนมัติและแสดงผลลัพธ์</string>
+    <string name="question_5"> ฉันจะสร้างคิวอาร์โค้ดด้วย QR &amp; Bar Code Scanner Plus ได้อย่างไร</string>
+    <string name="summary_preference_faq_5">หากต้องการสร้างคิวอาร์โค้ดด้วย QR &amp; Bar Code Scanner Plus ให้เปิดแอปแล้วไปที่เมนู \'สร้าง\' เลือกประเภทของคิวอาร์โค้ดหรือบาร์โค้ดที่คุณต้องการ และป้อนข้อมูลที่คุณต้องการรวมไว้ในคิวอาร์โค้ด แล้วแตะที่ปุ่ม \'สร้าง\' จากนั้นแอปจะสร้างคิวอาร์โค้ดที่คุณสามารถบันทึกหรือแชร์ได้</string>
+    <string name="question_6">ฉันจะเปลี่ยนธีมของ QR &amp; Bar Code Scanner Plus ได้อย่างไร</string>
+    <string name="summary_preference_faq_6">สามารถเปลี่ยนธีมของ QR &amp; Bar Code Scanner Plus ได้โดยไปที่การตั้งค่าของแอปและเลือกธีมที่ต้องการ</string>
+    <string name="question_7">ฉันจะรายงานข้อผิดพลาดได้อย่างไร</string>
+    <string name="summary_preference_faq_7">หากคุณพบข้อผิดพลาดใน QR &amp; Bar Code Scanner Plus คุณสามารถรายงานได้โดยไปที่หน้า GitHub ของแอปและสร้างปัญหาใหม่</string>
+    <string name="question_8">QR &amp; Bar Code Scanner Plus ปลอดภัยต่อการใช้งานหรือไม่</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus เป็นแอปที่ปลอดภัยในการใช้งาน แอปจะรวบรวมเฉพาะบันทึกข้อผิดพลาดผ่าน Firebase Crashlytics และ Firebase Analytics ซึ่งสามารถปิดได้</string>
+    <string name="question_9">ฉันจะติดต่อนักพัฒนาแอปได้อย่างไร</string>
+    <string name="summary_preference_faq_9">หากคุณมีคำถามหรือปัญหาเกี่ยวกับแอป คุณสามารถติดต่อนักพัฒนาผ่านหน้า \'ความช่วยเหลือและข้อเสนอแนะ\' ของแอป</string>
+    <string name="contact_support_title">ติดต่อฝ่ายสนับสนุน</string>
+    <string name="contact_support_description">แบ่งปันรายละเอียดเพื่อรับความช่วยเหลือในการบรรลุเป้าหมายของคุณ</string>
+    <string name="send_feedback">ส่งข้อเสนอแนะ</string>
+    <string name="contact_support_email_subject">คำขอรับการสนับสนุนสำหรับ %1$s</string>
+    <string name="contact_support_email_body">สวัสดี\n\nฉันต้องการความช่วยเหลือเกี่ยวกับ QR &amp; Bar Code Scanner Plus\n\nขอบคุณ!</string>
+    <string name="version_info">ข้อมูลเวอร์ชัน</string>
+    <string name="version">เวอร์ชัน %1$s</string>
+    <string name="faq_state_collapsed">ยุบแล้ว</string>
+    <string name="faq_state_expanded">ขยายแล้ว</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">ไม่มีแอปอีเมลที่พร้อมใช้งานเพื่อจัดการคำขอนี้</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">สนับสนุนนักพัฒนา</string>
+    <string name="paid_support">การสนับสนุนแบบชำระเงิน</string>
+    <string name="summary_donations">เลือกจำนวนเงินบริจาคครั้งเดียวเพื่อสนับสนุนการพัฒนาในอนาคต</string>
+    <string name="non_paid_support">การสนับสนุนที่ไม่ต้องชำระเงิน</string>
+    <string name="web_ad">เยี่ยมชมหน้าสนับสนุนของเรา</string>
+    <string name="support_purchase_thank_you">ขอบคุณมากที่สนับสนุนแอป! 🎉</string>
+    <string name="support_purchase_restored">การสนับสนุนของคุณได้รับการคืนค่าแล้ว</string>
+    <string name="support_purchase_revoked">การซื้อเพื่อสนับสนุนของคุณถูกเพิกถอน</string>
+    <string name="support_purchase_error">เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้งในไม่ช้า</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">โฆษณา</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">ลองเลย!!!</string>
+    <string name="share_using">แชร์โดยใช้…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">บันทึกเป็น</string>
+    <string name="save">บันทึก</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">ยืนยัน</string>
+    <string name="error">ข้อผิดพลาด</string>
+    <string name="something_went_wrong">เกิดข้อผิดพลาดบางอย่าง</string>
+    <string name="dialog_delete">ลบหรือไม่</string>
+    <string name="edit_name">แก้ไขชื่อ</string>
+    <string name="require_restart">ต้องรีสตาร์ท!</string>
+    <string name="summary_require_restart">เพื่อให้มีผล กรุณารีสตาร์ทแอป!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">เพิ่มในปฏิทิน</string>
+    <string name="add_to_contacts">เพิ่มในรายชื่อ</string>
+    <string name="call" tools:ignore="StringFormatCount">โทร %s</string>
+    <string name="send_sms_mms_to">ส่ง SMS/MMS ถึง %s</string>
+    <string name="email_to">ส่งอีเมลถึง %s</string>
+    <string name="show_location">แสดงตำแหน่ง</string>
+    <string name="connect_to_wifi">เชื่อมต่อกับ Wi-Fi</string>
+    <string name="open_wifi_settings">เปิดการตั้งค่า Wi-Fi</string>
+    <string name="copy_network_name">คัดลอกชื่อเครือข่าย</string>
+    <string name="copy_network_password">คัดลอกรหัสผ่านเครือข่าย</string>
+    <string name="open_app">เปิดแอป</string>
+    <string name="open_in_market">เปิดในมาร์เก็ต</string>
+    <string name="open_in_youtube">เปิดใน Youtube</string>
+    <string name="save_to_bookmark">บันทึกในบุ๊กมาร์ก</string>
+    <string name="open_link">เปิดลิงก์</string>
+    <string name="open_in_other_app">เปิดในแอปอื่น</string>
+    <string name="show_password">แสดงรหัสผ่าน</string>
+    <string name="search_on_the_web">ค้นหาบนเว็บ</string>
+    <string name="connecting">กำลังเชื่อมต่อ…</string>
+    <string name="tooltip_view_code">ดูโค้ด</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">ไม่สามารถสร้างรหัสผ่านได้</string>
+    <string name="error_missing_otp_data">ไม่สามารถแสดงรายละเอียด OTP ได้</string>
+    <string name="counter">ตัวนับ: %s</string>
+    <string name="timer_left">เหลือ %1$s:%2$s</string>
+    <string name="refresh">รีเฟรช</string>
+    <string name="tooltip_generate_new_secret">สร้างรหัสลับใหม่</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">URL ของ Youtube</string>
+    <string name="barcode_schema_boarding_pass">บัตรผ่านขึ้นเครื่อง</string>
+
+    <!-- Snackbars -->
+    <string name="saved">บันทึกแล้ว</string>
+    <string name="snack_unable_to_open_google_play_store">ไม่สามารถเปิด Google Play Store ได้</string>
+    <string name="snack_copied_to_clipboard">คัดลอกไปยังคลิปบอร์ดแล้ว! 📋</string>
+    <string name="snack_saved_to_downloads">บันทึกไปยังดาวน์โหลดแล้ว!</string>
+    <string name="snack_saved_to_gallery">บันทึกไปยังแกลเลอรีแล้ว</string>
+    <string name="snack_no_app_found">ไม่พบแอปสำหรับการดำเนินการนี้ โปรดติดตั้งแอปที่เข้ากันได้</string>
+    <string name="snack_feedback">ขอบคุณที่ให้คะแนนเรา! ❤️</string>
+</resources>

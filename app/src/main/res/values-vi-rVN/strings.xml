@@ -1,0 +1,449 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">Quét mọi loại mã QR và mã vạch một cách dễ dàng. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">Chào mừng</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">Đọc và đồng ý với Điều khoản dịch vụ và Chính sách quyền riêng tư của chúng tôi để tiếp tục.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">Duyệt qua <i><u>Điều khoản dịch vụ</u></i> và <i><u>Chính sách quyền riêng tư</u></i></string>
+    <string name="agree">Đồng ý</string>
+    <string name="tooltip_agree">Chấp nhận các điều khoản và điều kiện.</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">Bỏ qua</string>
+    <string name="back">Quay lại</string>
+    <string name="next">Tiếp theo</string>
+    <string name="onboarding_theme_title">Chọn giao diện của bạn</string>
+    <string name="onboarding_theme_description">Chọn giao diện phù hợp với bạn.</string>
+    <string name="onboarding_theme_follow_system_title">Theo giao diện hệ thống</string>
+    <string name="onboarding_theme_follow_system_description">Tự động khớp với cài đặt thiết bị của bạn.</string>
+    <string name="onboarding_theme_light_title">Giao diện sáng</string>
+    <string name="onboarding_theme_light_description">Màu sắc tươi sáng với độ tương phản tối đa.</string>
+    <string name="onboarding_theme_dark_title">Giao diện tối</string>
+    <string name="onboarding_theme_dark_description">Hoàn hảo cho môi trường thiếu sáng.</string>
+    <string name="onboarding_start_title">Chúng ta nên bắt đầu từ đâu?</string>
+    <string name="onboarding_start_description">Chọn màn hình đầu tiên bạn thấy khi mở ứng dụng.</string>
+    <string name="onboarding_start_scan_description">Mở trực tiếp đến máy quét để bạn có thể trỏ và quét ngay lập tức.</string>
+    <string name="onboarding_start_create_description">Chuyển ngay đến trình tạo để thiết kế mã mới.</string>
+    <string name="onboarding_start_history_description">Xem lại các bản quét đã lưu ngay khi ứng dụng khởi chạy.</string>
+    <string name="bottom_navigation_labels_description">Quyết định cách các nhãn xuất hiện trên thanh điều hướng dưới cùng.</string>
+    <string name="onboarding_labels_all">Hiển thị nhãn cho mọi tab.</string>
+    <string name="onboarding_labels_selected">Chỉ hiển thị nhãn của tab đã chọn.</string>
+    <string name="onboarding_labels_hidden">Ẩn tất cả nhãn để có giao diện tối giản.</string>
+    <string name="privacy_icon">Biểu tượng quyền riêng tư</string>
+    <string name="onboarding_data_title">Kiểm soát dữ liệu của bạn</string>
+    <string name="onboarding_data_subtitle">Bạn quyết định những gì chúng tôi thu thập. Bạn có thể thay đổi điều này bất cứ lúc nào trong Cài đặt.</string>
+    <string name="onboarding_data_toggle">Sử dụng &amp; chẩn đoán</string>
+    <string name="onboarding_data_active">Tính năng thu thập dữ liệu phân tích đang bật.</string>
+    <string name="onboarding_data_inactive">Tính năng thu thập dữ liệu phân tích đang tắt.</string>
+    <string name="onboarding_data_ads">Quảng cáo được cá nhân hóa</string>
+    <string name="onboarding_data_ads_desc">Giúp chúng tôi hiển thị quảng cáo phù hợp hơn với bạn.</string>
+    <string name="onboarding_data_ads_disabled">Bạn vẫn sẽ thấy quảng cáo, nhưng chúng có thể ít liên quan hơn.</string>
+    <string name="privacy_policy_link">Chính sách quyền riêng tư</string>
+    <string name="success_icon">Biểu tượng thành công</string>
+    <string name="onboarding_done_title">Bạn đã sẵn sàng!</string>
+    <string name="onboarding_done_subtitle">Tùy chọn của bạn đã được lưu. Hãy tận hưởng ứng dụng.</string>
+    <string name="get_started_button">Bắt đầu</string>
+
+    <!-- Main screen -->
+    <string name="menu">Menu</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">Cài đặt</string>
+    <string name="help_and_feedback">Trợ giúp &amp; phản hồi</string>
+    <string name="updates">Cập nhật</string>
+    <string name="share">Chia sẻ</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">Quét</string>
+    <string name="scan_image">Quét ảnh</string>
+    <string name="scan_barcode_from_image_not_found">Không phát hiện thấy mã vạch nào trong hình ảnh này.</string>
+    <string name="barcode_error_missing_extra">Chúng tôi không thể mở mã vạch này. Vui lòng thử quét lại.</string>
+    <string name="flash">Đèn flash</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">Xoay trái</string>
+    <string name="rotate_right">Xoay phải</string>
+    <string name="choose_another_image">Chọn ảnh khác</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">Tạo</string>
+    <string name="qr_code">Mã QR</string>
+    <string name="content_from_clipboard">Nội dung từ khay nhớ tạm</string>
+    <string name="text">Văn bản</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">Vị trí</string>
+    <string name="contact_v_card">Danh bạ (VCard)</string>
+
+    <string name="more_qr_codes">Thêm mã QR</string>
+    <string name="barcode">Mã vạch</string>
+    <string name="all_barcodes_codes">Mã vạch và các mã 2D khác</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">Tạo mã QR</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">Danh bạ (MeCard)</string>
+    <string name="event">Sự kiện</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">Hoặc:</string>
+    <string name="summary_alternatively_url">- Mở ứng dụng trình duyệt của bạn\n- Tải một trang web\n- Nhấp vào \"Chia sẻ\" từ menu\n- Chọn ứng dụng này.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">Mã hóa</string>
+    <string name="network_name">Tên mạng</string>
+    <string name="password">Mật khẩu</string>
+    <string name="hidden">Ẩn</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">Vĩ độ</string>
+    <string name="longitude">Kinh độ</string>
+    <string name="altitude">Độ cao (tùy chọn)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">Danh bạ</string>
+    <string name="first_name">Tên</string>
+    <string name="last_name">Họ</string>
+    <string name="organization">Tổ chức</string>
+    <string name="job">Chức vụ</string>
+    <string name="email">Email</string>
+    <string name="phone">Điện thoại</string>
+    <string name="fax">Fax</string>
+    <string name="website">Trang web</string>
+    <string name="summary_alternatively_contact">- Mở ứng dụng danh bạ của bạn\n- Mở một liên hệ hiện có hoặc tạo một liên hệ mới\n- Nhấp vào \"Chia sẻ\" từ menu\n- Chọn ứng dụng này</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">Loại</string>
+    <string name="algorithm">Thuật toán</string>
+    <string name="issuer">Nhà phát hành</string>
+    <string name="account">Tài khoản</string>
+    <string name="period">Khoảng thời gian</string>
+    <string name="hint_counter">Bộ đếm</string>
+    <string name="secret">Mã bí mật</string>
+    <string name="random_secret">Mã bí mật ngẫu nhiên</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">Tiêu đề</string>
+    <string name="organizer">Người tổ chức</string>
+    <string name="summary">Tóm tắt</string>
+    <string name="start_date">Ngày bắt đầu</string>
+    <string name="end_date">Ngày kết thúc</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">Chủ đề</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">Tin nhắn</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">Bitcoin</string>
+    <string name="cryptocurrency">Tiền điện tử</string>
+    <string name="receiver_address">Địa chỉ người nhận</string>
+    <string name="amount">Số tiền</string>
+    <string name="label">Nhãn</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">Dấu trang</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">Ứng dụng</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">Tăng độ sáng</string>
+    <string name="decrease_brightness">Giảm độ sáng</string>
+    <string name="add_to_favorites">Thêm vào mục yêu thích</string>
+    <string name="delete">Xóa</string>
+    <string name="share_as_text">Chia sẻ dưới dạng văn bản</string>
+    <string name="copy_to_clipboard">Sao chép vào khay nhớ tạm</string>
+    <string name="save_as_text">Lưu dưới dạng văn bản</string>
+    <string name="share_as_image">Chia sẻ dưới dạng hình ảnh</string>
+    <string name="save_as_image">Lưu dưới dạng hình ảnh</string>
+    <string name="print">In</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">Tạo mã vạch</string>
+    <string name="barcodes_2d">Mã vạch 2D</string>
+    <string name="barcodes_1d">Mã vạch 1D</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">Văn bản không có ký tự đặc biệt</string>
+    <string name="text_in_upper_case_without_special_characters">Văn bản viết hoa không có ký tự đặc biệt</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">Chữ số</string>
+    <string name="seven_digits">7 chữ số</string>
+    <string name="eleven_digits">11 chữ số</string>
+    <string name="twelve_digits">12 chữ số</string>
+    <string name="even_number_of_digits">Số chữ số chẵn</string>
+
+    <!-- History screen -->
+    <string name="history">Lịch sử</string>
+    <string name="all">Tất cả</string>
+    <string name="favorites">Yêu thích</string>
+    <string name="history_empty_message">Bạn chưa có bản quét nào được lưu. Hãy quét hoặc tạo mã để xem tại đây.</string>
+    <string name="export_your_history">Xuất lịch sử của bạn</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">Xuất lịch sử</string>
+    <string name="export_as">Xuất dưới dạng</string>
+    <string name="file_name">Tên tệp</string>
+    <string name="export">Xuất</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">Thông báo</string>
+    <string name="summary_settings_notifications_overview">Quản lý thông báo của ứng dụng</string>
+    <string name="display">Hiển thị</string>
+    <string name="summary_settings_display_overview">Cá nhân hóa giao diện và cảm nhận của ứng dụng</string>
+    <string name="scanner">Máy quét</string>
+    <string name="summary_settings_scanner_overview">Điều chỉnh cách quét và phản ứng của máy ảnh</string>
+    <string name="summary_settings_history_overview">Kiểm soát cách lưu các bản quét và quản lý lịch sử của bạn</string>
+    <string name="security_and_privacy">Bảo mật &amp; Quyền riêng tư</string>
+    <string name="summary_settings_security_privacy_overview">Quản lý cài đặt quyền riêng tư của bạn</string>
+    <string name="advanced">Nâng cao</string>
+    <string name="summary_settings_advanced_overview">Khám phá các cài đặt nâng cao hơn</string>
+    <string name="about">Giới thiệu</string>
+    <string name="summary_settings_about_overview">Tìm hiểu thêm về %1$s</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">Giao diện</string>
+    <string name="theme">Chủ đề</string>
+    <string name="follow_system">Theo chế độ hệ thống</string>
+    <string name="light_mode">Chế độ sáng</string>
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="auto_battery_mode">Chế độ tối tự động theo pin</string>
+    <string name="summary_preference_settings_theme">Chọn giao diện của ứng dụng. Hiện tại: %1$s</string>
+    <string name="navigation">Điều hướng</string>
+    <string name="default_tab">Tab mặc định</string>
+    <string name="summary_preference_settings_default_tab">Chọn màn hình đầu tiên bạn thấy khi khởi chạy. Hiện tại: %1$s</string>
+    <string name="bottom_navigation_bar_labels">Nhãn thanh điều hướng dưới cùng</string>
+    <string name="labeled">Có nhãn</string>
+    <string name="selected_variant">Đã chọn</string>
+    <string name="unlabeled">Không có nhãn</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">Kiểm soát cách nhãn xuất hiện trên thanh dưới cùng. Hiện tại: %1$s</string>
+    <string name="inverse_colors">Đảo ngược màu sắc</string>
+    <string name="summary_preference_settings_inverse_colors">Hiển thị mã có nội dung màu trắng trên nền tối và trong chế độ tối</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="summary_preference_settings_language_value">Chọn ngôn ngữ của ứng dụng. Hiện tại: %1$s</string>
+    <string name="summary_preference_settings_language">Thay đổi ngôn ngữ được sử dụng trong ứng dụng</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">Tự động mở nội dung của mã đã quét</string>
+    <string name="summary_preference_settings_open_content_automatically">Có thể mở nội dung có hại</string>
+    <string name="summary_preference_settings_copy_to_clipboard">Sao chép mã vạch đã quét vào khay nhớ tạm</string>
+    <string name="simple_auto_focus">Chế độ tự động lấy nét đơn giản</string>
+    <string name="summary_preference_settings_simple_auto_focus">Chỉ bật nếu bạn gặp sự cố khi lấy nét.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">Bật đèn flash khi khởi động</string>
+    <string name="vibrate">Rung</string>
+    <string name="summary_preference_settings_vibrate">Rung khi quét</string>
+    <string name="continuous_scanning">Quét liên tục</string>
+    <string name="summary_preference_settings_continuous_scanning">Chỉ lưu các bản quét vào lịch sử</string>
+    <string name="confirm_scans_manually">Xác nhận quét thủ công</string>
+    <string name="summary_preference_settings_confirm_scans_manually">Tránh quét nhầm.</string>
+    <string name="camera">Máy ảnh</string>
+    <string name="summary_preference_settings_camera">Chọn máy ảnh sẽ mở khi bạn bắt đầu quét.</string>
+    <string name="front">Trước</string>
+    <string name="camera_back">Sau</string>
+    <string name="supported_formats">Định dạng được hỗ trợ</string>
+    <string name="summary_preference_settings_supported_formats">Chọn các định dạng mã vạch mà máy quét sẽ tìm kiếm.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">Lưu mã vạch đã quét vào lịch sử</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">Lưu trữ mọi bản quét để bạn có thể xem lại sau</string>
+    <string name="save_created_barcodes_to_history">Lưu mã vạch đã tạo vào lịch sử</string>
+    <string name="summary_preference_settings_save_created_barcodes">Giữ các mã bạn tạo để dễ dàng tìm thấy</string>
+    <string name="do_not_save_duplicates">Không lưu các bản sao</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">Tránh các bản sao trong lịch sử</string>
+    <string name="clear_history">Xóa lịch sử</string>
+    <string name="summary_preference_settings_clear_history">Xóa tất cả các bản quét đã lưu khỏi thiết bị</string>
+    <string name="summary_delete_history">Xóa lịch sử?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">Quyền riêng tư</string>
+    <string name="privacy_policy">Chính sách quyền riêng tư</string>
+    <string name="summary_preference_settings_privacy_policy">Xem chính sách quy định cách xử lý dữ liệu của bạn</string>
+    <string name="terms_of_service">Điều khoản dịch vụ</string>
+    <string name="summary_preference_settings_terms_of_service">Xem lại các điều khoản bạn đồng ý khi sử dụng dịch vụ này</string>
+    <string name="code_of_conduct">Quy tắc ứng xử</string>
+    <string name="summary_preference_settings_code_of_conduct">Hiểu các quy tắc và hướng dẫn về hành vi trong dịch vụ</string>
+    <string name="permissions">Quyền</string>
+    <string name="summary_preference_settings_permissions">Quản lý các quyền được cấp cho dịch vụ</string>
+    <string name="usage_and_diagnostics">Sử dụng và chẩn đoán</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">Chia sẻ dữ liệu để giúp cải thiện trải nghiệm trong ứng dụng</string>
+    <string name="legal">Pháp lý</string>
+    <string name="legal_notices">Thông báo pháp lý</string>
+    <string name="summary_preference_settings_legal_notices">Xem thông tin pháp lý về dịch vụ</string>
+    <string name="license">Giấy phép</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">Bình thường</string>
+    <string name="access_network_state">Truy cập trạng thái mạng [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">Cho phép ứng dụng kiểm tra kết nối mạng và truy xuất thông tin về Wi-Fi, bao gồm trạng thái đã bật và tên thiết bị Wi-Fi được kết nối.</string>
+    <string name="ad_id">ID quảng cáo [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Cho phép ứng dụng truy xuất và sử dụng mã nhận dạng quảng cáo được liên kết với thiết bị của người dùng, cung cấp quảng cáo được cá nhân hóa, đo lường hiệu quả quảng cáo và hiển thị quảng cáo trên các thiết bị Android 13 trở lên.</string>
+    <string name="billing">Thanh toán [BILLING]</string>
+    <string name="summary_preference_permissions_billing">Cho phép ứng dụng sử dụng Thư viện thanh toán của Google Play để xử lý các giao dịch mua và quyên góp trong ứng dụng.</string>
+    <string name="check_license">Kiểm tra giấy phép [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">Cho phép ứng dụng xác minh việc tuân thủ thỏa thuận cấp phép và thực thi các điều khoản cấp phép để bảo vệ tài sản trí tuệ.</string>
+    <string name="foreground_service">Dịch vụ nền trước [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">Cho phép ứng dụng tạo và sử dụng các dịch vụ chạy ở nền trước, ưu tiên chúng hơn các quy trình nền khác và cải thiện hiệu suất và độ tin cậy.</string>
+    <string name="internet">Internet [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">Cho phép ứng dụng thiết lập kết nối internet để gửi báo cáo lỗi hoặc kiểm tra các bản cập nhật.</string>
+    <string name="vibrate_permission">Rung [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">Cho phép ứng dụng rung khi quét mã QR.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">Cho phép ứng dụng kết nối với mạng Wi-Fi bằng cách quét mã QR.</string>
+    <string name="runtime">Thời gian chạy</string>
+    <string name="post_notifications">Đăng thông báo [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Cho phép ứng dụng hiển thị thông báo trên các thiết bị có Android 13 trở lên.</string>
+    <string name="camera_permission">Máy ảnh [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google Code Scanner xử lý việc chụp mã QR và mã vạch mà không cần chia sẻ nguồn cấp dữ liệu máy ảnh với ứng dụng.</string>
+    <string name="read_contacts">Đọc danh bạ [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">Cho phép ứng dụng tạo mã QR từ một liên hệ trong danh bạ của bạn.</string>
+    <string name="read_storage">Đọc bộ nhớ [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">Cho phép ứng dụng truy cập bộ nhớ của bạn để bạn có thể lưu mã QR hoặc mã vạch dưới dạng văn bản hoặc hình ảnh.</string>
+    <string name="read_images">Đọc hình ảnh [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Cho phép ứng dụng đọc hình ảnh từ thiết bị của bạn để bạn có thể quét chúng để tìm mã QR và mã vạch trên các thiết bị chạy Android 13 trở lên.</string>
+    <string name="write_storage">Ghi vào bộ nhớ [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">Cho phép ứng dụng ghi vào bộ nhớ của bạn để bạn có thể lưu các tệp như ảnh, video và tài liệu.</string>
+    <string name="special">Đặc biệt</string>
+    <string name="access_notification_policy">Truy cập chính sách thông báo [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">Cho phép ứng dụng truy cập và sửa đổi chính sách thông báo của thiết bị, kiểm soát cách thức và thời điểm hiển thị thông báo cho người dùng và cung cấp các tính năng quản lý thông báo tùy chỉnh.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">Công cụ tìm kiếm</string>
+    <string name="summary_preference_settings_search_engines">Chọn một công cụ tìm kiếm cho các tìm kiếm trên web</string>
+    <string name="none">Không có</string>
+    <string name="ask_every_time">Luôn hỏi</string>
+    <string name="error_reporting">Báo cáo lỗi</string>
+    <string name="bug_report">Báo cáo lỗi</string>
+    <string name="summary_preference_settings_bug_report">Gửi báo cáo lỗi và yêu cầu tính năng đến trang sự cố của kho lưu trữ GitHub của ứng dụng</string>
+    <string name="cache_management">Quản lý bộ nhớ đệm</string>
+    <string name="clear_cache">Xóa bộ nhớ đệm</string>
+    <string name="summary_preference_settings_cache_management">Xóa dữ liệu ứng dụng tạm thời</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">Thông tin ứng dụng</string>
+    <string name="application_build_version">Phiên bản bản dựng ứng dụng</string>
+    <string name="open_source_licenses">Giấy phép nguồn mở</string>
+    <string name="summary_preference_settings_open_source_licenses">Xem giấy phép cho các thư viện chúng tôi sử dụng</string>
+    <string name="device_info">Thông tin thiết bị</string>
+    <string name="app_build">Bản dựng ứng dụng: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">Nhà sản xuất:</string>
+    <string name="device_model">Kiểu thiết bị:</string>
+    <string name="android_version">Phiên bản Android:</string>
+    <string name="api_level">Cấp độ API:</string>
+
+    <!-- Help screen -->
+    <string name="help">Trợ giúp</string>
+    <string name="view_in_google_play">Xem trên Google Play Store</string>
+    <string name="beta_program">Chương trình beta</string>
+    <string name="faq">Câu hỏi thường gặp</string>
+    <string name="question_1">QR &amp; Bar Code Scanner Plus là gì?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus là một ứng dụng miễn phí cho phép bạn quét và tạo mã QR. Nó có thể quét tất cả các định dạng mã vạch phổ biến, bao gồm QR, Data Matrix, Aztec, UPC, EAN và nhiều định dạng khác.</string>
+    <string name="question_2">Lợi ích của việc sử dụng QR &amp; Bar Code Scanner Plus là gì?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus là một ứng dụng mạnh mẽ, đa năng và miễn phí có thể quét tất cả các định dạng mã vạch phổ biến, sử dụng đèn pin để quét trong bóng tối, phóng to để đọc mã vạch từ xa, kết nối Wi-Fi, tạo mã QR từ văn bản, danh bạ, ứng dụng, dấu trang và khay nhớ tạm, và có giao diện đơn giản và trực quan.</string>
+    <string name="question_3">Yêu cầu hệ thống đối với QR &amp; Bar Code Scanner Plus là gì?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus tương thích với tất cả các thiết bị Android chạy Android 8.0 (Oreo) trở lên.</string>
+    <string name="question_4">Làm cách nào để quét mã QR bằng QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_4">Để quét mã QR bằng QR &amp; Bar Code Scanner Plus, chỉ cần mở ứng dụng và hướng máy ảnh của điện thoại vào mã QR. Ứng dụng sẽ tự động quét mã và hiển thị kết quả.</string>
+    <string name="question_5"> Làm cách nào để tạo mã QR bằng QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_5">Để tạo mã QR bằng QR &amp; Bar Code Scanner Plus, hãy mở ứng dụng và đi tới menu \'Tạo\'. Chọn loại mã QR hoặc mã vạch bạn muốn và nhập dữ liệu bạn muốn đưa vào mã QR rồi nhấn vào nút \'Tạo\'. Ứng dụng sau đó sẽ tạo ra một mã QR mà bạn có thể lưu hoặc chia sẻ.</string>
+    <string name="question_6">Làm cách nào để thay đổi chủ đề của QR &amp; Bar Code Scanner Plus?</string>
+    <string name="summary_preference_faq_6">Chủ đề của QR &amp; Bar Code Scanner Plus có thể được thay đổi bằng cách vào cài đặt của ứng dụng và chọn chủ đề mong muốn.</string>
+    <string name="question_7">Làm cách nào để báo cáo lỗi?</string>
+    <string name="summary_preference_faq_7">Nếu bạn tìm thấy lỗi trong QR &amp; Bar Code Scanner Plus, bạn có thể báo cáo bằng cách truy cập trang GitHub của ứng dụng và tạo một sự cố mới.</string>
+    <string name="question_8">QR &amp; Bar Code Scanner Plus có an toàn để sử dụng không?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus là một ứng dụng an toàn để sử dụng. Ứng dụng chỉ thu thập nhật ký lỗi thông qua Firebase Crashlytics và Firebase Analytics, có thể tắt đi.</string>
+    <string name="question_9">Làm cách nào để liên hệ với nhà phát triển của ứng dụng?</string>
+    <string name="summary_preference_faq_9">Nếu bạn có bất kỳ câu hỏi hoặc vấn đề nào với ứng dụng, bạn có thể liên hệ với nhà phát triển thông qua trang \'Trợ giúp &amp; phản hồi\' của ứng dụng.</string>
+    <string name="contact_support_title">Liên hệ hỗ trợ</string>
+    <string name="contact_support_description">Chia sẻ chi tiết để nhận trợ giúp đạt được mục tiêu của bạn</string>
+    <string name="send_feedback">Gửi phản hồi</string>
+    <string name="contact_support_email_subject">Yêu cầu hỗ trợ cho %1$s</string>
+    <string name="contact_support_email_body">Xin chào,\n\nTôi cần trợ giúp với QR &amp; Bar Code Scanner Plus.\n\nCảm ơn!</string>
+    <string name="version_info">Thông tin phiên bản</string>
+    <string name="version">Phiên bản %1$s</string>
+    <string name="faq_state_collapsed">Đã thu gọn</string>
+    <string name="faq_state_expanded">Đã mở rộng</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">Không có ứng dụng email nào để xử lý yêu cầu này.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">Hỗ trợ nhà phát triển</string>
+    <string name="paid_support">Hỗ trợ trả phí</string>
+    <string name="summary_donations">Chọn số tiền quyên góp một lần để hỗ trợ phát triển trong tương lai.</string>
+    <string name="non_paid_support">Hỗ trợ không trả phí</string>
+    <string name="web_ad">Truy cập trang hỗ trợ của chúng tôi</string>
+    <string name="support_purchase_thank_you">Cảm ơn bạn rất nhiều vì đã hỗ trợ ứng dụng! 🎉</string>
+    <string name="support_purchase_restored">Sự hỗ trợ của bạn đã được khôi phục.</string>
+    <string name="support_purchase_revoked">Giao dịch mua hỗ trợ của bạn đã bị thu hồi.</string>
+    <string name="support_purchase_error">Đã xảy ra lỗi. Vui lòng thử lại sau.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">Quảng cáo</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">Hãy thử ngay!!!</string>
+    <string name="share_using">Chia sẻ bằng…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">Lưu dưới dạng</string>
+    <string name="save">Lưu</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">Xác nhận</string>
+    <string name="error">Lỗi</string>
+    <string name="something_went_wrong">Đã xảy ra lỗi</string>
+    <string name="dialog_delete">Xóa?</string>
+    <string name="edit_name">Sửa tên</string>
+    <string name="require_restart">Yêu cầu khởi động lại!</string>
+    <string name="summary_require_restart">Để có hiệu lực, vui lòng khởi động lại ứng dụng!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">Thêm vào lịch</string>
+    <string name="add_to_contacts">Thêm vào danh bạ</string>
+    <string name="call" tools:ignore="StringFormatCount">Gọi %s</string>
+    <string name="send_sms_mms_to">Gửi SMS/MMS đến %s</string>
+    <string name="email_to">Gửi email đến %s</string>
+    <string name="show_location">Hiển thị vị trí</string>
+    <string name="connect_to_wifi">Kết nối với Wi-Fi</string>
+    <string name="open_wifi_settings">Mở cài đặt Wi-Fi</string>
+    <string name="copy_network_name">Sao chép tên mạng</string>
+    <string name="copy_network_password">Sao chép mật khẩu mạng</string>
+    <string name="open_app">Mở ứng dụng</string>
+    <string name="open_in_market">Mở trong cửa hàng</string>
+    <string name="open_in_youtube">Mở trong Youtube</string>
+    <string name="save_to_bookmark">Lưu vào dấu trang</string>
+    <string name="open_link">Mở liên kết</string>
+    <string name="open_in_other_app">Mở trong ứng dụng khác</string>
+    <string name="show_password">Hiển thị mật khẩu</string>
+    <string name="search_on_the_web">Tìm kiếm trên web</string>
+    <string name="connecting">Đang kết nối…</string>
+    <string name="tooltip_view_code">Xem mã</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">Không thể tạo mật khẩu</string>
+    <string name="error_missing_otp_data">Không thể hiển thị chi tiết OTP.</string>
+    <string name="counter">Bộ đếm: %s</string>
+    <string name="timer_left">Còn lại %1$s:%2$s</string>
+    <string name="refresh">Làm mới</string>
+    <string name="tooltip_generate_new_secret">Tạo một mã bí mật mới</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">URL Youtube</string>
+    <string name="barcode_schema_boarding_pass">Thẻ lên máy bay</string>
+
+    <!-- Snackbars -->
+    <string name="saved">Đã lưu</string>
+    <string name="snack_unable_to_open_google_play_store">Không thể mở Google Play Store.</string>
+    <string name="snack_copied_to_clipboard">Đã sao chép vào khay nhớ tạm! 📋</string>
+    <string name="snack_saved_to_downloads">Đã lưu vào Tải xuống!</string>
+    <string name="snack_saved_to_gallery">Đã lưu vào Thư viện</string>
+    <string name="snack_no_app_found">Không tìm thấy ứng dụng nào cho hành động này. Vui lòng cài đặt một ứng dụng tương thích.</string>
+    <string name="snack_feedback">Cảm ơn bạn đã đánh giá chúng tôi! ❤️</string>
+</resources>

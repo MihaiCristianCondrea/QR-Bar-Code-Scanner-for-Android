@@ -1,0 +1,449 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">모든 종류의 QR 코드와 바코드를 쉽게 스캔하세요. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">환영합니다</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">계속하려면 서비스 약관 및 개인정보처리방침을 읽고 동의하세요.</string>
+    <string name="browse_terms_of_service_and_privacy_policy"><i><u>서비스 약관</u></i> 및 <i><u>개인정보처리방침</u></i> 찾아보기</string>
+    <string name="agree">동의</string>
+    <string name="tooltip_agree">이용약관에 동의합니다.</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">건너뛰기</string>
+    <string name="back">뒤로</string>
+    <string name="next">다음</string>
+    <string name="onboarding_theme_title">테마 선택</string>
+    <string name="onboarding_theme_description">마음에 드는 테마를 선택하세요.</string>
+    <string name="onboarding_theme_follow_system_title">시스템 설정 따르기</string>
+    <string name="onboarding_theme_follow_system_description">기기 설정과 자동으로 일치합니다.</string>
+    <string name="onboarding_theme_light_title">라이트 테마</string>
+    <string name="onboarding_theme_light_description">최대 대비의 밝은 색상입니다.</string>
+    <string name="onboarding_theme_dark_title">다크 테마</string>
+    <string name="onboarding_theme_dark_description">저조도 환경에 적합합니다.</string>
+    <string name="onboarding_start_title">어디서부터 시작할까요?</string>
+    <string name="onboarding_start_description">앱을 열 때 표시되는 첫 화면을 선택하세요.</string>
+    <string name="onboarding_start_scan_description">스캐너로 바로 열어 즉시 스캔할 수 있습니다.</string>
+    <string name="onboarding_start_create_description">생성기로 바로 이동하여 새 코드를 바로 디자인할 수 있습니다.</string>
+    <string name="onboarding_start_history_description">앱 실행 시 저장된 스캔을 검토합니다.</string>
+    <string name="bottom_navigation_labels_description">하단 탐색 메뉴에 라벨이 표시되는 방식을 결정하세요.</string>
+    <string name="onboarding_labels_all">모든 탭의 라벨 표시</string>
+    <string name="onboarding_labels_selected">선택한 탭의 라벨만 표시</string>
+    <string name="onboarding_labels_hidden">미니멀한 디자인을 위해 모든 라벨 숨기기</string>
+    <string name="privacy_icon">개인정보 아이콘</string>
+    <string name="onboarding_data_title">데이터 제어</string>
+    <string name="onboarding_data_subtitle">수집하는 데이터를 사용자가 결정합니다. 설정에서 언제든지 변경할 수 있습니다.</string>
+    <string name="onboarding_data_toggle">사용 및 진단</string>
+    <string name="onboarding_data_active">분석 데이터 수집이 켜져 있습니다.</string>
+    <string name="onboarding_data_inactive">분석 데이터 수집이 꺼져 있습니다.</string>
+    <string name="onboarding_data_ads">맞춤 광고</string>
+    <string name="onboarding_data_ads_desc">더 관련성 높은 광고를 표시하는 데 도움이 됩니다.</string>
+    <string name="onboarding_data_ads_disabled">광고는 계속 표시되지만 관련성이 낮을 수 있습니다.</string>
+    <string name="privacy_policy_link">개인정보처리방침</string>
+    <string name="success_icon">성공 아이콘</string>
+    <string name="onboarding_done_title">모두 준비되었습니다!</string>
+    <string name="onboarding_done_subtitle">환경설정이 저장되었습니다. 앱을 즐겨보세요.</string>
+    <string name="get_started_button">시작하기</string>
+
+    <!-- Main screen -->
+    <string name="menu">메뉴</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">설정</string>
+    <string name="help_and_feedback">도움말 및 의견</string>
+    <string name="updates">업데이트</string>
+    <string name="share">공유</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">스캔</string>
+    <string name="scan_image">이미지 스캔</string>
+    <string name="scan_barcode_from_image_not_found">이 이미지에서 바코드를 감지할 수 없습니다.</string>
+    <string name="barcode_error_missing_extra">이 바코드를 열 수 없습니다. 다시 스캔해 보세요.</string>
+    <string name="flash">플래시</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">왼쪽으로 회전</string>
+    <string name="rotate_right">오른쪽으로 회전</string>
+    <string name="choose_another_image">다른 이미지 선택</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">생성</string>
+    <string name="qr_code">QR 코드</string>
+    <string name="content_from_clipboard">클립보드에서 붙여넣기</string>
+    <string name="text">텍스트</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">위치</string>
+    <string name="contact_v_card">연락처 (VCard)</string>
+
+    <string name="more_qr_codes">더 많은 QR 코드</string>
+    <string name="barcode">바코드</string>
+    <string name="all_barcodes_codes">바코드 및 기타 2D 코드</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">QR 코드 생성</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">연락처 (MeCard)</string>
+    <string name="event">이벤트</string>
+    <string name="sms">SMS</string>
+    <string name="mms">MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">또는:</string>
+    <string name="summary_alternatively_url">- 브라우저 앱 열기\n- 웹사이트 로드\n- 메뉴에서 \"공유\" 클릭\n- 이 앱 선택</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">암호화</string>
+    <string name="network_name">네트워크 이름</string>
+    <string name="password">비밀번호</string>
+    <string name="hidden">숨김</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">위도</string>
+    <string name="longitude">경도</string>
+    <string name="altitude">고도 (선택 사항)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">연락처</string>
+    <string name="first_name">이름</string>
+    <string name="last_name">성</string>
+    <string name="organization">소속</string>
+    <string name="job">직책</string>
+    <string name="email">이메일</string>
+    <string name="phone">전화</string>
+    <string name="fax">팩스</string>
+    <string name="website">웹사이트</string>
+    <string name="summary_alternatively_contact">- 연락처 앱 열기\n- 기존 연락처를 열거나 새로 만들기\n- 메뉴에서 \"공유\" 클릭\n- 이 앱 선택</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">유형</string>
+    <string name="algorithm">알고리즘</string>
+    <string name="issuer">발급자</string>
+    <string name="account">계정</string>
+    <string name="period">기간</string>
+    <string name="hint_counter">카운터</string>
+    <string name="secret">비밀 키</string>
+    <string name="random_secret">무작위 비밀 키</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">제목</string>
+    <string name="organizer">주최자</string>
+    <string name="summary">요약</string>
+    <string name="start_date">시작일</string>
+    <string name="end_date">종료일</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">제목</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">메시지</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">비트코인</string>
+    <string name="cryptocurrency">암호화폐</string>
+    <string name="receiver_address">수신 주소</string>
+    <string name="amount">금액</string>
+    <string name="label">라벨</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">북마크</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">앱</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">밝기 높이기</string>
+    <string name="decrease_brightness">밝기 낮추기</string>
+    <string name="add_to_favorites">즐겨찾기에 추가</string>
+    <string name="delete">삭제</string>
+    <string name="share_as_text">텍스트로 공유</string>
+    <string name="copy_to_clipboard">클립보드에 복사</string>
+    <string name="save_as_text">텍스트로 저장</string>
+    <string name="share_as_image">이미지로 공유</string>
+    <string name="save_as_image">이미지로 저장</string>
+    <string name="print">인쇄</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">바코드 생성</string>
+    <string name="barcodes_2d">2D 바코드</string>
+    <string name="barcodes_1d">1D 바코드</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">특수 문자 없는 텍스트</string>
+    <string name="text_in_upper_case_without_special_characters">특수 문자 없는 대문자 텍스트</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">숫자</string>
+    <string name="seven_digits">7자리 숫자</string>
+    <string name="eleven_digits">11자리 숫자</string>
+    <string name="twelve_digits">12자리 숫자</string>
+    <string name="even_number_of_digits">짝수 자리 숫자</string>
+
+    <!-- History screen -->
+    <string name="history">기록</string>
+    <string name="all">전체</string>
+    <string name="favorites">즐겨찾기</string>
+    <string name="history_empty_message">저장된 스캔이 아직 없습니다. 코드를 스캔하거나 생성하여 여기에 표시하세요.</string>
+    <string name="export_your_history">기록 내보내기</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">기록 내보내기</string>
+    <string name="export_as">내보내기 형식</string>
+    <string name="file_name">파일 이름</string>
+    <string name="export">내보내기</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">알림</string>
+    <string name="summary_settings_notifications_overview">앱 알림 관리</string>
+    <string name="display">디스플레이</string>
+    <string name="summary_settings_display_overview">앱의 디자인과 느낌을 맞춤 설정하세요.</string>
+    <string name="scanner">스캐너</string>
+    <string name="summary_settings_scanner_overview">스캔 동작과 카메라 반응 방식을 조정하세요.</string>
+    <string name="summary_settings_history_overview">스캔 저장 방식을 제어하고 기록을 관리하세요.</string>
+    <string name="security_and_privacy">보안 및 개인정보 보호</string>
+    <string name="summary_settings_security_privacy_overview">개인정보 보호 설정을 관리하세요.</string>
+    <string name="advanced">고급</string>
+    <string name="summary_settings_advanced_overview">더 많은 고급 설정을 탐색해 보세요.</string>
+    <string name="about">정보</string>
+    <string name="summary_settings_about_overview">%1$s에 대해 더 알아보기</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">디자인</string>
+    <string name="theme">테마</string>
+    <string name="follow_system">시스템 모드 따르기</string>
+    <string name="light_mode">라이트 모드</string>
+    <string name="dark_mode">다크 모드</string>
+    <string name="auto_battery_mode">배터리 절약 시 다크 모드 자동 전환</string>
+    <string name="summary_preference_settings_theme">앱의 디자인을 선택하세요. 현재: %1$s</string>
+    <string name="navigation">탐색</string>
+    <string name="default_tab">기본 탭</string>
+    <string name="summary_preference_settings_default_tab">앱 실행 시 표시할 첫 화면을 선택하세요. 현재: %1$s</string>
+    <string name="bottom_navigation_bar_labels">하단 탐색 메뉴 라벨</string>
+    <string name="labeled">라벨 표시</string>
+    <string name="selected_variant">선택됨</string>
+    <string name="unlabeled">라벨 미표시</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">하단 바에 라벨이 표시되는 방식을 제어하세요. 현재: %1$s</string>
+    <string name="inverse_colors">색상 반전</string>
+    <string name="summary_preference_settings_inverse_colors">다크 모드에서 어두운 배경에 흰색 콘텐츠로 코드를 표시합니다.</string>
+    <string name="language">언어</string>
+    <string name="summary_preference_settings_language_value">앱 언어를 선택하세요. 현재: %1$s</string>
+    <string name="summary_preference_settings_language">앱에서 사용되는 언어를 변경합니다.</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">스캔한 코드의 콘텐츠 자동으로 열기</string>
+    <string name="summary_preference_settings_open_content_automatically">유해한 콘텐츠가 열릴 수 있습니다.</string>
+    <string name="summary_preference_settings_copy_to_clipboard">스캔한 바코드를 클립보드에 복사합니다.</string>
+    <string name="simple_auto_focus">단순 자동 초점 모드</string>
+    <string name="summary_preference_settings_simple_auto_focus">초점 문제가 있는 경우에만 활성화하세요.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">시작 시 플래시 활성화</string>
+    <string name="vibrate">진동</string>
+    <string name="summary_preference_settings_vibrate">스캔 시 진동</string>
+    <string name="continuous_scanning">연속 스캔</string>
+    <string name="summary_preference_settings_continuous_scanning">스캔 기록만 저장</string>
+    <string name="confirm_scans_manually">수동으로 스캔 확인</string>
+    <string name="summary_preference_settings_confirm_scans_manually">실수로 스캔하는 것을 방지합니다.</string>
+    <string name="camera">카메라</string>
+    <string name="summary_preference_settings_camera">스캔 시작 시 열릴 카메라를 선택하세요.</string>
+    <string name="front">전면</string>
+    <string name="camera_back">후면</string>
+    <string name="supported_formats">지원되는 형식</string>
+    <string name="summary_preference_settings_supported_formats">스캐너가 찾을 바코드 형식을 선택하세요.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">스캔한 바코드를 기록에 저장</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">모든 스캔을 저장하여 나중에 다시 볼 수 있습니다.</string>
+    <string name="save_created_barcodes_to_history">생성한 바코드를 기록에 저장</string>
+    <string name="summary_preference_settings_save_created_barcodes">생성한 코드를 쉽게 찾을 수 있도록 보관합니다.</string>
+    <string name="do_not_save_duplicates">중복 저장 안 함</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">기록에 중복된 항목을 저장하지 않습니다.</string>
+    <string name="clear_history">기록 지우기</string>
+    <string name="summary_preference_settings_clear_history">기기에서 저장된 모든 스캔을 제거합니다.</string>
+    <string name="summary_delete_history">기록을 삭제할까요?</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">개인정보 보호</string>
+    <string name="privacy_policy">개인정보처리방침</string>
+    <string name="summary_preference_settings_privacy_policy">데이터 처리 방식에 대한 정책을 확인하세요.</string>
+    <string name="terms_of_service">서비스 약관</string>
+    <string name="summary_preference_settings_terms_of_service">이 서비스 사용 시 동의하는 약관을 검토하세요.</string>
+    <string name="code_of_conduct">행동 강령</string>
+    <string name="summary_preference_settings_code_of_conduct">서비스 내 행동 규칙 및 가이드라인을 이해하세요.</string>
+    <string name="permissions">권한</string>
+    <string name="summary_preference_settings_permissions">서비스에 부여된 권한을 관리하세요.</string>
+    <string name="usage_and_diagnostics">사용 및 진단</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">앱 내 경험 개선을 위해 데이터를 공유하세요.</string>
+    <string name="legal">법적 정보</string>
+    <string name="legal_notices">법적 고지</string>
+    <string name="summary_preference_settings_legal_notices">서비스에 대한 법적 정보를 확인하세요.</string>
+    <string name="license">라이선스</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">일반</string>
+    <string name="access_network_state">네트워크 상태 액세스 [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">앱이 네트워크 연결을 확인하고 활성화 상태 및 연결된 Wi-Fi 기기 이름을 포함한 Wi-Fi 정보를 검색할 수 있도록 허용합니다.</string>
+    <string name="ad_id">광고 ID [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">Android 13 이상 기기에서 맞춤 광고 제공, 광고 효과 측정, 광고 표시를 위해 앱이 사용자의 기기와 관련된 광고 식별자를 검색하고 사용할 수 있도록 허용합니다.</string>
+    <string name="billing">결제 [BILLING]</string>
+    <string name="summary_preference_permissions_billing">앱이 Google Play 결제 라이브러리를 사용하여 인앱 구매 및 기부를 처리할 수 있도록 허용합니다.</string>
+    <string name="check_license">라이선스 확인 [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">앱이 라이선스 계약 준수 여부를 확인하고 지적 재산 보호를 위해 라이선스 조건을 시행할 수 있도록 허용합니다.</string>
+    <string name="foreground_service">포그라운드 서비스 [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">앱이 포그라운드에서 실행되는 서비스를 생성하고 사용하여 다른 백그라운드 프로세스보다 우선순위를 부여하고 성능과 안정성을 향상시킬 수 있도록 허용합니다.</string>
+    <string name="internet">인터넷 [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">앱이 오류 보고서를 보내거나 업데이트를 확인하기 위해 인터넷 연결을 설정할 수 있도록 허용합니다.</string>
+    <string name="vibrate_permission">진동 [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">QR 코드를 스캔할 때 앱이 진동할 수 있도록 허용합니다.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">앱이 QR 코드를 스캔하여 Wi-Fi 네트워크에 연결할 수 있도록 허용합니다.</string>
+    <string name="runtime">런타임</string>
+    <string name="post_notifications">알림 게시 [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">Android 13 이상 기기에서 앱이 알림을 표시할 수 있도록 허용합니다.</string>
+    <string name="camera_permission">카메라 [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">Google 코드 스캐너는 카메라 피드를 앱과 공유하지 않고 QR 및 바코드 캡처를 처리합니다.</string>
+    <string name="read_contacts">연락처 읽기 [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">앱이 연락처 목록의 연락처로 QR 코드를 생성할 수 있도록 허용합니다.</string>
+    <string name="read_storage">저장소 읽기 [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">QR 코드나 바코드를 텍스트나 이미지로 저장할 수 있도록 앱이 저장소에 액세스하는 것을 허용합니다.</string>
+    <string name="read_images">이미지 읽기 [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">Android 13 이상을 실행하는 기기에서 QR 코드 및 바코드를 스캔할 수 있도록 앱이 기기에서 이미지를 읽는 것을 허용합니다.</string>
+    <string name="write_storage">저장소 쓰기 [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">사진, 동영상, 문서와 같은 파일을 저장할 수 있도록 앱이 저장소에 쓰는 것을 허용합니다.</string>
+    <string name="special">특별</string>
+    <string name="access_notification_policy">알림 정책 액세스 [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">앱이 기기의 알림 정책에 액세스하고 수정하여 사용자에게 알림이 표시되는 방식과 시기를 제어하고 맞춤 알림 관리 기능을 제공할 수 있도록 허용합니다.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">검색 엔진</string>
+    <string name="summary_preference_settings_search_engines">웹 검색에 사용할 검색 엔진을 선택하세요.</string>
+    <string name="none">없음</string>
+    <string name="ask_every_time">항상 묻기</string>
+    <string name="error_reporting">오류 보고</string>
+    <string name="bug_report">버그 신고</string>
+    <string name="summary_preference_settings_bug_report">버그 신고 및 기능 요청을 앱의 GitHub 저장소 이슈 페이지로 보내주세요.</string>
+    <string name="cache_management">캐시 관리</string>
+    <string name="clear_cache">캐시 지우기</string>
+    <string name="summary_preference_settings_cache_management">임시 애플리케이션 데이터를 지웁니다.</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">앱 정보</string>
+    <string name="application_build_version">애플리케이션 빌드 버전</string>
+    <string name="open_source_licenses">오픈 소스 라이선스</string>
+    <string name="summary_preference_settings_open_source_licenses">사용하는 라이브러리의 라이선스를 확인하세요.</string>
+    <string name="device_info">기기 정보</string>
+    <string name="app_build">앱 빌드: Release\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">제조사:</string>
+    <string name="device_model">기기 모델:</string>
+    <string name="android_version">Android 버전:</string>
+    <string name="api_level">API 레벨:</string>
+
+    <!-- Help screen -->
+    <string name="help">도움말</string>
+    <string name="view_in_google_play">Google Play 스토어에서 보기</string>
+    <string name="beta_program">베타 프로그램</string>
+    <string name="faq">자주 묻는 질문</string>
+    <string name="question_1">QR &amp; Bar Code Scanner Plus란 무엇인가요?</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus는 QR 코드를 스캔하고 생성할 수 있는 무료 앱입니다. QR, Data Matrix, Aztec, UPC, EAN 등 모든 일반적인 바코드 형식을 스캔할 수 있습니다.</string>
+    <string name="question_2">QR &amp; Bar Code Scanner Plus 사용의 이점은 무엇인가요?</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus는 모든 일반적인 바코드 형식을 스캔하고, 어두운 곳에서 손전등을 사용하여 스캔하고, 멀리 있는 바코드를 읽기 위해 확대하고, Wi-Fi에 연결하고, 텍스트, 연락처, 앱, 북마크, 클립보드에서 QR 코드를 생성하는 등 강력하고 다양한 기능을 갖춘 무료 앱이며, 간단하고 직관적인 인터페이스를 제공합니다.</string>
+    <string name="question_3">QR &amp; Bar Code Scanner Plus의 시스템 요구 사항은 무엇인가요?</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus는 Android 8.0(Oreo) 이상을 실행하는 모든 Android 기기와 호환됩니다.</string>
+    <string name="question_4">QR &amp; Bar Code Scanner Plus로 QR 코드를 어떻게 스캔하나요?</string>
+    <string name="summary_preference_faq_4">QR &amp; Bar Code Scanner Plus로 QR 코드를 스캔하려면 앱을 열고 휴대폰 카메라를 QR 코드에 맞추기만 하면 됩니다. 앱이 자동으로 코드를 스캔하고 결과를 표시합니다.</string>
+    <string name="question_5"> QR &amp; Bar Code Scanner Plus로 QR 코드를 어떻게 생성하나요?</string>
+    <string name="summary_preference_faq_5">QR &amp; Bar Code Scanner Plus로 QR 코드를 생성하려면 앱을 열고 \'생성\' 메뉴로 이동하세요. 원하는 QR 코드 또는 바코드 유형을 선택하고 QR 코드에 포함할 데이터를 입력한 다음 \'생성\' 버튼을 탭하세요. 그러면 저장하거나 공유할 수 있는 QR 코드가 생성됩니다.</string>
+    <string name="question_6">QR &amp; Bar Code Scanner Plus의 테마는 어떻게 변경하나요?</string>
+    <string name="summary_preference_faq_6">QR &amp; Bar Code Scanner Plus의 테마는 앱 설정으로 이동하여 원하는 테마를 선택하여 변경할 수 있습니다.</string>
+    <string name="question_7">버그는 어떻게 신고하나요?</string>
+    <string name="summary_preference_faq_7">QR &amp; Bar Code Scanner Plus에서 버그를 발견하면 앱의 GitHub 페이지로 이동하여 새 이슈를 생성하여 신고할 수 있습니다.</string>
+    <string name="question_8">QR &amp; Bar Code Scanner Plus는 사용하기에 안전한가요?</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus는 안전하게 사용할 수 있는 앱입니다. 앱은 Firebase Crashlytics 및 Firebase Analytics를 통해서만 오류 로그를 수집하며, 이 기능은 끌 수 있습니다.</string>
+    <string name="question_9">앱 개발자에게는 어떻게 연락하나요?</string>
+    <string name="summary_preference_faq_9">앱에 대한 질문이나 문제가 있는 경우 앱의 \'도움말 및 의견\' 페이지를 통해 개발자에게 연락할 수 있습니다.</string>
+    <string name="contact_support_title">고객 지원팀에 문의</string>
+    <string name="contact_support_description">목표 달성에 도움이 되도록 세부 정보를 공유해 주세요.</string>
+    <string name="send_feedback">의견 보내기</string>
+    <string name="contact_support_email_subject">%1$s에 대한 지원 요청</string>
+    <string name="contact_support_email_body">안녕하세요,\n\nQR &amp; Bar Code Scanner Plus와 관련하여 도움이 필요합니다.\n\n감사합니다!</string>
+    <string name="version_info">버전 정보</string>
+    <string name="version">버전 %1$s</string>
+    <string name="faq_state_collapsed">축소됨</string>
+    <string name="faq_state_expanded">확장됨</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">이 요청을 처리할 수 있는 이메일 앱이 없습니다.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">개발자 후원</string>
+    <string name="paid_support">유료 후원</string>
+    <string name="summary_donations">향후 개발을 지원하기 위해 일회성 기부 금액을 선택하세요.</string>
+    <string name="non_paid_support">무료 후원</string>
+    <string name="web_ad">지원 페이지 방문</string>
+    <string name="support_purchase_thank_you">앱을 후원해 주셔서 정말 감사합니다! 🎉</string>
+    <string name="support_purchase_restored">후원이 복원되었습니다.</string>
+    <string name="support_purchase_revoked">후원 구매가 취소되었습니다.</string>
+    <string name="support_purchase_error">문제가 발생했습니다. 잠시 후 다시 시도해 주세요.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">광고</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">지금 사용해 보세요!!!</string>
+    <string name="share_using">공유 방법…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">다른 이름으로 저장</string>
+    <string name="save">저장</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">확인</string>
+    <string name="error">오류</string>
+    <string name="something_went_wrong">문제가 발생했습니다.</string>
+    <string name="dialog_delete">삭제할까요?</string>
+    <string name="edit_name">이름 편집</string>
+    <string name="require_restart">다시 시작해야 합니다!</string>
+    <string name="summary_require_restart">적용하려면 앱을 다시 시작하세요!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">캘린더에 추가</string>
+    <string name="add_to_contacts">연락처에 추가</string>
+    <string name="call" tools:ignore="StringFormatCount">%s에게 전화 걸기</string>
+    <string name="send_sms_mms_to">%s에게 SMS/MMS 보내기</string>
+    <string name="email_to">%s에게 이메일 보내기</string>
+    <string name="show_location">위치 표시</string>
+    <string name="connect_to_wifi">Wi-Fi에 연결</string>
+    <string name="open_wifi_settings">Wi-Fi 설정 열기</string>
+    <string name="copy_network_name">네트워크 이름 복사</string>
+    <string name="copy_network_password">네트워크 비밀번호 복사</string>
+    <string name="open_app">앱 열기</string>
+    <string name="open_in_market">마켓에서 열기</string>
+    <string name="open_in_youtube">YouTube에서 열기</string>
+    <string name="save_to_bookmark">북마크에 저장</string>
+    <string name="open_link">링크 열기</string>
+    <string name="open_in_other_app">다른 앱에서 열기</string>
+    <string name="show_password">비밀번호 표시</string>
+    <string name="search_on_the_web">웹에서 검색</string>
+    <string name="connecting">연결 중…</string>
+    <string name="tooltip_view_code">코드 보기</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">비밀번호를 생성할 수 없습니다.</string>
+    <string name="error_missing_otp_data">OTP 세부 정보를 표시할 수 없습니다.</string>
+    <string name="counter">카운터: %s</string>
+    <string name="timer_left">%1$s:%2$s 남음</string>
+    <string name="refresh">새로고침</string>
+    <string name="tooltip_generate_new_secret">새 비밀 키 생성</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">YouTube URL</string>
+    <string name="barcode_schema_boarding_pass">탑승권</string>
+
+    <!-- Snackbars -->
+    <string name="saved">저장됨</string>
+    <string name="snack_unable_to_open_google_play_store">Google Play 스토어를 열 수 없습니다.</string>
+    <string name="snack_copied_to_clipboard">클립보드에 복사되었습니다! 📋</string>
+    <string name="snack_saved_to_downloads">다운로드에 저장되었습니다!</string>
+    <string name="snack_saved_to_gallery">갤러리에 저장되었습니다.</string>
+    <string name="snack_no_app_found">이 작업을 위한 앱을 찾을 수 없습니다. 호환되는 앱을 설치하세요.</string>
+    <string name="snack_feedback">평가해 주셔서 감사합니다! ❤️</string>
+</resources>

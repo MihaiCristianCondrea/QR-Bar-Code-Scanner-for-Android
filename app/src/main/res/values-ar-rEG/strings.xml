@@ -1,0 +1,449 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Manifest -->
+    <string name="app_description">امسح جميع أنواع رموز QR والباركود بسهولة. 📷</string>
+
+    <!-- Startup screen -->
+    <string name="welcome">مرحباً</string>
+    <string name="summary_browse_terms_of_service_and_privacy_policy">اقرأ ووافق على شروط الخدمة وسياسة الخصوصية للمتابعة.</string>
+    <string name="browse_terms_of_service_and_privacy_policy">تصفح <i><u>شروط الخدمة</u></i> و<i><u>سياسة الخصوصية</u></i></string>
+    <string name="agree">أوافق</string>
+    <string name="tooltip_agree">قبول الشروط والأحكام.</string>
+
+    <!-- Onboarding screen -->
+    <string name="skip">تخطي</string>
+    <string name="back">رجوع</string>
+    <string name="next">التالي</string>
+    <string name="onboarding_theme_title">اختر مظهرك</string>
+    <string name="onboarding_theme_description">اختر المظهر الذي يناسبك.</string>
+    <string name="onboarding_theme_follow_system_title">اتباع النظام</string>
+    <string name="onboarding_theme_follow_system_description">مطابقة إعدادات جهازك تلقائيًا.</string>
+    <string name="onboarding_theme_light_title">المظهر الفاتح</string>
+    <string name="onboarding_theme_light_description">ألوان زاهية مع أقصى تباين.</string>
+    <string name="onboarding_theme_dark_title">المظهر الداكن</string>
+    <string name="onboarding_theme_dark_description">مثالي للبيئات منخفضة الإضاءة.</string>
+    <string name="onboarding_start_title">من أين نبدأ؟</string>
+    <string name="onboarding_start_description">اختر الشاشة الأولى التي تراها عند فتح التطبيق.</string>
+    <string name="onboarding_start_scan_description">افتح الماسح الضوئي مباشرةً لتتمكن من التوجيه والمسح على الفور.</string>
+    <string name="onboarding_start_create_description">انتقل إلى أداة الإنشاء لتصميم رموز جديدة على الفور.</string>
+    <string name="onboarding_start_history_description">راجع عمليات المسح المحفوظة لديك فور تشغيل التطبيق.</string>
+    <string name="bottom_navigation_labels_description">قرر كيفية ظهور التسميات في شريط التنقل السفلي.</string>
+    <string name="onboarding_labels_all">إظهار التسميات لكل علامة تبويب.</string>
+    <string name="onboarding_labels_selected">إظهار تسمية علامة التبويب المحددة فقط.</string>
+    <string name="onboarding_labels_hidden">إخفاء جميع التسميات لمظهر بسيط.</string>
+    <string name="privacy_icon">أيقونة الخصوصية</string>
+    <string name="onboarding_data_title">تحكم في بياناتك</string>
+    <string name="onboarding_data_subtitle">أنت تقرر ما نجمعه. يمكنك تغيير ذلك في أي وقت من الإعدادات.</string>
+    <string name="onboarding_data_toggle">الاستخدام والتشخيصات</string>
+    <string name="onboarding_data_active">جمع بيانات التحليلات قيد التشغيل.</string>
+    <string name="onboarding_data_inactive">جمع بيانات التحليلات متوقف.</string>
+    <string name="onboarding_data_ads">الإعلانات المخصصة</string>
+    <string name="onboarding_data_ads_desc">ساعدنا في عرض إعلانات أكثر صلة بك.</string>
+    <string name="onboarding_data_ads_disabled">ستظل ترى إعلانات، لكنها قد تكون أقل صلة.</string>
+    <string name="privacy_policy_link">سياسة الخصوصية</string>
+    <string name="success_icon">أيقونة النجاح</string>
+    <string name="onboarding_done_title">أنت جاهز تمامًا!</string>
+    <string name="onboarding_done_subtitle">تم حفظ تفضيلاتك. استمتع بالتطبيق.</string>
+    <string name="get_started_button">ابدأ</string>
+
+    <!-- Main screen -->
+    <string name="menu">القائمة</string>
+
+    <!-- Bottom sheet drawer -->
+    <string name="settings">الإعدادات</string>
+    <string name="help_and_feedback">المساعدة والملاحظات</string>
+    <string name="updates">التحديثات</string>
+    <string name="share">مشاركة</string>
+
+    <!-- Scanner tab screen -->
+    <string name="scan">مسح</string>
+    <string name="scan_image">مسح صورة</string>
+    <string name="scan_barcode_from_image_not_found">تعذر اكتشاف أي باركود في هذه الصورة.</string>
+    <string name="barcode_error_missing_extra">لم نتمكن من فتح هذا الباركود. يرجى محاولة مسحه مرة أخرى.</string>
+    <string name="flash">فلاش</string>
+
+    <!-- Scan Image screen -->
+    <string name="rotate_left">تدوير لليسار</string>
+    <string name="rotate_right">تدوير لليمين</string>
+    <string name="choose_another_image">اختر صورة أخرى</string>
+
+    <!-- Create QR Code tab screen -->
+    <string name="create">إنشاء</string>
+    <string name="qr_code">رمز QR</string>
+    <string name="content_from_clipboard">محتوى من الحافظة</string>
+    <string name="text">نص</string>
+    <string name="url">URL</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="location">الموقع</string>
+    <string name="contact_v_card">جهة اتصال (VCard)</string>
+
+    <string name="more_qr_codes">المزيد من رموز QR</string>
+    <string name="barcode">باركود</string>
+    <string name="all_barcodes_codes">الباركود والرموز ثنائية الأبعاد الأخرى</string>
+
+    <!-- Create QR screen -->
+    <string name="create_qr_code">إنشاء رمز QR</string>
+    <string name="otp">OTP</string>
+    <string name="contact_me_card">جهة اتصال (MeCard)</string>
+    <string name="event">حدث</string>
+    <string name="sms">رسالة SMS</string>
+    <string name="mms">رسالة MMS</string>
+
+    <!-- Create QR Code - Url screen -->
+    <string name="alternatively">بدلاً من ذلك:</string>
+    <string name="summary_alternatively_url">- افتح تطبيق المتصفح\n- حمّل موقعًا إلكترونيًا\n- انقر على \"مشاركة\" من القائمة\n- اختر هذا التطبيق.</string>
+
+    <!-- Create QR Code - Wi-Fi screen -->
+    <string name="encryption">التشفير</string>
+    <string name="network_name">اسم الشبكة</string>
+    <string name="password">كلمة المرور</string>
+    <string name="hidden">مخفية</string>
+
+    <!-- Create QR Code - Location screen -->
+    <string name="latitude">خط العرض</string>
+    <string name="longitude">خط الطول</string>
+    <string name="altitude">الارتفاع (اختياري)</string>
+
+    <!-- Create QR Code - Contact (VCard) screen -->
+    <string name="contacts">جهات الاتصال</string>
+    <string name="first_name">الاسم الأول</string>
+    <string name="last_name">اسم العائلة</string>
+    <string name="organization">المؤسسة</string>
+    <string name="job">الوظيفة</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="phone">الهاتف</string>
+    <string name="fax">الفاكس</string>
+    <string name="website">الموقع الإلكتروني</string>
+    <string name="summary_alternatively_contact">- افتح تطبيق جهات الاتصال\n- افتح جهة اتصال موجودة أو أنشئ واحدة جديدة\n- انقر على \"مشاركة\" من القائمة\n- اختر هذا التطبيق</string>
+
+    <!-- Create QR Code - OTP screen -->
+    <string name="type">النوع</string>
+    <string name="algorithm">الخوارزمية</string>
+    <string name="issuer">المُصدر</string>
+    <string name="account">الحساب</string>
+    <string name="period">الفترة</string>
+    <string name="hint_counter">العداد</string>
+    <string name="secret">الرمز السري</string>
+    <string name="random_secret">رمز سري عشوائي</string>
+
+    <!-- Create QR Code - Event screen -->
+    <string name="title">العنوان</string>
+    <string name="organizer">المنظم</string>
+    <string name="summary">ملخص</string>
+    <string name="start_date">تاريخ البدء</string>
+    <string name="end_date">تاريخ الانتهاء</string>
+
+    <!-- Create QR Code - MMS screen -->
+    <string name="hint_subject">الموضوع</string>
+
+    <!-- Create QR Code - Message fields -->
+    <string name="hint_message">الرسالة</string>
+
+    <!-- Create QR Code - Bitcoin screen -->
+    <string name="bitcoin">بيتكوين</string>
+    <string name="cryptocurrency">عملة مشفرة</string>
+    <string name="receiver_address">عنوان المستلم</string>
+    <string name="amount">المبلغ</string>
+    <string name="label">تسمية</string>
+
+    <!-- Create QR Code - Bookmark screen -->
+    <string name="bookmark">إشارة مرجعية</string>
+
+    <!-- Create QR Code - App screen -->
+    <string name="app">تطبيق</string>
+
+    <!-- QR Code Details screen -->
+    <string name="increase_brightness">زيادة السطوع</string>
+    <string name="decrease_brightness">تقليل السطوع</string>
+    <string name="add_to_favorites">إضافة إلى المفضلة</string>
+    <string name="delete">حذف</string>
+    <string name="share_as_text">مشاركة كنص</string>
+    <string name="copy_to_clipboard">نسخ إلى الحافظة</string>
+    <string name="save_as_text">حفظ كنص</string>
+    <string name="share_as_image">مشاركة كصورة</string>
+    <string name="save_as_image">حفظ كصورة</string>
+    <string name="print">طباعة</string>
+
+    <!-- Create Bar Code - App screen -->
+    <string name="create_barcode">إنشاء باركود</string>
+    <string name="barcodes_2d">باركود ثنائي الأبعاد</string>
+    <string name="barcodes_1d">باركود أحادي الأبعاد</string>
+
+    <!-- Special character hints -->
+    <string name="text_without_special_characters">نص بدون أحرف خاصة</string>
+    <string name="text_in_upper_case_without_special_characters">نص بأحرف كبيرة بدون أحرف خاصة</string>
+
+    <!-- Generic digits hints -->
+    <string name="digits">أرقام</string>
+    <string name="seven_digits">7 أرقام</string>
+    <string name="eleven_digits">11 رقمًا</string>
+    <string name="twelve_digits">12 رقمًا</string>
+    <string name="even_number_of_digits">عدد زوجي من الأرقام</string>
+
+    <!-- History screen -->
+    <string name="history">السجل</string>
+    <string name="all">الكل</string>
+    <string name="favorites">المفضلة</string>
+    <string name="history_empty_message">ليس لديك أي عمليات مسح محفوظة حتى الآن. امسح أو أنشئ رمزًا لرؤيته هنا.</string>
+    <string name="export_your_history">تصدير سجلك</string>
+
+    <!-- Export History screen -->
+    <string name="export_history">تصدير السجل</string>
+    <string name="export_as">تصدير كـ</string>
+    <string name="file_name">اسم الملف</string>
+    <string name="export">تصدير</string>
+
+    <!-- Settings screen -->
+    <string name="notifications">الإشعارات</string>
+    <string name="summary_settings_notifications_overview">إدارة إشعارات التطبيق</string>
+    <string name="display">العرض</string>
+    <string name="summary_settings_display_overview">خصص شكل وأسلوب تطبيقك</string>
+    <string name="scanner">الماسح الضوئي</string>
+    <string name="summary_settings_scanner_overview">اضبط سلوك المسح وكيفية استجابة الكاميرا</string>
+    <string name="summary_settings_history_overview">تحكم في كيفية حفظ عمليات المسح وإدارة سجلك</string>
+    <string name="security_and_privacy">الأمان والخصوصية</string>
+    <string name="summary_settings_security_privacy_overview">إدارة إعدادات الخصوصية الخاصة بك</string>
+    <string name="advanced">إعدادات متقدمة</string>
+    <string name="summary_settings_advanced_overview">استكشف المزيد من الإعدادات المتقدمة</string>
+    <string name="about">حول</string>
+    <string name="summary_settings_about_overview">اعرف المزيد عن %1$s</string>
+
+    <!-- Display Settings screen -->
+    <string name="appearance">المظهر</string>
+    <string name="theme">المظهر</string>
+    <string name="follow_system">اتباع وضع النظام</string>
+    <string name="light_mode">الوضع الفاتح</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="auto_battery_mode">الوضع الداكن التلقائي حسب البطارية</string>
+    <string name="summary_preference_settings_theme">اختر كيف يبدو التطبيق. الحالي: %1$s</string>
+    <string name="navigation">التنقل</string>
+    <string name="default_tab">علامة التبويب الافتراضية</string>
+    <string name="summary_preference_settings_default_tab">اختر الشاشة الأولى التي تراها عند التشغيل. الحالي: %1$s</string>
+    <string name="bottom_navigation_bar_labels">تسميات شريط التنقل السفلي</string>
+    <string name="labeled">معنون</string>
+    <string name="selected_variant">المحدد</string>
+    <string name="unlabeled">غير معنون</string>
+    <string name="summary_preference_settings_bottom_navigation_bar_labels">تحكم في كيفية ظهور التسميات في الشريط السفلي. الحالي: %1$s</string>
+    <string name="inverse_colors">عكس الألوان</string>
+    <string name="summary_preference_settings_inverse_colors">إظهار الرموز بمحتوى أبيض على خلفية داكنة وفي الوضع الداكن</string>
+    <string name="language">اللغة</string>
+    <string name="summary_preference_settings_language_value">اختر لغة التطبيق. الحالية: %1$s</string>
+    <string name="summary_preference_settings_language">تغيير اللغة المستخدمة في التطبيق</string>
+
+    <!-- Scanner Settings screen -->
+    <string name="open_content_automatically">فتح محتوى الرموز الممسوحة ضوئيًا تلقائيًا</string>
+    <string name="summary_preference_settings_open_content_automatically">قد يفتح محتوى ضار</string>
+    <string name="summary_preference_settings_copy_to_clipboard">نسخ الباركود الممسوح ضوئيًا إلى الحافظة</string>
+    <string name="simple_auto_focus">وضع التركيز التلقائي البسيط</string>
+    <string name="summary_preference_settings_simple_auto_focus">قم بالتمكين فقط إذا كانت لديك مشاكل في التركيز.</string>
+    <string name="summary_preference_settings_enable_flash_on_start">تمكين الفلاش عند البدء</string>
+    <string name="vibrate">اهتزاز</string>
+    <string name="summary_preference_settings_vibrate">اهتزاز عند المسح</string>
+    <string name="continuous_scanning">مسح مستمر</string>
+    <string name="summary_preference_settings_continuous_scanning">حفظ عمليات المسح في السجل فقط</string>
+    <string name="confirm_scans_manually">تأكيد عمليات المسح يدويًا</string>
+    <string name="summary_preference_settings_confirm_scans_manually">تجنب عمليات المسح العرضية.</string>
+    <string name="camera">الكاميرا</string>
+    <string name="summary_preference_settings_camera">حدد الكاميرا التي تفتح عند بدء المسح.</string>
+    <string name="front">الأمامية</string>
+    <string name="camera_back">الخلفية</string>
+    <string name="supported_formats">التنسيقات المدعومة</string>
+    <string name="summary_preference_settings_supported_formats">اختر تنسيقات الباركود التي يبحث عنها الماسح الضوئي.</string>
+
+    <!-- History Settings screen -->
+    <string name="save_scanned_barcodes_to_history">حفظ الباركود الممسوح ضوئيًا في السجل</string>
+    <string name="summary_preference_settings_save_scanned_barcodes">خزن كل عملية مسح حتى تتمكن من الرجوع إليها لاحقًا</string>
+    <string name="save_created_barcodes_to_history">حفظ الباركود الذي تم إنشاؤه في السجل</string>
+    <string name="summary_preference_settings_save_created_barcodes">احتفظ بالرموز التي تنشئها ليسهل العثور عليها</string>
+    <string name="do_not_save_duplicates">عدم حفظ التكرارات</string>
+    <string name="summary_preference_settings_do_not_save_duplicates">تجنب التكرارات في السجل</string>
+    <string name="clear_history">مسح السجل</string>
+    <string name="summary_preference_settings_clear_history">إزالة جميع عمليات المسح المحفوظة من الجهاز</string>
+    <string name="summary_delete_history">حذف السجل؟</string>
+
+    <!-- Security & Privacy Settings screen -->
+    <string name="privacy">الخصوصية</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="summary_preference_settings_privacy_policy">عرض السياسة التي تحكم كيفية التعامل مع بياناتك</string>
+    <string name="terms_of_service">شروط الخدمة</string>
+    <string name="summary_preference_settings_terms_of_service">مراجعة الشروط التي توافق عليها عند استخدام هذه الخدمة</string>
+    <string name="code_of_conduct">مدونة قواعد السلوك</string>
+    <string name="summary_preference_settings_code_of_conduct">فهم القواعد والمبادئ التوجيهية للسلوك داخل الخدمة</string>
+    <string name="permissions">الأذونات</string>
+    <string name="summary_preference_settings_permissions">إدارة الأذونات الممنوحة للخدمة</string>
+    <string name="usage_and_diagnostics">الاستخدام والتشخيصات</string>
+    <string name="summary_preference_settings_usage_and_diagnostics">مشاركة البيانات للمساعدة في تحسين تجربة التطبيق</string>
+    <string name="legal">قانوني</string>
+    <string name="legal_notices">إشعارات قانونية</string>
+    <string name="summary_preference_settings_legal_notices">عرض المعلومات القانونية حول الخدمة</string>
+    <string name="license">الترخيص</string>
+
+    <!-- Permissions Settings screen -->
+    <string name="normal">عادي</string>
+    <string name="access_network_state">الوصول إلى حالة الشبكة [ACCESS_NETWORK_STATE]</string>
+    <string name="summary_preference_permissions_access_network_state">يسمح للتطبيق بالتحقق من اتصال الشبكة واسترداد معلومات حول Wi-Fi، بما في ذلك حالة التمكين وأسماء أجهزة Wi-Fi المتصلة.</string>
+    <string name="ad_id">معرف الإعلان [AD_ID]</string>
+    <string name="summary_preference_permissions_ad_id">يسمح للتطبيق باسترداد واستخدام معرّف الإعلانات المرتبط بجهاز المستخدم، مما يوفر إعلانات مخصصة، ويقيس فعالية الإعلانات، ويعرض الإعلانات على أجهزة Android 13 أو الأحدث.</string>
+    <string name="billing">الفوترة [BILLING]</string>
+    <string name="summary_preference_permissions_billing">يسمح للتطبيق باستخدام مكتبة Google Play Billing لمعالجة عمليات الشراء داخل التطبيق والتبرعات.</string>
+    <string name="check_license">التحقق من الترخيص [CHECK_LICENSE]</string>
+    <string name="summary_preference_permissions_check_license">يسمح للتطبيق بالتحقق من امتثاله لاتفاقية الترخيص وفرض شروط الترخيص لحماية الملكية الفكرية.</string>
+    <string name="foreground_service">خدمة في المقدمة [FOREGROUND_SERVICE]</string>
+    <string name="summary_preference_permissions_foreground_service">يسمح للتطبيق بإنشاء واستخدام الخدمات التي تعمل في المقدمة، مما يمنحها الأولوية على العمليات الأخرى في الخلفية ويحسن الأداء والموثوقية.</string>
+    <string name="internet">الإنترنت [INTERNET]</string>
+    <string name="summary_preference_permissions_internet">يسمح للتطبيق بإنشاء اتصال بالإنترنت لإرسال تقارير الأخطاء أو التحقق من وجود تحديثات.</string>
+    <string name="vibrate_permission">اهتزاز [VIBRATE]</string>
+    <string name="summary_preference_permissions_vibrate">يسمح للتطبيق بالاهتزاز عند مسح رمز QR.</string>
+    <string name="change_wifi_state">Wi-Fi [CHANGE_WIFI_STATE]</string>
+    <string name="summary_preference_permissions_change_wifi_state">يسمح للتطبيق بالاتصال بشبكات Wi-Fi عن طريق مسح رموز QR.</string>
+    <string name="runtime">وقت التشغيل</string>
+    <string name="post_notifications">إرسال الإشعارات [POST_NOTIFICATIONS]</string>
+    <string name="summary_preference_permissions_post_notifications">يسمح للتطبيق بعرض الإشعارات على الأجهزة التي تعمل بنظام Android 13 أو الأحدث.</string>
+    <string name="camera_permission">الكاميرا [CAMERA]</string>
+    <string name="summary_preference_permissions_camera">يتعامل Google Code Scanner مع التقاط رموز QR والباركود دون مشاركة بث الكاميرا مع التطبيق.</string>
+    <string name="read_contacts">قراءة جهات الاتصال [READ_CONTACTS]</string>
+    <string name="summary_preference_permissions_read_contacts">يسمح للتطبيق بإنشاء رمز QR من جهة اتصال في قائمة جهات الاتصال الخاصة بك.</string>
+    <string name="read_storage">قراءة وحدة التخزين [READ_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_read_storage">يسمح للتطبيق بالوصول إلى وحدة التخزين الخاصة بك حتى تتمكن من حفظ رمز QR أو الباركود كنص أو صورة.</string>
+    <string name="read_images">قراءة الصور [READ_IMAGES]</string>
+    <string name="summary_preference_permissions_read_images">يسمح للتطبيق بقراءة الصور من جهازك حتى تتمكن من مسحها ضوئيًا بحثًا عن رموز QR والباركود على الأجهزة التي تعمل بنظام Android 13 أو الأحدث.</string>
+    <string name="write_storage">الكتابة على وحدة التخزين [WRITE_EXTERNAL_STORAGE]</string>
+    <string name="summary_preference_permissions_write_storage">يسمح للتطبيق بالكتابة على وحدة التخزين الخاصة بك حتى تتمكن من حفظ الملفات، مثل الصور ومقاطع الفيديو والمستندات.</string>
+    <string name="special">خاص</string>
+    <string name="access_notification_policy">الوصول إلى سياسة الإشعارات [ACCESS_NOTIFICATION_POLICY]</string>
+    <string name="summary_preference_permissions_access_notification_policy">يسمح للتطبيق بالوصول إلى سياسة إشعارات الجهاز وتعديلها، والتحكم في كيفية ووقت عرض الإشعارات للمستخدم وتوفير ميزات إدارة الإشعارات المخصصة.</string>
+
+    <!-- Advanced Settings screen -->
+    <string name="search_engines">محركات البحث</string>
+    <string name="summary_preference_settings_search_engines">اختر محرك بحث لعمليات البحث على الويب</string>
+    <string name="none">لا شيء</string>
+    <string name="ask_every_time">السؤال في كل مرة</string>
+    <string name="error_reporting">الإبلاغ عن الأخطاء</string>
+    <string name="bug_report">الإبلاغ عن خطأ</string>
+    <string name="summary_preference_settings_bug_report">إرسال تقارير الأخطاء وطلبات الميزات إلى صفحة المشكلات في مستودع GitHub الخاص بالتطبيق</string>
+    <string name="cache_management">إدارة ذاكرة التخزين المؤقت</string>
+    <string name="clear_cache">مسح ذاكرة التخزين المؤقت</string>
+    <string name="summary_preference_settings_cache_management">مسح بيانات التطبيق المؤقتة</string>
+
+    <!-- About Settings screen -->
+    <string name="app_info">معلومات التطبيق</string>
+    <string name="application_build_version">إصدار بناء التطبيق</string>
+    <string name="open_source_licenses">تراخيص المصادر المفتوحة</string>
+    <string name="summary_preference_settings_open_source_licenses">عرض تراخيص المكتبات التي نستخدمها</string>
+    <string name="device_info">معلومات الجهاز</string>
+    <string name="app_build">بناء التطبيق: إصدار\n%1$s\n%2$s\n%3$s\n%4$s\n%5$s</string>
+    <string name="manufacturer">الشركة المصنعة:</string>
+    <string name="device_model">طراز الجهاز:</string>
+    <string name="android_version">إصدار Android:</string>
+    <string name="api_level">مستوى API:</string>
+
+    <!-- Help screen -->
+    <string name="help">المساعدة</string>
+    <string name="view_in_google_play">عرض في متجر Google Play</string>
+    <string name="beta_program">البرنامج التجريبي</string>
+    <string name="faq">الأسئلة الشائعة</string>
+    <string name="question_1">ما هو QR &amp; Bar Code Scanner Plus؟</string>
+    <string name="summary_preference_faq_1">QR &amp; Bar Code Scanner Plus هو تطبيق مجاني يتيح لك مسح وإنشاء رموز QR. يمكنه مسح جميع تنسيقات الباركود الشائعة، بما في ذلك QR و Data Matrix و Aztec و UPC و EAN وغيرها الكثير.</string>
+    <string name="question_2">ما هي فوائد استخدام QR &amp; Bar Code Scanner Plus؟</string>
+    <string name="summary_preference_faq_2">QR &amp; Bar Code Scanner Plus هو تطبيق قوي ومتعدد الاستخدامات ومجاني يمكنه مسح جميع تنسيقات الباركود الشائعة، واستخدام مصباح يدوي للمسح في الظلام، والتكبير لقراءة الباركود من مسافات بعيدة، والاتصال بشبكة Wi-Fi، وإنشاء رموز QR من النصوص وجهات الاتصال والتطبيقات والإشارات المرجعية والحافظة، وله واجهة بسيطة وبديهية.</string>
+    <string name="question_3">ما هي متطلبات النظام لتطبيق QR &amp; Bar Code Scanner Plus؟</string>
+    <string name="summary_preference_faq_3">QR &amp; Bar Code Scanner Plus متوافق مع جميع أجهزة Android التي تعمل بنظام Android 8.0 (Oreo) أو أعلى.</string>
+    <string name="question_4">كيف يمكنني مسح رمز QR باستخدام QR &amp; Bar Code Scanner Plus؟</string>
+    <string name="summary_preference_faq_4">لمسح رمز QR باستخدام QR &amp; Bar Code Scanner Plus، ما عليك سوى فتح التطبيق وتوجيه كاميرا هاتفك إلى رمز QR. سيقوم التطبيق بمسح الرمز تلقائيًا وعرض النتائج.</string>
+    <string name="question_5"> كيف يمكنني إنشاء رمز QR باستخدام QR &amp; Bar Code Scanner Plus؟</string>
+    <string name="summary_preference_faq_5">لإنشاء رمز QR باستخدام QR &amp; Bar Code Scanner Plus، افتح التطبيق وانتقل إلى قائمة \"إنشاء\". اختر نوع رمز QR أو الباركود الذي تريده وأدخل البيانات التي تريد تضمينها في رمز QR وانقر على زر \"إنشاء\". سيقوم التطبيق بعد ذلك بإنشاء رمز QR يمكنك حفظه أو مشاركته.</string>
+    <string name="question_6">كيف يمكنني تغيير مظهر QR &amp; Bar Code Scanner Plus؟</string>
+    <string name="summary_preference_faq_6">يمكن تغيير مظهر QR &amp; Bar Code Scanner Plus بالانتقال إلى إعدادات التطبيق واختيار المظهر المطلوب.</string>
+    <string name="question_7">كيف أبلغ عن خطأ؟</string>
+    <string name="summary_preference_faq_7">إذا وجدت خطأ في QR &amp; Bar Code Scanner Plus، يمكنك الإبلاغ عنه بالانتقال إلى صفحة GitHub الخاصة بالتطبيق وإنشاء مشكلة جديدة.</string>
+    <string name="question_8">هل QR &amp; Bar Code Scanner Plus آمن للاستخدام؟</string>
+    <string name="summary_preference_faq_8">QR &amp; Bar Code Scanner Plus هو تطبيق آمن للاستخدام. يجمع التطبيق سجلات الأخطاء فقط من خلال Firebase Crashlytics و Firebase Analytics، والتي يمكن إيقاف تشغيلها.</string>
+    <string name="question_9">كيف أتصل بمطور التطبيق؟</string>
+    <string name="summary_preference_faq_9">إذا كانت لديك أي أسئلة أو مشاكل مع التطبيق، يمكنك الاتصال بالمطور من خلال صفحة \"المساعدة والملاحظات\" في التطبيق.</string>
+    <string name="contact_support_title">الاتصال بالدعم</string>
+    <string name="contact_support_description">شارك التفاصيل للحصول على مساعدة في الوصول إلى هدفك</string>
+    <string name="send_feedback">إرسال ملاحظات</string>
+    <string name="contact_support_email_subject">طلب دعم لـ %1$s</string>
+    <string name="contact_support_email_body">مرحباً،\n\nأحتاج إلى مساعدة بخصوص QR &amp; Bar Code Scanner Plus.\n\nشكرًا!</string>
+    <string name="version_info">معلومات الإصدار</string>
+    <string name="version">الإصدار %1$s</string>
+    <string name="faq_state_collapsed">مطوي</string>
+    <string name="faq_state_expanded">موسّع</string>
+
+    <!-- Help &amp; Support -->
+    <string name="support_link_unavailable">لا توجد تطبيقات بريد إلكتروني متاحة للتعامل مع هذا الطلب.</string>
+
+    <!-- Support Screen -->
+    <string name="support_the_developer">ادعم المطور</string>
+    <string name="paid_support">الدعم المدفوع</string>
+    <string name="summary_donations">اختر مبلغ تبرع لمرة واحدة لدعم التطوير المستقبلي.</string>
+    <string name="non_paid_support">الدعم غير المدفوع</string>
+    <string name="web_ad">قم بزيارة صفحة الدعم الخاصة بنا</string>
+    <string name="support_purchase_thank_you">شكرًا جزيلاً لدعمك للتطبيق! 🎉</string>
+    <string name="support_purchase_restored">تمت استعادة دعمك.</string>
+    <string name="support_purchase_revoked">تم إلغاء شراء الدعم الخاص بك.</string>
+    <string name="support_purchase_error">حدث خطأ ما. يرجى المحاولة مرة أخرى قريباً.</string>
+
+    <!-- Advertisement -->
+    <string name="ad_attribution">إعلان</string>
+
+    <!-- Sharing -->
+    <string name="share_subject">جربه الآن!!!</string>
+    <string name="share_using">مشاركة باستخدام…</string>
+
+    <!-- Save barcode screen -->
+    <string name="save_as">حفظ باسم</string>
+    <string name="save">حفظ</string>
+
+    <!-- Dialogs -->
+    <string name="confirm">تأكيد</string>
+    <string name="error">خطأ</string>
+    <string name="something_went_wrong">حدث خطأ ما</string>
+    <string name="dialog_delete">حذف؟</string>
+    <string name="edit_name">تعديل الاسم</string>
+    <string name="require_restart">يتطلب إعادة التشغيل!</string>
+    <string name="summary_require_restart">لتفعيل التغييرات، يرجى إعادة تشغيل التطبيق!</string>
+
+    <!-- QR Code Details screen -->
+    <string name="add_to_calendar">إضافة إلى التقويم</string>
+    <string name="add_to_contacts">إضافة إلى جهات الاتصال</string>
+    <string name="call" tools:ignore="StringFormatCount">اتصال بـ %s</string>
+    <string name="send_sms_mms_to">إرسال رسالة SMS/MMS إلى %s</string>
+    <string name="email_to">إرسال بريد إلكتروني إلى %s</string>
+    <string name="show_location">عرض الموقع</string>
+    <string name="connect_to_wifi">الاتصال بشبكة Wi-Fi</string>
+    <string name="open_wifi_settings">فتح إعدادات Wi-Fi</string>
+    <string name="copy_network_name">نسخ اسم الشبكة</string>
+    <string name="copy_network_password">نسخ كلمة مرور الشبكة</string>
+    <string name="open_app">فتح التطبيق</string>
+    <string name="open_in_market">فتح في المتجر</string>
+    <string name="open_in_youtube">فتح في Youtube</string>
+    <string name="save_to_bookmark">حفظ في الإشارات المرجعية</string>
+    <string name="open_link">فتح الرابط</string>
+    <string name="open_in_other_app">فتح في تطبيق آخر</string>
+    <string name="show_password">إظهار كلمة المرور</string>
+    <string name="search_on_the_web">البحث على الويب</string>
+    <string name="connecting">جارٍ الاتصال…</string>
+    <string name="tooltip_view_code">عرض الرمز</string>
+
+    <!-- QR Code Details - OTP -->
+    <string name="unable_to_generate_password">تعذر إنشاء كلمة المرور</string>
+    <string name="error_missing_otp_data">تعذر عرض تفاصيل OTP.</string>
+    <string name="counter">العداد: %s</string>
+    <string name="timer_left">متبقٍ %1$s:%2$s</string>
+    <string name="refresh">تحديث</string>
+    <string name="tooltip_generate_new_secret">إنشاء رمز سري جديد</string>
+
+    <!-- Barcode schema labels -->
+    <string name="youtube_url">رابط Youtube</string>
+    <string name="barcode_schema_boarding_pass">بطاقة صعود الطائرة</string>
+
+    <!-- Snackbars -->
+    <string name="saved">تم الحفظ</string>
+    <string name="snack_unable_to_open_google_play_store">تعذر فتح متجر Google Play.</string>
+    <string name="snack_copied_to_clipboard">تم النسخ إلى الحافظة! 📋</string>
+    <string name="snack_saved_to_downloads">تم الحفظ في التنزيلات!</string>
+    <string name="snack_saved_to_gallery">تم الحفظ في المعرض</string>
+    <string name="snack_no_app_found">لم يتم العثور على تطبيق لهذا الإجراء. يرجى تثبيت تطبيق متوافق.</string>
+    <string name="snack_feedback">شكرًا لتقييمك لنا! ❤️</string>
+</resources>
