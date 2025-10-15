@@ -45,7 +45,7 @@ object BarcodeImageGenerator {
             EncodeHintType.CHARACTER_SET to "utf-8", EncodeHintType.MARGIN to margin
         )
         errorCorrectionLevel?.let {
-            hints.plus(EncodeHintType.ERROR_CORRECTION to errorCorrectionLevel)
+            hints[EncodeHintType.ERROR_CORRECTION] = it
         }
         return hints
     }

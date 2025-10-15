@@ -127,11 +127,9 @@ object ContactHelper {
         contact.state =
             cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.REGION)
         contact.zipcode =
-            cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.REGION)
+            cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.POSTCODE)
         contact.country =
             cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY)
-        contact.street =
-            cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.STREET)
         contact.neighborhood =
             cursor.getStringOrNull(ContactsContract.CommonDataKinds.StructuredPostal.NEIGHBORHOOD)
         contact.formattedAddress =
