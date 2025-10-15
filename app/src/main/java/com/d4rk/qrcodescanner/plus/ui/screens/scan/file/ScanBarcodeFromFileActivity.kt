@@ -62,6 +62,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
 
     companion object {
         private const val STATE_CURRENT_IMAGE_URI = "state_current_image_uri"
+        private const val STATE_CURRENT_ROTATION = "state_current_rotation"
         fun start(context: Context) {
             val intent = Intent(context, ScanBarcodeFromFileActivity::class.java)
             context.startActivity(intent)
@@ -69,6 +70,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     }
 
     private var displayedImageUri: Uri? = null
+    private var currentRotationDegrees: Float = 0f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScanBarcodeFromFileBinding.inflate(layoutInflater)
@@ -76,9 +78,11 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         setContentView(binding.root)
         binding.buttonScan.isEnabled = false
         AdUtils.loadBanner(binding.nativeAdView)
+        currentRotationDegrees = savedInstanceState?.getFloat(STATE_CURRENT_ROTATION) ?: 0f
+        applyCurrentRotation()
         observeViewModel()
         val restored = savedInstanceState?.getString(STATE_CURRENT_IMAGE_URI)?.let {
-            handlePickedImage(it.toUri())
+            handlePickedImage(it.toUri(), resetRotation = false)
             true
         } ?: false
         if (!restored && !handleIncomingIntent(intent)) {
@@ -93,6 +97,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         viewModel.uiState.value.selectedImageUri?.let { uri ->
             outState.putString(STATE_CURRENT_IMAGE_URI, uri.toString())
         }
+        outState.putFloat(STATE_CURRENT_ROTATION, currentRotationDegrees)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -119,12 +124,12 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.item_rotate_left -> {
-                // binding.cropImageView.rotateImage(CropImageView.RotateDegrees.ROTATE_M90D)
+                rotateImageBy(-90f)
                 true
             }
 
             R.id.item_rotate_right -> {
-                //  binding.cropImageView.rotateImage(CropImageView.RotateDegrees.ROTATE_90D)
+                rotateImageBy(90f)
                 true
             }
 
@@ -147,10 +152,13 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
         }
     }
 
-    private fun handlePickedImage(uri: Uri?) {
+    private fun handlePickedImage(uri: Uri?, resetRotation: Boolean = true) {
         if (uri == null) {
             finish()
             return
+        }
+        if (resetRotation) {
+            resetRotation()
         }
         viewModel.onImagePicked(uri)
     }
@@ -204,6 +212,7 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
                             displayedImageUri = uri
                             if (uri != null) {
                                 binding.imageViewPreview.setImageURI(uri)
+                                applyCurrentRotation()
                             } else {
                                 binding.imageViewPreview.setImageDrawable(null)
                             }
@@ -232,5 +241,28 @@ class ScanBarcodeFromFileActivity : BaseActivity() {
             R.string.scan_barcode_from_image_not_found,
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    private fun rotateImageBy(deltaDegrees: Float) {
+        if (displayedImageUri == null) return
+        currentRotationDegrees = normalizeRotation(currentRotationDegrees + deltaDegrees)
+        applyCurrentRotation()
+    }
+
+    private fun resetRotation() {
+        currentRotationDegrees = 0f
+        applyCurrentRotation()
+    }
+
+    private fun applyCurrentRotation() {
+        binding.imageViewPreview.rotation = currentRotationDegrees
+    }
+
+    private fun normalizeRotation(rotation: Float): Float {
+        var normalized = rotation % 360f
+        if (normalized < 0f) {
+            normalized += 360f
+        }
+        return normalized
     }
 }
