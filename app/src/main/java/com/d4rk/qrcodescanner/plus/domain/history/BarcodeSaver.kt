@@ -78,7 +78,7 @@ object BarcodeSaver {
         } else {
             "$fileName$JSON_FILE_EXTENSION"
         }
-        saveToDownloads(context, newFileName, result.toString(), JSON_FILE_EXTENSION)
+        saveToDownloads(context, newFileName, result.toString(), JSON_MIME_TYPE)
     }
 
     private fun convertToJson(barcode: Barcode): String {
@@ -108,7 +108,7 @@ object BarcodeSaver {
         } else {
             "$fileName$CSV_FILE_EXTENSION"
         }
-        saveToDownloads(context, newFileName, result.toString(), CSV_FILE_EXTENSION)
+        saveToDownloads(context, newFileName, result.toString(), CSV_MIME_TYPE)
     }
 
     private fun convertToCsv(barcode: Barcode): String {
