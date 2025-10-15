@@ -4,29 +4,36 @@
 
 # QR & Bar Code Scanner for Android
 
-**A fast, privacy-conscious scanner and generator built for everyday Android use.**
+**The perfect QR code scanner for anyone who wants a fast and versatile app.**
 
-QR & Bar Code Scanner for Android provides a streamlined experience for reading and creating QR and
-bar codes. Built with Kotlin and Material Design 3, the app pairs a modern interface with reliable
-scanning powered by the [ZXing library](https://github.com/zxing/zxing). The app is lightweight,
-open-source, and focused on keeping your scanning history on-device.
+Scan and Generate QR/Bar Codes with Ease! Introducing QR & Bar Code Scanner for Android, the
+reliable and user-friendly app that streamlines QR code scanning and generation on Android devices.
+Powered by the trusted [Google's ML Kit](https://developers.google.com/ml-kit/vision/barcode-scanning/android) and [CameraX](https://developer.android.com/media/camera/camerax) our app offers a secure and seamless experience.
 
-## Key capabilities
 
-- **Instant scanning:** Detect QR codes, Data Matrix, Aztec, UPC, EAN, and other popular formats in
-  real time using the in-app camera with optional torch and zoom controls for low-light or distant
-  codes.
-- **Create and export codes:** Turn text, links, Wi-Fi credentials, and more into shareable QR
-  codes, then save them as PNG or SVG files.
-- **Smart history:** Automatically store successful scans so you can revisit, favorite, or delete
-  items whenever you need them.
-- **One-tap follow-up actions:** Open web links with your preferred search engine, connect to Wi-Fi
-  networks, add calendar events, or share contact information directly from the scan result.
-- **Personalized experience:** Switch between light, dark, and dynamic Material You themes, adjust
-  haptic and sound feedback, and tailor privacy, notification, and security preferences to match
-  how you use the app.
-- **Respectful monetization:** Banner ads only appear with user consent, and in-app updates and
-  review prompts ensure you stay current without leaving the app.
+Our app is designed to be easy to use and lightweight. Plus, it's free and open‑source!
+
+## Features
+
+- Scan QR/Bar codes
+- Generate QR/Bar codes
+- Fast scanning and lightweight
+- Multiple search engines supported
+- Save codes in history
+- Adaptive themes with Material Expressive support
+- Simple and easy to use
+- Free, open source, and secure
+
+## Benefits
+
+- **Versatile Scanning:** Scan a wide range of barcode formats, including QR, Data Matrix, Aztec,
+  UPC, EAN, and more.
+- **Create Your Own Codes:** Easily generate QR codes for your own data and export them as SVG or
+  PNG files.
+- **Works Anywhere:** Use the flashlight for dark environments and zoom in to scan faraway codes
+  effortlessly.
+- **Unlock Information:** Discover hidden details within codes, such as Wi-Fi connections,
+  geolocations, calendar events, and product information.
 
 ## Screenshots
 
@@ -42,13 +49,6 @@ open-source, and focused on keeping your scanning history on-device.
 
 Download QR & Bar Code Scanner for Android from the Google Play Store and begin scanning and
 creating codes today. It's free, easy to use, and perfect for all your QR and barcode needs.
-
-## Tech stack
-
-- 100% Kotlin codebase following modern Android app architecture
-- ZXing-based scanning pipeline with CameraX integrations
-- Material 3 UI with responsive layouts for phones and tablets
-- ViewModel-driven state management and Jetpack Navigation
 
 ## Feedback
 
