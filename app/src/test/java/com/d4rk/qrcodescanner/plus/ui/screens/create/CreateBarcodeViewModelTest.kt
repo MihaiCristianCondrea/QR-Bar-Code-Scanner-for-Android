@@ -1,138 +1,151 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.create
 
+import android.content.ContentResolver
+import android.net.Uri
+import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
+import com.d4rk.qrcodescanner.plus.model.Barcode
+import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
+import com.google.zxing.BarcodeFormat
+import io.mockk.clearAllMocks
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.unmockkAll
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.runTest
+import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
+import kotlin.coroutines.CoroutineContext
+import kotlin.test.assertFailsWith
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class CreateBarcodeViewModelTest {
 
-    @Test
-    fun `onCleared called closes all registered closeables`() {
-        // Verify that when the ViewModel's onCleared() method is invoked, all Closeable objects added via addCloseable() are properly closed.
-        // TODO implement test
+    private val barcodeDatabase = mockk<BarcodeDatabase>()
+    private val settings = mockk<Settings>()
+
+    @Before
+    fun setUp() {
+        mockkStatic("com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabaseKt")
+    }
+
+    @After
+    fun tearDown() {
+        clearAllMocks()
+        unmockkAll()
     }
 
     @Test
-    fun `onCleared exception handling for closeables`() {
-        // Test the behavior when one of the registered Closeable objects throws an exception during its close() method. 
-        // Ensure that onCleared() continues to close the other registered Closeables and handles the exception gracefully, possibly by aggregating and logging them.
-        // TODO implement test
+    fun `saveBarcode thread context verification`() = runTest {
+        val dispatcher = TrackingDispatcher()
+        val viewModel = CreateBarcodeViewModel(barcodeDatabase, settings, dispatcher)
+        val barcode = createBarcode()
+
+        every { settings.saveCreatedBarcodesToHistory } returns false
+
+        viewModel.saveBarcode(barcode)
+
+        assertTrue("Expected the IO dispatcher to be used", dispatcher.dispatched)
     }
 
     @Test
-    fun `onCleared with no registered closeables`() {
-        // Verify that calling onCleared() does not cause any errors or exceptions when no Closeable objects have been added to the ViewModel.
-        // TODO implement test
+    fun `readVCard with a valid VCF URI`() = runTest {
+        val dispatcher = StandardTestDispatcher(testScheduler)
+        val viewModel = CreateBarcodeViewModel(barcodeDatabase, settings, dispatcher)
+        val contentResolver = mockk<ContentResolver>()
+        val uri = mockk<Uri>()
+        val vcard = "BEGIN:VCARD\nEND:VCARD"
+
+        every { contentResolver.openInputStream(uri) } returns vcard.byteInputStream()
+
+        val result = viewModel.readVCard(contentResolver, uri)
+
+        assertEquals(vcard, result)
     }
 
     @Test
-    fun `addCloseable with a key adds the item successfully`() {
-        // Add a Closeable with a specific key and verify that it can be retrieved using the same key with getCloseable(key).
-        // TODO implement test
+    fun `readVCard with an invalid or non existent URI`() = runTest {
+        val dispatcher = StandardTestDispatcher(testScheduler)
+        val viewModel = CreateBarcodeViewModel(barcodeDatabase, settings, dispatcher)
+        val contentResolver = mockk<ContentResolver>()
+        val uri = mockk<Uri>()
+
+        every { contentResolver.openInputStream(uri) } returns null
+
+        val result = viewModel.readVCard(contentResolver, uri)
+
+        assertEquals("", result)
     }
 
     @Test
-    fun `addCloseable with a pre existing key replaces the old item`() {
-        // Add a Closeable with a key, then add another Closeable with the same key. 
-        // Verify that the second Closeable replaces the first one and that the first one is closed upon replacement.
-        // TODO implement test
+    fun `readVCard with URI pointing to an empty file`() = runTest {
+        val dispatcher = StandardTestDispatcher(testScheduler)
+        val viewModel = CreateBarcodeViewModel(barcodeDatabase, settings, dispatcher)
+        val contentResolver = mockk<ContentResolver>()
+        val uri = mockk<Uri>()
+
+        every { contentResolver.openInputStream(uri) } returns ByteArray(0).inputStream()
+
+        val result = viewModel.readVCard(contentResolver, uri)
+
+        assertEquals("", result)
     }
 
     @Test
-    fun `addCloseable with a null key or value`() {
-        // Test the behavior of addCloseable(key, closeable) when either the key or the closeable object is null to ensure it's handled gracefully, likely by throwing an IllegalArgumentException.
-        // TODO implement test
+    fun `readVCard with insufficient read permissions`() = runTest {
+        val dispatcher = StandardTestDispatcher(testScheduler)
+        val viewModel = CreateBarcodeViewModel(barcodeDatabase, settings, dispatcher)
+        val contentResolver = mockk<ContentResolver>()
+        val uri = mockk<Uri>()
+
+        every { contentResolver.openInputStream(uri) } throws SecurityException("no permission")
+
+        assertFailsWith<SecurityException> {
+            viewModel.readVCard(contentResolver, uri)
+        }
     }
 
     @Test
-    fun `addCloseable without a key is successful`() {
-        // Call the addCloseable(closeable) overload without a key and ensure that the Closeable is added and is correctly closed when onCleared() is called.
-        // TODO implement test
+    fun `readVCard with non text file content`() = runTest {
+        val dispatcher = StandardTestDispatcher(testScheduler)
+        val viewModel = CreateBarcodeViewModel(barcodeDatabase, settings, dispatcher)
+        val contentResolver = mockk<ContentResolver>()
+        val uri = mockk<Uri>()
+        val binaryContent = byteArrayOf(0, 1, 2, 3)
+
+        every { contentResolver.openInputStream(uri) } returns binaryContent.inputStream()
+
+        val result = viewModel.readVCard(contentResolver, uri)
+
+        assertEquals(4, result.length)
     }
 
-    @Test
-    fun `getCloseable retrieves the correct item`() {
-        // After adding a Closeable with a specific key, use getCloseable(key) to retrieve it and verify that the returned object is the same one that was added.
-        // TODO implement test
+    private fun createBarcode(): Barcode {
+        return Barcode(
+            id = 0,
+            name = "Example",
+            text = "https://example.com",
+            formattedText = "https://example.com",
+            format = BarcodeFormat.QR_CODE,
+            schema = BarcodeSchema.URL,
+            date = 1234L,
+            isGenerated = true
+        )
     }
 
-    @Test
-    fun `getCloseable with non existent key returns null`() {
-        // Call getCloseable(key) with a key that has not been used to add any Closeable and verify that the method returns null without throwing an exception.
-        // TODO implement test
-    }
+    private class TrackingDispatcher : CoroutineDispatcher() {
+        @Volatile
+        var dispatched: Boolean = false
 
-    @Test
-    fun `getCloseable with wrong type parameter`() {
-        // Test retrieving a Closeable with a generic type that does not match the stored object's type to ensure a ClassCastException is thrown as expected.
-        // TODO implement test
+        override fun dispatch(context: CoroutineContext, block: Runnable) {
+            dispatched = true
+            block.run()
+        }
     }
-
-    @Test
-    fun `readVCard with a valid VCF URI`() {
-        // Provide a valid URI for a .vcf file and verify that the method correctly reads the file content and returns it as a string.
-        // TODO implement test
-    }
-
-    @Test
-    fun `readVCard with an invalid or non existent URI`() {
-        // Test with a URI that does not point to a real file. 
-        // The method should handle the resulting FileNotFoundException gracefully and return an empty string.
-        // TODO implement test
-    }
-
-    @Test
-    fun `readVCard with URI pointing to an empty file`() {
-        // Use a URI for an existing but empty file and verify that the method returns an empty string.
-        // TODO implement test
-    }
-
-    @Test
-    fun `readVCard with insufficient read permissions`() {
-        // Attempt to read from a URI for which the app lacks read permissions. 
-        // The method should handle the SecurityException and return an empty string.
-        // TODO implement test
-    }
-
-    @Test
-    fun `readVCard with very large file content`() {
-        // Test the method's performance and stability by providing a URI to a very large file to check for potential OutOfMemoryError issues.
-        // TODO implement test
-    }
-
-    @Test
-    fun `readVCard with non text file content`() {
-        // Provide a URI to a file containing binary data (e.g., an image) to verify that the method reads it as text without crashing, even if the output is garbled.
-        // TODO implement test
-    }
-
-    @Test
-    fun `saveBarcode when  save to history  is enabled`() {
-        // With 'saveCreatedBarcodesToHistory' setting enabled, verify that barcodeDatabase.save() is called and the returned Barcode object has its ID updated from the database.
-        // TODO implement test
-    }
-
-    @Test
-    fun `saveBarcode when  save to history  is disabled`() {
-        // With 'saveCreatedBarcodesToHistory' setting disabled, ensure that barcodeDatabase.save() is NOT called and the method returns the original Barcode object without modifications.
-        // TODO implement test
-    }
-
-    @Test
-    fun `saveBarcode when  do not save duplicates  is enabled`() {
-        // Verify that when 'saveCreatedBarcodesToHistory' and 'doNotSaveDuplicates' are both true, the correct boolean flag is passed to the barcodeDatabase.save() method.
-        // TODO implement test
-    }
-
-    @Test
-    fun `saveBarcode database operation failure`() {
-        // Mock the barcodeDatabase.save() method to throw an exception. 
-        // Verify that the suspend function correctly propagates the exception up the call stack.
-        // TODO implement test
-    }
-
-    @Test
-    fun `saveBarcode thread context verification`() {
-        // Confirm that the database interaction within saveBarcode is executed on the specified 'ioDispatcher' and not on the main thread.
-        // TODO implement test
-    }
-
 }

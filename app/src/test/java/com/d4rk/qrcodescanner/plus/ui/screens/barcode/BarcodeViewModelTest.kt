@@ -1,153 +1,366 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.barcode
 
+import app.cash.turbine.test
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
+import com.d4rk.qrcodescanner.plus.model.Barcode
+import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
+import com.d4rk.qrcodescanner.plus.model.schema.Url
+import com.google.zxing.BarcodeFormat
+import io.mockk.clearMocks
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertIs
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class BarcodeViewModelTest {
 
-    @Test
-    fun `onCleared cancels all coroutines`() {
-        // Verify that when onCleared() is called, any ongoing coroutines within the viewModelScope are cancelled. 
-        // This can be tested by launching a long-running job and checking its cancellation status after calling onCleared().
-        // TODO implement test
+    private val repository: BarcodeDetailsRepository = mockk(relaxUnitFun = true)
+    private val testDispatcher = UnconfinedTestDispatcher()
+
+    @Before
+    fun setUp() {
+        Dispatchers.setMain(testDispatcher)
+    }
+
+    @After
+    fun tearDown() {
+        clearMocks(repository)
+        Dispatchers.resetMain()
     }
 
     @Test
-    fun `clear lifecycle viewmodel release releases resources`() {
-        // Verify that when clear() is called, all associated closeables added via addCloseable are closed. 
-        // This can be tested by adding a mock Closeable and verifying its close() method is invoked.
-        // TODO implement test
+    fun `getUiState returns initial state correctly`() = runTest {
+        val initialBarcode = createBarcode(id = 42L, name = "My barcode")
+
+        val viewModel = createViewModel(initialBarcode)
+
+        val state = viewModel.uiState.value
+
+        assertEquals(initialBarcode, state.barcode)
+        assertEquals(initialBarcode.name, state.parsedBarcode.name)
+        assertTrue(state.isInDatabase)
+        assertFalse(state.isProcessing)
+        assertFalse(state.isDeleting)
     }
 
     @Test
-    fun `addCloseable with key stores the closeable`() {
-        // Verify that calling addCloseable(key, closeable) successfully stores the closeable object, which can then be retrieved using getCloseable(key).
-        // TODO implement test
+    fun `getEvents returns the shared flow`() = runTest {
+        val viewModel = createViewModel()
+
+        val events = viewModel.events
+
+        assertNotNull(events)
+        assertIs<SharedFlow<BarcodeEvent>>(events)
     }
 
     @Test
-    fun `addCloseable with duplicate key replaces the old closeable`() {
-        // Verify that if addCloseable(key, closeable) is called with a key that already exists, the old closeable's close() method is called and it is replaced by the new one.
-        // TODO implement test
+    fun `deleteBarcode successful deletion`() = runTest {
+        val barcode = createBarcode(id = 5L)
+        val viewModel = createViewModel(barcode)
+        every { repository.deleteBarcode(barcode.id) } returns flow { emit(Unit) }
+
+        val states = mutableListOf<Boolean>()
+        val job = backgroundScope.launch {
+            viewModel.uiState.map { it.isDeleting }.take(3).toList(states)
+        }
+
+        viewModel.events.test {
+            viewModel.deleteBarcode()
+
+            assertEquals(BarcodeEvent.BarcodeDeleted, awaitItem())
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        job.join()
+        assertEquals(listOf(false, true, false), states)
+
+        verify(exactly = 1) { repository.deleteBarcode(barcode.id) }
     }
 
     @Test
-    fun `addCloseable without key stores the closeable`() {
-        // Verify that addCloseable(closeable) successfully stores the closeable object and that it gets closed when the ViewModel is cleared.
-        // TODO implement test
+    fun `deleteBarcode on barcode not in database`() = runTest {
+        val barcode = createBarcode(id = 0L)
+        val viewModel = createViewModel(barcode)
+
+        viewModel.events.test {
+            viewModel.deleteBarcode()
+            expectNoEvents()
+        }
+
+        verify(exactly = 0) { repository.deleteBarcode(any()) }
     }
 
     @Test
-    fun `getCloseable retrieves the correct object`() {
-        // Verify that getCloseable(key) returns the same closeable object that was previously added with the corresponding key.
-        // TODO implement test
+    fun `deleteBarcode repository throws error`() = runTest {
+        val barcode = createBarcode(id = 9L)
+        val viewModel = createViewModel(barcode)
+        val error = IllegalStateException("boom")
+        every { repository.deleteBarcode(barcode.id) } returns flow { throw error }
+
+        viewModel.events.test {
+            viewModel.deleteBarcode()
+            val errorEvent = assertIs<BarcodeEvent.Error>(awaitItem())
+            assertEquals(error, errorEvent.throwable)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        assertFalse(viewModel.uiState.value.isDeleting)
+        verify(exactly = 1) { repository.deleteBarcode(barcode.id) }
     }
 
     @Test
-    fun `getCloseable with non existent key returns null`() {
-        // Verify that calling getCloseable(key) with a key that has not been added returns null.
-        // TODO implement test
+    fun `updateName successful update`() = runTest {
+        val barcode = createBarcode(id = 11L, name = "Initial")
+        val trimmedName = "Updated"
+        val viewModel = createViewModel(barcode)
+        every { repository.saveBarcode(any(), any()) } returns flow { emit(barcode.id) }
+
+        viewModel.events.test {
+            viewModel.updateName("  $trimmedName  ")
+
+            val event = awaitItem()
+            assertEquals(BarcodeEvent.NameUpdated(trimmedName), event)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        val updated = viewModel.uiState.value
+        assertEquals(trimmedName, updated.barcode.name)
+        assertEquals(trimmedName, updated.parsedBarcode.name)
+        assertFalse(updated.isProcessing)
+        verify(exactly = 1) {
+            repository.saveBarcode(match { it.name == trimmedName && it.id == barcode.id }, false)
+        }
     }
 
     @Test
-    fun `getUiState returns initial state correctly`() {
-        // Verify that getUiState() initially emits a BarcodeUiState object that matches the initialBarcode provided to the ViewModel constructor.
-        // TODO implement test
+    fun `updateName with empty or blank name`() = runTest {
+        val barcode = createBarcode(id = 10L, name = "Original")
+        val viewModel = createViewModel(barcode)
+
+        viewModel.events.test {
+            viewModel.updateName("   ")
+            expectNoEvents()
+        }
+
+        assertEquals(barcode, viewModel.uiState.value.barcode)
+        verify(exactly = 0) { repository.saveBarcode(any(), any()) }
     }
 
     @Test
-    fun `getEvents returns the shared flow`() {
-        // Verify that getEvents() returns a non-null instance of SharedFlow<BarcodeEvent>.
-        // TODO implement test
+    fun `updateName on barcode not in database`() = runTest {
+        val barcode = createBarcode(id = 0L)
+        val viewModel = createViewModel(barcode)
+
+        viewModel.events.test {
+            viewModel.updateName("Name")
+            expectNoEvents()
+        }
+
+        verify(exactly = 0) { repository.saveBarcode(any(), any()) }
     }
 
     @Test
-    fun `deleteBarcode successful deletion`() {
-        // Given the barcode exists in the database (id != 0L), verify that calling deleteBarcode() triggers repository.deleteBarcode(), updates isDeleting to true then false, and emits a BarcodeDeleted event upon success.
-        // TODO implement test
+    fun `updateName repository throws error`() = runTest {
+        val barcode = createBarcode(id = 7L, name = "Old")
+        val viewModel = createViewModel(barcode)
+        val error = RuntimeException("failure")
+        every { repository.saveBarcode(any(), any()) } returns flow { throw error }
+
+        viewModel.events.test {
+            viewModel.updateName("New")
+            val errorEvent = assertIs<BarcodeEvent.Error>(awaitItem())
+            assertEquals(error, errorEvent.throwable)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        assertFalse(viewModel.uiState.value.isProcessing)
+        verify(exactly = 1) { repository.saveBarcode(any(), false) }
     }
 
     @Test
-    fun `deleteBarcode on barcode not in database`() {
-        // Given the barcode is not in the database (id == 0L), verify that calling deleteBarcode() returns immediately without calling the repository or emitting any events.
-        // TODO implement test
+    fun `saveBarcode successful save with avoidDuplicates true`() = runTest {
+        val barcode = createBarcode(id = 0L)
+        val viewModel = createViewModel(barcode)
+        val savedId = 33L
+        every { repository.saveBarcode(any(), true) } returns flow { emit(savedId) }
+
+        viewModel.events.test {
+            viewModel.saveBarcode(avoidDuplicates = true)
+
+            val savedEvent = assertIs<BarcodeEvent.BarcodeSaved>(awaitItem())
+            assertEquals(savedId, savedEvent.barcode.id)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        val state = viewModel.uiState.value
+        assertEquals(savedId, state.barcode.id)
+        assertTrue(state.isInDatabase)
+        assertFalse(state.isProcessing)
+        verify(exactly = 1) { repository.saveBarcode(barcode, true) }
     }
 
     @Test
-    fun `deleteBarcode repository throws error`() {
-        // Verify that if repository.deleteBarcode() throws an exception, the ViewModel updates isDeleting to false and emits an Error event.
-        // TODO implement test
+    fun `saveBarcode successful save with avoidDuplicates false`() = runTest {
+        val barcode = createBarcode(id = 0L)
+        val viewModel = createViewModel(barcode)
+        val savedId = 17L
+        every { repository.saveBarcode(any(), false) } returns flow { emit(savedId) }
+
+        viewModel.events.test {
+            viewModel.saveBarcode(avoidDuplicates = false)
+
+            val savedEvent = assertIs<BarcodeEvent.BarcodeSaved>(awaitItem())
+            assertEquals(savedId, savedEvent.barcode.id)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        verify(exactly = 1) { repository.saveBarcode(barcode, false) }
     }
 
     @Test
-    fun `updateName successful update`() {
-        // Given the barcode is in the database, verify that calling updateName() with a valid name trims the name, calls repository.saveBarcode(), updates the UI state with the new barcode, and emits a NameUpdated event.
-        // TODO implement test
+    fun `saveBarcode on barcode already in database`() = runTest {
+        val barcode = createBarcode(id = 4L)
+        val viewModel = createViewModel(barcode)
+
+        viewModel.events.test {
+            viewModel.saveBarcode(avoidDuplicates = true)
+            expectNoEvents()
+        }
+
+        verify(exactly = 0) { repository.saveBarcode(any(), any()) }
     }
 
     @Test
-    fun `updateName with empty or blank name`() {
-        // Verify that calling updateName() with an empty string or a string containing only whitespace does not call the repository or emit any events.
-        // TODO implement test
+    fun `saveBarcode repository throws error`() = runTest {
+        val barcode = createBarcode(id = 0L)
+        val viewModel = createViewModel(barcode)
+        val error = IllegalArgumentException("save failed")
+        every { repository.saveBarcode(any(), any()) } returns flow { throw error }
+
+        viewModel.events.test {
+            viewModel.saveBarcode(avoidDuplicates = false)
+            val errorEvent = assertIs<BarcodeEvent.Error>(awaitItem())
+            assertEquals(error, errorEvent.throwable)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        assertFalse(viewModel.uiState.value.isProcessing)
+        verify(exactly = 1) { repository.saveBarcode(barcode, false) }
     }
 
     @Test
-    fun `updateName on barcode not in database`() {
-        // Given the barcode is not in the database, verify that calling updateName() does not call the repository or emit any events.
-        // TODO implement test
+    fun `toggleFavorite from false to true`() = runTest {
+        val barcode = createBarcode(id = 2L, isFavorite = false)
+        val viewModel = createViewModel(barcode)
+        every { repository.saveBarcode(any(), false) } returns flow { emit(barcode.id) }
+
+        viewModel.events.test {
+            viewModel.toggleFavorite()
+            val event = awaitItem()
+            assertEquals(BarcodeEvent.FavoriteToggled(true), event)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        val state = viewModel.uiState.value
+        assertTrue(state.barcode.isFavorite)
+        verify(exactly = 1) {
+            repository.saveBarcode(match { it.isFavorite && it.id == barcode.id }, false)
+        }
     }
 
     @Test
-    fun `updateName repository throws error`() {
-        // Verify that if repository.saveBarcode() throws an exception during a name update, the ViewModel sets isProcessing to false and emits an Error event.
-        // TODO implement test
+    fun `toggleFavorite from true to false`() = runTest {
+        val barcode = createBarcode(id = 3L, isFavorite = true)
+        val viewModel = createViewModel(barcode)
+        every { repository.saveBarcode(any(), false) } returns flow { emit(barcode.id) }
+
+        viewModel.events.test {
+            viewModel.toggleFavorite()
+            val event = awaitItem()
+            assertEquals(BarcodeEvent.FavoriteToggled(false), event)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        assertFalse(viewModel.uiState.value.barcode.isFavorite)
+        verify(exactly = 1) {
+            repository.saveBarcode(match { !it.isFavorite && it.id == barcode.id }, false)
+        }
     }
 
     @Test
-    fun `saveBarcode successful save with avoidDuplicates true`() {
-        // Given the barcode is not in the database, verify that calling saveBarcode(true) calls repository.saveBarcode(barcode, true), updates the UI state with the saved barcode (including new ID), and emits a BarcodeSaved event.
-        // TODO implement test
+    fun `toggleFavorite on barcode not in database`() = runTest {
+        val barcode = createBarcode(id = 0L)
+        val viewModel = createViewModel(barcode)
+
+        viewModel.events.test {
+            viewModel.toggleFavorite()
+            expectNoEvents()
+        }
+
+        verify(exactly = 0) { repository.saveBarcode(any(), any()) }
     }
 
     @Test
-    fun `saveBarcode successful save with avoidDuplicates false`() {
-        // Given the barcode is not in the database, verify that calling saveBarcode(false) calls repository.saveBarcode(barcode, false), updates the UI state, and emits a BarcodeSaved event.
-        // TODO implement test
+    fun `toggleFavorite repository throws error`() = runTest {
+        val barcode = createBarcode(id = 12L, isFavorite = false)
+        val viewModel = createViewModel(barcode)
+        val error = IllegalStateException("favorite failure")
+        every { repository.saveBarcode(any(), any()) } returns flow { throw error }
+
+        viewModel.events.test {
+            viewModel.toggleFavorite()
+            val errorEvent = assertIs<BarcodeEvent.Error>(awaitItem())
+            assertEquals(error, errorEvent.throwable)
+            cancelAndIgnoreRemainingEvents()
+        }
+
+        assertFalse(viewModel.uiState.value.isProcessing)
+        verify(exactly = 1) { repository.saveBarcode(any(), false) }
     }
 
-    @Test
-    fun `saveBarcode on barcode already in database`() {
-        // Given the barcode is already in the database (isInDatabase is true), verify that calling saveBarcode() does not call the repository or emit any events.
-        // TODO implement test
+    private fun createViewModel(
+        initialBarcode: Barcode = createBarcode(),
+        repository: BarcodeDetailsRepository = this.repository
+    ): BarcodeViewModel {
+        return BarcodeViewModel(initialBarcode, repository)
     }
 
-    @Test
-    fun `saveBarcode repository throws error`() {
-        // Verify that if repository.saveBarcode() throws an exception during a save operation, the ViewModel sets isProcessing to false and emits an Error event.
-        // TODO implement test
+    private fun createBarcode(
+        id: Long = 0L,
+        name: String? = null,
+        isFavorite: Boolean = false
+    ): Barcode {
+        val schema = Url("https://example.com")
+        return Barcode(
+            id = id,
+            name = name,
+            text = schema.toBarcodeText(),
+            formattedText = schema.toFormattedText(),
+            format = BarcodeFormat.QR_CODE,
+            schema = BarcodeSchema.URL,
+            date = 123456789L,
+            isGenerated = false,
+            isFavorite = isFavorite
+        )
     }
-
-    @Test
-    fun `toggleFavorite from false to true`() {
-        // Given a barcode in the database with isFavorite=false, verify that toggleFavorite() calls repository.saveBarcode() with isFavorite=true, updates the UI state, and emits a FavoriteToggled(true) event.
-        // TODO implement test
-    }
-
-    @Test
-    fun `toggleFavorite from true to false`() {
-        // Given a barcode in the database with isFavorite=true, verify that toggleFavorite() calls repository.saveBarcode() with isFavorite=false, updates the UI state, and emits a FavoriteToggled(false) event.
-        // TODO implement test
-    }
-
-    @Test
-    fun `toggleFavorite on barcode not in database`() {
-        // Given a barcode that is not in the database, verify that calling toggleFavorite() does nothing and does not call the repository or emit events.
-        // TODO implement test
-    }
-
-    @Test
-    fun `toggleFavorite repository throws error`() {
-        // Verify that if repository.saveBarcode() throws an exception during a toggle favorite operation, the ViewModel sets isProcessing to false and emits an Error event.
-        // TODO implement test
-    }
-
 }

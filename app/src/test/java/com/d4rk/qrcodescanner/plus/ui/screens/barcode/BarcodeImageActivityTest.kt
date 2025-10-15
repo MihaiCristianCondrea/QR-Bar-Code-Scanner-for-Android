@@ -1,177 +1,428 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.barcode
 
+import android.app.Application
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Looper
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.isVisible
+import androidx.test.core.app.ApplicationProvider
+import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
+import com.d4rk.qrcodescanner.plus.domain.settings.Settings
+import com.d4rk.qrcodescanner.plus.model.Barcode
+import com.d4rk.qrcodescanner.plus.model.schema.BarcodeSchema
+import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
+import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import com.google.common.truth.Truth.assertThat
+import com.google.zxing.BarcodeFormat
+import io.mockk.every
+import io.mockk.justRun
+import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.unmockkAll
+import io.mockk.verify
+import java.io.Serializable
+import java.lang.reflect.Modifier
+import java.text.SimpleDateFormat
+import java.util.Locale
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
+import org.robolectric.Robolectric
+import org.robolectric.Robolectric.buildActivity
+import org.robolectric.Shadows
+import org.robolectric.android.controller.ActivityController
+import org.robolectric.annotation.LooperMode
+import org.robolectric.annotation.LooperMode.Mode
 
+@LooperMode(Mode.PAUSED)
 class BarcodeImageActivityTest {
+
+    private val application: Application = ApplicationProvider.getApplicationContext()
+    private lateinit var settings: Settings
+    private val defaultBarcode = Barcode(
+        id = 1L,
+        text = "Hello World",
+        formattedText = "Hello World",
+        format = BarcodeFormat.QR_CODE,
+        schema = BarcodeSchema.URL,
+        date = 1_690_000_000_000L,
+        isGenerated = true
+    )
+
+    @Before
+    fun setUp() {
+        mockkObject(BarcodeImageGenerator)
+        settings = mockk(relaxed = true)
+        every { settings.barcodeBackgroundColor } returns Color.WHITE
+        every { settings.barcodeContentColor } returns Color.BLACK
+        every { settings.areBarcodeColorsInversed } returns false
+        startKoin {
+            androidContext(application)
+            modules(
+                module {
+                    single { settings }
+                    single { BarcodeImageGenerator }
+                }
+            )
+        }
+    }
+
+    @After
+    fun tearDown() {
+        stopKoin()
+        unmockkAll()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+    }
 
     @Test
     fun `onCreate  Activity starts with a valid barcode`() {
-        // Launch the activity with a valid Barcode object in the intent extra. [10, 17]
-        // Verify that the toolbar is set up correctly.
-        // Verify that the original screen brightness is saved. [34]
-        // Verify that 'showBarcode' is called and the barcode image, date, format, and text are displayed correctly.
-        // TODO implement test
+        val bitmap = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888)
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns bitmap
+
+        val controller = launchController()
+        val activity = controller.setup().get()
+        idleCoroutines()
+
+        val imageView = activity.findViewById<ImageView>(R.id.image_view_barcode)
+        val dateView = activity.findViewById<TextView>(R.id.text_view_date)
+        val textView = activity.findViewById<TextView>(R.id.text_view_barcode_text)
+
+        assertThat(imageView.drawable).isNotNull()
+        assertThat(imageView.isVisible).isTrue()
+
+        val expectedDate = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH).format(defaultBarcode.date)
+        assertThat(dateView.text.toString()).isEqualTo(expectedDate)
+        assertThat(textView.text.toString()).isEqualTo(defaultBarcode.text)
+        assertThat(activity.title).isEqualTo(activity.getString(defaultBarcode.format.toStringId()))
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException::class)
     fun `onCreate  Activity starts without a barcode`() {
-        // Launch the activity with an intent that is missing the BARCODE_KEY extra. [17]
-        // Verify that the activity throws an IllegalArgumentException.
-        // TODO implement test
+        val controller = launchController(includeExtra = false)
+        controller.setup()
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException::class)
     fun `onCreate  Activity starts with a null barcode`() {
-        // Launch the activity with the BARCODE_KEY extra set to null. [17]
-        // Verify that the activity throws an IllegalArgumentException.
-        // TODO implement test
+        val controller = launchController(barcodeExtra = null)
+        controller.setup()
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException::class)
     fun `onCreate  Activity starts with an invalid barcode type`() {
-        // Launch the activity with the BARCODE_KEY extra containing an object that is not a Barcode. [17]
-        // Verify that the activity throws an IllegalArgumentException due to a casting error.
-        // TODO implement test
+        val controller = launchController(barcodeExtra = "invalid type")
+        controller.setup()
     }
 
     @Test
     fun `onCreate  Activity recreation with saved instance state`() {
-        // Launch the activity, then simulate a configuration change (e.g., screen rotation) to trigger recreation. [10, 18, 32]
-        // Verify that the activity correctly restores its state and displays the barcode information without crashing.
-        // TODO implement test
+        val bitmap = Bitmap.createBitmap(12, 12, Bitmap.Config.ARGB_8888)
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns bitmap
+
+        val controller = launchController()
+        controller.setup()
+        idleCoroutines()
+
+        controller.recreate()
+        val recreated = controller.get()
+        idleCoroutines()
+
+        val imageView = recreated.findViewById<ImageView>(R.id.image_view_barcode)
+        assertThat(imageView.drawable).isNotNull()
+        assertThat(recreated.title).isEqualTo(recreated.getString(R.string.qr_code))
     }
 
     @Test
     fun `onCreate  EdgeToEdge is applied correctly`() {
-        // Launch the activity and verify that EdgeToEdgeHelper.applyEdgeToEdge is called. [19, 26]
-        // Check window flags to ensure the UI is drawn edge-to-edge.
-        // TODO implement test
+        mockkObject(EdgeToEdgeHelper)
+        justRun { EdgeToEdgeHelper.applyEdgeToEdge(any(), any()) }
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val controller = launchController()
+        controller.setup()
+
+        verify { EdgeToEdgeHelper.applyEdgeToEdge(any(), any()) }
     }
 
     @Test
     fun `optionsMenu  Menu creation and initial state`() {
-        // Launch the activity and check if the options menu is created with 'menu_barcode_image'.
-        // Verify that 'item_increase_brightness' is visible and 'item_decrease_brightness' is not visible by default.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val activity = launchController().setup().get()
+        val shadowActivity = Shadows.shadowOf(activity)
+        val menu = shadowActivity.optionsMenu
+
+        assertThat(menu).isNotNull()
+        val increase = menu!!.findItem(R.id.item_increase_brightness)
+        val decrease = menu.findItem(R.id.item_decrease_brightness)
+        assertThat(increase.isVisible).isTrue()
+        assertThat(decrease.isVisible).isFalse()
     }
 
     @Test
     fun `optionsMenu  Increase brightness functionality`() {
-        // Click on the 'item_increase_brightness' menu item. [30]
-        // Verify that the screen brightness is set to 1.0f. [11, 43]
-        // Verify that the 'item_increase_brightness' menu item becomes invisible and 'item_decrease_brightness' becomes visible.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val initialBrightness = 0.2f
+        val controller = launchController(initialBrightness = initialBrightness)
+        val activity = controller.setup().get()
+        val menu = Shadows.shadowOf(activity).optionsMenu!!
+
+        activity.onOptionsItemSelected(menu.findItem(R.id.item_increase_brightness))
+
+        assertThat(activity.window.attributes.screenBrightness).isEqualTo(1.0f)
+        assertThat(menu.findItem(R.id.item_increase_brightness).isVisible).isFalse()
+        assertThat(menu.findItem(R.id.item_decrease_brightness).isVisible).isTrue()
     }
 
     @Test
     fun `optionsMenu  Decrease brightness functionality`() {
-        // First, click 'item_increase_brightness', then click 'item_decrease_brightness'. [30]
-        // Verify that the screen brightness is restored to its original value. [11, 43]
-        // Verify that 'item_increase_brightness' becomes visible again and 'item_decrease_brightness' becomes invisible.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val initialBrightness = 0.45f
+        val controller = launchController(initialBrightness = initialBrightness)
+        val activity = controller.setup().get()
+        val menu = Shadows.shadowOf(activity).optionsMenu!!
+
+        activity.onOptionsItemSelected(menu.findItem(R.id.item_increase_brightness))
+        activity.onOptionsItemSelected(menu.findItem(R.id.item_decrease_brightness))
+
+        assertThat(activity.window.attributes.screenBrightness).isEqualTo(initialBrightness)
+        assertThat(menu.findItem(R.id.item_increase_brightness).isVisible).isTrue()
+        assertThat(menu.findItem(R.id.item_decrease_brightness).isVisible).isFalse()
     }
 
     @Test
     fun `optionsMenu  Toggling brightness multiple times`() {
-        // Repeatedly click the increase and decrease brightness menu items. [30]
-        // Verify that the brightness and menu visibility toggle correctly each time without error.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val initialBrightness = 0.33f
+        val controller = launchController(initialBrightness = initialBrightness)
+        val activity = controller.setup().get()
+        val menu = Shadows.shadowOf(activity).optionsMenu!!
+        val increase = menu.findItem(R.id.item_increase_brightness)
+        val decrease = menu.findItem(R.id.item_decrease_brightness)
+
+        repeat(3) {
+            activity.onOptionsItemSelected(increase)
+            assertThat(activity.window.attributes.screenBrightness).isEqualTo(1.0f)
+            assertThat(increase.isVisible).isFalse()
+            assertThat(decrease.isVisible).isTrue()
+
+            activity.onOptionsItemSelected(decrease)
+            assertThat(activity.window.attributes.screenBrightness).isEqualTo(initialBrightness)
+            assertThat(increase.isVisible).isTrue()
+            assertThat(decrease.isVisible).isFalse()
+        }
     }
 
     @Test
     fun `optionsMenu  State persistence on recreation`() {
-        // Increase brightness, then trigger an activity recreation (e.g., rotation). [5, 12]
-        // Verify that after recreation, the brightness is still at max and the menu items' visibility ('decrease' visible, 'increase' not visible) is correctly restored.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val controller = launchController(initialBrightness = 0.25f)
+        var activity = controller.setup().get()
+        var menu = Shadows.shadowOf(activity).optionsMenu!!
+
+        activity.onOptionsItemSelected(menu.findItem(R.id.item_increase_brightness))
+        controller.recreate()
+
+        activity = controller.get()
+        idleCoroutines()
+        menu = Shadows.shadowOf(activity).optionsMenu!!
+
+        assertThat(activity.window.attributes.screenBrightness).isEqualTo(1.0f)
+        assertThat(menu.findItem(R.id.item_increase_brightness).isVisible).isTrue()
+        assertThat(menu.findItem(R.id.item_decrease_brightness).isVisible).isFalse()
     }
 
     @Test
     fun `showBarcodeImage  Successful image generation`() {
-        // Provide a valid barcode that the barcodeImageGenerator can process.
-        // Verify that the coroutine on the Default dispatcher runs successfully. [3, 6]
-        // Check that the generated bitmap is set on the imageViewBarcode and it is visible.
-        // TODO implement test
+        val bitmap = Bitmap.createBitmap(24, 24, Bitmap.Config.ARGB_8888)
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns bitmap
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        verify {
+            BarcodeImageGenerator.generateBitmap(
+                defaultBarcode,
+                2000,
+                2000,
+                0,
+                settings.barcodeContentColor,
+                settings.barcodeBackgroundColor
+            )
+        }
+
+        val imageView = activity.findViewById<ImageView>(R.id.image_view_barcode)
+        assertThat(imageView.isVisible).isTrue()
+        assertThat(imageView.drawable).isNotNull()
     }
 
     @Test
     fun `showBarcodeImage  Null bitmap from generator`() {
-        // Mock barcodeImageGenerator to return a null bitmap.
-        // Verify that imageViewBarcode is set to be invisible.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        val imageView = activity.findViewById<ImageView>(R.id.image_view_barcode)
+        assertThat(imageView.isVisible).isFalse()
     }
 
     @Test
     fun `showBarcodeImage  Exception during image generation`() {
-        // Mock barcodeImageGenerator to throw an exception.
-        // Verify that the coroutine's onFailure block is executed. [3, 6]
-        // Check that imageViewBarcode is set to be invisible.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } throws IllegalStateException()
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        val imageView = activity.findViewById<ImageView>(R.id.image_view_barcode)
+        assertThat(imageView.isVisible).isFalse()
     }
 
     @Test
     fun `showBarcodeImage  Correct background and padding settings  Light Mode `() {
-        // Set AppCompatDelegate.MODE_NIGHT_NO and settings.areBarcodeColorsInversed to false.
-        // Verify the background colors of imageViewBarcode and layoutBarcodeImageBackground are set correctly from settings.
-        // Verify that padding is set to zero on layoutBarcodeImageBackground.
-        // TODO implement test
+        val bitmap = Bitmap.createBitmap(12, 12, Bitmap.Config.ARGB_8888)
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns bitmap
+        every { settings.barcodeBackgroundColor } returns Color.GREEN
+        every { settings.areBarcodeColorsInversed } returns false
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        val imageView = activity.findViewById<ImageView>(R.id.image_view_barcode)
+        val backgroundLayout = activity.findViewById<FrameLayout>(R.id.layout_barcode_image_background)
+
+        val imageBackgroundColor = (imageView.background as ColorDrawable).color
+        val layoutBackgroundColor = (backgroundLayout.background as ColorDrawable).color
+        assertThat(imageBackgroundColor).isEqualTo(Color.GREEN)
+        assertThat(layoutBackgroundColor).isEqualTo(Color.GREEN)
+        assertThat(backgroundLayout.paddingLeft).isEqualTo(0)
+        assertThat(backgroundLayout.paddingTop).isEqualTo(0)
+        assertThat(backgroundLayout.paddingRight).isEqualTo(0)
+        assertThat(backgroundLayout.paddingBottom).isEqualTo(0)
     }
 
     @Test
     fun `showBarcodeImage  Correct background and padding settings  Dark Mode `() {
-        // Set AppCompatDelegate.MODE_NIGHT_YES and settings.areBarcodeColorsInversed to false.
-        // Verify background colors are set correctly.
-        // Verify that padding is NOT zero on layoutBarcodeImageBackground.
-        // TODO implement test
+        val bitmap = Bitmap.createBitmap(12, 12, Bitmap.Config.ARGB_8888)
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns bitmap
+        every { settings.barcodeBackgroundColor } returns Color.MAGENTA
+        every { settings.areBarcodeColorsInversed } returns false
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        val backgroundLayout = activity.findViewById<FrameLayout>(R.id.layout_barcode_image_background)
+
+        val layoutBackgroundColor = (backgroundLayout.background as ColorDrawable).color
+        assertThat(layoutBackgroundColor).isEqualTo(Color.MAGENTA)
+        assertThat(backgroundLayout.paddingLeft).isGreaterThan(0)
     }
 
     @Test
     fun `showBarcodeImage  Correct background and padding settings  Colors Inversed `() {
-        // Set settings.areBarcodeColorsInversed to true.
-        // Verify background colors are set correctly.
-        // Verify that padding is set to zero on layoutBarcodeImageBackground, regardless of night mode.
-        // TODO implement test
+        val bitmap = Bitmap.createBitmap(12, 12, Bitmap.Config.ARGB_8888)
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns bitmap
+        every { settings.barcodeBackgroundColor } returns Color.YELLOW
+        every { settings.areBarcodeColorsInversed } returns true
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        val backgroundLayout = activity.findViewById<FrameLayout>(R.id.layout_barcode_image_background)
+
+        val layoutBackgroundColor = (backgroundLayout.background as ColorDrawable).color
+        assertThat(layoutBackgroundColor).isEqualTo(Color.YELLOW)
+        assertThat(backgroundLayout.paddingLeft).isEqualTo(0)
+        assertThat(backgroundLayout.paddingTop).isEqualTo(0)
+        assertThat(backgroundLayout.paddingRight).isEqualTo(0)
+        assertThat(backgroundLayout.paddingBottom).isEqualTo(0)
     }
 
     @Test
     fun `showBarcodeDate  Date formatting correctness`() {
-        // Provide a barcode with a known date.
-        // Verify that the text of textViewDate is formatted correctly according to 'dd.MM.yyyy HH:mm'.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+        val dateView = activity.findViewById<TextView>(R.id.text_view_date)
+        val expected = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH).format(defaultBarcode.date)
+
+        assertThat(dateView.text.toString()).isEqualTo(expected)
     }
 
     @Test
     fun `showBarcodeDate  Date formatting thread safety`() {
-        // While not directly testable in a simple unit test, analyze that SimpleDateFormat is an instance variable. [1, 9, 20]
-        // This is a potential concurrency issue if the activity were ever used in a multi-threaded context, though unlikely for an Activity. [21, 23]
-        // TODO implement test
+        val field = BarcodeImageActivity::class.java.getDeclaredField("dateFormatter")
+        assertThat(Modifier.isStatic(field.modifiers)).isFalse()
+        assertThat(field.type).isEqualTo(SimpleDateFormat::class.java)
     }
 
     @Test
     fun `showBarcodeFormat  Title is set correctly`() {
-        // Provide a barcode with a known format.
-        // Verify that the activity's title is set to the string representation of the barcode format.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        assertThat(activity.title).isEqualTo(activity.getString(R.string.qr_code))
     }
 
     @Test
     fun `showBarcodeText  Text is displayed correctly`() {
-        // Provide a barcode with a known text value.
-        // Verify that the text of textViewBarcodeText matches the barcode's text.
-        // TODO implement test
+        every { BarcodeImageGenerator.generateBitmap(any(), any(), any(), any(), any(), any()) } returns null
+
+        val activity = launchController().setup().get()
+        idleCoroutines()
+
+        val textView = activity.findViewById<TextView>(R.id.text_view_barcode_text)
+        assertThat(textView.text.toString()).isEqualTo(defaultBarcode.text)
     }
 
-    @Test
-    fun `brightness  Brightness is set correctly`() {
-        // Call setBrightness with a value, e.g., 0.7f.
-        // Verify that window.attributes.screenBrightness is updated to 0.7f. [34]
-        // TODO implement test
+    private fun launchController(
+        barcodeExtra: Any? = defaultBarcode,
+        includeExtra: Boolean = true,
+        initialBrightness: Float = 0.5f
+    ): ActivityController<BarcodeImageActivity> {
+        val intent = Intent(application, BarcodeImageActivity::class.java)
+        if (includeExtra) {
+            when (barcodeExtra) {
+                null -> intent.putExtra(BARCODE_KEY, null as Serializable?)
+                is Serializable -> intent.putExtra(BARCODE_KEY, barcodeExtra)
+                else -> throw IllegalArgumentException("Barcode extra must be Serializable")
+            }
+        }
+        val controller = buildActivity(BarcodeImageActivity::class.java, intent)
+        controller.get().window.attributes = controller.get().window.attributes.apply {
+            screenBrightness = initialBrightness
+        }
+        return controller
     }
 
-    @Test
-    fun `brightness  Brightness is restored after activity destruction`() {
-        // Change brightness, then finish the activity. [4]
-        // Verify that the system brightness returns to its original state as the change is scoped to the window. [34]
-        // TODO implement test
+    private fun idleCoroutines() {
+        Shadows.shadowOf(Looper.getMainLooper()).idle()
+        Robolectric.flushBackgroundThreadScheduler() // FIXME: 'static fun flushBackgroundThreadScheduler(): Unit' is deprecated. Deprecated in Java.
+        Shadows.shadowOf(Looper.getMainLooper()).idle()
     }
 
+    companion object {
+        private const val BARCODE_KEY = "BARCODE_KEY"
+    }
 }

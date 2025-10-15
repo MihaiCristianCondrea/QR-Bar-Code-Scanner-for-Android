@@ -83,6 +83,95 @@ class BarcodeSaverTest {
         assertThat(written).contains("hello csv")
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun saveBarcodeHistoryAsJson_appendsJsonExtensionWhenMissing() = runTest {
+        val barcode = ExportBarcode(
+            date = 1_728_000_000_000L,
+            format = BarcodeFormat.QR_CODE,
+            text = "extension json"
+        )
+
+        BarcodeSaver.saveBarcodeHistoryAsJson(context, "history", listOf(barcode))
+
+        val values = provider.lastInsertedValues
+        assertThat(values).isNotNull()
+        assertThat(values!!.getAsString(MediaStore.Downloads.DISPLAY_NAME)).isEqualTo("history.json")
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun saveBarcodeHistoryAsJson_keepsExistingJsonExtension() = runTest {
+        val barcode = ExportBarcode(
+            date = 1_728_000_000_000L,
+            format = BarcodeFormat.QR_CODE,
+            text = "extension json existing"
+        )
+
+        BarcodeSaver.saveBarcodeHistoryAsJson(context, "history.json", listOf(barcode))
+
+        val values = provider.lastInsertedValues
+        assertThat(values).isNotNull()
+        assertThat(values!!.getAsString(MediaStore.Downloads.DISPLAY_NAME)).isEqualTo("history.json")
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun saveBarcodeHistoryAsCsv_appendsCsvExtensionWhenMissing() = runTest {
+        val barcode = ExportBarcode(
+            date = 1_728_000_000_000L,
+            format = BarcodeFormat.EAN_13,
+            text = "extension csv"
+        )
+
+        BarcodeSaver.saveBarcodeHistoryAsCsv(context, "history", listOf(barcode))
+
+        val values = provider.lastInsertedValues
+        assertThat(values).isNotNull()
+        assertThat(values!!.getAsString(MediaStore.Downloads.DISPLAY_NAME)).isEqualTo("history.csv")
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun saveBarcodeHistoryAsCsv_keepsExistingCsvExtension() = runTest {
+        val barcode = ExportBarcode(
+            date = 1_728_000_000_000L,
+            format = BarcodeFormat.EAN_13,
+            text = "extension csv existing"
+        )
+
+        BarcodeSaver.saveBarcodeHistoryAsCsv(context, "history.csv", listOf(barcode))
+
+        val values = provider.lastInsertedValues
+        assertThat(values).isNotNull()
+        assertThat(values!!.getAsString(MediaStore.Downloads.DISPLAY_NAME)).isEqualTo("history.csv")
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun saveBarcodeHistoryAsCsv_writesHeaderAndAllRows() = runTest {
+        val barcodes = listOf(
+            ExportBarcode(
+                date = 1_728_000_000_000L,
+                format = BarcodeFormat.EAN_13,
+                text = "first"
+            ),
+            ExportBarcode(
+                date = 1_728_000_000_001L,
+                format = BarcodeFormat.QR_CODE,
+                text = "second"
+            )
+        )
+
+        BarcodeSaver.saveBarcodeHistoryAsCsv(context, "history", barcodes)
+
+        val written = provider.lastWrittenFile?.readText()
+        assertThat(written).isNotNull()
+        assertThat(written).startsWith("Date,Format,Text\n")
+        assertThat(written).contains("first")
+        assertThat(written).contains("second")
+    }
+
     private class RecordingDownloadsProvider : android.content.ContentProvider() {
         private data class DownloadRecord(
             val values: ContentValues,
