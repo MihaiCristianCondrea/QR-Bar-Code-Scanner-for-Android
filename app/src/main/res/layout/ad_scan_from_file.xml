@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        app:cardCornerRadius="24dp">
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CardViewBottomRoundedFilled">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -71,8 +71,8 @@
                         style="@style/Widget.Material3.Button.TonalButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minHeight="40dp"
-                        android:minWidth="88dp" />
+                        android:minWidth="88dp"
+                        android:minHeight="40dp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -149,4 +149,4 @@
         android:layout_marginTop="14dp"
         android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/random_secret" />
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

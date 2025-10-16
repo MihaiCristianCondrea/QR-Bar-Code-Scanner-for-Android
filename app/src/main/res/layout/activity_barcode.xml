@@ -1,5 +1,4 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_view"
@@ -11,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/actions_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -35,7 +35,7 @@
                     android:visibility="gone" />
             </FrameLayout>
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -59,7 +59,7 @@
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_edit"
                     tools:visibility="visible" />
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_barcode_name"
@@ -401,29 +401,36 @@
                 app:iconBackground="?attr/colorPrimary"
                 app:text="@string/print" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_view_ad"
-                style="@style/Widget.Material3.CardView.Outlined"
+            <com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
+                android:id="@+id/native_ad_view_primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin_big"
-                android:layout_marginHorizontal="@dimen/default_margin">
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:nativeAdLayout="@layout/ad_barcode" />
 
-                <com.google.android.gms.ads.AdView
-                    android:id="@+id/ad_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    ads:adSize="FULL_BANNER"
-                    ads:adUnitId="@string/ad_banner_unit_id" />
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
+            <com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
+                android:id="@+id/native_ad_view_secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                app:nativeAdLayout="@layout/ad_barcode" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_bar_loading"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3Expressive.LinearProgressIndicator.Wavy"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="top"
         android:indeterminate="true"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:trackCornerRadius="4dp"
+        app:trackThickness="8dp"
+        app:waveAmplitude="6dp"
+        app:wavelength="48dp" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

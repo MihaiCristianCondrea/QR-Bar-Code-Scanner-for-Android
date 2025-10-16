@@ -16,10 +16,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
+import androidx.core.view.children
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.print.PrintHelper
+import com.d4rk.qrcodescanner.plus.ads.AdUtils
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeBinding
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
@@ -49,9 +51,10 @@ import com.d4rk.qrcodescanner.plus.utils.extension.toPhoneType
 import com.d4rk.qrcodescanner.plus.utils.extension.toStringId
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
-import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.snackbar.Snackbar
+import com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
+import com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -59,6 +62,7 @@ import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import java.text.SimpleDateFormat
 import java.util.Locale
 import org.koin.android.ext.android.inject
+import kotlin.random.Random
 
 class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment.Listener,
     ChooseSearchEngineDialogFragment.Listener, EditBarcodeNameDialogFragment.Listener {
@@ -102,6 +106,7 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
     private var optionsMenu: Menu? = null
     private var latestUiState: BarcodeUiState? = null
     private var isBrightnessAtMax = false
+    private var hasPlacedAds = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -127,7 +132,8 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
         renderInitialState(initialState)
         observeViewModel()
         MobileAds.initialize(this)
-        binding.adView.loadAd(AdRequest.Builder().build())
+        AdUtils.loadBanner(binding.nativeAdViewPrimary)
+        AdUtils.loadBanner(binding.nativeAdViewSecondary)
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
     }
 
@@ -816,6 +822,7 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
         binding.buttonSearch.isVisible = isCreated.not()
         binding.buttonEditName.isVisible = barcode.isInDb
         if (isCreated) {
+            placeAdsRandomly()
             return
         }
         binding.buttonSearchOnWeb.isVisible = barcode.isProductBarcode
@@ -849,6 +856,53 @@ class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment
         binding.buttonOpenBitcoinUri.isVisible = barcode.bitcoinUri.isNullOrEmpty().not()
         binding.buttonOpenLink.isVisible = barcode.url.isNullOrEmpty().not()
         binding.buttonSaveBookmark.isVisible = barcode.schema == BarcodeSchema.BOOKMARK
+        placeAdsRandomly()
+    }
+
+    private fun placeAdsRandomly() {
+        val container = binding.actionsContainer
+        val adViews = listOf(binding.nativeAdViewPrimary, binding.nativeAdViewSecondary)
+        val visibleActionViews = container.children
+            .filterIsInstance<IconButton>()
+            .filter { it.isVisible }
+            .toList()
+
+        if (hasPlacedAds && visibleActionViews.isNotEmpty()) {
+            return
+        }
+
+        adViews.forEach { container.removeView(it) }
+
+        if (visibleActionViews.isEmpty()) {
+            hasPlacedAds = false
+            adViews.forEach { container.addView(it) }
+            return
+        }
+
+        val random = Random(System.currentTimeMillis())
+        val adQueue = adViews.shuffled(random).toMutableList()
+        val anchorQueue = visibleActionViews.shuffled(random).toMutableList()
+        val placements = mutableListOf<Pair<NativeAdBannerView, IconButton>>()
+
+        while (adQueue.isNotEmpty() && anchorQueue.isNotEmpty()) {
+            val adView = adQueue.removeAt(0)
+            val anchor = anchorQueue.removeAt(0)
+            placements += adView to anchor
+        }
+
+        placements.sortByDescending { (_, anchor) -> container.indexOfChild(anchor) }
+        placements.forEach { (adView, anchor) ->
+            val anchorIndex = container.indexOfChild(anchor)
+            container.addView(adView, anchorIndex + 1)
+        }
+
+        if (placements.isNotEmpty()) {
+            hasPlacedAds = true
+        }
+
+        adQueue.forEach { leftover ->
+            container.addView(leftover)
+        }
     }
 
     private fun showButtonText() {

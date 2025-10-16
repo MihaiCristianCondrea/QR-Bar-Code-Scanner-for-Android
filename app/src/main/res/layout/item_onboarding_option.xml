@@ -12,10 +12,10 @@
         android:layout_height="40dp"
         android:contentDescription="@null"
         android:scaleType="centerInside"
-        app:tint="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?attr/colorPrimary" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/text_container"

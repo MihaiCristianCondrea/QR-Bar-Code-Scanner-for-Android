@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -163,4 +163,4 @@
         android:layout_marginHorizontal="@dimen/default_margin"
         android:layout_marginTop="8dp"
         android:text="@string/summary_alternatively_contact" />
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

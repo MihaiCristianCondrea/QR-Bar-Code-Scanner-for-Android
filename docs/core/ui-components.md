@@ -62,13 +62,13 @@ Arrange UI elements with containers like `LinearLayout`.
 
 ```xml
 
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+<androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="vertical" android:padding="16dp">
     <TextView android:id="@+id/header" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:text="Header" />
     <Button android:id="@+id/button_tap" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:text="Tap" />
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
 ```
 
 ## Feedback
