@@ -21,6 +21,7 @@ class NativeAdBannerView @JvmOverloads constructor(
     private var layoutRes: Int = R.layout.ad_bottom_app_bar
     private var adUnitId: String = context.getString(R.string.native_ad_fallback_unit_id)
     private var nativeAd: NativeAd? = null
+    private var ownsNativeAd: Boolean = false
 
     init {
         context.obtainStyledAttributes(attrs, R.styleable.NativeAdBannerView, defStyleAttr, 0)
@@ -58,28 +59,33 @@ class NativeAdBannerView @JvmOverloads constructor(
             listener = listener,
             adUnitId = adUnitId,
             onNativeAdLoaded = { loadedAd ->
-                nativeAd?.destroy()
-                nativeAd = loadedAd
+                destroyOwnedNativeAdIfNecessary(loadedAd)
+                replaceNativeAd(loadedAd, ownsAd = true)
             }
         )
     }
 
     fun renderNativeAd(nativeAd: NativeAd, @LayoutRes layoutResOverride: Int? = null) {
         val desiredLayout = layoutResOverride ?: layoutRes
-        nativeAd.destroyOnReplaceIfNeeded()
+        destroyOwnedNativeAdIfNecessary(nativeAd)
         NativeAdViewBinder.bind(
             context = context,
             container = this,
             layoutRes = desiredLayout,
             nativeAd = nativeAd
         )
-        this.nativeAd = nativeAd
+        replaceNativeAd(nativeAd, ownsAd = false)
     }
 
-    private fun NativeAd.destroyOnReplaceIfNeeded() {
-        if (this@NativeAdBannerView.nativeAd != null && this@NativeAdBannerView.nativeAd != this) {
-            this@NativeAdBannerView.nativeAd?.destroy()
+    private fun destroyOwnedNativeAdIfNecessary(incomingAd: NativeAd? = null) {
+        if (ownsNativeAd && nativeAd != null && nativeAd != incomingAd) {
+            nativeAd?.destroy()
         }
+    }
+
+    private fun replaceNativeAd(newAd: NativeAd?, ownsAd: Boolean) {
+        nativeAd = newAd
+        ownsNativeAd = ownsAd && newAd != null
     }
 
     fun setNativeAdLayout(@LayoutRes layoutRes: Int) {
@@ -87,8 +93,8 @@ class NativeAdBannerView @JvmOverloads constructor(
     }
 
     fun setNativeAdUnitId(adUnitId: String?) {
-        nativeAd?.destroy()
-        nativeAd = null
+        destroyOwnedNativeAdIfNecessary()
+        replaceNativeAd(null, ownsAd = false)
         this.adUnitId = adUnitId.takeUnless { it.isNullOrBlank() }
             ?: context.getString(R.string.native_ad_fallback_unit_id)
     }
@@ -98,8 +104,8 @@ class NativeAdBannerView @JvmOverloads constructor(
     }
 
     override fun onDetachedFromWindow() {
-        nativeAd?.destroy()
-        nativeAd = null
+        destroyOwnedNativeAdIfNecessary()
+        replaceNativeAd(null, ownsAd = false)
         super.onDetachedFromWindow()
     }
 }
