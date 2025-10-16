@@ -28,6 +28,9 @@
     <string name="key_application_build_version" translatable="false">application_build_version</string>
     <string name="key_open_source_licenses" translatable="false">open_source_licenses</string>
     <string name="key_personalized_ads" translatable="false">personalized_ads</string>
+    <string name="key_usage_and_diagnostics" translatable="false">usage_and_diagnostics</string>
+    <string name="key_ad_storage_consent" translatable="false">ad_storage_consent</string>
+    <string name="key_ad_user_data_consent" translatable="false">ad_user_data_consent</string>
     <string name="default_value_bottom_navigation_bar_labels" translatable="false">labeled</string>
     <string name="default_value_tab" translatable="false">scan</string>
     <string name="default_value_theme" translatable="false">MODE_NIGHT_FOLLOW_SYSTEM</string>

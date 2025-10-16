@@ -41,9 +41,11 @@ object OnboardingPreferences {
 
     fun setAnalyticsEnabled(context: Context, enabled: Boolean) {
         val key = context.getString(R.string.key_firebase)
+        val usageKey = context.getString(R.string.key_usage_and_diagnostics)
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit {
                 putBoolean(key, enabled)
+                putBoolean(usageKey, enabled)
             }
     }
 
@@ -55,9 +57,13 @@ object OnboardingPreferences {
 
     fun setPersonalizedAdsEnabled(context: Context, enabled: Boolean) {
         val key = context.getString(R.string.key_personalized_ads)
+        val adStorageKey = context.getString(R.string.key_ad_storage_consent)
+        val adUserDataKey = context.getString(R.string.key_ad_user_data_consent)
         PreferenceManager.getDefaultSharedPreferences(context)
             .edit {
                 putBoolean(key, enabled)
+                putBoolean(adStorageKey, enabled)
+                putBoolean(adUserDataKey, enabled)
             }
     }
 }

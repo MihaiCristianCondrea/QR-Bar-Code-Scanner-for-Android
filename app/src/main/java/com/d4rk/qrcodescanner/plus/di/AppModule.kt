@@ -3,6 +3,7 @@ package com.d4rk.qrcodescanner.plus.di
 import androidx.room.Room
 import com.d4rk.qrcodescanner.plus.data.engagement.SharedPreferencesAppEngagementRepository
 import com.d4rk.qrcodescanner.plus.data.settings.SharedPreferencesMainPreferencesRepository
+import com.d4rk.qrcodescanner.plus.data.settings.SharedPreferencesUsageAndDiagnosticsRepository
 import com.d4rk.qrcodescanner.plus.data.support.GoogleSupportRepository
 import com.d4rk.qrcodescanner.plus.data.support.SupportRepository
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
@@ -21,6 +22,7 @@ import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
+import com.d4rk.qrcodescanner.plus.domain.settings.UsageAndDiagnosticsPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.support.InitBillingClientUseCase
 import com.d4rk.qrcodescanner.plus.domain.support.InitMobileAdsUseCase
 import com.d4rk.qrcodescanner.plus.domain.support.InitiatePurchaseUseCase
@@ -49,6 +51,9 @@ val appModule = module {
     single { Settings(androidContext()) }
 
     single<MainPreferencesRepository> { SharedPreferencesMainPreferencesRepository(androidContext()) }
+    single<UsageAndDiagnosticsPreferencesRepository> {
+        SharedPreferencesUsageAndDiagnosticsRepository(androidContext())
+    }
     single<AppEngagementRepository> { SharedPreferencesAppEngagementRepository(androidContext()) }
 
     single { BarcodeParser }

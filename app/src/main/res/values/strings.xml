@@ -40,7 +40,6 @@
     <string name="onboarding_data_ads">Personalized ads</string>
     <string name="onboarding_data_ads_desc">Help us show ads that are more relevant to you.</string>
     <string name="onboarding_data_ads_disabled">You\'ll still see ads, but they may be less relevant.</string>
-    <string name="privacy_policy_link">Privacy policy</string>
     <string name="success_icon">Success icon</string>
     <string name="onboarding_done_title">You\'re all set!</string>
     <string name="onboarding_done_subtitle">Your preferences have been saved. Enjoy the app.</string>
@@ -271,8 +270,26 @@
     <string name="summary_preference_settings_code_of_conduct">Understand the rules and guidelines of behavior within the service</string>
     <string name="permissions">Permissions</string>
     <string name="summary_preference_settings_permissions">Manage the permissions granted to the service</string>
+
+    <!-- Usage and diagnostics Settings screen -->
     <string name="usage_and_diagnostics">Usage and diagnostics</string>
     <string name="summary_preference_settings_usage_and_diagnostics">Share data to help improve in-app experience</string>
+    <string name="summary_usage_and_diagnostics">Manage how usage data, analytics, and advertising preferences are collected.</string>
+    <string name="advanced_privacy_settings">Advanced privacy settings</string>
+    <string name="personalized_ads">Personalized ads</string>
+    <string name="summary_personalized_ads">Review the consent form to update how ads are personalized for you.</string>
+    <string name="learn_more">Learn more</string>
+    <string name="consent_category_analytics_title">Analytics</string>
+    <string name="consent_analytics_storage_title">Analytics data</string>
+    <string name="consent_analytics_storage_description">Allow anonymous usage data to help improve the app.</string>
+    <string name="consent_category_advertising_title">Advertising</string>
+    <string name="consent_ad_storage_title">Ad storage</string>
+    <string name="consent_ad_storage_description">Allow storing ad-related identifiers on your device.</string>
+    <string name="consent_ad_user_data_title">Ad user data</string>
+    <string name="consent_ad_user_data_description">Allow sharing app activity with advertising partners.</string>
+    <string name="consent_ad_personalization_title">Ad personalization</string>
+    <string name="consent_ad_personalization_description">Allow ads to be personalized using your preferences.</string>
+    <string name="privacy_policy_link" translatable="false">https://mihaicristiancondrea.github.io/profile/#privacy-policy-end-user-software</string>
     <string name="legal">Legal</string>
     <string name="legal_notices">Legal notices</string>
     <string name="summary_preference_settings_legal_notices">View legal information about the service</string>

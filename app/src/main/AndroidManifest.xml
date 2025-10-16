@@ -116,6 +116,11 @@
             android:label="@string/security_and_privacy"
             android:parentActivityName=".ui.screens.settings.GeneralPreferenceActivity" />
         <activity
+            android:name=".ui.screens.settings.usage.UsageAndDiagnosticsActivity"
+            android:exported="false"
+            android:label="@string/usage_and_diagnostics"
+            android:parentActivityName=".ui.screens.settings.SecurityPrivacySettingsActivity" />
+        <activity
             android:name=".ui.screens.settings.AdvancedSettingsActivity"
             android:exported="false"
             android:label="@string/advanced"

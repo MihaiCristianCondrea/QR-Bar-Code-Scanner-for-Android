@@ -39,7 +39,7 @@
             app:summary="@string/summary_preference_settings_usage_and_diagnostics"
             app:title="@string/usage_and_diagnostics">
             <intent
-                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.permissions.PermissionsActivity"
+                android:targetClass="com.d4rk.qrcodescanner.plus.ui.screens.settings.usage.UsageAndDiagnosticsActivity"
                 android:targetPackage="com.d4rk.qrcodescanner.plus" />
         </androidx.preference.Preference>
     </androidx.preference.PreferenceCategory>
