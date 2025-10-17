@@ -125,8 +125,10 @@ class BarcodeHistoryAdapter(private val listener: Listener) :
         var oldPositionIndex = 0
         var newPositionIndex = 0
         while (oldPositionIndex < oldAdAdapterPositions.size || newPositionIndex < newAdAdapterPositions.size) {
-            val oldPosition = if (oldPositionIndex < oldAdAdapterPositions.size) oldAdAdapterPositions[oldPositionIndex] else Int.MAX_VALUE
-            val newPosition = if (newPositionIndex < newAdAdapterPositions.size) newAdAdapterPositions[newPositionIndex] else Int.MAX_VALUE
+            val oldPosition =
+                if (oldPositionIndex < oldAdAdapterPositions.size) oldAdAdapterPositions[oldPositionIndex] else Int.MAX_VALUE
+            val newPosition =
+                if (newPositionIndex < newAdAdapterPositions.size) newAdAdapterPositions[newPositionIndex] else Int.MAX_VALUE
             when {
                 oldPosition == newPosition -> {
                     oldPositionIndex++; newPositionIndex++

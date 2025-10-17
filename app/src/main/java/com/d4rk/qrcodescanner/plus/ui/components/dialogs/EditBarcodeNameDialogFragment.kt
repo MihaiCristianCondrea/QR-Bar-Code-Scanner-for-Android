@@ -34,9 +34,9 @@ class EditBarcodeNameDialogFragment : DialogFragment() {
         binding = DialogEditBarcodeNameBinding.inflate(layoutInflater)
         val dialog = MaterialAlertDialogBuilder(requireActivity()).setTitle(R.string.edit_name)
             .setView(binding.root).setPositiveButton(android.R.string.ok) { _, _ ->
-            val newName = binding.editTextBarcodeName.text.toString()
-            listener?.onNameConfirmed(newName)
-        }.setIcon(R.drawable.ic_edit).setNegativeButton(android.R.string.cancel, null).create()
+                val newName = binding.editTextBarcodeName.text.toString()
+                listener?.onNameConfirmed(newName)
+            }.setIcon(R.drawable.ic_edit).setNegativeButton(android.R.string.cancel, null).create()
         dialog.setOnShowListener {
             initNameEditText(binding.editTextBarcodeName, name)
         }

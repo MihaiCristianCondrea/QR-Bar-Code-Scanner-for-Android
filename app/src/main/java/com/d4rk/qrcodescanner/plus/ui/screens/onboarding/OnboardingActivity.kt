@@ -16,7 +16,7 @@ import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class OnboardingActivity : AppCompatActivity(), OnboardingDoneFragment.Callback {
+class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var pagerAdapter: OnboardingPagerAdapter
@@ -60,10 +60,6 @@ class OnboardingActivity : AppCompatActivity(), OnboardingDoneFragment.Callback 
             binding.viewPager.unregisterOnPageChangeCallback(pageChangeCallback)
         }
         super.onDestroy()
-    }
-
-    override fun onGetStartedClicked() {
-        completeOnboarding()
     }
 
     private fun setupViewPager() {
@@ -148,7 +144,8 @@ class OnboardingActivity : AppCompatActivity(), OnboardingDoneFragment.Callback 
         params.marginStart = margin
         params.marginEnd = margin
         view.layoutParams = params
-        view.background = AppCompatResources.getDrawable(context, R.drawable.onboarding_dot_unselected)
+        view.background =
+            AppCompatResources.getDrawable(context, R.drawable.onboarding_dot_unselected)
         return view
     }
 

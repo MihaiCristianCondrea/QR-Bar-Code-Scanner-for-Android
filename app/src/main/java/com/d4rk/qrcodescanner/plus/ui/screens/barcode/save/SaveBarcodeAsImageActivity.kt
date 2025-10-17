@@ -98,8 +98,9 @@ class SaveBarcodeAsImageActivity : BaseActivity() {
     }
 
     private fun saveBarcode() {
-        val format = SaveBarcodeAsImageFormat.fromSpinnerIndex(binding.spinnerSaveAs.selectedItemPosition)
-            ?: return
+        val format =
+            SaveBarcodeAsImageFormat.fromSpinnerIndex(binding.spinnerSaveAs.selectedItemPosition)
+                ?: return
         viewModel.saveBarcode(applicationContext, barcode, format)
     }
 

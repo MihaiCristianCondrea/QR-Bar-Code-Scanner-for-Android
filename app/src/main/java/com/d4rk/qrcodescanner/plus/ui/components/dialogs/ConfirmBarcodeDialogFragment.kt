@@ -36,8 +36,8 @@ class ConfirmBarcodeDialogFragment : DialogFragment() {
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 listener?.onBarcodeConfirmed(barcode)
             }.setNegativeButton(android.R.string.cancel) { _, _ ->
-            listener?.onBarcodeDeclined()
-        }.create()
+                listener?.onBarcodeDeclined()
+            }.create()
         return dialog
     }
 }

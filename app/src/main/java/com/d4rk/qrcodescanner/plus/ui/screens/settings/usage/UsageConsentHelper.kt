@@ -22,8 +22,16 @@ object UsageConsentHelper {
             }
 
         when (outcome) {
-            is ConsentRequestOutcome.Success -> handleConsentSuccess(activity, consentManager, outcome)
-            is ConsentRequestOutcome.Failure -> Log.e(TAG, "Failed to request consent info: ${outcome.message}")
+            is ConsentRequestOutcome.Success -> handleConsentSuccess(
+                activity,
+                consentManager,
+                outcome
+            )
+
+            is ConsentRequestOutcome.Failure -> Log.e(
+                TAG,
+                "Failed to request consent info: ${outcome.message}"
+            )
         }
     }
 

@@ -46,7 +46,7 @@ class MainViewModel(
         }
         .runningFold(UiAccumulator()) { accumulator, snapshot ->
             val languageChanged = accumulator.lastLanguageTag != null &&
-                accumulator.lastLanguageTag != snapshot.languageTag
+                    accumulator.lastLanguageTag != snapshot.languageTag
 
             UiAccumulator(
                 lastLanguageTag = snapshot.languageTag,

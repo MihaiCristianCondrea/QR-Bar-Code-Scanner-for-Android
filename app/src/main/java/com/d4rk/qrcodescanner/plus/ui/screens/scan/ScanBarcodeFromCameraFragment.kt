@@ -48,6 +48,7 @@ import com.d4rk.qrcodescanner.plus.utils.extension.showError
 import com.d4rk.qrcodescanner.plus.utils.extension.toGmsFormat
 import com.d4rk.qrcodescanner.plus.utils.extension.vibrateOnce
 import com.d4rk.qrcodescanner.plus.utils.extension.vibrator
+import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
 import com.google.android.material.snackbar.Snackbar
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -63,11 +64,10 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import com.google.mlkit.vision.barcode.common.Barcode as MlKitBarcode
-import com.d4rk.qrcodescanner.plus.utils.helpers.PermissionsHelper
-import org.koin.android.ext.android.inject
 
 class ScanBarcodeFromCameraFragment : Fragment(), ConfirmBarcodeDialogFragment.Listener {
 

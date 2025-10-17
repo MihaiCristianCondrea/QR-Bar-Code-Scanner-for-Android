@@ -6,9 +6,9 @@ import android.content.Intent
 import android.os.Build
 import android.widget.Toast
 import androidx.preference.Preference
+import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import com.d4rk.qrcodescanner.plus.BuildConfig
 
 class AboutSettingsActivity : BasePreferenceActivity() {
     override val toolbarTitleResId: Int = R.string.about
@@ -48,7 +48,8 @@ class AboutSettingsActivity : BasePreferenceActivity() {
 
             val ossPreference =
                 findPreference<Preference>(getString(R.string.key_open_source_licenses))
-            ossPreference?.summary = getString(R.string.summary_preference_settings_open_source_licenses)
+            ossPreference?.summary =
+                getString(R.string.summary_preference_settings_open_source_licenses)
             ossPreference?.setOnPreferenceClickListener {
                 startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java))
                 true

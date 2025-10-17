@@ -12,12 +12,12 @@ import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageSaver
 import com.d4rk.qrcodescanner.plus.domain.barcode.WifiConnector
 import com.d4rk.qrcodescanner.plus.domain.create.ContactHelper
 import com.d4rk.qrcodescanner.plus.domain.create.OTPGenerator
+import com.d4rk.qrcodescanner.plus.domain.engagement.AppEngagementRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BARCODE_DATABASE_MIGRATION_1_2
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabase
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeDatabaseFactory
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeHistoryRepository
 import com.d4rk.qrcodescanner.plus.domain.history.BarcodeSaver
-import com.d4rk.qrcodescanner.plus.domain.engagement.AppEngagementRepository
 import com.d4rk.qrcodescanner.plus.domain.main.MainPreferencesRepository
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeImageScanner
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser

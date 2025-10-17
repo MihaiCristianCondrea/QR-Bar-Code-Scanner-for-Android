@@ -8,5 +8,6 @@ class SecurityPrivacySettingsActivity : BasePreferenceActivity() {
     override fun createPreferenceFragment() =
         SecurityPrivacySettingsFragment()
 
-    class SecurityPrivacySettingsFragment : BasePreferenceFragment(R.xml.preferences_security_privacy)
+    class SecurityPrivacySettingsFragment :
+        BasePreferenceFragment(R.xml.preferences_security_privacy)
 }

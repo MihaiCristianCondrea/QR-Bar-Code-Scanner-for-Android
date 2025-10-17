@@ -1,7 +1,7 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.onboarding
 
-import android.os.Bundle
 import android.graphics.Typeface
+import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.view.View
@@ -67,7 +67,8 @@ class OnboardingBottomLabelsFragment : Fragment(R.layout.fragment_onboarding_bot
             holder.card.isClickable = true
             holder.card.isFocusable = true
             holder.binding.titleText.text = formatOptionText(holder.option)
-            val clickListener = View.OnClickListener { onOptionSelected(holder.option.value, preferenceKey) }
+            val clickListener =
+                View.OnClickListener { onOptionSelected(holder.option.value, preferenceKey) }
             holder.card.setOnClickListener(clickListener)
             holder.binding.radioButton.setOnClickListener(clickListener)
         }

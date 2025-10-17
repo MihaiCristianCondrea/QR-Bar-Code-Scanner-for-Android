@@ -16,9 +16,11 @@ class OnboardingPagerAdapter(
             OnboardingPage.Theme -> OnboardingSelectionFragment.newInstance(
                 OnboardingSelectionFragment.SelectionType.THEME,
             )
+
             OnboardingPage.StartDestination -> OnboardingSelectionFragment.newInstance(
                 OnboardingSelectionFragment.SelectionType.START_DESTINATION,
             )
+
             OnboardingPage.BottomNavigationLabels -> OnboardingBottomLabelsFragment()
             OnboardingPage.Data -> OnboardingDataFragment()
             OnboardingPage.Done -> OnboardingDoneFragment()

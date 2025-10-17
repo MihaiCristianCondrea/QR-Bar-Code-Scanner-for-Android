@@ -1,9 +1,9 @@
 package com.d4rk.qrcodescanner.plus.data.onboarding
 
 import android.content.Context
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.R
-import androidx.core.content.edit
 
 object OnboardingPreferences {
     private const val KEY_ONBOARDING_COMPLETE = "pref_onboarding_complete"

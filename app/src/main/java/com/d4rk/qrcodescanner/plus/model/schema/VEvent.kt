@@ -67,41 +67,41 @@ data class VEvent(
             var summary: String? = null
             text.removePrefixIgnoreCase(SCHEMA_PREFIX)
                 .split(PARAMETERS_SEPARATOR_1, PARAMETERS_SEPARATOR_2).forEach { part ->
-                if (part.startsWithIgnoreCase(UID_PREFIX)) {
-                    uid = part.removePrefixIgnoreCase(UID_PREFIX)
-                    return@forEach
+                    if (part.startsWithIgnoreCase(UID_PREFIX)) {
+                        uid = part.removePrefixIgnoreCase(UID_PREFIX)
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(STAMP_PREFIX)) {
+                        stamp = part.removePrefixIgnoreCase(STAMP_PREFIX)
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(ORGANIZER_PREFIX)) {
+                        organizer = part.removePrefixIgnoreCase(ORGANIZER_PREFIX)
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(DESCRIPTION_PREFIX)) {
+                        description = part.removePrefixIgnoreCase(DESCRIPTION_PREFIX)
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(LOCATION_PREFIX)) {
+                        location = part.removePrefixIgnoreCase(LOCATION_PREFIX)
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(START_PREFIX)) {
+                        val startDateOriginal = part.removePrefix(START_PREFIX)
+                        startDate = DATE_PARSERS.parseOrNull(startDateOriginal)?.time
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(END_PREFIX)) {
+                        val endDateOriginal = part.removePrefix(END_PREFIX)
+                        endDate = DATE_PARSERS.parseOrNull(endDateOriginal)?.time
+                        return@forEach
+                    }
+                    if (part.startsWithIgnoreCase(SUMMARY_PREFIX)) {
+                        summary = part.removePrefixIgnoreCase(SUMMARY_PREFIX)
+                        return@forEach
+                    }
                 }
-                if (part.startsWithIgnoreCase(STAMP_PREFIX)) {
-                    stamp = part.removePrefixIgnoreCase(STAMP_PREFIX)
-                    return@forEach
-                }
-                if (part.startsWithIgnoreCase(ORGANIZER_PREFIX)) {
-                    organizer = part.removePrefixIgnoreCase(ORGANIZER_PREFIX)
-                    return@forEach
-                }
-                if (part.startsWithIgnoreCase(DESCRIPTION_PREFIX)) {
-                    description = part.removePrefixIgnoreCase(DESCRIPTION_PREFIX)
-                    return@forEach
-                }
-                if (part.startsWithIgnoreCase(LOCATION_PREFIX)) {
-                    location = part.removePrefixIgnoreCase(LOCATION_PREFIX)
-                    return@forEach
-                }
-                if (part.startsWithIgnoreCase(START_PREFIX)) {
-                    val startDateOriginal = part.removePrefix(START_PREFIX)
-                    startDate = DATE_PARSERS.parseOrNull(startDateOriginal)?.time
-                    return@forEach
-                }
-                if (part.startsWithIgnoreCase(END_PREFIX)) {
-                    val endDateOriginal = part.removePrefix(END_PREFIX)
-                    endDate = DATE_PARSERS.parseOrNull(endDateOriginal)?.time
-                    return@forEach
-                }
-                if (part.startsWithIgnoreCase(SUMMARY_PREFIX)) {
-                    summary = part.removePrefixIgnoreCase(SUMMARY_PREFIX)
-                    return@forEach
-                }
-            }
             return VEvent(uid, stamp, organizer, description, location, startDate, endDate, summary)
         }
     }

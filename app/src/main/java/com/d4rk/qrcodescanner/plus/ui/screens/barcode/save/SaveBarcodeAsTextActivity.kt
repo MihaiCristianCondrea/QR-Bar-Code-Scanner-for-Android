@@ -97,8 +97,9 @@ class SaveBarcodeAsTextActivity : BaseActivity() {
     }
 
     private fun saveBarcode() {
-        val format = SaveBarcodeAsTextFormat.fromSpinnerIndex(binding.spinnerSaveAs.selectedItemPosition)
-            ?: return
+        val format =
+            SaveBarcodeAsTextFormat.fromSpinnerIndex(binding.spinnerSaveAs.selectedItemPosition)
+                ?: return
         viewModel.saveBarcode(applicationContext, barcode, format)
     }
 

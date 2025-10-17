@@ -47,7 +47,8 @@ data class OtpAuth(
             return OtpAuth(type, label, issuer, secret, algorithm, digits, period, counter)
         }
 
-        private const val UNRESERVED_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~"
+        private const val UNRESERVED_CHARS =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~"
         private const val LABEL_ALLOWED_CHARS = "$UNRESERVED_CHARS:"
 
         fun encodeUriComponent(value: String, allow: String = UNRESERVED_CHARS): String {
@@ -63,7 +64,9 @@ data class OtpAuth(
                 } else {
                     char.toString().toByteArray(Charsets.UTF_8).forEach { byte ->
                         builder.append('%')
-                        builder.append(((byte.toInt()) and 0xFF).toString(16).uppercase().padStart(2, '0'))
+                        builder.append(
+                            ((byte.toInt()) and 0xFF).toString(16).uppercase().padStart(2, '0')
+                        )
                     }
                 }
             }

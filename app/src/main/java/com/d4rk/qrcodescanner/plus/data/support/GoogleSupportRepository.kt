@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import androidx.preference.PreferenceManager
 import com.android.billingclient.api.AcknowledgePurchaseParams
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.BillingResult
+import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
-import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.QueryPurchasesParams
-import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.R
 import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdRequest
@@ -36,6 +36,7 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
     private val pendingConnectionCallbacks = CopyOnWriteArrayList<() -> Unit>()
     private val isConnecting = AtomicBoolean(false)
     private val adsInitialized = AtomicBoolean(false)
+
     @Volatile
     private var purchaseStatusListener: SupportRepository.PurchaseStatusListener? = null
 
@@ -114,11 +115,14 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
                 }
 
                 listener.onProductDetailsRetrieved(detailsList)
-                    } else {
-                            Log.w(TAG, "Failed to query product details: ${billingResult.debugMessage} (${billingResult.responseCode})")
-                    listener.onProductDetailsRetrieved(emptyList())
-                }
+            } else {
+                Log.w(
+                    TAG,
+                    "Failed to query product details: ${billingResult.debugMessage} (${billingResult.responseCode})"
+                )
+                listener.onProductDetailsRetrieved(emptyList())
             }
+        }
     }
 
     override fun initiatePurchase(productId: String): SupportRepository.BillingFlowLauncher? {

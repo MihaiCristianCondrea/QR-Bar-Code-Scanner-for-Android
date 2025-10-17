@@ -15,14 +15,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import androidx.core.view.isVisible
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.print.PrintHelper
-import com.d4rk.qrcodescanner.plus.ads.AdUtils
 import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.ads.AdUtils
+import com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
 import com.d4rk.qrcodescanner.plus.databinding.ActivityBarcodeBinding
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeDetailsRepository
 import com.d4rk.qrcodescanner.plus.domain.barcode.BarcodeImageGenerator
@@ -39,6 +40,7 @@ import com.d4rk.qrcodescanner.plus.ui.components.dialogs.DeleteConfirmationDialo
 import com.d4rk.qrcodescanner.plus.ui.components.dialogs.EditBarcodeNameDialogFragment
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.UpNavigationActivity
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.setupToolbarWithUpNavigation
+import com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.otp.OtpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.save.SaveBarcodeAsImageActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.barcode.save.SaveBarcodeAsTextActivity
@@ -53,15 +55,13 @@ import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.snackbar.Snackbar
-import com.d4rk.qrcodescanner.plus.ads.views.NativeAdBannerView
-import com.d4rk.qrcodescanner.plus.ui.components.views.IconButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.Locale
-import org.koin.android.ext.android.inject
 import kotlin.random.Random
 
 class BarcodeActivity : UpNavigationActivity(), DeleteConfirmationDialogFragment.Listener,

@@ -38,7 +38,8 @@ class OnboardingDataFragment : Fragment(R.layout.fragment_onboarding_data) {
         }
 
         binding.linkPrivacy.setOnClickListener {
-            val url = "https://mihaicristiancondrea.github.io/profile/#privacy-policy-end-user-software"
+            val url =
+                "https://mihaicristiancondrea.github.io/profile/#privacy-policy-end-user-software"
             startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
         }
     }

@@ -1,12 +1,13 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.settings
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import androidx.annotation.XmlRes
+import androidx.core.view.isNotEmpty
+import androidx.core.view.updatePaddingRelative
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
@@ -15,13 +16,12 @@ import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceCardStyler
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.shape.CornerFamily
 import com.google.android.material.textview.MaterialTextView
-import androidx.core.view.isNotEmpty
-import androidx.core.view.updatePaddingRelative
 
-abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId: Int) : PreferenceFragmentCompat() {
+abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId: Int) :
+    PreferenceFragmentCompat() {
     private var settingsList: RecyclerView? = null
     private var preferenceAdapterObserver: RecyclerView.AdapterDataObserver? = null
     private var preferenceChildAttachListener: RecyclerView.OnChildAttachStateChangeListener? = null
@@ -41,8 +41,14 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
         setDividerHeight(0)
         val listView = listView
         settingsList = listView
-        val verticalPadding = resources.getDimensionPixelSize(R.dimen.preference_list_vertical_padding)
-        listView.setPadding(listView.paddingLeft, verticalPadding, listView.paddingRight, verticalPadding)
+        val verticalPadding =
+            resources.getDimensionPixelSize(R.dimen.preference_list_vertical_padding)
+        listView.setPadding(
+            listView.paddingLeft,
+            verticalPadding,
+            listView.paddingRight,
+            verticalPadding
+        )
         listView.clipToPadding = false
         setupPreferenceCardStyling(listView)
     }
@@ -71,11 +77,14 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
         for (index in 0 until group.preferenceCount) {
             val preference = group.getPreference(index)
             when (preference) {
-                is PreferenceCategory -> preference.layoutResource = R.layout.item_preference_category
+                is PreferenceCategory -> preference.layoutResource =
+                    R.layout.item_preference_category
+
                 is SwitchPreferenceCompat -> {
                     preference.layoutResource = R.layout.item_preference
                     preference.widgetLayoutResource = R.layout.widget_preference_switch
                 }
+
                 else -> preference.layoutResource = R.layout.item_preference
             }
             preference.isIconSpaceReserved = false
@@ -89,18 +98,37 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
         val updateRunnable = Runnable { updatePreferenceCardShapes(listView) }
         listView.adapter?.let { adapter ->
             val observer = object : RecyclerView.AdapterDataObserver() {
-                override fun onChanged() { updateRunnable.run() }
-                override fun onItemRangeInserted(positionStart: Int, itemCount: Int) { updateRunnable.run() }
-                override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) { updateRunnable.run() }
-                override fun onItemRangeChanged(positionStart: Int, itemCount: Int) { updateRunnable.run() }
-                override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) { updateRunnable.run() }
+                override fun onChanged() {
+                    updateRunnable.run()
+                }
+
+                override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                    updateRunnable.run()
+                }
+
+                override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                    updateRunnable.run()
+                }
+
+                override fun onItemRangeChanged(positionStart: Int, itemCount: Int) {
+                    updateRunnable.run()
+                }
+
+                override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) {
+                    updateRunnable.run()
+                }
             }
             adapter.registerAdapterDataObserver(observer)
             preferenceAdapterObserver = observer
         }
         val attachListener = object : RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewAttachedToWindow(view: View) { updateRunnable.run() }
-            override fun onChildViewDetachedFromWindow(view: View) { updateRunnable.run() }
+            override fun onChildViewAttachedToWindow(view: View) {
+                updateRunnable.run()
+            }
+
+            override fun onChildViewDetachedFromWindow(view: View) {
+                updateRunnable.run()
+            }
         }
         listView.addOnChildAttachStateChangeListener(attachListener)
         preferenceChildAttachListener = attachListener
@@ -176,22 +204,13 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
             }
             val first = isFirstPreferenceInSection(preferences, position)
             val last = isLastPreferenceInSection(preferences, position)
-            applyRoundedCorners(card, first, last)
-            (card.layoutParams as? ViewGroup.MarginLayoutParams)?.let { params ->
-                var updated = false
-                if (params.topMargin != 0) {
-                    params.topMargin = 0
-                    updated = true
-                }
-                val bottomMargin = if (last) 0 else spacing
-                if (params.bottomMargin != bottomMargin) {
-                    params.bottomMargin = bottomMargin
-                    updated = true
-                }
-                if (updated) {
-                    card.layoutParams = params
-                }
-            }
+            PreferenceCardStyler.applyRoundedCorners(card, first, last)
+            PreferenceCardStyler.applySpacing(
+                card = card,
+                isLastItem = last,
+                spacingPx = spacing,
+                resetTopMargin = true,
+            )
             syncAccessoryVisibility(card)
         }
     }
@@ -212,19 +231,6 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
             return next is PreferenceCategory
         }
         return true
-    }
-
-    private fun applyRoundedCorners(card: MaterialCardView, first: Boolean, last: Boolean) {
-        val metrics = card.resources.displayMetrics
-        val smallRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, metrics)
-        val largeRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24f, metrics)
-        val shape = card.shapeAppearanceModel.toBuilder()
-            .setTopLeftCorner(CornerFamily.ROUNDED, if (first) largeRadius else smallRadius)
-            .setTopRightCorner(CornerFamily.ROUNDED, if (first) largeRadius else smallRadius)
-            .setBottomLeftCorner(CornerFamily.ROUNDED, if (last) largeRadius else smallRadius)
-            .setBottomRightCorner(CornerFamily.ROUNDED, if (last) largeRadius else smallRadius)
-            .build()
-        card.shapeAppearanceModel = shape
     }
 
     private fun syncAccessoryVisibility(itemView: View) {

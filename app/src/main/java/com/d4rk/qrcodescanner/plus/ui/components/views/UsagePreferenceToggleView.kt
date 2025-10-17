@@ -47,17 +47,21 @@ class UsagePreferenceToggleView @JvmOverloads constructor(
                 iconView.setImageDrawable(array.getDrawable(R.styleable.UsagePreferenceToggleView_preferenceIcon))
             }
             if (array.hasValue(R.styleable.UsagePreferenceToggleView_preferenceIconTint)) {
-                val color = array.getColorStateList(R.styleable.UsagePreferenceToggleView_preferenceIconTint)
+                val color =
+                    array.getColorStateList(R.styleable.UsagePreferenceToggleView_preferenceIconTint)
                 iconView.imageTintList = color
             }
             if (array.hasValue(R.styleable.UsagePreferenceToggleView_preferenceIconContentDescription)) {
-                iconView.contentDescription = array.getString(R.styleable.UsagePreferenceToggleView_preferenceIconContentDescription)
+                iconView.contentDescription =
+                    array.getString(R.styleable.UsagePreferenceToggleView_preferenceIconContentDescription)
             }
             if (array.hasValue(R.styleable.UsagePreferenceToggleView_preferenceTitle)) {
-                titleView.text = array.getText(R.styleable.UsagePreferenceToggleView_preferenceTitle)
+                titleView.text =
+                    array.getText(R.styleable.UsagePreferenceToggleView_preferenceTitle)
             }
             if (array.hasValue(R.styleable.UsagePreferenceToggleView_preferenceSummary)) {
-                summaryView.text = array.getText(R.styleable.UsagePreferenceToggleView_preferenceSummary)
+                summaryView.text =
+                    array.getText(R.styleable.UsagePreferenceToggleView_preferenceSummary)
                 summaryView.isVisible = summaryView.text.isNullOrEmpty().not()
             } else {
                 summaryView.isVisible = false

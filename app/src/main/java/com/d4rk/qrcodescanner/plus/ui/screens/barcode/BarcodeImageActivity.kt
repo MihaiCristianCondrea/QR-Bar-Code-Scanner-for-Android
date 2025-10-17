@@ -22,9 +22,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.zhanghai.android.fastscroll.FastScrollerBuilder
+import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.Locale
-import org.koin.android.ext.android.inject
 
 class BarcodeImageActivity : UpNavigationActivity() {
     companion object {

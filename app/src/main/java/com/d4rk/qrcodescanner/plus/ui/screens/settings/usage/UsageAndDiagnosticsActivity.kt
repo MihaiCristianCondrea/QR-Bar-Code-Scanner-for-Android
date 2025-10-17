@@ -119,7 +119,10 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
         updateSwitchState(binding.rowAnalyticsConsent.toggleSwitch, state.analyticsConsentGranted)
         updateSwitchState(binding.rowAdStorage.toggleSwitch, state.adStorageConsentGranted)
         updateSwitchState(binding.rowAdUserData.toggleSwitch, state.adUserDataConsentGranted)
-        updateSwitchState(binding.rowAdPersonalization.toggleSwitch, state.adPersonalizationConsentGranted)
+        updateSwitchState(
+            binding.rowAdPersonalization.toggleSwitch,
+            state.adPersonalizationConsentGranted
+        )
 
         applyAnalyticsCollection(state.analyticsConsentGranted)
         updateAdvancedControlsEnabled(state.usageAndDiagnosticsEnabled)

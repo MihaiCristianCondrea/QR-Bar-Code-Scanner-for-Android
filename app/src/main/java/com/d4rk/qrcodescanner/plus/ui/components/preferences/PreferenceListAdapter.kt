@@ -17,11 +17,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceBinding
 import com.d4rk.qrcodescanner.plus.databinding.ItemPreferenceNativeAdBinding
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceCardStyler.applyRoundedCorners
+import com.d4rk.qrcodescanner.plus.ui.components.preferences.PreferenceCardStyler.applySpacing
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.MaterialColors
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textview.MaterialTextView
 import com.google.android.gms.ads.nativead.NativeAd as GoogleNativeAd
 
@@ -233,30 +232,7 @@ class PreferenceListAdapter<T : Any>(
             }
 
             applySpacing(binding.lessonCard, last)
-            applyCorners(binding.lessonCard, first, last)
-        }
-
-        private fun applySpacing(card: MaterialCardView, last: Boolean) {
-            val params = card.layoutParams as? ViewGroup.MarginLayoutParams ?: return
-            val spacing = card.resources.getDimensionPixelSize(R.dimen.preference_item_spacing)
-            val bottomMargin = if (last) 0 else spacing
-            if (params.bottomMargin != bottomMargin) {
-                params.bottomMargin = bottomMargin
-                card.layoutParams = params
-            }
-        }
-
-        private fun applyCorners(card: MaterialCardView, first: Boolean, last: Boolean) {
-            val context = card.context
-            val dp4 = context.resources.displayMetrics.density * 4f
-            val dp24 = context.resources.displayMetrics.density * 24f
-            val shapeBuilder: ShapeAppearanceModel.Builder =
-                card.shapeAppearanceModel.toBuilder()
-                    .setTopLeftCorner(CornerFamily.ROUNDED, if (first) dp24 else dp4)
-                    .setTopRightCorner(CornerFamily.ROUNDED, if (first) dp24 else dp4)
-                    .setBottomLeftCorner(CornerFamily.ROUNDED, if (last) dp24 else dp4)
-                    .setBottomRightCorner(CornerFamily.ROUNDED, if (last) dp24 else dp4)
-            card.shapeAppearanceModel = shapeBuilder.build()
+            applyRoundedCorners(binding.lessonCard, first, last)
         }
     }
 
@@ -269,15 +245,15 @@ class PreferenceListAdapter<T : Any>(
             return when {
                 oldItem is PreferenceListItem.Category && newItem is PreferenceListItem.Category ->
                     oldItem.titleRes == newItem.titleRes &&
-                        oldItem.titleText == newItem.titleText &&
-                        oldItem.hideWhenBlank == newItem.hideWhenBlank
+                            oldItem.titleText == newItem.titleText &&
+                            oldItem.hideWhenBlank == newItem.hideWhenBlank
 
                 oldItem is PreferenceListItem.Action<*> && newItem is PreferenceListItem.Action<*> ->
                     oldItem.action == newItem.action
 
                 oldItem is PreferenceListItem.NativeAd && newItem is PreferenceListItem.NativeAd ->
                     oldItem.nativeAd == newItem.nativeAd &&
-                        oldItem.adLayoutRes == newItem.adLayoutRes
+                            oldItem.adLayoutRes == newItem.adLayoutRes
 
                 else -> false
             }
@@ -307,6 +283,7 @@ sealed interface PreferenceListItem<out T : Any> {
         val titleText: CharSequence? = null,
         val hideWhenBlank: Boolean = true
     ) : PreferenceListItem<Nothing>
+
     data class Action<T : Any>(
         val action: T,
         @param:StringRes val titleRes: Int,
@@ -314,6 +291,7 @@ sealed interface PreferenceListItem<out T : Any> {
         @param:DrawableRes val iconRes: Int,
         @param:LayoutRes val widgetLayoutRes: Int? = null
     ) : PreferenceListItem<T>
+
     data class NativeAd(
         val nativeAd: GoogleNativeAd? = null,
         @param:LayoutRes val adLayoutRes: Int = R.layout.ad_preference
