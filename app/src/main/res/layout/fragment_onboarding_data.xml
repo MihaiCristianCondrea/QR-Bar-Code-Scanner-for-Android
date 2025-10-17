@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="@string/privacy_policy_link"
+            android:text="@string/privacy_policy"
             app:icon="@drawable/ic_open_new"
             app:iconGravity="end" />
 
