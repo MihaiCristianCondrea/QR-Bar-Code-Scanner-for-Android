@@ -1,6 +1,5 @@
 package com.d4rk.qrcodescanner.plus.ui.screens.settings
 
-import androidx.preference.SwitchPreferenceCompat
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.domain.settings.Settings
 import org.koin.android.ext.android.inject
@@ -51,19 +50,5 @@ class ScannerSettingsActivity : BasePreferenceActivity() {
             )
         }
 
-        private fun bindSwitchPreference(
-            keyResId: Int,
-            getter: () -> Boolean,
-            setter: (Boolean) -> Unit
-        ) {
-            val preference = findPreference<SwitchPreferenceCompat>(getString(keyResId))
-            preference?.apply {
-                isChecked = getter()
-                setOnPreferenceChangeListener { _, newValue ->
-                    setter(newValue as Boolean)
-                    true
-                }
-            }
-        }
     }
 }

@@ -257,6 +257,21 @@ abstract class BasePreferenceFragment(@param:XmlRes private val preferenceResId:
         }
     }
 
+    protected fun bindSwitchPreference(
+        keyResId: Int,
+        getter: () -> Boolean,
+        setter: (Boolean) -> Unit
+    ) {
+        val preference = findPreference<SwitchPreferenceCompat>(getString(keyResId))
+        preference?.apply {
+            isChecked = getter()
+            setOnPreferenceChangeListener { _, newValue ->
+                setter(newValue as Boolean)
+                true
+            }
+        }
+    }
+
     private fun getVisiblePreferences(group: PreferenceGroup): List<Preference> {
         val result = mutableListOf<Preference>()
         collectVisiblePreferences(group, result)
