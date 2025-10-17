@@ -2,10 +2,11 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings.usage
 
 import android.app.Activity
 import android.util.Log
-import com.d4rk.qrcodescanner.plus.data.startup.ConsentManager
-import com.d4rk.qrcodescanner.plus.data.startup.ConsentRequestOutcome
+import android.widget.Toast
+import com.d4rk.qrcodescanner.plus.R
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowCoordinator
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowResult
 import com.google.android.ump.ConsentForm
-import com.google.android.ump.ConsentInformation
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
@@ -14,61 +15,30 @@ object UsageConsentHelper {
     private const val TAG = "UsageConsentHelper"
 
     suspend fun showConsentForm(activity: Activity) {
-        val consentManager = ConsentManager(activity.applicationContext)
-        val outcome = runCatching { consentManager.requestConsent(activity) }
-            .getOrElse { throwable ->
-                Log.e(TAG, "Failed to request consent info", throwable)
-                return
-            }
-
-        when (outcome) {
-            is ConsentRequestOutcome.Success -> handleConsentSuccess(
-                activity,
-                consentManager,
-                outcome
+        val consentCoordinator = ConsentFlowCoordinator(activity.applicationContext)
+        val result = runCatching {
+            consentCoordinator.prepareConsentUi(
+                activity = activity,
+                requestPrivacyOptionsOnSatisfied = true,
             )
-
-            is ConsentRequestOutcome.Failure -> Log.e(
-                TAG,
-                "Failed to request consent info: ${outcome.message}"
-            )
+        }.getOrElse { throwable ->
+            Log.e(TAG, "Failed to prepare consent flow", throwable)
+            showErrorToast(activity, throwable.message)
+            return
         }
-    }
 
-    private suspend fun handleConsentSuccess(
-        activity: Activity,
-        consentManager: ConsentManager,
-        outcome: ConsentRequestOutcome.Success,
-    ) {
-        when (outcome.consentStatus) {
-            ConsentInformation.ConsentStatus.REQUIRED -> {
-                if (outcome.isConsentFormAvailable) {
-                    val consentForm = runCatching { consentManager.loadConsentForm(activity) }
-                        .getOrElse { throwable ->
-                            Log.e(TAG, "Failed to load consent form", throwable)
-                            return
-                        }
-                    showConsentForm(activity, consentForm)
-                } else {
-                    Log.w(TAG, "Consent form required but not available")
-                }
-            }
-
-            ConsentInformation.ConsentStatus.OBTAINED,
-            ConsentInformation.ConsentStatus.NOT_REQUIRED -> {
-                // No action required; consent already obtained or not needed.
-            }
-
-            else -> {
-                Log.w(TAG, "Unhandled consent status: ${outcome.consentStatus}")
+        when (result) {
+            is ConsentFlowResult.ShowConsentForm -> presentConsentForm(activity, result.consentForm)
+            ConsentFlowResult.ShowPrivacyOptionsForm -> showPrivacyOptions(activity, consentCoordinator)
+            ConsentFlowResult.ConsentSatisfied -> Unit
+            is ConsentFlowResult.Error -> {
+                Log.e(TAG, "Consent flow error: ${result.message}")
+                showErrorToast(activity, result.message)
             }
         }
     }
 
-    private suspend fun showConsentForm(
-        activity: Activity,
-        consentForm: ConsentForm,
-    ) {
+    private suspend fun presentConsentForm(activity: Activity, consentForm: ConsentForm) {
         suspendCancellableCoroutine { continuation ->
             try {
                 consentForm.show(activity) {
@@ -87,5 +57,22 @@ object UsageConsentHelper {
                 // No cancellation API is provided by the consent SDK.
             }
         }
+    }
+
+    private suspend fun showPrivacyOptions(
+        activity: Activity,
+        consentCoordinator: ConsentFlowCoordinator,
+    ) {
+        runCatching {
+            consentCoordinator.showPrivacyOptionsForm(activity)
+        }.onFailure { throwable ->
+            Log.e(TAG, "Failed to display privacy options", throwable)
+            showErrorToast(activity, throwable.message)
+        }
+    }
+
+    private fun showErrorToast(activity: Activity, message: String?) {
+        val text = message ?: activity.getString(R.string.consent_update_failed)
+        Toast.makeText(activity, text, Toast.LENGTH_LONG).show()
     }
 }

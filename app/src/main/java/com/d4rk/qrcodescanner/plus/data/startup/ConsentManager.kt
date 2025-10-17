@@ -85,4 +85,23 @@ class ConsentManager(
                 }
             }
         }
+
+    suspend fun showPrivacyOptionsForm(activity: Activity) =
+        withContext(consentDispatcher) {
+            suspendCancellableCoroutine { continuation ->
+                UserMessagingPlatform.showPrivacyOptionsForm(activity) { formError ->
+                    if (continuation.isActive) {
+                        if (formError == null) {
+                            continuation.resume(Unit)
+                        } else {
+                            continuation.resumeWithException(Exception(formError.message))
+                        }
+                    }
+                }
+
+                continuation.invokeOnCancellation {
+                    // No explicit cancellation API is provided by UMP.
+                }
+            }
+        }
 }

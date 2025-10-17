@@ -88,12 +88,10 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
         }
 
         binding.rowPersonalizedAds.setOnClickListener {
-            if (binding.rowPersonalizedAds.isEnabled) {
-                lifecycleScope.launch {
-                    UsageConsentHelper.showConsentForm(this@UsageAndDiagnosticsActivity)
-                }
-            }
+            openConsentPreferences()
         }
+
+        binding.iconOpenPersonalizedAds.setOnClickListener { openConsentPreferences() }
 
         binding.buttonLearnMore.setOnClickListener {
             val privacyPolicyUri = getString(R.string.ads_help_center_url).toUri()
@@ -143,13 +141,14 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
         binding.rowAdUserData.setPreferenceEnabled(enabled)
         binding.rowAdPersonalization.setPreferenceEnabled(enabled)
 
-        binding.rowPersonalizedAds.isEnabled = enabled
-        binding.rowPersonalizedAds.isClickable = enabled
-        binding.rowPersonalizedAds.alpha = if (enabled) 1f else DISABLED_ALPHA
-        binding.iconOpenPersonalizedAds.alpha = if (enabled) 1f else DISABLED_ALPHA
-        binding.iconPersonalizedAds.alpha = if (enabled) 1f else DISABLED_ALPHA
-        binding.titlePersonalizedAds.alpha = if (enabled) 1f else DISABLED_ALPHA
-        binding.summaryPersonalizedAds.alpha = if (enabled) 1f else DISABLED_ALPHA
+        binding.rowPersonalizedAds.isEnabled = true
+        binding.rowPersonalizedAds.isClickable = true
+        binding.rowPersonalizedAds.alpha = 1f
+        binding.iconOpenPersonalizedAds.isEnabled = true
+        binding.iconOpenPersonalizedAds.alpha = 1f
+        binding.iconPersonalizedAds.alpha = 1f
+        binding.titlePersonalizedAds.alpha = 1f
+        binding.summaryPersonalizedAds.alpha = 1f
     }
 
     private fun updateAdvancedSettingsVisibility(animated: Boolean) {
@@ -174,6 +173,12 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
         }
         lastAppliedAnalyticsConsent = enabled
         FirebaseConsentHelper.setAnalyticsAndCrashlyticsCollectionEnabled(this, enabled)
+    }
+
+    private fun openConsentPreferences() {
+        lifecycleScope.launch {
+            UsageConsentHelper.showConsentForm(this@UsageAndDiagnosticsActivity)
+        }
     }
 
     companion object {

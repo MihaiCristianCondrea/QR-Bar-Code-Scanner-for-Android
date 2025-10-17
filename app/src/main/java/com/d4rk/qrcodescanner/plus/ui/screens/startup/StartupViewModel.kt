@@ -4,10 +4,10 @@ import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.d4rk.qrcodescanner.plus.data.startup.ConsentRequestOutcome
 import com.d4rk.qrcodescanner.plus.data.startup.StartupConsentRepository
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowCoordinator
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowResult
 import com.google.android.ump.ConsentForm
-import com.google.android.ump.ConsentInformation
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,6 +31,8 @@ sealed interface StartupUiEvent {
 class StartupViewModel(
     private val consentRepository: StartupConsentRepository,
 ) : ViewModel() {
+
+    private val consentCoordinator = ConsentFlowCoordinator(consentRepository)
 
     private val _uiState = MutableStateFlow(StartupUiState())
     val uiState: StateFlow<StartupUiState> = _uiState.asStateFlow()
@@ -62,10 +64,10 @@ class StartupViewModel(
     private fun requestConsent(activity: Activity, force: Boolean = false) {
         if (!force && consentRequestJob?.isActive == true) return
         consentRequestJob?.cancel()
-        consentRequestJob = viewModelScope.launch {
+        val job = viewModelScope.launch {
             _uiState.update { current -> current.copy(isLoading = true, errorMessage = null) }
 
-            val outcome = runCatching { consentRepository.requestConsent(activity) }
+            val result = runCatching { consentCoordinator.prepareConsentUi(activity) }
                 .getOrElse { throwable ->
                     _uiState.update { current ->
                         current.copy(
@@ -76,41 +78,22 @@ class StartupViewModel(
                     return@launch
                 }
 
-            when (outcome) {
-                is ConsentRequestOutcome.Success -> handleConsentSuccess(activity, outcome)
-                is ConsentRequestOutcome.Failure -> handleConsentFailure(outcome.message)
-            }
-        }
-    }
+            when (result) {
+                ConsentFlowResult.ConsentSatisfied -> {
+                    _uiState.update { current -> current.copy(isLoading = false) }
+                    emitNavigation()
+                }
 
-    private suspend fun handleConsentSuccess(
-        activity: Activity,
-        outcome: ConsentRequestOutcome.Success,
-    ) {
-        when (outcome.consentStatus) {
-            ConsentInformation.ConsentStatus.REQUIRED -> {
-                if (outcome.isConsentFormAvailable) {
-                    loadConsentForm(activity)
-                } else {
-                    _uiState.update { current ->
-                        current.copy(
-                            isLoading = false,
-                            errorMessage = "Consent form is required but not available.",
-                        )
-                    }
+                is ConsentFlowResult.ShowConsentForm -> handleConsentForm(result)
+                is ConsentFlowResult.Error -> handleConsentFailure(result.message)
+                ConsentFlowResult.ShowPrivacyOptionsForm -> {
+                    _uiState.update { current -> current.copy(isLoading = false) }
+                    emitNavigation()
                 }
             }
-
-            ConsentInformation.ConsentStatus.OBTAINED,
-            ConsentInformation.ConsentStatus.NOT_REQUIRED -> {
-                _uiState.update { current -> current.copy(isLoading = false) }
-                emitNavigation()
-            }
-
-            else -> {
-                _uiState.update { current -> current.copy(isLoading = false) }
-            }
         }
+        job.invokeOnCompletion { consentRequestJob = null }
+        consentRequestJob = job
     }
 
     private fun handleConsentFailure(message: String?) {
@@ -122,20 +105,9 @@ class StartupViewModel(
         }
     }
 
-    private suspend fun loadConsentForm(activity: Activity) {
-        val consentForm = runCatching { consentRepository.loadConsentForm(activity) }
-            .getOrElse { throwable ->
-                _uiState.update { current ->
-                    current.copy(
-                        isLoading = false,
-                        errorMessage = throwable.message ?: throwable.localizedMessage,
-                    )
-                }
-                return
-            }
-
+    private suspend fun handleConsentForm(result: ConsentFlowResult.ShowConsentForm) {
         _uiState.update { current -> current.copy(isLoading = false) }
-        _events.emit(StartupUiEvent.ShowConsentForm(consentForm))
+        _events.emit(StartupUiEvent.ShowConsentForm(result.consentForm))
     }
 
     private suspend fun emitNavigation() {

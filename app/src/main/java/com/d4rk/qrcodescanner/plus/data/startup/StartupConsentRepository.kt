@@ -20,4 +20,8 @@ class StartupConsentRepository(
 
     suspend fun loadConsentForm(activity: Activity): ConsentForm =
         consentManager.loadConsentForm(activity)
+
+    suspend fun showPrivacyOptionsForm(activity: Activity) {
+        consentManager.showPrivacyOptionsForm(activity)
+    }
 }

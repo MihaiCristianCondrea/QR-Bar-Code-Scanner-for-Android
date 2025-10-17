@@ -278,6 +278,7 @@
     <string name="advanced_privacy_settings">Advanced privacy settings</string>
     <string name="personalized_ads">Personalized ads</string>
     <string name="summary_personalized_ads">Review the consent form to update how ads are personalized for you.</string>
+    <string name="consent_update_failed">Unable to update your privacy choices right now. Please try again later.</string>
     <string name="learn_more">Learn more</string>
     <string name="consent_category_analytics_title">Analytics</string>
     <string name="consent_analytics_storage_title">Analytics data</string>

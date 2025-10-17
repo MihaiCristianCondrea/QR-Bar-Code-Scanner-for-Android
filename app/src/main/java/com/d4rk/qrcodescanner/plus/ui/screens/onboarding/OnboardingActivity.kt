@@ -4,17 +4,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.data.onboarding.OnboardingPreferences
+import com.d4rk.qrcodescanner.plus.data.startup.StartupConsentRepository
 import com.d4rk.qrcodescanner.plus.databinding.ActivityOnboardingBinding
 import com.d4rk.qrcodescanner.plus.ui.screens.main.MainActivity
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowCoordinator
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowResult
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.ump.ConsentForm
+import kotlinx.coroutines.launch
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -37,6 +44,11 @@ class OnboardingActivity : AppCompatActivity() {
         }
     }
 
+    private val consentCoordinator by lazy {
+        ConsentFlowCoordinator(StartupConsentRepository(applicationContext))
+    }
+    private var isConsentFlowActive: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (OnboardingPreferences.isOnboardingComplete(this)) {
@@ -55,10 +67,16 @@ class OnboardingActivity : AppCompatActivity() {
         updateTabIndicators(binding.viewPager.currentItem)
     }
 
+    override fun onStart() {
+        super.onStart()
+        requestConsentIfNeeded()
+    }
+
     override fun onDestroy() {
         if (::binding.isInitialized) {
             binding.viewPager.unregisterOnPageChangeCallback(pageChangeCallback)
         }
+        isConsentFlowActive = false
         super.onDestroy()
     }
 
@@ -147,6 +165,56 @@ class OnboardingActivity : AppCompatActivity() {
         view.background =
             AppCompatResources.getDrawable(context, R.drawable.onboarding_dot_unselected)
         return view
+    }
+
+    private fun requestConsentIfNeeded() {
+        if (isConsentFlowActive) {
+            return
+        }
+        lifecycleScope.launch {
+            isConsentFlowActive = true
+            val result = runCatching {
+                consentCoordinator.prepareConsentUi(this@OnboardingActivity)
+            }.getOrElse { throwable ->
+                showConsentError(throwable.message)
+                isConsentFlowActive = false
+                return@launch
+            }
+
+            when (result) {
+                is ConsentFlowResult.ShowConsentForm -> presentConsentForm(result.consentForm)
+                is ConsentFlowResult.Error -> {
+                    showConsentError(result.message)
+                    isConsentFlowActive = false
+                }
+
+                ConsentFlowResult.ConsentSatisfied,
+                ConsentFlowResult.ShowPrivacyOptionsForm -> {
+                    isConsentFlowActive = false
+                }
+            }
+        }
+    }
+
+    private fun presentConsentForm(consentForm: ConsentForm) {
+        runCatching {
+            consentForm.show(this) {
+                isConsentFlowActive = false
+                if (!isFinishing) {
+                    requestConsentIfNeeded()
+                }
+            }
+        }.onFailure { throwable ->
+            isConsentFlowActive = false
+            showConsentError(throwable.message)
+        }
+    }
+
+    private fun showConsentError(message: String?) {
+        if (!isFinishing) {
+            val text = message ?: getString(R.string.consent_update_failed)
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun completeOnboarding() {

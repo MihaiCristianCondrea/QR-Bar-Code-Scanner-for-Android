@@ -3,6 +3,7 @@ package com.d4rk.qrcodescanner.plus.ui.screens.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.SparseIntArray
 import android.view.Menu
 import android.view.MenuItem
@@ -34,6 +35,7 @@ import androidx.preference.PreferenceManager
 import com.d4rk.qrcodescanner.plus.BuildConfig
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.data.onboarding.OnboardingPreferences
+import com.d4rk.qrcodescanner.plus.data.startup.StartupConsentRepository
 import com.d4rk.qrcodescanner.plus.databinding.ActivityMainBinding
 import com.d4rk.qrcodescanner.plus.databinding.LayoutPreferencesBottomSheetBinding
 import com.d4rk.qrcodescanner.plus.domain.engagement.AppEngagementRepository
@@ -42,6 +44,8 @@ import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.support.SupportActivity
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowCoordinator
+import com.d4rk.qrcodescanner.plus.ui.consent.ConsentFlowResult
 import com.d4rk.qrcodescanner.plus.utils.helpers.FirebaseConsentHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.InAppUpdateHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.ReviewHelper
@@ -51,6 +55,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.ump.ConsentForm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -60,6 +65,7 @@ import org.koin.android.ext.android.inject
 class MainActivity : AppCompatActivity() {
 
     private companion object {
+        private const val TAG = "MainActivity"
         private const val STATE_NAV_GRAPH_INITIALIZED = "state_nav_graph_initialized"
         private const val STATE_LAST_PREFERRED_DESTINATION = "state_last_preferred_destination"
     }
@@ -71,6 +77,9 @@ class MainActivity : AppCompatActivity() {
     private val engagementRepository: AppEngagementRepository by inject()
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(preferencesRepository)
+    }
+    private val consentCoordinator by lazy {
+        ConsentFlowCoordinator(StartupConsentRepository(applicationContext))
     }
     private val navOrder = SparseIntArray()
     private val topLevelDestinations = setOf(
@@ -85,6 +94,7 @@ class MainActivity : AppCompatActivity() {
     private var currentNavIndex = 0
     private var navGraphInitialized = false
     private var lastPreferredStartDestination = 0
+    private var isConsentFlowActive = false
 
     private val changelogUrl =
         "https://raw.githubusercontent.com/D4rK7355608/com.d4rk.qrcodescanner.plus/master/CHANGELOG.md"
@@ -203,6 +213,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeLifecycleEvents() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                requestConsentIfNeeded()
                 val analyticsEnabled = fetchAnalyticsEnabled()
                 updateAnalyticsCollection(analyticsEnabled)
                 refreshAdIfVisible()
@@ -399,6 +410,49 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateAnalyticsCollection(isEnabled: Boolean) {
         FirebaseConsentHelper.setAnalyticsAndCrashlyticsCollectionEnabled(this, isEnabled)
+    }
+
+    private fun requestConsentIfNeeded() {
+        if (isConsentFlowActive) {
+            return
+        }
+        lifecycleScope.launch {
+            isConsentFlowActive = true
+            val result = runCatching {
+                consentCoordinator.prepareConsentUi(this@MainActivity)
+            }.getOrElse { throwable ->
+                Log.e(TAG, "Failed to evaluate consent requirements", throwable)
+                isConsentFlowActive = false
+                return@launch
+            }
+
+            when (result) {
+                is ConsentFlowResult.ShowConsentForm -> presentConsentForm(result.consentForm)
+                is ConsentFlowResult.Error -> {
+                    Log.e(TAG, "Consent flow error: ${result.message}")
+                    isConsentFlowActive = false
+                }
+
+                ConsentFlowResult.ConsentSatisfied,
+                ConsentFlowResult.ShowPrivacyOptionsForm -> {
+                    isConsentFlowActive = false
+                }
+            }
+        }
+    }
+
+    private fun presentConsentForm(consentForm: ConsentForm) {
+        runCatching {
+            consentForm.show(this) {
+                isConsentFlowActive = false
+                if (!isFinishing) {
+                    requestConsentIfNeeded()
+                }
+            }
+        }.onFailure { throwable ->
+            Log.e(TAG, "Failed to display consent form", throwable)
+            isConsentFlowActive = false
+        }
     }
 
     private fun refreshAdIfVisible() {

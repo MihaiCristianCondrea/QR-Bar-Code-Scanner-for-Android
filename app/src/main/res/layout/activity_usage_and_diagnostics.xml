@@ -134,6 +134,7 @@
                             android:layout_height="32dp"
                             android:layout_marginEnd="16dp"
                             android:contentDescription="@null"
+                            android:tint="?attr/colorSecondary"
                             app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
                             app:srcCompat="@drawable/ic_tips_and_updates" />
 

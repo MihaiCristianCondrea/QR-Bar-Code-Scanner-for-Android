@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="64dp"
-    android:padding="12dp">
+    android:minHeight="64dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/preference_icon"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="16dp"
         android:contentDescription="@null"
+        android:tint="?attr/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +20,7 @@
         android:id="@+id/preference_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
         app:layout_constraintEnd_toStartOf="@+id/preference_switch"
         app:layout_constraintStart_toEndOf="@id/preference_icon"
@@ -31,8 +30,8 @@
         android:id="@+id/preference_summary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:layout_marginStart="8dp"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         android:textColor="?attr/colorOnSurfaceVariant"
         app:layout_constraintBottom_toBottomOf="parent"
