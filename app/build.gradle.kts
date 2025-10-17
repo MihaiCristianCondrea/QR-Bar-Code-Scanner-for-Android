@@ -20,7 +20,7 @@ android {
         applicationId = "com.d4rk.qrcodescanner.plus"
         minSdk = 23
         targetSdk = 36
-        versionCode = 43
+        versionCode = 44
         versionName = "4.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         @Suppress("UnstableApiUsage")
