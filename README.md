@@ -10,7 +10,6 @@ Scan and Generate QR/Bar Codes with Ease! Introducing QR & Bar Code Scanner for 
 reliable and user-friendly app that streamlines QR code scanning and generation on Android devices.
 Powered by the trusted [Google's ML Kit](https://developers.google.com/ml-kit/vision/barcode-scanning/android) and [CameraX](https://developer.android.com/media/camera/camerax) our app offers a secure and seamless experience.
 
-
 Our app is designed to be easy to use and lightweight. Plus, it's free and open‑source!
 
 ## Features
