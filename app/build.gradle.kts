@@ -20,8 +20,8 @@ android {
         applicationId = "com.d4rk.qrcodescanner.plus"
         minSdk = 23
         targetSdk = 36
-        versionCode = 42
-        versionName = "4.0.0-beta2"
+        versionCode = 43
+        versionName = "4.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         @Suppress("UnstableApiUsage")
         androidResources.localeFilters += listOf(

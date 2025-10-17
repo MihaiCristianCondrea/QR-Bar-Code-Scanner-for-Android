@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Erweiterte Datenschutzeinstellungen</string>
     <string name="personalized_ads">Personalisierte Anzeigen</string>
     <string name="summary_personalized_ads">Überprüfen Sie das Einverständnisformular, um zu aktualisieren, wie Anzeigen für Sie personalisiert werden.</string>
+    <string name="consent_update_failed">Ihre Datenschutzeinstellungen können derzeit nicht aktualisiert werden. Bitte versuchen Sie es später noch einmal.</string>
     <string name="learn_more">Mehr erfahren</string>
     <string name="consent_category_analytics_title">Analyse</string>
     <string name="consent_analytics_storage_title">Analysedaten</string>

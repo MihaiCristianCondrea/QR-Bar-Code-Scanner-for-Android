@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Paramètres avancés de confidentialité</string>
     <string name="personalized_ads">Annonces personnalisées</string>
     <string name="summary_personalized_ads">Consultez le formulaire de consentement pour mettre à jour la personnalisation des annonces.</string>
+    <string name="consent_update_failed">Impossible de mettre à jour vos choix de confidentialité pour le moment. Veuillez réessayer plus tard.</string>
     <string name="learn_more">En savoir plus</string>
     <string name="consent_category_analytics_title">Analyses</string>
     <string name="consent_analytics_storage_title">Données d’analyse</string>

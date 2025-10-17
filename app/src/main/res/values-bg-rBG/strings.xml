@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Разширени настройки за поверителност</string>
     <string name="personalized_ads">Персонализирани реклами</string>
     <string name="summary_personalized_ads">Прегледайте формуляра за съгласие, за да обновите как се персонализират рекламите за вас.</string>
+    <string name="consent_update_failed">В момента не можем да актуализираме настройките ви за поверителност. Опитайте отново по-късно.</string>
     <string name="learn_more">Научете повече</string>
     <string name="consent_category_analytics_title">Анализи</string>
     <string name="consent_analytics_storage_title">Данни за анализи</string>

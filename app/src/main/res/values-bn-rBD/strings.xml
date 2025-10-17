@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">উন্নত গোপনীয়তা সেটিংস</string>
     <string name="personalized_ads">ব্যক্তিগতকৃত বিজ্ঞাপন</string>
     <string name="summary_personalized_ads">আপনার জন্য বিজ্ঞাপন কীভাবে ব্যক্তিগতকৃত হবে তা আপডেট করতে সম্মতি ফর্ম পর্যালোচনা করুন।</string>
+    <string name="consent_update_failed">এই মুহূর্তে আপনার গোপনীয়তার পছন্দ আপডেট করা যাচ্ছে না। অনুগ্রহ করে পরে আবার চেষ্টা করুন।</string>
     <string name="learn_more">আরও জানুন</string>
     <string name="consent_category_analytics_title">অ্যানালিটিক্স</string>
     <string name="consent_analytics_storage_title">অ্যানালিটিক্স ডেটা</string>

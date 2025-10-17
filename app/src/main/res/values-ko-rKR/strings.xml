@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">고급 개인정보 보호 설정</string>
     <string name="personalized_ads">맞춤형 광고</string>
     <string name="summary_personalized_ads">광고가 어떻게 개인 맞춤화되는지 업데이트하려면 동의서를 검토하세요.</string>
+    <string name="consent_update_failed">지금은 개인정보 보호 설정을 업데이트할 수 없습니다. 나중에 다시 시도해 주세요.</string>
     <string name="learn_more">자세히 알아보기</string>
     <string name="consent_category_analytics_title">분석</string>
     <string name="consent_analytics_storage_title">분석 데이터</string>

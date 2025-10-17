@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Cài đặt quyền riêng tư nâng cao</string>
     <string name="personalized_ads">Quảng cáo cá nhân hóa</string>
     <string name="summary_personalized_ads">Xem lại biểu mẫu đồng ý để cập nhật cách quảng cáo được cá nhân hóa cho bạn.</string>
+    <string name="consent_update_failed">Không thể cập nhật tùy chọn quyền riêng tư của bạn ngay bây giờ. Vui lòng thử lại sau.</string>
     <string name="learn_more">Tìm hiểu thêm</string>
     <string name="consent_category_analytics_title">Phân tích</string>
     <string name="consent_analytics_storage_title">Dữ liệu phân tích</string>

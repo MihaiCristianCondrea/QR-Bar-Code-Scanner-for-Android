@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Розширені налаштування конфіденційності</string>
     <string name="personalized_ads">Персоналізовані оголошення</string>
     <string name="summary_personalized_ads">Перегляньте форму згоди, щоб оновити налаштування персоналізації реклами для вас.</string>
+    <string name="consent_update_failed">Зараз не вдається оновити ваші налаштування конфіденційності. Спробуйте ще раз пізніше.</string>
     <string name="learn_more">Дізнатися більше</string>
     <string name="consent_category_analytics_title">Аналітика</string>
     <string name="consent_analytics_storage_title">Дані аналітики</string>

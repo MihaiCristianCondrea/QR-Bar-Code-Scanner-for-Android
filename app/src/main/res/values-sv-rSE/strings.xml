@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Avancerade sekretessinställningar</string>
     <string name="personalized_ads">Personanpassade annonser</string>
     <string name="summary_personalized_ads">Granska samtyckesformuläret för att uppdatera hur annonser personanpassas för dig.</string>
+    <string name="consent_update_failed">Dina sekretessinställningar kan inte uppdateras just nu. Försök igen senare.</string>
     <string name="learn_more">Läs mer</string>
     <string name="consent_category_analytics_title">Analys</string>
     <string name="consent_analytics_storage_title">Analysdata</string>

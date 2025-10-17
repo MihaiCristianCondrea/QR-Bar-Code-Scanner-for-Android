@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">進階隱私設定</string>
     <string name="personalized_ads">個人化廣告</string>
     <string name="summary_personalized_ads">檢閱同意書，以更新為你個人化廣告的方式。</string>
+    <string name="consent_update_failed">目前無法更新您的隱私偏好設定。請稍後再試。</string>
     <string name="learn_more">瞭解詳情</string>
     <string name="consent_category_analytics_title">分析</string>
     <string name="consent_analytics_storage_title">分析資料</string>

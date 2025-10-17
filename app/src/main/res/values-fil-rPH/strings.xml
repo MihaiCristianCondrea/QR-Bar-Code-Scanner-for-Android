@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Advanced na mga setting sa privacy</string>
     <string name="personalized_ads">Personalized na mga ad</string>
     <string name="summary_personalized_ads">Suriin ang form ng pahintulot upang i-update kung paano inaangkop para sa iyo ang mga ad.</string>
+    <string name="consent_update_failed">Hindi ma-update ang iyong mga pagpipilian sa privacy sa ngayon. Pakisubukang muli sa ibang pagkakataon.</string>
     <string name="learn_more">Alamin pa</string>
     <string name="consent_category_analytics_title">Analytics</string>
     <string name="consent_analytics_storage_title">Data ng analytics</string>

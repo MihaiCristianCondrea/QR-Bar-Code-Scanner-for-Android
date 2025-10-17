@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">إعدادات الخصوصية المتقدمة</string>
     <string name="personalized_ads">إعلانات مخصّصة</string>
     <string name="summary_personalized_ads">راجع نموذج الموافقة لتحديث طريقة تخصيص الإعلانات لك.</string>
+    <string name="consent_update_failed">تعذَّر تحديث خيارات الخصوصية الخاصة بك الآن. يُرجى إعادة المحاولة لاحقًا.</string>
     <string name="learn_more">معرفة المزيد</string>
     <string name="consent_category_analytics_title">التحليلات</string>
     <string name="consent_analytics_storage_title">بيانات التحليلات</string>

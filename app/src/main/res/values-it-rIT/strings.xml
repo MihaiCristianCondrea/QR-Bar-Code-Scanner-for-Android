@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Impostazioni avanzate sulla privacy</string>
     <string name="personalized_ads">Annunci personalizzati</string>
     <string name="summary_personalized_ads">Rivedi il modulo di consenso per aggiornare come gli annunci vengono personalizzati per te.</string>
+    <string name="consent_update_failed">Impossibile aggiornare le tue preferenze sulla privacy in questo momento. Riprova più tardi.</string>
     <string name="learn_more">Scopri di più</string>
     <string name="consent_category_analytics_title">Analisi</string>
     <string name="consent_analytics_storage_title">Dati di analisi</string>

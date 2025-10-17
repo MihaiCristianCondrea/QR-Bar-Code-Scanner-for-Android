@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">اعلیٰ پرائیویسی سیٹنگز</string>
     <string name="personalized_ads">ذاتی نوعیت کے اشتہارات</string>
     <string name="summary_personalized_ads">اشتہارات کو آپ کے لیے کس طرح ذاتی نوعیت دی جائے، اسے اپ ڈیٹ کرنے کے لیے رضامندی کا فارم دیکھیں۔</string>
+    <string name="consent_update_failed">فی الحال آپ کی رازداری کی ترجیحات کو اپ ڈیٹ نہیں کیا جا سکا۔ براہ کرم بعد میں دوبارہ کوشش کریں۔</string>
     <string name="learn_more">مزید جانیں</string>
     <string name="consent_category_analytics_title">تجزیات</string>
     <string name="consent_analytics_storage_title">تجزیاتی ڈیٹا</string>

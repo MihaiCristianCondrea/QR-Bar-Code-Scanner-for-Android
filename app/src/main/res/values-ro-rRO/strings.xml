@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Setări avansate de confidențialitate</string>
     <string name="personalized_ads">Anunțuri personalizate</string>
     <string name="summary_personalized_ads">Revizuiți formularul de consimțământ pentru a actualiza modul în care sunt personalizate reclamele pentru dvs.</string>
+    <string name="consent_update_failed">Nu îți putem actualiza preferințele de confidențialitate acum. Te rugăm să încerci din nou mai târziu.</string>
     <string name="learn_more">Află mai multe</string>
     <string name="consent_category_analytics_title">Analiză</string>
     <string name="consent_analytics_storage_title">Date analitice</string>

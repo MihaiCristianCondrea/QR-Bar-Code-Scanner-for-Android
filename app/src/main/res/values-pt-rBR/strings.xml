@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Configurações avançadas de privacidade</string>
     <string name="personalized_ads">Anúncios personalizados</string>
     <string name="summary_personalized_ads">Revise o formulário de consentimento para atualizar como os anúncios são personalizados para você.</string>
+    <string name="consent_update_failed">Não foi possível atualizar suas opções de privacidade agora. Tente novamente mais tarde.</string>
     <string name="learn_more">Saiba mais</string>
     <string name="consent_category_analytics_title">Análises</string>
     <string name="consent_analytics_storage_title">Dados de análises</string>

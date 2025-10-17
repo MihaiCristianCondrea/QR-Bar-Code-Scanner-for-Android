@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Gelişmiş gizlilik ayarları</string>
     <string name="personalized_ads">Kişiselleştirilmiş reklamlar</string>
     <string name="summary_personalized_ads">Reklamların senin için nasıl kişiselleştirileceğini güncellemek için onay formunu incele.</string>
+    <string name="consent_update_failed">Gizlilik tercihlerinizi şu anda güncelleyemiyoruz. Lütfen daha sonra tekrar deneyin.</string>
     <string name="learn_more">Daha fazla bilgi al</string>
     <string name="consent_category_analytics_title">Analiz</string>
     <string name="consent_analytics_storage_title">Analiz verileri</string>

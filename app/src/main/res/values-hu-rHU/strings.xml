@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Speciális adatvédelmi beállítások</string>
     <string name="personalized_ads">Személyre szabott hirdetések</string>
     <string name="summary_personalized_ads">Tekintse át a hozzájárulási űrlapot, hogy frissítse, miként személyre szabjuk a hirdetéseket.</string>
+    <string name="consent_update_failed">Jelenleg nem tudjuk frissíteni az adatvédelmi beállításait. Kérjük, próbálja meg később újra.</string>
     <string name="learn_more">Tudjon meg többet</string>
     <string name="consent_category_analytics_title">Analitika</string>
     <string name="consent_analytics_storage_title">Analitikai adatok</string>

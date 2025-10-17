@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">उन्नत गोपनीयता सेटिंग्स</string>
     <string name="personalized_ads">व्यक्तिगत विज्ञापन</string>
     <string name="summary_personalized_ads">यह अपडेट करने के लिए सहमति फ़ॉर्म की समीक्षा करें कि आपके लिए विज्ञापन कैसे व्यक्तिगत किए जाएँ।</string>
+    <string name="consent_update_failed">इस समय आपकी गोपनीयता की पसंद अपडेट नहीं की जा सकी। कृपया बाद में पुनः प्रयास करें।</string>
     <string name="learn_more">और जानें</string>
     <string name="consent_category_analytics_title">एनालिटिक्स</string>
     <string name="consent_analytics_storage_title">एनालिटिक्स डेटा</string>

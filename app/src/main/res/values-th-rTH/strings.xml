@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">การตั้งค่าความเป็นส่วนตัวขั้นสูง</string>
     <string name="personalized_ads">โฆษณาที่ปรับให้เหมาะกับคุณ</string>
     <string name="summary_personalized_ads">ตรวจสอบแบบฟอร์มขอความยินยอมเพื่ออัปเดตวิธีการปรับแต่งโฆษณาสำหรับคุณ</string>
+    <string name="consent_update_failed">ไม่สามารถอัปเดตตัวเลือกความเป็นส่วนตัวของคุณได้ในขณะนี้ โปรดลองอีกครั้งในภายหลัง.</string>
     <string name="learn_more">ดูรายละเอียดเพิ่มเติม</string>
     <string name="consent_category_analytics_title">การวิเคราะห์</string>
     <string name="consent_analytics_storage_title">ข้อมูลการวิเคราะห์</string>

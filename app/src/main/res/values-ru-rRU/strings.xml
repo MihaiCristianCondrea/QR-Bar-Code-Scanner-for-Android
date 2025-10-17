@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Расширенные настройки конфиденциальности</string>
     <string name="personalized_ads">Персонализированная реклама</string>
     <string name="summary_personalized_ads">Просмотрите форму согласия, чтобы обновить персонализацию рекламы для вас.</string>
+    <string name="consent_update_failed">Сейчас не удаётся обновить ваши настройки конфиденциальности. Повторите попытку позже.</string>
     <string name="learn_more">Подробнее</string>
     <string name="consent_category_analytics_title">Аналитика</string>
     <string name="consent_analytics_storage_title">Данные аналитики</string>

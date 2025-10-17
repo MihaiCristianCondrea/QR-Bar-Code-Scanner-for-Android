@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">Setelan privasi lanjutan</string>
     <string name="personalized_ads">Iklan yang dipersonalisasi</string>
     <string name="summary_personalized_ads">Tinjau formulir persetujuan untuk memperbarui cara iklan dipersonalisasi untuk Anda.</string>
+    <string name="consent_update_failed">Pilihan privasi Anda tidak dapat diperbarui saat ini. Coba lagi nanti.</string>
     <string name="learn_more">Pelajari lebih lanjut</string>
     <string name="consent_category_analytics_title">Analitik</string>
     <string name="consent_analytics_storage_title">Data analitik</string>

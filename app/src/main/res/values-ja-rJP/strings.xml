@@ -277,6 +277,7 @@
     <string name="advanced_privacy_settings">高度なプライバシー設定</string>
     <string name="personalized_ads">パーソナライズされた広告</string>
     <string name="summary_personalized_ads">広告のパーソナライズ方法を更新するには、同意フォームを確認してください。</string>
+    <string name="consent_update_failed">現在、プライバシー設定を更新できません。後でもう一度お試しください。</string>
     <string name="learn_more">詳細</string>
     <string name="consent_category_analytics_title">分析</string>
     <string name="consent_analytics_storage_title">分析データ</string>
