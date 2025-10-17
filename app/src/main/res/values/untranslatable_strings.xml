@@ -41,4 +41,5 @@
     <string name="contact_support_email" translatable="false">contact.mihaicristiancondrea@gmail.com</string>
     <string name="support_link_url" translatable="false">https://bit.ly/3p8bpjj</string>
     <string name="copyright" translatable="false">Copyright ©2021-2025, Mihai-Cristian Condrea</string>
+    <string name="ads_help_center_url" translatable="false">https://mihaicristiancondrea.github.io/profile/#ads-help-center</string>
 </resources>

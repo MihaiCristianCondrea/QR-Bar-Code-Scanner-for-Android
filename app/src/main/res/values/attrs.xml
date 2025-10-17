@@ -37,4 +37,13 @@
         <attr name="nativeAdLayout" format="reference" />
         <attr name="nativeAdUnitId" format="string|reference" />
     </declare-styleable>
+
+    <declare-styleable name="UsagePreferenceToggleView">
+        <attr name="preferenceIcon" format="reference" />
+        <attr name="preferenceIconTint" format="color|reference" />
+        <attr name="preferenceIconContentDescription" format="string|reference" />
+        <attr name="preferenceTitle" format="string|reference" />
+        <attr name="preferenceSummary" format="string|reference" />
+        <attr name="preferenceSwitchEnabled" format="boolean" />
+    </declare-styleable>
 </resources>

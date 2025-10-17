@@ -59,26 +59,26 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
             }
         }
 
-        binding.switchAnalytics.setOnCheckedChangeListener { _, isChecked ->
-            if (binding.switchAnalytics.isPressed) {
+        binding.rowAnalyticsConsent.toggleSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (binding.rowAnalyticsConsent.toggleSwitch.isPressed) {
                 viewModel.setAnalyticsConsent(isChecked)
             }
         }
 
-        binding.switchAdStorage.setOnCheckedChangeListener { _, isChecked ->
-            if (binding.switchAdStorage.isPressed) {
+        binding.rowAdStorage.toggleSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (binding.rowAdStorage.toggleSwitch.isPressed) {
                 viewModel.setAdStorageConsent(isChecked)
             }
         }
 
-        binding.switchAdUserData.setOnCheckedChangeListener { _, isChecked ->
-            if (binding.switchAdUserData.isPressed) {
+        binding.rowAdUserData.toggleSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (binding.rowAdUserData.toggleSwitch.isPressed) {
                 viewModel.setAdUserDataConsent(isChecked)
             }
         }
 
-        binding.switchAdPersonalization.setOnCheckedChangeListener { _, isChecked ->
-            if (binding.switchAdPersonalization.isPressed) {
+        binding.rowAdPersonalization.toggleSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (binding.rowAdPersonalization.toggleSwitch.isPressed) {
                 viewModel.setAdPersonalizationConsent(isChecked)
             }
         }
@@ -97,7 +97,7 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
         }
 
         binding.buttonLearnMore.setOnClickListener {
-            val privacyPolicyUri = getString(R.string.privacy_policy_link).toUri()
+            val privacyPolicyUri = getString(R.string.ads_help_center_url).toUri()
             val intent = Intent(Intent.ACTION_VIEW, privacyPolicyUri)
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
@@ -117,10 +117,10 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
 
     private fun renderState(state: UsageAndDiagnosticsUiState) {
         updateSwitchState(binding.switchUsageAndDiagnostics, state.usageAndDiagnosticsEnabled)
-        updateSwitchState(binding.switchAnalytics, state.analyticsConsentGranted)
-        updateSwitchState(binding.switchAdStorage, state.adStorageConsentGranted)
-        updateSwitchState(binding.switchAdUserData, state.adUserDataConsentGranted)
-        updateSwitchState(binding.switchAdPersonalization, state.adPersonalizationConsentGranted)
+        updateSwitchState(binding.rowAnalyticsConsent.toggleSwitch, state.analyticsConsentGranted)
+        updateSwitchState(binding.rowAdStorage.toggleSwitch, state.adStorageConsentGranted)
+        updateSwitchState(binding.rowAdUserData.toggleSwitch, state.adUserDataConsentGranted)
+        updateSwitchState(binding.rowAdPersonalization.toggleSwitch, state.adPersonalizationConsentGranted)
 
         applyAnalyticsCollection(state.analyticsConsentGranted)
         updateAdvancedControlsEnabled(state.usageAndDiagnosticsEnabled)
@@ -136,10 +136,10 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
         binding.containerAdvancedContent.alpha = if (enabled) 1f else DISABLED_ALPHA
         binding.containerAdvancedContent.isEnabled = enabled
 
-        binding.switchAnalytics.isEnabled = enabled
-        binding.switchAdStorage.isEnabled = enabled
-        binding.switchAdUserData.isEnabled = enabled
-        binding.switchAdPersonalization.isEnabled = enabled
+        binding.rowAnalyticsConsent.setPreferenceEnabled(enabled)
+        binding.rowAdStorage.setPreferenceEnabled(enabled)
+        binding.rowAdUserData.setPreferenceEnabled(enabled)
+        binding.rowAdPersonalization.setPreferenceEnabled(enabled)
 
         binding.rowPersonalizedAds.isEnabled = enabled
         binding.rowPersonalizedAds.isClickable = enabled

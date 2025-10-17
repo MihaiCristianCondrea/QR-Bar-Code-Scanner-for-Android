@@ -102,13 +102,13 @@
                             android:text="@string/advanced_privacy_settings"
                             android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
 
-                        <com.google.android.material.imageview.ShapeableImageView
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/icon_expand_indicator"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            style="@style/Widget.Material3Expressive.Button.IconButton.Outlined"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:contentDescription="@null"
-                            android:padding="2dp"
-                            app:srcCompat="@drawable/ic_expand_more_24" />
+                            app:icon="@drawable/ic_expand_more_24" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <com.google.android.material.divider.MaterialDivider
@@ -160,12 +160,13 @@
                                 android:textColor="?attr/colorOnSurfaceVariant" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
-                        <com.google.android.material.imageview.ShapeableImageView
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/icon_open_personalized_ads"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:contentDescription="@null"
-                            app:srcCompat="@drawable/ic_arrow_forward" />
+                            style="@style/Widget.Material3Expressive.Button.IconButton.Tonal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:icon="@drawable/ic_arrow_forward"
+                            app:iconTint="?attr/colorOnSurface" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -185,57 +186,15 @@
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="?attr/colorOnSurfaceVariant" />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <com.d4rk.qrcodescanner.plus.ui.components.views.UsagePreferenceToggleView
                             android:id="@+id/row_analytics_consent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginTop="8dp"
-                            android:padding="12dp">
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/icon_analytics"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:layout_marginEnd="16dp"
-                                android:contentDescription="@null"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-                                app:srcCompat="@drawable/ic_privacy_policy" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/title_analytics"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/consent_analytics_storage_title"
-                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                                app:layout_constraintEnd_toStartOf="@id/switch_analytics"
-                                app:layout_constraintStart_toEndOf="@id/icon_analytics"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/summary_analytics"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="@string/consent_analytics_storage_description"
-                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                                android:textColor="?attr/colorOnSurfaceVariant"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@id/switch_analytics"
-                                app:layout_constraintStart_toEndOf="@id/icon_analytics"
-                                app:layout_constraintTop_toBottomOf="@id/title_analytics" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/switch_analytics"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                            app:preferenceIcon="@drawable/ic_privacy_policy"
+                            app:preferenceSummary="@string/consent_analytics_storage_description"
+                            app:preferenceTitle="@string/consent_analytics_storage_title" />
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
@@ -252,162 +211,36 @@
                             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                             android:textColor="?attr/colorOnSurfaceVariant" />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <com.d4rk.qrcodescanner.plus.ui.components.views.UsagePreferenceToggleView
                             android:id="@+id/row_ad_storage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginTop="8dp"
-                            android:padding="12dp">
+                            app:preferenceIcon="@drawable/ic_save"
+                            app:preferenceSummary="@string/consent_ad_storage_description"
+                            app:preferenceTitle="@string/consent_ad_storage_title" />
 
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/icon_ad_storage"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:layout_marginEnd="16dp"
-                                android:contentDescription="@null"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-                                app:srcCompat="@drawable/ic_save" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/title_ad_storage"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/consent_ad_storage_title"
-                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                                app:layout_constraintEnd_toStartOf="@id/switch_ad_storage"
-                                app:layout_constraintStart_toEndOf="@id/icon_ad_storage"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/summary_ad_storage"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="@string/consent_ad_storage_description"
-                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                                android:textColor="?attr/colorOnSurfaceVariant"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@id/switch_ad_storage"
-                                app:layout_constraintStart_toEndOf="@id/icon_ad_storage"
-                                app:layout_constraintTop_toBottomOf="@id/title_ad_storage" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/switch_ad_storage"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <com.d4rk.qrcodescanner.plus.ui.components.views.UsagePreferenceToggleView
                             android:id="@+id/row_ad_user_data"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginTop="4dp"
-                            android:padding="12dp">
+                            app:preferenceIcon="@drawable/ic_contact"
+                            app:preferenceSummary="@string/consent_ad_user_data_description"
+                            app:preferenceTitle="@string/consent_ad_user_data_title" />
 
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/icon_ad_user_data"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:layout_marginEnd="16dp"
-                                android:contentDescription="@null"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-                                app:srcCompat="@drawable/ic_contact" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/title_ad_user_data"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/consent_ad_user_data_title"
-                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                                app:layout_constraintEnd_toStartOf="@id/switch_ad_user_data"
-                                app:layout_constraintStart_toEndOf="@id/icon_ad_user_data"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/summary_ad_user_data"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="@string/consent_ad_user_data_description"
-                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                                android:textColor="?attr/colorOnSurfaceVariant"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@id/switch_ad_user_data"
-                                app:layout_constraintStart_toEndOf="@id/icon_ad_user_data"
-                                app:layout_constraintTop_toBottomOf="@id/title_ad_user_data" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/switch_ad_user_data"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <com.d4rk.qrcodescanner.plus.ui.components.views.UsagePreferenceToggleView
                             android:id="@+id/row_ad_personalization"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="12dp"
-                            android:padding="12dp">
-
-                            <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/icon_ad_personalization"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:layout_marginEnd="16dp"
-                                android:contentDescription="@null"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-                                app:srcCompat="@drawable/ic_tips_and_updates" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/title_ad_personalization"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/consent_ad_personalization_title"
-                                android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                                app:layout_constraintEnd_toStartOf="@id/switch_ad_personalization"
-                                app:layout_constraintStart_toEndOf="@id/icon_ad_personalization"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.google.android.material.textview.MaterialTextView
-                                android:id="@+id/summary_ad_personalization"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="@string/consent_ad_personalization_description"
-                                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                                android:textColor="?attr/colorOnSurfaceVariant"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@id/switch_ad_personalization"
-                                app:layout_constraintStart_toEndOf="@id/icon_ad_personalization"
-                                app:layout_constraintTop_toBottomOf="@id/title_ad_personalization" />
-
-                            <com.google.android.material.materialswitch.MaterialSwitch
-                                android:id="@+id/switch_ad_personalization"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                            app:preferenceIcon="@drawable/ic_tips_and_updates"
+                            app:preferenceSummary="@string/consent_ad_personalization_description"
+                            app:preferenceTitle="@string/consent_ad_personalization_title" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
