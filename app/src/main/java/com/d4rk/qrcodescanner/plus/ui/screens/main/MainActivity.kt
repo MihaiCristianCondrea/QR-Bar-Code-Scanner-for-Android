@@ -42,6 +42,7 @@ import com.d4rk.qrcodescanner.plus.ui.screens.help.HelpActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.settings.GeneralPreferenceActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.startup.StartupActivity
 import com.d4rk.qrcodescanner.plus.ui.screens.support.SupportActivity
+import com.d4rk.qrcodescanner.plus.utils.helpers.FirebaseConsentHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.InAppUpdateHelper
 import com.d4rk.qrcodescanner.plus.utils.helpers.ReviewHelper
 import com.google.ads.mediation.admob.AdMobAdapter
@@ -50,8 +51,6 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -399,8 +398,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateAnalyticsCollection(isEnabled: Boolean) {
-        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(isEnabled)
-        FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = isEnabled
+        FirebaseConsentHelper.setAnalyticsAndCrashlyticsCollectionEnabled(this, isEnabled)
     }
 
     private fun refreshAdIfVisible() {

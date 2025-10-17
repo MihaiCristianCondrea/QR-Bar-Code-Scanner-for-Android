@@ -14,9 +14,8 @@ import com.d4rk.qrcodescanner.plus.databinding.ActivityUsageAndDiagnosticsBindin
 import com.d4rk.qrcodescanner.plus.domain.settings.UsageAndDiagnosticsPreferencesRepository
 import com.d4rk.qrcodescanner.plus.ui.components.navigation.BaseActivity
 import com.d4rk.qrcodescanner.plus.utils.helpers.EdgeToEdgeHelper
+import com.d4rk.qrcodescanner.plus.utils.helpers.FirebaseConsentHelper
 import com.google.android.material.materialswitch.MaterialSwitch
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -171,8 +170,7 @@ class UsageAndDiagnosticsActivity : BaseActivity() {
             return
         }
         lastAppliedAnalyticsConsent = enabled
-        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(enabled)
-        FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = enabled
+        FirebaseConsentHelper.setAnalyticsAndCrashlyticsCollectionEnabled(this, enabled)
     }
 
     companion object {
