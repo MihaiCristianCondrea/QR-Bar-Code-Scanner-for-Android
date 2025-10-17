@@ -7,7 +7,7 @@ import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.utils.extension.unsafeLazy
 
 abstract class BaseCreateBarcodeFragment : Fragment() {
-    protected val parentActivity by unsafeLazy { requireActivity() as CreateBarcodeActivity }
+    val parentActivity by unsafeLazy { requireActivity() as CreateBarcodeActivity }
     open val latitude: Double? = null
     open val longitude: Double? = null
     open fun getBarcodeSchema(): Schema = Other("")

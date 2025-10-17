@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeTextBinding
 import com.d4rk.qrcodescanner.plus.domain.scan.BarcodeParser
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 import com.google.zxing.BarcodeFormat
@@ -17,6 +17,7 @@ import org.koin.android.ext.android.inject
 class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodeTextBinding
     private val barcodeParser: BarcodeParser by inject()
+    private lateinit var buttonStateController: CreateButtonStateController
 
     companion object {
         private const val DEFAULT_TEXT_KEY = "DEFAULT_TEXT_KEY"
@@ -40,7 +41,7 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handleTextChanged()
+        initButtonStateController()
         initEditText()
     }
 
@@ -55,21 +56,22 @@ class CreateQrCodeTextFragment : BaseCreateBarcodeFragment() {
             setSelection(defaultText.length)
             requestFocus()
         }
-        updateCreateButtonState()
-    }
-
-    private fun handleTextChanged() {
-        binding.editText.addTextChangedListener {
-            updateCreateButtonState()
+        if (::buttonStateController.isInitialized) {
+            buttonStateController.refresh()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        updateCreateButtonState()
+        if (::buttonStateController.isInitialized) {
+            buttonStateController.refresh()
+        }
     }
 
-    private fun updateCreateButtonState() {
-        parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.any { it.isNotBlank() }
+        }
+        buttonStateController.bind(viewLifecycleOwner, binding.editText)
     }
 }

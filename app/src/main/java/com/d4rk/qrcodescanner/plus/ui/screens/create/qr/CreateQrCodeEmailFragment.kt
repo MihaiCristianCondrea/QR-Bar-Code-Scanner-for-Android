@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeEmailBinding
 import com.d4rk.qrcodescanner.plus.model.schema.Email
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeEmailFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodeEmailBinding
+    private lateinit var buttonStateController: CreateButtonStateController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,7 +27,7 @@ class CreateQrCodeEmailFragment : BaseCreateBarcodeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTitleEditText()
-        handleTextChanged()
+        initButtonStateController()
     }
 
     override fun getBarcodeSchema(): Schema {
@@ -41,14 +42,15 @@ class CreateQrCodeEmailFragment : BaseCreateBarcodeFragment() {
         binding.editTextEmail.requestFocus()
     }
 
-    private fun handleTextChanged() {
-        binding.editTextEmail.addTextChangedListener { toggleCreateBarcodeButton() }
-        binding.editTextSubject.addTextChangedListener { toggleCreateBarcodeButton() }
-        binding.editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
-    }
-
-    private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled =
-            binding.editTextEmail.isNotBlank() || binding.editTextSubject.isNotBlank() || binding.editTextMessage.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.any { it.isNotBlank() }
+        }
+        buttonStateController.bind(
+            viewLifecycleOwner,
+            binding.editTextEmail,
+            binding.editTextSubject,
+            binding.editTextMessage
+        )
     }
 }

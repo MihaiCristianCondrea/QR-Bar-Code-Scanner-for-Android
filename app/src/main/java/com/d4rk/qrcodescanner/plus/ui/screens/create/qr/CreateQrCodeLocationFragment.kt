@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeLocationBinding
 import com.d4rk.qrcodescanner.plus.model.schema.Geo
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodeLocationBinding
+    private lateinit var buttonStateController: CreateButtonStateController
     override val latitude: Double? get() = binding.editTextLatitude.textString.toDoubleOrNull()
     override val longitude: Double? get() = binding.editTextLongitude.textString.toDoubleOrNull()
     override fun onCreateView(
@@ -28,7 +29,7 @@ class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLatitudeEditText()
-        handleTextChanged()
+        initButtonStateController()
     }
 
     override fun getBarcodeSchema(): Schema {
@@ -46,19 +47,23 @@ class CreateQrCodeLocationFragment : BaseCreateBarcodeFragment() {
         longitude?.apply {
             binding.editTextLongitude.setText(longitude.toString())
         }
+        if (::buttonStateController.isInitialized) {
+            buttonStateController.refresh()
+        }
     }
 
     private fun initLatitudeEditText() {
         binding.editTextLatitude.requestFocus()
     }
 
-    private fun handleTextChanged() {
-        binding.editTextLatitude.addTextChangedListener { toggleCreateBarcodeButton() }
-        binding.editTextLongitude.addTextChangedListener { toggleCreateBarcodeButton() }
-    }
-
-    private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled =
-            binding.editTextLatitude.isNotBlank() && binding.editTextLongitude.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.all { it.isNotBlank() }
+        }
+        buttonStateController.bind(
+            viewLifecycleOwner,
+            binding.editTextLatitude,
+            binding.editTextLongitude
+        )
     }
 }

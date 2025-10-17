@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodePhoneBinding
 import com.d4rk.qrcodescanner.plus.model.schema.Phone
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodePhoneFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodePhoneBinding
+    private lateinit var buttonStateController: CreateButtonStateController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,13 +27,16 @@ class CreateQrCodePhoneFragment : BaseCreateBarcodeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initEditText()
-        handleTextChanged()
+        initButtonStateController()
     }
 
     override fun showPhone(phone: String) {
         binding.editText.apply {
             setText(phone)
             setSelection(phone.length)
+        }
+        if (::buttonStateController.isInitialized) {
+            buttonStateController.refresh()
         }
     }
 
@@ -44,9 +48,10 @@ class CreateQrCodePhoneFragment : BaseCreateBarcodeFragment() {
         binding.editText.requestFocus()
     }
 
-    private fun handleTextChanged() {
-        binding.editText.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.any { it.isNotBlank() }
         }
+        buttonStateController.bind(viewLifecycleOwner, binding.editText)
     }
 }

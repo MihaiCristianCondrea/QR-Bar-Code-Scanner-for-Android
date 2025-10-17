@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.R
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeWifiBinding
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.model.schema.Wifi
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodeWifiBinding
+    private lateinit var buttonStateController: CreateButtonStateController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +32,7 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
         super.onViewCreated(view, savedInstanceState)
         initEncryptionTypesSpinner()
         initNetworkNameEditText()
-        handleTextChanged()
+        initButtonStateController()
     }
 
     override fun getBarcodeSchema(): Schema {
@@ -77,12 +78,14 @@ class CreateQrCodeWifiFragment : BaseCreateBarcodeFragment() {
         binding.editTextNetworkName.requestFocus()
     }
 
-    private fun handleTextChanged() {
-        binding.editTextNetworkName.addTextChangedListener { toggleCreateBarcodeButton() }
-        binding.editTextPassword.addTextChangedListener { toggleCreateBarcodeButton() }
-    }
-
-    private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled = binding.editTextNetworkName.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.firstOrNull { it === binding.editTextNetworkName }?.isNotBlank() == true
+        }
+        buttonStateController.bind(
+            viewLifecycleOwner,
+            binding.editTextNetworkName,
+            binding.editTextPassword
+        )
     }
 }

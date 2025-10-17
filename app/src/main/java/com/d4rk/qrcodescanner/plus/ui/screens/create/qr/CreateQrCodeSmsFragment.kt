@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeSmsBinding
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.model.schema.Sms
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodeSmsBinding
+    private lateinit var buttonStateController: CreateButtonStateController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,13 +27,16 @@ class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initTitleEditText()
-        handleTextChanged()
+        initButtonStateController()
     }
 
     override fun showPhone(phone: String) {
         binding.editTextPhone.apply {
             setText(phone)
             setSelection(phone.length)
+        }
+        if (::buttonStateController.isInitialized) {
+            buttonStateController.refresh()
         }
     }
 
@@ -46,13 +50,14 @@ class CreateQrCodeSmsFragment : BaseCreateBarcodeFragment() {
         binding.editTextPhone.requestFocus()
     }
 
-    private fun handleTextChanged() {
-        binding.editTextPhone.addTextChangedListener { toggleCreateBarcodeButton() }
-        binding.editTextMessage.addTextChangedListener { toggleCreateBarcodeButton() }
-    }
-
-    private fun toggleCreateBarcodeButton() {
-        parentActivity.isCreateBarcodeButtonEnabled =
-            binding.editTextPhone.isNotBlank() || binding.editTextMessage.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.any { it.isNotBlank() }
+        }
+        buttonStateController.bind(
+            viewLifecycleOwner,
+            binding.editTextPhone,
+            binding.editTextMessage
+        )
     }
 }

@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.d4rk.qrcodescanner.plus.databinding.FragmentCreateQrCodeUrlBinding
 import com.d4rk.qrcodescanner.plus.model.schema.Schema
 import com.d4rk.qrcodescanner.plus.model.schema.Url
 import com.d4rk.qrcodescanner.plus.ui.screens.create.BaseCreateBarcodeFragment
+import com.d4rk.qrcodescanner.plus.ui.screens.create.CreateButtonStateController
 import com.d4rk.qrcodescanner.plus.utils.extension.isNotBlank
 import com.d4rk.qrcodescanner.plus.utils.extension.textString
 
 class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
     private lateinit var binding: FragmentCreateQrCodeUrlBinding
+    private lateinit var buttonStateController: CreateButtonStateController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,7 +27,7 @@ class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showUrlPrefix()
-        handleTextChanged()
+        initButtonStateController()
     }
 
     override fun getBarcodeSchema(): Schema {
@@ -42,9 +43,10 @@ class CreateQrCodeUrlFragment : BaseCreateBarcodeFragment() {
         }
     }
 
-    private fun handleTextChanged() {
-        binding.editText.addTextChangedListener {
-            parentActivity.isCreateBarcodeButtonEnabled = binding.editText.isNotBlank()
+    private fun initButtonStateController() {
+        buttonStateController = CreateButtonStateController(this) { fields ->
+            fields.any { it.isNotBlank() }
         }
+        buttonStateController.bind(viewLifecycleOwner, binding.editText)
     }
 }
