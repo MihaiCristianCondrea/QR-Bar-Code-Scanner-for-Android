@@ -19,6 +19,7 @@ class OnboardingDataFragment : Fragment(R.layout.fragment_onboarding_data) {
         _binding = FragmentOnboardingDataBinding.bind(view)
 
         val context = requireContext()
+        OnboardingPreferences.ensureDefaultConsents(context)
         val analyticsEnabled = OnboardingPreferences.isAnalyticsEnabled(context)
         val personalizedAds = OnboardingPreferences.isPersonalizedAdsEnabled(context)
 
