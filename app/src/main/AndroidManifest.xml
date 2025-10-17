@@ -55,7 +55,8 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode" />
         <activity
-            android:name=".ui.screens.startup.StartupActivity" />
+            android:name=".ui.screens.startup.StartupActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".ui.screens.onboarding.OnboardingActivity"
             android:theme="@style/AppTheme"

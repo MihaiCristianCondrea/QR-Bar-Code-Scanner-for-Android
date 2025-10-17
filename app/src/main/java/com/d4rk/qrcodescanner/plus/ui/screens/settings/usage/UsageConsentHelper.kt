@@ -2,9 +2,10 @@ package com.d4rk.qrcodescanner.plus.ui.screens.settings.usage
 
 import android.app.Activity
 import android.util.Log
+import com.d4rk.qrcodescanner.plus.data.startup.ConsentManager
+import com.d4rk.qrcodescanner.plus.data.startup.ConsentRequestOutcome
 import com.google.android.ump.ConsentForm
-import com.google.android.ump.ConsentRequestParameters
-import com.google.android.ump.UserMessagingPlatform
+import com.google.android.ump.ConsentInformation
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
@@ -13,52 +14,70 @@ object UsageConsentHelper {
     private const val TAG = "UsageConsentHelper"
 
     suspend fun showConsentForm(activity: Activity) {
-        val consentInformation = UserMessagingPlatform.getConsentInformation(activity)
-        val params = ConsentRequestParameters.Builder()
-            .setTagForUnderAgeOfConsent(false)
-            .build()
+        val consentManager = ConsentManager(activity.applicationContext)
+        val outcome = runCatching { consentManager.requestConsent(activity) }
+            .getOrElse { throwable ->
+                Log.e(TAG, "Failed to request consent info", throwable)
+                return
+            }
 
-        suspendCancellableCoroutine { continuation ->
-            consentInformation.requestConsentInfoUpdate(
-                activity,
-                params,
-                {
-                    loadAndShowForm(activity, continuation::resume)
-                },
-                { formError ->
-                    Log.e(TAG, "Failed to request consent info: ${formError.message}")
-                    if (continuation.isActive) {
-                        continuation.resume(Unit)
-                    }
-                },
-            )
+        when (outcome) {
+            is ConsentRequestOutcome.Success -> handleConsentSuccess(activity, consentManager, outcome)
+            is ConsentRequestOutcome.Failure -> Log.e(TAG, "Failed to request consent info: ${outcome.message}")
+        }
+    }
 
-            continuation.invokeOnCancellation {
-                // No specific cancellation API available from the consent SDK.
+    private suspend fun handleConsentSuccess(
+        activity: Activity,
+        consentManager: ConsentManager,
+        outcome: ConsentRequestOutcome.Success,
+    ) {
+        when (outcome.consentStatus) {
+            ConsentInformation.ConsentStatus.REQUIRED -> {
+                if (outcome.isConsentFormAvailable) {
+                    val consentForm = runCatching { consentManager.loadConsentForm(activity) }
+                        .getOrElse { throwable ->
+                            Log.e(TAG, "Failed to load consent form", throwable)
+                            return
+                        }
+                    showConsentForm(activity, consentForm)
+                } else {
+                    Log.w(TAG, "Consent form required but not available")
+                }
+            }
+
+            ConsentInformation.ConsentStatus.OBTAINED,
+            ConsentInformation.ConsentStatus.NOT_REQUIRED -> {
+                // No action required; consent already obtained or not needed.
+            }
+
+            else -> {
+                Log.w(TAG, "Unhandled consent status: ${outcome.consentStatus}")
             }
         }
     }
 
-    private fun loadAndShowForm(
+    private suspend fun showConsentForm(
         activity: Activity,
-        onFinished: (Unit) -> Unit,
+        consentForm: ConsentForm,
     ) {
-        UserMessagingPlatform.loadConsentForm(
-            activity,
-            { consentForm: ConsentForm ->
-                runCatching {
-                    consentForm.show(activity) {
-                        onFinished(Unit)
+        suspendCancellableCoroutine { continuation ->
+            try {
+                consentForm.show(activity) {
+                    if (continuation.isActive) {
+                        continuation.resume(Unit)
                     }
-                }.onFailure { throwable ->
-                    Log.e(TAG, "Failed to display consent form", throwable)
-                    onFinished(Unit)
                 }
-            },
-            { formError ->
-                Log.e(TAG, "Failed to load consent form: ${formError.message}")
-                onFinished(Unit)
-            },
-        )
+            } catch (throwable: Throwable) {
+                Log.e(TAG, "Failed to display consent form", throwable)
+                if (continuation.isActive) {
+                    continuation.resume(Unit)
+                }
+            }
+
+            continuation.invokeOnCancellation {
+                // No cancellation API is provided by the consent SDK.
+            }
+        }
     }
 }
