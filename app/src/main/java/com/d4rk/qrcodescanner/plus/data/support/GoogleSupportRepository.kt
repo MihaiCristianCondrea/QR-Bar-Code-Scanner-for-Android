@@ -135,6 +135,11 @@ class GoogleSupportRepository(context: Context) : SupportRepository {
             return null
         }
 
+        productDetails.oneTimePurchaseOfferDetails ?: run {
+            Log.w(TAG, "Product $productId is missing one-time purchase offer details")
+            return null
+        }
+
         val productDetailsParams = BillingFlowParams.ProductDetailsParams.newBuilder()
             .setProductDetails(productDetails)
             .build()
