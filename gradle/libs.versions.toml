@@ -1,6 +1,6 @@
 [versions]
 agp = "8.13.0"
-aboutLibraries = "13.0.0"
+aboutLibraries = "13.1.0"
 kotlin = "2.2.20"
 googleServices = "4.4.4"
 firebaseCrashlyticsPlugin = "3.0.6"
