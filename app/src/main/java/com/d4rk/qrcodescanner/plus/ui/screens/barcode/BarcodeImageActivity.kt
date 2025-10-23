@@ -2,10 +2,12 @@ package com.d4rk.qrcodescanner.plus.ui.screens.barcode
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.d4rk.qrcodescanner.plus.R
@@ -26,13 +28,43 @@ import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+private const val EXTRA_BARCODE = "com.d4rk.qrcodescanner.plus.extra.BARCODE"
+
 class BarcodeImageActivity : UpNavigationActivity() {
+    data class Args(val barcode: Barcode) {
+        /**
+         * Contract for launching [BarcodeImageActivity].
+         *
+         * @property barcode the barcode that should be rendered on the screen. This value is required
+         * and callers should obtain it from the history database, scanner result, or creation flow
+         * before starting the Activity.
+         */
+        fun toIntent(context: Context): Intent = Intent(context, BarcodeImageActivity::class.java).apply {
+            putExtras(toBundle())
+        }
+
+        fun toBundle() = bundleOf(EXTRA_BARCODE to barcode)
+
+        companion object {
+            fun fromIntent(intent: Intent?): Args? {
+                val barcode = intent?.readBarcodeExtra() ?: return null
+                return Args(barcode)
+            }
+        }
+    }
+
     companion object {
-        private const val BARCODE_KEY = "BARCODE_KEY"
+        @JvmStatic
+        fun createIntent(context: Context, args: Args): Intent = args.toIntent(context)
+
+        @JvmStatic
+        fun start(context: Context, args: Args) {
+            context.startActivity(createIntent(context, args))
+        }
+
+        @JvmStatic
         fun start(context: Context, barcode: Barcode) {
-            val intent = Intent(context, BarcodeImageActivity::class.java)
-            intent.putExtra(BARCODE_KEY, barcode)
-            context.startActivity(intent)
+            start(context, Args(barcode))
         }
     }
 
@@ -41,11 +73,8 @@ class BarcodeImageActivity : UpNavigationActivity() {
     private val settings: Settings by inject()
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH)
 
-    @Suppress("DEPRECATION")
-    private val barcode by unsafeLazy {
-        intent?.getSerializableExtra(BARCODE_KEY) as? Barcode
-            ?: throw IllegalArgumentException("No barcode passed")
-    }
+    private val args: Args? by unsafeLazy { Args.fromIntent(intent) }
+    private var shouldDisplayBarcodeContent = false
     private var originalBrightness: Float = 0.5f
     private var optionsMenu: Menu? = null
     private var isBrightnessAtMax = false
@@ -55,12 +84,23 @@ class BarcodeImageActivity : UpNavigationActivity() {
         EdgeToEdgeHelper.applyEdgeToEdge(window = window, view = binding.root)
         setContentView(binding.root)
         setupToolbarWithUpNavigation()
+
+        val barcode = args?.barcode ?: run {
+            showMissingBarcodeState()
+            return
+        }
+
+        showBarcodeContent()
+
         saveOriginalBrightness()
-        showBarcode()
+        showBarcode(barcode)
         FastScrollerBuilder(binding.scrollView).useMd2Style().build()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        if (!hasBarcodeContent()) {
+            return false
+        }
         menuInflater.inflate(R.menu.menu_barcode_image, menu)
         optionsMenu = menu
         updateOptionsMenu()
@@ -68,6 +108,9 @@ class BarcodeImageActivity : UpNavigationActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        if (!hasBarcodeContent()) {
+            return super.onPrepareOptionsMenu(menu)
+        }
         updateOptionsMenu()
         return super.onPrepareOptionsMenu(menu)
     }
@@ -96,14 +139,14 @@ class BarcodeImageActivity : UpNavigationActivity() {
         originalBrightness = window.attributes.screenBrightness
     }
 
-    private fun showBarcode() {
-        showBarcodeImage()
-        showBarcodeDate()
-        showBarcodeFormat()
-        showBarcodeText()
+    private fun showBarcode(barcode: Barcode) {
+        showBarcodeImage(barcode)
+        showBarcodeDate(barcode)
+        showBarcodeFormat(barcode)
+        showBarcodeText(barcode)
     }
 
-    private fun showBarcodeImage() {
+    private fun showBarcodeImage(barcode: Barcode) {
         lifecycleScope.launch {
             val result = runCatching {
                 withContext(Dispatchers.Default) {
@@ -136,16 +179,16 @@ class BarcodeImageActivity : UpNavigationActivity() {
         }
     }
 
-    private fun showBarcodeDate() {
+    private fun showBarcodeDate(barcode: Barcode) {
         binding.textViewDate.text = dateFormatter.format(barcode.date)
     }
 
-    private fun showBarcodeFormat() {
+    private fun showBarcodeFormat(barcode: Barcode) {
         val format = barcode.format.toStringId()
         setTitle(format)
     }
 
-    private fun showBarcodeText() {
+    private fun showBarcodeText(barcode: Barcode) {
         binding.textViewBarcodeText.text = barcode.text
     }
 
@@ -153,6 +196,26 @@ class BarcodeImageActivity : UpNavigationActivity() {
         val menu = optionsMenu ?: return
         menu.findItem(R.id.item_increase_brightness)?.isVisible = isBrightnessAtMax.not()
         menu.findItem(R.id.item_decrease_brightness)?.isVisible = isBrightnessAtMax
+    }
+
+    private fun hasBarcodeContent(): Boolean = shouldDisplayBarcodeContent
+
+    private fun showBarcodeContent() {
+        shouldDisplayBarcodeContent = true
+        binding.layoutMissingBarcodeState.isVisible = false
+        binding.scrollView.isVisible = true
+        invalidateOptionsMenu()
+    }
+
+    private fun showMissingBarcodeState() {
+        shouldDisplayBarcodeContent = false
+        binding.scrollView.isVisible = false
+        binding.layoutMissingBarcodeState.isVisible = true
+        binding.buttonMissingBarcodeAction.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+        setTitle(R.string.barcode_error_missing_extra)
+        invalidateOptionsMenu()
     }
 
     private fun increaseBrightnessToMax() {
@@ -169,3 +232,13 @@ class BarcodeImageActivity : UpNavigationActivity() {
         }
     }
 }
+
+@Suppress("DEPRECATION")
+private fun Intent.readBarcodeExtra(): Barcode? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        getSerializableExtra(EXTRA_BARCODE, Barcode::class.java)
+    } else {
+        getSerializableExtra(EXTRA_BARCODE) as? Barcode
+    }
+}
+
